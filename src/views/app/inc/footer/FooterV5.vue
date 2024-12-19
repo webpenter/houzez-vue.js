@@ -24,7 +24,7 @@
 <!-- <?php // include 'inc/listing/templates/listing-lightbox.php';?> -->
     <ListingLightBoxV2/>
     <ListingLightBoxV3/>
-<!-- <?php include 'inc/listing/compare-properties.php';?> -->
+    <CompareProperties/>
 <!-- <?php include 'inc/search/overlay-advanced-mobile-search.php'; ?> -->
 <!-- <?php include 'inc/realtors/mobile-agent-search-overlay.php'; ?> -->
 <!-- <?php // include 'inc/search/overlay-advanced-mobile-search-v3.php'; ?> -->
@@ -33,6 +33,7 @@
 </template>
 
 <script setup>
+import CompareProperties from '../listing/CompareProperties.vue';
 import ListingLightBoxV2 from '../listing/templates/ListingLightBoxV2.vue';
 import ListingLightBoxV3 from '../listing/templates/ListingLightBoxV3.vue';
 import AboutSiteWidget from '../widgets/AboutSiteWidget.vue';
