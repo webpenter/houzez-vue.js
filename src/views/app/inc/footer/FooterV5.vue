@@ -21,33 +21,28 @@
 	    <FooterBottomV1/>
     </footer>
     <BackToTop/>
-    <ListingLightBox/>
+    <!-- <ListingLightBox/> -->
     <ListingLightBoxV2/>
     <ListingLightBoxV3/>
     <CompareProperties/>
     <MobileAgentSearchOverlay/>
     <OverlayAdvancedMobileSearch/>
-    <OverlayAdvancedMobileSearchV3/>
+    <!-- <OverlayAdvancedMobileSearchV3/> -->
     <ModalLoginRegisterForm/>
     <ModalResetPasswordForm/>
 </template>
 
 <script setup>
 import CompareProperties from '../listing/CompareProperties.vue';
-import ListingLightBox from '../listing/templates/ListingLightBox.vue';
+// import ListingLightBox from '../listing/templates/ListingLightBox.vue';
 import MobileAgentSearchOverlay from '../realtors/MobileAgentSearchOverlay.vue';
 import OverlayAdvancedMobileSearch from '../search/OverlayAdvancedMobileSearch.vue';
-import OverlayAdvancedMobileSearchV3 from '../search/OverlayAdvancedMobileSearch.vue';
-import ModalLoginRegisterForm from '../header/ModalLoginRegisterForm.vue';
-import ModalResetPasswordForm from '../header/ModalResetPasswordForm.vue';
 import ListingLightBoxV2 from '../listing/templates/ListingLightBoxV2.vue';
 import ListingLightBoxV3 from '../listing/templates/ListingLightBoxV3.vue';
-import MobileAgentSearchOverlay from '../search/realtors/MobileAgentSearch.vue';
 import AboutSiteWidget from '../widgets/AboutSiteWidget.vue';
 import BackToTop from './BackToTop.vue';
 import FooterBottomV1 from './FooterBottomV1.vue';
-import OverlayAdvancedMobileSearch from '../search/OverlayAdvancedMobileSearch.vue';
-import OverlayAdvancedMobileSearchV3 from '../search/OverlayAdvancedMobileSearchV3.vue';
+// import OverlayAdvancedMobileSearchV3 from '../search/OverlayAdvancedMobileSearchV3.vue';
 import ModalLoginRegisterForm from '../header/ModalLoginRegisterForm.vue';
 import ModalResetPasswordForm from '../header/ModalResetPasswordForm.vue';
 </script>

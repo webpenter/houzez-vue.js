@@ -14,7 +14,7 @@
 		</div><!-- col-12 -->
 		<div class="col-md-4 col-sm-12">
 			<div class="form-group">
-				<select class="selectpicker form-control bs-select-hidden" title="Type" data-live-search="false" data-selected-text-format="count" multiple data-actions-box="true"  multiple>
+				<select class="selectpicker form-control bs-select-hidden" title="Type" data-live-search="false" data-selected-text-format="count" multiple data-actions-box="true">
 					<option data-subtext="Agents">Agent</option>
 					<option data-subtext="Agency">Agency</option>
 				</select><!-- selectpicker -->
@@ -22,7 +22,7 @@
 		</div><!-- col-md-4 col-sm-12 -->
 		<div class="col-md-4 col-sm-12">
 			<div class="form-group">
-				<select class="selectpicker form-control bs-select-hidden" title="City" data-live-search="false" data-selected-text-format="count" multiple data-actions-box="true"  multiple>
+				<select class="selectpicker form-control bs-select-hidden" title="City" data-live-search="false" data-selected-text-format="count" multiple data-actions-box="true">
 					<option data-subtext="Illinois">Chicago</option>
 					<option data-subtext="Florida">Miami</option>
 					<option data-subtext="New York">New York</option>
@@ -32,7 +32,7 @@
 		</div><!-- col-md-4 col-sm-12 -->
 		<div class="col-md-4 col-sm-12">
 			<div class="form-group">
-				<select class="selectpicker form-control bs-select-hidden" title="Language" data-live-search="false" data-selected-text-format="count" multiple data-actions-box="true"  multiple>
+				<select class="selectpicker form-control bs-select-hidden" title="Language" data-live-search="false" data-selected-text-format="count" multiple data-actions-box="true">
 					<option data-subtext="English">English</option>
 					<option data-subtext="Spanish">Spanish</option>
 					<option data-subtext="German">German</option>
@@ -46,4 +46,5 @@
 	</div><!-- row -->
 </section><!-- overlay-agent-search-module -->
 </template>
+
 <script setup></script>
