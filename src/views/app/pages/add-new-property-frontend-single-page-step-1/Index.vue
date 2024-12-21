@@ -37,6 +37,24 @@
                         <SectionAttachments />
                         <SectionPrivateNotes />
                         <SectionAccount />
+
+
+                        <!-- <?php include 'inc/dashboard/property/section-description-and-price.php';?>
+                        <?php include 'inc/dashboard/property/section-details.php';?>
+                        <?php include 'inc/dashboard/property/section-features.php';?>
+                        <?php include 'inc/dashboard/property/section-energy-class.php';?>
+                        <?php include 'inc/dashboard/property/section-location.php';?>
+                        <?php include 'inc/dashboard/property/section-media.php';?>
+                        <?php include 'inc/dashboard/property/section-360-virtual-tour.php';?>
+                        <?php include 'inc/dashboard/property/section-floor-plans.php';?>
+                        <?php include 'inc/dashboard/property/section-sub-properties.php';?>
+
+                        <?php include 'inc/dashboard/property/section-contact-information.php';?>
+                        <?php include 'inc/dashboard/property/section-attachments.php';?>
+                        <?php include 'inc/dashboard/property/section-private-notes.php';?>
+                        <?php include 'inc/dashboard/property/section-account.php';?> -->
+
+                        
                     </div>
                 </div><!-- row -->
                 <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
