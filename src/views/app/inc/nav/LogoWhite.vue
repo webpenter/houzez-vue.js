@@ -1,9 +1,11 @@
 <template>
     <div class="logo">
-        <a href="index.php">
+        <RouterLink :to="{name:'app.home'}">
             <img src="/img/logo-houzez-white.png" alt="logo">
-        </a>
+        </RouterLink>
     </div><!-- .logo -->
 </template>
 
-<script setup></script>
+<script setup>
+import { RouterLink } from 'vue-router';
+</script>

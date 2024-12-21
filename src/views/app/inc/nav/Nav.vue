@@ -3,21 +3,15 @@
 	note: to add have the nav bar on the right add this class "justify-content-end" to "navbar-nav"
 	-------------------------------------------------------------------------------------------- -->	
 	<ul class="navbar-nav">
-		<li class="nav-item active">
-			<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#">Item</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#">Item</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#">Item</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#">Item</a>
-		</li>
+		<template v-for="route in routes" :key="route.id">
+			<li class="nav-item">
+				<RouterLink :to="{name:route.name}" class="nav-link">
+					{{ route.title }}
+				</RouterLink>
+			</li>
+		</template>
+
+		<!-- Dropdown Link -->
 		<li class="nav-item dropdown">
 			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Item</a>
 			<ul class="dropdown-menu">
@@ -75,6 +69,8 @@
 				</li>
 			</ul>
 		</li>
+
+		<!-- MegaMenu Link -->
 		<li class="nav-item dropdown megamenu-item">
 			<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Megamenu</a>
 			<MegaMenu/>
@@ -83,5 +79,12 @@
 </template>
 
 <script setup>
+import { RouterLink } from "vue-router";
 import MegaMenu from "./MegaMenu.vue";
+
+// Pages Routes List
+const routes = [
+	{ id:1, name:'app.home', title:'Home' },
+	{ id:2, name:'app.properties', title:'Properties' },
+];
 </script>
