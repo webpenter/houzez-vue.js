@@ -28,13 +28,7 @@
             </li>
             <!-- end with dropdown -->
 
-            <li> 
-                <router-link
-                    class="btn btn-create-listing hidden-xs hidden-sm"
-                    to="/add-new-property-frontend-single-page-step-1" >
-                    Create a Listing
-                </router-link>
-            </li>
+            <li><a class="btn btn-create-listing hidden-xs hidden-sm" href="add-new-property-frontend-single-page-step-1.php">Create a Listing</a></li>
 
         </ul>
     </div>

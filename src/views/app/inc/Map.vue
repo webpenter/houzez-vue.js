@@ -37,11 +37,6 @@
 	<div id="map"></div>
 </div>
 
-
-
-
-
-
 </template>
 
 <script setup>
