@@ -6,13 +6,16 @@
 		</h3><!-- widget-title -->
 	</div><!-- widget-header -->
 	<div class="widget-body">
-		<?php include 'inc/widgets/templates/featured-property-item.php';?>
-		<?php include 'inc/widgets/templates/featured-property-item.php';?>
-		<?php include 'inc/widgets/templates/featured-property-item.php';?>
-		<?php include 'inc/widgets/templates/featured-property-item.php';?>
+		<FeaturedPropertyItem />
+		<FeaturedPropertyItem />
+		<FeaturedPropertyItem />
+		<FeaturedPropertyItem />
+		
 	</div><!-- widget-body -->
 </div><!-- widget-featured-property -->
 </template>
 <script setup>
+import FeaturedPropertyItem from './templates/FeaturedPropertyItem.vue';
+
 
 </script>

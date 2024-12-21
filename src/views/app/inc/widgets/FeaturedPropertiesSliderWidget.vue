@@ -7,16 +7,19 @@
 	</div><!-- widget-header -->
 	<div class="widget-body  widget-featured-property-slider-wrap">
 		<div class="widget-featured-property-slider">
-			<?php include 'inc/widgets/templates/featured-property-item.php';?>
-			<?php include 'inc/widgets/templates/featured-property-item.php';?>
-			<?php include 'inc/widgets/templates/featured-property-item.php';?>
-			<?php include 'inc/widgets/templates/featured-property-item.php';?>
-			<?php include 'inc/widgets/templates/featured-property-item.php';?>
-			<?php include 'inc/widgets/templates/featured-property-item.php';?>
+			<FeaturedPropertyItem />
+			<FeaturedPropertyItem />
+			<FeaturedPropertyItem />
+			<FeaturedPropertyItem />
+			<FeaturedPropertyItem />
+			<FeaturedPropertyItem />
+			
 		</div><!-- widget-featured-property-slider -->
 	</div><!-- widget-body -->
 </div><!-- widget-featured-property -->
 </template>
 <script setup>
+import FeaturedPropertyItem from './templates/FeaturedPropertyItem.vue';
+
 
 </script>

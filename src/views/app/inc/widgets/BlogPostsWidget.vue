@@ -6,13 +6,16 @@
 		</h3><!-- widget-title -->
 	</div><!-- widget-header -->
 	<div class="widget-body">
-		<?php include 'inc/widgets/templates/blog-post-item.php';?>
-		<?php include 'inc/widgets/templates/blog-post-item.php';?>
-		<?php include 'inc/widgets/templates/blog-post-item.php';?>
+		<BlogPostItem />
+		<BlogPostItem />
+		<BlogPostItem />
+		
 	</div><!-- widget-body -->
 </div><!-- widget-blog-posts -->
 
 </template>
 <script setup>
+import BlogPostItem from './templates/BlogPostItem.vue';
+
 
 </script>

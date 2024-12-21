@@ -18,15 +18,20 @@
 		</div><!-- login-register-tabs -->
 		<div class="tab-content">
 			<div class="tab-pane fade show active" id="widget-login-form-tab" role="tabpanel">
-				<?php include 'inc/login-form.php'; ?>
+				<LoginForm />
+				
 			</div><!-- login-form-tab -->
 			<div class="tab-pane fade" id="widget-register-form-tab" role="tabpanel">
-				<?php include 'inc/register-form.php'; ?>
+				<RegisterForm />
+				
 			</div><!-- register-form-tab -->
 		</div><!-- tab-content -->
 	</div><!-- widget-body -->
 </div><!-- widget-about-site -->
 </template>
 <script setup>
+import LoginForm from '../LoginForm.vue';
+import RegisterForm from '../RegisterForm.vue';
+
 
 </script>
