@@ -21,27 +21,21 @@
 	    <FooterBottomV1/>
     </footer>
     <BackToTop/>
-    <ListingLightBox/>
+<!-- <?php // include 'inc/listing/templates/listing-lightbox.php';?> -->
     <ListingLightBoxV2/>
     <ListingLightBoxV3/>
     <CompareProperties/>
-    <MobileAgentSearchOverlay/>
-    <OverlayAdvancedMobileSearch/>
-    <OverlayAdvancedMobileSearchV3/>
-    <ModalLoginRegisterForm/>
-    <ModalResetPasswordForm/>
+<!-- <?php include 'inc/search/overlay-advanced-mobile-search.php'; ?> -->
+<!-- <?php include 'inc/realtors/mobile-agent-search-overlay.php'; ?> -->
+<!-- <?php // include 'inc/search/overlay-advanced-mobile-search-v3.php'; ?> -->
+<!-- <?php include 'inc/header/modal-login-register-form.php'; ?> -->
+<!-- <?php include 'inc/header/modal-reset-password-form.php'; ?> -->
 </template>
 
 <script setup>
 import CompareProperties from '../listing/CompareProperties.vue';
-import ListingLightBox from '../listing/templates/ListingLightBox.vue';
 import ListingLightBoxV2 from '../listing/templates/ListingLightBoxV2.vue';
 import ListingLightBoxV3 from '../listing/templates/ListingLightBoxV3.vue';
-import MobileAgentSearchOverlay from '../realtors/MobileAgentSearchOverlay.vue'; // Choose the correct path
-import OverlayAdvancedMobileSearch from '../search/OverlayAdvancedMobileSearch.vue';
-import OverlayAdvancedMobileSearchV3 from '../search/OverlayAdvancedMobileSearchV3.vue';
-import ModalLoginRegisterForm from '../header/ModalLoginRegisterForm.vue';
-import ModalResetPasswordForm from '../header/ModalResetPasswordForm.vue';
 import AboutSiteWidget from '../widgets/AboutSiteWidget.vue';
 import BackToTop from './BackToTop.vue';
 import FooterBottomV1 from './FooterBottomV1.vue';
