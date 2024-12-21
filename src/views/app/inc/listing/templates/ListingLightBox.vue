@@ -6,7 +6,7 @@
 				<div class="modal-header">
 					<div class="d-flex align-items-center">
 						<div class="lightbox-logo flex-grow-1">
-							<img class="img-fluid" src="img/logo-houzez-white.png" alt="logo">
+							<img class="img-fluid" src="../../../../../../public/img/logo-houzez-white.png" alt="logo">
 						</div><!-- lightbox-logo -->
 						<div class="lightbox-tools">
 							<ul class="list-inline">
