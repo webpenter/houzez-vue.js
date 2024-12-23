@@ -1,24 +1,23 @@
-import { createRouter, createWebHistory } from 'vue-router'
-
-// --------------- App Components -------------------
-import AppLayout from "@/views/app/layout/Index.vue";
-import Home from "@/views/app/pages/home/Index.vue";
-import AddNewProperty from "@/views/app/pages/add-new-property-frontend-single-page-step-1/Index.vue";
-import Properties from "@/views/app/pages/properties/Index.vue";
+import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    // ----------------- App Routes ---------------------
+    /*** 
+     * @route '/'
+     * @name app.*
+     * @prefix No
+     * @author WebPenter
+    ***/
     {
       path: '/',
       name:'app',
-      component:AppLayout,
+      component:() => import('@/views/app/layout/Index.vue'),
       children:[
           {
             path: '/',
             name:'app.home',
-            component:Home,
+            component:() => import('@/views/app/pages/home/Index.vue'),
             meta:{
               title:'Home'
             }
@@ -26,7 +25,7 @@ const router = createRouter({
           {
             path: '/add-new-property-frontend-single-page-step-1',
             name:'app.add-new-property',
-            component:AddNewProperty,
+            component:() => import('@/views/app/pages/add-new-property-frontend-single-page-step-1/Index.vue'),
             meta:{
               title:'Add Property'
             }
@@ -34,7 +33,7 @@ const router = createRouter({
           {
             path: '/properties',
             name:'app.properties',
-            component:Properties,
+            component:() => import('@/views/app/pages/properties/Index.vue'),
             meta:{
               title:'Properties'
             }
