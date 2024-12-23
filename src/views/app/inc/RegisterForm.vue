@@ -1,5 +1,5 @@
 <template>
-  <div class="alert alert-success" role="alert">
+    <div class="alert alert-success" role="alert">
     <i class="houzez-icon icon-check-circle-1 mr-1"></i> The message goes here
 </div>
 <div class="alert alert-danger" role="alert">

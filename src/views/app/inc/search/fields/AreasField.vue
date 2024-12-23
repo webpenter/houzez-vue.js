@@ -9,6 +9,7 @@
 		<option data-subtext="New York">Brooklyn</option>
 	</select><!-- selectpicker -->
 </div><!-- form-group -->
-  </template>
-  <script setup>
+</template>
+
+<script setup>
 </script>
