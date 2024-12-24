@@ -55,5 +55,5 @@
 </template>
 
 <script setup>
-import PropertyGridCardsV6Cols3 from '../../modules/PropertyGridCardsV6Cols3.vue';
+import PropertyGridCardsV6Cols3 from '../../../modules/PropertyGridCardsV6Cols3.vue';
 </script>

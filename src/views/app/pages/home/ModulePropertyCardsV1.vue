@@ -14,5 +14,5 @@
 </template>
 
 <script setup>
-import PropertyGridCardsV1Cols3 from '../../modules/PropertyGridCardsV1Cols3.vue';
+import PropertyGridCardsV1Cols3 from '../../../modules/PropertyGridCardsV1Cols3.vue';
 </script>

@@ -4,9 +4,10 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     /*** 
-     * @route '/'
-     * @name app.*
+     * @route 'localhost:3000/'
+     * @name app
      * @prefix No
+     * @auth False
      * @author WebPenter
     ***/
     {
@@ -36,6 +37,29 @@ const router = createRouter({
             component:() => import('@/views/app/pages/properties/Index.vue'),
             meta:{
               title:'Properties'
+            }
+          },
+      ]
+    },
+
+     /*** 
+     * @route 'localhost:3000/dashboard/'
+     * @name dashboard
+     * @prefix No
+     * @auth True
+     * @author WebPenter
+    ***/
+     {
+      path: '/dashboard',
+      name:'dashboard',
+      component:() => import('@/views/dashboard/layout/Index.vue'),
+      children:[
+          {
+            path: '/dashboard/profile',
+            name:'dashboard.profile',
+            component:() => import('@/views/dashboard/pages/profile/Index.vue'),
+            meta:{
+              title:'Profile'
             }
           },
       ]
