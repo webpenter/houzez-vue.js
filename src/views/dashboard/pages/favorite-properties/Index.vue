@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Board">
+    <DashboardHeader heading="Favorite Properties">
         <!-- <a class="btn btn-primary" href="#">View Public Profile</a> -->
     </DashboardHeader>
 </template>

@@ -1,7 +1,7 @@
 <template>
-    <Header heading="My Profile">
+    <DashboardHeader heading="My Profile">
         <a class="btn btn-primary" href="#">View Public Profile</a>
-    </Header>
+    </DashboardHeader>
     <section class="dashboard-content-wrap">
             <div class="dashboard-content-inner-wrap">
                 <div class="dashboard-content-block-wrap">
@@ -15,7 +15,6 @@
 </template>
 
 <script setup>
-import Header from '../../components/Header.vue';
 import ChangePassword from './ChangePassword.vue';
 import DeleteAccount from './DeleteAccount.vue';
 import Information from './Information.vue';
