@@ -13,7 +13,7 @@
 
 		<!-- Dropdown Link -->
 		<li class="nav-item dropdown">
-			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Item</a>
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Other</a>
 			<ul class="dropdown-menu">
 				<li class="nav-item">
 					<a class="dropdown-item" href="#">Action</a>
@@ -69,22 +69,17 @@
 				</li>
 			</ul>
 		</li>
-
-		<!-- MegaMenu Link -->
-		<li class="nav-item dropdown megamenu-item">
-			<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Megamenu</a>
-			<MegaMenu/>
-		</li>
 	</ul>
 </template>
 
 <script setup>
 import { RouterLink } from "vue-router";
-import MegaMenu from "./MegaMenu.vue";
 
 // Pages Routes List
 const routes = [
 	{ id:1, name:'app.home', title:'Home' },
 	{ id:2, name:'app.properties', title:'Properties' },
+	{ id:3, name:'app.property', title:'Property' },
+	{ id:2, name:'app.realtor', title:'Realtor' },
 ];
 </script>
