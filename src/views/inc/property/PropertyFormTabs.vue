@@ -15,16 +15,19 @@
         </ul>
         <div class="tab-content">
             <div class="property-form-tabs-tab-pane tab-pane fade show active" id="tab_01" role="tabpanel">
-                <?php include 'inc/property/property-schedule-a-tour-form.php';?>
+                <PropertyScheduleATourForm/>
             </div>
             <div class="property-tabs-module-tab-pane tab-pane fade" id="tab_02" role="tabpanel">
-                <?php include 'inc/property/property-form.php';?>
+                <PropertyForm/>
             </div>
         </div>
     </div><!-- property-form-tabs -->
 </div><!-- property-form-tabs-wrap -->
 
 </template>
+
 <script setup>
+import PropertyForm from './PropertyForm.vue';
+import PropertyScheduleATourForm from './PropertyScheduleATourForm.vue';
 
 </script>

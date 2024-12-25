@@ -24,9 +24,9 @@ const router = createRouter({
             }
           },
           {
-            path: '/add-new-property-frontend-single-page-step-1',
+            path: '/add-new-property',
             name:'app.add-new-property',
-            component:() => import('@/views/app/pages/add-new-property-frontend-single-page-step-1/Index.vue'),
+            component:() => import('@/views/app/pages/add-new-property/Index.vue'),
             meta:{
               title:'Add Property'
             }
@@ -37,6 +37,30 @@ const router = createRouter({
             component:() => import('@/views/app/pages/properties/Index.vue'),
             meta:{
               title:'Properties'
+            }
+          },
+          {
+            path: '/property',
+            name:'app.property',
+            component:() => import('@/views/app/pages/property/Index.vue'),
+            meta:{
+              title:'Property'
+            }
+          },
+          {
+            path: '/realtor',
+            name:'app.realtor',
+            component:() => import('@/views/app/pages/realtor/Index.vue'),
+            meta:{
+              title:'Realtor'
+            }
+          },
+          {
+            path: '/search-results',
+            name:'app.search-results',
+            component:() => import('@/views/app/pages/search-results/Index.vue'),
+            meta:{
+              title:'Search Results'
             }
           },
       ]

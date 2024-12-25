@@ -29,15 +29,17 @@
             <!-- end with dropdown -->
 
             <li> 
-                <router-link
+                <RouterLink
                     class="btn btn-create-listing hidden-xs hidden-sm"
-                    to="/add-new-property-frontend-single-page-step-1" >
+                    :to="{name:'app.add-new-property'}" >
                     Create a Listing
-                </router-link>
+                </RouterLink>
             </li>
 
         </ul>
     </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { RouterLink } from 'vue-router';
+</script>
