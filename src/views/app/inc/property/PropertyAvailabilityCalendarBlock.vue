@@ -285,4 +285,4 @@
 	</div><!-- block-wrap -->
 </div><!-- property-availability-calendar-wrap -->
 </template>
-<script setup ></script>
+<script setup></script>

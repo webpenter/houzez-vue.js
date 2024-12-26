@@ -1,5 +1,5 @@
 <template>
-  <div class="property-video-wrap property-section-wrap" id="property-video-wrap">
+<div class="property-video-wrap property-section-wrap" id="property-video-wrap">
 	<div class="block-wrap">
 		<div class="block-title-wrap d-flex justify-content-between align-items-center">
 			<h2>Video</h2>
@@ -11,8 +11,7 @@
 			</div>
 		</div><!-- block-content-wrap -->
 	</div><!-- block-wrap -->
-</div><!-- property-video-wrap -->  
+</div><!-- property-video-wrap -->
 </template>
-<script setup>
 
-</script>
+<script setup></script>

@@ -138,7 +138,4 @@
 	</div><!-- block-wrap -->
 </div><!-- property-schedule-tour-wrap -->
 </template>
-<script setup>
-
-
-</script>
+<script setup></script>

@@ -16,11 +16,12 @@
 			</ul>	
 		</div><!-- block-content-wrap -->
 		<div class="block-map-wrap">
-			<!-- <?php include 'inc/map.php';?> -->
+			<Map></Map>
 		</div><!-- block-map-wrap -->
 	</div><!-- block-wrap -->
 </div><!-- property-address-wrap -->
 </template>
-<script setup>
 
+<script setup>
+import Map from '../Map.vue';
 </script>

@@ -2,14 +2,16 @@
     <div class="property-review-wrap property-section-wrap" id="property-review-wrap">
 	<div class="block-title-wrap review-title-wrap d-flex align-items-center">
 		<h2>3 Reviews</h2>
-        <ReviewVue />
-        <ListingSortBy />
+        <Rating />
+	
+        <ListingSortBy />   
 		<a class="btn btn-primary btn-slim" href="#property-review-form">Leave a Review</a>
 	</div><!-- block-title-wrap -->
 	<ul class="review-list-wrap list-unstyled">
         <Review />
         <Review />
         <Review />
+		
 	</ul>
 	<div class="pagination-wrap">
 		<nav>
@@ -80,9 +82,10 @@
 
 
 </template>
-<script setup >
-import ListingShortByVue from "../listing/ListingShortBy.vue";
-import RatingVue from "./templates/Rating.vue";
-import ReviewVue from "./templates/Review.vue";
+<script setup>
+
+import ListingSortBy from '../listing/ListingSortBy.vue';
+import Rating from './templates/Rating.vue';
+import Review from './templates/Review.vue';
 
 </script>

@@ -1,5 +1,6 @@
 <template>
-    <div class="property-energy-class-wrap property-section-wrap" id="property-energy-class-wrap">
+
+<div class="property-energy-class-wrap property-section-wrap" id="property-energy-class-wrap">
 	<div class="block-wrap">
 		<div class="block-title-wrap">
 			<h2>Energy Efficiency</h2>
@@ -57,5 +58,5 @@
 	</div><!-- block-wrap -->
 </div><!-- property-address-wrap -->
 </template>
-<script setup >
-</script>
+
+<script setup></script>

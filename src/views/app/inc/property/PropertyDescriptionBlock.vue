@@ -1,5 +1,5 @@
 <template>
- <div class="property-description-wrap property-section-wrap" id="property-description-wrap">
+    <div class="property-description-wrap property-section-wrap" id="property-description-wrap">
 	<div class="block-wrap">
 		<div class="block-title-wrap">
 			<h2>Description</h2>	
@@ -39,8 +39,6 @@
 			</div><!-- property-documents -->
 		</div><!-- block-content-wrap -->
 	</div><!-- block-wrap -->
-</div><!-- property-description-wrap -->   
-
+</div><!-- property-description-wrap -->
 </template>
-<script setup>
-</script>
+<script setup></script>

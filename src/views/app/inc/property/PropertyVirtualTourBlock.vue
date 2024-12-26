@@ -13,5 +13,4 @@
 	</div><!-- block-wrap -->
 </div><!-- property-virtual-tour-wrap -->
 </template>
-<script setup >
-</script>
+<script setup></script>

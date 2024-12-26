@@ -139,8 +139,10 @@
 									</li>
 									<!-- <li class="item-sub-price">$1,200/Sq Ft</li> -->
 								</ul>
-								<!-- <?php include 'inc/listing/templates/item-address.php';?> -->
-								<!-- <?php include 'inc/listing/templates/item-features-v1.php';?> -->
+
+								<ItemAddress />
+								<ItemFeaturesV1 />
+								
 								<div class="property-lightbox-v2-contact-buttons-wrap">
 									<button type="button" class="btn btn-secondary-outlined btn-half-width">Schedule a Tour</button>
 									<button type="button" class="btn btn-secondary btn-half-width">Contact</button>
@@ -206,28 +208,33 @@
 						</div><!-- property-lightbox-v2-section-top -->
 						<div class="property-lightbox-v2-sections-wrap" data-spy="scroll" data-target="#property-lightbox-v2-sections-navigation">
 							<div id="overview-section" class="property-lightbox-v2-section clearfix">
-								<!-- <?php include 'inc/property/property-overview-block-modal-window.php';?> -->
+
+								<PropertyOverviewBlockModalWindow />
+								
 							</div>
 							<div id="description-section" class="property-lightbox-v2-section clearfix">
-	                            <!-- <?php include 'inc/property/property-description-block.php';?> -->
+	                            <PropertyDescriptionBlock />
 	                        </div>
 							<div class="property-lightbox-v2-section clearfix">
-	                            <!-- <?php include 'inc/property/property-schedule-a-tour-block-v2.php';?> -->
+	                            <PropertyScheduleATourBlockV2 />
 	                        </div>
 							<!-- <div class="property-lightbox-v2-section clearfix"> -->
-	                            <!-- <?php //include 'inc/property/property-gallery-block.php';?> -->
+								 <!-- <PropertyGalleryBlock /> -->
 	                        <!-- </div> -->
 							<div class="property-lightbox-v2-section clearfix">
-	                            <!-- <?php include 'inc/property/property-address-block.php';?> -->
+	                            
+								 <PropertyAddressBlock />
 							</div>
 							<div class="property-lightbox-v2-section clearfix">                            
-	                            <!-- <?php include 'inc/property/property-detail-block.php';?> -->
+	                        
+								 <PropertyDetailBlock />
 							</div>
 							<!-- <div class="property-lightbox-v2-section clearfix"> -->
-	                            <!-- <?php //include 'inc/property/property-mortgage-calculator-block.php';?> -->
+	                            <!-- <PropertyMortgageCalculatorBlock /> -->
 							<!-- </div> -->
 							<div class="property-lightbox-v2-section clearfix">
 	                            <!-- <?php include 'inc/property/property-morgage-calculator-block-v2.php';?> -->
+								 <PropertyMortgageCalculatorBlockV2 />
 							</div>
 							<!-- <div class="property-lightbox-v2-section clearfix"> -->
 	                            <!-- <?php //include 'inc/property/property-sub-listings-table-block.php';?> -->
@@ -241,10 +248,12 @@
 										<div class="block-content-wrap">
 											<div class="container">
 												<div class="listing-view grid-view card-deck ">
-													<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
-													<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
-													<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
-													<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
+													<ItemV6ModalWindowV2 />
+													<ItemV6ModalWindowV2 />
+													<ItemV6ModalWindowV2 />
+													<ItemV6ModalWindowV2 />
+
+												
 												</div><!-- listing-view -->	
 											</div>
 										</div><!-- block-content-wrap -->
@@ -252,40 +261,46 @@
 								</div><!-- property-address-wrap -->
 							</div>
 							<div class="property-lightbox-v2-section clearfix">   
-	                            <!-- <?php include 'inc/property/property-energy-class-block.php';?> -->
+	                            
+								 <PropertyEnergyClassBlock />
 							</div>
 							<div class="property-lightbox-v2-section clearfix">
-	                            <!-- <?php include 'inc/property/property-features-block-with-custom-icons.php';?> -->
+								 <PropertyFeaturesBlockWithCustomIcons />
 							</div>
 							<div class="property-lightbox-v2-section clearfix">
-	                            <!-- <?php include 'inc/property/property-floor-plans-block.php';?> -->
+	                        
+								 <PropertyFloorPlansBlock />
 							</div>
 							<div class="property-lightbox-v2-section clearfix">
-	                            <!-- <?php include 'inc/property/property-walkscore-block.php';?> -->
+	                            
+								 <PropertyWalkscoreBlock />
 							</div>
 							<div class="property-lightbox-v2-section clearfix">
-	                            <!-- <?php include 'inc/property/property-walkscore-block-v2.php';?> -->
+	                
+								 <PropertyWalkscoreBlockV2 />
 							</div>
 							<div class="property-lightbox-v2-section clearfix">
-	                            <!-- <?php include 'inc/property/property-nearby-block.php';?> -->
+	                            
+								 <PropertyNearbyBlock />
 							</div>
 							<div class="property-lightbox-v2-section clearfix">
-	                            <!-- <?php include 'inc/property/property-video-block.php';?> -->
+	                            
+								 <PropertyVideoBlock />
 							</div>
 							<!-- <div class="property-lightbox-v2-section clearfix"> -->
 	                            <!-- <?php //include 'inc/property/property-schedule-a-tour-block.php';?> -->
 							<!-- </div> -->
-							<div class="property-lightbox-v2-section clearfix">
-	                            <!-- <?php include 'inc/property/property-virtual-tour-block.php';?> -->
+							<div class="property-lightbox-v2-section clearfix"> 
+								 <PropertyVirtualTourBlock />
 							</div>
 							<div class="property-lightbox-v2-section clearfix">
-	                            <!-- <?php include 'inc/property/property-availability-calendar-block.php';?> -->
+								 <PropertyAvailabilityCalendarBlock />
 							</div>
-							<div class="property-lightbox-v2-section clearfix">
-	                            <!-- <?php include 'inc/property/property-agent-block.php';?> -->
+							<div class="property-lightbox-v2-section clearfix">	                            
+								 <PropertyAgentBlock />
 							</div>
-							<div class="property-lightbox-v2-section clearfix">
-	                            <!-- <?php include 'inc/property/property-reviews.php';?> -->
+							<div class="property-lightbox-v2-section clearfix">	                            
+								 <PropertyReviews />
 							</div>
 							<div class="property-lightbox-v2-section clearfix">
 	                            <div class="similar-property-wrap">
@@ -295,10 +310,12 @@
 									<div class="block-content-wrap">
 										<div class="container">
 											<div class="listing-view grid-view card-deck ">
-												<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
-												<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
-												<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
-												<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
+												<ItemV6ModalWindowV2 />
+												<ItemV6ModalWindowV2 />
+												<ItemV6ModalWindowV2 />
+												<ItemV6ModalWindowV2 />
+
+											
 											</div><!-- listing-view -->	
 										</div>
 									</div><!-- block-content-wrap -->
@@ -315,4 +332,27 @@
 
 </template>
 
-<script setup></script>
+<script setup>
+import PropertyAddressBlock from '../../property/PropertyAddressBlock.vue';
+import PropertyAgentBlock from '../../property/PropertyAgentBlock.vue';
+import PropertyAvailabilityCalendarBlock from '../../property/PropertyAvailabilityCalendarBlock.vue';
+import PropertyDescriptionBlock from '../../property/PropertyDescriptionBlock.vue';
+import PropertyDetailBlock from '../../property/PropertyDetailBlock.vue';
+import PropertyEnergyClassBlock from '../../property/PropertyEnergyClassBlock.vue';
+import PropertyFeaturesBlockWithCustomIcons from '../../property/PropertyFeaturesBlockWithCustomIcons.vue';
+import PropertyFloorPlansBlock from '../../property/PropertyFloorPlansBlock.vue';
+import PropertyMortgageCalculatorBlockV2 from '../../property/PropertyMortgageCalculatorBlockV2.vue';
+import PropertyNearbyBlock from '../../property/PropertyNearbyBlock.vue';
+// import PropertyMortgageCalculatorBlock from '../../property/PropertyMortgageCalculatorBlock.vue';
+// import PropertyGalleryBlock from '../../property/PropertyGalleryBlock.vue';
+import PropertyOverviewBlockModalWindow from '../../property/PropertyOverviewBlockModalWindow.vue';
+import PropertyReviews from '../../property/PropertyReviews.vue';
+import PropertyScheduleATourBlockV2 from '../../property/PropertyScheduleATourBlockV2.vue';
+import PropertyVideoBlock from '../../property/PropertyVideoBlock.vue';
+import PropertyVirtualTourBlock from '../../property/PropertyVirtualTourBlock.vue';
+import PropertyWalkscoreBlock from '../../property/PropertyWalkscoreBlock.vue';
+import PropertyWalkscoreBlockV2 from '../../property/PropertyWalkscoreBlockV2.vue';
+import ItemV6ModalWindowV2 from '../ItemV6ModalWindowV2.vue';
+import ItemAddress from './ItemAddress.vue';
+import ItemFeaturesV1 from './ItemFeaturesV1.vue';
+</script>

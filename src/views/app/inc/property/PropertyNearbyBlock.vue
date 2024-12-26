@@ -1,4 +1,4 @@
- <template>
+<template>
     <div class="property-nearby-wrap property-section-wrap" id="property-nearby-wrap">
 	<div class="block-wrap">
 		<div class="block-title-wrap d-flex justify-content-between align-items-center">
@@ -141,5 +141,5 @@
 	</div><!-- block-wrap -->
 </div><!-- property-walkscore-wrap -->
 </template>
-<script setup >
+<script setup>
 </script>

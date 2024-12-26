@@ -12,9 +12,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700|Roboto:300,400,500,700" rel="stylesheet">
 
-    <link rel="apple-touch-icon" sizes="144x144" href="/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="/img/favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/img/favicons/favicon-16x16.png" sizes="16x16">
+    <!-- <link rel="icon" type="image/png" href="img/favicons/favicon-32x32.png" sizes="32x32"> -->
+    <!-- <link rel="icon" type="image/png" href="img/favicons/favicon-16x16.png" sizes="16x16"> -->
+     <!-- <link rel="shortcut icon" href="img/miami-beach-1.jpg" type="image/x-icon"> -->
 
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
       
@@ -48,9 +48,11 @@
   </head>
   <body>
     <div id="app"></div>
+    
     <script type="module" src="/src/main.js"></script>
 
     <!-- start scripts -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBek2XjpiEzDMPxnCw6_WJOpzp7Lv4pMN0&callback=initMap" async defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
@@ -75,6 +77,8 @@
     <script type="text/javascript" src="js/jquery.disableAutoFill.min.js"></script>
     <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
     <script type="text/javascript" src="js/custom.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBek2XjpiEzDMPxnCw6_WJOpzp7Lv4pMN0&callback=initMap"
+async defer></script>
     <script type="text/javascript">
       $(document).ready(function(){
         $('#no-auto-fill').disableAutoFill({

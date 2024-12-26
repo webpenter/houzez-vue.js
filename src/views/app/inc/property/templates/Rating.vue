@@ -14,6 +14,4 @@
 	</span><!-- star -->
 </div><!-- rating-score-wrap -->
 </template>
-<script setup >
-
-</script>
+<script setup></script>

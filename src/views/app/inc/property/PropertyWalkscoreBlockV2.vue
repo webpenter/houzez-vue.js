@@ -3,7 +3,7 @@
 	<div class="block-title-wrap d-flex justify-content-between align-items-center">
 		<h2>Walking and Transportation</h2>
 		<div class="walkscore-logo-title">
-			<img src="../../../../../public/img/walkscore-2.png" width="90" height="15">
+			<img src="/img/walkscore-2.png" width="90" height="15">
 		</div>
 	</div><!-- block-title-wrap -->
 	
@@ -58,6 +58,6 @@
 	</div><!-- houzez-layout-row -->
 </div><!-- property-walkscore-wrap-v2 -->
 </template>
-<script setup >
+<script setup>
 
 </script>
