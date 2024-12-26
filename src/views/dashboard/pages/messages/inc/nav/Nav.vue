@@ -1,0 +1,87 @@
+<template>
+  	<!-- -------------------------------------------------------------------------------------------
+	note: to add have the nav bar on the right add this class "justify-content-end" to "navbar-nav"
+	-------------------------------------------------------------------------------------------- -->	
+	<ul class="navbar-nav">
+		<li class="nav-item active">
+			<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Item</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Item</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Item</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Item</a>
+		</li>
+		<li class="nav-item dropdown">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Item</a>
+			<ul class="dropdown-menu">
+				<li class="nav-item">
+					<a class="dropdown-item" href="#">Action</a>
+				</li>
+				<li class="nav-item">
+					<a class="dropdown-item" href="#">Another action</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="dropdown-item dropdown-toggle" data-toggle="dropdown" href="#">Submenu</a>
+					<ul class="dropdown-menu">
+						<li class="nav-item">
+							<a class="dropdown-item" href="#">Submenu action</a>
+						</li>
+						<li class="nav-item">
+							<a class="dropdown-item" href="#">Another submenu action</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>
+							<ul class="dropdown-menu">
+								<li class="nav-item"><a class="dropdown-item" href="#">Subsubmenu action aa</a></li>
+								<li class="nav-item"><a class="dropdown-item" href="#">Another subsubmenu action</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="dropdown-item dropdown-toggle" href="#">Second subsubmenu</a>
+							<ul class="dropdown-menu">
+								<li class="nav-item"><a class="dropdown-item" href="#">Subsubmenu action bb</a></li>
+								<li class="nav-item"><a class="dropdown-item" href="#">Another subsubmenu action</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<a class="dropdown-item dropdown-toggle" href="#">Submenu 2</a>
+					<ul class="dropdown-menu">
+						<li class="nav-item"><a class="dropdown-item" href="#">Submenu action 2</a></li>
+						<li class="nav-item"><a class="dropdown-item" href="#">Another submenu action 2</a></li>
+
+
+						<li class="nav-item"><a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>
+							<ul class="dropdown-menu">
+								<li class="nav-item"><a class="dropdown-item" href="#">Subsubmenu action 1 3</a></li>
+								<li class="nav-item"><a class="dropdown-item" href="#">Another subsubmenu action 2 3</a></li>
+							</ul>
+						</li>
+						<li class="nav-item"><a class="dropdown-item dropdown-toggle" href="#">Second subsubmenu 3</a>
+							<ul class="dropdown-menu">
+								<li class="nav-item"><a class="dropdown-item" href="#">Subsubmenu action 3 </a></li>
+								<li class="nav-item"><a class="dropdown-item" href="#">Another subsubmenu action 3</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li class="nav-item dropdown megamenu-item">
+			<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Megamenu</a>
+			<Megamenu/>
+		</li>
+	</ul>
+</template>
+<script setup>
+import Megamenu from './Megamenu.vue';
+
+</script>

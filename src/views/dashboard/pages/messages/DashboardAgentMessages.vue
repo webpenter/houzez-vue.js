@@ -1,7 +1,5 @@
-<template>
-    
-        <!-- <a class="btn btn-primary" href="#">View Public Profile</a> -->
-        <!DOCTYPE html>
+<!-- <template>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <Head/>
@@ -69,9 +67,7 @@
     <Scripts/>
 </body>
 </html>
-    
 </template>
-
 <script setup>
 import BreadCrumb from '@/views/inc/page/BreadCrumb.vue';
 import Head from './inc/Head.vue';
@@ -83,4 +79,4 @@ import Pagination from './inc/listing/Pagination.vue';
 import SideWrap from './inc/dashboard/SideWrap.vue';
 import DashboardFooter from './inc/dashboard/DashboardFooter.vue';
 import Scripts from './inc/Scripts.vue';
-</script>
+</script> -->

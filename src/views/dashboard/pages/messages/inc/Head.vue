@@ -1,0 +1,49 @@
+<template>
+  <title>Houzez v.2.0</title>
+<!-- meta tags -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="keywords" content="Houzez">
+<meta name="description" content="Houzez Highly Customizable Real Estate WordPress Theme">
+<meta name="author" content="Favethemes">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700|Roboto:300,400,500,700" rel="stylesheet">
+
+<link rel="apple-touch-icon" sizes="144x144" href="img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="img/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="img/favicons/favicon-16x16.png" sizes="16x16">
+
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	
+<link 
+	rel="stylesheet" 
+	href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" 
+	integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" 
+	crossorigin="anonymous" /><!-- chart.js -->
+
+<link href="css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/icons.css" rel="stylesheet" type="text/css" />
+<link href="css/slick.css" rel="stylesheet" type="text/css" />
+<link href="css/slick-theme.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/radio-checkbox.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/OverlayScrollbars.min.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+<link href="css/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+<link href="css/fullcalendar-daygrid.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="css/photoswipe.css">
+<link href="css/main-ltr.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/styling-options.css" rel="stylesheet" type="text/css" /> -->
+
+<!-- <style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+</style> -->
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
+
+
+</template>
