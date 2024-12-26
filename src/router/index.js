@@ -19,49 +19,37 @@ const router = createRouter({
             path: '/',
             name:'app.home',
             component:() => import('@/views/app/pages/home/Index.vue'),
-            meta:{
-              title:'Home'
-            }
+            meta:{ title:'Home' }
           },
           {
             path: '/add-new-property',
             name:'app.add-new-property',
             component:() => import('@/views/app/pages/add-new-property/Index.vue'),
-            meta:{
-              title:'Add Property'
-            }
+            meta:{ title:'Add Property' }
           },
           {
             path: '/properties',
             name:'app.properties',
             component:() => import('@/views/app/pages/properties/Index.vue'),
-            meta:{
-              title:'Properties'
-            }
+            meta:{ title:'Properties' }
           },
           {
             path: '/property',
             name:'app.property',
             component:() => import('@/views/app/pages/property/Index.vue'),
-            meta:{
-              title:'Property'
-            }
+            meta:{ title:'Property' }
           },
           {
             path: '/realtor',
             name:'app.realtor',
             component:() => import('@/views/app/pages/realtor/Index.vue'),
-            meta:{
-              title:'Realtor'
-            }
+            meta:{ title:'Realtor' }
           },
           {
             path: '/search-results',
             name:'app.search-results',
             component:() => import('@/views/app/pages/search-results/Index.vue'),
-            meta:{
-              title:'Search Results'
-            }
+            meta:{ title:'Search Results' }
           },
       ]
     },
@@ -79,76 +67,76 @@ const router = createRouter({
       component:() => import('@/views/dashboard/layout/Index.vue'),
       children:[
           {
-            path: '/dashboard/board',
-            name:'dashboard.board',
-            component:() => import('@/views/dashboard/pages/board/Index.vue'),
-            meta:{
-              title:'Board'
-            }
+            path: '/dashboard/crm',
+            name:'dashboard.crm',
+            component:() => import('@/views/dashboard/pages/board/crm/Index.vue'),
+            meta:{ title:'Activities' }
+          },
+          {
+            path: '/dashboard/crm-active-deals',
+            name:'dashboard.crm-active-deals',
+            component:() => import('@/views/dashboard/pages/board/crm-active-deals/Index.vue'),
+            meta:{ title:'Deals' }
+          },
+          {
+            path: '/dashboard/crm-enquiries',
+            name:'dashboard.crm-enquiries',
+            component:() => import('@/views/dashboard/pages/board/crm-enquiries/Index.vue'),
+            meta:{ title:'Enquiries' }
+          },
+          {
+            path: '/dashboard/crm-leads',
+            name:'dashboard.crm-leads',
+            component:() => import('@/views/dashboard/pages/board/crm-leads/Index.vue'),
+            meta:{ title:'Leads' }
           },
           {
             path: '/dashboard/insight',
             name:'dashboard.insight',
             component:() => import('@/views/dashboard/pages/insight/Index.vue'),
-            meta:{
-              title:'Insight'
-            }
+            meta:{ title:'Insight' }
           },
           {
             path: '/dashboard/my-properties',
             name:'dashboard.my-properties',
             component:() => import('@/views/dashboard/pages/my-properties/Index.vue'),
-            meta:{
-              title:'My Properties'
-            }
+            meta:{ title:'My Properties' }
           },
           {
             path: '/dashboard/create-listing',
             name:'dashboard.create-listing',
             component:() => import('@/views/dashboard/pages/create-listing/Index.vue'),
-            meta:{
-              title:'Create Listing'
-            }
+            meta:{ title:'Create Listing' }
           },
           {
             path: '/dashboard/favorite-properties',
             name:'dashboard.favorite-properties',
             component:() => import('@/views/dashboard/pages/favorite-properties/Index.vue'),
-            meta:{
-              title:'Favorite Properties'
-            }
+            meta:{ title:'Favorite Properties' }
           },
           {
             path: '/dashboard/saved-searches',
             name:'dashboard.saved-searches',
             component:() => import('@/views/dashboard/pages/saved-searches/Index.vue'),
-            meta:{
-              title:'Saved Searches'
-            }
+            meta:{ title:'Saved Searches' }
           },
           {
             path: '/dashboard/invoices',
             name:'dashboard.invoices',
             component:() => import('@/views/dashboard/pages/invoices/Index.vue'),
-            meta:{
-              title:'Invoices'
-            }
+            meta:{ title:'Invoices' }
           },
           {
             path: '/dashboard/messages',
             name:'dashboard.messages',
             component:() => import('@/views/dashboard/pages/messages/Index.vue'),
-            meta:{
-              title:'Messages'
-            }
+            meta:{ title:'Messages' }
           },
           {
             path: '/dashboard/my-profile',
             name:'dashboard.my-profile',
             component:() => import('@/views/dashboard/pages/my-profile/Index.vue'),
-            meta:{
-              title:'My Profile'
-            }
+            meta:{ title:'My Profile' }
           },
       ]
     },
