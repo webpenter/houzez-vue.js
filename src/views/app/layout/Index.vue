@@ -22,9 +22,9 @@
   
   <script setup>
   import { RouterView } from 'vue-router';
-  import FooterV5 from '../inc/footer/FooterV5.vue';
-  import HeaderMobile from '../inc/nav/HeaderMobile.vue';
-  import HeaderV1 from '../inc/nav/HeaderV1.vue';
-  import LoginRegisterMobile from '../inc/nav/LoginRegisterMobile.vue';
-  import Nav from '../inc/nav/Nav.vue';
+  import FooterV5 from '../../inc/footer/FooterV5.vue';
+  import HeaderMobile from '../../inc/nav/HeaderMobile.vue';
+  import HeaderV1 from '../../inc/nav/HeaderV1.vue';
+  import LoginRegisterMobile from '../../inc/nav/LoginRegisterMobile.vue';
+  import Nav from '../../inc/nav/Nav.vue';
   </script>

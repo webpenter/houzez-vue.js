@@ -14,5 +14,5 @@
 </template>
 
 <script setup>
-import TaxonomyGridsV1 from '../../modules/TaxonomyGridsV1.vue';
+import TaxonomyGridsV1 from '../../../modules/TaxonomyGridsV1.vue';
 </script>
