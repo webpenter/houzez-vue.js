@@ -152,12 +152,12 @@ const router = createRouter({
           },
       ]
     },
-    // {
-    //   path: "/:pathMatch(.*)",
-    //   name: "notfound",
-    //   component: NotFound,
-    //   meta: { title: "404" },
-    // },
+    {
+      path: "/:pathMatch(.*)",
+      name: "not-found-404",
+      component: () => import('@/components/pages/NotFound404.vue'),
+      meta: { title: "404 Not Found" },
+    },
   ],
 })
 
