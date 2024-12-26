@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import TestimonialsGridV13Cols from '../../inc/modules/TestimonialsGridV13Cols.vue';
-</script>
-
 <template>
     <section class="content-wrap">
             <div class="container">
@@ -17,3 +13,7 @@ import TestimonialsGridV13Cols from '../../inc/modules/TestimonialsGridV13Cols.v
             </div><!-- container -->
         </section><!-- listing-wrap -->
 </template>
+
+<script setup lang="ts">
+import TestimonialsGridV13Cols from '../../../inc/modules/TestimonialsGridV13Cols.vue';
+</script>
