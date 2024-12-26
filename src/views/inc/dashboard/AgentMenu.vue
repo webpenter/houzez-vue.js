@@ -21,13 +21,6 @@
 					</template>
 					<span v-if="route.title == 'Messages'" class="notification-circle"></span>
 				</li>
-			<!-- <li class="side-menu-item">
-				<RouterLink :to="{name:route.name}" active-class="active">
-					<i class="houzez-icon mr-2" :class="route.icon"></i>
-					{{ route.title }}
-				</RouterLink>
-				<span v-if="route.title == 'Messages'" class="notification-circle"></span>
-			</li> -->
 		</template>
 		
 		<li class="side-menu-item">
@@ -63,13 +56,13 @@ const routes = [
 		name:'dashboard.my-properties',
 		icon:'icon-building-cloudy',
 		sub:[
-			// {id:1, title:'All', name:'dashboard.'},
-			// {id:2, title:'Published', name:'dashboard.'},
-			// {id:3, title:'Pending', name:'dashboard.'},
-			// {id:4, title:'Expired', name:'dashboard.'},
-			// {id:5, title:'Draft', name:'dashboard.'},
-			// {id:6, title:'On Hold', name:'dashboard.'},
-			// {id:7, title:'Disapproved', name:'dashboard.'},
+			{id:1, title:'All', name:'dashboard.my-properties'},
+			{id:2, title:'Published', name:'dashboard.my-properties.published'},
+			{id:3, title:'Pending', name:'dashboard.my-properties.pending'},
+			{id:4, title:'Expired', name:'dashboard.my-properties.expired'},
+			{id:5, title:'Draft', name:'dashboard.my-properties.draft'},
+			{id:6, title:'On Hold', name:'dashboard.my-properties.hold'},
+			{id:7, title:'Disapproved', name:'dashboard.my-properties.disapproved'},
 		] 
 	},
 	{ id:4, title:'Create Listing', name:'dashboard.create-listing', icon:'icon-add-circle', sub:[] },
@@ -80,9 +73,3 @@ const routes = [
 	{ id:9, title:'My Profile', name:'dashboard.my-profile', icon:'icon-single-neutral-circle', sub:[] },
 ];
 </script>
-
-<style scoped>
-	ul li .active{
-		color: #fff;
-	}
-</style>

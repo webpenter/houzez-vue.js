@@ -99,8 +99,44 @@ const router = createRouter({
           {
             path: '/dashboard/my-properties',
             name:'dashboard.my-properties',
-            component:() => import('@/views/dashboard/pages/my-properties/Index.vue'),
+            component:() => import('@/views/dashboard/pages/my-properties/all/Index.vue'),
             meta:{ title:'My Properties' }
+          },
+          {
+            path: '/dashboard/my-properties/published',
+            name:'dashboard.my-properties.published',
+            component:() => import('@/views/dashboard/pages/my-properties/published/Index.vue'),
+            meta:{ title:'Published Properties' }
+          },
+          {
+            path: '/dashboard/my-properties/pending',
+            name:'dashboard.my-properties.pending',
+            component:() => import('@/views/dashboard/pages/my-properties/pending/Index.vue'),
+            meta:{ title:'Pending Properties' }
+          },
+          {
+            path: '/dashboard/my-properties/expired',
+            name:'dashboard.my-properties.expired',
+            component:() => import('@/views/dashboard/pages/my-properties/expired/Index.vue'),
+            meta:{ title:'Expired Properties' }
+          },
+          {
+            path: '/dashboard/my-properties/draft',
+            name:'dashboard.my-properties.draft',
+            component:() => import('@/views/dashboard/pages/my-properties/draft/Index.vue'),
+            meta:{ title:'Draft Properties' }
+          },
+          {
+            path: '/dashboard/my-properties/hold',
+            name:'dashboard.my-properties.hold',
+            component:() => import('@/views/dashboard/pages/my-properties/hold/Index.vue'),
+            meta:{ title:'Hold Properties' }
+          },
+          {
+            path: '/dashboard/my-properties/disapproved',
+            name:'dashboard.my-properties.disapproved',
+            component:() => import('@/views/dashboard/pages/my-properties/disapproved/Index.vue'),
+            meta:{ title:'Disapproved Properties' }
           },
           {
             path: '/dashboard/create-listing',
