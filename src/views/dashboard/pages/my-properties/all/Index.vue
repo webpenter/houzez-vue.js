@@ -55,5 +55,4 @@ import CreateListingBtn from '../components/CreateListingBtn.vue';
 import NoProperty from '../components/NoProperty.vue';
 import StatusBtn from '../components/StatusBtn.vue';
 import Table from '../components/Table.vue';
-
 </script>
