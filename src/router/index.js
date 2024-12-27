@@ -66,6 +66,7 @@ const router = createRouter({
       name:'dashboard',
       component:() => import('@/views/dashboard/layout/Index.vue'),
       children:[
+          /* --------------- Board CRM -------------- */
           {
             path: '/dashboard/crm',
             name:'dashboard.crm',
@@ -90,12 +91,16 @@ const router = createRouter({
             component:() => import('@/views/dashboard/pages/board/crm-leads/Index.vue'),
             meta:{ title:'Leads' }
           },
+
+          /* ---------------- Insight ------------------ */
           {
             path: '/dashboard/insight',
             name:'dashboard.insight',
             component:() => import('@/views/dashboard/pages/insight/Index.vue'),
             meta:{ title:'Insight' }
           },
+
+          /* --------------- My Properties -------------- */
           {
             path: '/dashboard/my-properties',
             name:'dashboard.my-properties',
@@ -138,6 +143,8 @@ const router = createRouter({
             component:() => import('@/views/dashboard/pages/my-properties/disapproved/Index.vue'),
             meta:{ title:'Disapproved Properties' }
           },
+
+          /* --------------- Create Listing -------------- */
           {
             path: '/dashboard/create-listing',
             name:'dashboard.create-listing',
@@ -145,29 +152,69 @@ const router = createRouter({
             meta:{ title:'Create Listing' }
           },
           {
+            path: '/dashboard/create-listing/get-package',
+            name:'dashboard.create-listing.get-package',
+            component:() => import('@/views/dashboard/pages/create-listing/package/get-package/Index.vue'),
+            meta:{ title:'Get Package' }
+          },
+          {
+            path: '/dashboard/create-listing/select-package',
+            name:'dashboard.create-listing.select-package',
+            component:() => import('@/views/dashboard/pages/create-listing/package/select-package/Index.vue'),
+            meta:{ title:'Select Package' }
+          },
+          {
+            path: '/dashboard/create-listing/complete-order',
+            name:'dashboard.create-listing.complete-order',
+            component:() => import('@/views/dashboard/pages/create-listing/payment/complete-order/Index.vue'),
+            meta:{ title:'Complete Order' }
+          },
+          {
+            path: '/dashboard/create-listing/create-account',
+            name:'dashboard.create-listing.create-account',
+            component:() => import('@/views/dashboard/pages/create-listing/payment/create-account/Index.vue'),
+            meta:{ title:'Create Account' }
+          },
+          {
+            path: '/dashboard/create-listing/payment-completed',
+            name:'dashboard.create-listing.payment-completed',
+            component:() => import('@/views/dashboard/pages/create-listing/payment/payment-completed/Index.vue'),
+            meta:{ title:'Create Account' }
+          },
+
+          /* --------------- Favorite Properties -------------- */
+          {
             path: '/dashboard/favorite-properties',
             name:'dashboard.favorite-properties',
             component:() => import('@/views/dashboard/pages/favorite-properties/Index.vue'),
             meta:{ title:'Favorite Properties' }
           },
+
+          /* ----------------- Saved Searches ----------------- */
           {
             path: '/dashboard/saved-searches',
             name:'dashboard.saved-searches',
             component:() => import('@/views/dashboard/pages/saved-searches/Index.vue'),
             meta:{ title:'Saved Searches' }
           },
+
+          /* ------------------ Invoices -------------------- */
           {
             path: '/dashboard/invoices',
             name:'dashboard.invoices',
             component:() => import('@/views/dashboard/pages/invoices/Index.vue'),
             meta:{ title:'Invoices' }
           },
+
+          /* ------------------ Messages --------------------- */
           {
             path: '/dashboard/messages',
             name:'dashboard.messages',
             component:() => import('@/views/dashboard/pages/messages/Index.vue'),
             meta:{ title:'Messages' }
           },
+
+          /* -------------------- My Profile ----------------- */
           {
             path: '/dashboard/my-profile',
             name:'dashboard.my-profile',
@@ -176,6 +223,8 @@ const router = createRouter({
           },
       ]
     },
+
+    /* --------------- 404 Not Found -------------- */
     {
       path: "/:pathMatch(.*)",
       name: "not-found-404",
@@ -183,14 +232,15 @@ const router = createRouter({
       meta: { title: "404 Not Found" },
     },
   ],
-})
-
-router.beforeEach((to,from,next) => {
-  // -------------- Guards of Protected and Unprotected Routes ----------------
-  next();
-
-  // --------------------------- Dynamic Title --------------------------------
-   document.title = to?.meta.title ? `${to.meta.title} - Houzez` : 'Houzez'
 });
 
-export default router
+/* -------- Before and After route functionality and modify settings ---------- */
+router.beforeEach((to,from,next) => {
+  /* -------------- Guards of Protected and Unprotected Routes ---------------- */
+  next();
+
+  /* --------------------------- Dynamic Title -------------------------------- */
+  document.title = to?.meta.title ? `${to.meta.title} - Houzez` : 'Houzez'
+});
+
+export default router;

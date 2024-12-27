@@ -38,7 +38,7 @@ export const DASHBOARD_ROUTES = [
 			{id:7, title:'Disapproved', name:'dashboard.my-properties.disapproved'},
 		] 
 	},
-	{ id:4, title:'Create Listing', name:'dashboard.create-listing', icon:'icon-add-circle', sub:[] },
+	{ id:4, title:'Create Listing', name:'dashboard.create-listing.get-package', icon:'icon-add-circle', sub:[] },
 	{ id:5, title:'Favorites', name:'dashboard.favorite-properties', icon:'icon-love-it', sub:[] },
 	{ id:6, title:'Saved Searches', name:'dashboard.saved-searches', icon:'icon-search', sub:[] },
 	{ id:7, title:'Invoices', name:'dashboard.invoices', icon:'icon-accounting-document', sub:[] },
