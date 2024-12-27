@@ -3,7 +3,7 @@
 	note: to add have the nav bar on the right add this class "justify-content-end" to "navbar-nav"
 	-------------------------------------------------------------------------------------------- -->	
 	<ul class="navbar-nav">
-		<template v-for="route in routes" :key="route.id">
+		<template v-for="route in APP_ROUTES" :key="route.id">
 			<li class="nav-item">
 				<RouterLink :to="{name:route.name}" class="nav-link">
 					{{ route.title }}
@@ -73,13 +73,6 @@
 </template>
 
 <script setup>
+import { APP_ROUTES } from "@/constants/routeList";
 import { RouterLink } from "vue-router";
-
-// Pages Routes List
-const routes = [
-	{ id:1, name:'app.home', title:'Home' },
-	{ id:2, name:'app.properties', title:'Properties' },
-	{ id:3, name:'app.property', title:'Property' },
-	{ id:2, name:'app.realtor', title:'Realtor' },
-];
 </script>
