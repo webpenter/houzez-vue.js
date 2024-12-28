@@ -19,7 +19,11 @@
             <td data-label="Listings">1</td>
             <td data-label="Featured Listings">0</td>
             <td data-label="Images">5</td>
-            <td data-label="Actions"><a href="dashboard-agent-add-new-property-complete-order.php" class="btn btn-primary">Select</a></td>
+            <td data-label="Actions">
+                <RouterLink :to="{name:'dashboard.create-listing.complete-order'}" class="btn btn-primary">
+                    Select
+                </RouterLink>
+            </td>
         </tr>
         <tr>
             <td data-label="Package"><i class="houzez-icon icon-check-circle-1 mr-2 ml-2 primary-text"></i> <strong>Standard</strong></td>
@@ -28,7 +32,11 @@
             <td data-label="Listings">10</td>
             <td data-label="Featured Listings">3</td>
             <td data-label="Images">10</td>
-            <td data-label="Actions"><a href="dashboard-agent-membership-complete-order.php" class="btn btn-primary">Select</a></td>
+            <td data-label="Actions">
+                <RouterLink :to="{name:'dashboard.create-listing.complete-order'}" class="btn btn-primary">
+                    Select
+                </RouterLink>
+            </td>
         </tr>
         <tr>
             <td data-label="Package"><i class="houzez-icon icon-check-circle-1 mr-2 ml-2 primary-text"></i> <strong>Premium</strong></td>
@@ -37,7 +45,11 @@
             <td data-label="Listings">50</td>
             <td data-label="Featured Listings">20</td>
             <td data-label="Images">20</td>
-            <td data-label="Actions"><a href="dashboard-agent-membership-complete-order.php" class="btn btn-primary">Select</a></td>
+            <td data-label="Actions">
+                <RouterLink :to="{name:'dashboard.create-listing.complete-order'}" class="btn btn-primary">
+                    Select
+                </RouterLink>
+            </td>
         </tr>
         <tr>
             <td data-label="Package"><i class="houzez-icon icon-check-circle-1 mr-2 ml-2 primary-text"></i> <strong>Enterprice</strong></td>
@@ -46,14 +58,16 @@
             <td data-label="Listings">Unlimited</td>
             <td data-label="Featured Listings">70</td>
             <td data-label="Images">Unlimited</td>
-            <td data-label="Actions"><a href="dashboard-agent-membership-complete-order.php" class="btn btn-primary">Select</a></td>
+            <td data-label="Actions">
+                <RouterLink :to="{name:'dashboard.create-listing.complete-order'}" class="btn btn-primary">
+                    Select
+                </RouterLink>
+            </td>
         </tr>
     </tbody>   
     </table><!-- dashboard-table -->
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
-const feature = ref();
+import { RouterLink } from 'vue-router';
 </script>

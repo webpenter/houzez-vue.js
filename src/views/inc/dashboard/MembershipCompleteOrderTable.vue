@@ -16,11 +16,13 @@
         </div><!-- membership-package-order-detail -->    
     </div>
     <div class="text-center">
-        <a href="#">Change Package</a>
+        <RouterLink :to="{name:'dashboard.create-listing.select-package'}">
+            Change Package
+        </RouterLink>
     </div>
 </div><!-- membership-package-order-detail-wrap -->
 </template>
 
 <script setup>
-
+import { RouterLink } from 'vue-router';
 </script>

@@ -23,10 +23,13 @@
         </ul>
     </div><!-- price-table-description -->
     <div class="price-table-button">
-        <a class="btn btn-primary" href="dashboard-agent-add-new-property-complete-order.php">Get Started</a>
+        <RouterLink class="btn btn-primary" :to="{name:'dashboard.create-listing.create-account'}">
+            Get Started
+        </RouterLink>
     </div><!-- price-table-button -->
 </div><!-- taxonomy-grids-module -->
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router';
 </script>

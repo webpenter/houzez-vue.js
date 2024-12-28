@@ -8,7 +8,10 @@
                 <div class="dashboard-content-block-wrap">
                     <div class="dashboard-content-block">
                         <ThankYouPageContent/>
-                        <button type="button" class="btn btn-primary" onclick="window.location.href='dashboard-agent-add-new-property-step-1.php'">Create a Listing</button>
+                        <!-- <button type="button" class="btn btn-primary" onclick="window.location.href='dashboard-agent-add-new-property-step-1.php'">Create a Listing</button> -->
+                        <RouterLink class="btn btn-primary" :to="{name:'dashboard.create-listing'}">
+                            Create a Listing
+                        </RouterLink>
                     </div><!-- dashboard-content-block -->
 
                 </div><!-- dashboard-content-block-wrap -->
@@ -19,4 +22,5 @@
 <script setup>
 import ThankYouPageContent from '@/views/inc/dashboard/ThankYouPageContent.vue';
 import SnakeNav from '../../components/SnakeNav.vue';
+import { RouterLink } from 'vue-router';
 </script>
