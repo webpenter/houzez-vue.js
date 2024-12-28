@@ -2,10 +2,12 @@
     <div class="property-form-wrap">
 	<div class="agent-details">
 		<div class="d-flex align-items-center">
-			<?php include 'inc/property/templates/agent-image.php';?>
-			<?php include 'inc/property/templates/agent-information.php';?>
+			<!-- <?php include 'inc/property/templates/agent-image.php';?> -->
+			 <AgentImage />
+			<!-- <?php include 'inc/property/templates/agent-information.php';?> -->
+			 <AgentInformation />
 		</div><!-- d-flex -->
-	</div><!-- agent-details -->
+	</div><!-- agent-details --> 
 	<div class="property-form">
 		<div class="form-group">
 			<input class="form-control is-valid" name="name" value="" type="text" placeholder="Your Name">
@@ -55,5 +57,8 @@
 
 </template>
 <script setup>
+import AgentImage from './templates/AgentImage.vue';
+import AgentInformation from './templates/AgentInformation.vue';
+
 
 </script>

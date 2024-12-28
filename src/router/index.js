@@ -40,6 +40,14 @@ const router = createRouter({
             }
           },
           {
+            path: '/propertydetail',
+            name:'app.propertyDetail',
+            component:() => import('@/views/app/pages/Properties_Detail/index.vue'), 
+            meta:{
+              title:'PropertyDetail'
+            }
+          },
+          {
             path: '/property',
             name:'app.property',
             component:() => import('@/views/app/pages/property/Index.vue'),
