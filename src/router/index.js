@@ -103,10 +103,28 @@ const router = createRouter({
             meta:{ title:'Activities' }
           },
           {
-            path: '/dashboard/crm-active-deals',
-            name:'dashboard.crm-active-deals',
-            component:() => import('@/views/dashboard/pages/board/crm-active-deals/Index.vue'),
+            path: '/dashboard/crm-deals',
+            name:'dashboard.crm-deals',
+            component:() => import('@/views/dashboard/pages/board/crm-deals/Index.vue'),
             meta:{ title:'Deals' }
+          },
+          {
+            path: '/dashboard/crm-won-deals',
+            name: 'dashboard.won-deals',
+            component: () => import('@/views/dashboard/pages/board/crm-deals/won-deals/Index.vue'),
+            meta: { title: 'Won Deals' }
+          },
+          {
+            path: '/dashboard/crm-lost-deals',
+            name: 'dashboard.lost-deals',
+            component: () => import('@/views/dashboard/pages/board/crm-deals/lost-deals/Index.vue'),
+            meta: { title: 'Lost Deals' }
+          },
+          {
+            path: '/dashboard-import-csv',
+            name: 'dashboard.importCsv',
+            component: () => import('@/views/dashboard/pages/board/crm-deals/ImportCsv.vue'),
+            meta: { title: 'Import Csv' }
           },
           {
             path: '/dashboard/crm-enquiries',
@@ -115,15 +133,45 @@ const router = createRouter({
             meta:{ title:'Enquiries' }
           },
           {
-            path: '/dashboard/crm-leads',
-            name:'dashboard.crm-leads',
-            component:() => import('@/views/dashboard/pages/board/crm-leads/Index.vue'),
-            meta:{ title:'Leads' }
+            path: '/dashboard/crm-lead-enquiry-from-property-detail-page',
+            name: 'dashboard.crm-lead-enquiry-from-property-detail-page',
+            component: () => import('@/views/dashboard/pages/board/crm-enquiries/CrmLeadEnquiryFromPropertyDetailPage.vue'),
+            meta: { title: 'Enquiries Details' }
           },
 
-          /***
-           * @route Dashboard/Insight
-           ***/
+          {
+            path: '/dashboard/crm-leads',
+            name: 'dashboard.crm-leads',
+            component: () => import('@/views/dashboard/pages/board/crm-leads/Index.vue'), // Default view
+            meta: { title: 'Leads' }
+          },
+          {
+            path: '/dashboard/crm-lead-enquiries',
+            name: 'dashboard.crm-lead-enquiries',
+            component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEnquiries.vue'), // Enquiries view
+            meta: { title: 'Lead Enquiries' }
+          },
+          {
+            path: '/dashboard/crm-lead-events',
+            name: 'dashboard.crm-lead.events',
+            component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEvents.vue'),
+            meta: { title: 'Lead Events' }
+          },
+          {
+            path: '/dashboard/crm-lead-listings-viewed',
+            name: 'dashboard.crm-lead.listings-viewed',
+            component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadListingsViewed.vue'),
+            meta: { title: 'Lead Listings Viewed' }
+          },
+          {
+            path: '/dashboard/crm-lead-saved-searches',
+            name: 'dashboard.crm-lead-saved-searches',
+            component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadSavedSearches.vue'),
+            meta: { title: 'Lead Saved Searches' }
+          },
+          
+
+          /* ---------------- Insight ------------------ */
           {
             path: '/dashboard/insight',
             name:'dashboard.insight',

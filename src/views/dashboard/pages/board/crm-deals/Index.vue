@@ -17,13 +17,25 @@
 
             <ul class="nav nav-pills deals-nav-tab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active-deals active" href="crm-active-deals.php">Active Deals (6)</a>
+                    <router-link 
+                        class="nav-link active-deals active" 
+                        to="/dashboard/crm-deals">
+                        Active Deals (6)
+                    </router-link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link won-deals" href="crm-won-deals.php">Won Deals (2)</a>
+                    <router-link 
+                        class="nav-link won-deals" 
+                        to="/dashboard/crm-won-deals">
+                        Won Deals (2)
+                    </router-link>
                 </li>
                 <li class="nav-item lost-deals">
-                    <a class="nav-link" href="crm-lost-deals.php">Lost Deals (2)</a>
+                    <router-link 
+                        class="nav-link" 
+                        to="/dashboard/crm-lost-deals">
+                        Lost Deals (2)
+                    </router-link>
                 </li>
             </ul>
             <div class="deal-content-wrap p-0">
@@ -40,7 +52,7 @@
                             <th class="table-nowrap">Last Contact Date</th>
                             <th class="table-nowrap">Phone</th>
                             <th class="table-nowrap">Email</th>
-                            <th class="table-nowrap">Actions</th>
+                            <th class="table-nowrap">Actions</th> 
                         </tr>
                     </thead>
                     <tbody>
