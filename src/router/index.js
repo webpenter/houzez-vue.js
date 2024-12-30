@@ -81,12 +81,13 @@ const router = createRouter({
      * @route 'localhost:3000/dashboard/'
      * @name dashboard
      * @prefix No
-     * @auth True
+     * @auth Normal User Authentication
      * @author WebPenter
     ***/
      {
       path: '/dashboard',
       name:'dashboard',
+      redirect:'/dashboard/crm',
       component:() => import('@/views/dashboard/layout/Index.vue'),
       children:[
           /***
