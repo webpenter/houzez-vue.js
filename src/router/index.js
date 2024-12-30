@@ -188,7 +188,7 @@ const router = createRouter({
            * @route Dashboard/Create-Listing/Payment-Complete-Order
            * @route Dashboard/Create-Listing/Payment-Create-Account
            * @route Dashboard/Create-Listing/Payment-Completed
-           * @route Dashboard/Create-Listing/Create-Listing
+           * @route Dashboard/Create-Listing/Step-1 to Step-12
            * @route Dashboard/Create-Listing/Listing-Done
            ***/
           {
@@ -222,9 +222,81 @@ const router = createRouter({
             meta:{ title:'Create Account' }
           },
           {
-            path: '/dashboard/create-listing',
-            name:'dashboard.create-listing',
-            component:() => import('@/views/dashboard/pages/create-listing/create-listing/Index.vue'),
+            path: '/dashboard/create-listing/step-1',
+            name:'dashboard.create-listing.step-1',
+            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-1/Index.vue'),
+            meta:{ title:'Create Listing' }
+          },
+          {
+            path: '/dashboard/create-listing/step-2',
+            name:'dashboard.create-listing.step-2',
+            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-2/Index.vue'),
+            meta:{ title:'Create Listing' }
+          },
+          {
+            path: '/dashboard/create-listing/step-3',
+            name:'dashboard.create-listing.step-3',
+            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-3/Index.vue'),
+            meta:{ title:'Create Listing' }
+          },
+          {
+            path: '/dashboard/create-listing/step-4',
+            name:'dashboard.create-listing.step-4',
+            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-4/Index.vue'),
+            meta:{ title:'Create Listing' }
+          },
+          {
+            path: '/dashboard/create-listing/step-5',
+            name:'dashboard.create-listing.step-5',
+            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-5/Index.vue'),
+            meta:{ title:'Create Listing' }
+          },
+          {
+            path: '/dashboard/create-listing/step-6',
+            name:'dashboard.create-listing.step-6',
+            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-6/Index.vue'),
+            meta:{ title:'Create Listing' }
+          },
+          {
+            path: '/dashboard/create-listing/step-7',
+            name:'dashboard.create-listing.step-7',
+            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-7/Index.vue'),
+            meta:{ title:'Create Listing' }
+          },
+          {
+            path: '/dashboard/create-listing/step-8',
+            name:'dashboard.create-listing.step-8',
+            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-8/Index.vue'),
+            meta:{ title:'Create Listing' }
+          },
+          {
+            path: '/dashboard/create-listing/step-9',
+            name:'dashboard.create-listing.step-9',
+            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-9/Index.vue'),
+            meta:{ title:'Create Listing' }
+          },
+          {
+            path: '/dashboard/create-listing/step-10',
+            name:'dashboard.create-listing.step-10',
+            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-10/Index.vue'),
+            meta:{ title:'Create Listing' }
+          },
+          {
+            path: '/dashboard/create-listing/step-11',
+            name:'dashboard.create-listing.step-11',
+            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-11/Index.vue'),
+            meta:{ title:'Create Listing' }
+          },
+          {
+            path: '/dashboard/create-listing/step-12',
+            name:'dashboard.create-listing.step-12',
+            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-12/Index.vue'),
+            meta:{ title:'Create Listing' }
+          },
+          {
+            path: '/dashboard/create-listing/completed',
+            name:'dashboard.create-listing.completed',
+            component:() => import('@/views/dashboard/pages/create-listing/completed/Index.vue'),
             meta:{ title:'Create Listing' }
           },
 

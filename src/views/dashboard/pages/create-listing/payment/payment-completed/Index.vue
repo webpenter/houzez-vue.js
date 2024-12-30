@@ -9,7 +9,7 @@
                     <div class="dashboard-content-block">
                         <ThankYouPageContent/>
                         <!-- <button type="button" class="btn btn-primary" onclick="window.location.href='dashboard-agent-add-new-property-step-1.php'">Create a Listing</button> -->
-                        <RouterLink class="btn btn-primary" :to="{name:'dashboard.create-listing'}">
+                        <RouterLink class="btn btn-primary" :to="{name:'dashboard.create-listing.step-1'}">
                             Create a Listing
                         </RouterLink>
                     </div><!-- dashboard-content-block -->
