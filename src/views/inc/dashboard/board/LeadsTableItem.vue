@@ -2,7 +2,7 @@
     <tr class="table-new">
 	<td class="table-nowrap" data-label="edit">
 		<input id="checkbox-delete" type="checkbox" name="name">
-	</td>
+	</td> 
 	<td class="table-nowrap" data-label="Name">
 		Martin Moore
 		<a href="crm-lead-enquiries.php" class="board-message-icon-wrap ml-2 fa-lg active" data-toggle="tooltip" data-placement="top" title="View enquiry">
@@ -30,7 +30,12 @@
 				Actions
 			</button>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="crm-lead-enquiries.php">Details</a>
+				<router-link 
+					to="/dashboard/crm-lead-enquiries" 
+					class="dropdown-item">
+					Details
+				</router-link>
+
 				<a class="dropdown-item open-close-slide-panel" href="#">Edit</a>
 				<a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
 			</div>

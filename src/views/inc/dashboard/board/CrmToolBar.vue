@@ -14,8 +14,13 @@
 <div class="dashboard-tool-block">
     <div class="dashboard-tool-buttons-block">
         <div class="dashboard-tool-button">
-            <button onclick="window.location.href='dashboard-import-csv.php';" class="btn btn-primary-outlined">Import</button>
-        </div>
+        <router-link 
+            to="/dashboard-import-csv" 
+            class="btn btn-primary-outlined">
+            Import
+        </router-link>
+    </div>
+
         <div class="dashboard-tool-button">
             <button class="btn btn-primary-outlined">Export</button>
         </div>
