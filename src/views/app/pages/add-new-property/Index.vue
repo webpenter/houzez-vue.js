@@ -59,7 +59,7 @@ import SectionFeature from '../../../inc/dashboard/property/SectionFeature.vue';
 import SectionFloorPlans from '../../../inc/dashboard/property/SectionFloorPlans.vue';
 import SectionLocation from '../../../inc/dashboard/property/SectionLocation.vue';
 import SectionMedia from '../../../inc/dashboard/property/SectionMedia.vue';
-import SectionPrivateNotes from '../../../inc/dashboard/property/SectionPrivateNotes.vue';
+import SectionPrivateNotes from '../../../inc/dashboard/property/SectionPrivateNote.vue';
 import SectionSubProperties from '../../../inc/dashboard/property/SectionSubProperties.vue';
 
 </script>

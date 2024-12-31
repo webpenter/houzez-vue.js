@@ -1,6 +1,7 @@
 <template>
   <div class="body">
         <div class="container">
+            <LogoWhite class="mb-4"/>
             <h1>404</h1>
             <p>Oops! The page you're looking for doesn't exist.</p>
             <router-link :to="{name:'app.home'}" class="btn-home">
@@ -11,7 +12,7 @@
 </template>
 
 <script setup>
-
+import LogoWhite from '@/views/inc/nav/LogoWhite.vue';
 </script>
 
 <style scoped>
@@ -23,17 +24,12 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: #f4f4f4;
-      color: #333;
+      background-color: #002B4B;
+      color: white;
     }
 
     .container {
       text-align: center;
-      padding: 20px;
-      background: #fff;
-      border: 1px solid #ddd;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
     }
 
     h1 {
