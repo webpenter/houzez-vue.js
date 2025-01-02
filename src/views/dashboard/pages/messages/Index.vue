@@ -32,10 +32,13 @@
                 </div><!-- dashboard-content-block-wrap -->
             </div><!-- dashboard-content-inner-wrap -->
         </section><!-- dashboard-content-wrap -->
+        <section class="dashboard-side-wrap">
+            <SideWrap/>
+        </section>
 </template>
 
 <script setup>
+import SideWrap from '@/views/inc/dashboard/SideWrap.vue';  // Correct import using alias
 import MessageTableItem from '@/views/inc/dashboard/MessageTableItem.vue';
 import Pagination from '@/views/inc/listing/Pagination.vue';
-
 </script>

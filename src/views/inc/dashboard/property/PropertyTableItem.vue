@@ -27,7 +27,7 @@
 			</button>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
 				<a class="dropdown-item" href="#">Publish</a>
-				<a class="dropdown-item" href="dashboard-agent-edit-property-description-and-price.php">Edit</a>
+				<a class="dropdown-item" href="#" @click.prevent="navigateToReplyPage">Edit</a>
 				<a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
 				<a class="dropdown-item" href="#">Duplicate</a>
 			</div>
@@ -272,14 +272,23 @@
 			</button>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
 				<a class="dropdown-item" href="#">Withhold</a>
-				<a class="dropdown-item" href="dashboard-agent-edit-property-description-and-price.php">Edit</a>
+				<a class="dropdown-item" href="#" @click.prevent="navigateToReplyPage">Edit</a>
 				<a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
-				<a class="dropdown-item" href="#">Duplicate</a>
+				<a class="dropdown-item" href="#">Duplicate </a>
 			</div>
 		</div>
 	</td>
 </tr>
+
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+// Function to navigate to the DashboardAgentMessage component
+const navigateToReplyPage = () => {
+  router.push('/dashboard-agent-edit-property-description-and-price'); // Navigate to the DashboardAgentMessage page
+};
 </script>

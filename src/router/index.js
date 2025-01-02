@@ -1,3 +1,5 @@
+import DashboardAgentMessage from '@/views/inc/dashboard/DashboardAgentMessage.vue';
+
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -34,6 +36,7 @@ const router = createRouter({
             component:() => import('@/views/app/pages/add-new-property/Index.vue'),
             meta:{ title:'Add Property' }
           },
+          
 
           /***
            * @route App/Properties
@@ -53,6 +56,11 @@ const router = createRouter({
             name:'app.property',
             component:() => import('@/views/app/pages/property/Index.vue'),
             meta:{ title:'Property' }
+          },
+          {
+            path: '/dashboard-agent-message',  // This is the URL path
+            name: 'DashboardAgentMessage',
+            component: DashboardAgentMessage,
           },
 
           /***
@@ -378,7 +386,13 @@ const router = createRouter({
             component:() => import('@/views/dashboard/pages/invoices/Index.vue'),
             meta:{ title:'Invoices' }
           },
-
+         
+          {
+            path: '/dashboard-agent-edit-property-description-and-price',
+            name:'dashboard-agent-edit-property-description-and-price',
+            component:() => import('@/views/dashboard/pages/my-properties/DashboardAgentEditPropertyDescriptionAndPrice.vue'),
+            meta:{ title:'Edit proper' }
+          },
           /***
            * @route Dashboard/Messages
            ***/

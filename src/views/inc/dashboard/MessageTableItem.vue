@@ -1,4 +1,5 @@
 <template>
+	
     <tr class="table-new">
 	<td data-label="From" class="table-nowrap">
 		<img class="rounded-circle" src="https://placehold.co/40x40" alt="agent">
@@ -19,7 +20,7 @@
 				Actions
 			</button>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="dashboard-agent-message.php">Reply</a>
+				<a class="dropdown-item" href="#" @click.prevent="navigateToReplyPage">Reply</a>
 				<a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
 			</div>
 		</div>
@@ -46,7 +47,7 @@
 				Actions
 			</button>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="dashboard-agent-message.php">Reply</a>
+				<a class="dropdown-item" href="#" @click.prevent="navigateToReplyPage">Reply</a>
 				<a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
 			</div>
 		</div>
@@ -54,5 +55,12 @@
 </tr>
 </template>
 <script setup>
+	import { useRouter } from 'vue-router';
 
+const router = useRouter();
+
+// Function to navigate to the DashboardAgentMessage component
+const navigateToReplyPage = () => {
+  router.push('/dashboard-agent-message'); // Navigate to the DashboardAgentMessage page
+};
 </script>
