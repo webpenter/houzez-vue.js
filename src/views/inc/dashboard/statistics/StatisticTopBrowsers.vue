@@ -3,7 +3,7 @@
 	<h3><i class="houzez-icon icon-sign-badge-circle mr-2 primary-text"></i> Top Browsers</h3>
 	<div class="d-flex align-items-center sm-column">
 		<div class="statistic-doughnut-chart">
-			<canvas ref="topbrowsersdoughnutchart" width="100" height="100"></canvas>
+			<canvas id="top-browsers-doughnut-chart" width="100" height="100"></canvas>
 		
 		</div><!-- mortgage-calculator-chart -->
 		<div class="doughnut-chart-data flex-fill">
@@ -26,38 +26,32 @@
 </div><!-- dashboard-statistic-block -->
 
 </template>
-<script setup>
-import { ref, onMounted } from 'vue';
-import Chart from 'chart.js/auto';
-
-const topbrowsersdoughnutchart= ref(null);
-onMounted(()=>{
-	const ctx = topbrowsersdoughnutchart.value.getContext('2d');
-				var myDoughnutChart = new Chart(ctx, {
-					type: 'doughnut',
-					data: {
-						datasets: [{
-							data: [60, 20, 15, 5],
-							backgroundColor: [
-							'rgba(255, 99, 132, 0.5)',
-							'rgba(54, 162, 235, 0.5)',
-							'rgba(255, 206, 86, 0.5)',
-							'rgba(75, 192, 192, 0.5)'
-							],
-							borderColor: [
-							'rgba(255 ,99, 132, 1)',
-							'rgba(54, 162, 235, 1)',
-							'rgba(255, 206, 86, 1)',
-							'rgba(75, 192, 192, 1)'
-							],
-							borderWidth: 1
-						}]
-					},
-					options: {
-						cutoutPercentage: 60,
-						responsive: false,
-						tooltips: false,
-					}
-				});
-			});
+<script>
+var ctx = document.getElementById('top-browsers-doughnut-chart').getContext('2d');
+var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        datasets: [{
+            data: [60, 20, 15, 5],
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(75, 192, 192, 0.5)'
+            ],
+            borderColor: [
+            'rgba(255 ,99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        cutoutPercentage: 60,
+        responsive: false,
+        tooltips: false,
+    }
+});
 </script>

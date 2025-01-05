@@ -17,16 +17,16 @@
 
 	<div class="tab-content">
 		<div class="tab-pane fade show active" id="chart-24h" role="tabpanel">
-            <Hours24Chart />
-			
+			<!-- <?php include 'inc/dashboard/statistics/24-hours-chart.php'; ?> -->
+			 <!-- <HoursChart24 /> -->
 		</div>
 		<div class="tab-pane fade" id="chart-7days" role="tabpanel">
-            <Days7Chart />
-			
+			<!-- <?php include 'inc/dashboard/statistics/7-days-chart.php'; ?> -->
+			 <!-- <DaysChart7 /> -->
 		</div>
 		<div class="tab-pane fade" id="chart-30days" role="tabpanel">
-            <Days30Chart />
-			
+			<!-- <?php include 'inc/dashboard/statistics/30-days-chart.php'; ?> -->
+			 <!-- <DaysChart30 /> -->
 		</div>
 	</div><!-- tab-content -->
 	
@@ -35,7 +35,7 @@
 
 </template>
 <script setup>
-import Days30Chart from './Days30Chart.vue';
-import Days7Chart from './Days7Chart.vue';
-import Hours24Chart from './Hours24Chart.vue';
+// import HoursChart24 from './HoursChart24.vue';
+// import DaysChart7 from './DaysChart7.vue';
+// import DaysChart30 from './DaysChart30.vue';
 </script>

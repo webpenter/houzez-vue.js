@@ -3,7 +3,7 @@
 	<h3><i class="houzez-icon icon-sign-badge-circle mr-2 primary-text"></i> Devices</h3>
 	<div class="d-flex align-items-center sm-column">
 		<div class="statistic-doughnut-chart">
-			<canvas ref="devicesdoughnutchart" width="100" height="100"></canvas>
+			<canvas id="devices-doughnut-chart" width="100" height="100"></canvas>
 			
 		</div><!-- mortgage-calculator-chart -->
 		<div class="doughnut-chart-data flex-fill">
@@ -27,13 +27,7 @@
 
 </template>
 <script setup>
-  import { ref, onMounted } from 'vue';
-//   import { Chart } from 'chart.js';
-  
-  const devicesdoughnutchart = ref(null);
-  onMounted(()=>{
-
-	const ctx = devicesdoughnutchart.value.getContext('2d');
+				var ctx = document.getElementById('devices-doughnut-chart').getContext('2d');
 				var myDoughnutChart = new Chart(ctx, {
 					type: 'doughnut',
 					data: {
@@ -60,5 +54,4 @@
 						tooltips: false,
 					}
 				});
-  });
-</script>
+			</script>

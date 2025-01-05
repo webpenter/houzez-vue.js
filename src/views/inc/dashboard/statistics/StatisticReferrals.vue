@@ -26,6 +26,4 @@
 </div><!-- dashboard-statistic-block -->
 
 </template>
-<script setup>
-
-</script>
+<script setup></script>
