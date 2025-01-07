@@ -9,9 +9,7 @@
                 <div class="dashboard-content-block">
                     You don't have any enquiry at this moment. <a class="open-close-slide-panel" href="#"><strong>Add New Enquiry</strong></a>
                 </div><!-- dashboard-content-block -->
-                <CrmToolBar />
-                <!-- <?php include 'inc/dashboard/board/crm-tool-bar.php';?> -->
-                
+                <CrmToolBar />                
                 <table class="dashboard-table table-lined responsive-table">
                     <thead>
                         <tr>
@@ -49,7 +47,12 @@
                                 <a href="#">Property Title</a>
                             </td>
                             <td class="text-right">
-                                <a href="crm-lead-enquiry-from-property-detail-page.php">View</a>
+                                <router-link 
+                                    :to="{ 
+                                        name: 'dashboard.crm-lead-enquiry-from-property-detail-page' 
+                                    }">
+                                    View
+                                </router-link>
                             </td>
                         </tr>
                         <tr>
@@ -75,7 +78,12 @@
                                 <a href="#">Agent Page</a>
                             </td>
                             <td class="text-right">
-                                <a href="crm-lead-enquiry-from-agent-detail-page.php">View</a>
+                                <router-link 
+                                    :to="{ 
+                                        name: 'dashboard.crm-lead-enquiry-from-property-detail-page' 
+                                    }">
+                                    View
+                                </router-link>
                             </td>
                         </tr>
                     </tbody>

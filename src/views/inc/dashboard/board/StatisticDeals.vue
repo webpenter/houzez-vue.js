@@ -24,7 +24,7 @@
 
 </template>
 
-<!-- <script>
+<!-- <script setup>
     var ctx = document.getElementById('deals-doughnut-chart').getContext('2d');
     var myDoughnutChart = new Chart(ctx, {
         type: 'doughnut',
@@ -50,4 +50,4 @@
             tooltips: false,
         }
     });
-</script> -->
+</script>  -->
