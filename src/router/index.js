@@ -15,59 +15,36 @@ const router = createRouter({
       name:'app',
       component:() => import('@/views/app/layout/Index.vue'),
       children:[
-          /***
-           * @route App/Home
-          ***/
           {
             path: '/',
             name:'app.home',
             component:() => import('@/views/app/pages/home/Index.vue'),
             meta:{ title:'Home' }
           },
-
-          /***
-           * @route App/Add-New-Property
-          ***/
           {
             path: '/add-new-property',
             name:'app.add-new-property',
             component:() => import('@/views/app/pages/add-new-property/Index.vue'),
             meta:{ title:'Add Property' }
           },
-
-          /***
-           * @route App/Properties
-          ***/
           {
             path: '/properties',
             name:'app.properties',
             component:() => import('@/views/app/pages/properties/Index.vue'),
             meta:{ title:'Properties' }
           },
-
-          /***
-           * @route App/Property
-          ***/
           {
             path: '/property',
             name:'app.property',
             component:() => import('@/views/app/pages/property/Index.vue'),
             meta:{ title:'Property' }
           },
-
-          /***
-           * @route App/Realtor
-          ***/
           {
             path: '/realtor',
             name:'app.realtor',
             component:() => import('@/views/app/pages/realtor/Index.vue'),
             meta:{ title:'Realtor' }
           },
-
-          /***
-           * @route App/Search-Results
-          ***/
           {
             path: '/search-results',
             name:'app.search-results',
@@ -89,12 +66,7 @@ const router = createRouter({
       name:'dashboard',
       component:() => import('@/views/dashboard/layout/Index.vue'),
       children:[
-          /***
-           * @route Dashboard/Board-CRM
-           * @route Dashboard/Board-CRM-Active-Deals
-           * @route Dashboard/Board-CRM-Enquiries
-           * @route Dashboard/Board-CRM-Leads
-           ***/
+          /* --------------- Board CRM -------------- */
           {
             path: '/dashboard/crm',
             name:'dashboard.crm',
@@ -102,10 +74,28 @@ const router = createRouter({
             meta:{ title:'Activities' }
           },
           {
-            path: '/dashboard/crm-active-deals',
-            name:'dashboard.crm-active-deals',
-            component:() => import('@/views/dashboard/pages/board/crm-active-deals/Index.vue'),
+            path: '/dashboard/crm-deals',
+            name:'dashboard.crm-deals',
+            component:() => import('@/views/dashboard/pages/board/crm-deals/Index.vue'),
             meta:{ title:'Deals' }
+          },
+          {
+            path: '/dashboard/crm-won-deals', // Fixed path
+            name: 'dashboard.won-deals',
+            component: () => import('@/views/dashboard/pages/board/crm-deals/won-deals/Index.vue'),
+            meta: { title: 'Won Deals' }
+          },
+          {
+            path: '/dashboard/crm-lost-deals', // Unique path for Lost Deals
+            name: 'dashboard.lost-deals',
+            component: () => import('@/views/dashboard/pages/board/crm-deals/lost-deals/Index.vue'),
+            meta: { title: 'Lost Deals' }
+          },
+          {
+            path: '/dashboard-import-csv',
+            name: 'dashboard.importCsv',
+            component: () => import('@/views/dashboard/pages/board/crm-deals/ImportCsv.vue'),
+            meta: { title: 'Import Csv' }
           },
           {
             path: '/dashboard/crm-enquiries',
@@ -114,15 +104,45 @@ const router = createRouter({
             meta:{ title:'Enquiries' }
           },
           {
-            path: '/dashboard/crm-leads',
-            name:'dashboard.crm-leads',
-            component:() => import('@/views/dashboard/pages/board/crm-leads/Index.vue'),
-            meta:{ title:'Leads' }
+            path: '/dashboard/crm-lead-enquiry-from-property-detail-page',
+            name: 'dashboard.crm-lead-enquiry-from-property-detail-page',
+            component: () => import('@/views/dashboard/pages/board/crm-enquiries/CrmLeadEnquiryFromPropertyDetailPage.vue'),
+            meta: { title: 'Enquiries Details' }
           },
 
-          /***
-           * @route Dashboard/Insight
-           ***/
+          {
+            path: '/dashboard/crm-leads',
+            name: 'dashboard.crm-leads',
+            component: () => import('@/views/dashboard/pages/board/crm-leads/Index.vue'), // Default view
+            meta: { title: 'Leads' }
+          },
+          {
+            path: '/dashboard/crm-lead-enquiries',
+            name: 'dashboard.crm-lead-enquiries',
+            component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEnquiries.vue'), // Enquiries view
+            meta: { title: 'Lead Enquiries' }
+          },
+          {
+            path: '/dashboard/crm-lead-events',
+            name: 'dashboard.crm-lead.events',
+            component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEvents.vue'),
+            meta: { title: 'Lead Events' }
+          },
+          {
+            path: '/dashboard/crm-lead-listings-viewed',
+            name: 'dashboard.crm-lead.listings-viewed',
+            component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadListingsViewed.vue'),
+            meta: { title: 'Lead Listings Viewed' }
+          },
+          {
+            path: '/dashboard/crm-lead-saved-searches',
+            name: 'dashboard.crm-lead-saved-searches',
+            component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadSavedSearches.vue'),
+            meta: { title: 'Lead Saved Searches' }
+          },
+          
+
+          /* ---------------- Insight ------------------ */
           {
             path: '/dashboard/insight',
             name:'dashboard.insight',
@@ -130,15 +150,7 @@ const router = createRouter({
             meta:{ title:'Insight' }
           },
 
-          /***
-           * @route Dashboard/My-Properties
-           * @route Dashboard/Published-Properties
-           * @route Dashboard/Pending-Properties
-           * @route Dashboard/Expired-Properties
-           * @route Dashboard/Draft-Properties
-           * @route Dashboard/Hold-Properties
-           * @route Dashboard/Disapproved-Properties
-           ***/
+          /* --------------- My Properties -------------- */
           {
             path: '/dashboard/my-properties',
             name:'dashboard.my-properties',
@@ -182,15 +194,13 @@ const router = createRouter({
             meta:{ title:'Disapproved Properties' }
           },
 
-          /***
-           * @route Dashboard/Create-Listing/Get-Package
-           * @route Dashboard/Create-Listing/Select-Package
-           * @route Dashboard/Create-Listing/Payment-Complete-Order
-           * @route Dashboard/Create-Listing/Payment-Create-Account
-           * @route Dashboard/Create-Listing/Payment-Completed
-           * @route Dashboard/Create-Listing/Step-1 to Step-12
-           * @route Dashboard/Create-Listing/Listing-Done
-           ***/
+          /* --------------- Create Listing -------------- */
+          {
+            path: '/dashboard/create-listing',
+            name:'dashboard.create-listing',
+            component:() => import('@/views/dashboard/pages/create-listing/Index.vue'),
+            meta:{ title:'Create Listing' }
+          },
           {
             path: '/dashboard/create-listing/get-package',
             name:'dashboard.create-listing.get-package',
@@ -221,88 +231,8 @@ const router = createRouter({
             component:() => import('@/views/dashboard/pages/create-listing/payment/payment-completed/Index.vue'),
             meta:{ title:'Create Account' }
           },
-          {
-            path: '/dashboard/create-listing/step-1',
-            name:'dashboard.create-listing.step-1',
-            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-1/Index.vue'),
-            meta:{ title:'Create Listing' }
-          },
-          {
-            path: '/dashboard/create-listing/step-2',
-            name:'dashboard.create-listing.step-2',
-            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-2/Index.vue'),
-            meta:{ title:'Create Listing' }
-          },
-          {
-            path: '/dashboard/create-listing/step-3',
-            name:'dashboard.create-listing.step-3',
-            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-3/Index.vue'),
-            meta:{ title:'Create Listing' }
-          },
-          {
-            path: '/dashboard/create-listing/step-4',
-            name:'dashboard.create-listing.step-4',
-            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-4/Index.vue'),
-            meta:{ title:'Create Listing' }
-          },
-          {
-            path: '/dashboard/create-listing/step-5',
-            name:'dashboard.create-listing.step-5',
-            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-5/Index.vue'),
-            meta:{ title:'Create Listing' }
-          },
-          {
-            path: '/dashboard/create-listing/step-6',
-            name:'dashboard.create-listing.step-6',
-            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-6/Index.vue'),
-            meta:{ title:'Create Listing' }
-          },
-          {
-            path: '/dashboard/create-listing/step-7',
-            name:'dashboard.create-listing.step-7',
-            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-7/Index.vue'),
-            meta:{ title:'Create Listing' }
-          },
-          {
-            path: '/dashboard/create-listing/step-8',
-            name:'dashboard.create-listing.step-8',
-            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-8/Index.vue'),
-            meta:{ title:'Create Listing' }
-          },
-          {
-            path: '/dashboard/create-listing/step-9',
-            name:'dashboard.create-listing.step-9',
-            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-9/Index.vue'),
-            meta:{ title:'Create Listing' }
-          },
-          {
-            path: '/dashboard/create-listing/step-10',
-            name:'dashboard.create-listing.step-10',
-            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-10/Index.vue'),
-            meta:{ title:'Create Listing' }
-          },
-          {
-            path: '/dashboard/create-listing/step-11',
-            name:'dashboard.create-listing.step-11',
-            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-11/Index.vue'),
-            meta:{ title:'Create Listing' }
-          },
-          {
-            path: '/dashboard/create-listing/step-12',
-            name:'dashboard.create-listing.step-12',
-            component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-12/Index.vue'),
-            meta:{ title:'Create Listing' }
-          },
-          {
-            path: '/dashboard/create-listing/completed',
-            name:'dashboard.create-listing.completed',
-            component:() => import('@/views/dashboard/pages/create-listing/completed/Index.vue'),
-            meta:{ title:'Create Listing' }
-          },
 
-          /***
-           * @route Dashboard/Favorite-Properties
-           ***/
+          /* --------------- Favorite Properties -------------- */
           {
             path: '/dashboard/favorite-properties',
             name:'dashboard.favorite-properties',
@@ -310,9 +240,7 @@ const router = createRouter({
             meta:{ title:'Favorite Properties' }
           },
 
-          /***
-           * @route Dashboard/Saved-Searches
-           ***/
+          /* ----------------- Saved Searches ----------------- */
           {
             path: '/dashboard/saved-searches',
             name:'dashboard.saved-searches',
@@ -320,9 +248,7 @@ const router = createRouter({
             meta:{ title:'Saved Searches' }
           },
 
-          /*** 
-           * @route Dashboard/Invoices 
-          ***/
+          /* ------------------ Invoices -------------------- */
           {
             path: '/dashboard/invoices',
             name:'dashboard.invoices',
@@ -330,9 +256,7 @@ const router = createRouter({
             meta:{ title:'Invoices' }
           },
 
-          /***
-           * @route Dashboard/Messages
-           ***/
+          /* ------------------ Messages --------------------- */
           {
             path: '/dashboard/messages',
             name:'dashboard.messages',
@@ -340,9 +264,7 @@ const router = createRouter({
             meta:{ title:'Messages' }
           },
 
-          /*** 
-           * @route Dashboard/My-Profile 
-           ***/
+          /* -------------------- My Profile ----------------- */
           {
             path: '/dashboard/my-profile',
             name:'dashboard.my-profile',
@@ -352,9 +274,7 @@ const router = createRouter({
       ]
     },
 
-    /*** --------------- 
-     * @route 404-Page-Not-Found 
-     ***/
+    /* --------------- 404 Not Found -------------- */
     {
       path: "/:pathMatch(.*)",
       name: "not-found-404",
