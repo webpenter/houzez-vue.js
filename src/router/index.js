@@ -1,13 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import {DEFAULT_TITLE} from "@/constants/general.js";
+import {useAuth} from "@/stores/index.js";
 
 const routes = [
     /***
      * @route 'localhost:3000/'
      * @name app
      * @prefix No
-     * @auth False
+     * @auth not-required
      * @author WebPenter Devs
+     * @date 25 Dec,2024
      ***/
     {
         path: '/',
@@ -73,6 +75,33 @@ const routes = [
                 component:() => import('@/views/app/pages/search-results/Index.vue'),
                 meta:{ title:'Search Results' }
             },
+            /***
+             * @route App/Search-Results
+             ***/
+            {
+                path: '/search-results',
+                name:'app.search-results',
+                component:() => import('@/views/app/pages/search-results/Index.vue'),
+                meta:{ title:'Search Results' }
+            },
+            /***
+             * @route App/Register
+             ***/
+            {
+                path: '/register',
+                name:'app.register',
+                component:() => import('@/views/app/pages/auth/register/Index.vue'),
+                meta:{ title:'Register', guest:true }
+            },
+            /***
+             * @route App/Login
+             ***/
+            {
+                path: '/login',
+                name:'app.login',
+                component:() => import('@/views/app/pages/auth/login/Index.vue'),
+                meta:{ title:'Login', guest:true }
+            },
         ]
     },
 
@@ -80,13 +109,15 @@ const routes = [
      * @route 'localhost:3000/dashboard/'
      * @name dashboard
      * @prefix No
-     * @auth Normal User Authentication
+     * @auth required
      * @author WebPenter Devs
+     * @date 25 Dec,2024
      ***/
     {
         path: '/dashboard',
         name:'dashboard',
         redirect:'/dashboard/crm',
+        meta: { auth: true },
         component:() => import('@/views/dashboard/layout/Index.vue'),
         children:[
             /***
@@ -401,6 +432,15 @@ const routes = [
     },
 
     /*** ---------------
+     * @route 302-Unauthorized
+     ***/
+    {
+        path: "/unauthorized",
+        name: "unauthorized",
+        component: () => import('@/components/pages/Unauthorized302.vue'),
+        meta: { title: "302 Unauthorized" },
+    },
+    /*** ---------------
      * @route 404-Page-Not-Found
      ***/
     {
@@ -419,10 +459,19 @@ const router = createRouter({
   }
 });
 
-/* -------- Before and After route functionality and modify settings ---------- */
+/* -------- Before and After route authentications ---------- */
 router.beforeEach((to,from,next) => {
   /* -------------- Guards of Protected and Unprotected Routes ---------------- */
-  next();
+    // const isAuth = useAuth().getAuthStatus;
+    // if (to.meta.auth && !isAuth) {
+    //   next({ name: 'app.login' });
+    // } else if (to.meta.guest && isAuth) {
+    //     next({ name: 'dashboard' });
+    // } else {
+    //   next();
+    // }
+
+    next();
 
   /* --------------------------- Dynamic Title -------------------------------- */
     document.title = to?.meta.title ? `${to.meta.title} - Houzez` : DEFAULT_TITLE;
