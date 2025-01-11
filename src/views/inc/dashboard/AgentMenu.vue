@@ -24,7 +24,7 @@
 		</template>
 		
 		<li class="side-menu-item">
-			<a href="#">
+			<a href="javascript:void(0)" @click.prevent="$filters.logout()">
 				<i class="houzez-icon icon-lock-5 mr-2"></i>
 				Log Out
 			</a>
@@ -34,8 +34,7 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
-
-import { DASHBOARD_ROUTES } from '@/constants/routeList';
+import {DASHBOARD_ROUTES} from "@/constants/index.js";
 </script>
 
 <style scoped>

@@ -1,7 +1,4 @@
 /**
- * @author WebPenter Devs
- * @date 11 Jan,2025
- *
  * @fileOverview This file configures an Axios instance for making HTTP requests to the API server.
  *
  * @feature The `baseUrl` is dynamically set using the environment variable `VITE_API_URL`
@@ -19,6 +16,9 @@
  * @response The user is redirected to the "unauthorized" page.
  *
  * @export The configured Axios instance is exported for use in other parts of the application.
+ *
+ * @author https://webpenter.com
+ * @date 12 Jan,2025
  */
 
 import axios from "axios";

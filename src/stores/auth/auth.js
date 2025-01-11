@@ -1,12 +1,12 @@
 /**
- * @author WebPenter Devs
- * @date 11 Jan,2025
- *
  * @fileOverview This file defines a Pinia store for managing user authentication and permissions.
  *
  * @feature Store Name: `userAuth`.
  *
  * @export The store is exported as `useAuth` for use in authentication-related operations throughout the application.
+ *
+ * @author https://webpenter.com
+ * @date 11 Jan,2025
  */
 
 
@@ -63,6 +63,7 @@ export const useAuth = defineStore('userAuth', {
                 const response =await axiosInstance.post(`/login`, formData)
                 this.setAuthInfo(response.data)
                 // this.permissions = response.data?.data?.role?.permissions;
+                console.log(response.data.token);
                 return new Promise(resolve => {
                     resolve(response)
                 })
