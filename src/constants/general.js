@@ -1,1 +1,1 @@
-export const PROPERTIES_PER_PAGE = 10;
+export const DEFAULT_TITLE = 'Houzez';
