@@ -40,6 +40,11 @@ export const useAuth = defineStore('userAuth', {
     },
 
     actions: {
+        /**
+         * @feature Registers a new user by sending their details to the server.
+         * @param {Object} formData - The registration data (e.g., name, email, password, etc.).
+         * @returns {Promise<Object>} - Resolves with the server's response containing authentication and user information.Rejects with the server's error response if the registration fails.
+         */
         async register (formData) {
             try {
                 const response =await axiosInstance.post(`/register`, formData)
@@ -58,6 +63,11 @@ export const useAuth = defineStore('userAuth', {
                 })
             }
         },
+        /**
+         * @feature Logs in a user by sending their credentials to the server.
+         * @param {Object} formData - The login credentials (e.g., email and password).
+         * @returns {Promise<Object>} - Resolves with the server's response containing authentication and user information.Rejects with the server's error response if the login fails.
+         */
         async login (formData) {
             try {
                 const response =await axiosInstance.post(`/login`, formData)
@@ -76,6 +86,28 @@ export const useAuth = defineStore('userAuth', {
                 })
             }
         },
+        /**
+         * @feature Logs out the user by sending a request to the server to terminate the session.
+         * @returns {Promise<Object>} - Resolves with the server's response if the logout is successful.Throws an error if the logout request fails..
+         */
+        async logout () {
+            try {
+                const res = await axiosInstance.post('/logout')
+                if (res.data) {
+                    this.removeAuthInfo()
+                    return res
+                }
+            } catch (error) {
+                if (error.response) {
+                    throw error.resonpse
+                }
+            }
+        },
+        /**
+         * @feature Changes the user's password by sending the new password to the server.
+         * @param {Object} formData - The data containing the old and new passwords.
+         * @returns {Promise<Object>} - Resolves with the server's response if the password change is successful.Rejects with the server's error response if the request fails.
+         */
         async changePassword (formData) {
             try {
                 const response =await axiosInstance.put(`/change-password`, formData)
@@ -111,19 +143,6 @@ export const useAuth = defineStore('userAuth', {
         },
         getPermission() {
             return this.permissions;
-        },
-        async logout () {
-            try {
-                const res = await axiosInstance.post('/logout')
-                if (res.data) {
-                    this.removeAuthInfo()
-                    return res
-                }
-            } catch (error) {
-                if (error.response) {
-                    throw error.resonpse
-                }
-            }
         },
         setAuthInfo (data) {
             const token = useToken()
