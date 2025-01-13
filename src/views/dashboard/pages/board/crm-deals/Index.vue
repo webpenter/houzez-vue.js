@@ -93,21 +93,22 @@
     
 </template>
 <script setup>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
+// import { computed } from 'vue';
+import { useModalStore } from '@/stores/Model';
+// import { useStore } from 'vuex';
 
 import CrmToolBar from '@/views/inc/dashboard/board/CrmToolBar.vue';
 import DealsTableItem from '@/views/inc/dashboard/board/DealsTableItem.vue';
 import AddNewDealPanel from '@/views/inc/dashboard/board/AddNewDealPanel.vue';
 
-const store = useStore();
-
+// const store = useStore();
+const modalStore = useModalStore();
 // Compute modal visibility from Vuex store
-const isModelVisibleAddNewDeal = computed(() => store.state.isModelVisibleAddNewDeal);
+// const isModelVisibleAddNewDeal = computed(() => store.state.isModelVisibleAddNewDeal);
 
 // Action to toggle modal visibility
 const toggleModalAddNewDeal = () => {
-  store.commit('toggleModalAddNewDeal');
+    modalStore.commit('toggleModalAddNewDeal');
 };
 </script>
 
