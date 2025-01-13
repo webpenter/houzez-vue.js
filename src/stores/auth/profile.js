@@ -14,12 +14,8 @@ import axiosInstance from "@/services/axiosService.js";
 
 export const useProfile = defineStore("userProfile", {
     state: () => ({
-        profile: {
-            user:{},
-            profile_picture:{},
-            user_information:{},
-            social_links:{},
-        },
+        profile: {},
+        profilePicture:"",
         errors: null,
         baseUrl:'/profile'
     }),
@@ -40,7 +36,7 @@ export const useProfile = defineStore("userProfile", {
                 const url = `${this.baseUrl}/get-information`;
                 const res = await axiosInstance.get(url);
 
-                this.setProfile(res.data.profile);
+                this.setProfile(res.data.data);
 
                 return new Promise(resolve => {
                     return resolve(res);
@@ -49,6 +45,24 @@ export const useProfile = defineStore("userProfile", {
                 if (error.response && error.response.data) {
                     this.errors = error.response;
                 }
+
+                return new Promise(reject => {
+                    return reject(error.response);
+                })
+            }
+        },
+        async getProfilePicture(){
+            try {
+                const res = await axiosInstance.get(`${this.baseUrl}/get-picture`);
+
+                this.setProfilePicture(res.data);
+
+                return new Promise(resolve => {
+                    return resolve(res);
+                })
+
+            } catch (error) {
+                this.errors = error.response;
 
                 return new Promise(reject => {
                     return reject(error.response);
@@ -64,8 +78,13 @@ export const useProfile = defineStore("userProfile", {
         async updateProfilePicture(profile_picture)  {
             try {
                 const url = `${this.baseUrl}/update-picture`;
-                const res = await axiosInstance().post(url, profile_picture);
-                this.setProfile(res.data.profile);
+                const res = await axiosInstance.post(url, profile_picture,{
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                });
+
+                this.setProfile(res.data.profile_picture_url);
 
                 return new Promise(resolve => {
                     resolve(res);
@@ -80,12 +99,13 @@ export const useProfile = defineStore("userProfile", {
                 })
             }
         },
-        setProfile(profile) {
-            this.profile.user = profile.user;
-            this.profile.profile_picture = profile.avatar.profile_picture;
-            this.profile.user_information = profile.user_information;
-            this.profile.social_links = profile.social_links;
-        }
+
+        setProfile(data) {
+            this.profile = data;
+        },
+        setProfilePicture(data) {
+            this.profilePicture = data;
+        },
 
     }
 })
