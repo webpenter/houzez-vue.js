@@ -1,19 +1,30 @@
+/**
+ * @fileOverview List of route configurations for the application.
+ *
+ * @description Contains route definitions for various views and components.
+ *
+ * @feature Includes metadata for authentication requirements, titles, and other settings.
+ * @feature Used to define the navigation structure and dynamic component imports.
+ *
+ * @author https://webpenter.com
+ * @date 15 Dec,2024
+ */
+
 import { createRouter, createWebHistory } from 'vue-router';
-import {DEFAULT_TITLE} from "@/constants/general.js";
-import {useAuth} from "@/stores/index.js";
+import {DEFAULT_TITLE} from "@/constants";
+import {useToken} from "@/stores/index.js";
 
 const routes = [
     /***
      * @route 'localhost:3000/'
      * @name app
-     * @prefix No
+     * @prefix app
      * @auth not-required
-     * @author WebPenter Devs
-     * @date 25 Dec,2024
      ***/
     {
         path: '/',
         name:'app',
+        redirect:'/',
         component:() => import('@/views/app/layout/Index.vue'),
         children:[
             /***
@@ -108,10 +119,8 @@ const routes = [
     /***
      * @route 'localhost:3000/dashboard/'
      * @name dashboard
-     * @prefix No
+     * @prefix dashboard
      * @auth required
-     * @author WebPenter Devs
-     * @date 25 Dec,2024
      ***/
     {
         path: '/dashboard',
@@ -441,6 +450,15 @@ const routes = [
         meta: { title: "302 Unauthorized" },
     },
     /*** ---------------
+     * @route 403-Unauthorized
+     ***/
+    {
+        path: "/access-denied",
+        name: "access-denied",
+        component: () => import('@/components/pages/AccessDenied403.vue'),
+        meta: { title: "403 Access Denied", auth: true  },
+    },
+    /*** ---------------
      * @route 404-Page-Not-Found
      ***/
     {
@@ -459,22 +477,36 @@ const router = createRouter({
   }
 });
 
-/* -------- Before and After route authentications ---------- */
-router.beforeEach((to,from,next) => {
-  /* -------------- Guards of Protected and Unprotected Routes ---------------- */
-    // const isAuth = useAuth().getAuthStatus;
-    // if (to.meta.auth && !isAuth) {
-    //   next({ name: 'app.login' });
-    // } else if (to.meta.guest && isAuth) {
-    //     next({ name: 'dashboard' });
-    // } else {
-    //   next();
-    // }
+router.beforeEach((to, from, next) => {
+    /**
+     * @feature Retrieve the token for authentication from the token store "Pinia"
+     **/
+    const token = useToken().getToken;
+    console.log("Token Val: ", token);
 
-    next();
+    /**
+     * @feature Check if the current route requires authentication but no valid token is present.
+     * @feature Redirect to the login page if the route requires authentication and the user is not logged in.
+     * @feature Check if the current route is for guest users only, but a valid token exists.
+     * @feature Redirect to the "access-denied" if the user is already authenticated and trying to access a guest-only route.
+     * @feature Allow navigation to the route if no guard conditions are triggered.
+     **/
+    if (to.meta.auth && token === null) {
+        next({ name: 'app.login' });
+    }
+    else if (to.meta.guest && token !== null) {
+        next({ name: 'access-denied' });
+    }
+    else {
+        next();
+    }
 
-  /* --------------------------- Dynamic Title -------------------------------- */
-    document.title = to?.meta.title ? `${to.meta.title} - Houzez` : DEFAULT_TITLE;
+    /**
+     *  @feature Set the document title dynamically based on the meta property of the current route.
+     *  @feature Append a suffix "- baseTitle" if a title is defined in store "Pinia", otherwise fallback to the default title.
+     **/
+    const baseTitle = 'Houzez' || DEFAULT_TITLE;
+    document.title = to?.meta.title ? `${to.meta.title} - ${baseTitle}` : baseTitle;
 });
 
 export default router;

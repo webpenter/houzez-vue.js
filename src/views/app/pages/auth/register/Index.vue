@@ -16,7 +16,7 @@
     </div>
     <div class="form-group">
       <label for="password">Confirm Password</label>
-      <input type="password" v-model="formData.confirm_password" id="confirm_password" name="confirm_password" placeholder="Enter password again" required>
+      <input type="password" v-model="formData.password_confirmation" id="confirm_password" name="confirm_password" placeholder="Enter password again" required>
     </div>
     <button type="submit" class="submit-btn">Register</button>
   </form>
@@ -108,7 +108,6 @@ const formData = reactive({
   username: '',
   email: '',
   password: '',
-  confirm_password: ''
 })
 
 const submit = async () => {

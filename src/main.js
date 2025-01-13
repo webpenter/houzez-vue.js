@@ -4,9 +4,11 @@ import App from './App.vue';
 import router from './router';
 
 import plugins from './plugins';
-import subStr from './helpers/subStr';
-import dateFormat from './helpers/dateFormat';
 import { createPinia } from "pinia";
+import {
+    subStr,
+    logout
+} from "./helpers"
 
 const app = createApp(App);
 const pinia = createPinia();
@@ -19,5 +21,5 @@ app.mount('#app');
 /* ------------ Global Helpers ------------- */
 app.config.globalProperties.$filters = {
     subStr,
-    dateFormat
+    logout
 };

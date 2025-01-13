@@ -1,14 +1,14 @@
 <template>
   <div class="body">
-  <form class="registration-form">
+  <form @submit.prevent="submit" class="registration-form">
     <h2>Login</h2>
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <input type="email" v-model="formData.email" id="email" name="email" placeholder="Enter your email" required>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      <input type="password" v-model="formData.password" id="password" name="password" placeholder="Enter your password" required>
     </div>
     <button type="submit" class="submit-btn">Login</button>
   </form>
@@ -92,4 +92,23 @@
 </style>
 
 <script setup>
+import {reactive} from "vue";
+import {useAuth} from "@/stores/index.js";
+import router from "@/router/index.js";
+
+const formData = reactive({
+  email: '',
+  password: '',
+})
+
+const submit = async () => {
+  try {
+    const response = await useAuth().login(formData);
+    if (response.status === 200) {
+      router.push({ name: 'dashboard' });
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
 </script>
