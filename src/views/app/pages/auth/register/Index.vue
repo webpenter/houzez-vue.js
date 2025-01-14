@@ -108,6 +108,7 @@ const formData = reactive({
   username: '',
   email: '',
   password: '',
+  password_confirmation: '',
 })
 
 const submit = async () => {

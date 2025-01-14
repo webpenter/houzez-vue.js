@@ -104,23 +104,21 @@
 
 </template>
 <script>
-
-import { defineEmits } from 'vue';
-
 export default {
-	mounted() {
-		$('.selectpicker').selectpicker();
-	},
-	data() {
-		return {
-			Source: '',
-		};
-	}
+    emits: ['close'], // Add emits here
+    mounted() {
+        $('.selectpicker').selectpicker();
+    },
+    data() {
+        return {
+            Source: '',
+        };
+    },
+    methods: {
+        closePanel() {
+            this.$emit('close'); // Correct event emission
+        },
+    },
 };
 
-// Define the close event
-const emit = defineEmits(['close']);
-const closePanel = () => {
-	emit('close'); // Emit the close event 
-};
 </script>

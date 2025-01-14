@@ -1,19 +1,22 @@
 import { defineStore } from 'pinia';
 
-export const useModelStore = defineStore('model', {
+export const useModelStore = defineStore('Model', {
   // State: Define the reactive data
   state: () => ({
     isModelVisibleAddNewDeal: false,
     isModelVisibleAddNewLead: false,
+    isModelVisibleAddNewEnquiry: false,
   }),
 
-  // Getters: Derived state equivalent to Vuex getters
+  
   getters: {
     isModalVisibleAddNewDeal: (state) => state.isModelVisibleAddNewDeal,
     isModalVisibleAddNewLead: (state) => state.isModelVisibleAddNewLead,
+    isModalVisibleAddNewEnquiry: (state) => state.isModelVisibleAddNewEnquiry,
+
   },
 
-  // Actions: Replace Vuex mutations and actions
+
   actions: {
     toggleModalAddNewDeal() {
       this.isModelVisibleAddNewDeal = !this.isModelVisibleAddNewDeal;
@@ -21,5 +24,8 @@ export const useModelStore = defineStore('model', {
     toggleModalAddNewLead() {
       this.isModelVisibleAddNewLead = !this.isModelVisibleAddNewLead;
     },
+    toggleModalAddNewEnquiry(){
+      this.isModelVisibleAddNewEnquiry = !this.isModelVisibleAddNewEnquiry;
+    }
   },
 });

@@ -53,8 +53,9 @@
 </template>
 
 <script setup>
+
 import { computed } from 'vue';
-import { useStore } from 'vuex';
+import { useModelStore } from '@/stores/Model';
 
 import AddNewLeadPanel from '@/views/inc/dashboard/board/AddNewLeadPanel.vue';
 import CrmToolBar from '@/views/inc/dashboard/board/CrmToolBar.vue';
@@ -64,13 +65,13 @@ import Pagination from '@/views/inc/listing/Pagination.vue';
 
 
 
-const store = useStore();
-
+const modalStore = useModelStore(); 
 // Compute modal visibility from Vuex store
-const isModelVisibleAddNewLead = computed(() => store.state.isModelVisibleAddNewLead);
+const isModelVisibleAddNewLead = computed(() => modalStore.isModalVisibleAddNewLead);
+
 
 // Action to toggle modal visibility
 const toggleModalAddNewLead = () => {
-  store.commit('toggleModalAddNewLead');
+    modalStore.toggleModalAddNewLead();
 };
 </script>
