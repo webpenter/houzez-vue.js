@@ -1,20 +1,25 @@
 <template>
     <DashboardHeader heading="Deals">
-        <a class="btn btn-primary" href="#">Add New Deal</a>
+      <a class="btn btn-primary" href="#" @click.prevent="toggleModalAddNewDeal">Add New Deal</a>
     </DashboardHeader>
-
+  
+    <!-- Modal -->
+    <AddNewDealPanel v-if="isModelVisibleAddNewDeal" @close="toggleModalAddNewDeal" />
+  
     <section class="dashboard-content-wrap">
-        <div class="dashboard-content-inner-wrap">
-            <div class="dashboard-content-block-wrap">
-                <div class="dashboard-content-block">
-                    You don't have any deals at this moment. <a class="open-close-slide-panel" href="#"><strong>Add New Deal</strong></a>
-                </div>
-            </div>
-            <CrmToolBar />
+      <div class="dashboard-content-inner-wrap">
+        <div class="dashboard-content-block-wrap">
+          <div class="dashboard-content-block">
+            You don't have any deals at this moment.
+            <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewDeal">
+              <strong>Add New Deal</strong>
+            </a>
+          </div>
         </div>
+        <CrmToolBar />
+      </div>
 
         <div class="deals-table-wrap">
-
             <ul class="nav nav-pills deals-nav-tab" role="tablist">
                 <li class="nav-item">
                     <router-link 
@@ -52,7 +57,7 @@
                             <th class="table-nowrap">Last Contact Date</th>
                             <th class="table-nowrap">Phone</th>
                             <th class="table-nowrap">Email</th>
-                            <th class="table-nowrap">Actions</th> 
+                            <th class="table-nowrap">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,13 +69,13 @@
                         <tr>
                             <td colspan="6">
                                 <label class="mr-2">Items per page</label>
-                                <select class="selectpicker form-control bs-select-hidden table-select-auto" title="10" data-live-search="false" data-dropdown-align-right="auto">
+                                <select class="selectpicker form-control bs-select-hidden table-select-auto" title="10">
                                     <option>10</option>
                                     <option>20</option>
                                     <option>30</option>
                                     <option>40</option>
                                     <option>50</option>
-                                </select><!-- selectpicker -->
+                                </select>
                             </td>
                             <td class="total-deals">
                                 <strong>$354,000</strong>
@@ -80,15 +85,32 @@
                             </td>
                         </tr>
                     </tfoot>
-                </table><!-- dashboard-table -->
-            </div><!-- dashboard-content-block -->
+                </table>
+            </div>
+        </div>
+    </section>
 
-        </div><!-- deals-table-wrap -->
-    </section><!-- dashboard-content-wrap -->
+    
 </template>
-
 <script setup>
+import { computed } from 'vue';
+import { useModelStore } from '@/stores/Model';
+// import { useStore } from 'vuex';
+
 import CrmToolBar from '@/views/inc/dashboard/board/CrmToolBar.vue';
 import DealsTableItem from '@/views/inc/dashboard/board/DealsTableItem.vue';
+import AddNewDealPanel from '@/views/inc/dashboard/board/AddNewDealPanel.vue';
 
+// const store = useStore();
+const modalStore = useModelStore(); 
+// Compute modal visibility from Vuex store
+const isModelVisibleAddNewDeal = computed(() => modalStore.isModalVisibleAddNewDeal);
+
+
+// Action to toggle modal visibility
+const toggleModalAddNewDeal = () => {
+    modalStore.toggleModalAddNewDeal();
+};
 </script>
+
+

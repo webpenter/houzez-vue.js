@@ -14,7 +14,7 @@
             <SideWrap/>
         </section>
     </main><!-- .main-wrap -->
-    <AddNewDealPanel />
+    <!-- <AddNewDealPanel /> -->
     <DashboardFooter/>
     
     <!-- <?php include 'inc/dashboard/board/add-new-deal-panel.php'; ?> -->
