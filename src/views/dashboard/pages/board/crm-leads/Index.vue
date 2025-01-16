@@ -55,7 +55,7 @@
 <script setup>
 
 import { computed } from 'vue';
-import { useModelStore } from '@/stores/Model';
+import { useModelStore } from '@/stores/model/model.js';
 
 import AddNewLeadPanel from '@/views/inc/dashboard/board/AddNewLeadPanel.vue';
 import CrmToolBar from '@/views/inc/dashboard/board/CrmToolBar.vue';
