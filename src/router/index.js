@@ -210,7 +210,9 @@ const routes = [
             },
 
 
-            /* ---------------- Insight ------------------ */
+            /***
+             * @route Dashboard/Insight
+             ***/
             {
                 path: '/dashboard/insight',
                 name:'dashboard.insight',
@@ -448,6 +450,15 @@ const routes = [
         name: "unauthorized",
         component: () => import('@/components/pages/Unauthorized302.vue'),
         meta: { title: "302 Unauthorized" },
+    },
+    /*** ---------------
+     * @route 401-Unauthorized
+     ***/
+    {
+        path: "/unauthorized-401",
+        name: "unauthorized-401",
+        component: () => import('@/components/pages/Unauthorized401.vue'),
+        meta: { title: "401 Unauthorized" },
     },
     /*** ---------------
      * @route 403-Unauthorized
