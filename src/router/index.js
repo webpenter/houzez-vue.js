@@ -444,6 +444,7 @@ const routes = [
 
     /*** ---------------
      * @route 302-Unauthorized
+     * @auth not-required
      ***/
     {
         path: "/unauthorized",
@@ -453,6 +454,7 @@ const routes = [
     },
     /*** ---------------
      * @route 401-Unauthorized
+     * @auth not-required
      ***/
     {
         path: "/unauthorized-401",
@@ -461,7 +463,8 @@ const routes = [
         meta: { title: "401 Unauthorized" },
     },
     /*** ---------------
-     * @route 403-Unauthorized
+     * @route 403-Access-Denied
+     * @auth required
      ***/
     {
         path: "/access-denied",
@@ -471,6 +474,7 @@ const routes = [
     },
     /*** ---------------
      * @route 404-Page-Not-Found
+     * @auth not-required
      ***/
     {
         path: "/:pathMatch(.*)",
