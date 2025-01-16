@@ -36,7 +36,9 @@
 
 <script setup>
 import {ref} from "vue";
-import {useAuth} from "@/stores/index.js";
+import {useAuth, useNotification} from "@/stores/index.js";
+
+const notify = useNotification();
 
 const passwordForm = ref({
   current_password: null,
@@ -57,11 +59,11 @@ const submitPasswordForm = async () => {
     const res = await useAuth().changePassword(passwordForm.value);
 
     if (res.status === 200) {
-      console.log("Password updated successfully ",res.data);
+      notify.Success("Password changed successfully.");
       resetPasswordForm();
     }
   } catch (error) {
-    console.log(error);
+    notify.Error("Error occurs: ",error);
   }
 
 }

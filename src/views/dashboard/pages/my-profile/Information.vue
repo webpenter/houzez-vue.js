@@ -125,12 +125,13 @@
 </template>
 
 <script setup>
-import {useProfile} from "@/stores/index.js";
+import {useNotification, useProfile} from "@/stores/index.js";
 import {onMounted, ref, watch} from "vue";
 import {storeToRefs} from "pinia";
 
 const profileToRefs = useProfile();
 const {profile,profilePicture} = storeToRefs(profileToRefs);
+const notify = useNotification();
 
 const formData = ref({
   username: "",
@@ -178,11 +179,12 @@ const handleFileChange = async (event) => {
 
     try {
       const response = await profileToRefs.updateProfilePicture(formProfileData);
-      if (response?.data?.profile_picture_url) {
+      if (response.status === 200) {
+        notify.Success("Profile picture successfully updated!");
         formProfilePicture.value = response.data.profile_picture_url;
       }
     } catch (error) {
-      console.error("Failed to update profile picture:", error);
+      notify.Error("Error occurs: ",error);
     }
   }
 };
@@ -192,10 +194,10 @@ const submitForm = async () => {
     const res = await profileToRefs.updateProfileInfo(formData.value);
 
     if (res.status === 200){
-      console.log("updated success")
+      notify.Success("Profile successfully updated");
     }
   } catch (error) {
-    console.error("Failed to update profile picture:", error);
+    notify.Error("Error occurs :", error);
   }
 }
 

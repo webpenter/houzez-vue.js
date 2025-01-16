@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-export const useModelStore = defineStore('Model', {
+export const useModelStore = defineStore('model', {
   // State: Define the reactive data
   state: () => ({
     isModelVisibleAddNewDeal: false,

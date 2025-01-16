@@ -12,7 +12,7 @@
 
 import { createRouter, createWebHistory } from 'vue-router';
 import {DEFAULT_TITLE} from "@/constants";
-import {useToken} from "@/stores/index.js";
+import {useToken,useGeneralSettings} from "@/stores/index.js";
 
 const routes = [
     /***
@@ -510,7 +510,7 @@ router.beforeEach((to, from, next) => {
         next({ name: 'app.login' });
     }
     else if (to.meta.guest && token !== null) {
-        next({ name: 'access-denied' });
+        next({ name: 'dashboard' });
     }
     else {
         next();
@@ -520,7 +520,8 @@ router.beforeEach((to, from, next) => {
      *  @feature Set the document title dynamically based on the meta property of the current route.
      *  @feature Append a suffix "- baseTitle" if a title is defined in store "Pinia", otherwise fallback to the default title.
      **/
-    const baseTitle = 'Houzez' || DEFAULT_TITLE;
+    const {pageTitle} = useGeneralSettings();
+    const baseTitle = pageTitle || DEFAULT_TITLE;
     document.title = to?.meta.title ? `${to.meta.title} - ${baseTitle}` : baseTitle;
 });
 

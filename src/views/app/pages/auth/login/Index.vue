@@ -93,8 +93,10 @@
 
 <script setup>
 import {reactive} from "vue";
-import {useAuth} from "@/stores/index.js";
+import {useAuth, useNotification} from "@/stores/index.js";
 import router from "@/router/index.js";
+
+const notify = useNotification();
 
 const formData = reactive({
   email: '',
@@ -105,10 +107,11 @@ const submit = async () => {
   try {
     const response = await useAuth().login(formData);
     if (response.status === 200) {
+      notify.Success("Login successfully");
       router.push({ name: 'dashboard' });
     }
   } catch (error) {
-    console.log(error)
+    notify.Error("Error occurs: ",error);
   }
 }
 </script>

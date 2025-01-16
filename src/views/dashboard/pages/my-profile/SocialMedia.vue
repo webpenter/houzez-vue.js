@@ -78,11 +78,12 @@
 
 <script setup>
 import {storeToRefs} from "pinia";
-import {useProfile} from "@/stores/index.js";
+import {useNotification, useProfile} from "@/stores/index.js";
 import {onMounted, ref, watch} from "vue";
 
 const profileToRefs = useProfile()
 const {socialMedia} = storeToRefs(profileToRefs);
+const notify = useNotification();
 
 const socialMediaForm = ref({
   facebook:"",
@@ -104,10 +105,10 @@ const submitSocialMediaForm = async () => {
       const res = await profileToRefs.updateSocialMedia(socialMediaForm.value);
 
       if (res.status === 200) {
-        console.log("Updated success ",res.data);
+        notify.Success("Social media accounts successfully updated!");
       }
   } catch (error) {
-      console.error(error);
+      notify.Error("Error occurs: ",error);
   }
 };
 

@@ -14,44 +14,32 @@
                             </div><!-- col-md-9 col-sm-12 -->
                         </div><!-- row -->
                     </div><!-- dashboard-content-block -->
-  <el-button plain @click="open1"> Closes automatically </el-button>
-  <el-button plain @click="open2"> Won't close automatically </el-button>
 </template>
 
 <script setup>
-import {useAuth} from "@/stores/index.js";
+import {useAuth, useConfirm, useMessage, useNotification} from "@/stores/index.js";
 import router from "@/router/index.js";
-import { h } from 'vue'
-import { ElNotification } from 'element-plus'
 
-const open1 = () => {
-  ElNotification({
-    title: 'Title',
-    message: h('i', { style: 'color: teal' }, 'This is a reminder'),
-  })
-}
+const notify = useNotification();
+const confirm = useConfirm();
+const message = useMessage();
 
-const open2 = () => {
-  ElNotification({
-    title: 'Prompt',
-    message: 'This is a message that does not automatically close',
-    duration: 0,
-  })
-}
+const deleteAccount = () => {
+  confirm.Warning("Are you sure you want to delete this account?")
+      .then(async () => {
+        try {
+          const res = await useAuth().deleteAccount();
 
-const deleteAccount = async () => {
-  if (!confirm("Are you sure you want to delete this account?")){
-    return;
-  }
-  
-  try {
-    const res = await useAuth().deleteAccount();
-
-    if (res.status === 200) {
-      router.push({name: "unauthorized-401"});
-    }
-  } catch (error) {
-    console.log(error);
-  }
+          if (res.status === 200) {
+            notify.Success("Account successfully deleted!");
+            router.push({name: "app.register"});
+          }
+        } catch (error) {
+          notify.Error("Error occurs: ",error);
+        }
+      })
+      .catch(() => {
+        message.Info("Request cancelled");
+      })
 }
 </script>
