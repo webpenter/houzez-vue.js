@@ -10,6 +10,6 @@ export const logout = async () => {
             router.push({name: 'app'});
         }
     } catch (error) {
-        useNotification().Error("Error occurs: ",error);
+        useNotification().Error(error);
     }
 }

@@ -108,7 +108,7 @@ const submitSocialMediaForm = async () => {
         notify.Success("Social media accounts successfully updated!");
       }
   } catch (error) {
-      notify.Error("Error occurs: ",error);
+      notify.Error(error);
   }
 };
 

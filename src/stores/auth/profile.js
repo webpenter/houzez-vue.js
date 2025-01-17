@@ -17,6 +17,7 @@ export const useProfile = defineStore("userProfile", {
         profile: {},
         profilePicture:"",
         socialMedia:{},
+        loading: false,
         errors: null,
         baseUrl:'/profile'
     }),
@@ -34,10 +35,12 @@ export const useProfile = defineStore("userProfile", {
          */
         async getProfileInfo () {
             try {
+                this.loading = true;
                 const url = `${this.baseUrl}/get-information`;
                 const res = await axiosInstance.get(url);
 
                 this.setProfile(res.data.profile);
+                this.loading = false;
 
                 return new Promise(resolve => {
                     return resolve(res);

@@ -35,7 +35,7 @@ const deleteAccount = () => {
             router.push({name: "app.register"});
           }
         } catch (error) {
-          notify.Error("Error occurs: ",error);
+          notify.Error(error);
         }
       })
       .catch(() => {

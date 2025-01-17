@@ -122,7 +122,7 @@ const submit = async () => {
       router.push({ name: 'dashboard' })
     }
   } catch (error) {
-    notify.Error("Error occurs: ",error);
+    notify.Error(error);
   }
 }
 </script>
