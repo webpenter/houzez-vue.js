@@ -1,10 +1,19 @@
 <template>
     <h2>Information</h2>
-    <div class="dashboard-content-block">
+  <div class="dashboard-content-block">
                         <div class="row">
                             <div class="col-md-3 col-sm-12">
-                                <img v-if="!formProfilePicture" class="img-fluid" src="https://placehold.co/300x300?text=PP" alt="thumb">
-                                <img v-else class="img-fluid" :src="formProfilePicture" alt="thumb">
+                                 <template v-if="loading">
+                                   <el-skeleton style="width: 240px" animated>
+                                     <template #template>
+                                       <el-skeleton-item variant="image" style="width: 240px; height: 240px" />
+                                     </template>
+                                   </el-skeleton>
+                                 </template>
+                                  <template v-else>
+                                    <img v-if="formProfilePicture" class="img-fluid" :src="formProfilePicture" alt="thumb">
+                                    <el-avatar v-else shape="square" :size="240" src="https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png" />
+                                  </template>
                                 <button @click="triggerFileInput" type="button" class="btn btn-primary btn-full-width mt-3">
                                   Update Profile Picture
                                 </button>
@@ -14,7 +23,6 @@
                                     style="display: none;"
                                     @change="handleFileChange"
                                 />
-                                <small class="form-text text-muted text-center">Minimum 300 x 300 px</small>
                             </div><!-- col-md-3 col-sm-12 -->
 
                             <div class="col-md-9 col-sm-12">
@@ -125,12 +133,13 @@
 </template>
 
 <script setup>
-import {useProfile} from "@/stores/index.js";
+import {useNotification, useProfile} from "@/stores/index.js";
 import {onMounted, ref, watch} from "vue";
 import {storeToRefs} from "pinia";
 
 const profileToRefs = useProfile();
-const {profile,profilePicture} = storeToRefs(profileToRefs);
+const {profile,profilePicture,loading} = storeToRefs(profileToRefs);
+const notify = useNotification();
 
 const formData = ref({
   username: "",
@@ -178,11 +187,12 @@ const handleFileChange = async (event) => {
 
     try {
       const response = await profileToRefs.updateProfilePicture(formProfileData);
-      if (response?.data?.profile_picture_url) {
+      if (response.status === 200) {
+        notify.Success("Profile picture successfully updated!");
         formProfilePicture.value = response.data.profile_picture_url;
       }
     } catch (error) {
-      console.error("Failed to update profile picture:", error);
+      notify.Error(error);
     }
   }
 };
@@ -192,10 +202,10 @@ const submitForm = async () => {
     const res = await profileToRefs.updateProfileInfo(formData.value);
 
     if (res.status === 200){
-      console.log("updated success")
+      notify.Success("Profile successfully updated");
     }
   } catch (error) {
-    console.error("Failed to update profile picture:", error);
+    notify.Error(error);
   }
 }
 

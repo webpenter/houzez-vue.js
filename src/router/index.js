@@ -12,7 +12,7 @@
 
 import { createRouter, createWebHistory } from 'vue-router';
 import {DEFAULT_TITLE} from "@/constants";
-import {useToken} from "@/stores/index.js";
+import {useToken,useGeneralSettings} from "@/stores/index.js";
 
 const routes = [
     /***
@@ -444,6 +444,7 @@ const routes = [
 
     /*** ---------------
      * @route 302-Unauthorized
+     * @auth not-required
      ***/
     {
         path: "/unauthorized",
@@ -453,6 +454,7 @@ const routes = [
     },
     /*** ---------------
      * @route 401-Unauthorized
+     * @auth not-required
      ***/
     {
         path: "/unauthorized-401",
@@ -461,7 +463,8 @@ const routes = [
         meta: { title: "401 Unauthorized" },
     },
     /*** ---------------
-     * @route 403-Unauthorized
+     * @route 403-Access-Denied
+     * @auth required
      ***/
     {
         path: "/access-denied",
@@ -471,6 +474,7 @@ const routes = [
     },
     /*** ---------------
      * @route 404-Page-Not-Found
+     * @auth not-required
      ***/
     {
         path: "/:pathMatch(.*)",
@@ -506,7 +510,7 @@ router.beforeEach((to, from, next) => {
         next({ name: 'app.login' });
     }
     else if (to.meta.guest && token !== null) {
-        next({ name: 'access-denied' });
+        next({ name: 'dashboard' });
     }
     else {
         next();
@@ -516,7 +520,8 @@ router.beforeEach((to, from, next) => {
      *  @feature Set the document title dynamically based on the meta property of the current route.
      *  @feature Append a suffix "- baseTitle" if a title is defined in store "Pinia", otherwise fallback to the default title.
      **/
-    const baseTitle = 'Houzez' || DEFAULT_TITLE;
+    const {pageTitle} = useGeneralSettings();
+    const baseTitle = pageTitle || DEFAULT_TITLE;
     document.title = to?.meta.title ? `${to.meta.title} - ${baseTitle}` : baseTitle;
 });
 
