@@ -1,0 +1,1 @@
+import{o as a,s as o,w as r,b as s,e as n,u as c,R as u}from"./index-DJyakCbI.js";const m={__name:"BackBtn",props:["route"],setup(t){return(i,e)=>(a(),o(c(u),{class:"btn btn-primary-outlined",to:{name:t.route}},{default:r(()=>e[0]||(e[0]=[s("i",{class:"houzez-icon icon-arrow-left-1 mr-2"},null,-1),n(" Back ")])),_:1},8,["to"]))}};export{m as _};

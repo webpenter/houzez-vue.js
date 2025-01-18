@@ -1,0 +1,400 @@
+/* widgets
+/* ----------------------------------------------------------- */
+.widget-wrap {
+	@extend %mt-30;
+	@extend %br-4;
+	padding: 30px;
+	background-color: $white;
+	&:first-of-type {
+		@extend %margin-0;
+	}
+	.bootstrap-select .dropdown-menu {
+		@extend %full-width;
+	}
+	.input-group-text {
+		background-color: $white;
+	}
+}
+.widget-title {
+	margin-bottom: 25px;
+	font-size: 18px;
+	line-height: 24px;
+}
+/* about site - widget
+/* ----------------------------------------------------------- */
+.widget-about-image {
+	@extend %mb-20;
+}
+.widget-read-more {
+	@extend %font-weight-500;	
+}
+/* contact us - widget
+/* ----------------------------------------------------------- */
+.widget-contact-us {
+	li {
+		@extend %clearfix;
+		padding: 5px 0;
+	}
+}
+/* blog posts - widget
+/* ----------------------------------------------------------- */
+.blog-post-item-widget {
+	@extend %mb-20;
+	&:last-of-type {
+		@extend %margin-0;
+	}
+}
+.blog-post-image-widget {
+	margin-#{$end-direction}: 20px;
+	min-width: 70px;
+	@include respond-to(md-max) {
+		width: 90px;
+	}
+}
+.blog-post-content-widget {
+	color: $grey;
+	h4 {
+		font-size: 14px;
+		line-height: 24px;
+	}
+}
+/* featured properties - widget
+/* ----------------------------------------------------------- */
+.featured-property-item-widget {
+	@extend %mb-20;
+	&:last-of-type {
+		@extend %margin-0;
+	}
+	.item-wrap-v3 {
+		
+		.labels-wrap {
+			@extend %absolute;
+			@extend %left-auto;
+			@extend %bottom-auto;
+			top: 20px;
+			#{$end-direction}: 20px;
+			.label {
+				@extend %float-left;
+			}
+		}
+		.item-price-wrap {
+			@extend %right-auto;
+			#{$start-direction}: 20px;
+			bottom: 30px;
+			.item-price {
+				font-size: 13px;
+			}
+		}
+		.item-address {
+			@extend %absolute;
+			color: $white;
+			#{$start-direction}: 20px;
+			bottom: -5px;
+			z-index: 1;
+			max-width: calc(100% - 40px);
+		}
+		.item-title {
+			max-width: 85%;
+			bottom: 52px;
+			font-size: 13px;
+		}
+	}
+}
+.widget-featured-property {
+	@extend %clearfix;
+	&:not(.widget-featured-property-slider-wrap) {
+		.featured-property-item-widget {
+			@include respond-to(md-max) {
+				width: calc(50% - 1px);
+				float: #{$start-direction};
+				margin-#{$start-direction}: 1px;
+				margin-bottom: 1px;
+			}
+			@include respond-to(sm-max) {
+				width: 100%;
+				//float: none;
+				margin-#{$start-direction}: 0;
+				margin-bottom: 20px;
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}
+.widget {
+	.item-sub-price {
+		@extend %display-none;
+	}
+}
+/* properties - widget
+/* ----------------------------------------------------------- */
+.property-item-widget {
+	@extend %mb-20;
+	&:last-of-type {
+		@extend %margin-0;
+	}
+	.left-property-item-widget-wrap {
+		width: 90px;
+		min-width: 90px;
+		margin-#{$end-direction}: 20px;
+		border-radius: 4px;
+		overflow: hidden;
+	}
+	.right-property-item-widget-wrap {
+		.item-title {
+			white-space: normal;
+		}
+		.item-price-wrap {
+			@extend %relative;
+			@extend %left-auto;
+			@extend %bottom-auto;
+		}
+		.item-title,
+		.item-price {
+			font-size: 13px;
+			line-height: 22px;
+		}
+		.item-price {
+			margin-bottom: 6px;
+		}
+		.item-amenities {
+			@extend %font-weight-300;
+			font-size: 12px;
+		}
+		.item-sub-price {
+			@extend %display-none;
+		}
+	}
+}
+/* lists - widget
+/* ----------------------------------------------------------- */
+.widget {
+	ul:not(.item-amenities):not(.item-price-wrap):not(.contact-list):not(.dropdown-menu):not(.nav-tabs) {
+		@extend %padding-0;
+		@extend %margin-0;
+		list-style: none;
+		ul {
+			padding-#{$start-direction}: 20px;
+		}
+		li {
+			@extend %clearfix;
+			padding-top: 8px;
+			padding-#{$end-direction}: 0;
+			padding-bottom: 0;
+			padding-#{$start-direction}: 10px;
+			a {
+				@extend %relative;
+				@extend %font-weight-500;
+				padding-#{$start-direction}: 15px;
+				padding-top: 0;
+				padding-bottom: 0;
+				margin-#{$start-direction}: -10px;
+				&:before {
+					//@extend %absolute;
+					//@extend %left-0;
+					content: "\e912";
+					font-family: $icon-font;
+					font-size: 10px;
+					margin-#{$start-direction}: -15px;
+					margin-#{$end-direction}: 5px;
+				}
+			}
+			span {
+				@extend %float-right;
+				@extend %font-weight-300;
+				color: $grey;
+			}
+		}
+	}
+}
+/* flickr & instagram - widget
+/* ----------------------------------------------------------- */
+.flickr-images,
+.instagram-images {
+	a {
+		@extend %display-block;
+		width: 50%;
+		border-#{$end-direction}: 1px solid $white;
+		border-bottom: 1px solid $white;
+		@include respond-to(md-max) {
+			width: 25%
+		}
+		@include respond-to(sm-max) {
+			width: 50%;
+		}
+	}
+}
+.widget-instagram-slider {
+	@extend %relative;
+}
+/* twitter - widget
+/* ----------------------------------------------------------- */
+.tweet-item {
+	@extend %mb-20;
+	&:last-of-type {
+		@extend %margin-0;
+	}
+}
+.tweet-icon {
+	color: #4099ff;
+	margin-#{$end-direction}: 20px;
+}
+.twitter-widget-slider {
+	@extend %relative;
+}
+.tweet-slider {
+	.d-flex {
+		flex-direction: column;
+	}
+	.tweet-icon,
+	.tweet-content {
+		@extend %margin-0;
+		@extend %full-width;
+		justify-content: center;
+		text-align: center;
+	}
+	.tweet-icon {
+		@extend %mb-20;
+	}
+}
+/* mortgage - widget
+/* ----------------------------------------------------------- */
+.widget-mortgage-calculator {
+	.mortgage-details {
+		@extend %display-none;
+		ul {
+			li {
+				padding: 0 !important;
+				line-height: 25px !important;
+				font-size: 13px;
+			}
+		}
+		&.detail-wrap {
+			margin-top: 20px;
+			padding: 10px 20px !important;
+		}
+	}
+}
+/* login and register - widget
+/* ----------------------------------------------------------- */
+.widget-login-register {
+	.login-register-tabs {
+		@extend %mb-20;
+		.nav-tabs {
+			padding-inline: 0;
+		}
+	}
+	.logged-in-wrap {
+		img {
+			margin-#{$end-direction}: 20px;
+		}
+	}
+}
+/* slider - widget
+/* ----------------------------------------------------------- */
+.widget-instagram-slider,
+.widget-featured-property-slider-wrap {
+	@extend %relative;
+	.featured-property-item-widget {
+		@extend %margin-0;
+	}
+	.slick-dotted.slick-slider {
+		margin-bottom: 20px;
+	}
+	.slick-prev, 
+	.slick-next {
+		@extend %z-index-2;
+		height: 20px;
+		width: 20px;
+		//top: calc(50% + 20px);
+		&:before {
+			font-size: 12px;
+		}
+	}
+}
+/* advanced search - widget
+/* ----------------------------------------------------------- */
+.advanced-search-widget {
+	.row {
+		margin-#{$end-direction}: -5px;
+		margin-#{$start-direction}: -5px;
+	}
+	.col-sm-6,
+	.col-xs-12 {
+		padding-#{$end-direction}: 5px;
+		padding-#{$start-direction}: 5px;
+	}
+	.range-text {
+		font-size: 12px;
+	}
+	.price-range-wrap,
+	.area-range-wrap {
+		padding-bottom: 30px;
+		margin-bottom: 10px;
+		border-bottom: 1px solid $border-color;
+	}
+	.features-list-wrap {
+		padding-top: 5px;
+		padding-bottom: 15px;
+		text-align: center;
+	}
+	.features-list {
+		text-align: #{$start-direction};
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+/* wordpress default - widgets
+/* ----------------------------------------------------------- */
+.calendar_wrap {
+	table {
+		width: 100%;
+	}
+}
+.widget_recent_entries,
+.widget_recent_comments {
+	ul {
+		li {
+			padding: 0 !important;
+			line-height: 25px !important;
+			margin-bottom: 10px;
+			a {
+				padding-#{$start-direction}: 0 !important;
+				margin-#{$start-direction}: 0 !important;
+				&:before {
+					display: none;	
+				}
+			}
+
+		}	
+	}
+}
+.comment-author-link {
+	float: none !important;
+}
+/* featured projects - widget
+/* ----------------------------------------------------------- */
+.featured-project-item-widget {
+	.item-wrap-v3 {
+		.item-price-wrap {
+			bottom: 15px;
+		}
+		.item-title {
+			bottom: 40px;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

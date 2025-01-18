@@ -1,0 +1,24 @@
+.header-mobile {
+	@extend %relative;
+	text-align: center;
+	height: 60px;
+	padding: 0 10px;
+	@include respond-to(md-min) {
+		display: none !important;
+	}
+	.logo {
+		margin: 0 auto;
+	}
+	.toggle-button-left,
+	.toggle-button-right {
+		background-color: transparent;
+		font-size: 20px;
+		&:active,
+		&:focus {
+			outline: 0;
+		}
+	}
+}
+.header-mobile-right {
+	min-width: 56px;
+}
