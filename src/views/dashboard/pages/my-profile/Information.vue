@@ -37,8 +37,17 @@
                                     <div class="col-md-6 col-sm-12">
                                       <div class="form-group">
                                         <label>Username</label>
-                                        <input class="form-control" v-model="formData.username" placeholder="Enter your username" type="text">
+                                        <input
+                                            class="form-control"
+                                            :class="{ 'is-invalid': localErrors.username }"
+                                            @input="validateField('username')"
+                                            v-model="formData.username"
+                                            placeholder="Enter your username"
+                                            type="text">
                                       </div>
+                                      <span class="text-danger" v-if="localErrors.username">
+                                        {{ localErrors.username }}
+                                      </span>
                                     </div><!-- col-md-6 col-sm-12 -->
                                     <div class="col-md-6 col-sm-12">
                                       <div class="form-group">
@@ -125,7 +134,7 @@
                                       </div><!-- form-group -->
                                     </div><!-- col-md-6 col-sm-12 -->
                                   </div><!-- row -->
-                                  <button class="btn btn-success" type="submit">Update Profile</button>
+                                  <button class="btn btn-success" :disabled="hasErrors" type="submit">Update Profile</button>
                                 </form>
                             </div><!-- col-md-9 col-sm-12 -->
                         </div><!-- row -->
@@ -134,7 +143,7 @@
 
 <script setup>
 import {useNotification, useProfile} from "@/stores/index.js";
-import {onMounted, ref, watch} from "vue";
+import {computed, onMounted, ref, watch} from "vue";
 import {storeToRefs} from "pinia";
 
 const profileToRefs = useProfile();
@@ -160,6 +169,37 @@ const formData = ref({
   specialties: "",
   about_me: "",
 });
+
+const localErrors = ref({
+  username: "",
+});
+
+const validateField = (field) => {
+  if (field === "username") {
+    const username = formData.value.username;
+
+    if (!username) {
+      localErrors.value.username = "Username is required.";
+    } else if (username.length < 4) {
+      localErrors.value.username = "Username must be at least 4 characters.";
+    } else if (/\s/.test(username)) {
+      localErrors.value.username = "Username cannot contain spaces.";
+    } else if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(username)) {
+      localErrors.value.username =
+          "Username must start with a letter or underscore, and contain only letters, numbers, or underscores.";
+    } else {
+      localErrors.value.username = "";
+    }
+  } else {
+    localErrors.value[field] = "";
+  }
+};
+
+
+
+const hasErrors = computed(() =>
+    Object.values(localErrors.value).some((error) => error !== "")
+);
 
 const formProfilePicture = ref("");
 const fileInput = ref(null);
@@ -190,6 +230,8 @@ const handleFileChange = async (event) => {
       if (response.status === 200) {
         notify.Success("Profile picture successfully updated!");
         formProfilePicture.value = response.data.profile_picture_url;
+      } else {
+        notify.Error("Failed to update profile picture.");
       }
     } catch (error) {
       notify.Error(error);
@@ -198,11 +240,21 @@ const handleFileChange = async (event) => {
 };
 
 const submitForm = async () => {
+  Object.keys(formData.value).forEach(validateField);
+  if (hasErrors.value) {
+    notify.Error("Please fix the errors before submitting.");
+    return;
+  }
+
   try {
     const res = await profileToRefs.updateProfileInfo(formData.value);
 
     if (res.status === 200){
       notify.Success("Profile successfully updated");
+    } else if (res.status === 409) {
+      notify.Error("The username is already taken. Please choose a different one.");
+    } else {
+      notify.Error("Failed to update profile information.");
     }
   } catch (error) {
     notify.Error(error);
