@@ -1,0 +1,337 @@
+/* map
+/* ----------------------------------------------------------- */
+#houzez-properties-map, 
+#houzez-single-listing-map {
+	@extend %full-width;
+	@extend %full-height;
+}
+#map_canvas {
+	@extend %full-width;
+	@extend %full-height;
+}
+.block-map-wrap {
+	min-height: 450px;
+}
+.loader-show {
+	display: inline-block;
+	margin-#{$end-direction}: 10px;
+}
+.map-wrap {
+	@extend %absolute;
+	@extend %top-0;
+	@extend %left-0;
+	@extend %full-width;
+	@extend %full-height;
+}
+#map {
+	@extend %full-width;
+	@extend %full-height;
+}
+.houzez-map-loading {
+	@extend %absolute;
+	@extend %full-width;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 100;
+}
+.map-notfound {
+	@extend %absolute;
+	@extend %br-4;
+	color: $text-color;
+	font-size: 20px;
+	font-weight: 300;
+	z-index: 1;
+	top: 30%;
+	#{$start-direction}: 50%;
+	width: 280px;
+	height: 78px;
+	margin: 0 auto;
+	margin-#{$start-direction}: -150px;
+	padding-top: 30px;
+	text-align: center;
+	opacity: .95;
+	background-color: $white;
+}
+.houzez-fullscreen-map {
+	@extend %fixed;
+	@extend %full-width;
+	@extend %full-height;
+	z-index: 1000001;
+}
+/* map info-window
+/* ----------------------------------------------------------- */
+.gm-style-iw[style],
+.gm-style-iw-d[style], 
+.gm-style-iw-c[style] {
+	padding: 0 !important;
+	overflow: visible !important;
+    max-width: none !important;
+}
+.gm-style .gm-style-iw-c {
+    border-radius: 8px 0 8px 8px;
+}
+.gm-style-iw-chr {
+    position: absolute;
+    right: -24px;
+    background-color: #fff;
+    border-radius: 0 4px 4px 0;
+}
+.gm-style-iw-chr .gm-ui-hover-effect[style] {
+    width: 24px !important;
+    height: 24px !important;
+}
+.gm-style-iw-chr .gm-ui-hover-effect span[style] {
+    margin: 0 !important;
+}
+.map-info-window {
+	width: 300px;
+	.item-wrap {
+		@extend %padding-0;
+		img {
+			width: 120px;
+		}
+	}
+	.item-header {
+		width: 120px;
+		height: 90px;
+		padding: 5px;
+		@extend %float-left;
+	}
+	.item-body {
+		width: 180px;
+		height: 90px;
+		padding-top: 6px;
+		padding-#{$end-direction}: 15px;
+		padding-bottom: 0;
+		padding-#{$start-direction}: 5px;
+		@extend %float-left;	
+	}
+	.item-title {
+		font-size: 13px;
+		white-space: normal;
+		text-overflow: unset;
+		line-height: 18px;
+		margin-bottom: 2px;
+		//multiline ellipsis
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		visibility: visible;
+	}
+	.item-info {
+		line-height: 20px;
+		.item-type {
+			text-transform: uppercase;
+			font-size: 11px;
+			font-weight: 500;
+		}
+	}
+	// .item-address,
+	// .item-amenities li {
+		// 	font-size: 10px;
+		// }
+		// .item-amenities li {
+			// 	margin-#{$end-direction}: 5px;
+			// 	&:last-of-type {
+				// 		margin-bottom: 0;
+				// 		margin-#{$end-direction}: 0;
+				// 	}
+				// }
+				// .item-address {
+					// 	margin-bottom: 10px;
+					// }
+					// .item-price-wrap .item-price {
+						// 	font-size: 12px;
+						// }
+						// .item-amenities .h-type span {
+							// 	font-size: 10px;
+							// }
+						}
+						.gm-ui-hover-effect {
+							@extend %z-index-1;
+
+						}
+/* map price marker
+/* ----------------------------------------------------------- */
+.gm-marker {
+	color: $black;
+	@extend %display-inline-block;
+	border-radius: 30px;
+	line-height: 22px;
+	padding: 0 7px;
+	font-size: 12px;
+}
+.gm-marker {
+	@extend %relative;
+	background: $white;
+	border: 1px solid $white;
+	box-shadow: 0px 2px 1px 0px rgba($black, .2) !important;
+}
+.gm-marker:after, .arrow_box:before {
+	top: 100%;
+	#{$start-direction}: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	@extend %absolute;
+	pointer-events: none;
+}
+.gm-marker:after {
+	border-color: rgba($white, 0);
+	border-top-color: $white;
+	border-width: 7px;
+	margin-#{$start-direction}: -7px;
+}
+.gm-marker:before {
+	border-color: rgba($white, 0);
+	border-top-color: $white;
+	border-width: 8px;
+	margin-#{$start-direction}: -8px;
+}
+.gm-marker.active, .gm-marker.hover-state {
+	background: $black;
+	color: $white;
+}
+.gm-marker.active:after, .gm-marker.hover-state:after {
+	border-top-color: $black;
+}
+.gm-marker-price {
+	font-weight: 700;
+}
+.gm-marker-price:before {
+	content: "";
+	display: block;
+	height: 7px;
+	width: 10px;
+	position: absolute;
+	top: 26px;
+	#{$start-direction}: calc(50% - 5px);
+	border-radius: 100%;
+}
+.gm-marker-price:after {
+	content: "";
+	display: block;
+	background-color: rgba(0,0,0,.5);
+	border-radius: 100%;
+	height: 4px;
+	width: 10px;
+	position: absolute;
+	#{$start-direction}: calc(50% - 5px);
+	top: calc(100% + 5px);
+}
+/* google maps buttons
+/* ----------------------------------------------------------- */
+.map-arrows-actions,
+.map-next-prev-actions,
+.map-zoom-actions {
+	font-size: 0;
+	@extend %z-index-1;
+	@extend %absolute;
+}
+.map-arrows-actions {
+	top: 20px;
+	#{$start-direction}: 20px;
+}
+.map-next-prev-actions {
+	top: 20px;
+	#{$end-direction}: 20px;
+}
+.map-zoom-actions {
+	#{$end-direction}: 20px;
+	bottom: 20px;
+}
+.map-btn {
+	font-size: 10px;
+	font-weight: 700;
+	text-transform: uppercase;
+	line-height: 29px;
+	height: 30px;
+	padding: 0 10px;
+	cursor: pointer;
+	color: $white;
+	background: none;
+	background-color: rgba($black,.75);
+	
+	@extend %display-inline-block;
+	@extend %v-middle;
+	@extend %border-none;
+	//@extend .animation;
+	@include border-radius(4px);
+	@include respond-to(xs-max) {
+		span {
+			display: none;
+		}
+	}
+	&:hover {
+		background-color: rgba($black,1);
+	}
+	& + .map-btn {
+		margin-#{$start-direction}: 3px;
+	}
+	.houzez-icon {
+		font-weight: 700;
+	}
+}
+.map-search[style] {
+	top: 20px !important;
+	#{$start-direction}: 82px !important;
+}
+.map-search {
+	font-size: 14px;
+	width: 188px;
+	height: 32px;
+	margin-#{$start-direction}: 3px;
+	padding: 0 8px;
+	color: $black;
+	border: 1px solid $border-color;
+	background-color: rgba($white,1);
+	@extend %display-inline-block;
+	@extend %v-middle;
+	@extend %border-none;
+	@extend %br-4;
+}
+.property-address-wrap .gm-style-iw-a {
+	@extend %display-none;
+}
+/* open street map info window
+/* ----------------------------------------------------------- */
+.leaflet-popup {
+	background-color: $white;
+	.map-info-window {
+		.item-header {
+			padding: 0;
+		}
+		.item-address {
+			margin-bottom: 0;
+		}
+		.item-body {
+			padding-top: 10px;
+			padding-#{$end-direction}: 10px;
+			padding-bottom: 0;
+			padding-#{$start-direction}: 10px;
+		}
+	}
+}
+.leaflet-popup-tip-container {
+	bottom: -20px;
+}
+#houzez-properties-map .leaflet-control-container {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
