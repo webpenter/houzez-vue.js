@@ -36,7 +36,10 @@
 					Details
 				</router-link>
 
-				<a class="dropdown-item open-close-slide-panel" href="#">Edit</a>
+				<a class="dropdown-item open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewLead">Edit</a> 
+
+				<AddNewLeadPanel v-if="isModelVisibleAddNewLead" @close="toggleModalAddNewLead" />
+
 				<a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
 			</div>
 		</div>
@@ -74,7 +77,11 @@
 				Actions
 			</button>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="crm-lead-enquiries.php">Details</a>
+				<router-link 
+					to="/dashboard/crm-lead-enquiries" 
+					class="dropdown-item">
+					Details
+				</router-link>
 				<a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
 			</div>
 		</div>
@@ -112,10 +119,31 @@
 				Actions
 			</button>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="crm-lead-enquiries.php">Details</a>
+				<router-link 
+					to="/dashboard/crm-lead-enquiries" 
+					class="dropdown-item">
+					Details
+				</router-link>
 				<a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
 			</div>
 		</div>
 	</td>
 </tr>
 </template>
+
+<script setup>
+
+import { computed } from 'vue';
+import { useModelStore } from '@/stores/model/model.js';
+
+
+const modalStore = useModelStore(); 
+// Compute modal visibility from Vuex store
+const isModelVisibleAddNewLead = computed(() => modalStore.isModalVisibleAddNewLead);
+
+
+// Action to toggle modal visibility
+const toggleModalAddNewLead = () => {
+    modalStore.toggleModalAddNewLead();
+};
+</script>
