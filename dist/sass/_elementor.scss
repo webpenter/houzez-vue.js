@@ -1,0 +1,229 @@
+@media (min-width: 768px) {
+    .elementor-column.elementor-col-15, 
+    .elementor-column[data-col="15"] {
+        width: 15%; 
+    }
+    .elementor-column.elementor-col-35, 
+    .elementor-column[data-col="35"] {
+        width: 35%; 
+    }
+    .elementor-column.elementor-col-45, 
+    .elementor-column[data-col="45"] {
+        width: 45%; 
+    }
+    .elementor-column.elementor-col-55, 
+    .elementor-column[data-col="55"] {
+        width: 55%; 
+    }
+    .elementor-column.elementor-col-65, 
+    .elementor-column[data-col="65"] {
+        width: 65%; 
+    }
+}
+
+@media (max-width: 479px) {
+    .elementor-column.elementor-xs-15 {
+        width: 15%; 
+    }
+    .elementor-column.elementor-xs-35 {
+        width: 35%; 
+    }
+    .elementor-column.elementor-xs-45 {
+        width: 45%; 
+    }
+    .elementor-column.elementor-xs-55 {
+        width: 55%; 
+    }
+    .elementor-column.elementor-xs-65 {
+        width: 65%; 
+    }
+}
+
+@media (max-width: 767px) {
+    .elementor-column.elementor-sm-15 {
+        width: 15%; 
+    }
+    .elementor-column.elementor-sm-35 {
+        width: 35%; 
+    }
+    .elementor-column.elementor-sm-45 {
+        width: 45%; 
+    }
+    .elementor-column.elementor-sm-55 {
+        width: 55%; 
+    }
+    .elementor-column.elementor-sm-65 {
+        width: 65%; 
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .elementor-column.elementor-md-15 {
+        width: 15%; 
+    }
+    .elementor-column.elementor-md-35 {
+        width: 35%; 
+    }
+    .elementor-column.elementor-md-45 {
+        width: 45%; 
+    }
+    .elementor-column.elementor-md-55 {
+        width: 55%; 
+    }
+    .elementor-column.elementor-md-65 {
+        width: 65%; 
+    }
+}
+
+/* property page widgets
+/* ------------------------------------------------------------------------ */
+.hz-ele-price {
+    @extend %margin-0;
+    @extend %padding-0;
+}
+.ele-item-tools {
+    @extend %margin-0;
+    @extend %padding-0;
+}
+
+/* houzez-nav-menu houzez-elementor-menu
+/* ------------------------------------------------------------------------ */
+.houzez-nav-menu__align-justify {
+    .houzez-elementor-menu {
+        width: 100%;
+    }
+    .houzez-elementor-menu {
+        & > li {
+            flex-grow: 1;
+            & > a {
+                justify-content: center;
+            }
+        }
+    }
+}
+.houzez-nav-menu__align-left {
+    .houzez-elementor-menu {
+        margin-#{$end-direction}: auto;
+        justify-content: flex-start;
+    }
+}
+.houzez-nav-menu__align-right {
+    .houzez-elementor-menu {
+        margin-#{$start-direction}: auto;
+        justify-content: flex-end;
+    }
+}
+.houzez-nav-menu__align-center {
+    .houzez-elementor-menu {
+        margin-#{$start-direction}: auto;
+        margin-#{$end-direction}: auto;
+        justify-content: center;
+    }
+}
+
+/* .houzez-field-textual
+/* ------------------------------------------------------------------------ */
+.houzez-field-textual {
+    line-height: 1.4;
+    font-size: 15px;
+    min-height: 40px;
+    border-radius: 3px;
+    &.elementor-size-xs {
+        font-size: 13px;
+        min-height: 33px;
+        border-radius: 2px;
+        button {
+            &:not(.actions-btn) {
+                font-size: 13px;
+                min-height: 33px;
+                border-radius: 2px;
+            }
+        }
+    }
+    &.elementor-size-md {
+        font-size: 16px;
+        min-height: 47px;
+        border-radius: 4px;
+        button {
+            &:not(.actions-btn) {
+                font-size: 16px;
+                min-height: 47px;
+                border-radius: 4px;
+            }
+        }
+    }
+    &.elementor-size-lg {
+        font-size: 18px;
+        min-height: 59px;
+        border-radius: 5px;
+        button {
+            &:not(.actions-btn) {
+                font-size: 18px;
+                min-height: 59px;
+                border-radius: 5px;
+                padding: 7px 20px;
+            }
+        }
+    }
+    &.elementor-size-xl {
+        font-size: 20px;
+        min-height: 72px;
+        border-radius: 6px;
+        button {
+            &:not(.actions-btn) {
+                font-size: 20px;
+                min-height: 72px;
+                border-radius: 6px;
+                padding: 8px 24px;
+            }
+        }
+    }
+}
+.error-container {
+    .error {
+        font-size: 14px;
+        font-weight: 400;
+    }
+}
+.houzez-custom-field {
+    .control {
+        font-size: 14px;
+        font-weight: 400;
+    }
+}
+.location-trigger {
+    &.elementor-size-xs {
+        height: 42px;
+        line-height: 42px;
+    }
+    &.elementor-size-md {
+        height: 47px;
+        line-height: 47px;
+    }
+    &.elementor-size-lg {
+        height: 59px;
+        line-height: 59px;
+    }
+    &.elementor-size-xl {
+        height: 72px;
+        line-height: 72px;
+    }
+}
+.houzez-search-button {
+    &.elementor-size-xs {
+        padding: 13px 20px !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

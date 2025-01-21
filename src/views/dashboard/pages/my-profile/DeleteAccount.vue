@@ -17,22 +17,29 @@
 </template>
 
 <script setup>
-import {useAuth} from "@/stores/index.js";
+import {useAuth, useConfirm, useMessage, useNotification} from "@/stores/index.js";
 import router from "@/router/index.js";
 
-const deleteAccount = async () => {
-  if (!confirm("Are you sure you want to delete this account?")){
-    return;
-  }
-  
-  try {
-    const res = await useAuth().deleteAccount();
+const notify = useNotification();
+const confirm = useConfirm();
+const message = useMessage();
 
-    if (res.status === 200) {
-      router.push({name: "unauthorized-401"});
-    }
-  } catch (error) {
-    console.log(error);
-  }
+const deleteAccount = () => {
+  confirm.Warning("Are you sure you want to delete this account?")
+      .then(async () => {
+        try {
+          const res = await useAuth().deleteAccount();
+
+          if (res.status === 200) {
+            notify.Success("Account successfully deleted!");
+            router.push({name: "app.register"});
+          }
+        } catch (error) {
+          notify.Error(error);
+        }
+      })
+      .catch(() => {
+        message.Info("Request cancelled");
+      })
 }
 </script>

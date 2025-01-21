@@ -1,0 +1,11 @@
+/* header transparent
+/* ----------------------------------------------------------- */
+.header-transparent-wrap {
+	@extend %absolute;
+	@extend %full-width;
+	@extend %z-index-2;
+	.header-v4,
+	.navi-login-register {
+		background-color: transparent !important;
+	}
+}

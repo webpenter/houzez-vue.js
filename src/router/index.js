@@ -12,7 +12,7 @@
 
 import { createRouter, createWebHistory } from 'vue-router';
 import {DEFAULT_TITLE} from "@/constants";
-import {useToken} from "@/stores/index.js";
+import {useToken,useGeneralSettings} from "@/stores/index.js";
 
 const routes = [
     /***
@@ -191,6 +191,12 @@ const routes = [
                 meta: { title: 'Lead Enquiries' }
             },
             {
+                path: '/dashboard/crm-lead-enquiries-propert-detail',
+                name: 'dashboard.crm-lead-enquiries-propert-detail',
+                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEnquiryFromPropertyDetailPage.vue'), // Enquiries view
+                meta: { title: 'Lead Enquiries Property' }
+            },
+            {
                 path: '/dashboard/crm-lead-events',
                 name: 'dashboard.crm-lead.events',
                 component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEvents.vue'),
@@ -234,6 +240,12 @@ const routes = [
                 name:'dashboard.my-properties',
                 component:() => import('@/views/dashboard/pages/my-properties/all/Index.vue'),
                 meta:{ title:'My Properties' }
+            },
+            {
+                path: '/dashboard/dashboard-agent-edit-property',
+                name:'dashboard.dashboard-agent-edit-property',
+                component:() => import('@/views/inc/dashboard/property/DashboardAgentEditPropertyDescriptionAndPrice.vue'),
+                meta:{ title:'Edit Properties' }
             },
             {
                 path: '/dashboard/my-properties/published',
@@ -419,7 +431,13 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/invoices/Index.vue'),
                 meta:{ title:'Invoices' }
             },
-
+            
+            {
+                path: '/dashboard/dashboard-agent-invoice',
+                name:'dashboard.dashboard-agent-invoice',
+                component:() => import('@/views/inc/dashboard/DashboardAgentInvoice.vue'),
+                meta:{ title:'Agent Invoice' }
+            },
             /***
              * @route Dashboard/Messages
              ***/
@@ -429,7 +447,13 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/messages/Index.vue'),
                 meta:{ title:'Messages' }
             },
-
+            
+            {
+                path: '/dashboard/dashboard-agent-message',
+                name:'dashboard.dashboard-agent-message',
+                component:() => import('@/views/inc/dashboard/DashboardAgentMessage.vue'),
+                meta:{ title:'Messages' }
+            },
             /***
              * @route Dashboard/My-Profile
              ***/
@@ -444,6 +468,7 @@ const routes = [
 
     /*** ---------------
      * @route 302-Unauthorized
+     * @auth not-required
      ***/
     {
         path: "/unauthorized",
@@ -453,6 +478,7 @@ const routes = [
     },
     /*** ---------------
      * @route 401-Unauthorized
+     * @auth not-required
      ***/
     {
         path: "/unauthorized-401",
@@ -461,7 +487,8 @@ const routes = [
         meta: { title: "401 Unauthorized" },
     },
     /*** ---------------
-     * @route 403-Unauthorized
+     * @route 403-Access-Denied
+     * @auth required
      ***/
     {
         path: "/access-denied",
@@ -471,6 +498,7 @@ const routes = [
     },
     /*** ---------------
      * @route 404-Page-Not-Found
+     * @auth not-required
      ***/
     {
         path: "/:pathMatch(.*)",
@@ -506,7 +534,7 @@ router.beforeEach((to, from, next) => {
         next({ name: 'app.login' });
     }
     else if (to.meta.guest && token !== null) {
-        next({ name: 'access-denied' });
+        next({ name: 'dashboard' });
     }
     else {
         next();
@@ -516,7 +544,8 @@ router.beforeEach((to, from, next) => {
      *  @feature Set the document title dynamically based on the meta property of the current route.
      *  @feature Append a suffix "- baseTitle" if a title is defined in store "Pinia", otherwise fallback to the default title.
      **/
-    const baseTitle = 'Houzez' || DEFAULT_TITLE;
+    const {pageTitle} = useGeneralSettings();
+    const baseTitle = pageTitle || DEFAULT_TITLE;
     document.title = to?.meta.title ? `${to.meta.title} - ${baseTitle}` : baseTitle;
 });
 

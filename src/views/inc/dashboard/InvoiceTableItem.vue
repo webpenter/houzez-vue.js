@@ -9,7 +9,7 @@
 	<td data-label="Payment Method">Direct Bank Transfer</td>
 	<td data-label="Total"><strong>$59.99</strong></td>
 	<td data-label="Actions">
-		<a class="btn btn-primary" href="dashboard-agent-invoice.php">Details</a>
+		<RouterLink class="btn btn-primary" to="/dashboard/dashboard-agent-invoice">Details</RouterLink>
 	</td>
 </tr>
 
