@@ -63,6 +63,7 @@ export const useAuth = defineStore('userAuth', {
                 })
             }
         },
+
         /**
          * @feature Logs in a user by sending their credentials to the server.
          * @param {Object} formData - The login credentials (e.g., email and password).
@@ -86,6 +87,7 @@ export const useAuth = defineStore('userAuth', {
                 })
             }
         },
+
         /**
          * @feature Logs out the user by sending a request to the server to terminate the session.
          * @returns {Promise<Object>} - Resolves with the server's response if the logout is successful.Throws an error if the logout request fails..
@@ -103,6 +105,7 @@ export const useAuth = defineStore('userAuth', {
                 }
             }
         },
+
         /**
          * @feature Changes the user's password by sending the new password to the server.
          * @param {Object} formData - The data containing the old and new passwords.
@@ -110,9 +113,33 @@ export const useAuth = defineStore('userAuth', {
          */
         async changePassword (formData) {
             try {
-                const response =await axiosInstance.put(`/change-password`, formData)
-                // this.setAuthInfo(response.data)
-                // this.permissions = response.data?.data?.role?.permissions;
+                const response = await axiosInstance.post(`/change-password`, formData)
+
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
+
+        /**
+         * @feature Delete the user's account by sending the request to the server.
+         * @returns {Promise<Object>} - Resolves with the server's response if the account deleted successfully.Rejects with the server's error response if the request fails.
+         */
+        async deleteAccount () {
+            try {
+                const response = await axiosInstance.delete(`/delete-account`);
+
+                if (response.status === 200) {
+                    this.removeAuthInfo();
+                }
+
                 return new Promise(resolve => {
                     resolve(response)
                 })
