@@ -1,5 +1,4 @@
 <template>
-
     <DashboardHeader heading="Deals">
         <a class="btn btn-primary" href="#">Add New Deal</a>
     </DashboardHeader>
@@ -42,3 +41,5 @@
         </div><!-- deals-table-wrap -->
     </section><!-- dashboard-content-wrap -->
 </template>
+
+<script setup></script>

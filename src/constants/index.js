@@ -1,1 +1,2 @@
-export const PROPERTIES_PER_PAGE = 10;
+export * from "./routeList.js"
+export * from "./general.js"

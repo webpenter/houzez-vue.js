@@ -1,0 +1,180 @@
+/* modal global
+/* ------------------------------------------------------------------------ */
+.modal {
+	.modal-title {
+		font-size: 18px;
+	}	
+}
+/* login register
+/* ------------------------------------------------------------------------ */
+div#login-register-form {
+	z-index: 9999;
+}
+.login-register-form {
+	.modal-content {
+		border: none;
+	}
+	.modal-dialog {
+		max-width: 430px;
+	}
+	.modal-header {
+		@extend %padding-0;
+		overflow: hidden; 
+		border: none;
+		border-top-#{$start-direction}-radius: 4px;
+		border-top-#{$end-direction}-radius: 4px;
+		border-bottom-#{$end-direction}-radius: 0;
+		border-bottom-#{$start-direction}-radius: 0;
+		.close {
+			@extend %margin-0;
+			padding: 15px 20px;
+			color: $white;
+			opacity: 1;
+			text-shadow: none;
+			border-#{$start-direction}: 1px solid rgba($white, 0.2);
+			span {
+				@extend %relative;
+				top: -2px;
+			}
+		}
+		.login-register-tabs {
+			.nav-link,
+			.nav-tabs {
+				border: none;
+			}
+			.nav-link {
+				border-#{$end-direction}: 1px solid;
+				border-color: rgba($white, 0.2);
+				padding: 15px 30px;
+				color: $white;
+				&:hover {
+					border-color: rgba($white, 0.2);
+				}
+			}
+		}
+	}
+	.modal-body {
+		padding: 30px;
+	}
+	.dropdown-menu {
+		@extend %full-width;
+	}
+}
+.login-register-tabs {
+	.nav-link {
+		@extend %font-weight-500;
+		@extend %br-0;
+	}
+}
+.form-tools {
+	@extend %mb-20;
+	@extend %mt-20;
+	.control {
+		@extend %mb-0;
+		color: $grey;
+	}
+	a {
+		min-height: 24px;
+		font-size: 14px;
+		font-weight: 500;
+	}
+}
+
+.login-form-wrap,
+.register-form-wrap {
+	@extend %br-4;
+	background-color: $white;
+	border: 1px solid $border-color;
+	.form-group-field {
+		@extend %relative;
+		&:after {
+			@extend %absolute;
+			@extend %display-inline-block;
+			font-family: $icon-font;
+			color: $grey;
+			top: 10px;
+			#{$start-direction}: 18px;
+		}
+		input {
+			padding-#{$start-direction}: 42px;
+			border: none;
+		}
+	}
+	.form-group {
+		border-bottom: 1px solid $border-color;
+		@extend %mb-0;
+		&:last-of-type {
+			border-bottom: none;
+		}
+	}
+	.username-field {
+		&:after {
+			content: "\e93a";
+		}	
+	}
+	.password-field {
+		&:after {
+			content: "\e925";
+		}	
+	}
+	.email-field {
+		&:after {
+			content: "\e91d";
+		}	
+	}
+	.phone-field {
+		&:after {
+			content: "\e930";
+		}	
+	}
+
+}
+.social-login-wrap {
+	@extend %mt-20;
+	.btn {
+		&:first-of-type {
+			@extend %mb-10;
+		}
+	}
+}
+.reset-password-form,
+.mobile-property-form {
+	z-index: 9999;
+}
+
+/* phone number
+/* ------------------------------------------------------------------------ */
+.modal-phone-number {
+	.modal-body {
+		text-align: center;
+	}
+}
+.modal-body-phone-number-number {
+	.btn {
+		font-size: 18px;
+		i {
+			margin-#{$end-direction}: 5px;
+			font-size: 20px;
+			line-height: 20px;
+		    top: 1px;
+		    position: relative;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
