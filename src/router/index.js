@@ -247,6 +247,48 @@ const routes = [
                 component:() => import('@/views/inc/dashboard/property/DashboardAgentEditPropertyDescriptionAndPrice.vue'),
                 meta:{ title:'Edit Properties' }
             },
+                {
+                path: '/dashboard/dashboard-agent-edit-property-description-and-price',
+                name:'dashboard-agent-edit-property-description-and-price',
+                component:() => import('@/views/inc/dashboard/DashboardAgentEditPropertyDescriptionAndPrice.vue'),
+                meta:{ title:'Edit Properties' }
+            },
+            {
+                path: '/dashboard/dashboard-agent-edit-property-details',
+                name:'dashboard-agent-edit-property-details',
+                component:() => import('@/views/inc/dashboard/DashboardAgentEditPropertyDetails.vue'),
+                meta:{ title:'Edit Detail' }
+            },
+            {
+                path: '/dashboard/dashboard-agent-edit-property-features',
+                name:'dashboard-agent-edit-property-features',
+                component:() => import('@/views/inc/dashboard/DashboardAgentEditPropertyFeatures.vue'),
+                meta:{ title:'Edit Property' }
+            },
+            {
+                path: '/dashboard/dashboard-agent-edit-property-energy-class',
+                name:'dashboard-agent-edit-property-energy-class',
+                component:() => import('@/views/inc/dashboard/DashboardAgentEditPropertyEnergyClass.vue'),
+                meta:{ title:'Edit Energy' }
+            },
+            {
+                path: '/dashboard/dashboard-agent-edit-property-location',
+                name:'dashboard-agent-edit-property-location',
+                component:() => import('@/views/inc/dashboard/DashboardAgentEditPropertyLocation.vue'),
+                meta:{ title:'Edit Location' }
+            },
+            {
+                path: '/dashboard/dashboard-agent-edit-property-media',
+                name:'dashboard-agent-edit-property-media',
+                component:() => import('@/views/inc/dashboard/DashboardAgentEditPropertyMedia.vue'),
+                meta:{ title:'Edit Media' }
+            },
+            {
+                path: '/dashboard/dashboard-agent-edit-property-360-virtual-tour',
+                name:'dashboard-agent-edit-property-360-virtual-tour',
+                component:() => import('@/views/inc/dashboard/DashboardAgentEditProperty360VirtualTour.vue'),
+                meta:{ title:'Edit Virtual Tour' }
+            },
             {
                 path: '/dashboard/my-properties/published',
                 name:'dashboard.my-properties.published',

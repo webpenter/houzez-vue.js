@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import { RouterLink } from 'vue-router';
+
+</script>
+
 <template>
     <div class="menu-edit-property-wrap">
     <div class="menu-title">
@@ -10,39 +15,39 @@
             </a>
         </li> -->
         <li>
-            <a class="menu-edit-property-link active" href="dashboard-agent-edit-property-description-and-price.php">
+            <RouterLink class="menu-edit-property-link active" to="/dashboard/dashboard-agent-edit-property">
                 <i class="houzez-icon icon-arrow-right-1"></i> Description and Price
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-details.php">
+            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-details">
                 <i class="houzez-icon icon-arrow-right-1"></i> Details
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-features.php">
+            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-features">
                 <i class="houzez-icon icon-arrow-right-1"></i> Features
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-energy-class.php">
+            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-energy-class">
                 <i class="houzez-icon icon-arrow-right-1"></i> Energy Class
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-location.php">
+            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-location">
                 <i class="houzez-icon icon-arrow-right-1"></i> Location
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-media.php">
+            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-media">
                 <i class="houzez-icon icon-arrow-right-1"></i> Media
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-360-virtual-tour.php">
+            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-360-virtual-tour">
                 <i class="houzez-icon icon-arrow-right-1"></i> 360 Virtual tour
-            </a>
+            </RouterLink>
         </li>
         <li>
             <a class="menu-edit-property-link" href="dashboard-agent-edit-property-floor-plans.php">
