@@ -88,59 +88,61 @@
 	</div><!-- dashboard-content-block -->
 </div><!-- dashboard-content-block-wrap -->
 
-<div class="dashboard-content-block-wrap">
-	<h2>Custom Fields</h2>
-	<div class="dashboard-content-block">
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<div class="form-group">
-					<label>Custom Text</label>
-					<div class="features-list">
-						<label class="control control--checkbox">
-							<input type="checkbox" name="air-conditioning">Option
-							<span class="control__indicator"></span>
-						</label>
-						<label class="control control--checkbox">
-							<input type="checkbox" name="air-conditioning">Option
-							<span class="control__indicator"></span>
-						</label>
-						<label class="control control--checkbox">
-							<input type="checkbox" name="air-conditioning">Option
-							<span class="control__indicator"></span>
-						</label>
-						<label class="control control--checkbox">
-							<input type="checkbox" name="air-conditioning">Option
-							<span class="control__indicator"></span>
-						</label>
-					</div><!-- features-list -->
-				</div>
-			</div><!-- col-md-6 col-sm-12 -->
-			<div class="col-md-12 col-sm-12">
-				<div class="form-group">
-					<label>Custom Text</label>
-					<div class="features-list">
-						<label class="control control--radio">
-							<input type="radio" name="air-conditioning">Option
-							<span class="control__indicator"></span>
-						</label>
-						<label class="control control--radio">
-							<input type="radio" name="air-conditioning">Option
-							<span class="control__indicator"></span>
-						</label>
-						<label class="control control--radio">
-							<input type="radio" name="air-conditioning">Option
-							<span class="control__indicator"></span>
-						</label>
-						<label class="control control--radio">
-							<input type="radio" name="air-conditioning">Option
-							<span class="control__indicator"></span>
-						</label>
-					</div><!-- features-list -->
-				</div>
-			</div><!-- col-md-6 col-sm-12 -->
-		</div><!-- row -->
-	</div><!-- dashboard-content-block -->
-</div><!-- dashboard-content-block-wrap -->
+<!--<div class="dashboard-content-block-wrap">-->
+<!--	<h2>Custom Fields</h2>-->
+<!--	<div class="dashboard-content-block">-->
+<!--		<div class="row">-->
+<!--			<div class="col-md-12 col-sm-12">-->
+<!--				<div class="form-group">-->
+<!--					<label>Custom Text</label>-->
+<!--					<div class="features-list">-->
+<!--						<label class="control control&#45;&#45;checkbox">-->
+<!--							<input type="checkbox" name="air-conditioning">Option-->
+<!--							<span class="control__indicator"></span>-->
+<!--						</label>-->
+<!--						<label class="control control&#45;&#45;checkbox">-->
+<!--							<input type="checkbox" name="air-conditioning">Option-->
+<!--							<span class="control__indicator"></span>-->
+<!--						</label>-->
+<!--						<label class="control control&#45;&#45;checkbox">-->
+<!--							<input type="checkbox" name="air-conditioning">Option-->
+<!--							<span class="control__indicator"></span>-->
+<!--						</label>-->
+<!--						<label class="control control&#45;&#45;checkbox">-->
+<!--							<input type="checkbox" name="air-conditioning">Option-->
+<!--							<span class="control__indicator"></span>-->
+<!--						</label>-->
+<!--					</div>&lt;!&ndash; features-list &ndash;&gt;-->
+<!--				</div>-->
+<!--			</div>&lt;!&ndash; col-md-6 col-sm-12 &ndash;&gt;-->
+<!--			<div class="col-md-12 col-sm-12">-->
+<!--				<div class="form-group">-->
+<!--					<label>Custom Text</label>-->
+<!--					<div class="features-list">-->
+<!--						<label class="control control&#45;&#45;radio">-->
+<!--							<input type="radio" name="air-conditioning">Option-->
+<!--							<span class="control__indicator"></span>-->
+<!--						</label>-->
+<!--						<label class="control control&#45;&#45;radio">-->
+<!--							<input type="radio" name="air-conditioning">Option-->
+<!--							<span class="control__indicator"></span>-->
+<!--						</label>-->
+<!--						<label class="control control&#45;&#45;radio">-->
+<!--							<input type="radio" name="air-conditioning">Option-->
+<!--							<span class="control__indicator"></span>-->
+<!--						</label>-->
+<!--						<label class="control control&#45;&#45;radio">-->
+<!--							<input type="radio" name="air-conditioning">Option-->
+<!--							<span class="control__indicator"></span>-->
+<!--						</label>-->
+<!--					</div>&lt;!&ndash; features-list &ndash;&gt;-->
+<!--				</div>-->
+<!--			</div>-->
+<!--      &lt;!&ndash; col-md-6 col-sm-12 &ndash;&gt;-->
+<!--		</div>&lt;!&ndash; row &ndash;&gt;-->
+<!--	</div>&lt;!&ndash; dashboard-content-block &ndash;&gt;-->
+<!--</div>-->
+  <!-- dashboard-content-block-wrap -->
 </template>
 
 <script setup>
