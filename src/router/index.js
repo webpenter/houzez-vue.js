@@ -248,6 +248,42 @@ const routes = [
                 meta:{ title:'Edit Properties' }
             },
             {
+                path: '/dashboard/dashboard-agent-edit-property-floor-plans',
+                name:'dashboard.dashboard-agent-edit-property-floor-plans',
+                component:() => import('@/views/inc/dashboard/DashboardAgentEditPropertyFloorPlans.vue'),
+                meta:{ title:'Edit Properties Floor Plan' }
+            },
+            {
+                path: '/dashboard/dashboard-agent-edit-property-sub-properties',
+                name:'dashboard.dashboard-agent-edit-property-sub-properties',
+                component:() => import('@/views/inc/dashboard/DashboardAgentEditPropertySubProperties.vue'),
+                meta:{ title:'Edit Properties Sub Propertities' }
+            },
+            {
+                path: '/dashboard/dashboard-agent-edit-property-contact-information',
+                name:'dashboard.dashboard-agent-edit-property-contact-information',
+                component:() => import('@/views/inc/dashboard/DashboardAgentEditPropertyContactInformation.vue'),
+                meta:{ title:'Edit Properties contact Information' }
+            },
+            {
+                path: '/dashboard/dashboard-agent-edit-property-attachments',
+                name:'dashboard.dashboard-agent-edit-property-attachments',
+                component:() => import('@/views/inc/dashboard/DashboardAgentEditPropertyAttachments.vue'),
+                meta:{ title:'Edit Properties Attachment' }
+            },
+            {
+                path: '/dashboard/dashboard-agent-edit-property-private-note',
+                name:'dashboard.dashboard-agent-edit-property-private-note',
+                component:() => import('@/views/inc/dashboard/DashboardAgentEditPropertyPrivateNote.vue'),
+                meta:{ title:'Edit Properties Private Note' }
+            },
+            {
+                path: '/dashboard/dashboard-agent-edit-property-settings',
+                name:'dashboard.dashboard-agent-edit-property-settings',
+                component:() => import('@/views/inc/dashboard/DashboardAgentEditPropertySettings.vue'),
+                meta:{ title:'Edit Properties Settings' }
+            },
+            {
                 path: '/dashboard/my-properties/published',
                 name:'dashboard.my-properties.published',
                 component:() => import('@/views/dashboard/pages/my-properties/published/Index.vue'),

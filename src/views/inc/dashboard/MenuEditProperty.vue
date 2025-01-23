@@ -45,39 +45,39 @@
             </a>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-floor-plans.php">
+            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-floor-plans">
                 <i class="houzez-icon icon-arrow-right-1"></i> Floor Plans
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-sub-properties.php">
+            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-sub-properties">
                 <i class="houzez-icon icon-arrow-right-1"></i> Sub Properties
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-contact-information.php">
+            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-contact-information">
                 <i class="houzez-icon icon-arrow-right-1"></i> Contact Information
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="#">
+            <RouterLink class="menu-edit-property-link" to="#">
                 <i class="houzez-icon icon-arrow-right-1"></i> Calendar
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-attachments.php">
+            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-attachments">
                 <i class="houzez-icon icon-arrow-right-1"></i> Attachments
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-private-note.php">
+            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-private-note">
                 <i class="houzez-icon icon-arrow-right-1"></i> Private Notes
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-settings.php">
+            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-settings">
                 <i class="houzez-icon icon-arrow-right-1"></i> Settings
-            </a>
+            </RouterLink>
         </li>
     </ul>
 </div><!-- menu-edit-property-wrap -->
