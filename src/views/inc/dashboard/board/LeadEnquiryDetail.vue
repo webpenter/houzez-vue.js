@@ -1,7 +1,9 @@
 <template>
     <div class="lead-detail-wrap">
 	<h2>Enquiry Detail</h2>
-	<a class="label primary-label edit-lead-detail open-close-slide-panel" href="#">Edit</a>
+	<a class="label primary-label edit-lead-detail open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewDeal">Edit</a>
+	<!-- Modal -->
+    <AddNewDealPanel v-if="isModelVisibleAddNewDeal" @close="toggleModalAddNewDeal" />
 	<ul class="list-unstyled mb-5">
 		<li>
 			<strong>Contact</strong><br>
@@ -50,3 +52,18 @@
 	
 </div><!-- lead-detail-wrap -->
 </template>
+<script setup>
+import { computed } from 'vue';
+import { useModelStore } from '@/stores';
+import AddNewDealPanel from './AddNewDealPanel.vue';
+
+const modalStore = useModelStore(); 
+// Compute modal visibility from Vuex store
+const isModelVisibleAddNewDeal = computed(() => modalStore.isModalVisibleAddNewDeal);
+
+
+// Action to toggle modal visibility
+const toggleModalAddNewDeal = () => {
+    modalStore.toggleModalAddNewDeal();
+};
+</script>

@@ -1,12 +1,6 @@
-<script setup lang="ts">
-import LeadDetail from '@/views/inc/dashboard/board/LeadDetail.vue';
-import LeadTableEnquiries from '@/views/inc/dashboard/board/LeadTableEnquiries.vue';
-
-</script>
-
 <template>
     <DashboardHeader heading="Enquiries">
-        <a class="btn btn-primary" href="#">Add New Enquiry</a>
+        <a class="btn btn-primary" href="#" @click.prevent="toggleModalAddNewLead">Add New Enquiry</a>
     </DashboardHeader>
     <section class="dashboard-content-wrap">
         <div class="dashboard-content-inner-wrap">
@@ -53,8 +47,12 @@ import LeadTableEnquiries from '@/views/inc/dashboard/board/LeadTableEnquiries.v
                             <div class="d-flex justify-content-between mb-3">
                                 <div><strong>2 Enquiries</strong> on file</div> 
                                 <div>
-                                    <a href="#" class="btn btn-primary btn-slim open-close-slide-panel"><i class="houzez-icon icon-pencil mr-1"></i> Edit</a>
+                                    <a href="#" @click.prevent="toggleModalAddNewLead" class="btn btn-primary btn-slim open-close-slide-panel"><i class="houzez-icon icon-pencil mr-1" ></i> Edit</a>
+                                     <!-- model -->
+                                     <AddNewLeadPanel v-if="isModelVisibleAddNewLead" @close="toggleModalAddNewLead" />
+
                                     <a href="#" class="btn btn-danger btn-slim "><i class="houzez-icon icon-remove-circle mr-1"></i> Delete</a>
+                                   
                                 </div>    
                             </div>
                             <LeadTableEnquiries />
@@ -65,3 +63,26 @@ import LeadTableEnquiries from '@/views/inc/dashboard/board/LeadTableEnquiries.v
         </div><!-- dashboard-content-inner-wrap -->
     </section><!-- dashboard-content-wrap -->
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useModelStore } from '@/stores/model/model.js';
+
+
+import AddNewLeadPanel from '@/views/inc/dashboard/board/AddNewLeadPanel.vue';
+import LeadDetail from '@/views/inc/dashboard/board/LeadDetail.vue';
+import LeadTableEnquiries from '@/views/inc/dashboard/board/LeadTableEnquiries.vue';
+
+
+
+
+const modalStore = useModelStore(); 
+// Compute modal visibility from Vuex store
+const isModelVisibleAddNewLead = computed(() => modalStore.isModalVisibleAddNewLead);
+
+
+// Action to toggle modal visibility
+const toggleModalAddNewLead = () => {
+    modalStore.toggleModalAddNewLead();
+};
+</script>
