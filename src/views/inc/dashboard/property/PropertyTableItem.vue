@@ -27,7 +27,7 @@
 			</button>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
 				<a class="dropdown-item" href="#">Publish</a>
-				<a class="dropdown-item" href="#" @click.prevent="navigateToReplyPage">Edit</a>
+				<RouterLink class="dropdown-item" to="/dashboard/dashboard-agent-edit-property">Edit</RouterLink>
 				<a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
 				<a class="dropdown-item" href="#">Duplicate</a>
 			</div>

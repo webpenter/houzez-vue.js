@@ -1,7 +1,17 @@
 <template>
-    <DashboardHeader heading="Messages">
-        <!-- <a class="btn btn-primary" href="#">View Public Profile</a> -->
-    </DashboardHeader>
+     <header class="header-main-wrap dashboard-header-main-wrap">
+            <div class="dashboard-header-wrap">
+                <div class="d-flex align-items-center">
+                    <div class="dashboard-header-left flex-grow-1">
+                        <BreadCrumb />
+                        <h1>Messages</h1>         
+                    </div><!-- dashboard-header-left -->
+                    <div class="dashboard-header-right">
+                        <a class="btn btn-primary" href="#">Create a Listing</a>
+                    </div><!-- dashboard-header-right -->
+                </div><!-- d-flex -->
+            </div><!-- dashboard-header-wrap -->
+        </header><!-- .header-main-wrap -->
         <section class="dashboard-content-wrap">
             <div class="dashboard-content-inner-wrap">
                 <div class="dashboard-content-block-wrap">
@@ -15,7 +25,7 @@
                                     <span class="mr-2">John Doe 
                                         <span class="text-success ml-2"><i class="houzez-icon icon-single-neutral-circle mr-1"></i></span> Online</span><br>
                                         <strong>Amazing Oceanfront Apartment</strong>
-                                    
+                                   
                                 </div><!-- message-reply-user -->
                             </div><!-- d-flex -->
                             <!-- <span class="text-danger"><i class="houzez-icon icon-single-neutral-circle mr-1"></i></span> Offline</span> -->
@@ -78,14 +88,9 @@
                 </div><!-- dashboard-content-block-wrap -->
             </div><!-- dashboard-content-inner-wrap -->
         </section><!-- dashboard-content-wrap -->
-        <section class="dashboard-side-wrap">
-            <!-- <?php include 'inc/dashboard/side-wrap.php';?> -->
-            <SideWrap/>
-        </section>
-
 </template>
 <script setup>
-import SideWrap from '@/views/inc/dashboard/SideWrap.vue';  // Correct import using alias
-import MessageTableItem from '@/views/inc/dashboard/MessageTableItem.vue';
-import Pagination from '@/views/inc/listing/Pagination.vue';
+import BreadCrumb from '../page/BreadCrumb.vue';
+
+
 </script>

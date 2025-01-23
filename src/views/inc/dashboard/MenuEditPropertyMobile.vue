@@ -19,5 +19,3 @@
     </div><!-- form-group -->
 </div><!-- dashboard-mobile-edit-menu-wrap -->
 </template>
-
-<script setup></script>

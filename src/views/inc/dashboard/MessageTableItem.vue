@@ -20,7 +20,7 @@
 				Actions
 			</button>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="#" @click.prevent="navigateToReplyPage">Reply</a>
+				<RouterLink class="dropdown-item" to="/dashboard/dashboard-agent-message">Reply</RouterLink>
 				<a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
 			</div>
 		</div>

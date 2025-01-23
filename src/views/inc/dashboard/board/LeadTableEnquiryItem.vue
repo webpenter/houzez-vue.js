@@ -13,7 +13,8 @@
 		<a href="#">Property Title</a>
 	</td>
 	<td class="text-right">
-		<a href="crm-lead-enquiry-from-property-detail-page.php">View</a>
+		<router-link to="/dashboard/crm-lead-enquiries-propert-detail">View</router-link>
+
 	</td>
 </tr>
 
@@ -31,7 +32,8 @@
 		<a href="#">Agent Page</a>
 	</td>
 	<td class="text-right">
-		<a href="crm-lead-enquiry-from-agent-detail-page.php">View</a>
+		<router-link to="/dashboard/crm-lead-enquiries-propert-detail">View</router-link>
+
 	</td>
 </tr>
 </template>

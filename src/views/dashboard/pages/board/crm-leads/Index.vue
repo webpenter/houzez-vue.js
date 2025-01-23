@@ -1,20 +1,22 @@
 <template>
     <DashboardHeader heading="Leads">
-        <a class="btn btn-primary" href="#">Add New Lead</a>
+        <a class="btn btn-primary" href="#" @click.prevent="toggleModalAddNewLead" >Add New Lead</a>
     </DashboardHeader>
+
+    <AddNewLeadPanel v-if="isModelVisibleAddNewLead" @close="toggleModalAddNewLead" />
 
     <section class="dashboard-content-wrap">
         <div class="dashboard-content-inner-wrap">
             <div class="dashboard-content-block-wrap">
                 <div class="dashboard-content-block">
-                    You don't have any lead at this moment. <a class="open-close-slide-panel" href="#"><strong>Add New Lead</strong></a>
+                    You don't have any lead at this moment. <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewLead" ><strong>Add New Lead</strong></a>
                 </div><!-- dashboard-content-block -->
 
                 <StatisticLeads />
                 <CrmToolBar />
-
+                
                 <table class="dashboard-table table-lined responsive-table">
-                    <thead>
+                     <thead>
                         <tr>
                             <th><input type="checkbox" name="name"></th>
                             <th>Name</th>
@@ -51,9 +53,25 @@
 </template>
 
 <script setup>
+
+import { computed } from 'vue';
+import { useModelStore } from '@/stores/model/model.js';
+
+import AddNewLeadPanel from '@/views/inc/dashboard/board/AddNewLeadPanel.vue';
 import CrmToolBar from '@/views/inc/dashboard/board/CrmToolBar.vue';
 import LeadsTableItem from '@/views/inc/dashboard/board/LeadsTableItem.vue';
 import StatisticLeads from '@/views/inc/dashboard/statistics/StatisticLeads.vue';
 import Pagination from '@/views/inc/listing/Pagination.vue';
 
+
+
+const modalStore = useModelStore(); 
+// Compute modal visibility from Vuex store
+const isModelVisibleAddNewLead = computed(() => modalStore.isModalVisibleAddNewLead);
+
+
+// Action to toggle modal visibility
+const toggleModalAddNewLead = () => {
+    modalStore.toggleModalAddNewLead();
+};
 </script>

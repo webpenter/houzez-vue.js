@@ -82,5 +82,3 @@
     </ul>
 </div><!-- menu-edit-property-wrap -->
 </template>
-
-<script setup></script>

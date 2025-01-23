@@ -7,13 +7,13 @@
                         <h2 style="margin: 100px 0 30px 0; text-align: center;">Testimonial Grid v.1 - 3 Cols</h2>
                         <TestimonialsGridV13Cols />
                         <!-- <?php include 'modules/testimonials-grid-v1-3cols.php';?> -->
-                         
+
                     </div><!-- col-12 -->
                 </div><!-- row -->
             </div><!-- container -->
         </section><!-- listing-wrap -->
 </template>
 
-<script setup lang="ts">
+<script setup>
 import TestimonialsGridV13Cols from '../../../inc/modules/TestimonialsGridV13Cols.vue';
 </script>
