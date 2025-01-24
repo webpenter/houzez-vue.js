@@ -2,7 +2,8 @@
     <tr>
         <th class="table-nowrap" data-label="Title">
             <strong>Apartment in Miami</strong>
-            <a href="crm-lead-enquiries.php" class="board-message-icon-wrap ml-2 active" data-toggle="tooltip" data-placement="top" title="View conversation">
+            <a href="crm-lead-enquiries.php" class="board-message-icon-wrap ml-2 active" data-toggle="tooltip"
+                data-placement="top" title="View conversation">
                 <i class="houzez-icon icon-messages-bubble"></i>
             </a>
         </th>
@@ -49,11 +50,17 @@
         </td>
         <td class="table-nowrap">
             <div class="dropdown property-action-menu">
-                <button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Actions
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item open-close-slide-panel" href="#">Edit</a>
+                    <a class="dropdown-item open-close-slide-panel" href="#"
+                    @click.prevent="toggleModalAddNewDeal">Edit</a>
+
+                    <!-- Modal -->
+                    <AddNewDealPanel v-if="isModelVisibleAddNewDeal" @close="toggleModalAddNewDeal" />
+
                     <a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
                 </div>
             </div>
@@ -66,7 +73,8 @@
             <span class="board-message-icon-wrap ml-2"><i class="houzez-icon icon-messages-bubble"></i></span>
         </th>
         <td class="table-nowrap" data-label="Contact Name">Martin Moore</td>
-        <td class="table-nowrap" data-label="Agent"><i class="houzez-icon icon-single-neutral-circle mr-2 grey"></i> John Doe</td>
+        <td class="table-nowrap" data-label="Agent"><i class="houzez-icon icon-single-neutral-circle mr-2 grey"></i>
+            John Doe</td>
         <td class="table-nowrap" data-label="Status">
             <select v-model="status" class="selectpicker form-control deals-status" title="select">
                 <option value="new-lead" class="new-lead-color">New Lead</option>
@@ -107,11 +115,18 @@
         </td>
         <td class="table-nowrap">
             <div class="dropdown property-action-menu">
-                <button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Actions
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item open-close-slide-panel" href="#">Edit</a>
+                    <a class="dropdown-item open-close-slide-panel" href="#"
+                        @click.prevent="toggleModalAddNewDeal">Edit</a>
+
+                    <!-- Modal -->
+                    <AddNewDealPanel v-if="isModalVisibleAddNewDeal" @close="toggleModalAddNewDeal" />
+
+
                     <a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
                 </div>
             </div>
@@ -121,11 +136,21 @@
 </template>
 
 <script>
-
+// import { computed } from 'vue';
+import { useModelStore } from '@/stores';
+import AddNewDealPanel from './AddNewDealPanel.vue';
 export default {
     mounted() {
-    $('.selectpicker').selectpicker();
-},
+        $('.selectpicker').selectpicker();
+    },
+    setup() {
+        const modalStore = useModelStore();
+
+        return {
+            isModelVisibleAddNewDeal: modalStore.isModelVisibleAddNewDeal,
+            toggleModalAddNewDeal: modalStore.toggleModalAddNewDeal,
+        };
+    },
     data() {
         return {
             status: '',

@@ -8,7 +8,7 @@ export const useModelStore = defineStore('model', {
     isModelVisibleAddNewEnquiry: false,
   }),
 
-  
+    
   getters: {
     isModalVisibleAddNewDeal: (state) => state.isModelVisibleAddNewDeal,
     isModalVisibleAddNewLead: (state) => state.isModelVisibleAddNewLead,
