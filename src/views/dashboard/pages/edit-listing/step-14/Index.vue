@@ -3,8 +3,7 @@
             <div class="dashboard-header-wrap">
                 <div class="d-flex align-items-center">
                     <div class="dashboard-header-left flex-grow-1">
-                        
-                        <BreadCrumb />
+                       <BreadCrumb />
                         <h1>Property Title</h1>         
                     </div><!-- dashboard-header-left -->
                     <div class="dashboard-header-right">
@@ -13,7 +12,7 @@
                 </div><!-- d-flex -->
             </div><!-- dashboard-header-wrap -->
         </header><!-- .header-main-wrap -->
-        <section class="dashboard-content-wrap">
+        <section class="dashboard-content-wrap dashboard-edit-listing">
             <div class="d-flex">
                 <div class="order-2">
                     
@@ -35,8 +34,8 @@
                         </div><!-- alert -->
                         
                         <MenuEditPropertyMobile />
-                       
-                        <SectionSubProperties />
+                        
+                        <SectionSettings />
                         <div class="add-new-listing-bottom-nav-wrap">
                             <button class="btn btn-success">Save Changes</button>
                         </div>
@@ -46,10 +45,8 @@
         </section><!-- dashboard-content-wrap -->
 </template>
 <script setup>
-import BreadCrumb from '../page/BreadCrumb.vue';
-import MenuEditProperty from './MenuEditProperty.vue';
-import MenuEditPropertyMobile from './MenuEditPropertyMobile.vue';
-import SectionSubProperties from './property/SectionSubProperties.vue';
-
-
+import BreadCrumb from '@/views/inc/page/BreadCrumb.vue';
+import MenuEditProperty from '@/views/inc/dashboard/MenuEditProperty.vue';
+import MenuEditPropertyMobile from '@/views/inc/dashboard/MenuEditPropertyMobile.vue';
+import SectionSettings from '@/views/inc/dashboard/property/SectionSettings.vue';
 </script>

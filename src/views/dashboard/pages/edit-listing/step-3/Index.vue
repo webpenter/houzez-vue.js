@@ -3,7 +3,7 @@
             <div class="dashboard-header-wrap">
                 <div class="d-flex align-items-center">
                     <div class="dashboard-header-left flex-grow-1">
-                       <BreadCrumb />
+                        <BreadCrumb />
                         <h1>Property Title</h1>         
                     </div><!-- dashboard-header-left -->
                     <div class="dashboard-header-right">
@@ -12,10 +12,9 @@
                 </div><!-- d-flex -->
             </div><!-- dashboard-header-wrap -->
         </header><!-- .header-main-wrap -->
-        <section class="dashboard-content-wrap dashboard-edit-listing">
+        <section class="dashboard-content-wrap">
             <div class="d-flex">
                 <div class="order-2">
-                    
                     <MenuEditProperty />
                 </div><!-- order-2 -->
                 <div class="order-1 flex-grow-1">
@@ -32,10 +31,9 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div><!-- alert -->
-                        
                         <MenuEditPropertyMobile />
                         
-                        <SectionSettings />
+                        <SectionFeature />
                         <div class="add-new-listing-bottom-nav-wrap">
                             <button class="btn btn-success">Save Changes</button>
                         </div>
@@ -45,10 +43,10 @@
         </section><!-- dashboard-content-wrap -->
 </template>
 <script setup>
-import BreadCrumb from '../page/BreadCrumb.vue';
-import MenuEditProperty from './MenuEditProperty.vue';
-import MenuEditPropertyMobile from './MenuEditPropertyMobile.vue';
-import SectionSettings from './property/SectionSettings.vue';
+import MenuEditProperty from '@/views/inc/dashboard/MenuEditProperty.vue';
+import MenuEditPropertyMobile from '@/views/inc/dashboard/MenuEditPropertyMobile.vue';
+import SectionFeature from '@/views/inc/dashboard/property/SectionFeature.vue';
+import BreadCrumb from '@/views/inc/page/BreadCrumb.vue';
 
 
 </script>

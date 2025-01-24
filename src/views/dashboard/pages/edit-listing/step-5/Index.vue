@@ -12,7 +12,7 @@
                 </div><!-- d-flex -->
             </div><!-- dashboard-header-wrap -->
         </header><!-- .header-main-wrap -->
-    <section class="dashboard-content-wrap">
+        <section class="dashboard-content-wrap">
             <div class="d-flex">
                 <div class="order-2">
                     <MenuEditProperty />
@@ -32,7 +32,7 @@
                             </button>
                         </div><!-- alert -->
                         <MenuEditPropertyMobile />
-                        <SectionFloorPlans />
+                        <SectionLocation />
                         <div class="add-new-listing-bottom-nav-wrap">
                             <button class="btn btn-success">Save Changes</button>
                         </div>
@@ -40,12 +40,13 @@
                 </div><!-- order-1 -->
             </div><!-- d-flex -->
         </section><!-- dashboard-content-wrap -->
-
 </template>
 <script setup>
-import MenuEditProperty from './MenuEditProperty.vue';
-import MenuEditPropertyMobile from './MenuEditPropertyMobile.vue';
-import SectionFloorPlans from './property/SectionFloorPlans.vue';
+import BreadCrumb from '@/views/inc/page/BreadCrumb.vue';
+import MenuEditProperty from '@/views/inc/dashboard/MenuEditProperty.vue';
+import MenuEditPropertyMobile from '@/views/inc/dashboard/MenuEditPropertyMobile.vue';
+import SectionLocation from '@/views/inc/dashboard/property/SectionLocation.vue';
+
 
 
 </script>

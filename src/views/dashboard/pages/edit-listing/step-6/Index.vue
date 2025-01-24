@@ -1,9 +1,9 @@
 <template>
-     <header class="header-main-wrap dashboard-header-main-wrap">
+    <header class="header-main-wrap dashboard-header-main-wrap">
             <div class="dashboard-header-wrap">
                 <div class="d-flex align-items-center">
                     <div class="dashboard-header-left flex-grow-1">
-                       <BreadCrumb />
+                        <BreadCrumb />
                         <h1>Property Title</h1>         
                     </div><!-- dashboard-header-left -->
                     <div class="dashboard-header-right">
@@ -15,7 +15,6 @@
         <section class="dashboard-content-wrap">
             <div class="d-flex">
                 <div class="order-2">
-                    
                     <MenuEditProperty />
                 </div><!-- order-2 -->
                 <div class="order-1 flex-grow-1">
@@ -32,12 +31,8 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div><!-- alert -->
-                      
                         <MenuEditPropertyMobile />
-                        
-                       
-                        <SectionPrivateNote />
-                        
+                        <SectionMedia />
                         <div class="add-new-listing-bottom-nav-wrap">
                             <button class="btn btn-success">Save Changes</button>
                         </div>
@@ -47,10 +42,11 @@
         </section><!-- dashboard-content-wrap -->
 </template>
 <script setup>
-import BreadCrumb from '../page/BreadCrumb.vue';
-import MenuEditProperty from './MenuEditProperty.vue';
-import MenuEditPropertyMobile from './MenuEditPropertyMobile.vue';
-import SectionPrivateNote from './property/SectionPrivateNote.vue';
+import BreadCrumb from '@/views/inc/page/BreadCrumb.vue';
+import MenuEditProperty from '@/views/inc/dashboard/MenuEditProperty.vue';
+import MenuEditPropertyMobile from '@/views/inc/dashboard/MenuEditPropertyMobile.vue';
+import SectionMedia from '@/views/inc/dashboard/property/SectionMedia.vue';
+
 
 
 </script>
