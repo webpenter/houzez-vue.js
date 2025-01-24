@@ -137,8 +137,7 @@
 <!--						</label>-->
 <!--					</div>&lt;!&ndash; features-list &ndash;&gt;-->
 <!--				</div>-->
-<!--			</div>-->
-<!--      &lt;!&ndash; col-md-6 col-sm-12 &ndash;&gt;-->
+<!--			</div>&lt;!&ndash; col-md-6 col-sm-12 &ndash;&gt;-->
 <!--		</div>&lt;!&ndash; row &ndash;&gt;-->
 <!--	</div>&lt;!&ndash; dashboard-content-block &ndash;&gt;-->
 <!--</div>-->

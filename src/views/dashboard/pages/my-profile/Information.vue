@@ -12,7 +12,13 @@
                                  </template>
                                   <template v-else>
                                     <img v-if="formProfilePicture" class="img-fluid" :src="formProfilePicture" alt="thumb">
-                                    <el-avatar v-else shape="square" :size="240" src="https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png" />
+                                    <template v-else>
+                                      <el-skeleton  style="width: 240px">
+                                        <template #template>
+                                          <el-skeleton-item variant="image" style="width: 240px; height: 240px" />
+                                        </template>
+                                      </el-skeleton>
+                                    </template>
                                   </template>
                                 <button @click="triggerFileInput" type="button" class="btn btn-primary btn-full-width mt-3">
                                   Update Profile Picture
