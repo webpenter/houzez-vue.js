@@ -1,0 +1,295 @@
+/* flex
+/* ------------------------------------------------------------------------ */
+.md-column {
+	@include respond-to(md-max) {
+		flex-direction: column;
+	}
+}
+.sm-column {
+	@include respond-to(sm-max) {
+		flex-direction: column;
+	}
+}
+.xxs-column {
+	@include respond-to(xxs) {
+		flex-direction: column;
+	}	
+}
+/* layout
+/* ------------------------------------------------------------------------ */
+.container {
+	//@extend %padding-0;
+	@include respond-to(sm-min) {
+		max-width: 750px;
+	}
+	@include respond-to(md-min) {
+		max-width: 970px;
+	}
+	@include respond-to(lg-min) {
+		max-width: 1170px;
+	}
+	// @include respond-to(sm-max) {
+		// 	padding-#{$end-direction}: 15px;
+		// 	padding-#{$start-direction}: 15px;
+		// }
+	}
+	.bt-content-wrap {
+		@include respond-to(md-min) {
+			width: 70%;
+			max-width: 70%;
+			flex: 0 0 70%;
+			margin-bottom: 30px;
+		}
+	}
+	.bt-sidebar-wrap {
+		@include respond-to(md-min) {
+			width: 30%;
+			max-width: 30%;
+			flex: 0 0 30%;
+		}
+	}
+	// .content-wrap {
+		// 	padding-bottom: 40px;
+		// }
+		.row-no-padding {
+			margin-#{$end-direction}: 0;
+			margin-#{$start-direction}: 0;
+			[class*="col-"] {
+				padding-#{$start-direction}: 0 !important;
+				padding-#{$end-direction}: 0 !important;
+			}
+		}
+		.main-wrap {
+			// transform: rotateX(0deg);
+			// height: 100vh;
+			&.slideout-panel {
+				box-shadow: rgba($black, 0.2) 0px -10px 10px;
+			}
+		}
+/* flexbox row
+/* ------------------------------------------------------------------------ */
+.houzez-layout-row {
+	flex-wrap: wrap;
+	display: grid;
+	grid-column-gap: 30px;
+	grid-row-gap: 30px;
+	&.houzez-layout-row-no-space {
+		grid-column-gap: 0;
+	}
+}
+
+/* columns layout
+/* ----------------------------------------------------------- */
+.houzez-desktop-layout-1cols {
+	grid-template-columns: repeat(1,1fr);
+	grid-row-gap: 0;
+}
+.houzez-desktop-layout-2cols {
+	grid-template-columns: repeat(2,1fr);
+}
+.houzez-desktop-layout-3cols {
+	grid-template-columns: repeat(3,1fr);
+}
+.houzez-desktop-layout-4cols {
+	grid-template-columns: repeat(4,1fr);
+}
+.houzez-desktop-layout-5cols {
+	grid-template-columns: repeat(5,1fr);
+}
+.houzez-desktop-layout-6cols {
+	grid-template-columns: repeat(6,1fr);
+}
+.houzez-desktop-layout-7cols {
+	grid-template-columns: repeat(7,1fr);
+}
+.houzez-desktop-layout-8cols {
+	grid-template-columns: repeat(8,1fr);
+}
+
+@include respond-to(md-max) {
+	.houzez-tablet-layout-1cols {
+		grid-template-columns: repeat(1,1fr);
+		grid-row-gap: 0;
+	}
+	.houzez-tablet-layout-2cols {
+		grid-template-columns: repeat(2,1fr);
+	}
+	.houzez-tablet-layout-3cols {
+		grid-template-columns: repeat(3,1fr);
+	}
+	.houzez-tablet-layout-4cols {
+		grid-template-columns: repeat(4,1fr);
+	}
+	.houzez-tablet-layout-5cols {
+		grid-template-columns: repeat(5,1fr);
+	}
+	.houzez-tablet-layout-6cols {
+		grid-template-columns: repeat(6,1fr);
+	}
+	.houzez-tablet-layout-7cols {
+		grid-template-columns: repeat(7,1fr);
+	}
+	.houzez-tablet-layout-8cols {
+		grid-template-columns: repeat(8,1fr);
+	}
+
+}
+
+@include respond-to(sm-max) {
+	.houzez-mobile-layout-1cols {
+		grid-template-columns: repeat(1,1fr);
+		grid-row-gap: 0;
+	}
+	.houzez-mobile-layout-2cols {
+		grid-template-columns: repeat(2,1fr);
+	}
+	.houzez-mobile-layout-3cols {
+		grid-template-columns: repeat(3,1fr);
+	}
+	.houzez-mobile-layout-4cols {
+		grid-template-columns: repeat(4,1fr);
+	}
+	.houzez-mobile-layout-5cols {
+		grid-template-columns: repeat(5,1fr);
+	}
+	.houzez-mobile-layout-6cols {
+		grid-template-columns: repeat(6,1fr);
+	}
+	.houzez-mobile-layout-7cols {
+		grid-template-columns: repeat(7,1fr);
+	}
+	.houzez-mobile-layout-8cols {
+		grid-template-columns: repeat(8,1fr);
+	}
+}
+/* blocks
+/* ------------------------------------------------------------------------ */
+.block-wrap {
+	padding: 40px;
+	background-color: $white;
+	margin-top: 30px;
+	@extend %br-4;
+	@include respond-to(sm-max) {
+		padding: 30px;
+		margin-top: 0;
+		border-top: 1px solid $border-color;
+	}
+	&.block-wrap-no-padding {
+		padding: 0;	
+		@include respond-to(sm-max) {
+			padding: 0;
+		}
+	}
+}
+
+.block-title-wrap {
+	border-bottom: 1px solid $border-color;
+	margin-bottom: 25px;
+	padding-bottom: 40px;
+	@include respond-to(sm-max) {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+	h2 {
+		@extend %margin-0;
+		font-size: 18px;
+	}
+	h3 {
+		@extend %margin-0;
+		font-size: 16px;	
+	}
+}
+.block-content-wrap {
+	.block-title-wrap {
+		margin-top: 40px;
+		margin-bottom: 25px !important;
+		padding-bottom: 18px;
+		@include respond-to(sm-max) {
+			padding-bottom: 0;
+		}
+	}
+	p,
+	ul {
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+	.list-3-cols,
+	.list-2-cols,
+	.list-1-cols {
+		li {
+			display: flex;
+			justify-content: space-between;
+			//line-height: 40px;
+			border-bottom: 1px solid;
+			border-color:  $border-color;
+			padding: 10px 0;
+			-webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
+			page-break-inside: avoid; /* Firefox */
+			break-inside: avoid; /* IE 10+ */
+			span {
+				//@extend %float-right;
+				& > span {
+					float: none;
+				}
+			}
+			@include respond-to(sm-max) {
+				line-height: 36px;
+			}
+		}
+	}
+}
+.block-map-wrap {
+	@extend %relative;
+	margin-top: 25px;
+}
+.lined-block {
+	@extend %br-4;
+	@extend %mb-20;
+	border: 1px solid $border-color;
+	padding: 20px;
+}
+/* lists
+/* ------------------------------------------------------------------------ */
+.list-3-cols {
+	columns: 3;
+	@include respond-to(md-max) {
+		columns: 2;
+	}
+	@include respond-to(sm-max) {
+		columns: 1;
+	}
+}
+.list-2-cols {
+	columns: 2;
+	@include respond-to(md-max) {
+		columns: 2;
+	}
+	@include respond-to(sm-max) {
+		columns: 1;
+	}
+}
+.list-1-cols {
+	columns: 1;
+	li span {
+		white-space: normal;
+		overflow: unset;
+		-o-text-overflow: unset;
+		text-overflow: unset;
+		max-width: 100%;
+	}
+}
+/* margins
+/* ------------------------------------------------------------------------ */
+.mb-0 {
+	margin-bottom: 0;
+}
+.m-0 {
+	margin: 0;
+}
+/* sidebar
+/* ------------------------------------------------------------------------ */
+.sidebar-wrap {
+	@extend %mb-30;
+	//@extend %mt-30;
+}

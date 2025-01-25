@@ -1,13 +1,15 @@
 <template>
     <DashboardHeader heading="Enquiries">
-        <a class="btn btn-primary" href="#">Add New Enquiry</a>
+        <a class="btn btn-primary" href="#" @click.prevent="toggleModalAddNewEnquiry">Add New Enquiry</a>
     </DashboardHeader>
+
+    <AddNewEnquiryPanel v-if="isModelVisibleAddNewEnquiry" @close="toggleModalAddNewEnquiry"/>
 
     <section class="dashboard-content-wrap">
         <div class="dashboard-content-inner-wrap">
             <div class="dashboard-content-block-wrap">
                 <div class="dashboard-content-block">
-                    You don't have any enquiry at this moment. <a class="open-close-slide-panel" href="#"><strong>Add New Enquiry</strong></a>
+                    You don't have any enquiry at this moment. <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewEnquiry"><strong>Add New Enquiry</strong></a>
                 </div><!-- dashboard-content-block -->
                 <CrmToolBar />                
                 <table class="dashboard-table table-lined responsive-table">
@@ -95,6 +97,21 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
+import { useModelStore } from '@/stores/model/model.js';
+
+import AddNewEnquiryPanel from '@/views/inc/dashboard/board/AddNewEnquiryPanel.vue';
 import CrmToolBar from '@/views/inc/dashboard/board/CrmToolBar.vue';
 
+
+// const store = useStore();
+const modalStore = useModelStore(); 
+// Compute modal visibility from Vuex store
+const isModelVisibleAddNewEnquiry = computed(() => modalStore.isModalVisibleAddNewEnquiry);
+
+
+// Action to toggle modal visibility
+const toggleModalAddNewEnquiry = () => {
+    modalStore.toggleModalAddNewEnquiry();
+};
 </script>

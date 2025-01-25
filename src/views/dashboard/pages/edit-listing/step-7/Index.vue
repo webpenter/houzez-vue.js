@@ -1,0 +1,52 @@
+<template>
+    <header class="header-main-wrap dashboard-header-main-wrap">
+            <div class="dashboard-header-wrap">
+                <div class="d-flex align-items-center">
+                    <div class="dashboard-header-left flex-grow-1">
+                        <BreadCrumb />
+                        <h1>Property Title</h1>         
+                    </div><!-- dashboard-header-left -->
+                    <div class="dashboard-header-right">
+                        <a class="btn btn-primary-outlined" href="#">View Property</a> <a class="btn btn-primary-outlined" href="#">Save as Draft</a>
+                    </div><!-- dashboard-header-right -->
+                </div><!-- d-flex -->
+            </div><!-- dashboard-header-wrap -->
+        </header><!-- .header-main-wrap -->
+        <section class="dashboard-content-wrap">
+            <div class="d-flex">
+                <div class="order-2">
+                    <MenuEditProperty />
+                </div><!-- col-md-3 col-sm-12 order-md-2 -->
+                <div class="order-1 flex-grow-1">
+                    <div class="dashboard-content-inner-wrap">
+                        <div class="alert alert-success" role="alert">
+                            Settings saved successfully.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div><!-- alert -->
+                        <div class="alert alert-danger" role="alert">
+                            Something went wrong.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div><!-- alert -->
+                        <MenuEditPropertyMobile />
+                        <Section360VirtualTour />
+                        <div class="add-new-listing-bottom-nav-wrap">
+                            <button class="btn btn-success">Save Changes</button>
+                        </div>
+                    </div><!-- dashboard-content-inner-wrap -->
+                </div><!-- order-1 -->
+            </div><!-- d-flex -->
+        </section><!-- dashboard-content-wrap -->
+</template>
+<script setup>
+import BreadCrumb from '@/views/inc/page/BreadCrumb.vue';
+import MenuEditProperty from '@/views/inc/dashboard/MenuEditProperty.vue';
+import MenuEditPropertyMobile from '@/views/inc/dashboard/MenuEditPropertyMobile.vue';
+import Section360VirtualTour from '@/views/inc/dashboard/property/Section360VirtualTour.vue';
+
+
+
+</script>

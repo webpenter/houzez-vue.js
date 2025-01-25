@@ -1,0 +1,134 @@
+.compare-property-active {
+	overflow-x: hidden;
+	//position: relative;
+	#{$start-direction}: 0;
+}
+.compare-property-active-push-toleft {
+	#{$start-direction}: -240px;
+}
+.compare-property-panel {
+	background-color: $white;
+	position: fixed;
+	padding-top: 20px;
+	padding-#{$end-direction}: 15px;
+	padding-bottom: 20px;
+	padding-#{$start-direction}: 20px;
+	border-#{$start-direction}: 1px solid $border-color;
+	.title {
+		margin-bottom: 20px;
+	}
+}
+.compare-property-panel-vertical {
+	width: 300px;
+	height: 100%;
+	top: 0;
+	z-index: 100;
+}
+.compare-property-panel-right {
+	#{$end-direction}: -300px;
+	&.compare-property-panel-open {
+		#{$end-direction}: 0px;
+	}
+}
+.compare-property-panel,
+.compare-property-active {
+	transition: all 0.3s ease;
+}
+.compare-tool {
+	background-color: $white;
+	margin-bottom: 30px;
+	padding: 15px 20px;
+	.title {
+		font-size: 14px;
+		margin-bottom: 15px;
+	}
+}
+.compare-item {
+	@extend %relative;
+	@extend %float-left;
+	width: calc(50% - 5px);
+	margin-#{$end-direction}: 5px;
+	margin-bottom: 10px;
+	.remove-icon {
+		@extend %absolute;
+		color: $white;
+		//background: rgba($black, .5);
+		border-radius: 10px;
+		display: block;
+		width: 20px;
+		line-height: 20px;
+		bottom: 10px;
+		#{$end-direction}: 10px;
+		text-align: center;
+		z-index: 2;
+	}
+}
+.empty-compare-item {
+	border: 3px dotted $border-color;
+	background: rgba($border-color, .2);
+	height: 96px;
+}
+.compare-table {
+	background-color: $white; 
+	margin-bottom: 40px;
+	@include respond-to(sm-max) {
+		overflow-x: scroll;
+	}
+	th,
+	td {
+		padding: 10px !important;
+		width: 20%;
+		vertical-align: middle !important;
+		&:first-child {
+			text-align: #{$end-direction};
+			padding-top: 10px;
+			padding-#{$end-direction}: 20px;
+			padding-bottom: 10px;
+			padding-#{$start-direction}: 10px;
+		}
+		@include respond-to(sm-max) {
+			white-space: nowrap;
+		}
+	}
+	.table-hover > tbody > tr:hover {
+		color: $white
+	}
+	thead th {
+		background-color: $white;
+		position: sticky;
+		top: 0; /* Don't forget this, required for the stickiness */
+	}
+}
+.compare-property-label {
+	@extend %absolute;
+	background-color: $grey;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	top: 50%;
+	#{$start-direction}: -40px;
+	text-align: center;
+	color: $white;
+	border-top-#{$start-direction}-radius: 4px;
+	border-top-#{$end-direction}-radius: 0;
+	border-bottom-#{$end-direction}-radius: 0;
+	border-bottom-#{$start-direction}-radius: 4px;
+	border: none;
+	&:hover,
+	&:active {
+		background-color: darken($grey, 10%);
+	}
+	.compare-label {
+		@extend %display-block;
+		@extend %absolute;
+		background-color: $brand-success;
+		font-size: 11px;
+		font-weight: 700;
+		width: 16px;
+		height: 16px;
+		line-height: 16px;
+		border-radius: 50%;
+		top: -5px;
+		#{$start-direction}: -5px;
+	}
+}
