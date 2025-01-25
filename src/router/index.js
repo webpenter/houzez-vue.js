@@ -324,7 +324,7 @@ const routes = [
                 meta:{ title:'Create Account' }
             },
             {
-                path: '/dashboard/create-listing/step-1',
+                path: '/dashboard/create-listing/step-1/:propertyId(\\d+)?',
                 name:'dashboard.create-listing.step-1',
                 component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-1/Index.vue'),
                 meta:{ title:'Create Listing' }
@@ -395,7 +395,16 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-12/Index.vue'),
                 meta:{ title:'Create Listing' }
             },
+            {
+                path: '/dashboard/create-listing/completed',
+                name:'dashboard.create-listing.completed',
+                component:() => import('@/views/dashboard/pages/create-listing/completed/Index.vue'),
+                meta:{ title:'Create Listing' }
+            },
 
+            /***
+             * @routes Dashboard/Edit-Property/Step-1 to Step-14
+             ***/
             {
                 path: '/dashboard/edit-property/step-1',
                 name:'dashboard.edit-property.step-1',
@@ -479,14 +488,6 @@ const routes = [
                 name:'dashboard.edit-property.step-14',
                 component:() => import('@/views/dashboard/pages/edit-listing/step-14/Index.vue'),
                 meta:{ title:'edit property' }
-            },
-
-
-            {
-                path: '/dashboard/create-listing/completed',
-                name:'dashboard.create-listing.completed',
-                component:() => import('@/views/dashboard/pages/create-listing/completed/Index.vue'),
-                meta:{ title:'Create Listing' }
             },
 
             /***
@@ -592,6 +593,16 @@ const routes = [
         name: "not-found-404",
         component: () => import('@/components/pages/NotFound404.vue'),
         meta: { title: "404 Not Found" },
+    },
+    /*** ---------------
+     * @route 404-Property-Not-Found
+     * @auth not-required
+     ***/
+    {
+        path: "/property-not-found-404",
+        name: "property-not-found-404",
+        component: () => import('@/components/pages/PropertyNotFound404.vue'),
+        meta: { title: "404 Property Not Found" },
     },
 ];
 
