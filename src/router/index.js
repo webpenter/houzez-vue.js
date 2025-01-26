@@ -330,67 +330,67 @@ const routes = [
                 meta:{ title:'Create Listing' }
             },
             {
-                path: '/dashboard/create-listing/step-2',
+                path: '/dashboard/create-listing/step-2/:propertyId(\\d+)',
                 name:'dashboard.create-listing.step-2',
                 component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-2/Index.vue'),
                 meta:{ title:'Create Listing' }
             },
             {
-                path: '/dashboard/create-listing/step-3',
+                path: '/dashboard/create-listing/step-3/:propertyId(\\d+)',
                 name:'dashboard.create-listing.step-3',
                 component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-3/Index.vue'),
                 meta:{ title:'Create Listing' }
             },
             {
-                path: '/dashboard/create-listing/step-4',
+                path: '/dashboard/create-listing/step-4/:propertyId(\\d+)',
                 name:'dashboard.create-listing.step-4',
                 component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-4/Index.vue'),
                 meta:{ title:'Create Listing' }
             },
             {
-                path: '/dashboard/create-listing/step-5',
+                path: '/dashboard/create-listing/step-5/:propertyId(\\d+)',
                 name:'dashboard.create-listing.step-5',
                 component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-5/Index.vue'),
                 meta:{ title:'Create Listing' }
             },
             {
-                path: '/dashboard/create-listing/step-6',
+                path: '/dashboard/create-listing/step-6/:propertyId(\\d+)',
                 name:'dashboard.create-listing.step-6',
                 component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-6/Index.vue'),
                 meta:{ title:'Create Listing' }
             },
             {
-                path: '/dashboard/create-listing/step-7',
+                path: '/dashboard/create-listing/step-7/:propertyId(\\d+)',
                 name:'dashboard.create-listing.step-7',
                 component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-7/Index.vue'),
                 meta:{ title:'Create Listing' }
             },
             {
-                path: '/dashboard/create-listing/step-8',
+                path: '/dashboard/create-listing/step-8/:propertyId(\\d+)',
                 name:'dashboard.create-listing.step-8',
                 component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-8/Index.vue'),
                 meta:{ title:'Create Listing' }
             },
             {
-                path: '/dashboard/create-listing/step-9',
+                path: '/dashboard/create-listing/step-9/:propertyId(\\d+)',
                 name:'dashboard.create-listing.step-9',
                 component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-9/Index.vue'),
                 meta:{ title:'Create Listing' }
             },
             {
-                path: '/dashboard/create-listing/step-10',
+                path: '/dashboard/create-listing/step-10/:propertyId(\\d+)',
                 name:'dashboard.create-listing.step-10',
                 component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-10/Index.vue'),
                 meta:{ title:'Create Listing' }
             },
             {
-                path: '/dashboard/create-listing/step-11',
+                path: '/dashboard/create-listing/step-11/:propertyId(\\d+)',
                 name:'dashboard.create-listing.step-11',
                 component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-11/Index.vue'),
                 meta:{ title:'Create Listing' }
             },
             {
-                path: '/dashboard/create-listing/step-12',
+                path: '/dashboard/create-listing/step-12/:propertyId(\\d+)',
                 name:'dashboard.create-listing.step-12',
                 component:() => import('@/views/dashboard/pages/create-listing/create-listing/step-12/Index.vue'),
                 meta:{ title:'Create Listing' }
@@ -565,6 +565,16 @@ const routes = [
         meta: { title: "302 Unauthorized" },
     },
     /*** ---------------
+     * @route 403-Unauthorized
+     * @auth required
+     ***/
+    {
+        path: "/unauthorized-403",
+        name: "unauthorized-403",
+        component: () => import('@/components/pages/Unauthorized403.vue'),
+        meta: { title: "403 Unauthorized", auth: true },
+    },
+    /*** ---------------
      * @route 401-Unauthorized
      * @auth not-required
      ***/
@@ -585,16 +595,6 @@ const routes = [
         meta: { title: "403 Access Denied", auth: true  },
     },
     /*** ---------------
-     * @route 404-Page-Not-Found
-     * @auth not-required
-     ***/
-    {
-        path: "/:pathMatch(.*)",
-        name: "not-found-404",
-        component: () => import('@/components/pages/NotFound404.vue'),
-        meta: { title: "404 Not Found" },
-    },
-    /*** ---------------
      * @route 404-Property-Not-Found
      * @auth not-required
      ***/
@@ -603,6 +603,16 @@ const routes = [
         name: "property-not-found-404",
         component: () => import('@/components/pages/PropertyNotFound404.vue'),
         meta: { title: "404 Property Not Found" },
+    },
+    /*** ---------------
+     * @route 404-Page-Not-Found
+     * @auth not-required
+     ***/
+    {
+        path: "/:pathMatch(.*)",
+        name: "not-found-404",
+        component: () => import('@/components/pages/NotFound404.vue'),
+        meta: { title: "404 Not Found" },
     },
 ];
 

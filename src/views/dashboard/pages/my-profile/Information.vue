@@ -297,15 +297,12 @@ onMounted( () => {
   if (profilePicture.value) {
     formProfilePicture.value = profilePicture.value;
   }
-})
+});
 
-watch(profile, (newProfile) => {
+watch([profile, profilePicture], ([newProfile, newProfilePicture]) => {
   if (newProfile) {
     formData.value = { ...newProfile };
   }
-});
-
-watch(profilePicture, (newProfilePicture) => {
   if (newProfilePicture) {
     formProfilePicture.value = newProfilePicture;
   }

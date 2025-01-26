@@ -12,7 +12,11 @@ export * from './element-plus/message.js';
 export * from './model/model.js';
 
 // ------------- Settings Dir
-export * from './settings/generalSettings.js'
+export * from './settings/generalSettings.js';
+export * from './settings/label.js';
+export * from './settings/status.js';
+export * from './settings/type.js';
+export * from './settings/features.js';
 
 // ------------- Properties Dir
 export * from './properties/property.js';

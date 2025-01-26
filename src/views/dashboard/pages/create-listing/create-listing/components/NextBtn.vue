@@ -1,12 +1,11 @@
 <template>
-<RouterLink class="btn btn-primary" :to="{name:route}">
-    Next 
-    <i class="houzez-icon icon-arrow-right-1 ml-2"></i>
-    </RouterLink>
+  <button class="btn btn-primary" type="submit" :disabled="btnLoading || hasErrors">
+    Next
+    <span v-if="btnLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    <i v-else class="houzez-icon icon-arrow-right-1 ml-2"></i>
+  </button>
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router';
-
-const props = defineProps(['route'])
+const props = defineProps(['btnLoading','hasErrors'])
 </script>

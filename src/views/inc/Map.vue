@@ -116,7 +116,7 @@
 			icon: iconBase + 'map-marker.png',
 			animation: google.maps.Animation.DROP,
 			position: {lat: 25.838706, lng: -80.131114},
-		});   
+		});
 
 
 		marker.addListener('click', function() {
