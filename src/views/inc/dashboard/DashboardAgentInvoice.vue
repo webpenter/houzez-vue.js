@@ -73,6 +73,4 @@
 </template>
 <script setup>
 import LogoColor from '../nav/LogoColor.vue';
-
-
 </script>
