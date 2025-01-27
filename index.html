@@ -53,7 +53,6 @@
     <script type="module" src="./src/main.js"></script>
 
     <!-- start scripts -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBek2XjpiEzDMPxnCw6_WJOpzp7Lv4pMN0&callback=initMap" async defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
@@ -78,31 +77,5 @@
     <script type="text/javascript" src="js/jquery.disableAutoFill.min.js"></script>
     <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
     <script type="text/javascript" src="js/custom.js"></script>
-
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $('#no-auto-fill').disableAutoFill({
-          passwordField: '.password',
-          callback: function() {
-            return checkForm();
-          }
-        });
-
-        function checkForm() {
-          form = document.getElementById('no-auto-fill');
-          if (form.password.value == '') {
-            alert('Cannot leave Password field blank.');
-            form.password.focus();
-            return false;
-          }
-          if (form.username.value == '') {
-            alert('Cannot leave User Id field blank.');
-            form.username.focus();
-            return false;
-          }
-          return true;
-        }
-      });
-    </script>
   </body>
 </html>
