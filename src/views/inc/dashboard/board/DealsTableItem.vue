@@ -56,7 +56,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item open-close-slide-panel" href="#"
-                    @click.prevent="toggleModalAddNewDeal" >Edit</a>
+                    @click.prevent="toggleModalAddNewDeal">Edit</a>
 
                     <!-- Modal -->
                     <AddNewDealPanel v-if="isModelVisibleAddNewDeal" @close="toggleModalAddNewDeal" />
@@ -124,7 +124,7 @@
                         @click.prevent="toggleModalAddNewDeal">Edit</a>
 
                     <!-- Modal -->
-                    <!-- <AddNewDealPanel v-if="isModelVisibleAddNewDeal" @close="toggleModalAddNewDeal" /> -->
+                    <AddNewDealPanel v-if="isModalVisibleAddNewDeal" @close="toggleModalAddNewDeal" />
 
 
                     <a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
@@ -136,21 +136,20 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+// import { computed } from 'vue';
 import { useModelStore } from '@/stores';
 import AddNewDealPanel from './AddNewDealPanel.vue';
-const modalStore = useModelStore();
-// Compute modal visibility from Vuex store
-const isModelVisibleAddNewDeal = computed(() => modalStore.isModalVisibleAddNewDeal);
-
-
-// Action to toggle modal visibility
-const toggleModalAddNewDeal = () => {
-    modalStore.toggleModalAddNewDeal();
-};
 export default {
     mounted() {
         $('.selectpicker').selectpicker();
+    },
+    setup() {
+        const modalStore = useModelStore();
+
+        return {
+            isModelVisibleAddNewDeal: modalStore.isModelVisibleAddNewDeal,
+            toggleModalAddNewDeal: modalStore.toggleModalAddNewDeal,
+        };
     },
     data() {
         return {

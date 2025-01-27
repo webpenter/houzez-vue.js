@@ -66,10 +66,8 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useAuth, useNotification } from "@/stores/index.js";
-import { storeToRefs } from "pinia";
 
 const notify = useNotification();
-const { errors } = storeToRefs(useAuth());
 
 const passwordForm = ref({
   current_password: "",
