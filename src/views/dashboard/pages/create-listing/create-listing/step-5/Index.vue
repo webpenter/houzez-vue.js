@@ -77,8 +77,8 @@
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.latitude }"
                       @input="validateField('latitude')"
-                      v-model="formData.latitude"
-                      placeholder="Enter google maps latitude"
+                      v-model.number="formData.latitude"
+                      placeholder="Enter maps latitude"
                       type="text"
                   >
                   <span class="text-danger" v-if="localErrors.latitude">
@@ -91,8 +91,8 @@
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.longitude }"
                       @input="validateField('longitude')"
-                      v-model="formData.longitude"
-                      placeholder="Enter google maps longitude"
+                      v-model.number="formData.longitude"
+                      placeholder="Enter maps longitude"
                       type="text"
                   >
                   <span class="text-danger" v-if="localErrors.longitude">
@@ -124,7 +124,7 @@ import { useRoute, useRouter } from "vue-router";
 import { useNotification, useProperty } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
 import { computed, onMounted, ref, watch } from "vue";
-import { PROPERTY_TOTAL_STEPS } from "@/constants/index.js";
+import {MAP_CONFIG, PROPERTY_TOTAL_STEPS} from "@/constants/index.js";
 import L from "leaflet";
 
 const route = useRoute();
@@ -238,30 +238,24 @@ onMounted(() => {
     formData.value = { ...property.value };
   }
 
-  const map = L.map("map").setView([28.4212, 70.2989], 13); // Set initial view to 28.4212° N, 70.2989° E
+  const map = L.map("map").setView([MAP_CONFIG.LATITUDE, MAP_CONFIG.LONGITUDE], MAP_CONFIG.ZOOM);
 
-
-  // Add tile layer
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "© OpenStreetMap contributors",
-    maxZoom: 19,
+    maxZoom: MAP_CONFIG.MAX_ZOOM,
   }).addTo(map);
 
-  // Watch for changes in latitude and longitude
   watch(
     () => [formData.value.latitude, formData.value.longitude],
     ([lat, lng]) => {
       if (lat && lng && !isNaN(lat) && !isNaN(lng)) {
-        map.setView([lat, lng], 13);
+        map.setView([lat, lng], MAP_CONFIG.ZOOM);
 
-        // Remove existing markers before adding a new one
         map.eachLayer((layer) => {
           if (layer instanceof L.Marker) {
             map.removeLayer(layer);
           }
         });
 
-        // Add a marker at the new coordinates
         L.marker([lat, lng])
           .addTo(map)
           .bindPopup("Property Location")
@@ -282,6 +276,6 @@ watch(property, (newProperty) => {
 <style scoped>
 #map {
   width: 100%;
-  height: 400px; /* Adjust the height as needed */
+  height: 400px;
 }
 </style>
