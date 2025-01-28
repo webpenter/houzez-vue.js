@@ -12,7 +12,7 @@
                         <div class="row">
                           <div class="col-md-6 col-sm-12">
                             <div class="form-group">
-                              <label>Address</label>
+                              <label>Address *</label>
                               <input
                                   class="form-control"
                                   :class="{ 'is-invalid': localErrors.address }"

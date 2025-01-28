@@ -11,7 +11,7 @@
                   <h2>Description</h2>
                   <div class="dashboard-content-block">
                     <div class="form-group">
-                      <label>Title</label>
+                      <label>Title *</label>
                       <input
                           class="form-control"
                           :class="{ 'is-invalid': localErrors.title }"
@@ -100,7 +100,7 @@
                 </div><!-- dashboard-content-block-wrap -->
 
                 <div class="dashboard-content-block-wrap">
-                  <h2>Price</h2>
+                  <h2>Price *</h2>
                   <div class="dashboard-content-block">
                     <div class="row">
                       <div class="col-md-6 col-sm-12">
