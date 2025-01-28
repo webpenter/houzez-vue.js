@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fawmi/vue-google-maps": "^0.9.79",
     "axios": "^1.7.9",
     "chart.js": "^4.4.7",
     "element-plus": "^2.9.3",

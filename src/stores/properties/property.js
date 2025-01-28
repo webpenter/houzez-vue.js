@@ -35,9 +35,13 @@ export const useProperty = defineStore('property', {
          * @return {Promise} - A promise that resolves with the response if successful or rejects with the error response.
          */
         async  createOrUpdate(formData,id= null) {
-            const url = `${this.prefix}/create-or-update/${id}`;
+            const url = `${this.prefix}/create-or-update${id ? `/${id}` : ''}`;
+
             try {
-                const response = await apiService({ requiresAuth : true , multipart : true}).post(url, formData);
+                const response = await apiService({
+                    requiresAuth : true,
+                    multipart : true,
+                }).post(url, formData);
 
                 console.log("Pinia Create or Update: ",response);
                 return new Promise(resolve => {
@@ -53,13 +57,18 @@ export const useProperty = defineStore('property', {
             }
         },
 
+        /**
+         * @usage: Call this method to fetch the property details for editing by providing the property ID.The fetched property details will be stored in the `this.property` variable.
+         * @param {number|string} id - The unique identifier of the property to be fetched.
+         * @returns {Promise<object>} A promise that resolves with the response object on success or rejects with the error response on failure.
+         * @request Method: GET, URL: `${this.prefix}/edit/${id}`, Headers: Uses default Axios headers set in the `axiosInstance`.
+         */
         async  edit(id) {
             const url = `${this.prefix}/edit/${id}`;
             try {
                 const response = await axiosInstance.get(url);
 
                 this.property = response.data.property;
-                // console.log("Pinia Edit: ",response);
                 return new Promise(resolve => {
                     resolve(response)
                 })

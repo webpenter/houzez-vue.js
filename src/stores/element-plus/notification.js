@@ -22,7 +22,7 @@ export const useNotification = defineStore("notification", {
         },
 
         position: "top-right",
-        duration: 3000,
+        duration: 4000,
     }),
 
     actions: {
