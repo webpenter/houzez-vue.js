@@ -21,7 +21,7 @@ export const useMessage = defineStore("message", {
             error: "error",
         },
 
-        duration:3000,
+        duration:4000,
     }),
 
     actions: {

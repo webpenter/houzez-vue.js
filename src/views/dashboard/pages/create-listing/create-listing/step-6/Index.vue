@@ -6,7 +6,6 @@
             <snake-nav active="listing"/>
             <div class="dashboard-content-inner-wrap">
 
-                <form @submit.prevent="formSubmit">
                   <div class="dashboard-content-block-wrap">
                     <h2>Property Media</h2>
                     <div class="dashboard-content-block">
@@ -16,60 +15,53 @@
                           <div class="upload-icon">
                             <i class="houzez-icon icon-picture-sun"></i>
                           </div>
-                          <div class="upload-image-counter">3 of 6</div>
+                          <div class="upload-image-counter">{{ propertyImages.length ?? '0' }} of 6</div>
                           <div>
                             Drag and drop the gallery images here<br>
-                            <span>(Minimum size 1440x900)</span>
+                            <span>(Minimum size 2MB)</span>
                           </div>
-                          <button class="btn btn-primary btn-left-icon"><i class="houzez-icon icon-upload-button mr-1"></i> Select and Upload</button>
+                          <button @click="triggerFileInput" class="btn btn-primary btn-left-icon"><i class="houzez-icon icon-upload-button mr-1"></i>
+                            Select and Upload
+                          </button>
+                          <input
+                              type="file"
+                              ref="fileInput"
+                              multiple
+                              style="display: none;"
+                              @change="handleFileChange"
+                          />
                         </div>
-                        <p>Click on the star icon to select the cover image.</p>
-                        <div class="upload-media-gallery">
-                          <div class="row">
-                            <div class="col-md-2 col-sm-4 col-6">
-                              <img class="img-fluid" src="http://placehold.it/200x150" alt="thumb">
-                              <div class="upload-gallery-thumb-buttons">
-                                <button><i class="houzez-icon icon-rating-star full-star text-success"></i></button>
-                                <button><i class="houzez-icon icon-remove-circle"></i></button>
-                              </div>
-                            </div>
-                            <div class="col-md-2 col-sm-4 col-6">
-                              <img class="img-fluid" src="http://placehold.it/200x150" alt="thumb">
-                              <div class="upload-gallery-thumb-buttons">
-                                <button><i class="houzez-icon icon-rating-star full-star"></i></button>
-                                <button><i class="houzez-icon icon-remove-circle"></i></button>
-                              </div>
-                            </div>
-                            <div class="col-md-2 col-sm-4 col-6">
-                              <img class="img-fluid" src="http://placehold.it/200x150" alt="thumb">
-                              <div class="upload-gallery-thumb-buttons">
-                                <button><i class="houzez-icon icon-rating-star full-star"></i></button>
-                                <button><i class="houzez-icon icon-remove-circle"></i></button>
-                              </div>
-                            </div>
-                            <div class="col-md-2 col-sm-4 col-6">
-                              <img class="img-fluid" src="http://placehold.it/200x150" alt="thumb">
-                              <div class="upload-gallery-thumb-buttons">
-                                <button><i class="houzez-icon icon-rating-star full-star"></i></button>
-                                <button><i class="houzez-icon icon-remove-circle"></i></button>
-                              </div>
-                            </div>
-                            <div class="col-md-2 col-sm-4 col-6">
-                              <img class="img-fluid" src="http://placehold.it/200x150" alt="thumb">
-                              <div class="upload-gallery-thumb-buttons">
-                                <button><i class="houzez-icon icon-rating-star full-star"></i></button>
-                                <button><i class="houzez-icon icon-remove-circle"></i></button>
-                              </div>
-                            </div>
-                            <div class="col-md-2 col-sm-4 col-6">
-                              <img class="img-fluid" src="http://placehold.it/200x150" alt="thumb">
-                              <div class="upload-gallery-thumb-buttons">
-                                <button><i class="houzez-icon icon-rating-star full-star"></i></button>
-                                <button><i class="houzez-icon icon-remove-circle"></i></button>
-                              </div>
-                            </div>
+                        <span class="text-danger" v-if="localErrors.images_error">
+                            {{ localErrors.images_error }}
+                        </span>
+                        <div v-if="uploadProgress > 0" class="progress mt-3">
+                          <div
+                              class="progress-bar"
+                              role="progressbar"
+                              :style="{ width: uploadProgress + '%' }"
+                              :aria-valuenow="uploadProgress"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                          >
+                            {{ uploadProgress }}%
                           </div>
                         </div>
+                        <template v-if="propertyImages.length > 0">
+                          <p>Click on the star icon to select the cover image.</p>
+                          <div class="upload-media-gallery">
+                            <div class="row">
+                              <template v-for="image in propertyImages">
+                                <div class="col-md-2 col-sm-4 col-6">
+                                  <img class="img-fluid" :src="image.image_path" alt="thumb">
+                                  <div class="upload-gallery-thumb-buttons">
+                                    <button><i class="houzez-icon icon-rating-star full-star" :class="{'text-success':image.is_thumbnail === 1}"></i></button>
+                                    <button><i class="houzez-icon icon-remove-circle"></i></button>
+                                  </div>
+                                </div>
+                              </template>
+                            </div>
+                          </div>
+                        </template>
                       </div>
                     </div><!-- dashboard-content-block -->
                   </div><!-- dashboard-content-block-wrap -->
@@ -89,12 +81,12 @@
                         >
                         <span class="text-danger" v-if="localErrors.video_url">
                             {{ localErrors.video_url }}
-                          </span>
+                        </span>
                         <small class="form-text text-muted">For example: https://www.youtube.com/watch?v=49d3Gn41IaA</small>
                       </div>
                     </div><!-- dashboard-content-block -->
                   </div><!-- dashboard-content-block-wrap -->
-
+                <form @submit.prevent="formSubmit">
                   <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
                     <BackBtn route="dashboard.create-listing.step-5" :pId="propertyId"/>
                     <NextBtn :btnLoading="btnLoading" :hasErrors="hasErrors"/>
@@ -120,9 +112,11 @@ const route = useRoute();
 const router = useRouter();
 const propertyId = route.params.propertyId;
 const propertyToRefs = useProperty();
-const {property} = storeToRefs(propertyToRefs);
+const {property,propertyImages} = storeToRefs(propertyToRefs);
 const notify = useNotification();
 const btnLoading = ref(false);
+const fileInput = ref(null);
+const hasPropertyImages = ref(false);
 
 const formData = ref({
   video_url: "",
@@ -130,6 +124,7 @@ const formData = ref({
 
 const localErrors = ref({
   video_url: "",
+  images_error: "",
 });
 
 const validateField = (field) => {
@@ -168,6 +163,89 @@ const editData = async () => {
   }
 }
 
+// const editImagesData = async () => await propertyToRefs.editImages(propertyId);
+const editImagesData = async () => {
+  const res = await propertyToRefs.editImages(propertyId);
+  console.log("Images API Response:", res);
+
+  if (res.status === 200) {
+    hasPropertyImages.value = true;
+    console.log("Updated Property Images:", hasPropertyImages.value);
+  } else if (res.status === 404) {
+    hasPropertyImages.value = false;
+    console.log("Updated Property Images:", hasPropertyImages.value);
+  } else {
+    hasPropertyImages.value = false;
+  }
+};
+
+
+const triggerFileInput = () => {
+  if (fileInput.value) {
+    fileInput.value.click();
+  }
+};
+
+const uploadProgress = ref(0);
+
+const handleFileChange = async (event) => {
+  const files = event.target.files;
+  if (files.length) {
+    if (files.length > 6) {
+      notify.Error("You can upload a maximum of 6 files.");
+      event.target.value = "";
+      return;
+    }
+
+    const validExtensions = ['image/jpeg', 'image/png', 'image/jpg'];
+    const maxSizeInBytes = 2 * 1024 * 1024;
+    const formImagesData = new FormData();
+
+    for (const file of files) {
+      if (!validExtensions.includes(file.type)) {
+        notify.Error(`Invalid file type for ${file.name}. Only JPG, JPEG, and PNG files are allowed.`);
+        continue;
+      }
+
+      if (file.size > maxSizeInBytes) {
+        notify.Error(`File size exceeds the 2MB limit for ${file.name}. Please upload a smaller file.`);
+        continue;
+      }
+
+      formImagesData.append("images[]", file);
+    }
+
+    const progressHandler = (progressEvent) => {
+      if (progressEvent.lengthComputable) {
+        const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+        uploadProgress.value = progress;
+      }
+    };
+
+    try {
+      const response = await propertyToRefs.imagesCreateOrUpdate(formImagesData, propertyId, progressHandler);
+
+      if (response.status === 200) {
+        notify.Success("Property images successfully updated!");
+        await editImagesData();
+        uploadProgress.value = 0;
+      } else if (response.status === 422) {
+        notify.Error("This property already has 6 images, no more can be uploaded.");
+        uploadProgress.value = 0;
+      } else if (response.status === 400) {
+        notify.Error("You can upload a maximum of 6 images. The number of images you have selected exceeds the allowed limit based on the property.");
+        uploadProgress.value = 0;
+      } else {
+        notify.Error("Failed to upload property images.");
+        uploadProgress.value = 0;
+      }
+    } catch (error) {
+      notify.Error("An error occurred while uploading images.");
+      uploadProgress.value = 0;
+    }
+  }
+};
+
 const formSubmit = async () => {
   Object.keys(localErrors.value).forEach((field) => validateField(field));
 
@@ -201,6 +279,7 @@ const formSubmit = async () => {
 
 onMounted(() => {
   editData();
+  editImagesData();
 
   if (property.value){
     formData.value = { ...property.value };

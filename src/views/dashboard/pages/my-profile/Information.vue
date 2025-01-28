@@ -225,14 +225,12 @@ const handleFileChange = async (event) => {
     const validExtensions = ['image/jpeg', 'image/png', 'image/jpg'];
     const maxSizeInBytes = 2 * 1024 * 1024; // 2MB
 
-    // Check file type
     if (!validExtensions.includes(file.type)) {
       notify.Error("Invalid file type. Only JPG, JPEG, and PNG files are allowed.");
       event.target.value = "";
       return;
     }
 
-    // Check file size
     if (file.size > maxSizeInBytes) {
       notify.Error("File size exceeds the 2MB limit. Please upload a smaller file.");
       event.target.value = "";
