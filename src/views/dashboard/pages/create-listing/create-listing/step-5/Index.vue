@@ -238,7 +238,6 @@ onMounted(() => {
     formData.value = { ...property.value };
   }
 
-  // Initialize Leaflet map
   const map = L.map("map").setView([28.4212, 70.2989], 13); // Set initial view to 28.4212° N, 70.2989° E
 
 
