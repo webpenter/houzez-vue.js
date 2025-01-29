@@ -1,6 +1,6 @@
 <template>
 <div class="dashboard-content-block-wrap">
-    <h2>Add a Floor Plan</h2>
+    <h2>Floor Plan</h2>
 
     <!-- Render each form in a new dashboard-content-block -->
     <div v-for="(plan, index) in floorPlans" :key="plan.id" class="dashboard-content-block mb-4">
