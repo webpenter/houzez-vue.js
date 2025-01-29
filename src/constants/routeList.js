@@ -1,4 +1,6 @@
 // -------------------- App Route List -----------------------
+import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/general.js";
+
 export const APP_ROUTES = [
 	{ id:1, name:'app.home', title:'Home', sub:[] },
 	{ id:2, name:'app.properties', title:'Properties', sub:[] },
@@ -38,7 +40,7 @@ export const DASHBOARD_ROUTES = [
 			{id:7, title:'Disapproved', name:'dashboard.my-properties.disapproved'},
 		] 
 	},
-	{ id:4, title:'Create Listing', name:'dashboard.create-listing.step-1', icon:'icon-add-circle', sub:[] },
+	{ id:4, title:TITLE_CREATE_UPDATE_LISTING, name:'dashboard.create-listing.step-1', icon:'icon-add-circle', sub:[] },
 	{ id:5, title:'Favorites', name:'dashboard.favorite-properties', icon:'icon-love-it', sub:[] },
 	{ id:6, title:'Saved Searches', name:'dashboard.saved-searches', icon:'icon-search', sub:[] },
 	{ id:7, title:'Invoices', name:'dashboard.invoices', icon:'icon-accounting-document', sub:[] },

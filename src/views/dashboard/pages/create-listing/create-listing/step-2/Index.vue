@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Add New Property">
+    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
         <SaveAsDraftBtn/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
@@ -67,7 +67,7 @@
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Area Size</label>
+                          <label>Area Size *</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.area_size }"
@@ -156,7 +156,7 @@ import BackBtn from '../components/BackBtn.vue';
 import SectionDetails from '@/views/inc/dashboard/property/SectionDetails.vue';
 import {useRoute, useRouter} from "vue-router";
 import {computed, onMounted, ref, watch} from "vue";
-import {PROPERTY_TOTAL_STEPS} from "@/constants/index.js";
+import {PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 import {useNotification, useProperty} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 

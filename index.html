@@ -46,14 +46,26 @@
     </style>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""
+    />
+
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin="">
+    </script>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      
+    </div>
     
     <script type="module" src="./src/main.js"></script>
 
     <!-- start scripts -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBek2XjpiEzDMPxnCw6_WJOpzp7Lv4pMN0&callback=initMap" async defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
@@ -78,31 +90,5 @@
     <script type="text/javascript" src="js/jquery.disableAutoFill.min.js"></script>
     <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
     <script type="text/javascript" src="js/custom.js"></script>
-
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $('#no-auto-fill').disableAutoFill({
-          passwordField: '.password',
-          callback: function() {
-            return checkForm();
-          }
-        });
-
-        function checkForm() {
-          form = document.getElementById('no-auto-fill');
-          if (form.password.value == '') {
-            alert('Cannot leave Password field blank.');
-            form.password.focus();
-            return false;
-          }
-          if (form.username.value == '') {
-            alert('Cannot leave User Id field blank.');
-            form.username.focus();
-            return false;
-          }
-          return true;
-        }
-      });
-    </script>
   </body>
 </html>

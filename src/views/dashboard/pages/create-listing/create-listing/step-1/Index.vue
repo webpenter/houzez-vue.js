@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Add New Property">
+    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
         <SaveAsDraftBtn/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
@@ -11,7 +11,7 @@
                   <h2>Description</h2>
                   <div class="dashboard-content-block">
                     <div class="form-group">
-                      <label>Title</label>
+                      <label>Title *</label>
                       <input
                           class="form-control"
                           :class="{ 'is-invalid': localErrors.title }"
@@ -100,7 +100,7 @@
                 </div><!-- dashboard-content-block-wrap -->
 
                 <div class="dashboard-content-block-wrap">
-                  <h2>Price</h2>
+                  <h2>Price *</h2>
                   <div class="dashboard-content-block">
                     <div class="row">
                       <div class="col-md-6 col-sm-12">
@@ -173,7 +173,7 @@ import SaveAsDraftBtn from '../components/SaveAsDraftBtn.vue';
 import {computed, onMounted, ref, watch} from "vue";
 import {useLabel,useType, useNotification, useProperty, useStatus} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
-import {PROPERTY_TOTAL_STEPS} from "@/constants/index.js";
+import {PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 import NextBtn from "@/views/dashboard/pages/create-listing/create-listing/components/NextBtn.vue";
 
 const route = useRoute();

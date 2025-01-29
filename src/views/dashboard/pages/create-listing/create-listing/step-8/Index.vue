@@ -1,18 +1,19 @@
 <template>
-    <DashboardHeader heading="Add New Property">
+    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
         <SaveAsDraftBtn/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
             <snake-nav active="listing"/>
             <div class="dashboard-content-inner-wrap">
-                <Alert message="Settings saved successfully." type="success"/>
-                <Alert message="Something went wrong." type="danger"/>
 
                 <SectionFloorPlans/>
 
                 <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
-                    <BackBtn route="dashboard.create-listing.step-7"/>  
-                    <NextBtn route="dashboard.create-listing.step-9"/>        
+                  <BackBtn route="dashboard.create-listing.step-7" :pId="propertyId"/>
+                  <RouterLink class="btn btn-primary" :to="{name:'dashboard.create-listing.step-9',params:{propertyId:propertyId}}">
+                    Next
+                    <i class="houzez-icon icon-arrow-right-1 ml-2"></i>
+                  </RouterLink>
                 </div><!-- add-new-listing-bottom-nav-wrap -->
             </div><!-- dashboard-content-inner-wrap -->
         </section><!-- dashboard-content-wrap -->
@@ -24,4 +25,10 @@ import SaveAsDraftBtn from '../components/SaveAsDraftBtn.vue';
 import NextBtn from '../components/NextBtn.vue';
 import BackBtn from '../components/BackBtn.vue';
 import SectionFloorPlans from '@/views/inc/dashboard/property/SectionFloorPlans.vue';
+import {RouterLink, useRoute, useRouter} from "vue-router";
+import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
+
+const route = useRoute();
+const router = useRouter();
+const propertyId = route.params.propertyId;
 </script>

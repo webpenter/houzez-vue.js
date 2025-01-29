@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Add New Property">
+    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
         <SaveAsDraftBtn/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
@@ -40,7 +40,7 @@ import SectionFeature from '@/views/inc/dashboard/property/SectionFeature.vue';
 import {onMounted, ref, watch} from 'vue';
 import {storeToRefs} from "pinia";
 import {useFeatures, useNotification, useProperty} from "@/stores/index.js";
-import {PROPERTY_TOTAL_STEPS} from "@/constants/index.js";
+import {PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 import {useRoute, useRouter} from "vue-router";
 
 const {features} = storeToRefs(useFeatures());
