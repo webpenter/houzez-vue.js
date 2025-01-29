@@ -173,7 +173,6 @@ export const useProperty = defineStore('property', {
             try {
                 const response = await axiosInstance.post(url);
 
-                console.log(response)
                 return new Promise(resolve => {
                     resolve(response)
                 })
