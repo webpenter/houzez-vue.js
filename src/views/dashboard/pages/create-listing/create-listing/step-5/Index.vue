@@ -1,11 +1,5 @@
-<style>
-#map {
-  width: 100%;
-  height: 400px; /* Adjust as needed */
-}
-</style>
 <template>
-  <DashboardHeader heading="Add New Property">
+  <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
     <SaveAsDraftBtn/>
   </DashboardHeader>
   <section class="dashboard-content-wrap dashboard-add-new-listing">
@@ -124,7 +118,7 @@ import { useRoute, useRouter } from "vue-router";
 import { useNotification, useProperty } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
 import { computed, onMounted, ref, watch } from "vue";
-import {MAP_CONFIG, PROPERTY_TOTAL_STEPS} from "@/constants/index.js";
+import {MAP_CONFIG, PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 import L from "leaflet";
 
 const route = useRoute();

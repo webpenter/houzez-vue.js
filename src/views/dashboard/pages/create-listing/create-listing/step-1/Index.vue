@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Add New Property">
+    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
         <SaveAsDraftBtn/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
@@ -173,7 +173,7 @@ import SaveAsDraftBtn from '../components/SaveAsDraftBtn.vue';
 import {computed, onMounted, ref, watch} from "vue";
 import {useLabel,useType, useNotification, useProperty, useStatus} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
-import {PROPERTY_TOTAL_STEPS} from "@/constants/index.js";
+import {PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 import NextBtn from "@/views/dashboard/pages/create-listing/create-listing/components/NextBtn.vue";
 
 const route = useRoute();

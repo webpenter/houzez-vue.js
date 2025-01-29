@@ -97,7 +97,6 @@ export const useProperty = defineStore('property', {
                     onUploadProgress: onUploadProgress,
                 }).post(url, formData);
 
-                console.log("Pinia Images upload: ",response);
                 return new Promise(resolve => {
                     resolve(response)
                 })
@@ -124,6 +123,57 @@ export const useProperty = defineStore('property', {
                 const response = await axiosInstance.get(url);
 
                 this.propertyImages = response.data.images;
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
+
+        /**
+         * @usage Asynchronously updates the thumbnail image for a specific property.
+         * @request Sends a POST request to the API endpoint with the given propertyId and imgId. Handles success by logging the response and resolving the promise. Handles failure by logging the error response and rejecting the promise.
+         * @param {number} propertyId The ID of the property to update the thumbnail for. {number} imgId The ID of the image to set as the thumbnail.
+         * @returns {Promise} Resolves with the response on success, rejects with the error on failure.
+         */
+        async  updateThumbnail(propertyId,imgId) {
+            const url = `${this.prefix}/thumbnail/update/${propertyId}/${imgId}`;
+
+            try {
+                const response = await axiosInstance.post(url);
+
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
+
+        /**
+         * @usage Asynchronously delete an image from a property.
+         * @request This method sends a DELETE request to the server to remove an image from the specified property. It also handles errors and returns the server response or error response.
+         * @param {int} propertyId - The ID of the property the image belongs to. {int} imgId - The ID of the image to be deleted.
+         * @returns {Promise} - Resolves with the response or rejects with the error response.
+         */
+        async  deleteImage(propertyId,imgId) {
+            const url = `${this.prefix}/image/delete/${propertyId}/${imgId}`;
+
+            try {
+                const response = await axiosInstance.post(url);
+
+                console.log(response)
                 return new Promise(resolve => {
                     resolve(response)
                 })

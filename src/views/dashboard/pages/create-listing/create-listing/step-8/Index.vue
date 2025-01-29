@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Add New Property">
+    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
         <SaveAsDraftBtn/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
@@ -26,6 +26,7 @@ import NextBtn from '../components/NextBtn.vue';
 import BackBtn from '../components/BackBtn.vue';
 import SectionFloorPlans from '@/views/inc/dashboard/property/SectionFloorPlans.vue';
 import {RouterLink, useRoute, useRouter} from "vue-router";
+import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 
 const route = useRoute();
 const router = useRouter();
