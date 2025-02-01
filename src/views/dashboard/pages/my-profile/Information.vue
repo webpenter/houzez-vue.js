@@ -50,10 +50,10 @@
                                             v-model="formData.username"
                                             placeholder="Enter your username"
                                             type="text">
-                                      </div>
-                                      <span class="text-danger" v-if="localErrors.username">
+                                        <span class="text-danger mt-1 d-block" v-if="localErrors.username">
                                         {{ localErrors.username }}
                                       </span>
+                                      </div>
                                     </div><!-- col-md-6 col-sm-12 -->
                                     <div class="col-md-6 col-sm-12">
                                       <div class="form-group">

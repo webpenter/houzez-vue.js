@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Add New Property">
+    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
         <SaveAsDraftBtn/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
@@ -18,7 +18,7 @@
                           <div class="upload-image-counter">{{ propertyImages.length ?? '0' }} of 6</div>
                           <div>
                             Drag and drop the gallery images here<br>
-                            <span>(Minimum size 2MB)</span>
+                            <span>(Maximum size 2MB)</span>
                           </div>
                           <button @click="triggerFileInput" class="btn btn-primary btn-left-icon"><i class="houzez-icon icon-upload-button mr-1"></i>
                             Select and Upload
@@ -54,8 +54,16 @@
                                 <div class="col-md-2 col-sm-4 col-6">
                                   <img class="img-fluid" :src="image.image_path" alt="thumb">
                                   <div class="upload-gallery-thumb-buttons">
-                                    <button><i class="houzez-icon icon-rating-star full-star" :class="{'text-success':image.is_thumbnail === 1}"></i></button>
-                                    <button><i class="houzez-icon icon-remove-circle"></i></button>
+                                    <button @click="updateThumbnail(image.id)">
+                                      <i
+                                          class="houzez-icon icon-rating-star full-star"
+                                          :class="{'text-success':image.is_thumbnail === 1}"
+                                      >
+                                      </i>
+                                    </button>
+                                    <button @click="deleteImage(image.id)">
+                                      <i class="houzez-icon icon-remove-circle"></i>
+                                    </button>
                                   </div>
                                 </div>
                               </template>
@@ -106,7 +114,7 @@ import {useRoute, useRouter} from "vue-router";
 import {useNotification, useProperty} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 import {computed, onMounted, ref, watch} from "vue";
-import {PROPERTY_TOTAL_STEPS} from "@/constants/index.js";
+import {PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 
 const route = useRoute();
 const router = useRouter();
@@ -137,12 +145,12 @@ const validateField = (field) => {
 
 const isValidUrl = (url) => {
   const urlPattern = new RegExp(
-      "^(https?:\\/\\/)" + // protocol
-      "((([a-zA-Z0-9\\-]+\\.)+[a-zA-Z]{2,})|" + // domain name
-      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR IPv4
-      "(\\:\\d+)?(\\/[-a-zA-Z0-9@:%._+~#=]*)*" + // port and path
-      "(\\?[;&a-zA-Z0-9@:%._+~#=]*)?" + // query string
-      "(\\#[-a-zA-Z0-9@:%._+~#=]*)?$", // fragment locator
+      "^(https?:\\/\\/)" +
+      "((([a-zA-Z0-9\\-]+\\.)+[a-zA-Z]{2,})|" +
+      "((\\d{1,3}\\.){3}\\d{1,3}))" +
+      "(\\:\\d+)?(\\/[-a-zA-Z0-9@:%._+~#=]*)*" +
+      "(\\?[;&a-zA-Z0-9@:%._+~#=]*)?" +
+      "(\\#[-a-zA-Z0-9@:%._+~#=]*)?$",
       "i"
   );
   return urlPattern.test(url);
@@ -163,22 +171,7 @@ const editData = async () => {
   }
 }
 
-// const editImagesData = async () => await propertyToRefs.editImages(propertyId);
-const editImagesData = async () => {
-  const res = await propertyToRefs.editImages(propertyId);
-  console.log("Images API Response:", res);
-
-  if (res.status === 200) {
-    hasPropertyImages.value = true;
-    console.log("Updated Property Images:", hasPropertyImages.value);
-  } else if (res.status === 404) {
-    hasPropertyImages.value = false;
-    console.log("Updated Property Images:", hasPropertyImages.value);
-  } else {
-    hasPropertyImages.value = false;
-  }
-};
-
+const editImagesData = async () => await propertyToRefs.editImages(propertyId);
 
 const triggerFileInput = () => {
   if (fileInput.value) {
@@ -226,7 +219,7 @@ const handleFileChange = async (event) => {
       const response = await propertyToRefs.imagesCreateOrUpdate(formImagesData, propertyId, progressHandler);
 
       if (response.status === 200) {
-        notify.Success("Property images successfully updated!");
+        notify.Success("Property images successfully uploaded!");
         await editImagesData();
         uploadProgress.value = 0;
       } else if (response.status === 422) {
@@ -253,6 +246,10 @@ const formSubmit = async () => {
     notify.Error("Please fix the validation errors before proceeding.");
     return;
   }
+  if (typeof propertyImages.value.length === "undefined") {
+    notify.Error("At least one image is mandatory. Kindly upload an image before continuing.");
+    return;
+  }
 
   btnLoading.value = true;
 
@@ -276,6 +273,36 @@ const formSubmit = async () => {
     notify.Error("An error occurred");
   }
 };
+
+const updateThumbnail = async (imgId) => {
+  try {
+    const res = await propertyToRefs.updateThumbnail(propertyId,imgId);
+
+    if (res.status === 200) {
+      notify.Success(`Thumbnail updated successfully`);
+      await editImagesData();
+    } else {
+      notify.Error("Failed to update thumbnail.");
+    }
+  } catch (error) {
+    notify.Error("An error occurred while processing the request.");
+  }
+}
+
+const deleteImage = async (imgId) => {
+  try {
+    const res = await propertyToRefs.deleteImage(propertyId,imgId);
+
+    if (res.status === 200) {
+      notify.Success(`Image deleted successfully`);
+      await editImagesData();
+    } else {
+      notify.Error("Failed to delete image.");
+    }
+  } catch (error) {
+    notify.Error("An error occurred while processing the request.");
+  }
+}
 
 onMounted(() => {
   editData();
