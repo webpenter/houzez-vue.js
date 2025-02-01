@@ -47,7 +47,7 @@
 					</template>
 					<span v-if="route.title == 'Messages'" class="notification-circle"></span>
 				</li>
-		</template>
+		</template>z
 
 		<li class="side-menu-item">
 			<a href="javascript:void(0)" @click.prevent="$filters.logout()">
