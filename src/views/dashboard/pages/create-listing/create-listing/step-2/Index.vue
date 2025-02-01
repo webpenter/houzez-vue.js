@@ -67,7 +67,7 @@
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Area Size</label>
+                          <label>Area Size *</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.area_size }"
