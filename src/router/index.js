@@ -551,6 +551,60 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/my-profile/Index.vue'),
                 meta:{ title:'My Profile' }
             },
+            {
+                path: '/dashboard/admin',
+                name:'dashboard.admin',
+                component:() => import('@/views/dashboard/pages/admin/index/Index.vue'),
+                meta:{ title:'Admin' }
+            },
+            {
+                path: '/dashboard/admin/post-type',
+                name:'dashboard.admin.post_type',
+                component:() => import('@/views/dashboard/pages/admin/post-type/Index.vue'),
+                meta:{ title:'Post Type' }
+            },
+             {
+                path: '/dashboard/admin/taxonomies',
+                name:'dashboard.admin.taxonomies',
+                component:() => import('@/views/dashboard/pages/admin/taxonomies/Index.vue'),
+                meta:{ title:'Taxonomies' }
+            },
+            {
+                path: '/dashboard/admin/permalinks',
+                name:'dashboard.admin.permalinks',
+                component:() => import('@/views/dashboard/pages/admin/permalinks/Index.vue'),
+                meta:{ title:'Permalinks' }
+            },
+            {
+                path: '/dashboard/admin/currency_switcher',
+                name:'dashboard.admin.currency_switcher',
+                component:() => import('@/views/dashboard/pages/admin/currency_switcher/Index.vue'),
+                meta:{ title:'Currency Switcher' }
+            },
+            {
+                path: '/dashboard/admin/currency',
+                name:'dashboard.admin.currencies',
+                component:() => import('@/views/dashboard/pages/admin/currency/Index.vue'),
+                meta:{ title:'Currencies' }
+            },
+            {
+                path: '/dashboard/admin/addnew/currency',
+                name:'dashboard.admin.addnewcurrencies',
+                component:() => import('@/views/dashboard/pages/admin/currency/AddNew.vue'),
+                meta:{ title:'Currencies' }
+            },
+            {
+                path: '/dashboard/admin/documentation',
+                name:'dashboard.admin.documentation',
+                component:() => import('@/views/dashboard/pages/admin/documentation/Index.vue'),
+                meta:{ title:'Documentation' }
+            },
+            {
+                path: '/dashboard/admin/feedback',
+                name:'dashboard.admin.feedback',
+                component:() => import('@/views/dashboard/pages/admin/feedback/Index.vue'),
+                meta:{ title:'Feedback' }
+            },
         ]
     },
 
