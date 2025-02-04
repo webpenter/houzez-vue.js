@@ -588,6 +588,12 @@ const routes = [
                 meta:{ title:'Currencies' }
             },
             {
+                path: '/dashboard/admin/addnew/currency',
+                name:'dashboard.admin.addnewcurrencies',
+                component:() => import('@/views/dashboard/pages/admin/currency/AddNew.vue'),
+                meta:{ title:'Currencies' }
+            },
+            {
                 path: '/dashboard/admin/documentation',
                 name:'dashboard.admin.documentation',
                 component:() => import('@/views/dashboard/pages/admin/documentation/Index.vue'),
