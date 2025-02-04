@@ -605,6 +605,20 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/admin/feedback/Index.vue'),
                 meta:{ title:'Feedback' }
             },
+            // media route
+            {
+                path: '/dashboard/media',
+                name:'dashboard.media',
+                component:() => import('@/views/dashboard/pages/media/library/Index.vue'),
+                meta:{ title:'Media' }
+            },
+            {
+                path: '/dashboard/media/add-new',
+                name:'dashboard.media.addnew',
+                component:() => import('@/views/dashboard/pages/media/addnew/Index.vue'),
+                meta:{ title:'Add New Media' }
+            },
+
         ]
     },
 
