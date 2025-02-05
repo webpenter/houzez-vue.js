@@ -61,4 +61,6 @@ export const DASHBOARD_ROUTES = [
 			{id:7, title:'Feedback', name:'dashboard.admin.feedback'},
 		] 
 	},
+	{ id:11, title:'File Manager', name:'dashboard.file_manager', icon:'icon-single-neutral-circle', sub:[] },
+
 ];

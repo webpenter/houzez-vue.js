@@ -605,6 +605,12 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/admin/feedback/Index.vue'),
                 meta:{ title:'Feedback' }
             },
+            {
+                path: '/dashboard/file-manager',
+                name:'dashboard.file_manager',
+                component:() => import('@/views/dashboard/pages/file-manager/Index.vue'),
+                meta:{ title:'File Manager' }
+            },
         ]
     },
 
