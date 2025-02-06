@@ -31,6 +31,13 @@
 						{{ route.title }}
 					</RouterLink>
 				</template>
+				<template v-else-if="route.name == 'dashboard.file-manager'">
+					<RouterLink :to="{ name: route.name }" active-class="active"
+						@click.prevent="isOpenFileManager = !isOpenFileManager">
+						<i class="houzez-icon mr-2" :class="route.icon"></i>
+						{{ route.title }}
+					</RouterLink>
+				</template>
 				<template v-else>
 					<RouterLink :to="{ name: route.name }" active-class="active">
 						<i class="houzez-icon mr-2" :class="route.icon"></i>
@@ -74,8 +81,20 @@
 					</ul>
 				</template>
 					<!-- Media -->
-					<template v-if="route.name == 'dashboard.media'">
+				<template v-if="route.name == 'dashboard.media'">
 					<ul class="side-menu-dropdown list-unstyled" v-show="isOpenMedia">
+						<template v-for="sub_route in route.sub" :key="sub_route.id">
+							<li class="side-menu-item">
+								<RouterLink :to="{ name: sub_route.name }" active-class="active">
+									<i class="houzez-icon icon-arrow-right-1"></i>
+									{{ sub_route.title }}
+								</RouterLink>
+							</li>
+						</template>
+					</ul>
+				</template>
+				<template v-if="route.name == 'dashboard.file-manager'">
+					<ul class="side-menu-dropdown list-unstyled" v-show="isOpenFileManager">
 						<template v-for="sub_route in route.sub" :key="sub_route.id">
 							<li class="side-menu-item">
 								<RouterLink :to="{ name: sub_route.name }" active-class="active">
@@ -109,6 +128,8 @@ const isOpenBoard = ref(false);
 const isOpenProperties = ref(false);
 const isOpenAdmin = ref(false);
 const isOpenMedia = ref(false);
+const isOpenFileManager = ref(false);
+
 
 </script>
 

@@ -618,6 +618,18 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/media/addnew/Index.vue'),
                 meta:{ title:'Add New Media' }
             },
+            {
+                path: '/dashboard/file-manager',
+                name:'dashboard.file-manager',
+                component:() => import('@/views/dashboard/pages/file manager/Index.vue'),
+                meta:{ title:'File Manager' }
+            },
+            {
+                path: '/dashboard/file-manager/settings',
+                name:'dashboard.file-manager.setting',
+                component:() => import('@/views/dashboard/pages/file manager/settings/Index.vue'),
+                meta:{ title:'File Manager Settings' }
+            },
 
         ]
     },

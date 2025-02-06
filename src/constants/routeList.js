@@ -71,5 +71,15 @@ export const DASHBOARD_ROUTES = [
 			{id:2, title:'Add New', name:'dashboard.media.addnew'},
 			
 		] 
+	},
+	{ 
+		id:12,
+		title:'File Manager',
+		name:'dashboard.file-manager',
+		icon:'icon-building-cloudy',
+		sub:[
+			{id:1, title:'Settings', name:'dashboard.file-manager.setting'},
+			
+		] 
 	}
 ];
