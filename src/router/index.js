@@ -542,6 +542,19 @@ const routes = [
                 component:() => import('@/views/inc/dashboard/DashboardAgentMessage.vue'),
                 meta:{ title:'Messages' }
             },
+            {
+                path: '/dashboard/tools',
+                name:'dashboard.tools',
+                component:() => import('@/views/dashboard/pages/tools/index/Index.vue'),
+                meta:{ title:'Tools' }
+            },
+            //  @route Dashboard/Tools
+            {
+                path: '/dashboard/tools/export',
+                name:'dashboard.tools.export',
+                component:() => import('@/views/dashboard/pages/tools/export/Index.vue'),
+                meta:{ title:'Tools' }
+            },
             /***
              * @route Dashboard/My-Profile
              ***/
@@ -551,6 +564,84 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/my-profile/Index.vue'),
                 meta:{ title:'My Profile' }
             },
+            {
+                path: '/dashboard/admin',
+                name:'dashboard.admin',
+                component:() => import('@/views/dashboard/pages/admin/index/Index.vue'),
+                meta:{ title:'Admin' }
+            },
+            {
+                path: '/dashboard/admin/post-type',
+                name:'dashboard.admin.post_type',
+                component:() => import('@/views/dashboard/pages/admin/post-type/Index.vue'),
+                meta:{ title:'Post Type' }
+            },
+             {
+                path: '/dashboard/admin/taxonomies',
+                name:'dashboard.admin.taxonomies',
+                component:() => import('@/views/dashboard/pages/admin/taxonomies/Index.vue'),
+                meta:{ title:'Taxonomies' }
+            },
+            {
+                path: '/dashboard/admin/permalinks',
+                name:'dashboard.admin.permalinks',
+                component:() => import('@/views/dashboard/pages/admin/permalinks/Index.vue'),
+                meta:{ title:'Permalinks' }
+            },
+            {
+                path: '/dashboard/admin/currency_switcher',
+                name:'dashboard.admin.currency_switcher',
+                component:() => import('@/views/dashboard/pages/admin/currency_switcher/Index.vue'),
+                meta:{ title:'Currency Switcher' }
+            },
+            {
+                path: '/dashboard/admin/currency',
+                name:'dashboard.admin.currencies',
+                component:() => import('@/views/dashboard/pages/admin/currency/Index.vue'),
+                meta:{ title:'Currencies' }
+            },
+            {
+                path: '/dashboard/admin/documentation',
+                name:'dashboard.admin.documentation',
+                component:() => import('@/views/dashboard/pages/admin/documentation/Index.vue'),
+                meta:{ title:'Documentation' }
+            },
+            {
+                path: '/dashboard/admin/feedback',
+                name:'dashboard.admin.feedback',
+                component:() => import('@/views/dashboard/pages/admin/feedback/Index.vue'),
+                meta:{ title:'Feedback' }
+            },
+            {
+                path: '/dashboard/posts',
+                name:'dashboard.posts',
+                component:() => import('@/views/dashboard/pages/posts/allposts/Index.vue'),
+                meta:{ title:'All Posts' }
+            },
+            {
+                path: '/dashboard/posts/addnew',
+                name:'dashboard.posts.addnew',
+                component:() => import('@/views/dashboard/pages/posts/addnew/Index.vue'),
+                meta:{ title:'Add New Post' }
+            },
+            {
+                path: '/dashboard/posts/allposts',
+                name:'dashboard.posts.allposts',
+                component:() => import('@/views/dashboard/pages/posts/allposts/Index.vue'),
+                meta:{ title:'Add New Post' }
+            },
+            {
+                path: '/dashboard/posts/categories',
+                name:'dashboard.posts.categories',
+                component:() => import('@/views/dashboard/pages/posts/categories/Index.vue'),
+                meta:{ title:'Categories' }
+            },
+            {
+                path: '/dashboard/posts/tags',
+                name: 'dashboard.posts.tags',
+                component: () => import('@/views/dashboard/pages/posts/tags/Index.vue'), // Note the uppercase 'I'
+                meta: { title: 'Tags' }
+            }
         ]
     },
 

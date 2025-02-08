@@ -43,7 +43,41 @@ export const DASHBOARD_ROUTES = [
 	{ id:4, title:TITLE_CREATE_UPDATE_LISTING, name:'dashboard.create-listing.step-1', icon:'icon-add-circle', sub:[] },
 	{ id:5, title:'Favorites', name:'dashboard.favorite-properties', icon:'icon-love-it', sub:[] },
 	{ id:6, title:'Saved Searches', name:'dashboard.saved-searches', icon:'icon-search', sub:[] },
-	{ id:7, title:'Invoices', name:'dashboard.invoices', icon:'icon-accounting-document', sub:[] },
-	{ id:8, title:'Messages', name:'dashboard.messages', icon:'icon-messages-bubble', sub:[] },
-	{ id:9, title:'My Profile', name:'dashboard.my-profile', icon:'icon-single-neutral-circle', sub:[] },
+	
+	{ id:8, title:'Invoices', name:'dashboard.invoices', icon:'icon-accounting-document', sub:[] },
+	{ id:9, title:'Messages', name:'dashboard.messages', icon:'icon-messages-bubble', sub:[] },
+	{ id:10, title:'Tools', name:'dashboard.tools', icon:'icon-messages-bubble', sub:[
+		{id:1, title:'Export', name:'dashboard.tools.export'},
+	] 
+},
+	{ id:10, title:'My Profile', name:'dashboard.my-profile', icon:'icon-single-neutral-circle', sub:[] },
+
+	{ 
+		id:11,
+		title:'Admin',
+		name:'dashboard.admin',
+		icon:'icon-building-cloudy',
+		sub:[
+			{id:1, title:'Post Type', name:'dashboard.admin.post_type'},
+			{id:2, title:'Taxonomies', name:'dashboard.admin.taxonomies'},
+			{id:3, title:'Permalinks', name:'dashboard.admin.permalinks'},
+			{id:4, title:'Currency Switcher', name:'dashboard.admin.currency_switcher'},
+			{id:5, title:'Currencies', name:'dashboard.admin.currencies'},
+			{id:6, title:'Documentation', name:'dashboard.admin.documentation'},
+			{id:7, title:'Feedback', name:'dashboard.admin.feedback'},
+		] 
+	},
+	{ 
+		id:12,
+		title:'Posts',
+		name:'dashboard.posts',
+		icon:'icon-building-cloudy',
+		sub:[
+			{id:1, title:'Add New', name:'dashboard.posts.addnew'},
+			{id:2, title:'All Post', name:'dashboard.posts.allposts'},
+			{id:3, title:'Categories', name:'dashboard.posts.categories'},
+			{id:4, title:'Tags', name:'dashboard.posts.tags'},
+		] 
+	},
+	
 ];
