@@ -1,39 +1,4 @@
 <template>
-  <tr>
-	<td class="property-table-thumbnail" data-label="Thumbnail">
-		<div class="table-property-thumb">
-			<span class="label property-payment-status">Paid</span>
-			<a href="#"><img src="http://placehold.co/100x75"></a>	
-		</div><!-- table-property-thumb -->
-	</td>
-	<td class="property-table-address" data-label="Address">
-		<a href="#"><strong>Apartment With Ocean View</strong></a><br>
-		9701 W Broadview Dr, Bay Harbor Islands, FL 31175<br> 
-		<strong>Expiration:</strong> June 9, 2019 - 6:46 pm
-	</td>
-	<td>
-		<span class="badge badge-warning">Pending</span>
-	</td>
-	<!-- <td class="property-table-id" data-label="ID">HZ-001</td> -->
-	<td class="property-table-type" data-label="Type">Apartment</td>
-	<td class="property-table-status" data-label="Status">For Sale</td>
-	<td class="property-table-price" data-label="Price">
-		<strong>$789,000</strong>
-	</td>
-	<td class="property-table-actions" data-label="Actions">
-		<div class="dropdown property-action-menu">
-			<button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Actions
-			</button>
-			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="#">Publish</a>
-				<RouterLink class="dropdown-item" to="/dashboard/dashboard-agent-edit-property">Edit</RouterLink>
-				<a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
-				<a class="dropdown-item" href="#">Duplicate</a>
-			</div>
-		</div>
-	</td>
-</tr>
 <tr>
 	<td class="property-table-thumbnail" data-label="Thumbnail">
 		<div class="table-property-thumb">
