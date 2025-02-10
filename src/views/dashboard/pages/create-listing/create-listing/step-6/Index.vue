@@ -183,61 +183,73 @@ const uploadProgress = ref(0);
 
 const handleFileChange = async (event) => {
   const files = event.target.files;
-  if (files.length) {
-    if (files.length > 6) {
-      notify.Error("You can upload a maximum of 6 files.");
-      event.target.value = "";
-      return;
+  if (!files.length) return;
+
+  const validExtensions = ['image/jpeg', 'image/png', 'image/jpg'];
+  const maxSizeInBytes = 2 * 1024 * 1024;
+  const maxAllowedFiles = 6;
+
+  let errors = [];
+  let formImagesData = new FormData();
+  let validFilesCount = 0;
+
+  if (files.length > maxAllowedFiles) {
+    errors.push("You can upload a maximum of 6 files.");
+  }
+
+  for (const file of files) {
+    if (!validExtensions.includes(file.type)) {
+      errors.push(`Invalid file type for ${file.name}. Only JPG, JPEG, and PNG files are allowed.`);
+      continue;
     }
 
-    const validExtensions = ['image/jpeg', 'image/png', 'image/jpg'];
-    const maxSizeInBytes = 2 * 1024 * 1024;
-    const formImagesData = new FormData();
-
-    for (const file of files) {
-      if (!validExtensions.includes(file.type)) {
-        notify.Error(`Invalid file type for ${file.name}. Only JPG, JPEG, and PNG files are allowed.`);
-        continue;
-      }
-
-      if (file.size > maxSizeInBytes) {
-        notify.Error(`File size exceeds the 2MB limit for ${file.name}. Please upload a smaller file.`);
-        continue;
-      }
-
-      formImagesData.append("images[]", file);
+    if (file.size > maxSizeInBytes) {
+      errors.push(`File size exceeds the 2MB limit for ${file.name}. Please upload a smaller file.`);
+      continue;
     }
 
-    const progressHandler = (progressEvent) => {
-      if (progressEvent.lengthComputable) {
-        const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
-        uploadProgress.value = progress;
-      }
-    };
+    formImagesData.append("images[]", file);
+    validFilesCount++;
+  }
 
-    try {
-      const response = await propertyToRefs.imagesCreateOrUpdate(formImagesData, propertyId, progressHandler);
+  if (errors.length > 0) {
+    notify.Error([...new Set(errors)].join("\n"));
+    return;
+  }
 
-      if (response.status === 200) {
-        notify.Success("Property images successfully uploaded!");
-        await editImagesData();
-        uploadProgress.value = 0;
-      } else if (response.status === 422) {
-        notify.Error("This property already has 6 images, no more can be uploaded.");
-        uploadProgress.value = 0;
-      } else if (response.status === 400) {
-        notify.Error("You can upload a maximum of 6 images. The number of images you have selected exceeds the allowed limit based on the property.");
-        uploadProgress.value = 0;
-      } else {
-        notify.Error("Failed to upload property images.");
-        uploadProgress.value = 0;
-      }
-    } catch (error) {
-      notify.Error("An error occurred while uploading images.");
+  if (validFilesCount === 0) {
+    notify.Error("No valid images to upload. Please check file type and size.");
+    return;
+  }
+
+  const progressHandler = (progressEvent) => {
+    if (progressEvent.lengthComputable) {
+      const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+      uploadProgress.value = progress;
+    }
+  };
+
+  try {
+    const response = await propertyToRefs.imagesCreateOrUpdate(formImagesData, propertyId, progressHandler);
+
+    if (response.status === 200) {
+      notify.Success("Property images successfully uploaded!");
+      await editImagesData();
       uploadProgress.value = 0;
+    } else if (response.status === 422) {
+      notify.Error("This property already has 6 images, no more can be uploaded.");
+    } else if (response.status === 400) {
+      notify.Error("The number of images you selected exceeds the allowed limit.");
+    } else {
+      notify.Error("Failed to upload property images.");
     }
+  } catch (error) {
+    notify.Error("An error occurred while uploading images.");
+  } finally {
+    uploadProgress.value = 0;
   }
 };
+
 
 const formSubmit = async () => {
   Object.keys(localErrors.value).forEach((field) => validateField(field));

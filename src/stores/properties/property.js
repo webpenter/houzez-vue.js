@@ -15,9 +15,10 @@ import axiosInstance from "@/services/axiosService.js";
 
 export const useProperty = defineStore('property', {
     state: () => ({
-        properties:{},
+        dashboardProperties:{},
         property:{},
         propertyImages:{},
+        propertyAttachments:{},
         errors: {},
         loading: false,
         prefix:"/properties",
@@ -28,6 +29,24 @@ export const useProperty = defineStore('property', {
         },
     },
     actions: {
+        async  getUserProperties() {
+            const url = `${this.prefix}/get-user`;
+            try {
+                const response = await axiosInstance.get(url);
+
+                this.dashboardProperties = response.data.properties;
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
         /**
          * @request Sends a POST request to the server with the given `formData` and `id`.
          * @usage Use this function to create a new resource or update an existing one. The `id` determines whether it's a creation (when null or a specific value) or an update (for an existing resource).
@@ -169,6 +188,84 @@ export const useProperty = defineStore('property', {
          */
         async  deleteImage(propertyId,imgId) {
             const url = `${this.prefix}/image/delete/${propertyId}/${imgId}`;
+
+            try {
+                const response = await axiosInstance.post(url);
+
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
+
+        /**
+         * @usage Asynchronously uploads or updates files for a specific property.Sends a POST request with image data to the server, handles progress tracking, and returns the server response. Handles errors gracefully.
+         * @param {FormData} formData - The form data containing files to be uploaded. {number} propertyId - The ID of the property for which images are uploaded.
+         * @returns {Promise} A promise that resolves with the server response or rejects with an error response.
+         */
+        async  attachmentsCreateOrUpdate(formData,propertyId) {
+            const url = `${this.prefix}/attachments/create-or-update/${propertyId}`;
+
+            try {
+                const response = await apiService({
+                    requiresAuth : true,
+                    multipart : true,
+                }).post(url, formData);
+
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
+
+        /**
+         * @usage Asynchronously retrieves attachments for editing associated with a specific property.
+         * @request Sends a GET request to fetch all attachments for the given property ID, updates the local, propertyAttachments state, and handles any errors during the process.
+         * @param {number} propertyId - The ID of the property whose files are to be retrieved.
+         * @returns {Promise} A promise that resolves with the server response or rejects with an error response.
+         */
+        async  editAttachments(propertyId) {
+            const url = `${this.prefix}/attachments/edit/${propertyId}`;
+
+            try {
+                const response = await axiosInstance.get(url);
+
+                this.propertyAttachments = response.data.data;
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
+
+        /**
+         * @usage Asynchronously delete an attachment from a property.
+         * @request This method sends a DELETE request to the server to remove an file from the specified file. It also handles errors and returns the server response or error response.
+         * @param {int} fileId - The ID of the file to be deleted.
+         * @returns {Promise} - Resolves with the response or rejects with the error response.
+         */
+        async  deleteAttachment(fileId) {
+            const url = `${this.prefix}/attachments/delete/${fileId}`;
 
             try {
                 const response = await axiosInstance.post(url);
