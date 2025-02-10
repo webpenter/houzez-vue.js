@@ -1,6 +1,7 @@
 <template>
-<a class="btn btn-primary-outlined" href="#modal-save-draft" data-toggle="modal">Save as Draft</a>
+<RouterLink :to="{name:'dashboard.my-properties'}" class="btn btn-primary-outlined">My Properties</RouterLink>
 </template>
 
 <script setup>
+import {RouterLink} from "vue-router";
 </script>
