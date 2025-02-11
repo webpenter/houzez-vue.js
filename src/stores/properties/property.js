@@ -33,10 +33,15 @@ export const useProperty = defineStore('property', {
          * @usage Fetch User Properties.Fetches properties with optional search and sorting filters.
          * @param {string} search Optional search query.
          * @param {string} sortBy Sorting criteria ('default', 'price_high_low', 'price_low_high', 'date_new_old', 'date_old_new').
+         * * @param {string} propertyStatus Optional property status filter ('published', 'pending', 'expired', 'draft', 'on-hold', 'disapproved').
          * @returns {Promise} Resolves with response data or rejects with an error.
          */
-        async getUserProperties(search = '', sortBy = 'default') {
-            const url = `${this.prefix}/get-user?search=${encodeURIComponent(search)}&sortBy=${sortBy}`;
+        async getUserProperties(search = '', sortBy = 'default', propertyStatus = '') {
+            let url = `${this.prefix}/get-user?search=${encodeURIComponent(search)}&sortBy=${sortBy}`;
+
+            if (propertyStatus) {
+                url += `&propertyStatus=${encodeURIComponent(propertyStatus)}`;
+            }
 
             try {
                 const response = await axiosInstance.get(url);
