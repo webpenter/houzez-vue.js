@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@fawmi/vue-google-maps": "^0.9.79",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
     "@mdi/font": "^7.4.47",
     "axios": "^1.7.9",
     "chart.js": "^4.4.7",
@@ -22,6 +25,9 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^4.0.3",
     "vite": "^6.0.1",
     "vite-plugin-vue-devtools": "^7.6.5"
   }

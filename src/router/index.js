@@ -605,12 +605,32 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/admin/feedback/Index.vue'),
                 meta:{ title:'Feedback' }
             },
+            // media route
+            {
+                path: '/dashboard/media',
+                name:'dashboard.media',
+                component:() => import('@/views/dashboard/pages/media/library/Index.vue'),
+                meta:{ title:'Media' }
+            },
+            {
+                path: '/dashboard/media/add-new',
+                name:'dashboard.media.addnew',
+                component:() => import('@/views/dashboard/pages/media/addnew/Index.vue'),
+                meta:{ title:'Add New Media' }
+            },
             {
                 path: '/dashboard/file-manager',
-                name:'dashboard.file_manager',
-                component:() => import('@/views/dashboard/pages/file-manager/Index.vue'),
+                name:'dashboard.file-manager',
+                component:() => import('@/views/dashboard/pages/file manager/Index.vue'),
                 meta:{ title:'File Manager' }
             },
+            {
+                path: '/dashboard/file-manager/settings',
+                name:'dashboard.file-manager.setting',
+                component:() => import('@/views/dashboard/pages/file manager/settings/Index.vue'),
+                meta:{ title:'File Manager Settings' }
+            },
+
         ]
     },
 

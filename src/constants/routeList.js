@@ -61,6 +61,25 @@ export const DASHBOARD_ROUTES = [
 			{id:7, title:'Feedback', name:'dashboard.admin.feedback'},
 		] 
 	},
-	{ id:11, title:'File Manager', name:'dashboard.file_manager', icon:'icon-single-neutral-circle', sub:[] },
-
+	{ 
+		id:11,
+		title:'Media',
+		name:'dashboard.media',
+		icon:'icon-building-cloudy',
+		sub:[
+			{id:1, title:'Library', name:'dashboard.media'},
+			{id:2, title:'Add New', name:'dashboard.media.addnew'},
+			
+		] 
+	},
+	{ 
+		id:12,
+		title:'File Manager',
+		name:'dashboard.file-manager',
+		icon:'icon-building-cloudy',
+		sub:[
+			{id:1, title:'Settings', name:'dashboard.file-manager.setting'},
+			
+		] 
+	}
 ];
