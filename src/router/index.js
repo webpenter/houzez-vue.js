@@ -15,12 +15,12 @@ import {DEFAULT_TITLE, TITLE_CREATE_UPDATE_LISTING, URL_CREATE_UPDATE_LISTING} f
 import {useToken,useGeneralSettings} from "@/stores/index.js";
 
 const routes = [
-    /***
+    /**
      * @route 'localhost:3000/'
      * @name app
      * @prefix app
      * @auth not-required
-     ***/
+     **/
     {
         path: '/',
         name:'app',
@@ -400,94 +400,6 @@ const routes = [
                 name: 'dashboard.create-listing.completed',
                 component: () => import('@/views/dashboard/pages/create-listing/completed/Index.vue'),
                 meta: { title: TITLE_CREATE_UPDATE_LISTING }
-            },
-
-            /***
-             * @routes Dashboard/Edit-Property/Step-1 to Step-14
-             ***/
-            {
-                path: '/dashboard/edit-property/step-1',
-                name:'dashboard.edit-property.step-1',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-1/Index.vue'),
-                meta:{ title:'edit property' }
-            },  
-            {
-                path: '/dashboard/edit-property/step-2',
-                name:'dashboard.edit-property.step-2',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-2/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-3',
-                name:'dashboard.edit-property.step-3',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-3/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-4',
-                name:'dashboard.edit-property.step-4',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-4/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-5',
-                name:'dashboard.edit-property.step-5',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-5/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-6',
-                name:'dashboard.edit-property.step-6',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-6/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-7',
-                name:'dashboard.edit-property.step-7',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-7/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-8',
-                name:'dashboard.edit-property.step-8',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-8/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-9',
-                name:'dashboard.edit-property.step-9',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-9/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-10',
-                name:'dashboard.edit-property.step-10',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-10/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-11',
-                name:'dashboard.edit-property.step-11',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-11/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-12',
-                name:'dashboard.edit-property.step-12',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-12/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-13',
-                name:'dashboard.edit-property.step-13',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-13/Index.vue'),
-                meta:{ title:'Edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-14',
-                name:'dashboard.edit-property.step-14',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-14/Index.vue'),
-                meta:{ title:'edit property' }
             },
 
             /***

@@ -5,23 +5,7 @@
             <SnakeNav active="package"/>
             <div class="dashboard-content-inner-wrap">
                 <div class="dashboard-content-block-wrap">
-                    <MembershipPackagesTable/>
                     <div class="row row-no-padding">
-                        <div class="col-md-3 col-sm-6">
-                            <MemberShipPackage/>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <MemberShipPackage/>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <MemberShipPackage/>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <MemberShipPackage/>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <MemberShipPackage/>
-                        </div>
                         <div class="col-md-3 col-sm-6">
                             <MemberShipPackage/>
                         </div>
