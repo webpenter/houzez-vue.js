@@ -505,6 +505,119 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/my-profile/Index.vue'),
                 meta:{ title:'My Profile' }
             },
+            {
+                path: '/dashboard/posts/all',
+                name:'dashboard.posts',
+                component:() => import('@/views/dashboard/pages/posts/all-post/Index.vue'),
+                meta:{ title:'All Posts' }
+            },
+            {
+                path: '/dashboard/posts/addnew',
+                name:'dashboard.posts.addnew',
+                component:() => import('@/views/dashboard/pages/posts/add-new/Index.vue'),
+                meta:{ title:'Add New Post' }
+            },
+             {
+                path: '/dashboard/posts/categories',
+                name:'dashboard.posts.categories',
+                component:() => import('@/views/dashboard/pages/posts/categories/Index.vue'),
+                meta:{ title:'Categories' }
+            },
+            {
+                path: '/dashboard/posts/tags',
+                name:'dashboard.posts.tags',
+                component:() => import('@/views/dashboard/pages/posts/tags/Index.vue'),
+                meta:{ title:'Tags' }
+            },
+            {
+                path: '/dashboard/tools',
+                name:'dashboard.tools',
+                component:() => import('@/views/dashboard/pages/tools/Index.vue'),
+                meta:{ title:'import' }
+            },
+            {
+                path: '/dashboard/tools/import',
+                name:'dashboard.tools.import',
+                component:() => import('@/views/dashboard/pages/tools/import/Index.vue'),
+                meta:{ title:'import' }
+            },
+            // site health
+            {
+                path: '/dashboard/tools/site-health',
+                name:'dashboard.tools.site-health',
+                component:() => import('@/views/dashboard/pages/tools/site-health/Index.vue'),
+                meta:{ title:'site-health' }
+            },
+            // export
+            {
+                path: '/dashboard/tools/Export',
+                name:'dashboard.tools.Export',
+                component:() => import('@/views/dashboard/pages/tools/Export/Index.vue'),
+                meta:{ title:'Export' }
+            },
+            // Erase
+            {
+                path: '/dashboard/tools/Erase',
+                name:'dashboard.tools.Erase',
+                component:() => import('@/views/dashboard/pages/tools/Erase/Index.vue'),
+                meta:{ title:'Erase Personal Data' }
+            },
+            // settings
+            {
+                path: '/dashboard/settings',
+                name:'dashboard.settings',
+                component:() => import('@/views/dashboard/pages/settings/general/Index.vue'),
+                meta:{ title:'settings' }
+            },
+            {
+                path: '/dashboard/settings/Writing',
+                name:'dashboard.settings.Writing',
+                component:() => import('@/views/dashboard/pages/settings/Writing/Index.vue'),
+                meta:{ title:'Writing' }
+            },
+            {
+                path: '/dashboard/settings/Reading',
+                name:'dashboard.settings.Reading',
+                component:() => import('@/views/dashboard/pages/settings/Reading/Index.vue'),
+                meta:{ title:'Reading' }
+            },
+            {
+                path: '/dashboard/settings/Discussion',
+                name:'dashboard.settings.Discussion',
+                component:() => import('@/views/dashboard/pages/settings/Discussion/Index.vue'),
+                meta:{ title:'Reading' }
+            },
+            {
+                path: '/dashboard/settings/Media',
+                name:'dashboard.settings.Media',
+                component:() => import('@/views/dashboard/pages/settings/Media/Index.vue'),
+                meta:{ title:'Media' }
+            },
+            {
+                path: '/dashboard/settings/Permalink',
+                name:'dashboard.settings.Permalink',
+                component:() => import('@/views/dashboard/pages/settings/Permalink/Index.vue'),
+                meta:{ title:'Permalink' }
+            },
+            {
+                path: '/dashboard/settings/Privacy',
+                name:'dashboard.settings.Privacy',
+                component:() => import('@/views/dashboard/pages/settings/Privacy/Index.vue'),
+                meta:{ title:'Privacy' }
+            },
+            {
+                path: '/dashboard/settings/Awt',
+                name:'dashboard.settings.Awt',
+                component:() => import('@/views/dashboard/pages/settings/Awt/Index.vue'),
+                meta:{ title:'Awt' }
+            },
+            {
+                path: '/dashboard/settings/Redux',
+                name:'dashboard.settings.Redux',
+                component:() => import('@/views/dashboard/pages/settings/Redux/Index.vue'),
+                meta:{ title:'Redux' }
+            },
+           
         ]
     },
 
