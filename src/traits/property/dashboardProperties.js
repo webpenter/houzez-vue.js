@@ -4,13 +4,16 @@ import { ref } from "vue";
 const loading = ref(false);
 const searchQuery = ref('');
 const selectedSort = ref('default');
+const currentPropertyStatus = ref(null);
 
-export const getProperties = async () => {
+export const getProperties = async (propertyStatus = null) => {
     const propertyToRefs = useProperty();
     loading.value = true;
 
+    currentPropertyStatus.value = propertyStatus;
+
     try {
-        const res = await propertyToRefs.getUserProperties(searchQuery.value, selectedSort.value,"pending");
+        const res = await propertyToRefs.getUserProperties(searchQuery.value, selectedSort.value, propertyStatus);
 
         if (res.status === 200) {
             loading.value = false;
@@ -24,6 +27,16 @@ export const getProperties = async () => {
     }
 };
 
+export const updateSearchQuery = (query, propertyStatus = null) => {
+    searchQuery.value = query;
+    getProperties(propertyStatus ?? currentPropertyStatus.value);
+};
+
+export const updateSortOption = (sort, propertyStatus = null) => {
+    selectedSort.value = sort;
+    getProperties(propertyStatus ?? currentPropertyStatus.value);
+};
+
 export const deleteProperty = async (propertyId) => {
     const propertyToRefs = useProperty();
 
@@ -33,7 +46,7 @@ export const deleteProperty = async (propertyId) => {
 
         if (response.status === 200) {
             useNotification().Success("Property deleted successfully");
-            getProperties();
+            getProperties(currentPropertyStatus.value);
         }
     } catch (error) {
         if (error !== "cancel") {
@@ -53,7 +66,7 @@ export const duplicateProperty = async (propertyId) => {
 
         if (response.status === 201) {
             useNotification().Success("Property duplicated successfully");
-            getProperties();
+            getProperties(currentPropertyStatus.value);
         }
     } catch (error) {
         if (error !== "cancel") {

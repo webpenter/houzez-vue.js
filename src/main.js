@@ -12,7 +12,8 @@ import { createPinia } from "pinia";
 import {
     subStr,
     logout,
-    formatPrice
+    formatPrice,
+    capitalize
 } from "./helpers"
 
 const app = createApp(App);
@@ -28,5 +29,6 @@ app.mount('#app');
 app.config.globalProperties.$filters = {
     subStr,
     logout,
-    formatPrice
+    formatPrice,
+    capitalize
 };
