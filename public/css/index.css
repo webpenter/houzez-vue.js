@@ -1,0 +1,19 @@
+@import url("bootstrap.min.css");
+@import url("bootstrap-select.min.css");
+@import url("icons.css");
+@import url("slick.css");
+@import url("slick-theme.css");
+@import url("jquery-ui.min.css");
+@import url("OverlayScrollbars.min.css");
+@import url("bootstrap-datepicker.min.css");
+@import url("fullcalendar.min.css");
+@import url("fullcalendar-daygrid.min.css");
+@import url("magnific-popup.css");
+@import url("photoswipe.css");
+@import url("main-ltr.css");
+@import url("styling-options.css");
+
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700|Roboto:300,400,500,700");
+
