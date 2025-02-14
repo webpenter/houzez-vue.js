@@ -36,17 +36,6 @@ const routes = [
                 component:() => import('@/views/app/pages/home/Index.vue'),
                 meta:{ title:'Home' }
             },
-
-            /***
-             * @route App/Add-New-Property
-             ***/
-            {
-                path: '/add-new-property',
-                name:'app.add-new-property',
-                component:() => import('@/views/app/pages/add-new-property/Index.vue'),
-                meta:{ title:'Add Property' }
-            },
-
             /***
              * @route App/Properties
              ***/
@@ -56,7 +45,6 @@ const routes = [
                 component:() => import('@/views/app/pages/properties/Index.vue'),
                 meta:{ title:'Properties' }
             },
-
             /***
              * @route App/Property
              ***/
@@ -66,7 +54,6 @@ const routes = [
                 component:() => import('@/views/app/pages/property/Index.vue'),
                 meta:{ title:'Property' }
             },
-
             /***
              * @route App/Realtor
              ***/
@@ -76,24 +63,14 @@ const routes = [
                 component:() => import('@/views/app/pages/realtor/Index.vue'),
                 meta:{ title:'Realtor' }
             },
-
             /***
-             * @route App/Search-Results
+             * @route App/Others
              ***/
             {
-                path: '/search-results',
-                name:'app.search-results',
-                component:() => import('@/views/app/pages/search-results/Index.vue'),
-                meta:{ title:'Search Results' }
-            },
-            /***
-             * @route App/Search-Results
-             ***/
-            {
-                path: '/search-results',
-                name:'app.search-results',
-                component:() => import('@/views/app/pages/search-results/Index.vue'),
-                meta:{ title:'Search Results' }
+                path: '/others',
+                name:'app.others',
+                component:() => import('@/views/app/pages/others/Index.vue'),
+                meta:{ title:'Others' }
             },
             /***
              * @route App/Register

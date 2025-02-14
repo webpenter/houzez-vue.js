@@ -1,5 +1,4 @@
-/* Dashboard Houzez Local Links */
-
+/* Dashboard Side */
 import "./jquery-3.4.1.min.js";
 import "./jquery-ui.min.js";
 import "./jquery.ui.touch-punch.min.js";
@@ -24,6 +23,10 @@ import "./imagesloaded.pkgd.min.js";
 import "./jquery.disableAutoFill.min.js";
 import "./jquery.magnific-popup.min.js";
 import "./custom.js";
+
+/* Client Side */
+import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js";
+// import "./client-side/script.js";
 
 /* Third-party CDN links */
 import "https://cdn.jsdelivr.net/npm/chart.js";
