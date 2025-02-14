@@ -33,7 +33,9 @@
                     <!--                              <strong>Expiration:</strong> June 9, 2019 - 6:46 pm-->
                   </td>
                   <td>
-                    <span class="badge badge-warning">{{ property.property_status }}</span>
+                    <span class="badge" :class="getStatusClass(property.property_status)">
+                      {{ property.property_status }}
+                    </span>
                   </td>
                   <td class="property-table-type" data-label="Type">{{ property.type }}</td>
                   <td class="property-table-status" data-label="Status">{{ property.status }}</td>
@@ -67,5 +69,17 @@
 const props = defineProps({
   dashboardProperties: Object,
   loading: Boolean,
-})
+});
+
+const getStatusClass = (propertyStatus) => {
+  const statusMap = {
+    published: 'badge-success',
+    pending: 'badge-primary',
+    expired: 'badge-danger',
+    draft: 'badge-warning',
+    'on-hold': 'badge-info',
+    disapproved: 'badge-dark'
+  };
+  return statusMap[propertyStatus] || 'badge-secondary';
+};
 </script>
