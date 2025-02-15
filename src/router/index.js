@@ -536,7 +536,13 @@ const routes = [
                 name: 'dashboard.posts.tags',
                 component: () => import('@/views/dashboard/pages/posts/tags/Index.vue'), // Note the uppercase 'I'
                 meta: { title: 'Tags' }
-            }
+            },
+            {
+                path: '/dashboard/general-settings',
+                name:'dashboard.general_settings',
+                component:() => import('@/views/dashboard/pages/settings/general-settings/Index.vue'),
+                meta:{ title:'Admin' }
+            },
         ]
     },
 
