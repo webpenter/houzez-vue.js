@@ -16,6 +16,14 @@
 						<i class="houzez-icon mr-2" :class="route.icon"></i>
 						{{ route.title }}
 					</RouterLink>
+					
+				</template>
+				<template v-else-if="route.name == 'dashboard.tools'">
+					<RouterLink :to="{ name: route.name }" active-class="active"
+						@click.prevent="isOpenTools = !isOpenTools">
+						<i class="houzez-icon mr-2" :class="route.icon"></i>
+						{{ route.title }}
+					</RouterLink>
 				</template>
 				<template v-else-if="route.name == 'dashboard.admin'">
 					<RouterLink :to="{ name: route.name }" active-class="active"
@@ -24,16 +32,9 @@
 						{{ route.title }}
 					</RouterLink>
 				</template>
-				<template v-else-if="route.name == 'dashboard.media'">
+				<template v-else-if="route.name == 'dashboard.posts'">
 					<RouterLink :to="{ name: route.name }" active-class="active"
-						@click.prevent="isOpenMedia = !isOpenMedia">
-						<i class="houzez-icon mr-2" :class="route.icon"></i>
-						{{ route.title }}
-					</RouterLink>
-				</template>
-				<template v-else-if="route.name == 'dashboard.file-manager'">
-					<RouterLink :to="{ name: route.name }" active-class="active"
-						@click.prevent="isOpenFileManager = !isOpenFileManager">
+						@click.prevent="isOpenPosts = !isOpenPosts">
 						<i class="houzez-icon mr-2" :class="route.icon"></i>
 						{{ route.title }}
 					</RouterLink>
@@ -80,9 +81,9 @@
 						</template>
 					</ul>
 				</template>
-					<!-- Media -->
-				<template v-if="route.name == 'dashboard.media'">
-					<ul class="side-menu-dropdown list-unstyled" v-show="isOpenMedia">
+				
+				<template v-if="route.name == 'dashboard.posts'">
+					<ul class="side-menu-dropdown list-unstyled" v-show="isOpenPosts">
 						<template v-for="sub_route in route.sub" :key="sub_route.id">
 							<li class="side-menu-item">
 								<RouterLink :to="{ name: sub_route.name }" active-class="active">
@@ -93,8 +94,8 @@
 						</template>
 					</ul>
 				</template>
-				<template v-if="route.name == 'dashboard.file-manager'">
-					<ul class="side-menu-dropdown list-unstyled" v-show="isOpenFileManager">
+				<template v-if="route.name == 'dashboard.tools'">
+					<ul class="side-menu-dropdown list-unstyled" v-show="isOpenTools">
 						<template v-for="sub_route in route.sub" :key="sub_route.id">
 							<li class="side-menu-item">
 								<RouterLink :to="{ name: sub_route.name }" active-class="active">
@@ -105,7 +106,6 @@
 						</template>
 					</ul>
 				</template>
-
 				<span v-if="route.title == 'Messages'" class="notification-circle"></span>
 			</li>
 		</template>
@@ -127,10 +127,8 @@ import { ref } from "vue";
 const isOpenBoard = ref(false);
 const isOpenProperties = ref(false);
 const isOpenAdmin = ref(false);
-const isOpenMedia = ref(false);
-const isOpenFileManager = ref(false);
-
-
+const isOpenPosts = ref(false);
+const isOpenTools = ref(false);
 </script>
 
 <style scoped>

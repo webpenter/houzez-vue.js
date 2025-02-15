@@ -542,6 +542,19 @@ const routes = [
                 component:() => import('@/views/inc/dashboard/DashboardAgentMessage.vue'),
                 meta:{ title:'Messages' }
             },
+            {
+                path: '/dashboard/tools',
+                name:'dashboard.tools',
+                component:() => import('@/views/dashboard/pages/tools/index/Index.vue'),
+                meta:{ title:'Tools' }
+            },
+            //  @route Dashboard/Tools
+            {
+                path: '/dashboard/tools/export',
+                name:'dashboard.tools.export',
+                component:() => import('@/views/dashboard/pages/tools/export/Index.vue'),
+                meta:{ title:'Tools' }
+            },
             /***
              * @route Dashboard/My-Profile
              ***/
@@ -605,32 +618,36 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/admin/feedback/Index.vue'),
                 meta:{ title:'Feedback' }
             },
-            // media route
             {
-                path: '/dashboard/media',
-                name:'dashboard.media',
-                component:() => import('@/views/dashboard/pages/media/library/Index.vue'),
-                meta:{ title:'Media' }
+                path: '/dashboard/posts',
+                name:'dashboard.posts',
+                component:() => import('@/views/dashboard/pages/posts/allposts/Index.vue'),
+                meta:{ title:'All Posts' }
             },
             {
-                path: '/dashboard/media/add-new',
-                name:'dashboard.media.addnew',
-                component:() => import('@/views/dashboard/pages/media/addnew/Index.vue'),
-                meta:{ title:'Add New Media' }
+                path: '/dashboard/posts/addnew',
+                name:'dashboard.posts.addnew',
+                component:() => import('@/views/dashboard/pages/posts/addnew/Index.vue'),
+                meta:{ title:'Add New Post' }
             },
             {
-                path: '/dashboard/file-manager',
-                name:'dashboard.file-manager',
-                component:() => import('@/views/dashboard/pages/file manager/Index.vue'),
-                meta:{ title:'File Manager' }
+                path: '/dashboard/posts/allposts',
+                name:'dashboard.posts.allposts',
+                component:() => import('@/views/dashboard/pages/posts/allposts/Index.vue'),
+                meta:{ title:'Add New Post' }
             },
             {
-                path: '/dashboard/file-manager/settings',
-                name:'dashboard.file-manager.setting',
-                component:() => import('@/views/dashboard/pages/file manager/settings/Index.vue'),
-                meta:{ title:'File Manager Settings' }
+                path: '/dashboard/posts/categories',
+                name:'dashboard.posts.categories',
+                component:() => import('@/views/dashboard/pages/posts/categories/Index.vue'),
+                meta:{ title:'Categories' }
             },
-
+            {
+                path: '/dashboard/posts/tags',
+                name: 'dashboard.posts.tags',
+                component: () => import('@/views/dashboard/pages/posts/tags/Index.vue'), // Note the uppercase 'I'
+                meta: { title: 'Tags' }
+            }
         ]
     },
 
