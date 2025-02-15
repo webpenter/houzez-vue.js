@@ -29,22 +29,28 @@ export const useProperty = defineStore('property', {
         },
     },
     actions: {
-        async  getUserProperties() {
-            const url = `${this.prefix}/get-user`;
+        /**
+         * @usage Fetch User Properties.Fetches properties with optional search and sorting filters.
+         * @param {string} search Optional search query.
+         * @param {string} sortBy Sorting criteria ('default', 'price_high_low', 'price_low_high', 'date_new_old', 'date_old_new').
+         * * @param {string} propertyStatus Optional property status filter ('published', 'pending', 'expired', 'draft', 'on-hold', 'disapproved').
+         * @returns {Promise} Resolves with response data or rejects with an error.
+         */
+        async getUserProperties(search = '', sortBy = 'default', propertyStatus = '') {
+            let url = `${this.prefix}/get-user?search=${encodeURIComponent(search)}&sortBy=${sortBy}`;
+
+            if (propertyStatus) {
+                url += `&propertyStatus=${encodeURIComponent(propertyStatus)}`;
+            }
+
             try {
                 const response = await axiosInstance.get(url);
-
                 this.dashboardProperties = response.data.properties;
-                return new Promise(resolve => {
-                    resolve(response)
-                })
+
+                return Promise.resolve(response);
             } catch (error) {
-                if (error.response.data) {
-                    this.errors = error.response
-                }
-                return new Promise(reject => {
-                    reject(error.response)
-                })
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
             }
         },
         /**
@@ -88,6 +94,56 @@ export const useProperty = defineStore('property', {
                 const response = await axiosInstance.get(url);
 
                 this.property = response.data.property;
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
+
+        /**
+         * @usage Asynchronously delete a property from a property ID.
+         * @request This method sends a DELETE request to the server to remove a property from the specified property ID. It also handles errors and returns the server response or error response.
+         * @param {int} propertyId - The ID of the property to be deleted.
+         * @returns {Promise} - Resolves with the response or rejects with the error response.
+         */
+        async  deleteProperty(propertyId) {
+            const url = `${this.prefix}/delete/${propertyId}`;
+
+            try {
+                const response = await axiosInstance.post(url);
+
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
+
+        /**
+         * @usage Asynchronously duplicate a property from a property ID.
+         * @request This method sends a POST request to the server to duplicate a property from the specified property ID. It also handles errors and returns the server response or error response.
+         * @param {int} propertyId - The ID of the property to be duplicated.
+         * @returns {Promise} - Resolves with the response or rejects with the error response.
+         */
+        async  duplicateProperty(propertyId) {
+            const url = `${this.prefix}/duplicate/${propertyId}`;
+
+            try {
+                const response = await axiosInstance.post(url);
+
                 return new Promise(resolve => {
                     resolve(response)
                 })
