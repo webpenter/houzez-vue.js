@@ -6,45 +6,45 @@ export const APP_ROUTES = [
 		id:1,
 		title:'Home',
 		sub:[
-			{id:1, title:'Home 1', name:'app.home'},
-			{id:2, title:'Home 2', name:'app.home'},
-			{id:3, title:'Home 3', name:'app.home'},
+			{id:1, title:'Home V1', name:'app.home'},
+			{id:2, title:'Home V2', name:'app.home'},
+			{id:3, title:'Home V3', name:'app.home'},
 		]
 	},
 	{
 		id:2,
 		title:'Property',
 		sub:[
-			{id:1, title:'Property 1', name:'app.property'},
-			{id:2, title:'Property 2', name:'app.property'},
-			{id:3, title:'Property 3', name:'app.property'},
+			{id:1, title:'Property V1', name:'app.property'},
+			{id:2, title:'Property V2', name:'app.property'},
+			{id:3, title:'Property V3', name:'app.property'},
 		]
 	},
 	{
 		id:3,
 		title:'Properties',
 		sub:[
-			{id:1, title:'Properties 1', name:'app.properties'},
-			{id:2, title:'Properties 2', name:'app.properties'},
-			{id:3, title:'Properties 3', name:'app.properties'},
+			{id:1, title:'Properties V1', name:'app.properties'},
+			{id:2, title:'Properties V2', name:'app.properties'},
+			{id:3, title:'Properties V3', name:'app.properties'},
 		]
 	},
 	{
 		id:4,
 		title:'Realtor',
 		sub:[
-			{id:1, title:'Realtor 1', name:'app.realtor'},
-			{id:2, title:'Realtor 2', name:'app.realtor'},
-			{id:3, title:'Realtor 3', name:'app.realtor'},
+			{id:1, title:'Realtor V1', name:'app.realtor'},
+			{id:2, title:'Realtor V2', name:'app.realtor'},
+			{id:3, title:'Realtor V3', name:'app.realtor'},
 		]
 	},
 	{
 		id:4,
 		title:'Others',
 		sub:[
-			{id:1, title:'Others 1', name:'app.others'},
-			{id:2, title:'Others 2', name:'app.others'},
-			{id:3, title:'Others 3', name:'app.others'},
+			{id:1, title:'Others V1', name:'app.others'},
+			{id:2, title:'Others V2', name:'app.others'},
+			{id:3, title:'Others V3', name:'app.others'},
 		]
 	},
 ];
