@@ -20,3 +20,4 @@ export * from './settings/features.js';
 
 // ------------- Properties Dir
 export * from './properties/property.js';
+export * from './properties/appProperty.js';

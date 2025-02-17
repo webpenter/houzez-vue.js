@@ -1,22 +1,15 @@
 <template>
-
-    <ParallaxBannerWithTabs/>
-
-    
-
-    <ModulePropertyCardsV1/>
-    <div style="margin-block: 60px;"></div>
-    <ModulePropertyTabsV1/>
-    <ModuleTaxonomyGrids/>
-    <div style="margin-block: 60px;"></div>
-    <Testimonials />
+  <HeroSection/>
+  <FeaturedProperties/>
+  <TeamSection/>
+  <NewsAndBlogs/>
+  <NewsletterSection/>
 </template>
 
 <script setup>
-import ParallaxBannerWithTabs from '../../../inc/header/ParallaxBannerWithTabs.vue';
-import Testimonials from './Testimonials.vue';
-import ModulePropertyCardsV1 from './ModulePropertyCardsV1.vue';
-import ModulePropertyTabsV1 from './ModulePropertyTabsV1.vue';
-import ModuleTaxonomyGrids from './ModuleTaxonomyGrids.vue';
-
+import HeroSection from "@/views/app/pages/home/HeroSection.vue";
+import FeaturedProperties from "@/views/app/pages/home/FeaturedProperties.vue";
+import TeamSection from "@/views/app/pages/home/TeamSection.vue";
+import NewsAndBlogs from "@/views/app/pages/home/NewsAndBlogs.vue";
+import NewsletterSection from "@/views/app/pages/home/NewsletterSection.vue";
 </script>

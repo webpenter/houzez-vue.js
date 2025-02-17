@@ -50,7 +50,6 @@ export const useAuth = defineStore('userAuth', {
                 const response =await axiosInstance.post(`/register`, formData)
                 this.setAuthInfo(response.data)
                 console.log(response.data);
-                // this.permissions = response.data?.data?.role?.permissions;
                 return new Promise(resolve => {
                     resolve(response)
                 })

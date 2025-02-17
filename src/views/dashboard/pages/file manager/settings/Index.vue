@@ -51,7 +51,7 @@
                         </div>
 
                         <label>Root Path</label>
-                        <textarea v-model="rootPath" readonly></textarea>
+                        <input type="text" v-model="rootPath" readonly>
                         <small>Default path is: {{ rootPath }}</small>
                         <br>
 
@@ -61,7 +61,7 @@
                         <br>
 
                         <label>Maximum Upload Size</label>
-                        <input type="number" v-model="uploadSize" /> MB
+                        <input type="number" v-model="uploadSize" />
                         <small>Default: 0 means unlimited upload.</small>
                         <br>
 
@@ -239,6 +239,8 @@ select {
     margin: 5px 0 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-bottom: -5px;
+    
 }
 
 .toggle-label {
@@ -271,5 +273,15 @@ select {
     cursor: pointer;
     display: block;
     margin-top: 20px;
+}
+small{
+    margin-left: 8px;
+}
+label{
+    padding-left: 10px;
+    margin-bottom: -5px;
+    padding-left: 0px;
+    
+    
 }
 </style>

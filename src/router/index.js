@@ -15,12 +15,12 @@ import {DEFAULT_TITLE, TITLE_CREATE_UPDATE_LISTING, URL_CREATE_UPDATE_LISTING} f
 import {useToken,useGeneralSettings} from "@/stores/index.js";
 
 const routes = [
-    /***
+    /**
      * @route 'localhost:3000/'
      * @name app
      * @prefix app
      * @auth not-required
-     ***/
+     **/
     {
         path: '/',
         name:'app',
@@ -36,17 +36,6 @@ const routes = [
                 component:() => import('@/views/app/pages/home/Index.vue'),
                 meta:{ title:'Home' }
             },
-
-            /***
-             * @route App/Add-New-Property
-             ***/
-            {
-                path: '/add-new-property',
-                name:'app.add-new-property',
-                component:() => import('@/views/app/pages/add-new-property/Index.vue'),
-                meta:{ title:'Add Property' }
-            },
-
             /***
              * @route App/Properties
              ***/
@@ -56,7 +45,6 @@ const routes = [
                 component:() => import('@/views/app/pages/properties/Index.vue'),
                 meta:{ title:'Properties' }
             },
-
             /***
              * @route App/Property
              ***/
@@ -66,7 +54,6 @@ const routes = [
                 component:() => import('@/views/app/pages/property/Index.vue'),
                 meta:{ title:'Property' }
             },
-
             /***
              * @route App/Realtor
              ***/
@@ -76,24 +63,14 @@ const routes = [
                 component:() => import('@/views/app/pages/realtor/Index.vue'),
                 meta:{ title:'Realtor' }
             },
-
             /***
-             * @route App/Search-Results
+             * @route App/Others
              ***/
             {
-                path: '/search-results',
-                name:'app.search-results',
-                component:() => import('@/views/app/pages/search-results/Index.vue'),
-                meta:{ title:'Search Results' }
-            },
-            /***
-             * @route App/Search-Results
-             ***/
-            {
-                path: '/search-results',
-                name:'app.search-results',
-                component:() => import('@/views/app/pages/search-results/Index.vue'),
-                meta:{ title:'Search Results' }
+                path: '/others',
+                name:'app.others',
+                component:() => import('@/views/app/pages/others/Index.vue'),
+                meta:{ title:'Others' }
             },
             /***
              * @route App/Register
@@ -403,94 +380,6 @@ const routes = [
             },
 
             /***
-             * @routes Dashboard/Edit-Property/Step-1 to Step-14
-             ***/
-            {
-                path: '/dashboard/edit-property/step-1',
-                name:'dashboard.edit-property.step-1',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-1/Index.vue'),
-                meta:{ title:'edit property' }
-            },  
-            {
-                path: '/dashboard/edit-property/step-2',
-                name:'dashboard.edit-property.step-2',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-2/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-3',
-                name:'dashboard.edit-property.step-3',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-3/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-4',
-                name:'dashboard.edit-property.step-4',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-4/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-5',
-                name:'dashboard.edit-property.step-5',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-5/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-6',
-                name:'dashboard.edit-property.step-6',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-6/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-7',
-                name:'dashboard.edit-property.step-7',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-7/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-8',
-                name:'dashboard.edit-property.step-8',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-8/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-9',
-                name:'dashboard.edit-property.step-9',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-9/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-10',
-                name:'dashboard.edit-property.step-10',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-10/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-11',
-                name:'dashboard.edit-property.step-11',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-11/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-12',
-                name:'dashboard.edit-property.step-12',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-12/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-13',
-                name:'dashboard.edit-property.step-13',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-13/Index.vue'),
-                meta:{ title:'Edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-14',
-                name:'dashboard.edit-property.step-14',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-14/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-
-            /***
              * @route Dashboard/Favorite-Properties
              ***/
             {
@@ -629,6 +518,18 @@ const routes = [
                 name:'dashboard.file-manager.setting',
                 component:() => import('@/views/dashboard/pages/file manager/settings/Index.vue'),
                 meta:{ title:'File Manager Settings' }
+            },
+            {
+                path: '/dashboard/users',
+                name:'dashboard.users',
+                component:() => import('@/views/dashboard/pages/users/all users/Index.vue'),
+                meta:{ title:'All Users' }
+            },
+            {
+                path: '/dashboard/users/addnew',
+                name:'dashboard.users.addnew',
+                component:() => import('@/views/dashboard/pages/users/add new/Index.vue'),
+                meta:{ title:'Add New' }
             },
 
         ]

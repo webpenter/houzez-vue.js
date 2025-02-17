@@ -4,7 +4,7 @@
 		<div class="sort-by-title">
 			Sort by:
 		</div><!-- sort-by-title -->  
-		<select class="selectpicker form-control bs-select-hidden" title="Default Order" data-live-search="false" data-dropdown-align-right="auto">
+		<select class="form-control" title="Default Order" data-live-search="false" data-dropdown-align-right="auto">
 			<option>Default Order</option>
 			<option>Price - Hight to Low</option>
 			<option>Price - Low to Hight</option>
