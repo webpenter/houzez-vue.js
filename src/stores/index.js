@@ -16,6 +16,9 @@ export * from './settings/generalSettings.js';
 export * from './settings/label.js';
 export * from './settings/status.js';
 export * from './settings/type.js';
+export * from './settings/city.js';
+export * from './settings/price.js';
+export * from './settings/bedroom.js';
 export * from './settings/features.js';
 
 // ------------- Properties Dir

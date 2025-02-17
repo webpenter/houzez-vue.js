@@ -73,6 +73,15 @@ const routes = [
                 meta:{ title:'Others' }
             },
             /***
+             * @route App/Search-Results
+             ***/
+            {
+                path: '/search-results',
+                name:'app.search-results',
+                component:() => import('@/views/app/pages/search-results/Index.vue'),
+                meta:{ title:'Search Results' }
+            },
+            /***
              * @route App/Register
              ***/
             {
