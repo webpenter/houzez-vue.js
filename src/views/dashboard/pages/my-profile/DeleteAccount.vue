@@ -32,7 +32,7 @@ const deleteAccount = () => {
 
           if (res.status === 200) {
             notify.Success("Account successfully deleted!");
-            router.push({name: "app.register"});
+            router.push({name: "auth.register"});
           }
         } catch (error) {
           notify.Error(error);

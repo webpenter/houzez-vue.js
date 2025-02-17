@@ -81,23 +81,39 @@ const routes = [
                 component:() => import('@/views/app/pages/search-results/Index.vue'),
                 meta:{ title:'Search Results' }
             },
+        ]
+    },
+
+    /***
+     * @route 'localhost:3000/auth/'
+     * @name auth
+     * @prefix auth
+     * @auth not-required
+     ***/
+    {
+        path: '/auth',
+        name:'auth',
+        redirect:'/auth/login',
+        meta: { guest: true },
+        component:() => import('@/views/auth/layout/Index.vue'),
+        children:[
             /***
-             * @route App/Register
+             * @route Auth/Register
              ***/
             {
-                path: '/register',
-                name:'app.register',
-                component:() => import('@/views/app/pages/auth/register/Index.vue'),
-                meta:{ title:'Register', guest:true }
+                path: '/auth/register',
+                name:'auth.register',
+                component:() => import('@/views/auth/pages/register/Index.vue'),
+                meta:{ title:'Register' }
             },
             /***
-             * @route App/Login
+             * @route Auth/Login
              ***/
             {
-                path: '/login',
-                name:'app.login',
-                component:() => import('@/views/app/pages/auth/login/Index.vue'),
-                meta:{ title:'Login', guest:true }
+                path: '/auth/login',
+                name:'auth.login',
+                component:() => import('@/views/auth/pages/login/Index.vue'),
+                meta:{ title:'Login' }
             },
         ]
     },
@@ -537,7 +553,7 @@ router.beforeEach((to, from, next) => {
      * @feature Allow navigation to the route if no guard conditions are triggered.
      **/
     if (to.meta.auth && token === null) {
-        next({ name: 'app.login' });
+        next({ name: 'auth' });
     }
     else if (to.meta.guest && token !== null) {
         next({ name: 'dashboard' });

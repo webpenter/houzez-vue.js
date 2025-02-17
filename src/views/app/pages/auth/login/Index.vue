@@ -1,95 +1,103 @@
 <template>
-  <div class="body">
-  <form @submit.prevent="submit" class="registration-form">
-    <h2>Login</h2>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" v-model="formData.email" id="email" name="email" placeholder="Enter your email" required>
+<!--  <div class="body">-->
+<!--  <form @submit.prevent="submit" class="registration-form">-->
+<!--    <h2>Login</h2>-->
+<!--    <div class="form-group">-->
+<!--      <label for="email">Email</label>-->
+<!--      <input type="email" v-model="formData.email" id="email" name="email" placeholder="Enter your email" required>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="password">Password</label>-->
+<!--      <input type="password" v-model="formData.password" id="password" name="password" placeholder="Enter your password" required>-->
+<!--    </div>-->
+<!--    <button type="submit" class="submit-btn">Login</button>-->
+<!--  </form>-->
+<!--  </div>-->
+
+  <div class="login-root">
+    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+      <div class="loginbackground box-background--white padding-top--64">
+        <div class="loginbackground-gridContainer">
+          <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
+            <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
+            </div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
+            <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 6 / start / auto / 2;">
+            <div class="box-root box-background--blue800" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
+            <div class="box-root box-background--blue animationLeftRight" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
+            <div class="box-root box-background--gray100 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
+            <div class="box-root box-background--cyan200 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
+            <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
+            <div class="box-root box-background--gray100 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
+            <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+        <div class="box-root padding-bottom--24 flex-flex flex-justifyContent--center">
+          <h1><a href="" rel="dofollow">Houzez</a></h1>
+        </div>
+        <div class="formbg-outer">
+          <div class="formbg">
+            <div class="formbg-inner">
+              <h5 class="padding-bottom--15">Sign in to your account</h5>
+              <form id="stripe-login">
+                <div class="field padding-bottom--24">
+                  <label for="email">Email </label>
+                  <input type="email" name="email">
+                </div>
+                <div class="field padding-bottom--24">
+                  <div class="grid--50-50">
+                    <label for="password">Password</label>
+                    <div class="reset-pass">
+                      <a href="#">Forgot your password?</a>
+                    </div>
+                  </div>
+                  <input type="password" name="password">
+                </div>
+                <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
+                  <label for="checkbox">
+                    <input type="checkbox" name="checkbox"> Stay signed in
+                  </label>
+                </div>
+                <div class="field padding-bottom--24">
+                  <input type="submit" name="submit" value="Login">
+                </div>
+                <!-- <div class="field">
+                  <a class="ssolink" href="#">Use single sign-on (Google) instead</a>
+                </div> -->
+              </form>
+            </div>
+          </div>
+          <div class="footer-link padding-top--24">
+            <span>Don't have an account? <a href="signup.html">Sign up</a></span>
+            <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+              <span><a href="#">Houzez</a></span>
+              <span><a href="#">Contact</a></span>
+              <span><a href="#">Privacy & terms</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" v-model="formData.password" id="password" name="password" placeholder="Enter your password" required>
-    </div>
-    <button type="submit" class="submit-btn">Login</button>
-  </form>
   </div>
 
 </template>
-
-
-<style scoped>
-.body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f4f4f9;
-}
-
-.registration-form {
-  background: #fff;
-  padding: 20px 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-}
-
-.registration-form h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  text-align: center;
-  color: #333;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #555;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.form-group input:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-.submit-btn {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.submit-btn:hover {
-  background-color: #0056b3;
-}
-
-.submit-btn:active {
-  background-color: #003f7f;
-}
-</style>
 
 <script setup>
 import {reactive} from "vue";

@@ -5,10 +5,10 @@
       Login / Signup
     </p>
     <ul class="dropdown-menu bg-white position-absolute border-none">
-      <RouterLink :to="{name:'app.login'}">
+      <RouterLink :to="{name:'auth.login'}">
         <li>Login</li>
       </RouterLink>
-      <RouterLink :to="{name:'app.register'}">
+      <RouterLink :to="{name:'auth.register'}">
         <li>Sign up</li>
       </RouterLink>
     </ul>
