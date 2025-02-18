@@ -1,4 +1,4 @@
-export const DEFAULT_TITLE = 'Houzez';
+export const DEFAULT_TITLE = 'Buy WebPenter';
 export const PROPERTY_TOTAL_STEPS = '12';
 export const TITLE_CREATE_UPDATE_LISTING = 'Manage Listing';
 export const URL_CREATE_UPDATE_LISTING = 'manage-listing';

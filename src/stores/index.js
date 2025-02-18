@@ -21,8 +21,13 @@ export * from './settings/postCategory.js';
 export * from './settings/language.js';
 export * from './settings/timezone.js';
 export * from './settings/weekday.js';
+export * from './settings/city.js';
+export * from './settings/price.js';
+export * from './settings/bedroom.js';
 export * from './settings/features.js';
 
 // ------------- Properties Dir
 export * from './properties/property.js';
 export * from './properties/appProperty.js';
+
+

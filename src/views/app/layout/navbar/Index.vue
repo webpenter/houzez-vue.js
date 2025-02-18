@@ -11,9 +11,13 @@
       <ul id="nav-links-ul">
         <Nav/>
         <CreateListingBtn/>
+        <LoginSignupBtns/>
       </ul>
     </div>
-    <CreateListingMainBtn/>
+    <div class="create-listing">
+      <LoginSignupMainBtns/>
+      <CreateListingMainBtn/>
+    </div>
     <div id="hamburger-container">
       <i class="fa-solid fa-bars"></i>
       <i class="fa-solid fa-xmark"></i>
@@ -23,11 +27,12 @@
 
 <script setup>
 import {onMounted} from "vue";
-import {RouterLink} from "vue-router";
 import Nav from "@/views/app/layout/navbar/Nav.vue";
 import CreateListingBtn from "@/views/app/layout/navbar/CreateListingBtn.vue";
 import CreateListingMainBtn from "@/views/app/layout/navbar/CreateListingMainBtn.vue";
 import Logo from "@/views/app/layout/navbar/Logo.vue";
+import LoginSignupBtns from "@/views/app/layout/navbar/LoginSignupBtns.vue";
+import LoginSignupMainBtns from "@/views/app/layout/navbar/LoginSignupMainBtns.vue";
 
 onMounted(() => {
   const bars = document.querySelector("#hamburger-container .fa-bars");

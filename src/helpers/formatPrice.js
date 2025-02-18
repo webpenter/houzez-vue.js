@@ -1,3 +1,5 @@
 export const formatPrice = (amount) => {
-    return `$${parseFloat(amount).toFixed(2)}`;
+    return isNaN(amount)
+        ? amount
+        : `$${parseFloat(amount).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 };
