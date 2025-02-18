@@ -11,11 +11,11 @@
       <ul id="nav-links-ul">
         <Nav/>
         <CreateListingBtn/>
-        <LoginSignupBtns/>
+        <LoginSignupBtns v-if="!token"/>
       </ul>
     </div>
     <div class="create-listing">
-      <LoginSignupMainBtns/>
+      <LoginSignupMainBtns v-if="!token"/>
       <CreateListingMainBtn/>
     </div>
     <div id="hamburger-container">
@@ -33,6 +33,9 @@ import CreateListingMainBtn from "@/views/app/layout/navbar/CreateListingMainBtn
 import Logo from "@/views/app/layout/navbar/Logo.vue";
 import LoginSignupBtns from "@/views/app/layout/navbar/LoginSignupBtns.vue";
 import LoginSignupMainBtns from "@/views/app/layout/navbar/LoginSignupMainBtns.vue";
+import {useToken} from "@/stores/index.js";
+
+const {token} = useToken();
 
 onMounted(() => {
   const bars = document.querySelector("#hamburger-container .fa-bars");

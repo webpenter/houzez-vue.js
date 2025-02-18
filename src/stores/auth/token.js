@@ -40,6 +40,7 @@ export const useToken = defineStore("userToken", {
         removeToken() {
             this.$reset();
             sessionStorage.removeItem('token');
+            this.token = null;
         },
     },
 });
