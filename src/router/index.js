@@ -537,10 +537,25 @@ const routes = [
                 component: () => import('@/views/dashboard/pages/posts/tags/Index.vue'), // Note the uppercase 'I'
                 meta: { title: 'Tags' }
             },
+            /***
+             * @route Dashboard/Gerenal-Settings
+             * @route Dashboard/Writing
+             * @route Dashboard/Pending-Properties
+             * @route Dashboard/Expired-Properties
+             * @route Dashboard/Draft-Properties
+             * @route Dashboard/Hold-Properties
+             * @route Dashboard/Disapproved-Properties
+             ***/
             {
                 path: '/dashboard/general-settings',
                 name:'dashboard.general_settings',
                 component:() => import('@/views/dashboard/pages/settings/general-settings/Index.vue'),
+                meta:{ title:'Admin' }
+            },
+            {
+                path: '/dashboard/writings',
+                name:'dashboard.writings',
+                component:() => import('@/views/dashboard/pages/settings/writings/Index.vue'),
                 meta:{ title:'Admin' }
             },
         ]

@@ -129,13 +129,8 @@ export const DASHBOARD_ROUTES = [
     name: "dashboard.general_settings",
     icon: "icon-building-cloudy",
     sub: [
-      { id: 1, title: "Post Type", name: "dashboard.general_settings" },
-      { id: 2, title: "Taxonomies", name: "dashboard.admin.taxonomies" },
-      { id: 3, title: "Permalinks", name: "dashboard.admin.permalinks" },
-      { id: 4, title: "Currency Switcher", name: "dashboard.admin.currency_switcher"},
-      { id: 5, title: "Currencies", name: "dashboard.admin.currencies" },
-      { id: 6, title: "Documentation", name: "dashboard.admin.documentation" },
-      { id: 7, title: "Feedback", name: "dashboard.admin.feedback" },
+      { id: 1, title: "Gerenal Settings", name: "dashboard.general_settings" },
+      { id: 2, title: "Writings", name: "dashboard.writings" },
     ],
   },
 ];

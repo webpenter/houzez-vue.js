@@ -239,7 +239,7 @@ const timeFormats = [
     { value: "h:mm a" },  // Example: 9:03 pm
     // { value: "h:mm A" },  // Example: 9:03 PM
     { value: "HH:mm" },   // Example: 21:03
-].map(formatObj => ({
+].map(formatObj =>   ({
     label: format(now, formatObj.value),
     value: formatObj.value
 }));
