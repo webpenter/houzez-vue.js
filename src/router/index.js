@@ -465,6 +465,29 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/my-profile/Index.vue'),
                 meta:{ title:'My Profile' }
             },
+            /***
+             * @route Dashboard/Settings/General
+             * @route Dashboard/Settings/AllPackages
+             * @route Dashboard/Settings/Create-Package
+             ***/
+            {
+                path: '/dashboard/settings/general',
+                name:'dashboard.settings.general',
+                component:() => import('@/views/dashboard/pages/settings/general/Index.vue'),
+                meta:{ title:'General Settings' }
+            },
+            {
+                path: '/dashboard/settings/all-packages',
+                name:'dashboard.settings.all-packages',
+                component:() => import('@/views/dashboard/pages/settings/package/all-packages/Index.vue'),
+                meta:{ title:'All Packages' }
+            },
+            {
+                path: '/dashboard/settings/create-package',
+                name:'dashboard.settings.create-package',
+                component:() => import('@/views/dashboard/pages/settings/package/create-package/Index.vue'),
+                meta:{ title:'Create Package' }
+            },
         ]
     },
 
