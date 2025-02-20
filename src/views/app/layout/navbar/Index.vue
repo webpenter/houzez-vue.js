@@ -1,26 +1,28 @@
 <template>
-  <div id="navbar">
-   <Logo/>
-    <div id="nav-links">
-      <ul id="nav-links-ul">
-        <Nav/>
-        <CreateListingBtn/>
-      </ul>
-    </div>
-    <div id="nav-links" class="nav-links-mobile">
-      <ul id="nav-links-ul">
-        <Nav/>
-        <CreateListingBtn/>
-        <LoginSignupBtns v-if="!token"/>
-      </ul>
-    </div>
-    <div class="create-listing">
-      <LoginSignupMainBtns v-if="!token"/>
-      <CreateListingMainBtn/>
-    </div>
-    <div id="hamburger-container">
-      <i class="fa-solid fa-bars"></i>
-      <i class="fa-solid fa-xmark"></i>
+  <div id="navbar-container">
+    <div id="navbar">
+      <Logo/>
+      <div id="nav-links">
+        <ul id="nav-links-ul">
+          <Nav/>
+          <CreateListingBtn/>
+        </ul>
+      </div>
+      <div id="nav-links" class="nav-links-mobile">
+        <ul id="nav-links-ul">
+          <Nav/>
+          <CreateListingBtn/>
+          <LoginSignupBtns v-if="!token"/>
+        </ul>
+      </div>
+      <div class="create-listing">
+        <LoginSignupMainBtns v-if="!token"/>
+        <CreateListingMainBtn/>
+      </div>
+      <div id="hamburger-container">
+        <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
     </div>
   </div>
 </template>
