@@ -1,223 +1,168 @@
 <template>
   <div id="property-main">
-    <!-- Property SideBar -->
     <div id="property-sidebar">
-      <!-- Property Search bar -->
-      <div class="property-search-bar">
+      <div class="property-search-bar" style="background-color: #ffffff">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input placeholder="Search keyword..." type="search" class="search-property input">
+        <input
+            placeholder="Search properties..."
+            v-model="formData.search"
+            type="search"
+            class="search-property input"
+            @input="searchProperty"
+        >
       </div>
-      <!-- Property Filters -->
       <div id="properties-filters">
-        <div class="filter-box">
-          <button class="" data-bs-toggle="dropdown" aria-expanded="false">Status</button>
-          <div class="dropdown-menu options ">
-            <form action="">
-              <div><input type="checkbox">For Sale</div>
-              <div><input type="checkbox">For Sale</div>
-              <div><input type="submit" value="cancel"><input type="submit" value="Apply"></div>
-            </form>
-          </div>
+        <div>
+          <label style="margin-bottom: 0">Property Type</label>
+          <el-select
+              v-model="formData.types"
+              multiple
+              clearable
+              filterable
+              default-first-option
+              :reserve-keyword="false"
+              placeholder="Choose/Search Types"
+              @change="searchProperty"
+              style="width: 100%"
+          >
+            <el-option
+                v-for="type in types"
+                :key="type.id"
+                :label="$filters.capitalize(type.name)"
+                :value="type.name"
+            />
+          </el-select>
         </div>
-        <div class="filter-box">
-          <button class="" data-bs-toggle="dropdown" aria-expanded="false">Beds</button>
-          <div class="dropdown-menu options ">
-            <form action="">
-              <p>Bedrooms</p>
-              <div class="number-min-max">
-                <input type="number" placeholder="Min">
-                <input type="number" placeholder="Max">
-              </div>
-              <div><input type="submit" value="cancel"><input type="submit" value="Apply"></div>
-            </form>
-          </div>
+        <div>
+          <label style="margin-bottom: 0">Location</label>
+          <el-select
+              v-model="formData.city"
+              clearable
+              filterable
+              default-first-option
+              :reserve-keyword="false"
+              placeholder="Choose/Search City"
+              @change="searchProperty"
+              style="width: 100%"
+          >
+            <el-option
+                v-for="city in cities"
+                :key="city.id"
+                :label="city.name"
+                :value="city.name"
+            />
+          </el-select>
         </div>
-        <div class="filter-box">
-          <button class="" data-bs-toggle="dropdown" aria-expanded="false">Baths</button>
-          <div class="dropdown-menu options ">
-            <form action="">
-              <p>Bathrooms</p>
-              <div class="number-min-max">
-                <input type="number" placeholder="Min">
-                <input type="number" placeholder="Max">
-              </div>
-              <div><input type="submit" value="cancel"><input type="submit" value="Apply"></div>
-            </form>
-          </div>
+        <div>
+          <label style="margin-bottom: 0">Property Size</label>
+          <el-select
+              v-model="formData.bedrooms"
+              filterable
+              clearable
+              default-first-option
+              :reserve-keyword="false"
+              placeholder="Choose/Search Max Bedrooms"
+              @change="searchProperty"
+              style="width:100%"
+          >
+            <el-option
+                v-for="bedroom in bedrooms"
+                :key="bedroom.id"
+                :label="bedroom.name"
+                :value="bedroom.name"
+            />
+          </el-select>
         </div>
-        <div class="filter-box">
-          <button class="" data-bs-toggle="dropdown" aria-expanded="false">Price</button>
-          <div class="dropdown-menu options ">
-            <form action="">
-              <p>Price</p>
-              <div class="number-min-max">
-                <input type="number" placeholder="Min">
-                <input type="number" placeholder="Max">
-              </div>
-              <div><input type="submit" value="cancel"><input type="submit" value="Apply"></div>
-            </form>
-          </div>
+        <div>
+          <label style="margin-bottom: 0">Your Budget</label>
+          <el-select
+              v-model="formData.maxPrice"
+              filterable
+              clearable
+              default-first-option
+              :reserve-keyword="false"
+              placeholder="Choose/Search Max Price"
+              @change="searchProperty"
+              style="width: 100%"
+          >
+            <el-option
+                v-for="price in prices"
+                :key="price.id"
+                :label="$filters.formatPrice(price.name)"
+                :value="price.name"
+            />
+          </el-select>
         </div>
       </div>
-      <button class="sidebar-search-btn">Search</button>
+      <button @click.prevent="searchProperty" class="sidebar-search-btn">Search</button>
     </div>
     <div id="properties">
       <div class="properties-header">
         <div class="from-to-from">
-          <i class="fa-regular fa-house"></i><a href="index.html">Home</a><i class="fa-regular fa-chevron-right"></i><a href="">Properties</a>
+          <i class="fa-regular fa-house"></i>
+          <RouterLink :to="{name:'app.home'}">Home</RouterLink>
+          <i class="fa-regular fa-chevron-right"></i>
+          <a href="#">
+            Properties
+          </a>
         </div>
         <h1>Properties</h1>
         <div class="total-properties">
-          <p>52 properties</p>
-          <div>
-            <span>Sort by:</span>
-            <select name="" id="">
-              <option value="">Default Order</option>
-              <option value="">Price - Low to High</option>
-              <option value="">Price - High to Low</option>
-              <option value="">Title - ASC</option>
-              <option value="">Title - DESC</option>
-              <option value="">Date - New to Old</option>
-              <option value="">Date - Old to New</option>
-            </select>
-          </div>
+          <p>{{ allProperties.length }} properties</p>
         </div>
       </div>
       <div class="cards-container">
-        <div class="property-card-box">
-          <div class="property-carousel">
-            <i class="fa-solid fa-chevron-left"></i>
-            <a href="property-details.html">
-              <div class="property-images">
-                <img src="/img/client-side/hero-section-img.png" alt="...">
-                <img src="/img/client-side/bg-hero.png" alt="...">
-                <img src="/img/client-side/hero-section-img.png" alt="...">
-              </div>
-            </a>
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-          <div class="property-details-box">
-            <a href="property-details.html"><p class="property-name">Alice in borderland</p></a>
-            <div class="property-price-detail">
-              <div>Rs:<span>79040.00</span></div>
-              <div class="rooms-baths-sqft">
-                <p><i class="fa-light fa-bed"></i><span>4</span></p>
-                <p><i class="fa-light fa-shower"></i><span>2</span></p>
-                <p><i class="fa-light fa-ruler-triangle"></i><span>1200</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="property-card-box">
-          <div class="property-carousel">
-            <i class="fa-solid fa-chevron-left"></i>
-            <a href="property-details.html">
-              <div class="property-images">
-                <img src="/img/client-side/hero-section-img.png" alt="...">
-                <img src="/img/client-side/bg-hero.png" alt="...">
-                <img src="/img/client-side/hero-section-img.png" alt="...">
-              </div>
-            </a>
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-          <div class="property-details-box">
-            <a href="property-details.html"><p class="property-name">saif ullah</p></a>
-            <div class="property-price-detail">
-              <div>Rs:<span>79040.00</span></div>
-              <div class="rooms-baths-sqft">
-                <p><i class="fa-light fa-bed"></i><span>4</span></p>
-                <p><i class="fa-light fa-shower"></i><span>2</span></p>
-                <p><i class="fa-light fa-ruler-triangle"></i><span>1200</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="property-card-box">
-          <div class="property-carousel">
-            <i class="fa-solid fa-chevron-left"></i>
-            <a href="property-details.html">
-              <div class="property-images">
-                <img src="/img/client-side/hero-section-img.png" alt="...">
-                <img src="/img/client-side/bg-hero.png" alt="...">
-                <img src="/img/client-side/hero-section-img.png" alt="...">
-              </div>
-            </a>
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-          <div class="property-details-box">
-            <a href="property-details.html"><p class="property-name">ali raza</p></a>
-            <div class="property-price-detail">
-              <div>Rs:<span>79040.00</span></div>
-              <div class="rooms-baths-sqft">
-                <p><i class="fa-light fa-bed"></i><span>4</span></p>
-                <p><i class="fa-light fa-shower"></i><span>2</span></p>
-                <p><i class="fa-light fa-ruler-triangle"></i><span>1200</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="property-card-box">
-          <div class="property-carousel">
-            <i class="fa-solid fa-chevron-left"></i>
-            <a href="property-details.html">
-              <div class="property-images">
-                <img src="/img/client-side/hero-section-img.png" alt="...">
-                <img src="/img/client-side/bg-hero.png" alt="...">
-                <img src="/img/client-side/hero-section-img.png" alt="...">
-              </div>
-            </a>
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-          <div class="property-details-box">
-            <a href="property-details.html"><p class="property-name">hassan ahsan</p></a>
-            <div class="property-price-detail">
-              <div>Rs:<span>79040.00</span></div>
-              <div class="rooms-baths-sqft">
-                <p><i class="fa-light fa-bed"></i><span>4</span></p>
-                <p><i class="fa-light fa-shower"></i><span>2</span></p>
-                <p><i class="fa-light fa-ruler-triangle"></i><span>1200</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Cards :properties="allProperties" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import {onMounted} from "vue";
+import {onMounted, ref} from "vue";
+import {useAppProperty, useBedroom, useCity, useNotification, usePrice, useType} from "@/stores/index.js";
+import {storeToRefs} from "pinia";
+import {RouterLink, useRoute, useRouter} from "vue-router";
+import Cards from "@/views/app/pages/properties/Cards.vue";
 
-onMounted(() => {
-  document.querySelectorAll(".property-carousel").forEach(carousel => {
-    let imagesContainer = carousel.querySelector(".property-images");
-    let images = imagesContainer.querySelectorAll("img");
-    let prevBtn = carousel.querySelector(".fa-chevron-left");
-    let nextBtn = carousel.querySelector(".fa-chevron-right");
-    let index = 0;
+const router = useRouter();
+const route = useRoute();
 
-    imagesContainer.style.display = "flex";
-    imagesContainer.style.overflow = "hidden";
-    imagesContainer.style.width = "100%";
-    images.forEach(img => img.style.width = "100%");
+const propertyToRefs = useAppProperty();
+const {allProperties} = storeToRefs(propertyToRefs);
 
-    function updateCarousel() {
-      images.forEach((img, i) => {
-        img.style.display = i === index ? "block" : "none";
-      });
-    }
+const {types} = storeToRefs(useType());
+const {cities} = storeToRefs(useCity());
+const {prices} = storeToRefs(usePrice());
+const {bedrooms} = storeToRefs(useBedroom());
 
-    updateCarousel();
-
-    nextBtn.addEventListener("click", function () {
-      index = (index + 1) % images.length;
-      updateCarousel();
-    });
-
-    prevBtn.addEventListener("click", function () {
-      index = (index - 1 + images.length) % images.length;
-      updateCarousel();
-    });
-  });
+const formData = ref({
+  search: route.query.search || "",
+  types: route.query.types ? route.query.types.split(',') : [],
+  city: route.query.city || "",
+  bedrooms: route.query.bedrooms || "",
+  maxPrice: route.query.maxPrice || "",
 });
+
+const searchProperty = async () => {
+  try {
+    await router.push({
+      name:"app.properties",
+      query: {
+        search: formData.value.search,
+        types: formData.value.types.join(','),
+        city: formData.value.city,
+        bedrooms: formData.value.bedrooms,
+        maxPrice: formData.value.maxPrice,
+      },
+    });
+
+    await propertyToRefs.getAllProperties(formData.value);
+
+  } catch (error) {
+    useNotification().Error("Error fetching properties:", error);
+  }
+};
+
+onMounted(() => searchProperty());
 </script>

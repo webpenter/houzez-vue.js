@@ -17,6 +17,7 @@ export const useAppProperty = defineStore('appProperty', {
     state: () => ({
         featuredProperties:{},
         searchedAndFilteredProperties:{},
+        allProperties:{},
         errors: {},
         loading: false,
         prefix:"/app/properties",
@@ -80,5 +81,52 @@ export const useAppProperty = defineStore('appProperty', {
                 return Promise.reject(error.response);
             }
         },
+
+        async getAllProperties(formData) {
+            let url = `${this.prefix}/get-all`;
+
+            try {
+                const response = await axiosInstance.get(url,{
+                    params: {
+                        search: formData.search,
+                        propertyTypes: formData.types,
+                        city: formData.city,
+                        maxBedrooms: formData.bedrooms,
+                        maxPrice: formData.maxPrice
+                    }
+                });
+                this.allProperties = response.data.properties;
+
+                return Promise.resolve(response);
+            } catch (error) {
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
+            }
+        },
+
+        // async getAllProperties(formData) {
+        //     let url = `${this.prefix}/get-all`;
+        //
+        //     try {
+        //         const response = await axiosInstance.get(url,{
+        //             params: {
+        //                 search: formData.search,
+        //                 status: formData.status,
+        //                 maxBedrooms: formData.maxBedrooms,
+        //                 minBedrooms: formData.minBedrooms,
+        //                 maxBathrooms: formData.maxBathrooms,
+        //                 minBathrooms: formData.minBathrooms,
+        //                 maxPrice: formData.maxPrice,
+        //                 minPrice: formData.minPrice,
+        //             }
+        //         });
+        //         this.allProperties = response.data.properties;
+        //
+        //         return Promise.resolve(response);
+        //     } catch (error) {
+        //         this.errors = error.response || error;
+        //         return Promise.reject(error.response);
+        //     }
+        // },
     }
 });

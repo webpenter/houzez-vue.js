@@ -55,6 +55,15 @@ const routes = [
                 meta:{ title:'Property' }
             },
             /***
+             * @route App/Property
+             ***/
+            {
+                path: '/property-details/:propertyId(\\d+)',
+                name:'app.property-details',
+                component:() => import('@/views/app/pages/property-details/Index.vue'),
+                meta:{ title:'Property Details' }
+            },
+            /***
              * @route App/Realtor
              ***/
             {
