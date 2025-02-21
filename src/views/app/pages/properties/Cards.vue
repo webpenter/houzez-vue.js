@@ -6,14 +6,14 @@
     <template v-for="property in properties" :key="property.id">
       <div class="property-card-box">
         <div class="property-carousel">
-          <RouterLink :to="{name:'app.property-details',params:{propertyId:property.id}}">
+          <RouterLink :to="{name:'app.property-details',params:{propertySlug:property.slug}}">
             <div class="property-images">
               <img :src="property.thumbnail" alt="...">
             </div>
           </RouterLink>
         </div>
         <div class="property-details-box">
-          <RouterLink :to="{name:'app.property-details',params:{propertyId:property.id}}">
+          <RouterLink :to="{name:'app.property-details',params:{propertySlug:property.slug}}">
             <p class="property-name">
               {{ $filters.subStr(property.title,0,60) }}
             </p>

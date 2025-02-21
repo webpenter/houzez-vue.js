@@ -45,7 +45,7 @@
               <div class="property-price">
                 {{ $filters.formatPrice(property.price) }}
               </div>
-              <button class="details-button">Details <i class="fas fa-arrow-right"></i></button>
+              <RouterLink :to="{name:'app.property-details',params:{propertySlug:property.slug}}" class="details-button">Details <i class="fas fa-arrow-right"></i></RouterLink>
             </div>
           </div>
         </div>
@@ -58,6 +58,7 @@
 import { useAppProperty } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
 import { onMounted, reactive, ref } from "vue";
+import {RouterLink} from "vue-router";
 
 const propertyToRefs = useAppProperty();
 const { featuredProperties } = storeToRefs(propertyToRefs);

@@ -58,7 +58,7 @@ const routes = [
              * @route App/Property
              ***/
             {
-                path: '/property-details/:propertyId(\\d+)',
+                path: '/property-details/:propertySlug',
                 name:'app.property-details',
                 component:() => import('@/views/app/pages/property-details/Index.vue'),
                 meta:{ title:'Property Details' }
