@@ -8,7 +8,7 @@
 
     <div class="featured-rentals-container">
       <template v-if="loading">
-        <PropertyCardSkeleton :loop="3" />
+        <PropertyCardSkeleton :loop="6" />
       </template>
       <template v-else v-for="(property, index) in featuredProperties" :key="property.id">
         <div class="property-card">

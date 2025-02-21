@@ -82,6 +82,20 @@ export const useAppProperty = defineStore('appProperty', {
             }
         },
 
+        /**
+         * ## Fetch all properties based on the provided filter criteria.
+         *
+         * Asynchronously fetches properties based on the provided filters.
+         * Makes a GET request with query parameters for search, property types, city, bedrooms, and price.
+         *
+         * @param {Object} formData - The form data containing search and filter criteria.
+         * @param {string} formData.search - The search term to filter properties by title.
+         * @param {Array} formData.types - Array of property types to filter.
+         * @param {string} formData.city - The city to filter properties by.
+         * @param {string|number} formData.bedrooms - Maximum number of bedrooms to filter (can be 'any').
+         * @param {string|number} formData.maxPrice - Maximum price to filter (can be 'any').
+         * @returns {Promise} Resolves with response data or rejects with an error.
+         */
         async getAllProperties(formData) {
             let url = `${this.prefix}/get-all`;
 
@@ -103,30 +117,5 @@ export const useAppProperty = defineStore('appProperty', {
                 return Promise.reject(error.response);
             }
         },
-
-        // async getAllProperties(formData) {
-        //     let url = `${this.prefix}/get-all`;
-        //
-        //     try {
-        //         const response = await axiosInstance.get(url,{
-        //             params: {
-        //                 search: formData.search,
-        //                 status: formData.status,
-        //                 maxBedrooms: formData.maxBedrooms,
-        //                 minBedrooms: formData.minBedrooms,
-        //                 maxBathrooms: formData.maxBathrooms,
-        //                 minBathrooms: formData.minBathrooms,
-        //                 maxPrice: formData.maxPrice,
-        //                 minPrice: formData.minPrice,
-        //             }
-        //         });
-        //         this.allProperties = response.data.properties;
-        //
-        //         return Promise.resolve(response);
-        //     } catch (error) {
-        //         this.errors = error.response || error;
-        //         return Promise.reject(error.response);
-        //     }
-        // },
     }
 });

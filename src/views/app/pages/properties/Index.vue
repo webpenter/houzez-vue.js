@@ -94,7 +94,7 @@
           </el-select>
         </div>
       </div>
-      <button @click.prevent="searchProperty" class="sidebar-search-btn">Search</button>
+      <button @click.prevent="resetFilters" class="sidebar-search-btn">Reset filters</button>
     </div>
     <div id="properties">
       <div class="properties-header">
@@ -107,13 +107,30 @@
           </a>
         </div>
         <h1>Properties</h1>
-        <div class="total-properties">
-          <p>{{ allProperties.length }} properties</p>
+        <template v-if="allProperties.length > 0">
+          <div class="total-properties">
+            <p>{{ $filters.formatTextWithNumber(allProperties.length,"Property") }} </p>
+            <div @click.prevent="refreshProperties" style="cursor: pointer">
+              <i :class="{'fa-solid fa-rotate': true, 'rotate-animation': isRefreshing}"></i>
+              Refresh
+            </div>
+          </div>
+        </template>
+      </div>
+      <NoDataFound
+          v-if="allProperties.length < 1"
+          :font-size="30"
+          :icon-size="100"
+          class="mt-5"
+      />
+      <template v-else>
+        <div class="cards-container">
+          <Cards
+              :properties="allProperties"
+              :loading="loading"
+          />
         </div>
-      </div>
-      <div class="cards-container">
-        <Cards :properties="allProperties" />
-      </div>
+      </template>
     </div>
   </div>
 </template>
@@ -124,9 +141,13 @@ import {useAppProperty, useBedroom, useCity, useNotification, usePrice, useType}
 import {storeToRefs} from "pinia";
 import {RouterLink, useRoute, useRouter} from "vue-router";
 import Cards from "@/views/app/pages/properties/Cards.vue";
+import NoDataFound from "@/views/app/components/NoDataFound.vue";
 
 const router = useRouter();
 const route = useRoute();
+
+const loading = ref(false);
+const isRefreshing = ref(false);
 
 const propertyToRefs = useAppProperty();
 const {allProperties} = storeToRefs(propertyToRefs);
@@ -145,6 +166,7 @@ const formData = ref({
 });
 
 const searchProperty = async () => {
+  loading.value = true;
   try {
     await router.push({
       name:"app.properties",
@@ -158,11 +180,58 @@ const searchProperty = async () => {
     });
 
     await propertyToRefs.getAllProperties(formData.value);
+    loading.value = false;
 
   } catch (error) {
     useNotification().Error("Error fetching properties:", error);
+    loading.value = false;
   }
 };
 
+const resetFilters = () => {
+  formData.value = {
+    search: "",
+    types: [],
+    city: "",
+    bedrooms: "",
+    maxPrice: "",
+  };
+
+  router.replace({ name: "app.properties", query: {} });
+  searchProperty();
+};
+
+const refreshProperties = () => {
+  isRefreshing.value = true;
+
+  formData.value = {
+    search: "",
+    types: [],
+    city: "",
+    bedrooms: "",
+    maxPrice: "",
+  };
+
+  router.replace({ name: "app.properties", query: {} });
+
+  setTimeout(() => {
+    isRefreshing.value = false;
+  }, 2000);
+
+  searchProperty();
+};
+
+
 onMounted(() => searchProperty());
 </script>
+
+<style scoped>
+.rotate-animation {
+  animation: spin 1s linear;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
