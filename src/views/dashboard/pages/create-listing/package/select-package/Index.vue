@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Select Package">
+    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
     </DashboardHeader>
         <section class="dashboard-content-wrap">
             <SnakeNav active="package"/>
@@ -21,6 +21,7 @@ import {usePackage} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 import {onMounted, ref} from "vue";
 import NoDataMsg from "@/views/dashboard/components/NoDataMsg.vue";
+import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 
 const packageToRefs = usePackage();
 const {selectPlans} = storeToRefs(packageToRefs);

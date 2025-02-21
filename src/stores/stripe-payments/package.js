@@ -23,6 +23,15 @@ export const usePackage = defineStore('package', {
     }),
     getters: {},
     actions: {
+        /**
+         * ## Fetch all available plans.
+         *
+         * Asynchronously retrieves all plans from the API.
+         * Sends a GET request to fetch all plan data.
+         * Stores the retrieved plans in `this.allPlans`.
+         *
+         * @returns {Promise<Object>} Resolves with the response data or rejects with an error response.
+         */
         async  getAllPlans() {
             const url = `${this.prefix}/get-all-plans`;
 
@@ -44,6 +53,15 @@ export const usePackage = defineStore('package', {
             }
         },
 
+        /**
+         * ## Fetch selected plans.
+         *
+         * Asynchronously retrieves a subset of plans from the API.
+         * Sends a GET request to fetch specific plan data.
+         * Stores the retrieved plans in `this.selectPlans`.
+         *
+         * @returns {Promise<Object>} Resolves with the response data or rejects with an error response.
+         */
         async  getSelectPlans() {
             const url = `${this.prefix}/get-select-plans`;
 
@@ -65,6 +83,15 @@ export const usePackage = defineStore('package', {
             }
         },
 
+        /**
+         * ## Store a new plan.
+         *
+         * Asynchronously sends a POST request to store a new plan.
+         * Sends form data containing plan details to the API.
+         *
+         * @param {Object} formData - The form data containing plan details.
+         * @returns {Promise<Object>} Resolves with the response data or rejects with an error response.
+         */
         async  storePlan(formData) {
             const url = `${this.prefix}/store-plan`;
 
@@ -84,6 +111,15 @@ export const usePackage = defineStore('package', {
             }
         },
 
+        /**
+         * ## Delete a plan.
+         *
+         * Asynchronously sends a POST request to delete a specific plan.
+         * The plan ID is passed as a URL parameter.
+         *
+         * @param {number|string} planId - The ID of the plan to delete.
+         * @returns {Promise<Object>} Resolves with the response data or rejects with an error response.
+         */
         async  deletePlan(planId) {
             const url = `${this.prefix}/delete-plan/${planId}`;
 

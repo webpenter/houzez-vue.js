@@ -27,3 +27,4 @@ export * from './properties/appProperty.js';
 
 // ------------- Stripe-Payments Dir
 export * from './stripe-payments/package.js';
+export * from './stripe-payments/subscription.js';

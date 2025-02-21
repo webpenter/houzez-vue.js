@@ -305,10 +305,10 @@ const routes = [
              * @route Dashboard/Create-Listing/Listing-Done
              ***/
             {
-                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/get-package`,
-                name: 'dashboard.create-listing.get-package',
-                component: () => import('@/views/dashboard/pages/create-listing/package/get-package/Index.vue'),
-                meta: { title: 'Get Package' }
+                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/no-package`,
+                name: 'dashboard.create-listing.no-package',
+                component: () => import('@/views/dashboard/pages/create-listing/package/no-package/Index.vue'),
+                meta: { title: 'No Package' }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/select-package`,
@@ -317,16 +317,10 @@ const routes = [
                 meta: { title: 'Select Package' }
             },
             {
-                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/complete-order`,
-                name: 'dashboard.create-listing.complete-order',
-                component: () => import('@/views/dashboard/pages/create-listing/payment/complete-order/Index.vue'),
-                meta: { title: 'Complete Order' }
-            },
-            {
-                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/create-account`,
-                name: 'dashboard.create-listing.create-account',
-                component: () => import('@/views/dashboard/pages/create-listing/payment/create-account/Index.vue'),
-                meta: { title: 'Create Account' }
+                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/checkout/:planId`,
+                name: 'dashboard.create-listing.checkout',
+                component: () => import('@/views/dashboard/pages/create-listing/payment/checkout/Index.vue'),
+                meta: { title: 'Checkout' }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/payment-completed`,
