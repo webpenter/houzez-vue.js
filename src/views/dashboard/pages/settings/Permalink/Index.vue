@@ -1,68 +1,72 @@
 <template>
     <div class="dashboard-container">
       <DashboardHeader heading="Permalink Settings">
-        <a class="btn btn-primary" href="#">View Public Profile</a>
-      </DashboardHeader>
-  
+    <a class="btn btn-primary" href="#" @click.prevent="toggleModalAddNewEnquiry">Permalink Feild</a>
+  </DashboardHeader>
       <section class="dashboard-content-wrap">
-        <div class="settings-container">
-          <div class="dashboard-content-inner-wrap">
-            <div class="dashboard-content-block-wrap"></div>
-  
-            <div class="permalink-settings p-6 max-w-3xl mx-auto bg-white shadow-md rounded-lg">
-              <p class="text-sm text-gray-600 mb-2">Choose the structure of your URLs.</p>
-  
-              <div class="alert-box bg-yellow-100 text-yellow-900 border border-yellow-300">
-                <p>
-                  <strong>Realtyna MLS Sync:</strong> Could not set a Target Product to Sync with the MLS,
-                  <a href="#" class="text-blue-500">Run Setup Wizard</a>
-                </p>
-              </div>
-  
-              <div class="alert-box bg-blue-100 text-blue-900 border border-blue-300">
-                <p>
-                  There are updates available for the following plugins:
-                  <a href="#" class="text-blue-500">MailChimp For WP</a>,
-                  <a href="#" class="text-blue-500">One Click Demo Import</a>, and
-                  <a href="#" class="text-blue-500">Redux Framework</a>.
-                </p>
-                <div class="mt-2">
-                  <a href="#" class="text-blue-500 mr-4">Begin updating plugins</a>
-                  <a href="#" class="text-blue-500">Dismiss this notice</a>
-                </div>
-              </div>
-  
-              <div class="settings-section">
-                <h3 class="text-lg font-semibold mb-4" >Common Settings</h3>
-                <div class="space-y-3">
-                  <label
-                    v-for="option in options"
-                    :key="option.value"
-                    class="radio-option"
-                    id = "bttom"
-                  >
-                    <input type="radio" v-model="selectedOption" :value="option.value"   />
-                    <div>
-                      <span class="font-medium">{{ option.label }}</span>
-                      <span class="block text-sm text-gray-500">{{ option.url }}</span>
-                    </div>
-                  </label>
-                </div>
-              </div>
-  
-              <div class="settings-section">
-                <h3 class="text-lg font-semibold mb-2">Optional</h3>
-                <label class="block mb-2">Category base:</label>
-                <input type="text" v-model="categoryBase" class="input-field" />
-  
-                <label class="block mt-4 mb-2">Tag base:</label>
-                <input type="text" v-model="tagBase" class="input-field" />
-              </div>
-  
-              <button @click="saveSettings" class="save-button">Save Changes</button>
+        <div class="dashboard-content-inner-wrap">
+      <div class="dashboard-content-block-wrap">
+        <div class="dashboard-content-block">
+          Realtyna MLS Sync : Could not set a Target Product to Sync with the MLS <a class="open-close-slide-panel"
+            href="#" @click.prevent="toggleModalAddNewEnquiry"></a>
+          <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewEnquiry"><strong> Run Setup
+              Wizard</strong></a>
+          <!-- <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewEnquiry"><strong>Run Setup Wizard</strong></a> -->
+
+        </div>
+        <!-- dashboard-content-block -->
+      </div>
+    </div>
+    <div class="dashboard-content-block-wrap">
+      <!-- <h2>Site Health Status</h2> -->
+
+      <div class="dashboard-content-block">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+
+              <div class="dashboard-content-block">
+                <h3>Common Settings</h3>
+                <!-- 3 -->
+                <label class="control control--radio">
+                  <input type="radio" name="air-conditioning"> Plain
+                  <span class="control__indicator"></span>
+                </label>
+                <label class="control control--radio">
+                  <input type="radio" name="air-conditioning"> Day and name
+                  <span class="control__indicator"></span>
+                </label>
+                <label class="control control--radio">
+                  <input type="radio" name="air-conditioning">  Month and name
+                  <span class="control__indicator"></span>
+                </label>
+                <label class="control control--radio">
+                  <input type="radio" name="air-conditioning"> Numeric
+                  <span class="control__indicator"></span>
+                </label>
+                <label class="control control--radio">
+                  <input type="radio" name="air-conditioning">Post name
+                  <span class="control__indicator"></span>
+                </label>
+                <label class="control control--radio">
+                  <input type="radio" name="air-conditioning">Custom Structure
+                  <span class="control__indicator"></span>
+                </label>
+            
+                <h3>Optional</h3>
+                <p>If you like, you may enter custom structures for your category and tag URLs here. For example, using topics as your category base would make your category links like http://houzez.webpenter.com/topics/uncategorized/. If you leave these blank the defaults will be used.</p>
+                <h3> Category base</h3>
+                <input class="form-control" placeholder="" type="text"><br>
+                <h3>Tag base</h3>
+                <input class="form-control" placeholder="" type="text">
+              </div><a class="btn btn-primary-outlined" href="#modal-save-draft" data-toggle="modal">Save Changes</a>
+
             </div>
           </div>
-        </div>
+
+        </div><!-- row -->
+      </div><!-- dashboard-content-block -->
+    </div>
       </section>
     </div>
   </template>

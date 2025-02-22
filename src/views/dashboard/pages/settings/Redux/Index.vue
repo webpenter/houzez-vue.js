@@ -1,78 +1,76 @@
 <template>
 <div class="dashboard-container">
-    <DashboardHeader heading="Welcome to Redux Framework 4.3">
-      <a class="btn btn-primary" href="#">View Public Profile</a>
-    </DashboardHeader>
+  <DashboardHeader heading="Welcome to Redux Framework 4.3">
+    <a class="btn btn-primary" href="#" @click.prevent="toggleModalAddNewEnquiry">Redux Feild</a>
+  </DashboardHeader>
 
     <section class="dashboard-content-wrap" style="    margin-top: -32px;">
-      <div class="settings-container">
-        <div class="dashboard-content-inner-wrap">
-          <div class="dashboard-content-block-wrap"></div>
-    <div class="p-6 bg-gray-100 min-h-screen">
-      <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
-        <header class="flex justify-between items-center border-b pb-4">
-          <div style="margin-left: 20px;">
-            <!-- <h1 class="text-3xl font-bold">Welcome to Redux Framework 4.3</h1> -->
-            <p class="text-gray-600 mt-1" style="margin-left: 7px;">
-              Redux is the world’s most powerful and widely used WordPress interface builder.
-            </p>
-          </div>
-          <div class="text-center">
-            <div class="bg-purple-200 p-4 rounded-lg">
-              <span class="block text-purple-800 font-bold text-lg">Version 4.3.17</span>
-            </div>
-          </div>
-        </header>
-        
-        <!-- <nav class="mt-4 flex space-x-2">
-          <button class="bg-blue-600 text-white px-4 py-2 rounded">Docs</button>
-          <button class="bg-blue-400 text-white px-4 py-2 rounded">Review Us</button>
-          <button class="text-blue-500 underline">Tweet</button>
-          <button class="text-orange-500 underline">Enable Panel Demo</button>
-        </nav> -->
-        
-      
-        
-        <section class="mt-6">
-          <h5 class="text-2xl font-semibold" style="margin-left: 20px;">Did I install this?</h5>
-          <p class="text-gray-700 mt-2">
-            <span class="font-bold" style="margin-left: 23px;">Maybe not!</span> These items are using Redux. If you want to keep using them,
-            Redux will need to remain installed and activated.
-          </p>
-          
-          <div class="mt-6 bg-gray-50 p-4 border rounded-lg">
-            <h5 class="text-xl font-semibold">Houzez <span class="text-gray-500">Version: 2.7.0</span></h5>
-            <p class="text-gray-600">By <a href="#" class="text-blue-500">Favethemes</a> <span class="bg-blue-500 text-white px-2 py-1 text-sm rounded">Theme</span></p>
-            
-            <div class="mt-4 bg-gray-200 p-2 inline-block rounded text-gray-800">
-              <span class="font-semibold">opt_name:</span> houzez_options
-            </div>
-            
-            <ul class="mt-4 text-gray-700 space-y-1">
-              <li>~/houzez/-options.php</li>
-              <li>~/houzez/_demo/wp-content/themes/general.php</li>
-              <li>~/houzez/_demo/wp-content/themes/translation.php</li>
-              <li>~/houzez/_demo/wp-content/themes/logo-favicons.php</li>
-              <li>~/houzez/_demo/wp-content/themes/header.php</li>
-              <li>~/houzez/_demo/wp-content/themes/topbar.php</li>
-              <li>~/houzez/_demo/wp-content/themes/splash.php</li>
-              <li>~/houzez/_demo/wp-content/themes/login-register.php</li>
-              <li>~/houzez/_demo/wp-content/themes/price-currency.php</li>
-              <li>~/houzez/_demo/wp-content/themes/property-detail.php</li>
-            </ul>
-            <button class="font-bold border-b-2 border-black pb-2" style="background: #0073aa; margin-left: 26px;     border: none;
-    border-radius: 5px;" >What is Redux?</button>
-          </div>
-          <a href="http://localhost:3000/dashboard/settings" style="margin-left: 20%;
-">If you like Redux please leave us a ★★★★★ rating. A huge thank you in advance!</a>
+      <div class="dashboard-content-inner-wrap">
+      <div class="dashboard-content-block-wrap">
+        <div class="dashboard-content-block">
+          Redux is the world's most powerful and widely used WordPress interface builder. We are trusted by millions of developers and end users world-wide.
+          <!-- <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewEnquiry"><strong>Run Setup Wizard</strong></a> -->
 
-          <!-- <div class="mt-6 border-b pb-4 flex space-x-4">
-           <button class="text-gray-600" >Templates</button> 
-        </div> -->
-        </section>
+        </div>
+        <!-- dashboard-content-block -->
       </div>
     </div>
-    </div>
+    <div class="dashboard-content-block-wrap">
+      <!-- <h2>Site Health Status</h2> -->
+
+      <div class="dashboard-content-block">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+
+              <div class="dashboard-content-block">
+                <h3>Houzez Version: 2.7.0</h3>
+<p>opt_name: houzez_options
+~/houzez/-options.php
+~/houzez/_demo/wp-content/themes/general.php
+~/houzez/_demo/wp-content/themes/translation.php
+~/houzez/_demo/wp-content/themes/logo-favicons.php
+~/houzez/_demo/wp-content/themes/header.php
+~/houzez/_demo/wp-content/themes/topbar.php
+~/houzez/_demo/wp-content/themes/splash.php
+~/houzez/_demo/wp-content/themes/login-register.php
+~/houzez/_demo/wp-content/themes/price-currency.php
+~/houzez/_demo/wp-content/themes/typography.php
+~/houzez/_demo/wp-content/themes/styling.php
+~/houzez/_demo/wp-content/themes/property-detail.php
+~/houzez/_demo/wp-content/themes/print-property.php
+~/houzez/_demo/wp-content/themes/add-new-property.php
+~/houzez/_demo/wp-content/themes/advanced-search.php
+~/houzez/_demo/wp-content/themes/map.php
+~/houzez/_demo/wp-content/themes/halfmap.php
+~/houzez/_demo/wp-content/themes/listing-options.php
+~/houzez/_demo/wp-content/themes/taxonomies.php
+~/houzez/_demo/wp-content/themes/contact-forms.php
+~/houzez/_demo/wp-content/themes/webhooks.php
+~/houzez/_demo/wp-content/themes/reCaptcha.php
+~/houzez/_demo/wp-content/themes/membership.php
+~/houzez/_demo/wp-content/themes/agents.php
+~/houzez/_demo/wp-content/themes/agencies.php
+~/houzez/_demo/wp-content/themes/invoices.php
+~/houzez/_demo/wp-content/themes/blog.php
+~/houzez/_demo/wp-content/themes/insights.php
+~/houzez/_demo/wp-content/themes/emails.php
+~/houzez/_demo/wp-content/themes/banner-slider.php
+~/houzez/_demo/wp-content/themes/404.php
+~/houzez/_demo/wp-content/themes/footer.php
+~/houzez/_demo/wp-content/themes/optimization.php
+~/houzez/_demo/wp-content/themes/gdpr.php
+~/houzez/_demo/wp-content/themes/custom-code.php
+</p>
+
+
+        </div><a class="btn btn-primary-outlined" href="#modal-save-draft" data-toggle="modal">Save Changes</a>
+
+            </div>
+          </div>
+
+        </div><!-- row -->
+      </div><!-- dashboard-content-block -->
     </div>
     </section>
     </div>

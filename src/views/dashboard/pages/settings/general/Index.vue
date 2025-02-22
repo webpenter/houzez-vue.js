@@ -1,78 +1,83 @@
 <template>
     
     <DashboardHeader heading="General Settings">
-        <a class="btn btn-primary" href="#">View Public Profile</a>
+        <a class="btn btn-primary" href="#" @click.prevent="toggleModalAddNewEnquiry">General Feild</a>
     </DashboardHeader>
     <section class="dashboard-content-wrap">
-        <div class="settings-container">
+      <div class="dashboard-content-inner-wrap">
+            <div class="dashboard-content-block-wrap">
+                <div class="dashboard-content-block">
+                   There are updates available for the following plugins: <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewEnquiry"><strong>MailChimp For WP, One Click Demo Import</strong></a> -->
+                   and
+                   <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewEnquiry"><strong>Begin updating plugins | Dismiss this notice</strong></a>
+                   Realtyna MLS Sync: Could not set a Target Product to Sync with the MLS, <!-- <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewEnquiry"><strong>Run Setup Wizard</strong></a> -->
 
-        <div class="dashboard-content-inner-wrap">
-            <div class="dashboard-content-block-wrap"></div>
-    
-      
-      <form @submit.prevent="saveSettings">
-        <div class="form-group">
-          <label>Administration Email Address</label>
-          <input type="email" v-model="settings.adminEmail" />
-          <small>This address is used for admin purposes. If you change this, an email will be sent to your new address to confirm it. <strong>The new address will not become active until confirmed.</strong></small>
-        </div>
+                </div>
+                <!-- dashboard-content-block -->
+  </div>
+  </div>
+  <div class="dashboard-content-block-wrap">
+	<!-- <h2>Site Health Status</h2> -->
+ 
+	<div class="dashboard-content-block">
+    <h3>Site Health Status</h3>
+    <p>Realtyna MLS Sync : Could not set a Target Product to Sync with the MLS,</p>
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				<div class="form-group">
         
-        <div class="form-group">
-          <label>
-            <input type="checkbox" v-model="settings.membership" />
-            Anyone can register
-          </label>
-        </div>
-        
-        <div class="form-group">
-          <label>New User Default Role</label>
-          <select v-model="settings.userRole">
-            <option>Subscriber</option>
-            <option>Contributor</option>
-            <option>Author</option>
-            <option>Editor</option>
-            <option>Administrator</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label>Site Language</label>
-          <select v-model="settings.language">
-            <option>English (United States)</option>
-            <option>Spanish</option>
-            <option>French</option>
-            <option>German</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label>Timezone</label>
-          <select v-model="settings.timezone">
-            <option>UTC+0</option>
-            <option>UTC+1</option>
-            <option>UTC+2</option>
-            <option>UTC-5</option>
-            <option>UTC-8</option>
-          </select>
-          <small>Choose either a city in the same timezone as you or a UTC (Coordinated Universal Time) time offset.</small>
-        </div>
-        
-        <div class="form-group">
-          <label>Date Format</label>
-          <div>
-            <label><input type="radio" v-model="settings.dateFormat" value="F j, Y" /> February 8, 2025</label>
-            <label><input type="radio" v-model="settings.dateFormat" value="Y-m-d" /> 2025-02-08</label>
-            <label><input type="radio" v-model="settings.dateFormat" value="m/d/Y" /> 02/08/2025</label>
-            <label><input type="radio" v-model="settings.dateFormat" value="d/m/Y" /> 08/02/2025</label>
-          </div>
-        </div>
-        
-        <button type="submit">Save Changes</button>
-      </form>
-      <p style="text-align: center; margin-top: 30px;">If the importer you need is not listed, <a href="http://localhost:3000/dashboard/settings">search the plugin directory</a> to see if an importer is available.</p>
+         <div class="dashboard-content-block">
+          <!-- 1 -->
+          <p>
+            Site Title
+                    	<select class="form-control" title="Select" data-live-search="false" data-selected-text-format="count" data-actions-box="false">
+						<option>Houzez</option>
 
-    </div>
-    </div>
+					</select>
+        </p><!-- selectpicker --><br>
+          <!-- 2 -->
+          <p>
+            Tagline
+                    	<select class="form-control" title="Select" data-live-search="false" data-selected-text-format="count" data-actions-box="false">
+						<option>webpenter testing zone</option>
+
+					</select></p><!-- selectpicker --><br>
+          <!-- 3 -->
+          <p>
+            WordPress Address (URL)
+                    	<select class="form-control" title="Select" data-live-search="false" data-selected-text-format="count" data-actions-box="false">
+						<option>http://houzez.webpenter.com</option>
+
+					</select></p><!-- selectpicker --><br>
+          <!-- 4 -->
+          <p>
+            Site Address (URL)
+                    	<select class="form-control" title="Select" data-live-search="false" data-selected-text-format="count" data-actions-box="false">
+						<option>http://houzez.webpenter.com</option>
+
+					</select></p><!-- selectpicker --><br>
+
+          <!-- link -->
+          If the importer you need is not listed   <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewEnquiry"><strong>  search the plugin directory</strong></a>to see if an importer is available.<br><br>
+<!-- 5 -->
+<p>
+  Administration Email Address
+                    	<select class="form-control" title="Select" data-live-search="false" data-selected-text-format="count" data-actions-box="false">
+						<option>homey@gmail.com</option>
+            
+
+					</select></p>
+          This address is used for admin purposes. If you change this, an email will be sent to your new address to confirm it. The new address will not become active until confirmed.
+                   
+                </div>
+                <a class="btn btn-primary-outlined" href="#modal-save-draft" data-toggle="modal">Updated Your Site To Use Https</a>
+
+				</div>
+				</div>
+			
+		</div><!-- row -->
+	</div><!-- dashboard-content-block -->
+</div>
     </section>
   </template>
   

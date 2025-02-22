@@ -1,44 +1,68 @@
 <template>
       <DashboardHeader heading="Media Settings">
-        <a class="btn btn-primary" href="#">View Public Profile</a>
-    </DashboardHeader>
+    <a class="btn btn-primary" href="#" @click.prevent="toggleModalAddNewEnquiry">Media Feild</a>
+  </DashboardHeader>
   
-    <div class="container p-4">
-      <h5 class="text-xl font-bold mb-4">Image Sizes</h5>
-      <p class="mb-2">The sizes listed below determine the maximum dimensions in pixels to use when adding an image to the Media Library.</p>
-      
-      <div class="mb-4">
-        <h5 class="font-semibold">Thumbnail size</h5>
-        <div class="flex gap-2 mt-2">
-          <label>Width <input v-model="thumbnail.width" type="number" class="input" /></label>
-          <label style="margin-left: 10%;">Height <input v-model="thumbnail.height" type="number" class="input" /></label>
+   <section  class="dashboard-content-wrap">
+    <div class="dashboard-content-inner-wrap">
+      <div class="dashboard-content-block-wrap">
+        <div class="dashboard-content-block">
+          Realtyna MLS Sync : Could not set a Target Product to Sync with the MLS <a class="open-close-slide-panel"
+            href="#" @click.prevent="toggleModalAddNewEnquiry"></a>
+          <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewEnquiry"><strong> Run Setup
+              Wizard</strong></a>
+          <!-- <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewEnquiry"><strong>Run Setup Wizard</strong></a> -->
+
         </div>
-        <label class="flex items-center mt-2">
-          <input v-model="thumbnail.crop" type="checkbox" class="mr-2" /> Crop thumbnail to exact dimensions (normally thumbnails are proportional)
-        </label>
+        <!-- dashboard-content-block -->
       </div>
-      
-      <div class="mb-4">
-        <h5 class="font-semibold">Medium size</h5>
-        <div class="flex gap-2 mt-2">
-          <label>Max Width <input v-model="medium.width" type="number" class="input" /></label>
-          <label style="margin-left: 7%;">Max Height <input v-model="medium.height" type="number" class="input" /></label>
-        </div>
-      </div>
-      
-      <div class="mb-4">
-        <h5 class="font-semibold">Large size</h5>
-        <div class="flex gap-2 mt-2">
-          <label>Max Width <input v-model="large.width" type="number" class="input" /></label>
-          <label style="margin-left: 7%;">Max Height <input v-model="large.height" type="number" class="input" /></label>
-        </div>
-      </div>
-      
-      <h5 class="text-xl font-bold mt-6">Uploading Files</h5>
-      <label class="flex items-center mt-2">
-        <input v-model="uploadSettings.organize" type="checkbox" class="mr-2" /> Organize my uploads into month- and year-based folders
-      </label>
     </div>
+    <div class="dashboard-content-block-wrap">
+      <!-- <h2>Site Health Status</h2> -->
+
+      <div class="dashboard-content-block">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+
+              <div class="dashboard-content-block">
+                <h3> Image Size</h3>
+                <!-- 3 -->
+                The sizes listed below determine the maximum dimensions in pixels to use when adding an image to the Media Library.
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label>
+                      Thumbnail size</label>
+                    Width<input class="form-control" placeholder="" type="number">
+                    Height<input class="form-control" placeholder="" type="number">
+                  </div>
+                  <div class="form-group">
+                    <label>
+                      Medium size</label>
+                   Max Width<input class="form-control" placeholder="" type="number">
+                   Max Height<input class="form-control" placeholder="" type="number">
+                  </div>
+                  <div class="form-group">
+                    <label>Large size</label>
+                  Max Width<input class="form-control" placeholder="" type="number">
+                  Max Height<input class="form-control" placeholder="" type="number">
+                  </div>
+                </div>
+            
+                <h3>Uploading Files</h3>
+                <label class="control control--checkbox">
+                  <input type="checkbox" name="air-conditioning"> Organize my uploads into month- and year-based folders
+                  <span class="control__indicator"></span>
+                </label>
+              </div><a class="btn btn-primary-outlined" href="#modal-save-draft" data-toggle="modal">Save Changes</a>
+
+            </div>
+          </div>
+
+        </div><!-- row -->
+      </div><!-- dashboard-content-block -->
+    </div>
+   </section>
   </template>
   
   <script>

@@ -1,81 +1,72 @@
 <template>
     <div class="dashboard-container">
-      <DashboardHeader heading="Privacy Settings" />
+      <DashboardHeader heading="Privacy Settings">
+    <a class="btn btn-primary" href="#" @click.prevent="toggleModalAddNewEnquiry">Privacy Feild</a>
+  </DashboardHeader>
       
   
       <section class="dashboard-content-wrap">
-        <div class="settings-container">
-          <div class="dashboard-content-inner-wrap">
-            <div class="dashboard-content-block-wrap"></div>
-  
-            <!-- Alerts -->
-            <div class="alert-box bg-yellow-100 text-yellow-900 border border-yellow-300">
-              <p>
-                <strong>Realtyna MLS Sync:</strong> Could not set a Target Product to Sync with the MLS,
-                <a href="#" class="text-blue-500">Run Setup Wizard</a>
-              </p>
-            </div>
-  
-            <div class="alert-box bg-blue-100 text-blue-900 border border-blue-300">
-              <p>
-                There are updates available for the following plugins:
-                <a href="#" class="text-blue-500 font-semibold">MailChimp For WP</a>,
-                <a href="#" class="text-blue-500 font-semibold">One Click Demo Import</a>, and
-                <a href="#" class="text-blue-500 font-semibold">Redux Framework</a>.
-              </p>
-              <div class="mt-2">
-                <a href="#" class="text-blue-500 font-medium mr-4">Begin updating plugins</a>
-                <a href="#" class="text-blue-500 font-medium">Dismiss this notice</a>
-              </div>
-            </div>
-  
-            <!-- Privacy Settings -->
-            <div class="privacy-settings p-6 max-w-3xl mx-auto bg-white shadow-md rounded-lg">
-              <h2 class="text-xl font-semibold mb-4">Privacy Settings</h2>
-              <p class="text-sm text-gray-600">
-                As a website owner, you may need to follow national or international privacy laws.
-                For example, you may need to create and display a Privacy Policy. If you already
-                have a Privacy Policy page, please select it below. If not, please create one.
-              </p>
-  
-              <p class="text-sm text-gray-600 mt-4">
-                The new page will include help and suggestions for your Privacy Policy. However, it is your
-                responsibility to use those resources correctly, to provide the information that your
-                Privacy Policy requires, and to keep that information current and accurate.
-              </p>
-  
-              <p class="text-sm text-gray-600 mt-4">
-                After your Privacy Policy page is set, you should edit it. You should also review your Privacy
-                Policy from time to time, especially after installing or updating any themes or plugins.
-                There may be changes or new suggested information for you to consider adding to your policy.
-              </p>
-  
-              <p class="text-sm text-blue-500 mt-4">
-                <a href="#" class="font-semibold">Edit</a> or
-                <a href="#" class="font-semibold">preview</a> your Privacy Policy page content.
-                Need help putting together your new Privacy Policy page?
-                <a href="#" class="font-semibold">Check out our Privacy Policy guide</a>
-                for recommendations on what content to include, along with policies suggested by your plugins and theme.
-              </p>
-  
-              <!-- Create Privacy Policy -->
-              <div class="mt-6">
-                <h5 class="text-lg font-semibold mb-2">Create a new Privacy Policy Page</h5>
-                <button class="btn btn-secondary">Create</button>
-              </div>
-  
-              <!-- Change Privacy Policy -->
-              <div class="mt-6">
-                <h5 class="text-lg font-semibold mb-2">Change your Privacy Policy page</h5>
-                <select v-model="selectedPolicy" class="input-field">
-                  <option value="privacy-policy">Privacy Policy</option>
-                  <option value="custom-policy">Custom Privacy Policy</option>
-                </select>
-                <button class="btn btn-primary ml-2">Use This Page</button>
-              </div>
+        <div class="dashboard-content-inner-wrap">
+      <div class="dashboard-content-block-wrap">
+        <div class="dashboard-content-block">
+          Realtyna MLS Sync : Could not set a Target Product to Sync with the MLS <a class="open-close-slide-panel"
+            href="#" @click.prevent="toggleModalAddNewEnquiry"></a>
+          <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewEnquiry"><strong> Run Setup
+              Wizard</strong></a>
+          <!-- <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewEnquiry"><strong>Run Setup Wizard</strong></a> -->
+
+        </div>
+        <!-- dashboard-content-block -->
+      </div>
+    </div>
+    <div class="dashboard-content-block-wrap">
+      <!-- <h2>Site Health Status</h2> -->
+
+      <div class="dashboard-content-block">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+
+              <div class="dashboard-content-block">
+                <h3>Privacy Settings</h3>
+               <p>As a website owner, you may need to follow national or international privacy laws. For example, you may need to create and display a Privacy Policy. If you already have a Privacy Policy page, please select it below. If not, please create one.
+
+The new page will include help and suggestions for your Privacy Policy. However, it is your responsibility to use those resources correctly, to provide the information that your Privacy Policy requires, and to keep that information current and accurate.
+
+After your Privacy Policy page is set, you should edit it. You should also review your Privacy Policy from time to time, especially after installing or updating any themes or plugins. There may be changes or new suggested information for you to consider adding to your policy.
+
+Edit or preview your Privacy Policy page content. Need help putting together your new Privacy Policy page? Check out our Privacy Policy guide for recommendations on what content to include, along with policies suggested by your plugins and theme.</p>
+<h3>
+  Create a new Privacy Policy Page</h3>
+  <a class="btn btn-primary-outlined" href="#modal-save-draft" data-toggle="modal">Create</a><br><br>
+  <p>
+
+    Change your Privacy Policy page:
+<select class="form-control" title="Select" data-live-search="false" data-selected-text-format="count"
+  data-actions-box="false">
+  <option>Privacy Policy</option>
+  <option>Print</option>
+  <option>Page</option>
+
+  <option>Bussiness</option>
+  <option>Construction</option>
+  <option>Marketing</option>
+  <option>Real Estate</option>
+  <option>uncategorized</option>
+
+
+
+
+</select>
+</p>
+              </div><a class="btn btn-primary-outlined" href="#modal-save-draft" data-toggle="modal">Save Changes</a>
+
             </div>
           </div>
-        </div>
+
+        </div><!-- row -->
+      </div><!-- dashboard-content-block -->
+    </div>
       </section>
     </div>
   </template>
