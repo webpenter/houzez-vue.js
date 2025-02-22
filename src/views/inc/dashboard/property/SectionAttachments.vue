@@ -1,5 +1,5 @@
 <template>
-    <div class="dashboard-content-block-wrap">
+  <div class="dashboard-content-block-wrap">
 	<h2>Attachments</h2>
 	<div class="dashboard-content-block">
 		<p>You can attach PDF files, Map images OR other documents to provide further details related to property.</p>

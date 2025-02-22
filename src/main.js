@@ -12,7 +12,8 @@ import ElementPlus from "element-plus";
 import { createPinia } from "pinia";
 import {
     subStr,
-    logout
+    logout,
+    formatPrice
 } from "./helpers"
 
 const app = createApp(App);
@@ -27,5 +28,6 @@ app.mount('#app');
 /* ------------ Global Helpers ------------- */
 app.config.globalProperties.$filters = {
     subStr,
-    logout
+    logout,
+    formatPrice
 };
