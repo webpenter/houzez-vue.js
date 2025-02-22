@@ -15,12 +15,12 @@ import {DEFAULT_TITLE, TITLE_CREATE_UPDATE_LISTING, URL_CREATE_UPDATE_LISTING} f
 import {useToken,useGeneralSettings} from "@/stores/index.js";
 
 const routes = [
-    /***
+    /**
      * @route 'localhost:3000/'
      * @name app
      * @prefix app
      * @auth not-required
-     ***/
+     **/
     {
         path: '/',
         name:'app',
@@ -36,17 +36,6 @@ const routes = [
                 component:() => import('@/views/app/pages/home/Index.vue'),
                 meta:{ title:'Home' }
             },
-
-            /***
-             * @route App/Add-New-Property
-             ***/
-            {
-                path: '/add-new-property',
-                name:'app.add-new-property',
-                component:() => import('@/views/app/pages/add-new-property/Index.vue'),
-                meta:{ title:'Add Property' }
-            },
-
             /***
              * @route App/Properties
              ***/
@@ -56,7 +45,6 @@ const routes = [
                 component:() => import('@/views/app/pages/properties/Index.vue'),
                 meta:{ title:'Properties' }
             },
-
             /***
              * @route App/Property
              ***/
@@ -66,7 +54,15 @@ const routes = [
                 component:() => import('@/views/app/pages/property/Index.vue'),
                 meta:{ title:'Property' }
             },
-
+            /***
+             * @route App/Property
+             ***/
+            {
+                path: '/property-details/:propertySlug',
+                name:'app.property-details',
+                component:() => import('@/views/app/pages/property-details/Index.vue'),
+                meta:{ title:'Property Details' }
+            },
             /***
              * @route App/Realtor
              ***/
@@ -76,42 +72,57 @@ const routes = [
                 component:() => import('@/views/app/pages/realtor/Index.vue'),
                 meta:{ title:'Realtor' }
             },
+            /***
+             * @route App/Others
+             ***/
+            {
+                path: '/others',
+                name:'app.others',
+                component:() => import('@/views/app/pages/others/Index.vue'),
+                meta:{ title:'Others' }
+            },
+            /***
+             * @route App/Search-Results
+             ***/
+            {
+                path: '/search-results',
+                name:'app.search-results',
+                component:() => import('@/views/app/pages/search-results/Index.vue'),
+                meta:{ title:'Search Results' }
+            },
+        ]
+    },
 
+    /***
+     * @route 'localhost:3000/auth/'
+     * @name auth
+     * @prefix auth
+     * @auth not-required
+     ***/
+    {
+        path: '/auth',
+        name:'auth',
+        redirect:'/auth/login',
+        meta: { guest: true },
+        component:() => import('@/views/auth/layout/Index.vue'),
+        children:[
             /***
-             * @route App/Search-Results
+             * @route Auth/Register
              ***/
             {
-                path: '/search-results',
-                name:'app.search-results',
-                component:() => import('@/views/app/pages/search-results/Index.vue'),
-                meta:{ title:'Search Results' }
+                path: '/auth/register',
+                name:'auth.register',
+                component:() => import('@/views/auth/pages/register/Index.vue'),
+                meta:{ title:'Register' }
             },
             /***
-             * @route App/Search-Results
+             * @route Auth/Login
              ***/
             {
-                path: '/search-results',
-                name:'app.search-results',
-                component:() => import('@/views/app/pages/search-results/Index.vue'),
-                meta:{ title:'Search Results' }
-            },
-            /***
-             * @route App/Register
-             ***/
-            {
-                path: '/register',
-                name:'app.register',
-                component:() => import('@/views/app/pages/auth/register/Index.vue'),
-                meta:{ title:'Register', guest:true }
-            },
-            /***
-             * @route App/Login
-             ***/
-            {
-                path: '/login',
-                name:'app.login',
-                component:() => import('@/views/app/pages/auth/login/Index.vue'),
-                meta:{ title:'Login', guest:true }
+                path: '/auth/login',
+                name:'auth.login',
+                component:() => import('@/views/auth/pages/login/Index.vue'),
+                meta:{ title:'Login' }
             },
         ]
     },
@@ -294,10 +305,10 @@ const routes = [
              * @route Dashboard/Create-Listing/Listing-Done
              ***/
             {
-                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/get-package`,
-                name: 'dashboard.create-listing.get-package',
-                component: () => import('@/views/dashboard/pages/create-listing/package/get-package/Index.vue'),
-                meta: { title: 'Get Package' }
+                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/no-package`,
+                name: 'dashboard.create-listing.no-package',
+                component: () => import('@/views/dashboard/pages/create-listing/package/no-package/Index.vue'),
+                meta: { title: 'No Package' }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/select-package`,
@@ -306,16 +317,10 @@ const routes = [
                 meta: { title: 'Select Package' }
             },
             {
-                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/complete-order`,
-                name: 'dashboard.create-listing.complete-order',
-                component: () => import('@/views/dashboard/pages/create-listing/payment/complete-order/Index.vue'),
-                meta: { title: 'Complete Order' }
-            },
-            {
-                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/create-account`,
-                name: 'dashboard.create-listing.create-account',
-                component: () => import('@/views/dashboard/pages/create-listing/payment/create-account/Index.vue'),
-                meta: { title: 'Create Account' }
+                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/checkout/:planId`,
+                name: 'dashboard.create-listing.checkout',
+                component: () => import('@/views/dashboard/pages/create-listing/payment/checkout/Index.vue'),
+                meta: { title: 'Checkout' }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/payment-completed`,
@@ -403,94 +408,6 @@ const routes = [
             },
 
             /***
-             * @routes Dashboard/Edit-Property/Step-1 to Step-14
-             ***/
-            {
-                path: '/dashboard/edit-property/step-1',
-                name:'dashboard.edit-property.step-1',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-1/Index.vue'),
-                meta:{ title:'edit property' }
-            },  
-            {
-                path: '/dashboard/edit-property/step-2',
-                name:'dashboard.edit-property.step-2',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-2/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-3',
-                name:'dashboard.edit-property.step-3',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-3/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-4',
-                name:'dashboard.edit-property.step-4',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-4/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-5',
-                name:'dashboard.edit-property.step-5',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-5/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-6',
-                name:'dashboard.edit-property.step-6',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-6/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-7',
-                name:'dashboard.edit-property.step-7',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-7/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-8',
-                name:'dashboard.edit-property.step-8',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-8/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-9',
-                name:'dashboard.edit-property.step-9',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-9/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-10',
-                name:'dashboard.edit-property.step-10',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-10/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-11',
-                name:'dashboard.edit-property.step-11',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-11/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-12',
-                name:'dashboard.edit-property.step-12',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-12/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-13',
-                name:'dashboard.edit-property.step-13',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-13/Index.vue'),
-                meta:{ title:'Edit property' }
-            },
-            {
-                path: '/dashboard/edit-property/step-14',
-                name:'dashboard.edit-property.step-14',
-                component:() => import('@/views/dashboard/pages/edit-listing/step-14/Index.vue'),
-                meta:{ title:'edit property' }
-            },
-
-            /***
              * @route Dashboard/Favorite-Properties
              ***/
             {
@@ -535,7 +452,18 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/messages/Index.vue'),
                 meta:{ title:'Messages' }
             },
-            
+            {
+                path: '/dashboard/settings',
+                name:'dashboard.settings.all-packages',
+                component:() => import('@/views/dashboard/pages/settings/package/all-packages/Index.vue'),
+                meta:{ title:'Settings' }
+            },
+            {
+                path: '/dashboard/settings',
+                name:'dashboard.settings.general',
+                component:() => import('@/views/dashboard/pages/settings/general/Index.vue'),
+                meta:{ title:'Settings' }
+            },
             {
                 path: '/dashboard/dashboard-agent-message',
                 name:'dashboard.dashboard-agent-message',
@@ -564,84 +492,6 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/my-profile/Index.vue'),
                 meta:{ title:'My Profile' }
             },
-            {
-                path: '/dashboard/admin',
-                name:'dashboard.admin',
-                component:() => import('@/views/dashboard/pages/admin/index/Index.vue'),
-                meta:{ title:'Admin' }
-            },
-            {
-                path: '/dashboard/admin/post-type',
-                name:'dashboard.admin.post_type',
-                component:() => import('@/views/dashboard/pages/admin/post-type/Index.vue'),
-                meta:{ title:'Post Type' }
-            },
-             {
-                path: '/dashboard/admin/taxonomies',
-                name:'dashboard.admin.taxonomies',
-                component:() => import('@/views/dashboard/pages/admin/taxonomies/Index.vue'),
-                meta:{ title:'Taxonomies' }
-            },
-            {
-                path: '/dashboard/admin/permalinks',
-                name:'dashboard.admin.permalinks',
-                component:() => import('@/views/dashboard/pages/admin/permalinks/Index.vue'),
-                meta:{ title:'Permalinks' }
-            },
-            {
-                path: '/dashboard/admin/currency_switcher',
-                name:'dashboard.admin.currency_switcher',
-                component:() => import('@/views/dashboard/pages/admin/currency_switcher/Index.vue'),
-                meta:{ title:'Currency Switcher' }
-            },
-            {
-                path: '/dashboard/admin/currency',
-                name:'dashboard.admin.currencies',
-                component:() => import('@/views/dashboard/pages/admin/currency/Index.vue'),
-                meta:{ title:'Currencies' }
-            },
-            {
-                path: '/dashboard/admin/documentation',
-                name:'dashboard.admin.documentation',
-                component:() => import('@/views/dashboard/pages/admin/documentation/Index.vue'),
-                meta:{ title:'Documentation' }
-            },
-            {
-                path: '/dashboard/admin/feedback',
-                name:'dashboard.admin.feedback',
-                component:() => import('@/views/dashboard/pages/admin/feedback/Index.vue'),
-                meta:{ title:'Feedback' }
-            },
-            {
-                path: '/dashboard/posts',
-                name:'dashboard.posts',
-                component:() => import('@/views/dashboard/pages/posts/allposts/Index.vue'),
-                meta:{ title:'All Posts' }
-            },
-            {
-                path: '/dashboard/posts/addnew',
-                name:'dashboard.posts.addnew',
-                component:() => import('@/views/dashboard/pages/posts/addnew/Index.vue'),
-                meta:{ title:'Add New Post' }
-            },
-            {
-                path: '/dashboard/posts/allposts',
-                name:'dashboard.posts.allposts',
-                component:() => import('@/views/dashboard/pages/posts/allposts/Index.vue'),
-                meta:{ title:'Add New Post' }
-            },
-            {
-                path: '/dashboard/posts/categories',
-                name:'dashboard.posts.categories',
-                component:() => import('@/views/dashboard/pages/posts/categories/Index.vue'),
-                meta:{ title:'Categories' }
-            },
-            {
-                path: '/dashboard/posts/tags',
-                name: 'dashboard.posts.tags',
-                component: () => import('@/views/dashboard/pages/posts/tags/Index.vue'), // Note the uppercase 'I'
-                meta: { title: 'Tags' }
-            }
         ]
     },
 
@@ -730,7 +580,7 @@ router.beforeEach((to, from, next) => {
      * @feature Allow navigation to the route if no guard conditions are triggered.
      **/
     if (to.meta.auth && token === null) {
-        next({ name: 'app.login' });
+        next({ name: 'auth' });
     }
     else if (to.meta.guest && token !== null) {
         next({ name: 'dashboard' });

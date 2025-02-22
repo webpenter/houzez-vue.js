@@ -194,6 +194,7 @@ const formData = ref({
   status:null,
   label:null,
   price:"",
+  slug:"",
   second_price: "",
   after_price: "",
   price_prefix: "",
@@ -249,26 +250,28 @@ const formSubmit = async () => {
   btnLoading.value = true;
 
   const pId = propertyId || null;
-  try {
-    const res = await propertyToRefs.createOrUpdate(formData.value, pId);
+btnLoading.value = true;
 
-    btnLoading.value = false;
+try {
+  const res = await propertyToRefs.createOrUpdate(formData.value, pId);
 
-    if ([200, 201].includes(res.status)) {
-      const newPropertyId = res.data.property.id;
-      notify.Success(`Step 1 of ${PROPERTY_TOTAL_STEPS} completed. Your property has been recorded`);
-      router.push({name:"dashboard.create-listing.step-2",params:{propertyId:newPropertyId}});
-    } else if (res.status === 404) {
-      notify.Error("Property not found.");
-    } else if (res.status === 403) {
-      notify.Error("You are not authorized to perform this action.");
-    } else {
-      notify.Error("An error occurred while processing the request.");
-    }
-  } catch (error) {
-    btnLoading.value = false;
-    notify.Error("An error occurred");
+  btnLoading.value = false;
+
+  if ([200, 201].includes(res.status)) {
+    const newPropertyId = res.data.property.id;
+    notify.Success(`Step 1 of ${PROPERTY_TOTAL_STEPS} completed. Your property has been recorded`);
+    router.push({ name: "dashboard.create-listing.step-2", params: { propertyId: newPropertyId } });
+  } else {
+    console.error("API Response:", res);
+    notify.Error(res.data?.message || "An error occurred while processing the request.");
   }
+} catch (error) {
+  btnLoading.value = false;
+
+  console.error("API Error:", error.response?.data || error);
+  notify.Error(error.response?.data?.message || "An unexpected error occurred.");
+}
+
 };
 
 onMounted(() => {

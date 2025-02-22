@@ -13,8 +13,8 @@ import { defineStore } from "pinia";
 
 export const useGeneralSettings = defineStore("generalSettings", {
     state: () => ({
-        pageTitle: "Houzez",
-        appName: "Houzez",
+        pageTitle: "Buy WebPenter",
+        appName: "Buy WebPenter",
     }),
 
     actions: {},

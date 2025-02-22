@@ -71,7 +71,7 @@ const formSubmit = async () => {
 
     if (res.status === 200) {
       notify.Success(`Step 7 of ${PROPERTY_TOTAL_STEPS} completed. Your property has been recorded`);
-      router.push({name:"dashboard.create-listing.step-8",params:{propertyId:propertyId}});
+      router.push({name:"dashboard.create-listing.step-10",params:{propertyId:propertyId}});
     } else if (res.status === 404) {
       notify.Error("Property not found.");
     } else if (res.status === 403) {

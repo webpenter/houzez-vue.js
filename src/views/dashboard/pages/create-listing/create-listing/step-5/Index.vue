@@ -217,12 +217,28 @@ const formSubmit = async () => {
     } else if (res.status === 403) {
       notify.Error("You are not authorized to perform this action.");
     } else {
+      console.error("Unexpected error:", res); // Log full response
       notify.Error("An error occurred while processing the request.");
     }
-  } catch (error) {
+} catch (error) {
     btnLoading.value = false;
-    notify.Error("An error occurred");
-  }
+
+    // Log the full error response to the console
+    console.error("Request failed:", error);
+
+    // Display error details if available
+    if (error.response) {
+      console.error("Server Response:", error.response);
+      notify.Error(error.response.data.message || "An error occurred.");
+    } else if (error.request) {
+      console.error("No response received:", error.request);
+      notify.Error("Server did not respond. Please check your connection.");
+    } else {
+      console.error("Error Message:", error.message);
+      notify.Error("An error occurred. Please try again.");
+    }
+}
+
 };
 
 onMounted(() => {

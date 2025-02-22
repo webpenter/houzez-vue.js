@@ -81,7 +81,6 @@ const localErrors = ref({
   password_confirmation: "",
 });
 
-// Validation logic
 const validateField = (field) => {
   if (field === "current_password" && !passwordForm.value.current_password) {
     localErrors.value.current_password = "Old password is required.";
@@ -98,7 +97,6 @@ const validateField = (field) => {
   }
 };
 
-// Check if there are any errors
 const hasErrors = computed(() =>
     Object.values(localErrors.value).some((error) => error !== "")
 );
