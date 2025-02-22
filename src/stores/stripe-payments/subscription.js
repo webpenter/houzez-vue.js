@@ -21,6 +21,12 @@ export const useSubscription = defineStore('subscription', {
     }),
     getters: {},
     actions: {
+        /**
+         * Fetches checkout details for a given plan.
+         *
+         * @param {string|number} planId - The ID of the plan to be checked out.
+         * @return {Promise<Object>} - Resolves with the checkout response, rejects with an error response.
+         */
         async  checkout(planId) {
             const url = `${this.prefix}/checkout/${planId}`;
 
@@ -39,6 +45,25 @@ export const useSubscription = defineStore('subscription', {
                 return new Promise(reject => {
                     reject(error.response)
                 })
+            }
+        },
+
+        /**
+         * Sends a request to process a subscription with a selected plan and payment method.
+         *
+         * @param {string|number} planId - The ID of the plan being subscribed to.
+         * @param {string} paymentMethod - The payment method identifier.
+         * @return {Promise<void>} - Resolves if the subscription is successful, throws an error if it fails.
+         * @throws {Object} - Throws the error response if the request fails.
+         */
+        async processSubscription(planId, paymentMethod) {
+            try {
+                await axiosInstance.post(`${this.prefix}/process`, {
+                    plan_id: planId,
+                    payment_method: paymentMethod,
+                });
+            } catch (error) {
+                throw error.response;
             }
         },
     }
