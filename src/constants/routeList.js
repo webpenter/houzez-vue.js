@@ -124,13 +124,6 @@ export const DASHBOARD_ROUTES = [
   },
   {
     id: 9,
-    title: "Tools",
-    name: "dashboard.tools",
-    icon: "icon-messages-bubble",
-    sub: [{ id: 1, title: "Export", name: "dashboard.tools.export" }],
-  },
-  {
-    id: 10,
     title: "My Profile",
     name: "dashboard.my-profile",
     icon: "icon-single-neutral-circle",
@@ -138,7 +131,7 @@ export const DASHBOARD_ROUTES = [
   },
 
   {
-    id: 11,
+    id: 10,
     title: "Admin",
     name: "dashboard.admin",
     icon: "icon-building-cloudy",
@@ -153,7 +146,7 @@ export const DASHBOARD_ROUTES = [
     ],
   },
   {
-    id: 12,
+    id: 11,
     title: "Posts",
     name: "dashboard.posts",
     icon: "icon-building-cloudy",
@@ -163,6 +156,13 @@ export const DASHBOARD_ROUTES = [
       { id: 3, title: "Categories", name: "dashboard.posts.categories" },
       { id: 4, title: "Tags", name: "dashboard.posts.tags" },
     ],
+  },
+  {
+    id: 12,
+    title: "Tools",
+    name: "dashboard.tools",
+    icon: "icon-messages-bubble",
+    sub: [{ id: 1, title: "Export", name: "dashboard.tools.export" }],
   },
   {
     id: 13,

@@ -99,13 +99,11 @@
                         Cancel
                     </RouterLink>
                     <SaveBtn />
-                </div>
-                <!-- add-new-listing-bottom-nav-wrap -->
+                </div><!-- add-new-listing-bottom-nav-wrap -->
             </form>
-        </div>
-        <!-- dashboard-content-inner-wrap -->
-    </section>
-    <!-- dashboard-content-wrap -->
+        </div><!-- dashboard-content-inner-wrap -->
+    </section><!-- dashboard-content-wrap -->
+    
 </template>
 
 <script setup>

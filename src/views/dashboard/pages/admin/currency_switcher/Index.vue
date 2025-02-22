@@ -1,111 +1,45 @@
 <template>
-     <DashboardHeader heading="Currency Switcher">
-    </DashboardHeader>
-    <div class="container">
-     
-      <div class="box">
-        <h3 class="subtitle">
-          <span class="icon">⚙️</span> API Settings
-        </h3>
-        <p>
-          Plugin gets currency data from
-          <a href="https://openexchangerates.org" target="_blank">openexchangerates.org</a>
-          and imports it into the WordPress database. The exchange rates will be updated on a frequency that you can specify below.
-        </p>
-        
-        <label class="label">API Key</label>
-        <input v-model="apiKey" class="input" type="text" placeholder="Enter the Open Exchange Rates API key" />
-        <p class="help">
-          Get yours at:
-          <a href="https://openexchangerates.org" target="_blank">openexchangerates.org</a>
-        </p>
-        
-        <label class="label">Update Interval</label>
-        <select v-model="updateInterval" class="dropdown">
-          <option value="Hourly">Hourly</option>
-          <option value="Daily">Daily</option>
-          <option value="Weekly">Weekly</option>
-          <option value="Biweekly">Biweekly</option>
-          <option value="Monthly">Monthly</option>
-        </select>
-        
-        <button class="button" @click="saveSettings">Save</button>
-      </div>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        apiKey: '',
-        updateInterval: 'Weekly',
-      };
-    },
-    methods: {
-      saveSettings() {
-        alert(`Settings saved!\nAPI Key: ${this.apiKey}\nUpdate Interval: ${this.updateInterval}`);
-      },
-    },
-  };
-  </script>
-  
-  <style scoped>
-  .container {
-    max-width: calc(100% - 250px);
-    margin-left: 15rem;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  .title {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  .box {
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 5px;
-    background: #f9f9f9;
-  }
-  .subtitle {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  .label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-  }
-  .input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  .dropdown {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  .button {
-    display: block;
-    margin-top: 20px;
-    padding: 10px 15px;
-    background: #0073e6;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  .button:hover {
-    background: #005bb5;
-  }
-  .help {
-    font-size: 12px;
-    color: #666;
-  }
-  </style>
-  
+  <DashboardHeader heading="Currency Switcher"> </DashboardHeader>
+
+  <section class="dashboard-content-wrap dashboard-add-new-listing">
+    <div class="dashboard-content-inner-wrap">
+      <form @submit.prevent="formSubmit">
+        <div class="dashboard-content-block-wrap">
+          <h2>API Settings</h2>
+          <div class="dashboard-content-block">
+            <div class="form-group">
+              <label>API Key</label>
+              <input class="form-control" placeholder="Enter the API KEY" type="text" />
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-sm-12">
+                <div class="form-group">
+                  <label>Default Post Category</label>
+                  <div>
+                    <!-- <el-select v-model="formData.type" filterable default-first-option :reserve-keyword="false"
+                      placeholder="Choose type for your property" style="width: 300px">
+                      <el-option v-for="type in types" :key="type.id" :label="type.name" :value="type.name" />
+                    </el-select> -->
+                    
+                  </div>
+                </div><!-- form-group -->
+              </div><!-- col-md-4 col-sm-12 -->
+              
+            </div><!-- row -->
+          </div><!-- dashboard-content-block -->
+        </div><!-- dashboard-content-block-wrap -->
+        <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
+          <RouterLink class="btn btn-primary-outlined" :to="{ name: '' }">
+            Cancel
+          </RouterLink>
+          <SaveBtn />
+        </div><!-- add-new-listing-bottom-nav-wrap -->
+      </form>
+    </div><!-- dashboard-content-inner-wrap -->
+  </section><!-- dashboard-content-wrap -->
+
+</template>
+
+<script setup>
+import SaveBtn from "@/views/dashboard/components/SaveBtn.vue";
+</script>

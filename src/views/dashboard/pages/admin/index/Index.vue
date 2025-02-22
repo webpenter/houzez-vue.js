@@ -1,41 +1,12 @@
 <template>
-    <DashboardHeader heading="Houzez Admin">
+    <DashboardHeader heading="Admin">
 
     </DashboardHeader>
 
         <section class="dashboard-content-wrap">
             <div class="dashboard-content-inner-wrap">
                 <div class="dashboard-content-block-wrap">
-                    <!-- Main Content -->
-                    <div class="main-content">
-                        <header>
-                            <h2>Admin Overview</h2>
-                            <div class="search-profile">
-                                <input type="text" placeholder="Search...">
-                                <i class="fas fa-user-circle"></i>
-                            </div>
-                        </header>
-
-                        <!-- Dashboard Stats -->
-                        <section class="stats">
-                            <div class="card">
-                                <h3>Total Users</h3>
-                                <p>1,250</p>
-                            </div>
-                            <div class="card">
-                                <h3>Revenue</h3>
-                                <p>$12,500</p>
-                            </div>
-                            <div class="card">
-                                <h3>New Orders</h3>
-                                <p>320</p>
-                            </div>
-                            <div class="card">
-                                <h3>Performance</h3>
-                                <p>89%</p>
-                            </div>
-                        </section>
-                    </div>
+                    
 
                 </div><!-- dashboard-content-block-wrap -->
             </div><!-- dashboard-content-inner-wrap -->
