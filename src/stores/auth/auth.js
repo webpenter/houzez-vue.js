@@ -179,6 +179,7 @@ export const useAuth = defineStore('userAuth', {
         removeAuthInfo () {
             const token = useToken()
             token.removeToken()
+            this.isLoggedIn = false
             this.$reset()
         }
     }

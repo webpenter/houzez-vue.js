@@ -1,26 +1,28 @@
 <template>
-  <div id="navbar">
-   <Logo/>
-    <div id="nav-links">
-      <ul id="nav-links-ul">
-        <Nav/>
-        <CreateListingBtn/>
-      </ul>
-    </div>
-    <div id="nav-links" class="nav-links-mobile">
-      <ul id="nav-links-ul">
-        <Nav/>
-        <CreateListingBtn/>
-        <LoginSignupBtns/>
-      </ul>
-    </div>
-    <div class="create-listing">
-      <LoginSignupMainBtns/>
-      <CreateListingMainBtn/>
-    </div>
-    <div id="hamburger-container">
-      <i class="fa-solid fa-bars"></i>
-      <i class="fa-solid fa-xmark"></i>
+  <div id="navbar-container">
+    <div id="navbar">
+      <Logo/>
+      <div id="nav-links">
+        <ul id="nav-links-ul">
+          <Nav/>
+          <CreateListingBtn/>
+        </ul>
+      </div>
+      <div id="nav-links" class="nav-links-mobile">
+        <ul id="nav-links-ul">
+          <Nav/>
+          <CreateListingBtn/>
+          <LoginSignupBtns v-if="!token"/>
+        </ul>
+      </div>
+      <div class="create-listing">
+        <LoginSignupMainBtns v-if="!token"/>
+        <CreateListingMainBtn/>
+      </div>
+      <div id="hamburger-container">
+        <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -33,6 +35,9 @@ import CreateListingMainBtn from "@/views/app/layout/navbar/CreateListingMainBtn
 import Logo from "@/views/app/layout/navbar/Logo.vue";
 import LoginSignupBtns from "@/views/app/layout/navbar/LoginSignupBtns.vue";
 import LoginSignupMainBtns from "@/views/app/layout/navbar/LoginSignupMainBtns.vue";
+import {useToken} from "@/stores/index.js";
+
+const {token} = useToken();
 
 onMounted(() => {
   const bars = document.querySelector("#hamburger-container .fa-bars");

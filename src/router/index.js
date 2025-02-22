@@ -55,6 +55,15 @@ const routes = [
                 meta:{ title:'Property' }
             },
             /***
+             * @route App/Property
+             ***/
+            {
+                path: '/property-details/:propertySlug',
+                name:'app.property-details',
+                component:() => import('@/views/app/pages/property-details/Index.vue'),
+                meta:{ title:'Property Details' }
+            },
+            /***
              * @route App/Realtor
              ***/
             {
@@ -296,10 +305,10 @@ const routes = [
              * @route Dashboard/Create-Listing/Listing-Done
              ***/
             {
-                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/get-package`,
-                name: 'dashboard.create-listing.get-package',
-                component: () => import('@/views/dashboard/pages/create-listing/package/get-package/Index.vue'),
-                meta: { title: 'Get Package' }
+                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/no-package`,
+                name: 'dashboard.create-listing.no-package',
+                component: () => import('@/views/dashboard/pages/create-listing/package/no-package/Index.vue'),
+                meta: { title: 'No Package' }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/select-package`,
@@ -308,16 +317,10 @@ const routes = [
                 meta: { title: 'Select Package' }
             },
             {
-                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/complete-order`,
-                name: 'dashboard.create-listing.complete-order',
-                component: () => import('@/views/dashboard/pages/create-listing/payment/complete-order/Index.vue'),
-                meta: { title: 'Complete Order' }
-            },
-            {
-                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/create-account`,
-                name: 'dashboard.create-listing.create-account',
-                component: () => import('@/views/dashboard/pages/create-listing/payment/create-account/Index.vue'),
-                meta: { title: 'Create Account' }
+                path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/checkout/:planId`,
+                name: 'dashboard.create-listing.checkout',
+                component: () => import('@/views/dashboard/pages/create-listing/payment/checkout/Index.vue'),
+                meta: { title: 'Checkout' }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/payment-completed`,
@@ -478,6 +481,7 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/my-profile/Index.vue'),
                 meta:{ title:'My Profile' }
             },
+            
             {
                 path: '/dashboard/admin',
                 name:'dashboard.admin',
@@ -562,26 +566,29 @@ const routes = [
                 component: () => import('@/views/dashboard/pages/posts/tags/Index.vue'), // Note the uppercase 'I'
                 meta: { title: 'Tags' }
             },
-            /***
-             * @route Dashboard/Gerenal-Settings
-             * @route Dashboard/Writing
-             * @route Dashboard/Pending-Properties
-             * @route Dashboard/Expired-Properties
-             * @route Dashboard/Draft-Properties
-             * @route Dashboard/Hold-Properties
-             * @route Dashboard/Disapproved-Properties
+
+             /***
+             * @route Dashboard/Settings/General
+             * @route Dashboard/Settings/AllPackages
+             * @route Dashboard/Settings/Create-Package
              ***/
-            {
-                path: '/dashboard/general-settings',
-                name:'dashboard.general_settings',
-                component:() => import('@/views/dashboard/pages/settings/general-settings/Index.vue'),
-                meta:{ title:'Admin' }
+             {
+                path: '/dashboard/settings/general',
+                name:'dashboard.settings.general',
+                component:() => import('@/views/dashboard/pages/settings/general/Index.vue'),
+                meta:{ title:'General Settings' }
             },
             {
-                path: '/dashboard/writings',
-                name:'dashboard.writings',
-                component:() => import('@/views/dashboard/pages/settings/writings/Index.vue'),
-                meta:{ title:'Admin' }
+                path: '/dashboard/settings/all-packages',
+                name:'dashboard.settings.all-packages',
+                component:() => import('@/views/dashboard/pages/settings/package/all-packages/Index.vue'),
+                meta:{ title:'All Packages' }
+            },
+            {
+                path: '/dashboard/settings/create-package',
+                name:'dashboard.settings.create-package',
+                component:() => import('@/views/dashboard/pages/settings/package/create-package/Index.vue'),
+                meta:{ title:'Create Package' }
             },
         ]
     },

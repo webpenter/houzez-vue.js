@@ -16,7 +16,6 @@ export const useStatus = defineStore('status', {
         statuses:[
             {id: 1, name: "sale"},
             {id: 2, name: "rent"},
-            {id: 2, name: "draft"},
         ],
     }),
     getters: {},

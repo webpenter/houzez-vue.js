@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Add New Property">
+    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
     </DashboardHeader>
         <section class="dashboard-content-wrap">
             <SnakeNav active="payment"/>
@@ -23,4 +23,5 @@
 import ThankYouPageContent from '@/views/inc/dashboard/ThankYouPageContent.vue';
 import SnakeNav from '../../components/SnakeNav.vue';
 import { RouterLink } from 'vue-router';
+import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 </script>

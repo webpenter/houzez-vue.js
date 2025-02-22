@@ -50,7 +50,9 @@ export const APP_ROUTES = [
 ];
 
 // ------------------ Dashboard Route List --------------------
+// ------------------ -------------------- --------------------
 export const DASHBOARD_ROUTES = [
+
   {
     id: 1,
     title: "Board",
@@ -167,11 +169,11 @@ export const DASHBOARD_ROUTES = [
   {
     id: 13,
     title: "Settings",
-    name: "dashboard.general_settings",
+    name: "dashboard.settings.general",
     icon: "icon-building-cloudy",
     sub: [
-      { id: 1, title: "Gerenal Settings", name: "dashboard.general_settings" },
-      { id: 2, title: "Writings", name: "dashboard.writings" },
+      { id: 1, title: "Gerenal Settings", name: "dashboard.settings.general" },
+      { id: 2, title:'Packages', name:'dashboard.settings.all-packages'},
     ],
   },
 ];

@@ -6,50 +6,120 @@
                 <div class="dashboard-content-block-wrap">
                     <div class="dashboard-content-block">
                         <div class="form-group">
+                            <label>Site Name</label>
+                            <input class="form-control" placeholder="Enter the Site Name" type="text" />
+                            <span class="text-danger" v-if="localErrors.title">
+                                {{ localErrors.title }}
+                            </span>
+                        </div><!-- form-group -->
+                        <div class="form-group">
                             <label>Site Title</label>
                             <input class="form-control" placeholder="Enter the Site title" type="text" />
                             <span class="text-danger" v-if="localErrors.title">
                                 {{ localErrors.title }}
                             </span>
-                        </div>
+                        </div><!-- form-group -->
                         <div class="form-group">
-                            <label>Tag Line</label>
-                            <input class="form-control"
-                                placeholder="Enter the Tag Line (In a few words, explain what this site is about.)"
-                                type="text" />
+                            <label>Site Description</label>
+                            <input class="form-control" placeholder="Enter the Site Description" type="text" />
                             <span class="text-danger" v-if="localErrors.title">
                                 {{ localErrors.title }}
                             </span>
-                        </div>
+                        </div><!-- form-group -->
                         <div class="form-group">
-                            <label>Admin Address(URL)</label>
-                            <input class="form-control" placeholder="Enter the Admin Address URL" type="text" />
-                            <span class="text-danger" v-if="localErrors.title">
-                                {{ localErrors.title }}
-                            </span>
-                        </div>
-                        <div class="form-group">
-                            <label>Site Address(URL)</label>
+                            <label>Site Address</label>
                             <input class="form-control" placeholder="Enter the Site Address URL" type="text" />
                             <span class="text-danger" v-if="localErrors.title">
                                 {{ localErrors.title }}
                             </span>
-                        </div>
+                        </div><!-- form-group -->
                         <div class="form-group">
-                            <label>Administration Email Address</label>
-                            <input class="form-control" placeholder="Enter the Administration Email Address"
-                                type="text" />
-                            <small><b>Note:</b> This address is used for admin purposes. If you
+                            <label>Contact Number</label>
+                            <input class="form-control" placeholder="Enter the Contact Number" type="text" />
+                            <span class="text-danger" v-if="localErrors.title">
+                                {{ localErrors.title }}
+                            </span>
+                        </div><!-- form-group -->
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input class="form-control" placeholder="Enter the Email Address" type="text" />
+                            <!-- <small><b>Note:</b> This address is used for admin purposes. If you
                                 change this, an email will be sent to your new address to
                                 confirm it. The new address will not become active until
-                                confirmed.</small>
+                                confirmed.</small> -->
+                            <span class="text-danger" v-if="localErrors.title">
+                                {{ localErrors.title }}
+                            </span>
+                        </div><!-- form-group -->
+                        <div class="form-group">
+                            <label>Facebook Link</label>
+                            <input class="form-control" placeholder="Enter the Facebook Link" type="text" />
+                            <span class="text-danger" v-if="localErrors.title">
+                                {{ localErrors.title }}
+                            </span>
+                        </div><!-- form-group -->
+                        <div class="form-group">
+                            <label>Instagram Link</label>
+                            <input class="form-control" placeholder="Enter the Instagram Link" type="text" />
+                            <span class="text-danger" v-if="localErrors.title">
+                                {{ localErrors.title }}
+                            </span>
+                        </div><!-- form-group -->
+                        <div class="form-group">
+                            <label>Twitter Link</label>
+                            <input class="form-control" placeholder="Enter the Twitter Link" type="text" />
+                            <span class="text-danger" v-if="localErrors.title">
+                                {{ localErrors.title }}
+                            </span>
+                        </div><!-- form-group -->
+                        <div class="form-group">
+                            <label>LinkedIn Link</label>
+                            <input class="form-control" placeholder="Enter the LinkedIn Link" type="text" />
+                            <span class="text-danger" v-if="localErrors.title">
+                                {{ localErrors.title }}
+                            </span>
+                        </div><!-- form-group -->
+                        <div class="form-group">
+                            <label>Footer Description</label>
+                            <input class="form-control" placeholder="Enter the Footer Description" type="text" />
                             <span class="text-danger" v-if="localErrors.title">
                                 {{ localErrors.title }}
                             </span>
                         </div>
+                        <div class="form-group">
+                            <label>Hero Title</label>
+                            <input class="form-control" placeholder="Enter the Hero Title" type="text" />
+                            <span class="text-danger" v-if="localErrors.title">
+                                {{ localErrors.title }}
+                            </span>
+                        </div><!-- form-group -->
+                        <div class="form-group">
+                            <label>Hero Description</label>
+                            <input class="form-control" placeholder="Enter the Hero Description" type="text" />
+                            <span class="text-danger" v-if="localErrors.title">
+                                {{ localErrors.title }}
+                            </span>
+                        </div><!-- form-group -->
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Hero Section Image</label>
+                                    <img class="img-fluid" src="http://placehold.it/300x300" alt="thumb">
+                                    <button type="button" class="btn btn-primary btn-full-width mt-3">Update Hero Image</button>
+                                    <small class="form-text text-muted text-center">Minimum 300 x 300 px</small>
+                                </div>
+                            </div><!-- col-md-3 col-sm-12 -->
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Site Logo</label>
+                                    <img class="img-fluid" src="http://placehold.it/300x300" alt="thumb">
+                                    <button type="button" class="btn btn-primary btn-full-width mt-3">Update Logo</button>
+                                </div>
+                            </div><!-- col-md-3 col-sm-12 -->
+                        </div>
 
                         <div class="row">
-                            <div class="col-md-4 col-sm-12">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>New User Default Role</label>
                                     <div>
@@ -60,11 +130,9 @@
                                                 :value="role.name" />
                                         </el-select>
                                     </div>
-                                </div>
-                                <!-- form-group -->
-                            </div>
-                            <!-- col-md-4 col-sm-12 -->
-                            <div class="col-md-4 col-sm-12">
+                                </div><!-- form-group -->
+                            </div><!-- col-md-4 col-sm-12 -->
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Site Language</label>
                                     <div>
@@ -75,124 +143,21 @@
                                                 :label="language.name" :value="language.name" />
                                         </el-select>
                                     </div>
-                                </div>
-                                <!-- form-group -->
-                            </div>
-                            <!-- col-md-4 col-sm-12 -->
-                            <div class="col-md-4 col-sm-12">
-                                <div class="form-group">
-                                    <label>Timezone</label>
-                                    <div>
-                                        <el-select v-model="formData.timezone" filterable default-first-option
-                                            :reserve-keyword="false" placeholder="Choose timezone for your site"
-                                            style="width: 300px">
-                                            <el-option v-for="timezone in timezones" :key="timezone.id"
-                                                :label="`${timezone.name} (${timezone.offset})`"
-                                                :value="timezone.name" />
-                                        </el-select>
-                                        <small>
-                                            <b>Note:</b> Choose either a city in the same timezone as
-                                            you or a UTC (Coordinated Universal Time) time offset.
-                                            <br /><b>Universal time is {{ currentUTC }}.</b>
-                                        </small>
-                                    </div>
-                                </div>
-                                <!-- form-group -->
-                            </div>
-                            <!-- col-md-4 col-sm-12 -->
-                        </div>
-                        <!-- row -->
-                        <div class="form-group">
-                            <label>Date Format</label>
-                            <table class="dashboard-table table-lined responsive-table">
-                                <thead>
-                                    <tr v-for="(format, index) in dateFormats" :key="index">
-                                        <td>
-                                            <input type="radio" name="date_format" :value="format.value"
-                                                v-model="selectedDateFormat" />
-                                        </td>
-                                        <td>{{ format.label }} - {{ format.value }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="radio" name="date_format" value="custom"
-                                                v-model="selectedDateFormat" />
-                                        </td>
-                                        <td>
-                                            Custom - 
-                                            <input v-if="selectedDateFormat === 'custom'" type="text"
-                                                v-model="customDateFormat" placeholder="Enter custom format" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td><strong>Preview:</strong> {{ dateFormatPreview }}</td>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <div class="form-group">
-                            <label>Time Format</label>
-                            <table class="dashboard-table table-lined responsive-table">
-                                <thead>
-                                    <tr v-for="(format, index) in timeFormats" :key="index">
-                                        <td>
-                                            <input type="radio" name="time_format" :value="format.value"
-                                                v-model="selectedTimeFormat" />
-                                        </td>
-                                        <td>{{ format.label }} - {{ format.value }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="radio" name="time_format" value="custom"
-                                                v-model="selectedTimeFormat" />
-                                        </td>
-                                        <td>
-                                            Custom - 
-                                            <input v-if="selectedTimeFormat === 'custom'" type="text"
-                                                v-model="customTimeFormat" placeholder="Enter custom time format" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td><strong>Preview:</strong> {{ timeFormatPreview }}</td>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 col-sm-12">
-                                <div class="form-group">
-                                    <label>Week Starts On</label>
-                                    <div>
-                                        <el-select v-model="formData.weekday" filterable default-first-option
-                                            :reserve-keyword="false" placeholder="Choose day where week start"
-                                            style="width: 300px">
-                                            <el-option v-for="weekday in weekdays" :key="weekday.id"
-                                                :label="weekday.name" :value="weekday.name" />
-                                        </el-select>
-                                    </div>
-                                </div>
-                                <!-- form-group -->
-                            </div>
-                        </div>
-                        <!-- row -->
-                    </div>
-                    <!-- dashboard-content-block -->
-                </div>
-                <!-- dashboard-content-block-wrap -->
+                                </div><!-- form-group -->
+                            </div><!-- col-md-4 col-sm-12 -->
+                        </div><!-- row -->
+                    </div><!-- dashboard-content-block -->
+                </div><!-- dashboard-content-block-wrap -->
+
                 <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
-                    <RouterLink class="btn btn-primary-outlined" :to="{name:'dashboard.my-properties'}">
-                          Cancel
+                    <RouterLink class="btn btn-primary-outlined" :to="{ name: 'dashboard.my-properties' }">
+                        Cancel
                     </RouterLink>
-                    <SaveBtn :btnLoading="btnLoading" :hasErrors="hasErrors"/>
-                </div>
-                <!-- add-new-listing-bottom-nav-wrap -->
+                    <SaveBtn :btnLoading="btnLoading" :hasErrors="hasErrors" />
+                </div><!-- add-new-listing-bottom-nav-wrap -->
             </form>
-        </div>
-        <!-- dashboard-content-inner-wrap -->
-    </section>
-    <!-- dashboard-content-wrap -->
+        </div><!-- dashboard-content-inner-wrap -->
+    </section><!-- dashboard-content-wrap -->
 </template>
 
 <script setup>
@@ -239,7 +204,7 @@ const timeFormats = [
     { value: "h:mm a" },  // Example: 9:03 pm
     // { value: "h:mm A" },  // Example: 9:03 PM
     { value: "HH:mm" },   // Example: 21:03
-].map(formatObj =>   ({
+].map(formatObj => ({
     label: format(now, formatObj.value),
     value: formatObj.value
 }));

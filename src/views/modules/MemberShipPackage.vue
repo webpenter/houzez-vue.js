@@ -23,7 +23,7 @@
         </ul>
     </div><!-- price-table-description -->
     <div class="price-table-button">
-        <RouterLink class="btn btn-primary" :to="{name:'dashboard.create-listing.create-account'}">
+        <RouterLink class="btn btn-primary" :to="{name:'dashboard.create-listing.checkout'}">
             Get Started
         </RouterLink>
     </div><!-- price-table-button -->

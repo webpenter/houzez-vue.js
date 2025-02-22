@@ -1,11 +1,11 @@
 <template>
-    <DashboardHeader heading="Add New Property">
+    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
     </DashboardHeader>
         <section class="dashboard-content-wrap">
             <SnakeNav active="payment"/>
             <div class="d-flex display-block-on-tablet">
                 <div class="order-2">
-                    <MembershipCompleteOrderTable/>
+                    <PackageDetail :plan="selectedPackage" :loading="loading"/>
                 </div><!-- order-2 -->
                 <div class="order-1 flex-grow-1">
                     <div class="dashboard-content-inner-wrap">
@@ -33,9 +33,38 @@
 </template>
     
 <script setup>
-import MembershipCompleteOrderTable from '@/views/inc/dashboard/MembershipCompleteOrderTable.vue';
 import SnakeNav from '../../components/SnakeNav.vue';
 import CreateAccountForm from '@/views/inc/dashboard/CreateAccountForm.vue';
 import DashboardSelectPayment from '@/views/inc/dashboard/DashboardSelectPayment.vue';
+import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
+import {useRoute} from "vue-router";
+import {useNotification, useSubscription} from "@/stores/index.js";
+import {storeToRefs} from "pinia";
+import {onMounted, ref} from "vue";
+import PackageDetail from "@/views/dashboard/pages/create-listing/payment/checkout/PackageDetail.vue";
+
+const route = useRoute();
+const loading = ref(false);
+
+const subscriptionToRefs = useSubscription();
+const {selectedPackage} = storeToRefs(subscriptionToRefs);
+
+const checkout = async () => {
+  loading.value = true;
+  try {
+    const res = await subscriptionToRefs.checkout(route.params.planId);
+
+    loading.value = false;
+
+    if (res.status === 404) {
+      useNotification().Error("Package Not Found!");
+    }
+  } catch (error) {
+    loading.value = false;
+    useNotification().Error("An error occurred while fetching checkout");
+  }
+}
+
+onMounted(() => checkout());
 </script>
     
