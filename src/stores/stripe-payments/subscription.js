@@ -16,6 +16,7 @@ import axiosInstance from "@/services/axiosService.js";
 export const useSubscription = defineStore('subscription', {
     state: () => ({
         selectedPackage: {},
+        userSubscriptions: {},
         loading: false,
         prefix:"/stripe-payments",
     }),
@@ -64,6 +65,92 @@ export const useSubscription = defineStore('subscription', {
                 });
             } catch (error) {
                 throw error.response;
+            }
+        },
+
+        /**
+         * Fetch the user's active subscriptions.
+         *
+         * This method sends a GET request to retrieve the user's subscriptions and
+         * stores the response data in `userSubscriptions`. If an error occurs,
+         * it is stored in `errors`.
+         *
+         * @returns {Promise} Resolves with response data or rejects with an error response.
+         */
+        async  getUserSubscriptions() {
+            const url = `${this.prefix}/get-user-subscriptions`;
+
+            try {
+                const response = await axiosInstance.get(url);
+
+                this.userSubscriptions = response.data.subscriptions;
+
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
+
+        /**
+         * Cancel a user's subscription.
+         *
+         * This method sends a GET request to cancel a subscription based on the provided
+         * subscription name. If an error occurs, it is stored in `errors`.
+         *
+         * @param {string} name - The name of the subscription to cancel.
+         * @returns {Promise} Resolves with response data or rejects with an error response.
+         */
+        async  cancelSubscription(name) {
+            const url = `${this.prefix}/cancel-subscription`;
+
+            try {
+                const response = await axiosInstance.get(url,{ params: { name } });
+
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
+
+        /**
+         * Resume a user's subscription.
+         *
+         * This method sends a GET request to resume a subscription based on the provided
+         * subscription name. If an error occurs, it is stored in `errors`.
+         *
+         * @param {string} name - The name of the subscription to resume.
+         * @returns {Promise} Resolves with response data or rejects with an error response.
+         */
+        async  resumeSubscription(name) {
+            const url = `${this.prefix}/resume-subscription`;
+
+            try {
+                const response = await axiosInstance.get(url, { params: { name } });
+
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
             }
         },
     }

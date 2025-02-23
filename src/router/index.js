@@ -436,12 +436,20 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/invoices/Index.vue'),
                 meta:{ title:'Invoices' }
             },
-            
             {
                 path: '/dashboard/dashboard-agent-invoice',
                 name:'dashboard.dashboard-agent-invoice',
                 component:() => import('@/views/inc/dashboard/DashboardAgentInvoice.vue'),
-                meta:{ title:'Agent Invoice' }
+                meta:{ title:'My Invoices' }
+            },
+            /***
+             * @route Dashboard/Subscriptions
+             ***/
+            {
+                path: '/dashboard/subscriptions',
+                name:'dashboard.subscriptions',
+                component:() => import('@/views/dashboard/pages/subscriptions/Index.vue'),
+                meta:{ title:'My Subscriptions' }
             },
             /***
              * @route Dashboard/Messages

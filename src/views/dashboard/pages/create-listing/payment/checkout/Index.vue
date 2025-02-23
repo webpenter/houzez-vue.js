@@ -105,7 +105,7 @@ const handlePayment = async () => {
     useNotification().Success("Subscription successful!");
     router.push({ name: "dashboard.create-listing.payment-completed" });
   } catch (error) {
-    useNotification().Error("Subscription failed!");
+    useNotification().Error(error?.data?.error);
   }
 
   loading.value = false;
