@@ -428,21 +428,6 @@ const routes = [
             },
 
             /***
-             * @route Dashboard/Invoices
-             ***/
-            {
-                path: '/dashboard/invoices',
-                name:'dashboard.invoices',
-                component:() => import('@/views/dashboard/pages/invoices/Index.vue'),
-                meta:{ title:'Invoices' }
-            },
-            {
-                path: '/dashboard/dashboard-agent-invoice',
-                name:'dashboard.dashboard-agent-invoice',
-                component:() => import('@/views/inc/dashboard/DashboardAgentInvoice.vue'),
-                meta:{ title:'My Invoices' }
-            },
-            /***
              * @route Dashboard/Subscriptions
              ***/
             {
@@ -451,6 +436,17 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/subscriptions/Index.vue'),
                 meta:{ title:'My Subscriptions' }
             },
+
+            /***
+             * @route Dashboard/Invoices
+             ***/
+            {
+                path: '/dashboard/invoices',
+                name:'dashboard.invoices',
+                component:() => import('@/views/dashboard/pages/invoices/Index.vue'),
+                meta:{ title:'My Invoices' }
+            },
+
             /***
              * @route Dashboard/Messages
              ***/
