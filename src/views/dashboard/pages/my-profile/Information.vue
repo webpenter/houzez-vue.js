@@ -4,7 +4,7 @@
     <template v-if="loading">
       <div class="row">
         <div class="col-md-3 col-sm-12">
-          <el-skeleton style="--el-skeleton-circle-size: 240px" animated>
+          <el-skeleton style="--el-skeleton-circle-size: 200px" animated>
             <template #template>
               <el-skeleton-item variant="circle" />
             </template>
@@ -20,9 +20,9 @@
         <div class="col-md-3 col-sm-12">
           <img v-if="formProfilePicture" class="img-fluid" :src="formProfilePicture" alt="thumb">
           <template v-else>
-            <el-skeleton  style="width: 240px">
+            <el-skeleton  style="width: 200px">
               <template #template>
-                <el-skeleton-item variant="image" style="width: 240px; height: 240px" />
+                <el-skeleton-item variant="image" style="width: 200px; height: 240px" />
               </template>
             </el-skeleton>
           </template>

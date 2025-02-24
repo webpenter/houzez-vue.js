@@ -89,68 +89,12 @@ export const DASHBOARD_ROUTES = [
 >>>>>>> 0f7e2fa935e561328ddc9469d19e3005db470ff0
 	{ id:5, title:'Favorites', name:'dashboard.favorite-properties', icon:'icon-love-it', sub:[] },
 	{ id:6, title:'Saved Searches', name:'dashboard.saved-searches', icon:'icon-search', sub:[] },
-	{ id:7, title:'Invoices', name:'dashboard.invoices', icon:'icon-accounting-document', sub:[] },
-	{ id:8, title:'Messages', name:'dashboard.messages', icon:'icon-messages-bubble', sub:[] },
-	{ id:9, title:'My Profile', name:'dashboard.my-profile', icon:'icon-single-neutral-circle', sub:[] },
-<<<<<<< HEAD
-
-	// posts
-	{ 
-		id:11,
-		title:'My Posts',
-		name:'dashboard.posts',
-		icon:'icon-building-cloudy',
-		sub:[
-			{id:1, title:'All Posts', name:'dashboard.posts'},
-			{id:2, title:'Add New', name:'dashboard.posts.addnew'},
-			{id:3, title:'Categories', name:'dashboard.posts.categories'},
-			{id:4, title:'Tags', name:'dashboard.posts.tags'},
-		] 
-	},
-	// Tools
-	{ 
-		id:12,
-		title:'My Tools',
-		name:'dashboard.tools',
-		icon:'icon-building-cloudy',
-		sub:[
-			{id:1, title:'Available Tools', name:'dashboard.tools'},
-			{id:2, title:'Import', name:'dashboard.tools.import'},
-			{id:3, title:'Site Health', name:'dashboard.tools.site-health'},
-			{id:4, title:'Export Personal Data', name:'dashboard.tools.Export'},
-			{id:5, title:'Erase Personal Data', name:'dashboard.tools.Erase'},
-			
-		] 
-	},
-	{ 
-		id:13,
-		title:'Settings',
-		name:'dashboard.settings',
-		icon:'icon-building-cloudy',
-		sub:[
-			{id:1, title:'Genral Setting', name:'dashboard.settings'},
-			{id:2, title:'Writing', name:'dashboard.settings.Writing'},
-			{id:3, title:'Reading', name:'dashboard.settings.Reading'},
-			{id:4, title:'Discussion', name:'dashboard.settings.Discussion'},
-			{id:5, title:'Media', name:'dashboard.settings.Media'},
-			{id:6, title:'Permalink', name:'dashboard.settings.Permalink'},
-			{id:7, title:'Privacy', name:'dashboard.settings.Privacy'},
-			{id:8, title:'Awt', name:'dashboard.settings.Awt'},
-			{id:9, title:'Redux', name:'dashboard.settings.Redux'},
-
-			
-			
-
-
-			// {id:4, title:'Export Personal Data', name:'dashboard.tools.Export'},
-			// {id:5, title:'Erase Personal Data', name:'dashboard.tools.Erase'},
-			
-		] 
-	},
-	]
-=======
+	{ id:7, title:'My Subscriptions', name:'dashboard.subscriptions', icon:'icon-building-cloudy', sub:[] },
+	{ id:8, title:'My Invoices', name:'dashboard.invoices', icon:'icon-accounting-document', sub:[] },
+	{ id:9, title:'Messages', name:'dashboard.messages', icon:'icon-messages-bubble', sub:[] },
+	{ id:10, title:'My Profile', name:'dashboard.my-profile', icon:'icon-single-neutral-circle', sub:[] },
 	{
-		id:10,
+		id:11,
 		title:'Settings',
 		name:'dashboard.settings.general',
 		icon:'icon-layout-dashboard',

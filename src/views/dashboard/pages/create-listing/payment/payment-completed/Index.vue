@@ -7,8 +7,10 @@
 
                 <div class="dashboard-content-block-wrap">
                     <div class="dashboard-content-block">
-                        <ThankYouPageContent/>
-                        <!-- <button type="button" class="btn btn-primary" onclick="window.location.href='dashboard-agent-add-new-property-step-1.php'">Create a Listing</button> -->
+                      <h2>Thank you for your business with us</h2>
+                      <p class="my-3">
+                        You have successfully subscribed to your package. Now you can create listings according to your package. If you want to create your first listing now, click the button below and start creating your listing.
+                      </p>
                         <RouterLink class="btn btn-primary" :to="{name:'dashboard.create-listing.step-1'}">
                             Create a Listing
                         </RouterLink>
@@ -20,7 +22,6 @@
 </template>
 
 <script setup>
-import ThankYouPageContent from '@/views/inc/dashboard/ThankYouPageContent.vue';
 import SnakeNav from '../../components/SnakeNav.vue';
 import { RouterLink } from 'vue-router';
 import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
