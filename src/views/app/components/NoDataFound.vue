@@ -1,0 +1,19 @@
+<template>
+  <div style="text-align: center;" :style="{'font-size': `${fontSize}px`}">
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        :height="`${iconSize}px`"
+        viewBox="0 -960 960 960"
+        :width="`${iconSize}px`"
+        fill="#B7B7B7">
+      <path d="m840-233-60-60v-487H293l-60-60h547q24 0 42 18t18 42v547ZM806-56l-64-64H180q-24 0-42-18t-18-42v-562l-63-63 43-43L849-99l-43 43ZM236-277l117-152 93 127 50-65-316-316v503h503l-97-97H236Zm301-260ZM432-432Z"/>
+    </svg>
+    <div style="color: #B7B7B7;margin-top: 10px">
+      No data found
+    </div>
+  </div>
+</template>
+
+<script setup>
+defineProps(['fontSize','iconSize']);
+</script>

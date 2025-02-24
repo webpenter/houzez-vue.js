@@ -7,10 +7,10 @@
             <p>
               You must be logged in to access this content. Please log in or register to continue.
             </p>
-            <router-link :to="{name:'app.register'}" class="btn-home mr-3">
+            <router-link :to="{name:'auth.register'}" class="btn-home mr-3">
               Register
             </router-link>
-            <router-link :to="{name:'app.login'}" class="btn-home">
+            <router-link :to="{name:'auth.login'}" class="btn-home">
               Login
             </router-link>
         </div>
