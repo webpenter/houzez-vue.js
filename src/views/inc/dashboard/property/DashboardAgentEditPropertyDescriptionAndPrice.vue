@@ -45,11 +45,11 @@
             </div><!-- d-flex -->
         </section><!-- dashboard-content-wrap -->
 </template>
+
+
 <script setup>
 import BreadCrumb from '../../page/BreadCrumb.vue';
 import MenuEditProperty from '../MenuEditProperty.vue';
 import MenuEditPropertyMobile from '../MenuEditPropertyMobile.vue';
 import SectionDescriptionAndPrice from './SectionDescriptionAndPrice.vue';
-
-
 </script>

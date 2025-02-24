@@ -1,0 +1,36 @@
+/* ---------------- Dashboard Side -------------- */
+@import url("bootstrap.min.css");
+@import url("bootstrap-select.min.css");
+@import url("icons.css");
+@import url("slick.css");
+@import url("slick-theme.css");
+@import url("jquery-ui.min.css");
+@import url("OverlayScrollbars.min.css");
+@import url("bootstrap-datepicker.min.css");
+@import url("fullcalendar.min.css");
+@import url("fullcalendar-daygrid.min.css");
+@import url("magnific-popup.css");
+@import url("photoswipe.css");
+@import url("main-ltr.css");
+@import url("styling-options.css");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700|Roboto:300,400,500,700");
+
+/* --------------- Client Side ------------- */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css");
+@import url("client-side/responsive.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css");
+
+/* Home page */
+@import url("client-side/styles.css");
+/* Properties page */
+@import url("client-side/properties.css");
+/*@import url("/css/app-wa-54e7be3a62ca9b7580d7f8c669f59e74.css?vsn=d")*/
+@import url("https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css");
+@import url("https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-duotone-solid.css");
+@import url("https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-thin.css");
+@import url("https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-solid.css");
+@import url("https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-regular.css");
+@import url("https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-light.css");
+
+

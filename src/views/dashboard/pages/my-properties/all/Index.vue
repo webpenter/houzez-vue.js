@@ -1,58 +1,56 @@
 <template>
-    <DashboardHeader heading="My Properties">
-        <CreateListingBtn/>
-    </DashboardHeader>
-        <section class="dashboard-content-wrap">
-            <div class="dashboard-content-inner-wrap">
-                <div class="dashboard-content-block-wrap">
-                    <NoProperty/>
-                    <div class="dashboard-property-search-wrap">
-                        <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <div class="dashboard-property-search">
-                                    <PropertySearch/>
-                                </div>
-                            </div>
-                            <div class="dashboard-property-sort-by">
-                                <ListingSortBy/>
-                            </div>
-                        </div>
-                    </div><!-- dashboard-property-search -->
-                    
-                    <div class="dashboard-table-property-bar-count">
-                        <StatusBtn route="dashboard.my-properties.published" title="Published" count="30" />
-                        <StatusBtn route="dashboard.my-properties.pending" title="pending" count="30" />
-                        <StatusBtn route="dashboard.my-properties.draft" title="draft" count="30" />
-                        <StatusBtn route="dashboard.my-properties.expired" title="expired" count="30" />
-                        <StatusBtn route="dashboard.my-properties.hold" title="hold" count="30" />
-                        <StatusBtn route="dashboard.my-properties.disapproved" title="disapproved" count="30" />
-                    </div><!-- dashboard-table-property-bar-count -->
+  <DashboardHeader heading="My Properties">
+    <CreateListingBtn/>
+  </DashboardHeader>
 
-                    <Table>
-                        <PropertyTableItem/>
-                        <PropertyTableItem/>
-                        <PropertyTableItem/>
-                        <PropertyTableItem/>
-                        <PropertyTableItem/>
-                        <PropertyTableItem/>
-                        <PropertyTableItem/>
-                        <PropertyTableItem/>
-                        <PropertyTableItem/>
-                        <PropertyTableItem/>
-                    </Table>
-                    
-                    <!-- <?php include 'inc/listing/pagination.php';?> -->
-                </div><!-- dashboard-content-block-wrap -->
-            </div><!-- dashboard-content-inner-wrap -->
-        </section><!-- dashboard-content-wrap -->
+  <section class="dashboard-content-wrap">
+    <div class="dashboard-content-inner-wrap">
+      <div class="dashboard-content-block-wrap">
+        <div v-if="dashboardProperties.length > 0" class="dashboard-property-search-wrap">
+          <div class="d-flex">
+            <div class="flex-grow-1">
+              <PropertySearch @search="(query) => updateSearchQuery(query)" />
+            </div>
+            <div class="dashboard-property-sort-by">
+              <ListingSortBy @sort="(sort) => updateSortOption(sort)" />
+            </div>
+          </div>
+        </div><!-- dashboard-property-search -->
+        <NoProperty v-if="dashboardProperties.length < 1"/>
+        <Table
+            v-else
+            :dashboardProperties="dashboardProperties"
+            :loading="loading"
+            @delete-property="(id) => deleteProperty(id)"
+            @duplicate-property="(id) => duplicateProperty(id)"
+        />
+      </div><!-- dashboard-content-block-wrap -->
+    </div><!-- dashboard-content-inner-wrap -->
+  </section><!-- dashboard-content-wrap -->
 </template>
 
 <script setup>
-import PropertySearch from '@/views/inc/dashboard/property/PropertySearch.vue';
-import PropertyTableItem from '@/views/inc/dashboard/property/PropertyTableItem.vue';
-import ListingSortBy from '@/views/inc/listing/ListingSortBy.vue';
+import PropertySearch from "../components/PropertySearch.vue";
+import ListingSortBy from '../components/ListingSortBy.vue';
 import CreateListingBtn from '../components/CreateListingBtn.vue';
 import NoProperty from '../components/NoProperty.vue';
-import StatusBtn from '../components/StatusBtn.vue';
 import Table from '../components/Table.vue';
+import { storeToRefs } from "pinia";
+import {onMounted, ref} from "vue";
+import {
+  getProperties,
+  deleteProperty,
+  duplicateProperty,
+  updateSearchQuery,
+  updateSortOption,
+  searchQuery,
+  selectedSort,
+  loading
+} from "@/traits/property/dashboardProperties.js";
+import { useProperty } from "@/stores/index.js";
+
+const propertyToRefs = useProperty();
+const { dashboardProperties } = storeToRefs(propertyToRefs);
+
+onMounted(() => getProperties());
 </script>

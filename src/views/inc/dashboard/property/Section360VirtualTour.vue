@@ -8,6 +8,4 @@
 		</div>
 	</div><!-- dashboard-content-block -->
 </div><!-- dashboard-content-block-wrap -->
-
-
 </template>

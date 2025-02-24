@@ -1,5 +1,5 @@
 <template>
-    <div class="dashboard-content-block-wrap">
+  <div class="dashboard-content-block-wrap">
 	<h2>Property Details</h2>
 	<div class="dashboard-content-block">
 		<div class="row">
@@ -117,5 +117,6 @@
 		</table>
 	</div><!-- dashboard-content-block -->
 </div><!-- dashboard-content-block-wrap -->
-
 </template>
+
+<script setup></script>

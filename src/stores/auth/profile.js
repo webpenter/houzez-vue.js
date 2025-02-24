@@ -141,10 +141,12 @@ export const useProfile = defineStore("userProfile", {
          */
         async getSocialMedia () {
             try {
+                this.loading = true;
                 const url = `${this.baseUrl}/get-social-media`;
                 const res = await axiosInstance.get(url);
 
                 this.setSocialMedia(res.data.profile);
+                this.loading = false;
 
                 return new Promise(resolve => {
                     return resolve(res);

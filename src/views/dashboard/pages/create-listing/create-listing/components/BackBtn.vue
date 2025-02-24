@@ -1,5 +1,5 @@
 <template>
-<RouterLink class="btn btn-primary-outlined" :to="{name:route}">
+<RouterLink class="btn btn-primary-outlined" :to="{name:route,params:{propertyId:pId}}">
     <i class="houzez-icon icon-arrow-left-1 mr-2"></i> 
     Back
 </RouterLink>
@@ -8,5 +8,5 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 
-const props = defineProps(['route'])
+const props = defineProps(['route','pId'])
 </script>

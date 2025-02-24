@@ -51,7 +51,7 @@ axiosInstance.interceptors.response.use(
         if (error.response && error.response.status === 401) {
             const auth = useAuth();
             auth.removeAuthInfo();
-            router.push({ name: 'app.login' });
+            router.push({ name: 'auth' });
         }
         return Promise.reject(error);
     }

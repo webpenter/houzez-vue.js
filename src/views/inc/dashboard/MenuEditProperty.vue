@@ -15,74 +15,74 @@ import { RouterLink } from 'vue-router';
             </a>
         </li> -->
         <li>
-            <RouterLink class="menu-edit-property-link active" to="/dashboard/dashboard-agent-edit-property">
+            <RouterLink class="menu-edit-property-link active" to="/dashboard/edit-property/step-1">
                 <i class="houzez-icon icon-arrow-right-1"></i> Description and Price
             </RouterLink>
         </li>
         <li>
-            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-details">
+            <RouterLink class="menu-edit-property-link" to="/dashboard/edit-property/step-2">
                 <i class="houzez-icon icon-arrow-right-1"></i> Details
             </RouterLink>
         </li>
         <li>
-            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-features">
+            <RouterLink class="menu-edit-property-link" to="/dashboard/edit-property/step-3">
                 <i class="houzez-icon icon-arrow-right-1"></i> Features
             </RouterLink>
         </li>
         <li>
-            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-energy-class">
+            <RouterLink class="menu-edit-property-link" to="/dashboard/edit-property/step-4">
                 <i class="houzez-icon icon-arrow-right-1"></i> Energy Class
             </RouterLink>
         </li>
         <li>
-            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-location">
+            <RouterLink class="menu-edit-property-link" to="/dashboard/edit-property/step-5">
                 <i class="houzez-icon icon-arrow-right-1"></i> Location
             </RouterLink>
         </li>
         <li>
-            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-media">
+            <RouterLink class="menu-edit-property-link" to="/dashboard/edit-property/step-6">
                 <i class="houzez-icon icon-arrow-right-1"></i> Media
             </RouterLink>
         </li>
         <li>
-            <RouterLink class="menu-edit-property-link" to="dashboard-agent-edit-property-360-virtual-tour">
+            <RouterLink class="menu-edit-property-link" to="/dashboard/edit-property/step-7">
                 <i class="houzez-icon icon-arrow-right-1"></i> 360 Virtual tour
             </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-floor-plans.php">
+            <RouterLink class="menu-edit-property-link" to="/dashboard/edit-property/step-8">
                 <i class="houzez-icon icon-arrow-right-1"></i> Floor Plans
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-sub-properties.php">
+            <RouterLink class="menu-edit-property-link" to="/dashboard/edit-property/step-9">
                 <i class="houzez-icon icon-arrow-right-1"></i> Sub Properties
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-contact-information.php">
+            <RouterLink class="menu-edit-property-link" to="/dashboard/edit-property/step-10">
                 <i class="houzez-icon icon-arrow-right-1"></i> Contact Information
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="#">
+            <RouterLink class="menu-edit-property-link" to="#">
                 <i class="houzez-icon icon-arrow-right-1"></i> Calendar
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-attachments.php">
+            <RouterLink class="menu-edit-property-link" to="/dashboard/edit-property/step-12">
                 <i class="houzez-icon icon-arrow-right-1"></i> Attachments
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-private-note.php">
+            <RouterLink class="menu-edit-property-link" to="/dashboard/edit-property/step-13">
                 <i class="houzez-icon icon-arrow-right-1"></i> Private Notes
-            </a>
+            </RouterLink>
         </li>
         <li>
-            <a class="menu-edit-property-link" href="dashboard-agent-edit-property-settings.php">
+            <RouterLink class="menu-edit-property-link" to="/dashboard/edit-property/step-14">
                 <i class="houzez-icon icon-arrow-right-1"></i> Settings
-            </a>
+            </RouterLink>
         </li>
     </ul>
 </div><!-- menu-edit-property-wrap -->

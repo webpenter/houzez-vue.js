@@ -1,9 +1,9 @@
 import { createApp } from 'vue';
 
-/* ------------ Import CSS files  ---------- */
+/* ------------ Import files/libraries  ---------- */
+import "../public/css/index.css";
 import "element-plus/dist/index.css";
-
-/* ------------ Import JS files  ----------- */
+import "../public/js/index.js";
 import App from './App.vue';
 import router from './router';
 import plugins from './plugins';
@@ -11,7 +11,10 @@ import ElementPlus from "element-plus";
 import { createPinia } from "pinia";
 import {
     subStr,
-    logout
+    logout,
+    formatPrice,
+    capitalize,
+    formatTextWithNumber,
 } from "./helpers"
 
 const app = createApp(App);
@@ -26,5 +29,8 @@ app.mount('#app');
 /* ------------ Global Helpers ------------- */
 app.config.globalProperties.$filters = {
     subStr,
-    logout
+    logout,
+    formatPrice,
+    capitalize,
+    formatTextWithNumber
 };

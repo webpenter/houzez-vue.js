@@ -1403,63 +1403,63 @@
         return principal * (monthlyInterestRate * Math.pow((1 + monthlyInterestRate), numberOfMonths)) / (Math.pow((1 + monthlyInterestRate), numberOfMonths) - 1);
     }
 
-    function updateResults() {
-        const homePrice = parseFloat($('#homePrice').val()) || 0;
-        const downPaymentPercentage = parseFloat($('#downPaymentPercentage').val()) || 0;
-        const annualInterestRate = parseFloat($('#annualInterestRate').val()) || 0;
-        const loanTermInYears = parseFloat($('#loanTermInYears').val()) || 0;
-        const annualPropertyTaxRate = parseFloat($('#annualPropertyTaxRate').val()) || 0;
-        const annualHomeInsurance = parseFloat($('#annualHomeInsurance').val()) || 0;
-        const monthlyHOAFees = parseFloat($('#monthlyHOAFees').val()) || 0;
-        const pmi = parseFloat($('#pmi').val()) || 0;
-
-        const downPayment = homePrice * (downPaymentPercentage / 100);
-        const principal = homePrice - downPayment;
-        const monthlyPayment = calculateMonthlyPayment(principal, annualInterestRate, loanTermInYears);
-        const monthlyPropertyTax = (homePrice * (annualPropertyTaxRate / 100)) / 12;
-        const monthlyHomeInsurance = annualHomeInsurance / 12;
-
-        const pmiRequired = (downPayment / homePrice) < 0.2;
-
-        const monthlyPMI = pmiRequired ? (principal * (pmi / 100)) / 12 : 0;
-
-        const totalMonthlyPayment = monthlyPayment + monthlyPropertyTax + monthlyHomeInsurance + monthlyHOAFees + monthlyPMI;
-
-        const resultsElement = $('#results');
-        resultsElement.html(`
-        <div class="mortgage-calculator-data flex-fill">
-            <ul class="list-unstyled">
-                <li class="mortgage-calculator-data">
-                    <span class="list-icon-circle dp-icon"></span> Down Payment: <span>$${downPayment.toFixed(2)}</span>
-                </li>
-                <li class="mortgage-calculator-data">
-                    <span class="list-icon-circle la-icon"></span> Loan Amount: <span>$${principal.toFixed(2)}</span>
-                </li>
-                <li class="mortgage-calculator-data">
-                    <span class="list-icon-circle mmp-icon"></span> Monthly Mortgage Payment: <span>$${monthlyPayment.toFixed(2)}</span>
-                </li>
-                <li class="mortgage-calculator-data">
-                    <span class="list-icon-circle mpt-icon"></span> Property Tax: <span>$${monthlyPropertyTax.toFixed(2)}</span>
-                </li>
-                <li class="mortgage-calculator-data">
-                    <span class="list-icon-circle mhi-icon"></span> Monthly Home Insurance: <span>$${monthlyHomeInsurance.toFixed(2)}</span>
-                </li>
-                <li class="mortgage-calculator-data">
-                    <span class="list-icon-circle mhf-icon"></span> Monthly HOA Fees: <span>$${monthlyHOAFees.toFixed(2)}</span>
-                </li>
-                ${pmiRequired ? `
-                <li class="mortgage-calculator-data">
-                    <span class="list-icon-circle mpmi-icon"></span> Monthly PMI: <span>$${monthlyPMI.toFixed(2)}</span>
-                </li>
-                ` : ''}
-                 <li class="mortgage-calculator-data">
-                    <span class="list-icon-circle tmp-icon"></span> <strong>Total Monthly Payment:</stromg> <span>$${totalMonthlyPayment.toFixed(2)}</span>
-                </li>
-            </ul>
-        </div>
-    `);
-
-        const chartData = [{
+    (function ($) {
+        function updateResults() {
+            const homePrice = parseFloat($('#homePrice').val()) || 0;
+            const downPaymentPercentage = parseFloat($('#downPaymentPercentage').val()) || 0;
+            const annualInterestRate = parseFloat($('#annualInterestRate').val()) || 0;
+            const loanTermInYears = parseFloat($('#loanTermInYears').val()) || 0;
+            const annualPropertyTaxRate = parseFloat($('#annualPropertyTaxRate').val()) || 0;
+            const annualHomeInsurance = parseFloat($('#annualHomeInsurance').val()) || 0;
+            const monthlyHOAFees = parseFloat($('#monthlyHOAFees').val()) || 0;
+            const pmi = parseFloat($('#pmi').val()) || 0;
+    
+            const downPayment = homePrice * (downPaymentPercentage / 100);
+            const principal = homePrice - downPayment;
+            const monthlyPayment = calculateMonthlyPayment(principal, annualInterestRate, loanTermInYears);
+            const monthlyPropertyTax = (homePrice * (annualPropertyTaxRate / 100)) / 12;
+            const monthlyHomeInsurance = annualHomeInsurance / 12;
+    
+            const pmiRequired = (downPayment / homePrice) < 0.2;
+            const monthlyPMI = pmiRequired ? (principal * (pmi / 100)) / 12 : 0;
+    
+            const totalMonthlyPayment = monthlyPayment + monthlyPropertyTax + monthlyHomeInsurance + monthlyHOAFees + monthlyPMI;
+    
+            const resultsElement = $('#results');
+            resultsElement.html(`
+                <div class="mortgage-calculator-data flex-fill">
+                    <ul class="list-unstyled">
+                        <li class="mortgage-calculator-data">
+                            <span class="list-icon-circle dp-icon"></span> Down Payment: <span>$${downPayment.toFixed(2)}</span>
+                        </li>
+                        <li class="mortgage-calculator-data">
+                            <span class="list-icon-circle la-icon"></span> Loan Amount: <span>$${principal.toFixed(2)}</span>
+                        </li>
+                        <li class="mortgage-calculator-data">
+                            <span class="list-icon-circle mmp-icon"></span> Monthly Mortgage Payment: <span>$${monthlyPayment.toFixed(2)}</span>
+                        </li>
+                        <li class="mortgage-calculator-data">
+                            <span class="list-icon-circle mpt-icon"></span> Property Tax: <span>$${monthlyPropertyTax.toFixed(2)}</span>
+                        </li>
+                        <li class="mortgage-calculator-data">
+                            <span class="list-icon-circle mhi-icon"></span> Monthly Home Insurance: <span>$${monthlyHomeInsurance.toFixed(2)}</span>
+                        </li>
+                        <li class="mortgage-calculator-data">
+                            <span class="list-icon-circle mhf-icon"></span> Monthly HOA Fees: <span>$${monthlyHOAFees.toFixed(2)}</span>
+                        </li>
+                        ${pmiRequired ? `
+                            <li class="mortgage-calculator-data">
+                                <span class="list-icon-circle mpmi-icon"></span> Monthly PMI: <span>$${monthlyPMI.toFixed(2)}</span>
+                            </li>
+                        ` : ''}
+                        <li class="mortgage-calculator-data">
+                            <span class="list-icon-circle tmp-icon"></span> <strong>Total Monthly Payment:</strong> <span>$${totalMonthlyPayment.toFixed(2)}</span>
+                        </li>
+                    </ul>
+                </div>
+            `);
+    
+            const chartData = [{
                 label: 'Monthly Mortgage Payment',
                 value: monthlyPayment,
                 color: 'rgba(255, 99, 132, 0.5)'
@@ -1479,46 +1479,55 @@
                 value: monthlyHOAFees,
                 color: 'rgba(75, 192, 192, 0.5)'
             },
-        ];
-
-        if (pmiRequired) {
-            chartData.push({
-                label: 'PMI',
-                value: monthlyPMI,
-                color: 'rgba(255, 87, 51, 0.5)'
+            ];
+    
+            if (pmiRequired) {
+                chartData.push({
+                    label: 'PMI',
+                    value: monthlyPMI,
+                    color: 'rgba(255, 87, 51, 0.5)'
+                });
+            }
+    
+            updateChart(chartData);
+        }
+    
+        function updateChart(chartData) {
+            const ctx = $('#chart')[0]?.getContext('2d');  // Safe access to canvas context
+    
+            if (!ctx) {
+                console.error('Canvas element with id "chart" not found.');
+                return;  // Exit if the context is not available
+            }
+    
+            if (window.myChart) {
+                window.myChart.destroy();
+            }
+    
+            window.myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: chartData.map(item => item.label),
+                    datasets: [{
+                        data: chartData.map(item => item.value),
+                        backgroundColor: chartData.map(item => item.color),
+                    }],
+                },
+                options: {
+                    cutoutPercentage: 85,
+                    responsive: false,
+                    tooltips: false,
+                },
             });
         }
-
-        updateChart(chartData);
-    }
-
-    function updateChart(chartData) {
-        const ctx = $('#chart')[0].getContext('2d');
-
-        if (window.myChart) {
-            window.myChart.destroy();
-        }
-
-        window.myChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: chartData.map(item => item.label),
-                datasets: [{
-                    data: chartData.map(item => item.value),
-                    backgroundColor: chartData.map(item => item.color),
-                }],
-            },
-            options: {
-                cutoutPercentage: 85,
-                responsive: false,
-                tooltips: false,
-            },
+    
+        $(document).ready(function () {
+            $('#calculator-form input').on('input', () => {
+                updateResults();
+            });
+    
+            updateResults();  // Initial update
         });
-    }
-
-    $('#calculator-form input').on('input', () => {
-        updateResults();
-    });
-
-    updateResults();
-})(jQuery);
+    
+    })(jQuery);  // Closing the IIFE
+});    
