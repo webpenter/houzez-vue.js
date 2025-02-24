@@ -238,7 +238,6 @@ const formSubmit = async () => {
       notify.Error("An error occurred. Please try again.");
     }
 }
-
 };
 
 onMounted(() => {
