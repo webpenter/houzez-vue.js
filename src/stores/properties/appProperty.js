@@ -45,6 +45,7 @@ export const useAppProperty = defineStore('appProperty', {
                 return Promise.reject(error.response);
             }
         },
+        
 
         /**
          * ## Get Searched and Filtered Properties
