@@ -16,10 +16,10 @@
             </RouterLink>
           </template>
           <template v-else-if="route.name == 'dashboard.settings.general'">
-            <RouterLink :to="{name:route.name}" active-class="active" @click.prevent="isOpenSettings = !isOpenSettings">
-              <i class="houzez-icon mr-2" :class="route.icon"></i>
-              {{ route.title }}
-            </RouterLink>
+              <RouterLink v-show="admin" :to="{name:route.name}" active-class="active" @click.prevent="isOpenSettings = !isOpenSettings">
+                <i class="houzez-icon mr-2" :class="route.icon"></i>
+                {{ route.title }}
+              </RouterLink>
           </template>
           <template v-else>
             <RouterLink :to="{name:route.name}" active-class="active">
@@ -80,10 +80,13 @@
 import { RouterLink } from 'vue-router';
 import {DASHBOARD_ROUTES} from "@/constants/index.js";
 import {ref} from "vue";
+import {useAdmin} from "@/stores/index.js";
 
 const isOpenBoard = ref(false);
 const isOpenProperties = ref(false);
 const isOpenSettings = ref(false);
+
+const admin = useAdmin().getAdmin;
 </script>
 
 <style scoped>
