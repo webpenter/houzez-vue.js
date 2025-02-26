@@ -32,7 +32,7 @@
                 </div><!-- dashboard-content-block-wrap -->
 
                 <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
-                  <BackBtn route="dashboard.create-listing.step-9" :pId="propertyId"/>
+                  <BackBtn route="dashboard.create-listing.step-7" :pId="propertyId"/>
                   <NextBtn :btnLoading="btnLoading" :hasErrors="false"/>
                 </div><!-- add-new-listing-bottom-nav-wrap -->
               </form>
