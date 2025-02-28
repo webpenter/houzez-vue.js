@@ -1,1 +1,0 @@
-import{o as e,c as t,d as s,w as a,b as r,u as n,R as _}from"./index-F0BtWOqF.js";const c="/img/logo-houzez-white.png",i={class:"logo"},u={__name:"LogoWhite",setup(l){return(m,o)=>(e(),t("div",i,[s(n(_),{to:{name:"app.home"}},{default:a(()=>o[0]||(o[0]=[r("img",{src:c,alt:"logo"},null,-1)])),_:1})]))}};export{u as _};
