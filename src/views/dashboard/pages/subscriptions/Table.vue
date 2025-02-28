@@ -24,7 +24,7 @@
       <template v-else>
         <tr v-for="subscription in subscriptions" :key="subscription.id">
           <td class="property-table-status">
-            <strong>{{ subscription.type }}</strong>
+            <strong>{{ subscription.plan.name}}</strong>
           </td>
           <td class="property-table-status">
             <span class="badge" :class="{ 'badge-success': subscription.stripe_status === 'active' }">
@@ -51,6 +51,7 @@
             <el-dialog v-model="centerDialogVisible" title="Package Details" width="550" align-center
               :show-close="false">
               <div>
+                
                 <table class="table">
                   <tbody>
                     <tr>
@@ -59,7 +60,7 @@
                     </tr>
                     <tr>
                       <th scope="row">Price</th>
-                      <td>{{ subscription.plan.currency_symbol + subscription.plan.price }}</td>
+                      <td>{{ subscription.plan.currency + subscription.plan.price }}</td>
                     </tr>
                     <tr>
                       <th scope="row">Time Period</th>
