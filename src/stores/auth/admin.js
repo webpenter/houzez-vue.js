@@ -15,15 +15,20 @@
 import { defineStore } from "pinia";
 export const useAdmin = defineStore("admin", {
     state: () => ({
-        admin: JSON.parse(localStorage.getItem('admin')) || false,
+        admin: (() => {
+            try {
+                const storedAdmin = localStorage.getItem('admin');
+                return storedAdmin ? JSON.parse(storedAdmin) : false;
+            } catch (error) {
+                return false;
+            }
+        })(),
     }),
 
     persist: true,
 
     getters: {
-        getAdmin: (state) => {
-            return state.admin;
-        },
+        getAdmin: (state) => state.admin,
     },
 
     actions: {
@@ -33,8 +38,8 @@ export const useAdmin = defineStore("admin", {
         },
 
         removeAdmin() {
-            localStorage.setItem('admin',JSON.stringify(false));
             this.admin = false;
+            localStorage.setItem('admin', JSON.stringify(false));
         },
     },
 });

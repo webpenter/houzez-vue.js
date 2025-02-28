@@ -100,12 +100,12 @@
                 </div><!-- dashboard-content-block-wrap -->
 
                 <div class="dashboard-content-block-wrap">
-                  <h2>Price *</h2>
+                  <h2>Price</h2>
                   <div class="dashboard-content-block">
                     <div class="row">
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Sale or Rent Price</label>
+                          <label>Sale or Rent Price *</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.price }"
