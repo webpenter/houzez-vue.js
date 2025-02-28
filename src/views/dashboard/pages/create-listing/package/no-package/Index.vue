@@ -2,7 +2,6 @@
     <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
     </DashboardHeader>
         <section class="dashboard-content-wrap">
-            <SnakeNav active="package"/>
             <div class="dashboard-content-inner-wrap">
                 <div class="dashboard-content-block-wrap">
                     <div class="dashboard-content-block">
@@ -31,6 +30,5 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
-import SnakeNav from '../../components/SnakeNav.vue';
 import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 </script>

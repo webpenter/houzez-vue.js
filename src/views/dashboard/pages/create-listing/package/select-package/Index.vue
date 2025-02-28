@@ -1,8 +1,7 @@
 <template>
-    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
-    </DashboardHeader>
+    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING"/>
         <section class="dashboard-content-wrap">
-            <SnakeNav active="package"/>
+            <SnakeNav2 active="package"/>
             <div class="dashboard-content-inner-wrap">
                 <div class="dashboard-content-block-wrap">
                     <NoDataMsg msg="No package found" v-if="selectPlans.length < 1" />
@@ -15,7 +14,7 @@
 </template>
 
 <script setup>
-import SnakeNav from '../../components/SnakeNav.vue';
+import SnakeNav2 from '../../components/SnakeNav2.vue';
 import Package from "@/views/dashboard/pages/create-listing/package/select-package/Package.vue";
 import {usePackage} from "@/stores/index.js";
 import {storeToRefs} from "pinia";

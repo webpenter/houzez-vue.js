@@ -3,7 +3,7 @@
         <SaveAsDraftBtn/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
-            <snake-nav active="listing"/>
+            <snake-nav active="9"/>
             <div class="dashboard-content-inner-wrap">
 
                 <SectionSubProperties/>
