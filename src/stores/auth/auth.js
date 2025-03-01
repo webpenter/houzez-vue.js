@@ -12,7 +12,7 @@
 
 import { defineStore } from 'pinia'
 import axiosInstance from '@/services/axiosService'
-import { useToken } from '@/stores'
+import {useAdmin, useToken} from '@/stores'
 
 export const useAuth = defineStore('userAuth', {
     state: () => ({
@@ -40,6 +40,25 @@ export const useAuth = defineStore('userAuth', {
     },
 
     actions: {
+        async getUserInfo () {
+            try {
+                const res = await axiosInstance.get('/user');
+
+                this.user = res.data.user;
+
+                return new Promise(resolve => {
+                    return resolve(res);
+                })
+            } catch (error) {
+                if (error.response && error.response.data) {
+                    this.errors = error.response;
+                }
+
+                return new Promise(reject => {
+                    return reject(error.response);
+                })
+            }
+        },
         /**
          * @feature Registers a new user by sending their details to the server.
          * @param {Object} formData - The registration data (e.g., name, email, password, etc.).
@@ -172,13 +191,17 @@ export const useAuth = defineStore('userAuth', {
         },
         setAuthInfo (data) {
             const token = useToken()
+            const admin = useAdmin()
             this.user = data?.data
             token.setToken(data?.token)
-            this.isLggedIn = true
+            admin.setAdmin(data?.admin)
+            this.isLggedIn = true;
         },
         removeAuthInfo () {
             const token = useToken()
+            const admin = useAdmin()
             token.removeToken()
+            admin.removeAdmin()
             this.isLoggedIn = false
             this.$reset()
         }

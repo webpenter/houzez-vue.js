@@ -1,6 +1,7 @@
 <template>
 	<ul class="side-menu list-unstyled">
 		<template v-for="route in DASHBOARD_ROUTES" :key="route.id">
+
 			<li class="side-menu-item" :class="{ 'side-menu-parent-selected': route.sub.length > 0 }">
 				<template v-if="route.name == 'dashboard.crm'">
 					<RouterLink :to="{ name: route.name }" active-class="active"
@@ -127,6 +128,8 @@
 
 				<span v-if="route.title == 'Messages'" class="notification-circle"></span>
 			</li>
+
+			
 		</template>
 
 		<li class="side-menu-item">
@@ -139,9 +142,12 @@
 </template>
 
 <script setup>
-import { RouterLink } from "vue-router";
-import { DASHBOARD_ROUTES } from "@/constants/index.js";
-import { ref } from "vue";
+
+import { RouterLink } from 'vue-router';
+import {DASHBOARD_ROUTES} from "@/constants/index.js";
+import {ref} from "vue";
+import {useAdmin} from "@/stores/index.js";
+
 
 const isOpenBoard = ref(false);
 const isOpenProperties = ref(false);
@@ -149,6 +155,8 @@ const isOpenAdmin = ref(false);
 const isOpenPosts = ref(false);
 const isOpenTools = ref(false);
 const isOpenSettings = ref(false);
+
+const admin = useAdmin().getAdmin;
 </script>
 
 <style scoped>

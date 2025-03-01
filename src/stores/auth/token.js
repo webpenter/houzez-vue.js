@@ -15,7 +15,7 @@
 import { defineStore } from "pinia";
 export const useToken = defineStore("userToken", {
     state: () => ({
-        token: sessionStorage.getItem('token'),
+        token: localStorage.getItem('token'),
     }),
 
     persist: true,
@@ -31,15 +31,15 @@ export const useToken = defineStore("userToken", {
             this.token = token;
 
             if (token) {
-                sessionStorage.setItem('token', token);
+                localStorage.setItem('token', token);
             } else {
-                sessionStorage.removeItem('token');
+                localStorage.removeItem('token');
             }
         },
 
         removeToken() {
             this.$reset();
-            sessionStorage.removeItem('token');
+            localStorage.removeItem('token');
             this.token = null;
         },
     },

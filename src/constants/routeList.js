@@ -97,4 +97,28 @@ export const DASHBOARD_ROUTES = [
 			{id:1, title:'Packages', name:'dashboard.settings.all-packages'},
 		]
 	},
+	{
+		id:12,
+		title:'Admin',
+		name:'dashboard.admin',
+		icon:'icon-building-cloudy',
+		sub:[
+			{id:1, title:'Post Type', name:'dashboard.admin.post_type'},
+			{id:2, title:'Taxonomies', name:'dashboard.admin.taxonomies'},
+			{id:3, title:'Permalinks', name:'dashboard.admin.permalinks'},
+			{id:4, title:'Currency Switcher', name:'dashboard.admin.currency_switcher'},
+			{id:5, title:'Currencies', name:'dashboard.admin.currencies'},
+			{id:6, title:'Documentation', name:'dashboard.admin.documentation'},
+			{id:7, title:'Feedback', name:'dashboard.admin.feedback'},
+		]
+	},
+	{
+		id:12,
+		title:'Tools',
+		name:'dashboard.tools',
+		icon:'icon-building-cloudy',
+		sub:[
+			{id:1, title:'Tools Export', name:'dashboard.tools.export'},
+		]
+	},
 ];
