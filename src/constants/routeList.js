@@ -81,12 +81,7 @@ export const DASHBOARD_ROUTES = [
 			{id:7, title:'Disapproved', name:'dashboard.my-properties.disapproved'},
 		]
 	},
-<<<<<<< HEAD
-
-	{ id:4, title:'Create Listing', name:'dashboard.create-listing.get-package', icon:'icon-add-circle', sub:[] },
-=======
 	{ id:4, title:TITLE_CREATE_UPDATE_LISTING, name:'dashboard.create-listing.step-1', icon:'icon-add-circle', sub:[] },
->>>>>>> 0f7e2fa935e561328ddc9469d19e3005db470ff0
 	{ id:5, title:'Favorites', name:'dashboard.favorite-properties', icon:'icon-love-it', sub:[] },
 	{ id:6, title:'Saved Searches', name:'dashboard.saved-searches', icon:'icon-search', sub:[] },
 	{ id:7, title:'My Subscriptions', name:'dashboard.subscriptions', icon:'icon-building-cloudy', sub:[] },
@@ -104,4 +99,3 @@ export const DASHBOARD_ROUTES = [
 		]
 	},
 ];
->>>>>>> 0f7e2fa935e561328ddc9469d19e3005db470ff0
