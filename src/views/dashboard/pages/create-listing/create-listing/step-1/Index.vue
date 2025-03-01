@@ -174,6 +174,7 @@ import {useLabel,useType, useNotification, useProperty, useStatus} from "@/store
 import {storeToRefs} from "pinia";
 import {PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 import NextBtn from "@/views/dashboard/pages/create-listing/create-listing/components/NextBtn.vue";
+import {useEditProperty} from "@/traits/property/manageProperty.js";
 
 const route = useRoute();
 const router = useRouter();
@@ -227,15 +228,7 @@ const hasErrors = computed(() =>
     Object.values(localErrors.value).some((error) => error !== "")
 );
 
-const editData = async () => {
-  const res = await propertyToRefs.edit(propertyId);
-
-  if (res.status === 404) {
-      return router.push({name:"property-not-found-404"});
-  } else if (res.status === 403) {
-      return router.push({name:"unauthorized-403"});
-  }
-}
+const {editData} = useEditProperty();
 
 const formSubmit = async () => {
   Object.keys(localErrors.value).forEach((field) => validateField(field));
@@ -272,7 +265,7 @@ const formSubmit = async () => {
 
 onMounted(() => {
   if (propertyId){
-    editData();
+    editData(propertyId);
   }
 
   if (property.value){

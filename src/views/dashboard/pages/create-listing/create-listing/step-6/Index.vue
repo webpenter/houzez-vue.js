@@ -107,12 +107,12 @@ import SnakeNav from '../../components/SnakeNav.vue';
 import SaveAsDraftBtn from '../components/SaveAsDraftBtn.vue';
 import NextBtn from '../components/NextBtn.vue';
 import BackBtn from '../components/BackBtn.vue';
-import SectionMedia from '@/views/inc/dashboard/property/SectionMedia.vue';
 import {useRoute, useRouter} from "vue-router";
 import {useNotification, useProperty} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 import {computed, onMounted, ref, watch} from "vue";
 import {PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
+import {useEditProperty} from "@/traits/property/manageProperty.js";
 
 const route = useRoute();
 const router = useRouter();
@@ -122,7 +122,7 @@ const {property,propertyImages} = storeToRefs(propertyToRefs);
 const notify = useNotification();
 const btnLoading = ref(false);
 const fileInput = ref(null);
-const hasPropertyImages = ref(false);
+const {editData} = useEditProperty();
 
 const formData = ref({
   video_url: "",
@@ -158,16 +158,6 @@ const isValidUrl = (url) => {
 const hasErrors = computed(() =>
     Object.values(localErrors.value).some((error) => error !== "")
 );
-
-const editData = async () => {
-  const res = await propertyToRefs.edit(propertyId);
-
-  if (res.status === 404) {
-    return router.push({name:"property-not-found-404"});
-  } else if (res.status === 403) {
-    return router.push({name:"unauthorized-403"});
-  }
-}
 
 const editImagesData = async () => await propertyToRefs.editImages(propertyId);
 
@@ -315,7 +305,7 @@ const deleteImage = async (imgId) => {
 }
 
 onMounted(() => {
-  editData();
+  editData(propertyId);
   editImagesData();
 
   if (property.value){

@@ -69,10 +69,9 @@ import SnakeNav from '../../components/SnakeNav.vue';
 import SaveAsDraftBtn from '../components/SaveAsDraftBtn.vue';
 import NextBtn from '../components/NextBtn.vue';
 import BackBtn from '../components/BackBtn.vue';
-import SectionAttachments from '@/views/inc/dashboard/property/SectionAttachments.vue';
-import {RouterLink ,useRoute, useRouter} from "vue-router";
+import { useRoute, useRouter} from "vue-router";
 import {PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
-import {computed, onMounted, ref, watch} from "vue";
+import {onMounted, ref} from "vue";
 import {useNotification, useProperty} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 
