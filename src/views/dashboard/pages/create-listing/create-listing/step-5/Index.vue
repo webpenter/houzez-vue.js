@@ -3,7 +3,7 @@
     <SaveAsDraftBtn/>
   </DashboardHeader>
   <section class="dashboard-content-wrap dashboard-add-new-listing">
-    <snake-nav active="listing"/>
+    <snake-nav active="5"/>
     <div class="dashboard-content-inner-wrap">
       <form @submit.prevent="formSubmit">
         <div class="dashboard-content-block-wrap">
@@ -12,7 +12,7 @@
             <div class="row">
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Address</label>
+                  <label>Address *</label>
                   <input
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.address }"
@@ -41,8 +41,18 @@
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>City</label>
-                  <input class="form-control" v-model="formData.city" placeholder="Enter your property city" type="text">
+                  <label>City *</label>
+                  <input
+                      class="form-control"
+                      :class="{ 'is-invalid': localErrors.city }"
+                      @input="validateField('city')"
+                      v-model="formData.city"
+                      placeholder="Enter your property city"
+                      type="text"
+                  >
+                  <span class="text-danger" v-if="localErrors.city">
+                      {{ localErrors.city }}
+                  </span>
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
@@ -142,6 +152,7 @@ const formData = ref({
 
 const localErrors = ref({
   address: "",
+  city: "",
   latitude: "",
   longitude: "",
 });
@@ -149,6 +160,8 @@ const localErrors = ref({
 const validateField = (field) => {
   if (field === "address" && !formData.value.address) {
     localErrors.value.address = "Address field is required.";
+  } else if (field === "city" && !formData.value.city) {
+    localErrors.value.city = "City field is required.";
   } else if (field === "latitude") {
     if (formData.value.latitude && isNaN(formData.value.latitude)) {
       localErrors.value.latitude = "Latitude must be a number.";
@@ -206,7 +219,7 @@ const formSubmit = async () => {
 
     if (res.status === 200) {
       notify.Success(
-        `Step 5 of ${PROPERTY_TOTAL_STEPS} completed. Your property has been recorded`
+        `Step 5 of ${PROPERTY_TOTAL_STEPS} completed.`
       );
       router.push({
         name: "dashboard.create-listing.step-6",

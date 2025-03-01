@@ -3,13 +3,12 @@
         <SaveAsDraftBtn/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
-            <snake-nav active="listing"/>
+            <snake-nav active="6"/>
             <div class="dashboard-content-inner-wrap">
 
                   <div class="dashboard-content-block-wrap">
                     <h2>Property Media</h2>
                     <div class="dashboard-content-block">
-                      <p>Drag and drop the images to customize the image gallery order.</p>
                       <div class="upload-property-media">
                         <div class="media-drag-drop">
                           <div class="upload-icon">
@@ -17,7 +16,6 @@
                           </div>
                           <div class="upload-image-counter">{{ propertyImages.length ?? '0' }} of 6</div>
                           <div>
-                            Drag and drop the gallery images here<br>
                             <span>(Maximum size 2MB)</span>
                           </div>
                           <button @click="triggerFileInput" class="btn btn-primary btn-left-icon"><i class="houzez-icon icon-upload-button mr-1"></i>
@@ -271,7 +269,7 @@ const formSubmit = async () => {
     btnLoading.value = false;
 
     if (res.status === 200) {
-      notify.Success(`Step 6 of ${PROPERTY_TOTAL_STEPS} completed. Your property has been recorded`);
+      notify.Success(`Step 6 of ${PROPERTY_TOTAL_STEPS} completed.`);
       router.push({name:"dashboard.create-listing.step-7",params:{propertyId:propertyId}});
     } else if (res.status === 404) {
       notify.Error("Property not found.");
