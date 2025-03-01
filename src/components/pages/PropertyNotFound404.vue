@@ -4,7 +4,7 @@
             <LogoWhite class="mb-4"/>
             <h1>404</h1>
             <p>Oops! The property you're looking for doesn't exist.</p>
-            <router-link :to="{name:'app.home'}" class="btn-home">
+            <router-link :to="{name:'app.home'}" class="btn-home mt-4">
                 Back to home page
             </router-link>
         </div>

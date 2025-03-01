@@ -1,6 +1,6 @@
 <template>
     <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
-        <SaveAsDraftBtn/>
+      <SaveAsDraftBtn status=""/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
             <snake-nav active="11"/>
@@ -9,7 +9,7 @@
                 <h2>Attachments</h2>
                 <div class="dashboard-content-block">
                   <p>You can attach PDF files, Map images OR other documents to provide further details related to property.</p>
-                  <p><button @click="triggerFileInput" class="btn btn-primary">Select Attachment</button></p>
+                  <p><button @click="triggerFileInput" class="btn btn-primary mt-2">Select Attachment</button></p>
                   <input
                       type="file"
                       ref="fileInput"

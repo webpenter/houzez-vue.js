@@ -68,7 +68,7 @@ export const DASHBOARD_ROUTES = [
 	{ id:2, title:'Insight', name:'dashboard.insight', icon:'icon-analytics-bars', sub:[] },
 	{
 		id:3,
-		title:'My Properties',
+		title:'All Properties',
 		name:'dashboard.my-properties',
 		icon:'icon-building-cloudy',
 		sub:[

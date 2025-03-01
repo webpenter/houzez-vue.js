@@ -1,6 +1,6 @@
 <template>
     <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
-        <SaveAsDraftBtn/>
+      <SaveAsDraftBtn :status="property.property_status ?? ''"/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
             <snake-nav active="4"/>
