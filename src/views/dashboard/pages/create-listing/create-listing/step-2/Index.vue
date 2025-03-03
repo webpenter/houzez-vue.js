@@ -3,7 +3,7 @@
         <SaveAsDraftBtn/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
-            <snake-nav active="listing"/>
+            <snake-nav active="2"/>
             <div class="dashboard-content-inner-wrap">
               <form @submit.prevent="formSubmit">
                 <div class="dashboard-content-block-wrap">
@@ -12,7 +12,7 @@
                     <div class="row">
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Bedrooms</label>
+                          <label>Bedrooms *</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.bedrooms }"
@@ -28,7 +28,7 @@
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Bathrooms</label>
+                          <label>Bathrooms *</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.bathrooms }"
@@ -201,10 +201,22 @@ const validateField = (field) => {
     } else {
       localErrors.value.area_size = "";
     }
-  } else if (field === "bedrooms" && formData.value.bedrooms && isNaN(formData.value.bedrooms)) {
-    localErrors.value.bedrooms = "Bedrooms field must be a number.";
-  } else if (field === "bathrooms" && formData.value.bathrooms && isNaN(formData.value.bathrooms)) {
-    localErrors.value.bathrooms = "Bathrooms field must be a number.";
+  } else if (field === "bedrooms") {
+    if (!formData.value.bedrooms) {
+      localErrors.value.bedrooms = "Bedrooms field is required.";
+    } else if (isNaN(formData.value.bedrooms)) {
+      localErrors.value.bedrooms = "Bedrooms field must be a number.";
+    } else {
+      localErrors.value.bedrooms = "";
+    }
+  } else if (field === "bathrooms") {
+    if (!formData.value.bathrooms) {
+      localErrors.value.bathrooms = "Bathrooms field is required.";
+    } else if (isNaN(formData.value.bathrooms)) {
+      localErrors.value.bathrooms = "Bathrooms field must be a number.";
+    } else {
+      localErrors.value.bathrooms = "";
+    }
   } else if (field === "garages" && formData.value.garages && isNaN(formData.value.garages)) {
     localErrors.value.garages = "Garages field must be a number.";
   } else if (field === "land_area" && formData.value.land_area && isNaN(formData.value.land_area)) {
@@ -252,7 +264,7 @@ const formSubmit = async () => {
     btnLoading.value = false;
 
     if (res.status === 200) {
-      notify.Success(`Step 2 of ${PROPERTY_TOTAL_STEPS} completed. Your property has been recorded`);
+      notify.Success(`Step 2 of ${PROPERTY_TOTAL_STEPS} completed.`);
       router.push({name:"dashboard.create-listing.step-3",params:{propertyId:propertyId}});
     } else if (res.status === 404) {
       notify.Error("Property not found.");

@@ -3,7 +3,7 @@
         <SaveAsDraftBtn/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
-            <snake-nav active="listing"/>
+            <snake-nav active="7"/>
             <div class="dashboard-content-inner-wrap">
 
                 <form @submit.prevent="formSubmit">
@@ -70,7 +70,7 @@ const formSubmit = async () => {
     btnLoading.value = false;
 
     if (res.status === 200) {
-      notify.Success(`Step 7 of ${PROPERTY_TOTAL_STEPS} completed. Your property has been recorded`);
+      notify.Success(`Step 7 of ${PROPERTY_TOTAL_STEPS} completed.`);
       router.push({name:"dashboard.create-listing.step-10",params:{propertyId:propertyId}});
     } else if (res.status === 404) {
       notify.Error("Property not found.");

@@ -3,7 +3,7 @@
         <SaveAsDraftBtn/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
-            <snake-nav active="listing"/>
+            <snake-nav active="11"/>
             <div class="dashboard-content-inner-wrap">
               <div class="dashboard-content-block-wrap">
                 <h2>Attachments</h2>
@@ -118,7 +118,7 @@ const handleFileChange = async (event) => {
 
 
 const nextBtn = () => {
-  notify.Success(`Step 11 of ${PROPERTY_TOTAL_STEPS} completed. Your property has been recorded`);
+  notify.Success(`Step 11 of ${PROPERTY_TOTAL_STEPS} completed.`);
   router.push({name:"dashboard.create-listing.step-12",params:{propertyId:propertyId}});
 };
 

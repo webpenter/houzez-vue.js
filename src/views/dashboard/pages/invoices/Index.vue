@@ -5,7 +5,7 @@
       <div class="dashboard-content-block-wrap">
         <NoDataMsg
             msg="You don't have any invoice or transaction history"
-            v-if="invoices.length < 1"
+            v-if="invoiceCount < 1 && !loading"
         />
         <Table
             v-else
@@ -20,7 +20,7 @@
 <script setup>
 import {useInvoices, useNotification} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
-import {onMounted, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 import Table from "./Table.vue";
 import NoDataMsg from "@/views/dashboard/components/NoDataMsg.vue";
 
@@ -28,6 +28,8 @@ const invoicesStore = useInvoices();
 const {invoices} = storeToRefs(invoicesStore);
 
 const loading = ref(false);
+
+const invoiceCount = computed(() => Object.keys(invoices.value || {}).length);
 
 const getInvoices = async () => {
   loading.value = true;

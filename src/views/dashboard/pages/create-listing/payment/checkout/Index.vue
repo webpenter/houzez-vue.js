@@ -2,7 +2,7 @@
   <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING" />
 
   <section class="dashboard-content-wrap">
-    <SnakeNav active="payment" />
+    <SnakeNav2 active="payment" />
     <div class="d-flex display-block-on-tablet">
       <div class="order-2">
         <PackageDetail :plan="selectedPackage" :loading="planLoading" />
@@ -41,9 +41,9 @@
 import { ref, onMounted } from "vue";
 import { loadStripe } from "@stripe/stripe-js";
 import { useRoute, useRouter } from "vue-router";
-import { useNotification, useSubscription } from "@/stores/index.js";
+import {useIsSubscribed, useNotification, useSubscription} from "@/stores/index.js";
 import { storeToRefs } from "pinia";
-import SnakeNav from '../../components/SnakeNav.vue';
+import SnakeNav2 from '../../components/SnakeNav2.vue';
 import PackageDetail from "@/views/dashboard/pages/create-listing/payment/checkout/PackageDetail.vue";
 import { TITLE_CREATE_UPDATE_LISTING } from "@/constants/index.js";
 
@@ -103,6 +103,7 @@ const handlePayment = async () => {
   try {
     await subscriptionStore.processSubscription(route.params.planId, setupIntent.payment_method);
     useNotification().Success("Subscription successful!");
+    useIsSubscribed().setIsSubscribed(true);
     router.push({ name: "dashboard.create-listing.payment-completed" });
   } catch (error) {
     useNotification().Error(error?.data?.error);

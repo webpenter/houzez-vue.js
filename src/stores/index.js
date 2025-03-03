@@ -2,6 +2,7 @@
 export * from './auth/auth.js';
 export * from './auth/token.js';
 export * from './auth/admin.js';
+export * from './auth/isSubscribed.js';
 export * from './auth/profile.js';
 
 // ------------- Element-Plus Dir

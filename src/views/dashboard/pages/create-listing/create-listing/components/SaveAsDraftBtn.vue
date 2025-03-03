@@ -1,5 +1,5 @@
 <template>
-<RouterLink :to="{name:'dashboard.my-properties'}" class="btn btn-primary-outlined">My Properties</RouterLink>
+<RouterLink :to="{name:'dashboard.my-properties.draft'}" class="btn btn-primary-outlined">Save as draft</RouterLink>
 </template>
 
 <script setup>

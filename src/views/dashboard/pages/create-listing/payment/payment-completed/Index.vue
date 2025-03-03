@@ -1,8 +1,7 @@
 <template>
-    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
-    </DashboardHeader>
+    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING"/>
         <section class="dashboard-content-wrap">
-            <SnakeNav active="payment"/>
+            <SnakeNav2 active="completed"/>
             <div class="dashboard-content-inner-wrap">
 
                 <div class="dashboard-content-block-wrap">
@@ -22,7 +21,7 @@
 </template>
 
 <script setup>
-import SnakeNav from '../../components/SnakeNav.vue';
+import SnakeNav2 from '../../components/SnakeNav2.vue';
 import { RouterLink } from 'vue-router';
 import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 </script>
