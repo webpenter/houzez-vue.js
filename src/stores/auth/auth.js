@@ -12,7 +12,8 @@
 
 import { defineStore } from 'pinia'
 import axiosInstance from '@/services/axiosService'
-import { useToken } from '@/stores'
+import {useAdmin, useIsSubscribed, useToken} from '@/stores'
+import data from "bootstrap/js/src/dom/data.js";
 
 export const useAuth = defineStore('userAuth', {
     state: () => ({
@@ -40,6 +41,25 @@ export const useAuth = defineStore('userAuth', {
     },
 
     actions: {
+        async getUserInfo () {
+            try {
+                const res = await axiosInstance.get('/user');
+
+                this.user = res.data.user;
+
+                return new Promise(resolve => {
+                    return resolve(res);
+                })
+            } catch (error) {
+                if (error.response && error.response.data) {
+                    this.errors = error.response;
+                }
+
+                return new Promise(reject => {
+                    return reject(error.response);
+                })
+            }
+        },
         /**
          * @feature Registers a new user by sending their details to the server.
          * @param {Object} formData - The registration data (e.g., name, email, password, etc.).
@@ -172,13 +192,21 @@ export const useAuth = defineStore('userAuth', {
         },
         setAuthInfo (data) {
             const token = useToken()
+            const admin = useAdmin()
+            const isSubscribed = useIsSubscribed()
             this.user = data?.data
             token.setToken(data?.token)
-            this.isLggedIn = true
+            admin.setAdmin(data?.admin)
+            isSubscribed.setIsSubscribed(data?.isSubscribed)
+            this.isLggedIn = true;
         },
         removeAuthInfo () {
             const token = useToken()
+            const admin = useAdmin()
+            const isSubscribed = useIsSubscribed()
             token.removeToken()
+            admin.removeAdmin()
+            isSubscribed.removeIsSubscribed()
             this.isLoggedIn = false
             this.$reset()
         }

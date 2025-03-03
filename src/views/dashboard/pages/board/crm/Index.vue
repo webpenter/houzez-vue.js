@@ -26,5 +26,4 @@
 import ActivitiesList from '@/views/inc/dashboard/board/ActivitiesList.vue';
 import StatisticDeals from '@/views/inc/dashboard/board/StatisticDeals.vue';
 import StatisticLeads from '@/views/inc/dashboard/board/StatisticLeads.vue';
-
 </script>

@@ -12,7 +12,7 @@
 
 import { createRouter, createWebHistory } from 'vue-router';
 import {DEFAULT_TITLE, TITLE_CREATE_UPDATE_LISTING, URL_CREATE_UPDATE_LISTING} from "@/constants";
-import {useToken,useGeneralSettings} from "@/stores/index.js";
+import {useToken, useGeneralSettings, useAdmin, useIsSubscribed} from "@/stores/index.js";
 
 const routes = [
     /**
@@ -374,79 +374,79 @@ const routes = [
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/step-1/:propertyId(\\d+)?`,
                 name: 'dashboard.create-listing.step-1',
                 component: () => import('@/views/dashboard/pages/create-listing/create-listing/step-1/Index.vue'),
-                meta: { title: TITLE_CREATE_UPDATE_LISTING }
+                meta: { title: TITLE_CREATE_UPDATE_LISTING, isSubscribed: true },
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/step-2/:propertyId(\\d+)`,
                 name: 'dashboard.create-listing.step-2',
                 component: () => import('@/views/dashboard/pages/create-listing/create-listing/step-2/Index.vue'),
-                meta: { title: TITLE_CREATE_UPDATE_LISTING }
+                meta: { title: TITLE_CREATE_UPDATE_LISTING, isSubscribed: true }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/step-3/:propertyId(\\d+)`,
                 name: 'dashboard.create-listing.step-3',
                 component: () => import('@/views/dashboard/pages/create-listing/create-listing/step-3/Index.vue'),
-                meta: { title: TITLE_CREATE_UPDATE_LISTING }
+                meta: { title: TITLE_CREATE_UPDATE_LISTING, isSubscribed: true }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/step-4/:propertyId(\\d+)`,
                 name: 'dashboard.create-listing.step-4',
                 component: () => import('@/views/dashboard/pages/create-listing/create-listing/step-4/Index.vue'),
-                meta: { title: TITLE_CREATE_UPDATE_LISTING }
+                meta: { title: TITLE_CREATE_UPDATE_LISTING, isSubscribed: true }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/step-5/:propertyId(\\d+)`,
                 name: 'dashboard.create-listing.step-5',
                 component: () => import('@/views/dashboard/pages/create-listing/create-listing/step-5/Index.vue'),
-                meta: { title: TITLE_CREATE_UPDATE_LISTING }
+                meta: { title: TITLE_CREATE_UPDATE_LISTING, isSubscribed: true }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/step-6/:propertyId(\\d+)`,
                 name: 'dashboard.create-listing.step-6',
                 component: () => import('@/views/dashboard/pages/create-listing/create-listing/step-6/Index.vue'),
-                meta: { title: TITLE_CREATE_UPDATE_LISTING }
+                meta: { title: TITLE_CREATE_UPDATE_LISTING, isSubscribed: true }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/step-7/:propertyId(\\d+)`,
                 name: 'dashboard.create-listing.step-7',
                 component: () => import('@/views/dashboard/pages/create-listing/create-listing/step-7/Index.vue'),
-                meta: { title: TITLE_CREATE_UPDATE_LISTING }
+                meta: { title: TITLE_CREATE_UPDATE_LISTING, isSubscribed: true }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/step-8/:propertyId(\\d+)`,
                 name: 'dashboard.create-listing.step-8',
                 component: () => import('@/views/dashboard/pages/create-listing/create-listing/step-8/Index.vue'),
-                meta: { title: TITLE_CREATE_UPDATE_LISTING }
+                meta: { title: TITLE_CREATE_UPDATE_LISTING, isSubscribed: true }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/step-9/:propertyId(\\d+)`,
                 name: 'dashboard.create-listing.step-9',
                 component: () => import('@/views/dashboard/pages/create-listing/create-listing/step-9/Index.vue'),
-                meta: { title: TITLE_CREATE_UPDATE_LISTING }
+                meta: { title: TITLE_CREATE_UPDATE_LISTING, isSubscribed: true }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/step-10/:propertyId(\\d+)`,
                 name: 'dashboard.create-listing.step-10',
                 component: () => import('@/views/dashboard/pages/create-listing/create-listing/step-10/Index.vue'),
-                meta: { title: TITLE_CREATE_UPDATE_LISTING }
+                meta: { title: TITLE_CREATE_UPDATE_LISTING, isSubscribed: true }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/step-11/:propertyId(\\d+)`,
                 name: 'dashboard.create-listing.step-11',
                 component: () => import('@/views/dashboard/pages/create-listing/create-listing/step-11/Index.vue'),
-                meta: { title: TITLE_CREATE_UPDATE_LISTING }
+                meta: { title: TITLE_CREATE_UPDATE_LISTING, isSubscribed: true }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/step-12/:propertyId(\\d+)`,
                 name: 'dashboard.create-listing.step-12',
                 component: () => import('@/views/dashboard/pages/create-listing/create-listing/step-12/Index.vue'),
-                meta: { title: TITLE_CREATE_UPDATE_LISTING }
+                meta: { title: TITLE_CREATE_UPDATE_LISTING, isSubscribed: true }
             },
             {
                 path: `/dashboard/${URL_CREATE_UPDATE_LISTING}/completed`,
                 name: 'dashboard.create-listing.completed',
                 component: () => import('@/views/dashboard/pages/create-listing/completed/Index.vue'),
-                meta: { title: TITLE_CREATE_UPDATE_LISTING }
+                meta: { title: TITLE_CREATE_UPDATE_LISTING, isSubscribed: true }
             },
 
             /***
@@ -523,19 +523,19 @@ const routes = [
                 path: '/dashboard/settings/general',
                 name:'dashboard.settings.general',
                 component:() => import('@/views/dashboard/pages/settings/general/Index.vue'),
-                meta:{ title:'General Settings' }
+                meta:{ title:'General Settings', admin: true }
             },
             {
                 path: '/dashboard/settings/all-packages',
                 name:'dashboard.settings.all-packages',
                 component:() => import('@/views/dashboard/pages/settings/package/all-packages/Index.vue'),
-                meta:{ title:'All Packages' }
+                meta:{ title:'All Packages', admin: true }
             },
             {
                 path: '/dashboard/settings/create-package',
                 name:'dashboard.settings.create-package',
                 component:() => import('@/views/dashboard/pages/settings/package/create-package/Index.vue'),
-                meta:{ title:'Create Package' }
+                meta:{ title:'Create Package', admin: true }
             },
         ]
     },
@@ -559,6 +559,16 @@ const routes = [
         name: "unauthorized-403",
         component: () => import('@/components/pages/Unauthorized403.vue'),
         meta: { title: "403 Unauthorized", auth: true },
+    },
+    /*** ---------------
+     * @route 403-Unauthorized-Admin
+     * @auth required
+     ***/
+    {
+        path: "/unauthorized-admin-403",
+        name: "unauthorized-admin-403",
+        component: () => import('@/components/pages/UnauthorizedAdmin403.vue'),
+        meta: { title: "403 Unauthorized Admin", auth: true },
     },
     /*** ---------------
      * @route 401-Unauthorized
@@ -611,28 +621,56 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    /**
-     * @feature Retrieve the token for authentication from the token store "Pinia"
-     **/
+
     const token = useToken().getToken;
+    const admin = useAdmin().getAdmin;
+    const isSubscribed = useIsSubscribed().getIsSubscribed;
     console.log("Token Val: ", token);
+    console.log("Admin Val: ", admin);
+    console.log("IsSubscribed Val: ", isSubscribed);
 
     /**
-     * @feature Check if the current route requires authentication but no valid token is present.
-     * @feature Redirect to the login page if the route requires authentication and the user is not logged in.
-     * @feature Check if the current route is for guest users only, but a valid token exists.
-     * @feature Redirect to the "access-denied" if the user is already authenticated and trying to access a guest-only route.
-     * @feature Allow navigation to the route if no guard conditions are triggered.
-     **/
-    if (to.meta.auth && token === null) {
-        next({ name: 'auth' });
+     * @feature Authentication Check:
+     * - If the route requires authentication (`meta.auth === true`) and no token is found,
+     *   redirect the user to the login page.
+     */
+    if (to.meta.auth && !token) {
+        return next({ name: 'auth' });
     }
-    else if (to.meta.guest && token !== null) {
-        next({ name: 'dashboard' });
+
+    /**
+     * @feature Guest Route Handling:
+     * - If the route is for guests (`meta.guest === true`) but a token exists,
+     *   redirect the user to the dashboard.
+     */
+    if (to.meta.guest && token) {
+        return next({ name: 'dashboard' });
     }
-    else {
-        next();
+
+    /**
+     * @feature Admin Route Restriction:
+     * - If the route requires admin access (`meta.admin === true`) but the user is not an admin,
+     *   redirect to the unauthorized page.
+     */
+    if (to.meta.admin && !admin) {
+        return next({ name: 'unauthorized-admin-403' });
     }
+
+    /**
+     * @feature Package Subscription Route Restriction:
+     *
+     * - If the route requires an active subscription (`meta.isSubscribed === true`) but the user does not have an active subscription, redirect them to the
+     *   "No Package" page to prompt a subscription or plan upgrade.
+     */
+    if (to.meta.isSubscribed && !isSubscribed) {
+        return next({ name: 'dashboard.create-listing.no-package' });
+    }
+
+    /**
+     * @feature Default Navigation:
+     * - If none of the above conditions are met, allow the user to proceed to the requested route.
+     */
+    next();
 
     /**
      *  @feature Set the document title dynamically based on the meta property of the current route.

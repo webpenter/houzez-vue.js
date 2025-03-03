@@ -3,7 +3,7 @@
         <SaveAsDraftBtn/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
-            <SnakeNav active="listing"/>
+            <SnakeNav active="1"/>
             <div class="dashboard-content-inner-wrap">
 
               <form @submit.prevent="formSubmit">
@@ -100,12 +100,12 @@
                 </div><!-- dashboard-content-block-wrap -->
 
                 <div class="dashboard-content-block-wrap">
-                  <h2>Price *</h2>
+                  <h2>Price</h2>
                   <div class="dashboard-content-block">
                     <div class="row">
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Sale or Rent Price</label>
+                          <label>Sale or Rent Price *</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.price }"
@@ -256,7 +256,7 @@ const formSubmit = async () => {
 
     if ([200, 201].includes(res.status)) {
       const newPropertyId = res.data.property.id;
-      notify.Success(`Step 1 of ${PROPERTY_TOTAL_STEPS} completed. Your property has been recorded`);
+      notify.Success(`Step 1 of ${PROPERTY_TOTAL_STEPS} completed.`);
       router.push({name:"dashboard.create-listing.step-2",params:{propertyId:newPropertyId}});
     } else if (res.status === 404) {
       notify.Error("Property not found.");
