@@ -1,6 +1,6 @@
 <template>
   <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
-    <SaveAsDraftBtn/>
+    <SaveAsDraftBtn :status="property.property_status ?? ''"/>
   </DashboardHeader>
   <section class="dashboard-content-wrap dashboard-add-new-listing">
     <snake-nav active="5"/>
@@ -122,22 +122,18 @@ import SnakeNav from '../../components/SnakeNav.vue';
 import SaveAsDraftBtn from '../components/SaveAsDraftBtn.vue';
 import NextBtn from '../components/NextBtn.vue';
 import BackBtn from '../components/BackBtn.vue';
-import SectionLocation from '@/views/inc/dashboard/property/SectionLocation.vue';
-import Map from "@/views/inc/Map.vue";
 import { useRoute, useRouter } from "vue-router";
 import { useNotification, useProperty } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
-import { computed, onMounted, ref, watch } from "vue";
-import {MAP_CONFIG, PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
+import { onMounted, ref, watch } from "vue";
+import {MAP_CONFIG, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
+import {useEditProperty, usePropertyForm} from "@/traits/property/manageProperty.js";
 import L from "leaflet";
 
 const route = useRoute();
-const router = useRouter();
 const propertyId = route.params.propertyId;
 const propertyToRefs = useProperty();
 const { property } = storeToRefs(propertyToRefs);
-const notify = useNotification();
-const btnLoading = ref(false);
 
 const formData = ref({
   address: "",
@@ -189,57 +185,18 @@ const validateField = (field) => {
   }
 };
 
-const hasErrors = computed(() =>
-  Object.values(localErrors.value).some((error) => error !== "")
+const {editData} = useEditProperty();
+
+const { formSubmit, btnLoading, hasErrors } = usePropertyForm(
+    propertyId,
+    formData,
+    localErrors,
+    validateField,
+    5,
 );
 
-const editData = async () => {
-  const res = await propertyToRefs.edit(propertyId);
-  if (res.status === 404) {
-    return router.push({ name: "property-not-found-404" });
-  } else if (res.status === 403) {
-    return router.push({ name: "unauthorized-403" });
-  }
-};
-
-const formSubmit = async () => {
-  Object.keys(localErrors.value).forEach((field) => validateField(field));
-
-  if (hasErrors.value) {
-    notify.Error("Please fix the validation errors before proceeding.");
-    return;
-  }
-
-  btnLoading.value = true;
-
-  try {
-    const res = await propertyToRefs.createOrUpdate(formData.value, propertyId);
-
-    btnLoading.value = false;
-
-    if (res.status === 200) {
-      notify.Success(
-        `Step 5 of ${PROPERTY_TOTAL_STEPS} completed.`
-      );
-      router.push({
-        name: "dashboard.create-listing.step-6",
-        params: { propertyId: propertyId },
-      });
-    } else if (res.status === 404) {
-      notify.Error("Property not found.");
-    } else if (res.status === 403) {
-      notify.Error("You are not authorized to perform this action.");
-    } else {
-      notify.Error("An error occurred while processing the request.");
-    }
-  } catch (error) {
-    btnLoading.value = false;
-    notify.Error("An error occurred");
-  }
-};
-
 onMounted(() => {
-  editData();
+  editData(propertyId);
 
   if (property.value) {
     formData.value = { ...property.value };

@@ -25,14 +25,14 @@ import Table from "./Table.vue";
 
 const subscriptionStore = useSubscription();
 const {userSubscriptions} = storeToRefs(subscriptionStore);
-
+console.log("Frontend User Subscriptions naresh:", userSubscriptions.value);
 const loading = ref(false);
 
 const getUserSubscriptions = async () => {
-  loading.value = true;
+  loading.value = true; 
 
   try {
-    await subscriptionStore.getUserSubscriptions();
+    await subscriptionStore.getUserSubscriptions(); 
     loading.value = false;
   } catch (error) {
     useNotification().Error("Something went wrong!");

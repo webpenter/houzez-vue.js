@@ -1,5 +1,5 @@
 <template>
-  <DashboardHeader heading="My Properties">
+  <DashboardHeader heading="All Properties">
     <CreateListingBtn/>
   </DashboardHeader>
 

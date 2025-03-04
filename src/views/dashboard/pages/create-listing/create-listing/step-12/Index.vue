@@ -1,6 +1,6 @@
 <template>
     <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
-        <SaveAsDraftBtn/>
+      <SaveAsDraftBtn :status="property.property_status ?? ''"/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
             <snake-nav active="12"/>
@@ -37,6 +37,7 @@ import {useNotification, useProperty} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 import {onMounted, ref, watch} from "vue";
 import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
+import {useEditProperty} from "@/traits/property/manageProperty.js";
 
 const route = useRoute();
 const router = useRouter();
@@ -51,15 +52,7 @@ const formData = ref({
   property_status: "",
 });
 
-const editData = async () => {
-  const res = await propertyToRefs.edit(propertyId);
-
-  if (res.status === 404) {
-    return router.push({name:"property-not-found-404"});
-  } else if (res.status === 403) {
-    return router.push({name:"unauthorized-403"});
-  }
-}
+const {editData} = useEditProperty();
 
 const formSubmit = async () => {
   btnLoading.value = true;
@@ -75,7 +68,7 @@ const formSubmit = async () => {
 
     if (res.status === 200) {
       notify.Success(`All steps have been completed.`);
-      router.push({name:"dashboard.create-listing.completed",params:{propertyId:propertyId}});
+      router.push({name:"dashboard.create-listing.completed"});
     } else if (res.status === 404) {
       notify.Error("Property not found.");
     } else if (res.status === 403) {
@@ -90,7 +83,7 @@ const formSubmit = async () => {
 };
 
 onMounted(() => {
-  editData();
+  editData(propertyId);
 
   if (property.value){
     formData.value = { ...property.value };

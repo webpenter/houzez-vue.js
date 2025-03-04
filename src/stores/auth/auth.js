@@ -41,6 +41,12 @@ export const useAuth = defineStore('userAuth', {
     },
 
     actions: {
+        /**
+         * Fetch User Info
+         * @function getUserInfo
+         * @returns {Promise<Object>} Resolves with the user data response on success.
+         * @throws {Object} Rejects with the error response if the request fails.
+         */
         async getUserInfo () {
             try {
                 const res = await axiosInstance.get('/user');
@@ -60,6 +66,7 @@ export const useAuth = defineStore('userAuth', {
                 })
             }
         },
+
         /**
          * @feature Registers a new user by sending their details to the server.
          * @param {Object} formData - The registration data (e.g., name, email, password, etc.).

@@ -82,7 +82,7 @@ export const useSubscription = defineStore('subscription', {
 
             try {
                 const response = await axiosInstance.get(url);
-
+                console.log("Subscriptions:", response.data.subscriptions);
                 this.userSubscriptions = response.data.subscriptions;
 
                 return new Promise(resolve => {
