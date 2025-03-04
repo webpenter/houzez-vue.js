@@ -537,6 +537,12 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/settings/package/create-package/Index.vue'),
                 meta:{ title:'Create Package', admin: true }
             },
+            {
+                path: '/dashboard/my-blog',
+                name:'dashboard.my-blog',
+                component:() => import('@/views/dashboard/pages/my-blog/Index.vue'),
+                meta:{ title:'My Blog' }
+            },
         ]
     },
 
