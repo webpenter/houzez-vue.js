@@ -10,39 +10,40 @@
         </button>
       </div>
     </div>
-    <!-- Success/Error Message -->
-    <p v-if="message" :class="{'text-success': success, 'text-danger': !success}">
-      {{ message }}
-    </p>
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import { useNewsLetter } from '@/stores/newsletter/subscribe'; // Import Pinia store
+import { useNotification } from "@/stores/index.js";
 
-export default {
-  setup() {
-    const email = ref('');
-    const message = ref('');
-    const success = ref(false);
-    const newsLetter = useNewsLetter(); // Initialize store
+const email = ref('');
+const newsLetter = useNewsLetter(); // Initialize store
+const notify = useNotification();
 
-    const subscribeNewsletter = async () => {
-      if (!email.value) {
-        message.value = "Please enter a valid email!";
-        success.value = false;
-        return;
+const subscribeNewsletter = async () => {
+  if (!email.value) {
+    notify.Error("Please enter a valid email!");
+    return;
+  }
+
+  try {
+    const response = await newsLetter.subscribeNewsletter(email.value);
+
+    if (response.success) {
+      if (response.status === 200) {
+        notify.Success(response.message || "Newsletter subscribed successfully.");
+        email.value = ''; // Clear input field on success
+      } else if (response.status === 409) {
+        notify.Error(response.message || "You are already Subscribed.");
       }
-
-      const response = await newsLetter.subscribeNewsletter(email.value);
-      message.value = response.message;
-      success.value = response.success;
-
-      if (response.success) email.value = ''; // Clear input field on success
-    };
-
-    return { email, message, success, subscribeNewsletter };
+    } else {
+      notify.Error(response.message || "Subscription Failed.");
+    }
+  } catch (error) {
+    notify.Error("An error occurred. Please try again.");
   }
 };
 </script>
+  

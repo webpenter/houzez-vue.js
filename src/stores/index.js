@@ -32,3 +32,6 @@ export * from './properties/appProperty.js';
 export * from './stripe-payments/package.js';
 export * from './stripe-payments/subscription.js';
 export * from './stripe-payments/invoices.js';
+
+// ----------- newletter subscription
+export * from './newsletter/subscribe.js';
