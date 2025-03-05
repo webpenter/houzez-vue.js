@@ -4,7 +4,7 @@
             <LogoWhite class="mb-4"/>
             <h1>403</h1>
             <p>You are not authorized to perform any action to this property.</p>
-            <router-link :to="{name:'dashboard.my-properties'}" class="btn-home">
+            <router-link :to="{name:'dashboard.my-properties'}" class="btn-home mt-4">
               Go to My properties
             </router-link>
         </div>

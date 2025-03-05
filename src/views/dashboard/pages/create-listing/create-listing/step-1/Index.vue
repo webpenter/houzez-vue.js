@@ -1,11 +1,10 @@
 <template>
     <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
-        <SaveAsDraftBtn/>
+        <SaveAsDraftBtn :status="property.property_status ?? ''"/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
             <SnakeNav active="1"/>
             <div class="dashboard-content-inner-wrap">
-
               <form @submit.prevent="formSubmit">
                 <div class="dashboard-content-block-wrap">
                   <h2>Description</h2>
@@ -175,6 +174,7 @@ import {useLabel,useType, useNotification, useProperty, useStatus} from "@/store
 import {storeToRefs} from "pinia";
 import {PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 import NextBtn from "@/views/dashboard/pages/create-listing/create-listing/components/NextBtn.vue";
+import {useEditProperty} from "@/traits/property/manageProperty.js";
 
 const route = useRoute();
 const router = useRouter();
@@ -213,12 +213,12 @@ const validateField = (field) => {
     if (!formData.value.price) {
       localErrors.value.price = "Price field is required.";
     } else if (isNaN(formData.value.price)) {
-      localErrors.value.price = "Price must be a number.";
+      localErrors.value.price = "Price field must be a number.";
     } else {
       localErrors.value.price = "";
     }
   } else if (field === "second_price" && formData.value.second_price && isNaN(formData.value.second_price)) {
-    localErrors.value.second_price = "Second price must be a number.";
+    localErrors.value.second_price = "Second price field must be a number.";
   } else {
     localErrors.value[field] = "";
   }
@@ -228,15 +228,7 @@ const hasErrors = computed(() =>
     Object.values(localErrors.value).some((error) => error !== "")
 );
 
-const editData = async () => {
-  const res = await propertyToRefs.edit(propertyId);
-
-  if (res.status === 404) {
-      return router.push({name:"property-not-found-404"});
-  } else if (res.status === 403) {
-      return router.push({name:"unauthorized-403"});
-  }
-}
+const {editData} = useEditProperty();
 
 const formSubmit = async () => {
   Object.keys(localErrors.value).forEach((field) => validateField(field));
@@ -273,7 +265,7 @@ const formSubmit = async () => {
 
 onMounted(() => {
   if (propertyId){
-    editData();
+    editData(propertyId);
   }
 
   if (property.value){
