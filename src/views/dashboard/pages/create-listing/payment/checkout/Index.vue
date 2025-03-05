@@ -42,7 +42,7 @@ import { ref, onMounted } from "vue";
 import { loadStripe } from "@stripe/stripe-js";
 import { useRoute, useRouter } from "vue-router";
 import { useNotification, useSubscription } from "@/stores/index.js";
-import { storeToRefs } from "pinia";
+import { storeToRefs } from "pinia";  
 import SnakeNav from '../../components/SnakeNav.vue';
 import PackageDetail from "@/views/dashboard/pages/create-listing/payment/checkout/PackageDetail.vue";
 import { TITLE_CREATE_UPDATE_LISTING } from "@/constants/index.js";

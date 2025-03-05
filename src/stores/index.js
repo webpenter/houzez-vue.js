@@ -1,6 +1,7 @@
 // -------------- Auth Dir
 export * from './auth/auth.js';
 export * from './auth/token.js';
+export * from './auth/admin.js';
 export * from './auth/profile.js';
 
 // ------------- Element-Plus Dir
@@ -29,3 +30,7 @@ export * from './properties/appProperty.js';
 export * from './stripe-payments/package.js';
 export * from './stripe-payments/subscription.js';
 export * from './stripe-payments/invoices.js';
+
+// savedsearch
+
+export * from './savedSearch.js';

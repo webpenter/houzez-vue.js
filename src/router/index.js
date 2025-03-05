@@ -12,7 +12,7 @@
 
 import { createRouter, createWebHistory } from 'vue-router';
 import {DEFAULT_TITLE, TITLE_CREATE_UPDATE_LISTING, URL_CREATE_UPDATE_LISTING} from "@/constants";
-import {useToken,useGeneralSettings} from "@/stores/index.js";
+import {useToken, useGeneralSettings, useAdmin} from "@/stores/index.js";
 
 const routes = [
     /**
@@ -496,6 +496,29 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/my-profile/Index.vue'),
                 meta:{ title:'My Profile' }
             },
+            /***
+             * @route Dashboard/Settings/General
+             * @route Dashboard/Settings/AllPackages
+             * @route Dashboard/Settings/Create-Package
+             ***/
+            {
+                path: '/dashboard/settings/general',
+                name:'dashboard.settings.general',
+                component:() => import('@/views/dashboard/pages/settings/general/Index.vue'),
+                meta:{ title:'General Settings', admin: true }
+            },
+            {
+                path: '/dashboard/settings/all-packages',
+                name:'dashboard.settings.all-packages',
+                component:() => import('@/views/dashboard/pages/settings/package/all-packages/Index.vue'),
+                meta:{ title:'All Packages', admin: true }
+            },
+            {
+                path: '/dashboard/settings/create-package',
+                name:'dashboard.settings.create-package',
+                component:() => import('@/views/dashboard/pages/settings/package/create-package/Index.vue'),
+                meta:{ title:'Create Package', admin: true }
+            },
         ]
     },
 
@@ -518,6 +541,16 @@ const routes = [
         name: "unauthorized-403",
         component: () => import('@/components/pages/Unauthorized403.vue'),
         meta: { title: "403 Unauthorized", auth: true },
+    },
+    /*** ---------------
+     * @route 403-Unauthorized-Admin
+     * @auth required
+     ***/
+    {
+        path: "/unauthorized-admin-403",
+        name: "unauthorized-admin-403",
+        component: () => import('@/components/pages/UnauthorizedAdmin403.vue'),
+        meta: { title: "403 Unauthorized Admin", auth: true },
     },
     /*** ---------------
      * @route 401-Unauthorized
@@ -570,28 +603,44 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    /**
-     * @feature Retrieve the token for authentication from the token store "Pinia"
-     **/
+
     const token = useToken().getToken;
+    const admin = useAdmin().getAdmin;
     console.log("Token Val: ", token);
+    console.log("Admin Val: ", admin);
 
     /**
-     * @feature Check if the current route requires authentication but no valid token is present.
-     * @feature Redirect to the login page if the route requires authentication and the user is not logged in.
-     * @feature Check if the current route is for guest users only, but a valid token exists.
-     * @feature Redirect to the "access-denied" if the user is already authenticated and trying to access a guest-only route.
-     * @feature Allow navigation to the route if no guard conditions are triggered.
-     **/
-    if (to.meta.auth && token === null) {
-        next({ name: 'auth' });
+     * @feature Authentication Check:
+     * - If the route requires authentication (`meta.auth === true`) and no token is found,
+     *   redirect the user to the login page.
+     */
+    if (to.meta.auth && !token) {
+        return next({ name: 'auth' });
     }
-    else if (to.meta.guest && token !== null) {
-        next({ name: 'dashboard' });
+
+    /**
+     * @feature Guest Route Handling:
+     * - If the route is for guests (`meta.guest === true`) but a token exists,
+     *   redirect the user to the dashboard.
+     */
+    if (to.meta.guest && token) {
+        return next({ name: 'dashboard' });
     }
-    else {
-        next();
+
+    /**
+     * @feature Admin Route Restriction:
+     * - If the route requires admin access (`meta.admin === true`) but the user is not an admin,
+     *   redirect to the unauthorized page.
+     */
+    if (to.meta.admin && !admin) {
+        return next({ name: 'unauthorized-admin-403' });
     }
+
+    /**
+     * @feature Default Navigation:
+     * - If none of the above conditions are met, allow the user to proceed to the requested route.
+     */
+    next();
 
     /**
      *  @feature Set the document title dynamically based on the meta property of the current route.

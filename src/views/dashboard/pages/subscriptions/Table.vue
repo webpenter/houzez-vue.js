@@ -32,7 +32,7 @@
           </span>
         </td>
         <td class="property-table-status">
-          {{ subscription.plan.currency_symbol + subscription.plan.price }}
+          {{ subscription.plan ? subscription.plan.currency_symbol + subscription.plan.price: 'N/A' }}
         </td>
         <td class="property-table-status">
           {{ subscription.quantity }}

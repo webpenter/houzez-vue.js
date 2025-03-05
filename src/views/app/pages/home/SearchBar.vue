@@ -94,29 +94,53 @@
 </template>
 
 <script setup>
-import {storeToRefs} from "pinia";
-import {useAppProperty, useBedroom, useCity, useNotification, usePrice, useType} from "@/stores/index.js";
-import {ref} from "vue";
-import {useRouter} from "vue-router";
+import { storeToRefs } from "pinia";
+import { useAppProperty, useBedroom, useCity, useNotification, usePrice, useType } from "@/stores/index.js";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useSavedSearch } from "@/stores/savedSearch";
 
 const router = useRouter();
 const propertyToRefs = useAppProperty();
+const savedSearchStore = useSavedSearch();
+const notify = useNotification();
 
 const formData = ref({
-  search:"",
+ 
   types: [],
   city: "",
   bedrooms: "",
   maxPrice: "",
 });
 
-const {types} = storeToRefs(useType());
-const {cities} = storeToRefs(useCity());
-const {prices} = storeToRefs(usePrice());
-const {bedrooms} = storeToRefs(useBedroom());
+const { types } = storeToRefs(useType());
+const { cities } = storeToRefs(useCity());
+const { prices } = storeToRefs(usePrice());
+const { bedrooms } = storeToRefs(useBedroom());
 
 const searchProperty = async () => {
   try {
+    // Prepare complete search data
+    const searchPayload = {
+      search: formData.value.search,
+      types: formData.value.types,
+      city: formData.value.city,
+      bedrooms: formData.value.bedrooms,
+      maxPrice: formData.value.maxPrice,
+    };
+
+    // Save search if any criteria exists
+    if (searchPayload.search || searchPayload.types.length || searchPayload.city || 
+        searchPayload.bedrooms || searchPayload.maxPrice) {
+      const saveResponse = await savedSearchStore.saveSearch(searchPayload);
+      
+      if (!saveResponse.success) {
+        notify.Error(saveResponse.message);
+        return; // Stop execution if save fails
+      }
+    }
+
+    // Existing property search logic
     await propertyToRefs.getSearchedAndFilteredProperties(formData.value);
 
     router.push({
@@ -130,7 +154,7 @@ const searchProperty = async () => {
       },
     });
   } catch (error) {
-    useNotification().Error("Error fetching properties:", error);
+    notify.Error("Error processing search:", error.message);
   }
-}
+};
 </script>
