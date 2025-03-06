@@ -106,7 +106,7 @@ const savedSearchStore = useSavedSearch();
 const notify = useNotification();
 
 const formData = ref({
- 
+  search: "",
   types: [],
   city: "",
   bedrooms: "",

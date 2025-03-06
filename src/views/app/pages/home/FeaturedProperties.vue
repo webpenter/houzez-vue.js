@@ -21,6 +21,13 @@
                 class="property-image"
                 @load="imageLoaded(index)"
             >
+
+            <!-- Heart Icon -->
+            <i 
+              class="fa-solid fa-heart favorite-icon" 
+              :class="{ 'favorited': property.is_favorite }"
+              @click="toggleFavorite(property)"
+            ></i>
           </div>
 
           <div class="property-details">
@@ -53,35 +60,56 @@
     </div>
   </div>
 </template>
-
 <script setup>
 import { useAppProperty } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
 import { onMounted, reactive, ref } from "vue";
-import {RouterLink} from "vue-router";
-
+import { RouterLink } from "vue-router";
+import { useFavoriteStore } from '@/stores/favourite.js';
 const propertyToRefs = useAppProperty();
 const { featuredProperties } = storeToRefs(propertyToRefs);
-
 const loading = ref(true);
 const isLoaded = reactive({});
-
 const imageLoaded = (index) => {
   isLoaded[index] = true;
 };
+
+// ** Toggle Favorite Function **
+const toggleFavorite = async (property) => {
+  try {
+    const favoriteStore = useFavoriteStore();
+    const response = await favoriteStore.toggleFavorite(property);
+    
+    if (response.success) {
+      // Update local state or reload data
+      property.is_favorite = !property.is_favorite;
+    }
+  } catch (error) {
+    console.error("Error toggling favorite:", error);
+    alert("Failed to toggle favorite. Please try again.");
+  }
+};
+
 
 const fetchFeaturedProperties = async () => {
   loading.value = true;
   const res = await propertyToRefs.getFeaturedProperties();
 
+  console.log("Response Data:", res.data); // Debugging
+
   if (res.status === 200) {
     loading.value = false;
 
-    res.data.forEach((_, index) => {
-      isLoaded[index] = false;
-    });
+    if (Array.isArray(res.data)) {
+      res.data.forEach((_, index) => {
+        isLoaded[index] = false;
+      });
+    } else {
+      console.error("Expected an array, but got:", res.data);
+    }
   }
 };
+
 
 onMounted(() => fetchFeaturedProperties());
 </script>
@@ -106,5 +134,20 @@ onMounted(() => fetchFeaturedProperties());
   width: 375px;
   height: 250px;
   border-radius: 10px;
+}
+
+/* Heart Icon Styling */
+.favorite-icon {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: green; /* Default (Not Favorited) */
+}
+
+.favorite-icon.favorited {
+  color: red; /* Favorited */
 }
 </style>

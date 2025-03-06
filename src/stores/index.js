@@ -34,3 +34,4 @@ export * from './stripe-payments/invoices.js';
 // savedsearch
 
 export * from './savedSearch.js';
+export * from './favourite.js';
