@@ -9,7 +9,7 @@
 
     <div class="news-slider" id="newsSlider">
       <div class="news-card">
-        <img src="/public/img/client-side/hero-section-img.png" alt="News">
+        <img src="/img/client-side/hero-section-img.png" alt="News">
         <div class="news-card-body">
           <div class="news-date"><p>March 17, 20224</p><p>3 min read</p></div>
           <p class="news-title-text">Dynamically simplify superior human capital</p>
@@ -18,7 +18,7 @@
       </div>
 
       <div class="news-card">
-        <img src="/public/img/client-side/bg-hero.png" alt="News">
+        <img src="/img/client-side/bg-hero.png" alt="News">
         <div class="news-card-body">
           <div class="news-date"><p>March 17, 20224</p><p>3 min read</p></div>
           <p class="news-title-text">Enrich Your Mind Envision Your Future Education</p>
@@ -27,7 +27,7 @@
       </div>
 
       <div class="news-card">
-        <img src="/public/img/client-side/hero-section-img.png" alt="News">
+        <img src="/img/client-side/hero-section-img.png" alt="News">
         <div class="news-card-body">
           <div class="news-date"><p>March 17, 20224</p><p>3 min read</p></div>
           <p class="news-title-text">University class starting soon with teamwork</p>
@@ -36,7 +36,7 @@
       </div>
 
       <div class="news-card">
-        <img src="/public/img/client-side/bg-hero.png" alt="News">
+        <img src="/img/client-side/bg-hero.png" alt="News">
         <div class="news-card-body">
           <div class="news-date"><p>March 17, 20224</p><p>3 min read</p></div>
           <p class="news-title-text">Emphasizes the importance of continuous learning</p>
@@ -45,7 +45,7 @@
       </div>
 
       <div class="news-card">
-        <img src="/public/img/client-side/hero-section-img.png" alt="News">
+        <img src="/img/client-side/hero-section-img.png" alt="News">
         <div class="news-card-body">
           <div class="news-date"><p>March 17, 20224</p><p>3 min read</p></div>
           <p class="news-title-text">Emphasizes the importance of continuous learning</p>
