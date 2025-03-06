@@ -16,6 +16,7 @@ import axiosInstance from "@/services/axiosService.js";
 export const useFavoriteProperty = defineStore('favorite_property', {
     state: () => ({
         properties:{},
+        isFavorite: false,
         errors: {},
         loading: false,
         prefix:"/properties/favorites",
@@ -47,14 +48,34 @@ export const useFavoriteProperty = defineStore('favorite_property', {
         },
 
         /**
-         * Adds a property to the user's favorite list.
+         * Check if Property is Favorite
+         *
+         * @param {number} propertyId - The ID of the property to check.
+         * @returns {Promise<Object>} Resolves with the response if successful, otherwise rejects with an error response.
+         */
+        async isFavoriteProperty(propertyId) {
+            let url = `${this.prefix}/is-favorite/${propertyId}`;
+
+            try {
+                const response = await axiosInstance.get(url);
+                this.isFavorite = response.data.isFavorite;
+
+                return Promise.resolve(response);
+            } catch (error) {
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
+            }
+        },
+
+        /**
+         * Add or remove a property to the user's favorite list.
          *
          * @async
          * @param {number|string} propertyId - The ID of the property to add.
          * @return {Promise<Object>} A promise that resolves with the response or rejects with an error.
          */
-        async  addPropertyToFavorite(propertyId) {
-            const url = `${this.prefix}/store/${propertyId}`;
+        async  addOrRemovePropertyToFavorite(propertyId) {
+            const url = `${this.prefix}/add-or-remove/${propertyId}`;
 
             try {
                 const response = await axiosInstance.post(url);
