@@ -33,6 +33,7 @@ export * from './stripe-payments/package.js';
 export * from './stripe-payments/subscription.js';
 export * from './stripe-payments/invoices.js';
 
-// ------------- Newsletter-Subscriber Dir
-export * from './newsletter-subscriber/newsletter-subscriber.js';
+// ------------- Others Dir
+export * from './others/newsletterSubscriber.js';
+export * from './others/savedSearch.js';
 
