@@ -11,7 +11,6 @@
 
 import {defineStore} from "pinia";
 import axiosInstance from "@/services/axiosService.js";
-import apiService from "@/services/apiService.js";
 
 export const useNewsletterSubscriber = defineStore('newsletterSubscribe', {
     state: () => ({
