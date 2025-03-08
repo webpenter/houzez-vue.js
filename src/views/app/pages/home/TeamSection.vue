@@ -13,7 +13,7 @@
       <div class="team-box-left"><i class="fa-solid fa-chevron-left"></i></div>
       <div class="" id="our-team-box">
         <div class="team-member">
-          <img src="/public/img/client-side/member.png" alt="">
+          <img src="@/assets/img/client-side/member.png" alt="">
           <div class="team-member-info">
             <div>
               <p>Michel smith</p>
@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="team-member">
-          <img src="/public/img/client-side/property.png" alt="">
+          <img src="@/assets/img/client-side/property.png" alt="">
           <div class="team-member-info">
             <div>
               <p>Michel smith</p>
@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="team-member">
-          <img src="/public/img/client-side/ss.png" alt="">
+          <img src="@/assets/img/client-side/ss.png" alt="">
           <div class="team-member-info">
             <div>
               <p>Michel smith</p>
@@ -49,7 +49,7 @@
           </div>
         </div>
         <div class="team-member">
-          <img src="/public/img/client-side/hero-section-img.png" alt="">
+          <img src="@/assets/img/client-side/hero-section-img.png" alt="">
           <div class="team-member-info">
             <div>
               <p>Michel smith</p>
@@ -61,7 +61,7 @@
           </div>
         </div>
         <div class="team-member">
-          <img src="/public/img/client-side/bg-hero.png" alt="">
+          <img src="@/assets/img/client-side/bg-hero.png" alt="">
           <div class="team-member-info">
             <div>
               <p>Michel smith</p>
@@ -73,7 +73,7 @@
           </div>
         </div>
         <div class="team-member">
-          <img src="/public/img/client-side/logo (1).png" alt="">
+          <img src="@/assets/img/client-side/logo (1).png" alt="">
           <div class="team-member-info">
             <div>
               <p>Michel smith</p>

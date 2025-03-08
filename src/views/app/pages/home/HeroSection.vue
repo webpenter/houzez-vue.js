@@ -7,7 +7,7 @@
       <a href=""><button>Request A Visit</button></a>
     </div>
     <div class="img-section">
-      <img src="/img/client-side/hero-section-img.png" alt="" width="100%" height="100%">
+      <img src="@/assets/img/client-side/hero-section-img.png" alt="" width="100%" height="100%">
     </div>
   </div>
 </template>
