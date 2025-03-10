@@ -36,4 +36,5 @@ export * from './stripe-payments/invoices.js';
 // ------------- Others Dir
 export * from './others/newsletterSubscriber.js';
 export * from './others/savedSearch.js';
+export * from './others/language.js';
 
