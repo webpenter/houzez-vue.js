@@ -294,7 +294,7 @@
         width: 100%;
     }
     #properties-filters{
-        flex-direction: row;
+        /*flex-direction: column;*/
         overflow: auto;
     }
     .number-min-max{
