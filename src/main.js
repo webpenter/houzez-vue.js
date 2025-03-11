@@ -1,9 +1,9 @@
 import { createApp } from 'vue';
 
 /* ------------ Import files/libraries  ---------- */
-import "./style.css";
+import "@/assets/css/index.css";
 import "element-plus/dist/index.css";
-import "./script.js";
+import "@/assets/js/index.js";
 import App from './App.vue';
 import router from './router';
 import plugins from './plugins';

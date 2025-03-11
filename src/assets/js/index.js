@@ -26,7 +26,7 @@ import "@/assets/js/custom.js";
 
 /* Client Side */
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js";
-// import "@/assets/js/client-side/script.js";
+// import "@/assets/js/client-side/index.js";
 
 /* Third-party CDN links */
 import "https://cdn.jsdelivr.net/npm/chart.js";
