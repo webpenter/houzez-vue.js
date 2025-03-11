@@ -13,18 +13,12 @@ import {defineStore} from "pinia";
 
 export const useLanguage = defineStore('language', {
     state: () => ({
-        language: 'en'
+        locale: sessionStorage.getItem('language') || 'en',
     }),
-
-    persist: true,
-    getters: {
-        getLanguage: (state) => {
-            return state.language;
-        },
-    },
     actions: {
-        changeLanguage (lang) {
-            this.language = lang
+        setLanguage(newLang) {
+            this.locale = newLang;
+            sessionStorage.setItem('language', newLang);
         }
     }
 })

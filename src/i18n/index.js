@@ -1,22 +1,17 @@
 import { createI18n } from 'vue-i18n';
-// import { useLanguage } from '@/stores';
-
-import fr from '@/locales/fr.json';
 import en from '@/locales/en.json';
+import fr from '@/locales/fr.json';
 
+const savedLanguage = sessionStorage.getItem('language') || 'en';
 
-//console.log(useLanguage().getLanguage);
-// const lang=JSON.parse(localStorage.getItem('language'));
-
-export const i18n = createI18n({
+const i18n = createI18n({
     legacy: false,
-    locale:  "en",
+    locale: savedLanguage,
     fallbackLocale: 'en',
-    globalInjection: true,
     messages: {
         en,
         fr
     }
 });
 
-
+export default i18n;

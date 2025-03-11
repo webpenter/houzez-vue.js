@@ -1,12 +1,13 @@
-// -------------------- App Route List -----------------------
 import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/general.js";
 
 import { useI18n } from "vue-i18n";
+import {computed} from "vue";
 
+// -------------------- App Route List -----------------------
 export function getAppRoutes() {
 	const { t } = useI18n();
 
-	return [
+	return computed(() => [
 		{
 			id:1,
 			title:t('Home'),
@@ -52,12 +53,14 @@ export function getAppRoutes() {
 				{ id: 3, title: `${t('Others')} ${t('V3')}`, name: 'app.others' },
 			]
 		},
-	];
+	]);
 }
 
 // ------------------ Dashboard Route List --------------------
 export function getDashboardRoutes() {
-	return [
+	const { t } = useI18n();
+
+	return computed(() => [
 		{
 			id:1,
 			title:'Board',
@@ -103,5 +106,5 @@ export function getDashboardRoutes() {
 				{id:1, title:'Packages', name:'dashboard.settings.all-packages'},
 			]
 		},
-	];
+	]);
 }

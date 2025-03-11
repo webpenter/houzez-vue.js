@@ -8,8 +8,8 @@ import App from './App.vue';
 import router from './router';
 import plugins from './plugins';
 import ElementPlus from "element-plus";
-import {i18n} from "@/i18n";
 import { createPinia } from "pinia";
+import i18n from "@/i18n";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import {
     subStr,
@@ -26,8 +26,8 @@ pinia.use(piniaPluginPersistedstate);
 app.use(router);
 app.use(plugins);
 app.use(ElementPlus);
-app.use(i18n);
 app.use(pinia);
+app.use(i18n);
 app.mount('#app');
 
 /* ------------ Global Helpers ------------- */

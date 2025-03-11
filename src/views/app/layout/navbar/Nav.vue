@@ -14,26 +14,22 @@
       </ul>
     </div>
   </template>
-<!--  <div class="btn-group position-relative">-->
-<!--    <p class=" btn-sm py-1 px-2 bg-none m-0" type="button" data-bs-toggle="dropdown"-->
-<!--       aria-expanded="false">-->
-<!--      Language-->
-<!--    </p>-->
-<!--    <ul class="dropdown-menu bg-white position-absolute border-none">-->
-<!--      <a-->
-<!--          href="javascript:void(0);"-->
-<!--          @click="changeLanguage('en')"-->
-<!--      >-->
-<!--        <li>English</li>-->
-<!--      </a>-->
-<!--      <a-->
-<!--          href="javascript:void(0);"-->
-<!--          @click="changeLanguage('fr')"-->
-<!--      >-->
-<!--        <li>French</li>-->
-<!--      </a>-->
-<!--    </ul>-->
-<!--  </div>-->
+  <div class="btn-group position-relative">
+    <p class=" btn-sm py-1 px-2 bg-none m-0" type="button" data-bs-toggle="dropdown"
+       aria-expanded="false">
+      {{locale === 'en' ? 'English' : 'Français'}}
+    </p>
+    <ul class="dropdown-menu bg-white position-absolute border-none">
+      <template v-for="currentLocale in availableLocales">
+        <a
+            href="javascript:void(0);"
+            @click="changeLang(currentLocale)"
+        >
+          <li>{{currentLocale === 'en' ? 'English' : 'Français'}}</li>
+        </a>
+      </template>
+    </ul>
+  </div>
 </template>
 
 <script setup>
@@ -43,10 +39,16 @@ import {useI18n} from "vue-i18n";
 import {useLanguage} from "@/stores/index.js";
 
 const routes = getAppRoutes();
-const { t,locale } = useI18n();
 
-const changeLanguage = (lang) => {
+import { storeToRefs } from 'pinia';
+
+const { t, locale, availableLocales } = useI18n();
+const languageStore = useLanguage();
+const { locale: selectedLocale } = storeToRefs(languageStore);
+
+const changeLang = (lang) => {
+  selectedLocale.value = lang;
   locale.value = lang;
-  useLanguage().changeLanguage(lang);
+  languageStore.setLanguage(lang);
 };
 </script>
