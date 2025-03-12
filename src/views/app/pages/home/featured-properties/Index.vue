@@ -2,7 +2,7 @@
   <div class="rentals-container-main">
     <p class="featured-rentals-btn">Latest Properties</p>
     <div class="featured-rentals-header">
-      <h2>Featured Rentals</h2>
+      <h2>{{ $t('Featured Rentals') }}</h2>
       <a href=""><p>View all</p> <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
