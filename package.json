@@ -10,11 +10,14 @@
   },
   "dependencies": {
     "@fawmi/vue-google-maps": "^0.9.79",
+    "@fullcalendar/core": "^6.1.15",
     "@stripe/stripe-js": "^5.6.0",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.7",
     "element-plus": "^2.9.3",
+    "ev-emitter": "^2.1.2",
+    "jquery": "^3.7.1",
     "leaflet": "^1.9.4",
     "pinia": "^2.3.0",
     "pinia-plugin-persistedstate": "^4.2.0",
@@ -24,6 +27,9 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^4.0.3",
     "vite": "^6.0.1",
     "vite-plugin-vue-devtools": "^7.6.5"
   }

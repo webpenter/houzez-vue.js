@@ -11,7 +11,7 @@
 
 import {defineStore} from "pinia";
 import apiService from "@/services/apiService.js";
-import axiosInstance from "@/services/axiosService.js";
+import axiosInstance from "@/services/axiosService.js"; 
 
 export const useProperty = defineStore('property', {
     state: () => ({

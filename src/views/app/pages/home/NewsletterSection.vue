@@ -15,10 +15,10 @@
 
 <script setup>
 import { ref } from 'vue';
-import {useNewsletterSubscriber, useNotification} from "@/stores/index.js";
+import {useNewsletter, useNotification} from "@/stores/index.js";
 
 const email = ref('');
-const newsLetterStore = useNewsletterSubscriber();
+const newsLetterStore = useNewsletter();
 const notify = useNotification();
 
 const subscribeNewsletter = async () => {

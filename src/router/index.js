@@ -495,6 +495,14 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/settings/package/create-package/Index.vue'),
                 meta:{ title:'Create Package', admin: true }
             },
+            // user who subscribe for the newsletter
+            {
+                path: '/dashboard/newsletter-subscriber',
+                name:'dashboard.subscribed_user',
+                component:() => import('@/views/dashboard/pages/newsletter/Index.vue'),
+                meta:{ title:'Create Package', admin: true }
+            },
+
         ]
     },
 

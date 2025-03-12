@@ -1,5 +1,5 @@
 <template>
-    <ul class="side-menu list-unstyled">
+	<ul class="side-menu list-unstyled">
 
 		<template v-for="route in routes" :key="route.id">
 				<li class="side-menu-item" :class="{'side-menu-parent-selected':route.sub.length > 0}">
@@ -73,7 +73,7 @@
 				Log Out
 			</a>
 		</li>
-</ul>
+	</ul>
 </template>
 
 <script setup>
@@ -91,7 +91,7 @@ const admin = useAdmin().getAdmin;
 </script>
 
 <style scoped>
- .side-menu-dropdown a {
+.side-menu-dropdown a {
 	color: #839EB2;
 }
 </style>

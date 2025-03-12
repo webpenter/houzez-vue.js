@@ -3,10 +3,10 @@
     <section class="dashboard-content-wrap">
             <div class="dashboard-content-inner-wrap">
                 <div class="dashboard-content-block-wrap">
-                    <Information/>
-                    <SocialMedia/>
-                    <ChangePassword/>
-                    <DeleteAccount/>
+                    <Information />
+                    <SocialMedia />
+                    <ChangePassword />
+                    <DeleteAccount />
                 </div><!-- dashboard-content-block-wrap -->
             </div><!-- dashboard-content-inner-wrap -->
         </section><!-- dashboard-content-wrap -->

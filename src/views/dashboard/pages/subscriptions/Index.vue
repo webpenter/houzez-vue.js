@@ -3,6 +3,7 @@
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">
       <div class="dashboard-content-block-wrap">
+        <!-- <pre>{{ userSubscriptions }} </pre> -->
         <NoDataMsg msg="You are not subscribed any package!" v-if="userSubscriptions.length < 1"/>
         <Table
             v-else

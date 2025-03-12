@@ -1,4 +1,4 @@
-<template>
+  <template>
     <table class="dashboard-table dashboard-table-properties table-lined responsive-table">
         <thead>
             <tr>
