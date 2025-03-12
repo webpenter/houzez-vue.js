@@ -35,3 +35,6 @@ export * from './stripe-payments/invoices.js';
 
 export * from './savedSearch.js';
 export * from './favourite.js';
+export * from './teaminformation.js';
+export * from './teamSection.js';
+export * from './fetchinformation.js';

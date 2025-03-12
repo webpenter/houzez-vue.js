@@ -98,4 +98,10 @@ export const DASHBOARD_ROUTES = [
 			{id:1, title:'Packages', name:'dashboard.settings.all-packages'},
 		]
 	},
+	{ id:12, title:'Team', name:'dashboard.team', icon:'icon-single-neutral-circle',
+		sub:[
+			{id:1, title:'Create Team', name:'dashboard.team.create-team'},
+			{id:2, title:'Our Team', name:'dashboard.team.fetch'},
+		]
+	},
 ];

@@ -2,7 +2,7 @@
   <div class="team-container-main">
     <div class="team-header">
       <div>
-        <h2>Meat Our Awesome Team</h2>
+        <h2>Meet Our Awesome Team</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.illum magnam. Repellat, ex.</p>
       </div>
       <div>
@@ -11,76 +11,22 @@
     </div>
     <div class="our-team-container">
       <div class="team-box-left"><i class="fa-solid fa-chevron-left"></i></div>
-      <div class="" id="our-team-box">
-        <div class="team-member">
-          <img src="/public/img/client-side/member.png" alt="">
+      <div id="our-team-box">
+        <div 
+          v-for="(member, index) in teamMembers" 
+          :key="index" 
+          class="team-member"
+        >
+          <img :src="member.image" :alt="member.name">
           <div class="team-member-info">
             <div>
-              <p>Michel smith</p>
-              <p>Property Expert</p>
+              <p>{{ member.name }}</p>
+              <p>{{ member.designation }}</p>
+              <p>{{ member.description }}</p>
+              
             </div>
             <div>
-              <a href="" class="fa-solid fa-phone"></a>
-            </div>
-          </div>
-        </div>
-        <div class="team-member">
-          <img src="/public/img/client-side/property.png" alt="">
-          <div class="team-member-info">
-            <div>
-              <p>Michel smith</p>
-              <p>Property Expert</p>
-            </div>
-            <div>
-              <a href="" class="fa-solid fa-phone"></a>
-            </div>
-          </div>
-        </div>
-        <div class="team-member">
-          <img src="/public/img/client-side/ss.png" alt="">
-          <div class="team-member-info">
-            <div>
-              <p>Michel smith</p>
-              <p>Property Expert</p>
-            </div>
-            <div>
-              <a href="" class="fa-solid fa-phone"></a>
-            </div>
-          </div>
-        </div>
-        <div class="team-member">
-          <img src="/public/img/client-side/hero-section-img.png" alt="">
-          <div class="team-member-info">
-            <div>
-              <p>Michel smith</p>
-              <p>Property Expert</p>
-            </div>
-            <div>
-              <a href="" class="fa-solid fa-phone"></a>
-            </div>
-          </div>
-        </div>
-        <div class="team-member">
-          <img src="/public/img/client-side/bg-hero.png" alt="">
-          <div class="team-member-info">
-            <div>
-              <p>Michel smith</p>
-              <p>Property Expert</p>
-            </div>
-            <div>
-              <a href="" class="fa-solid fa-phone"></a>
-            </div>
-          </div>
-        </div>
-        <div class="team-member">
-          <img src="/public/img/client-side/logo (1).png" alt="">
-          <div class="team-member-info">
-            <div>
-              <p>Michel smith</p>
-              <p>Property Expert</p>
-            </div>
-            <div>
-              <a href="" class="fa-solid fa-phone"></a>
+              <a :href="`tel:${member.contact_no}`" class="fa-solid fa-phone"></a>
             </div>
           </div>
         </div>
@@ -91,10 +37,14 @@
 </template>
 
 <script setup>
-import { onMounted, ref, onBeforeUnmount } from "vue";
+import { ref, onMounted, onBeforeUnmount,nextTick } from "vue";
+import { useTeamSectionStore } from "@/stores/teamSection.js";
 
-const teamBox = ref(null);
+const teamStore = useTeamSectionStore();
 const teamMembers = ref([]);
+
+// Slider references
+const teamBox = ref(null);
 const prevBtn = ref(null);
 const nextBtn = ref(null);
 const currentIndex = ref(0);
@@ -115,7 +65,9 @@ const updateSlider = () => {
     nextBtn.value.style.display = "none";
     teamBox.value.style.overflowX = "auto";
     teamBox.value.style.scrollBehavior = "smooth";
-    teamMembers.value.forEach((member) => {
+    
+    // Use Array.from to convert NodeList to array
+    Array.from(teamBox.value.children).forEach(member => {
       member.style.display = "flex";
       member.style.minWidth = "200px";
       member.style.flexShrink = "0";
@@ -125,16 +77,14 @@ const updateSlider = () => {
     nextBtn.value.style.display = "flex";
     teamBox.value.style.overflowX = "hidden";
 
-    teamMembers.value.forEach((member, index) => {
-      if (index >= currentIndex.value && index < currentIndex.value + visibleCount.value) {
-        member.style.display = "flex";
-      } else {
-        member.style.display = "none";
-      }
+    Array.from(teamBox.value.children).forEach((member, index) => {
+      member.style.display = (index >= currentIndex.value && 
+        index < currentIndex.value + visibleCount.value) ? "flex" : "none";
     });
 
     prevBtn.value.style.visibility = currentIndex.value === 0 ? "hidden" : "visible";
-    nextBtn.value.style.visibility = currentIndex.value + visibleCount.value >= totalMembers ? "hidden" : "visible";
+    nextBtn.value.style.visibility = currentIndex.value + visibleCount.value >= totalMembers 
+      ? "hidden" : "visible";
   }
 };
 
@@ -152,22 +102,44 @@ const prevSlide = () => {
   }
 };
 
-onMounted(() => {
+const initializeSlider = () => {
   teamBox.value = document.getElementById("our-team-box");
-  teamMembers.value = Array.from(document.querySelectorAll(".team-member"));
   prevBtn.value = document.querySelector(".team-box-left");
   nextBtn.value = document.querySelector(".team-box-right");
 
+  updateSlider();
+  
+  // Add event listeners
   prevBtn.value.addEventListener("click", prevSlide);
   nextBtn.value.addEventListener("click", nextSlide);
   window.addEventListener("resize", updateSlider);
+};
 
-  updateSlider();
+onMounted(async () => {
+  try {
+    const response = await teamStore.fetchTeamMembers();
+
+    if (response.success && Array.isArray(response.data)) {
+      teamMembers.value = response.data;
+    } else {
+      console.error("Unexpected API response:", response);
+      teamMembers.value = [];
+    }
+
+    await nextTick();
+    initializeSlider();
+  } catch (error) {
+    console.error("Failed to fetch team members:", error);
+    teamMembers.value = [];
+  }
 });
 
+
 onBeforeUnmount(() => {
-  prevBtn.value.removeEventListener("click", prevSlide);
-  nextBtn.value.removeEventListener("click", nextSlide);
+  if (prevBtn.value && nextBtn.value) {
+    prevBtn.value.removeEventListener("click", prevSlide);
+    nextBtn.value.removeEventListener("click", nextSlide);
+  }
   window.removeEventListener("resize", updateSlider);
 });
 </script>

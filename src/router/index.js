@@ -519,6 +519,24 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/settings/package/create-package/Index.vue'),
                 meta:{ title:'Create Package', admin: true }
             },
+            {
+                path: '/dashboard/team/create-team',
+                name:'dashboard.team',
+                component:() => import('@/views/dashboard/pages/team/form/Team.vue'),
+                meta:{ title:'Create team', admin: true }
+            },
+            {
+                path: '/dashboard/team/create-team',
+                name:'dashboard.team.create-team',
+                component:() => import('@/views/dashboard/pages/team/form/Team.vue'),
+                meta:{ title:'Create team', admin: true }
+            },
+            {
+                path: '/dashboard/team/our-team',
+                name:'dashboard.team.fetch',
+                component:() => import('@/views/dashboard/pages/team/form/Index.vue'),
+                meta:{ title:'Our team', admin: true }
+            },
         ]
     },
 
