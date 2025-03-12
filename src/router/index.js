@@ -502,7 +502,7 @@ const routes = [
             {
                 path: '/dashboard/admin/users',
                 name:'dashboard.admin.users',
-                component:() => import('@/views/dashboard/pages/admin/subscribers/Index.vue'),
+                component:() => import('@/views/dashboard/pages/admin/users/Index.vue'),
                 meta:{ title:'All Users', admin: true }
             },
             {
