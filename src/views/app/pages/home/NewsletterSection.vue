@@ -15,35 +15,33 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useNewsLetter } from '@/stores/newsletter/subscribe'; // Import Pinia store
-import { useNotification } from "@/stores/index.js";
+import {useNewsletter, useNotification} from "@/stores/index.js";
 
 const email = ref('');
-const newsLetter = useNewsLetter(); // Initialize store
+const newsLetterStore = useNewsletter();
 const notify = useNotification();
 
 const subscribeNewsletter = async () => {
   if (!email.value) {
-    notify.Error("Please enter a valid email!");
+    notify.Error("Please enter an email address!");
     return;
   }
 
   try {
-    const response = await newsLetter.subscribeNewsletter(email.value);
+    const response = await newsLetterStore.subscribeNewsletter(email.value);
 
-    if (response.success) {
       if (response.status === 200) {
-        notify.Success(response.message || "Newsletter subscribed successfully.");
-        email.value = ''; // Clear input field on success
+        notify.Success("Newsletter subscribed successfully.");
+        email.value = '';
+      } else if (response.status === 400) {
+        notify.Error("Please enter a valid email!");
       } else if (response.status === 409) {
-        notify.Error(response.message || "You are already Subscribed.");
+        notify.Error("You are already Subscribed.");
+      } else {
+        notify.Error("Subscription Failed.");
       }
-    } else {
-      notify.Error(response.message || "Subscription Failed.");
-    }
   } catch (error) {
     notify.Error("An error occurred. Please try again.");
   }
 };
 </script>
-  

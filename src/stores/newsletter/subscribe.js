@@ -3,7 +3,7 @@ import axiosInstance from "@/services/axiosService.js";
 
 export const useNewsLetter = defineStore('newsLetter', {
   state: () => ({
-    baseUrl: '/subscribe', 
+    baseUrl: 'app/subscribe', 
   }),
   actions: {
     async subscribeNewsletter(email) {

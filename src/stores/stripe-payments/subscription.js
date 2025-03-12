@@ -85,7 +85,7 @@ export const useSubscription = defineStore('subscription', {
 
                 this.userSubscriptions = response.data.subscriptions;
 
-                return new Promise(resolve => {
+                 return new Promise(resolve => {
                     resolve(response)
                 })
             } catch (error) {
