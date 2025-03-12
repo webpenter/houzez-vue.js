@@ -17,6 +17,7 @@ import {
     formatPrice,
     capitalize,
     formatTextWithNumber,
+    formatDate,
 } from "./helpers"
 
 const app = createApp(App);
@@ -36,5 +37,6 @@ app.config.globalProperties.$filters = {
     logout,
     formatPrice,
     capitalize,
-    formatTextWithNumber
+    formatTextWithNumber,
+    formatDate,
 };
