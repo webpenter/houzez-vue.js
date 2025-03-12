@@ -86,7 +86,8 @@
       </div>
       <div class="search-btn">
         <button @click.prevent="searchProperty">
-          Search Property
+          <span v-if="!btnLoading">Search Property</span>
+          <span v-else class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         </button>
       </div>
     </div>
@@ -99,6 +100,7 @@ import {useAppProperty, useBedroom, useCity, useNotification, usePrice, useType}
 import {ref} from "vue";
 import {useRouter} from "vue-router";
 
+const btnLoading = ref(false);
 const router = useRouter();
 const propertyToRefs = useAppProperty();
 
@@ -116,8 +118,11 @@ const {prices} = storeToRefs(usePrice());
 const {bedrooms} = storeToRefs(useBedroom());
 
 const searchProperty = async () => {
+  btnLoading.value = true;
   try {
     await propertyToRefs.getSearchedAndFilteredProperties(formData.value);
+
+    btnLoading.value = false;
 
     router.push({
       name: "app.search-results",
@@ -131,6 +136,7 @@ const searchProperty = async () => {
     });
   } catch (error) {
     useNotification().Error("Error fetching properties:", error);
+    btnLoading.value = false;
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
 	<ul class="side-menu list-unstyled">
 
-		<template v-for="route in DASHBOARD_ROUTES" :key="route.id">
+		<template v-for="route in routes" :key="route.id">
 				<li class="side-menu-item" :class="{'side-menu-parent-selected':route.sub.length > 0}">
 					<template v-if="route.name == 'dashboard.crm'">
             <RouterLink :to="{name:route.name}" active-class="active" @click.prevent="isOpenBoard = !isOpenBoard">
@@ -78,10 +78,11 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
-import {DASHBOARD_ROUTES} from "@/constants/index.js";
+import {getDashboardRoutes} from "@/constants/index.js";
 import {ref} from "vue";
 import {useAdmin} from "@/stores/index.js";
 
+const routes = getDashboardRoutes();
 const isOpenBoard = ref(false);
 const isOpenProperties = ref(false);
 const isOpenSettings = ref(false);

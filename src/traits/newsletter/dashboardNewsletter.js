@@ -1,6 +1,6 @@
 import { useConfirm, useMessage, useNotification } from "@/stores/index.js";
 import { ref } from "vue";
-import { useNewsletter } from "@/stores/newsletter-subscriber/newsletter-subscriber";
+import { useNewsletter } from "@/stores/others/newsletterSubscriber";
 
 const loading = ref(false);
 

@@ -1,8 +1,8 @@
 <template>
-    <DashboardHeader heading="Newsletter Subscription's" />
+    <DashboardHeader heading="Newsletter Subscriber's" />
     <section class="dashboard-content-wrap">
         <div class="dashboard-content-inner-wrap">
-            <div class="dashboard-content-block-wrap"></div>
+            <div class="dashboard-content-block-wrap">
             <NoNewsLetter v-if="dashboardNewsletter.length < 1"/>
             <Table
             v-else
@@ -11,6 +11,7 @@
             @delete-newsletter="(id) => deleteNewsletter(id)"
             />
             
+        </div>
         </div>
     </section>
 </template>
