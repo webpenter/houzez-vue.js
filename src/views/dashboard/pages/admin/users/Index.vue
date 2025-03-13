@@ -7,8 +7,10 @@
         <Table
             v-else
             :users="users"
+            :roles="roles"
             :loading="loading"
             @delete-user="(id) => deleteUser(id)"
+            @change-role="(userId, newRole) => changeUserRole(userId, newRole)"
         />
       </div><!-- dashboard-content-block-wrap -->
     </div><!-- dashboard-content-inner-wrap -->
@@ -16,7 +18,7 @@
 </template>
 
 <script setup>
-import {useConfirm, useMessage, useNewsletterSubscriber, useNotification} from "@/stores/index.js";
+import {useConfirm, useMessage, useNotification, useRole} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 import {onMounted, ref} from "vue";
 import Table from "./Table.vue";
@@ -24,6 +26,7 @@ import {useUsers} from "@/stores/auth/users.js";
 
 const usersStore = useUsers();
 const {users} = storeToRefs(usersStore);
+const {roles} = storeToRefs(useRole())
 
 const loading = ref(false);
 
@@ -53,6 +56,22 @@ const deleteUser = async (id) => {
         useMessage().Info("Request cancelled.")
       });
 }
+
+const changeUserRole = async (userId, newRole) => {
+  try {
+    const res = await usersStore.changeUserRole(userId, newRole);
+
+    if (res.status === 200) {
+      useNotification().Success("Role successfully updated.");
+      await getUsers();
+    } else {
+      useNotification().Error("Failed to update role.");
+    }
+  } catch (error) {
+    useNotification().Error("An error occurred while updating the role.");
+  }
+}
+
 
 onMounted(() => getUsers());
 </script>

@@ -28,6 +28,7 @@ export const useUsers = defineStore('users', {
          */
         async getAllUsers() {
             const url = `/get-all-users`;
+
             try {
                 const res = await axiosInstance.get(url);
 
@@ -55,6 +56,34 @@ export const useUsers = defineStore('users', {
          */
         async deleteUser(userId) {
             const url = `/delete-user/${userId}`;
+
+            try {
+                const res = await axiosInstance.post(url);
+
+                return new Promise(resolve => {
+                    return resolve(res);
+                })
+            } catch (error) {
+                if (error.response && error.response.data) {
+                    this.errors = error.response;
+                }
+
+                return new Promise(reject => {
+                    return reject(error.response);
+                })
+            }
+        },
+
+        /**
+         * Change the role of a user.
+         *
+         * @param {number|string} user - The ID or identifier of the user whose role is being changed.
+         * @param {string} role - The new role to be assigned to the user.
+         * @returns {Promise<Object>} A promise that resolves with the response data or rejects with an error response.
+         */
+        async changeUserRole(user,role) {
+            const url = `/change-user-role/${user}/${role}`;
+
             try {
                 const res = await axiosInstance.post(url);
 

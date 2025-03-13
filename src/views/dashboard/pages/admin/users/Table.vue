@@ -7,7 +7,7 @@
       <th>Name</th>
       <th>Email</th>
       <th>Role</th>
-      <th>Properties</th>
+      <th>Listings</th>
       <th class="action-col">Actions</th>
     </tr>
     </thead>
@@ -37,7 +37,22 @@
           {{user.email}}
         </td>
         <td class="property-table-status">
-          {{user.role}}
+          <el-select
+              v-model="user.role"
+              filterable
+              default-first-option
+              :reserve-keyword="false"
+              placeholder="Choose user role"
+              style="width: 140px"
+              @change="$emit('change-role', user.id, user.role)"
+          >
+            <el-option
+                v-for="role in roles"
+                :key="role.id"
+                :label="role.name"
+                :value="role.name"
+            />
+          </el-select>
         </td>
         <td class="property-table-status">
           {{user.properties}}
@@ -59,5 +74,5 @@
 </template>
 
 <script setup>
-defineProps(["loading", "users"]);
+defineProps(["loading", "users",'roles']);
 </script>
