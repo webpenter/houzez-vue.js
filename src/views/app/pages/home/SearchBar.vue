@@ -3,11 +3,11 @@
     <div id="search-container">
       <div class="search-input-box">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="search" v-model="formData.search" placeholder="What are you looking for ?">
+        <input type="search" v-model="formData.search" :placeholder="$t('search placeholder')">
       </div>
       <div class="search-bar-select-options">
         <div>
-          <label>Property Type</label>
+          <label>{{ $t('Property Type')}}</label>
           <el-select
               v-model="formData.types"
               multiple
@@ -15,7 +15,7 @@
               filterable
               default-first-option
               :reserve-keyword="false"
-              placeholder="Choose/Search Types"
+              :placeholder="$t('Choose/Search Types')"
               style="width: 100%"
           >
             <el-option
@@ -27,14 +27,14 @@
           </el-select>
         </div>
         <div>
-          <label>Location</label>
+          <label>{{ $t('Location')}}</label>
           <el-select
               v-model="formData.city"
               clearable
               filterable
               default-first-option
               :reserve-keyword="false"
-              placeholder="Choose/Search City"
+              :placeholder="$t('Choose/Search City')"
               style="width: 100%"
           >
             <el-option
@@ -46,14 +46,14 @@
           </el-select>
         </div>
         <div>
-          <label>Property Size</label>
+          <label>{{ $t('Property Size')}}</label>
           <el-select
               v-model="formData.bedrooms"
               filterable
               clearable
               default-first-option
               :reserve-keyword="false"
-              placeholder="Choose/Search Max Bedrooms"
+              :placeholder="$t('Choose/Search Max Bedrooms')"
               style="width:100%"
           >
             <el-option
@@ -65,14 +65,14 @@
           </el-select>
         </div>
         <div>
-          <label>Your Budget</label>
+          <label>{{ $t('Your Budget')}}</label>
           <el-select
               v-model="formData.maxPrice"
               filterable
               clearable
               default-first-option
               :reserve-keyword="false"
-              placeholder="Choose/Search Max Price"
+              :placeholder="$t('Choose/Search Max Price')"
               style="width: 100%"
           >
             <el-option
@@ -86,9 +86,9 @@
       </div>
       <div class="search-btn">
         <button @click.prevent="searchProperty">
-          <span v-if="!btnLoading">Search Property</span>
+          <span v-if="!btnLoading">{{$t('Search Property')}}</span>
           <span v-else class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        </button>
+        </button> 
       </div>
     </div>
   </div>
