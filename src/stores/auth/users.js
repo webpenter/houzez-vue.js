@@ -23,7 +23,7 @@ export const useUsers = defineStore('users', {
     getters: {},
     actions: {
         /**
-         * Fetches all users from the backend API.
+         * Fetches all users.
          * @return {Promise<Object>} Resolves with the response data if successful, rejects with the error response if failed.
          */
         async getAllUsers() {
@@ -32,6 +32,31 @@ export const useUsers = defineStore('users', {
                 const res = await axiosInstance.get(url);
 
                 this.users = res.data;
+
+                return new Promise(resolve => {
+                    return resolve(res);
+                })
+            } catch (error) {
+                if (error.response && error.response.data) {
+                    this.errors = error.response;
+                }
+
+                return new Promise(reject => {
+                    return reject(error.response);
+                })
+            }
+        },
+
+        /**
+         * Deletes a user.
+         *
+         * @param {number|string} userId - The ID of the user to be deleted.
+         * @returns {Promise} A promise that resolves with the server's response or rejects with an error response.
+         */
+        async deleteUser(userId) {
+            const url = `/delete-user/${userId}`;
+            try {
+                const res = await axiosInstance.post(url);
 
                 return new Promise(resolve => {
                     return resolve(res);

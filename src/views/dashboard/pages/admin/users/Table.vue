@@ -48,7 +48,7 @@
               Actions
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              <a @click.prevent="$emit('deleteSubscriber',user.id)" class="dropdown-item" href="#">Delete</a>
+              <a @click.prevent="$emit('deleteUser',user.id)" class="dropdown-item" href="#">Delete</a>
             </div>
           </div>
         </td>

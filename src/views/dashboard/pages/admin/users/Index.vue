@@ -8,7 +8,7 @@
             v-else
             :users="users"
             :loading="loading"
-            @delete-subscriber="(id) => deleteSubscriber(id)"
+            @delete-user="(id) => deleteUser(id)"
         />
       </div><!-- dashboard-content-block-wrap -->
     </div><!-- dashboard-content-inner-wrap -->
@@ -33,14 +33,14 @@ const getUsers = async () => {
   loading.value = false;
 }
 
-const deleteSubscriber = async (id) => {
-  useConfirm().Warning("Are you sure you want to delete this subscriber?")
+const deleteUser = async (id) => {
+  useConfirm().Warning("Are you sure you want to delete this user?")
       .then(async () => {
         try {
-          const res = await usersStore.deleteSubscriber(id);
+          const res = await usersStore.deleteUser(id);
 
           if (res.status === 200) {
-            useNotification().Success("Successfully deleted subscriber");
+            useNotification().Success("Successfully deleted user");
             await getUsers();
           } else {
             useNotification().Error(`Failed to delete`);
