@@ -1,9 +1,9 @@
 <template>
   <div class="rentals-container-main">
-    <p class="featured-rentals-btn">Latest Properties</p>
+    <p class="featured-rentals-btn">{{$t('Latest Properties')}}</p>
     <div class="featured-rentals-header">
-      <h2>{{ $t('Featured Rentals') }}</h2>
-      <a href=""><p>View all</p> <i class="fa-solid fa-arrow-right"></i></a>
+      <h2> {{$t('Featured Rentals')}}</h2>
+      <a href=""><p> {{$t('View all')}}</p> <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
     <div class="featured-rentals-container">
