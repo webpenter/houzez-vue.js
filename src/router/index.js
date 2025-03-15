@@ -12,7 +12,7 @@
 
 import { createRouter, createWebHistory } from 'vue-router';
 import {DEFAULT_TITLE, TITLE_CREATE_UPDATE_LISTING, URL_CREATE_UPDATE_LISTING} from "@/constants";
-import {useToken, useGeneralSettings, useAdmin, useIsSubscribed} from "@/stores/index.js";
+import {useToken, useAdmin, useIsSubscribed} from "@/stores/index.js";
 
 const routes = [
     /**

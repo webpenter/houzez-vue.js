@@ -44,3 +44,4 @@ export * from './others/savedSearch.js';
 
 // ------------- General-Settings Dir
 export * from './general-settings/get-in-touch.js';
+export * from './general-settings/generalSettings.js';
