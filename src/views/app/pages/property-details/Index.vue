@@ -1,32 +1,37 @@
 <template>
-<TopBar/>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-8 col-md-12">
-              <ImageCarousel/>
-              <div class="container overflow-hidden">
-                <Overview/>
-                <Address/>
-                <Details/>
-                <Gallery/>
-                <EnergyClass/>
-                <Features/>
-                <MortgageCalculator/>
-                <FloorPlans/>
-                <Video/>
-                <VirtualTour/>
-                <Review/>
+  <template v-if="loading">
+    <h1>Loading...</h1>
+  </template>
+  <template v-else>
+    <TopBar :property="property" />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-8 col-md-12">
+                <ImageCarousel :images="property.images"/>
+                <div class="container overflow-hidden">
+                  <Overview :property="property"/>
+                  <Address :property="property"/>
+                  <Details :property="property"/>
+                  <Gallery :images="property.images"/>
+                  <EnergyClass :property="property"/>
+                  <Features :property="property"/>
+                  <MortgageCalculator :property="property"/>
+                  <FloorPlans :property="property"/>
+                  <Video :property="property"/>
+                  <VirtualTour :property="property"/>
+                  <Review :property="property"/>
+                </div>
               </div>
+              <SideForm/>
             </div>
-          <SideForm/>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </template>
 </template>
 
 <script setup>
@@ -44,4 +49,34 @@ import MortgageCalculator from "./MortgageCalculator.vue";
 import Video from "./Video.vue";
 import Review from "./Review.vue";
 import VirtualTour from "@/views/app/pages/property-details/VirtualTour.vue";
+import {useAppProperty} from "@/stores/index.js";
+import {storeToRefs} from "pinia";
+import {onMounted, ref} from "vue";
+import {useRoute, useRouter} from "vue-router";
+
+const {params} = useRoute();
+const router = useRouter();
+const propertySlug = params.propertySlug;
+
+const propertyStore = useAppProperty();
+const {property} = storeToRefs(propertyStore);
+
+const loading = ref(false);
+
+const getPropertyData = async () => {
+  loading.value = true;
+  try {
+    const res = await propertyStore.getProperty(propertySlug);
+
+    loading.value = false;
+
+    if (res.status !== 200)  {
+      router.push({name:'property-not-found-404'});
+    }
+  } catch (error) {
+    router.push({name:'property-not-found-404'});
+  }
+};
+
+onMounted(() => getPropertyData());
 </script>
