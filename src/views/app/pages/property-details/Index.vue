@@ -3,6 +3,7 @@
     <h1>Loading...</h1>
   </template>
   <template v-else>
+<!--    <pre>{{property}}</pre>-->
     <TopBar :property="property" />
     <div class="container-fluid">
       <div class="row">
@@ -17,11 +18,11 @@
                   <Details :property="property"/>
                   <Gallery :images="property.images"/>
                   <EnergyClass :property="property"/>
-                  <Features :property="property"/>
+                  <Features :propertyFeature="property.property_feature"/>
                   <MortgageCalculator :property="property"/>
                   <FloorPlans :property="property"/>
                   <Video :property="property"/>
-                  <VirtualTour :property="property"/>
+                  <VirtualTour :virtualTour="property.virtual_tour"/>
                   <Review :property="property"/>
                 </div>
               </div>

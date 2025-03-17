@@ -10,38 +10,31 @@
         <div class="details-info">
           <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-              <div
-                  class="col-6 py-2 w-100 border-bottom d-flex align-items-center justify-content-between detail-address">
-                <div class="fw-bold">Address</div>
+              <div class="py-2 w-100 border-bottom">
+                <span class="fw-bold">Address: </span>
                 <span>{{property.address}}</span>
               </div>
-              <div
-                  class="col-6 py-2 w-100 border-bottom fs-normal d-flex align-items-center justify-content-between detail-city">
-                <div class="fw-bold">City</div>
-                <span>{{ property.city }}</span>
+              <div class="py-2 w-100 border-bottom">
+                <span class="fw-bold">City: </span>
+                <span>{{property.city}}</span>
               </div>
-              <div
-                  class="col-6 py-2 w-100 border-bottom fs-normal d-flex align-items-center justify-content-between detail-state">
-                <div class="fw-bold">State/county</div>
-                <span>{{ property.county_state }}</span>
+              <div class="py-2 w-100 border-bottom">
+                <span class="fw-bold">State: </span>
+                <span>{{property.county_state}}</span>
               </div>
-
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-              <div
-                  class="col-6 py-2 w-100 border-bottom fs-normal d-flex align-items-center justify-content-between detail-zip">
-                <div class="fw-bold">Zip/Postal Code</div>
-                <span>{{ property.zip_postal_code }}</span>
+              <div class="py-2 w-100 border-bottom">
+                <span class="fw-bold">Zip Code: </span>
+                <span>{{property.zip_postal_code}}</span>
               </div>
-              <div
-                  class="col-6 py-2 w-100 border-bottom fs-normal d-flex align-items-center justify-content-between detail-area">
-                <div class="fw-bold">Neighborhood</div>
-                <span>{{ property.neighborhood }}</span>
+              <div class="py-2 w-100 border-bottom">
+                <span class="fw-bold">Neighborhood: </span>
+                <span>{{property.neighborhood}}</span>
               </div>
-              <div
-                  class="col-6 py-2 w-100 border-bottom fs-normal d-flex align-items-center justify-content-between detail-country">
-                <div class="fw-bold">Country</div>
-                <span>{{ property.country }}</span>
+              <div class="py-2 w-100 border-bottom">
+                <span class="fw-bold">Country: </span>
+                <span>{{property.country}}</span>
               </div>
             </div>
           </div>
