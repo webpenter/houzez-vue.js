@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-md-7 col-sm-12">
                             <div class="dashboard-content-block activities-list-wrap">
-                                <ActivitiesList />
+                                <ActivitiesList />          
                             </div>
                         </div><!-- col-md-6 col-sm-12 -->
                         <div class="col-md-5 col-sm-12">

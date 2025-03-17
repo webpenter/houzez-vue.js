@@ -1,6 +1,6 @@
 <template>
     <div class="dashboard-content-block dashboard-statistic-block">
-	<h3><i class="houzez-icon icon-sign-badge-circle mr-2 primary-text"></i> Deals</h3>
+	<h3><i class="houzez-icon icon-sign-badge-circle mr-2 primary-text"></i> {{$t('Deals')}}</h3>
 	<div class="d-flex align-items-center sm-column">
 		<div class="statistic-doughnut-chart">
 			<canvas id="deals-doughnut-chart" width="100" height="100"></canvas>
@@ -9,13 +9,13 @@
 		<div class="doughnut-chart-data flex-fill">
 			<ul class="list-unstyled">
 				<li class="stats-data-3">
-					<i class="houzez-icon icon-sign-badge-circle mr-1"></i> <strong>Active</strong> <span>60 <small>Deals</small></span>
+					<i class="houzez-icon icon-sign-badge-circle mr-1"></i> <strong>{{$t('Active')}}</strong> <span>{{$t('60')}} <small>{{$t('Deals')}}</small></span>
 				</li>
 				<li class="stats-data-4">
-					<i class="houzez-icon icon-sign-badge-circle mr-1"></i> <strong>Won</strong> <span>30 <small>Deals</small></span>
+					<i class="houzez-icon icon-sign-badge-circle mr-1"></i> <strong>{{$t('Won')}}</strong> <span>{{$t('30')}} <small>{{$t('Deals')}}</small></span>
 				</li>
 				<li class="stats-data-1">
-					<i class="houzez-icon icon-sign-badge-circle mr-1"></i> <strong>Lost</strong> <span>10 <small>Deals</small></span>
+					<i class="houzez-icon icon-sign-badge-circle mr-1"></i> <strong>{{$t('Lost')}}</strong> <span>{{$t('10')}} <small>{{$t('Deals')}}</small></span>
 				</li>
 			</ul>
 		</div><!-- mortgage-calculator-data -->
