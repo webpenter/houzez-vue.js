@@ -2,13 +2,13 @@
   <table class="dashboard-table dashboard-table-properties table-lined responsive-table">
     <thead>
     <tr>
-      <th>Name</th>
-      <th>Time Period</th>
-      <th>Price (Currency)</th>
-      <th>Active</th>
-      <th>No of Listings</th>
-      <th>No of Images</th>
-      <th class="action-col">Actions</th>
+      <th>{{$t('Name')}}</th>
+      <th>{{$t('Time Period')}}</th>
+      <th>{{$t('Price (Currency)')}}</th>
+      <th>{{$t('Active')}}</th>
+      <th>{{$t('No of Listings')}}</th>
+      <th>{{$t('No of Images')}}</th>
+      <th class="action-col">{{$t('Actions')}}</th>
     </tr>
     </thead>
     <tbody>
@@ -40,10 +40,10 @@
         <td class="property-table-actions" data-label="Actions">
           <div class="dropdown property-action-menu">
             <button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Actions
+              {{$t('Actions')}}
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              <a @click.prevent="$emit('deletePlan',plan.plan_id)" class="dropdown-item" href="#">Delete</a>
+              <a @click.prevent="$emit('deletePlan',plan.plan_id)" class="dropdown-item" href="#">{{$t('Delete')}}</a>
             </div>
           </div>
         </td>

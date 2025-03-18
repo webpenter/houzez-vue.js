@@ -2,11 +2,11 @@
   <table class="dashboard-table dashboard-table-properties table-lined responsive-table">
     <thead>
     <tr>
-      <th>ID</th>
-      <th>Type</th>
-      <th>Status</th>
-      <th>Date</th>
-      <th class="action-col">Details</th>
+      <th>{{$t('ID')}}</th>
+      <th>{{$t('Type')}}</th>
+      <th>{{$t('Status')}}</th>
+      <th>{{$t('Date')}}</th>
+      <th class="action-col">{{$t('Details')}}</th>
     </tr>
     </thead>
     <tbody>
@@ -39,7 +39,7 @@
         <td class="property-table-actions" data-label="Actions">
           <div class="dropdown property-action-menu">
             <a class="btn btn-primary py-0 text-white" target="_blank" :href="invoice.type === 'invoice' ? invoice.url : invoice.receipt_url">
-              Details
+              {{$t('Details')}}
             </a>
 <!--            @if($transaction['type'] === 'invoice')-->
 <!--            <a href="{{ $transaction['url'] }}" target="_blank" class="text-blue-600 hover:text-blue-800">View Invoice</a>-->

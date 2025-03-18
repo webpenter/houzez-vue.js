@@ -8,7 +8,7 @@
               v-model="searchQuery"
               @input="updateSearch"
               class="form-control"
-              placeholder="Search">
+              :placeholder="$t('Search')">
         </div>
       </div>
     </div>

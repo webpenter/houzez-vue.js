@@ -1,5 +1,5 @@
 <template>
-  <DashboardHeader heading="My Invoices & Charges"/>
+  <DashboardHeader :heading="$t('My Invoices & Charges')"/>
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">
       <div class="dashboard-content-block-wrap">

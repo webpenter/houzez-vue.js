@@ -6,7 +6,7 @@
         <p>{{$t('team description')}}</p>
       </div>
       <div>
-        <a href="" class="view-all-team">{{ $t('View All Team')}}<i class="fa-solid fa-arrow-right"></i></a>
+        <a href="" class="view-all-team d-inline-flex align-items-center text-nowrap">{{ $t('View All Team')}}<i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
     <div class="our-team-container">

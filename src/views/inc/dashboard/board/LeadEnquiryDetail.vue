@@ -1,52 +1,49 @@
 <template>
     <div class="lead-detail-wrap">
-	<h2>Enquiry Detail</h2>
+	<h2>{{$t('Enquiry Detail')}}</h2>
 	<a class="label primary-label edit-lead-detail open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewDeal">Edit</a>
 	<!-- Modal -->
     <AddNewDealPanel v-if="isModelVisibleAddNewDeal" @close="toggleModalAddNewDeal" />
 	<ul class="list-unstyled mb-5">
 		<li>
-			<strong>Contact</strong><br>
-			<a href="#"><strong>Martin Moore</strong></a>
+			<strong>{{$t('Contact')}}</strong><br>
+			<a href="#"><strong>{{$t('Martin Moore')}}</strong></a>
 		</li>
 		<li>
-			<strong>Enquiry Type</strong><br>
-			Buy
+			<strong>{{$t('Enquiry Type')}}</strong><br>
+			{{$t('Buy')}}
 		</li>
 		<li>
-			<strong>Property Type</strong><br>
-			Apartment
+			<strong>{{$t('Property Type')}}</strong><br>
+			{{$t('Apartment')}}
 		</li>
 		<li>
-			<strong>Price</strong><br>
+			<strong>{{$t('Price')}}</strong><br>
 			$300,000
 		</li>
 		<li>
-			<strong>Bedrooms</strong><br>
+			<strong>{{$t('Bedrooms')}}</strong><br>
 			3
 		</li>
 		<li>
-			<strong>Bathrooms</strong><br>
+			<strong>{{$t('Bathrooms')}}</strong><br>
 			2
 		</li>
 		<li>
-			<strong>Area</strong><br>
+			<strong>{{$t('Area')}}</strong><br>
 			2
 		</li>
 		<li>
-			<strong>Lot Area</strong><br>
+			<strong>{{$t('Lot Area')}}</strong><br>
 			2
 		</li>
 		<li>
-			<strong>Location</strong><br>
-			Miami, FL
+			<strong>{{$t('Location')}}</strong><br>
+			{{$t('Miami, FL')}}
 		</li>
 		<li>
-			<strong>Message</strong><br>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat.
+			<strong>{{$t('Message')}}</strong><br>
+			{{ $t('Lorem') }}
 		</li>
 	</ul>
 	

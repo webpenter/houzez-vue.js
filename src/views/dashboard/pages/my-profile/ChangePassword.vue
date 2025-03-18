@@ -2,19 +2,19 @@
   <div class="dashboard-content-block">
     <div class="row">
       <div class="col-md-3 col-sm-12">
-        <h2>Change Password</h2>
+        <h2>{{$t('Change Password')}}</h2>
       </div>
       <div class="col-md-9 col-sm-12">
         <form @submit.prevent="submitPasswordForm">
           <div class="row">
             <div class="col-md-12 col-sm-12">
               <div class="form-group">
-                <label>Old Password</label>
+                <label>{{$t('Old Password')}}</label>
                 <input
                     class="form-control"
                     :class="{ 'is-invalid': localErrors.current_password }"
                     v-model="passwordForm.current_password"
-                    placeholder="Enter your current password"
+                    :placeholder="$t('Enter your current password')"
                     type="text"
                     @input="validateField('current_password')"
                 />
@@ -25,12 +25,12 @@
             </div>
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
-                <label>New Password</label>
+                <label>{{$t('New Password')}}</label>
                 <input
                     class="form-control"
                     :class="{ 'is-invalid': localErrors.new_password }"
                     v-model="passwordForm.new_password"
-                    placeholder="Enter your new password"
+                    :placeholder="$t('Enter your new password')"
                     type="text"
                     @input="validateField('new_password')"
                 />
@@ -41,12 +41,12 @@
             </div>
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
-                <label>Confirm New Password</label>
+                <label>{{$t('Confirm New Password')}}</label>
                 <input
                     class="form-control"
                     :class="{ 'is-invalid': localErrors.password_confirmation }"
                     v-model="passwordForm.password_confirmation"
-                    placeholder="Enter your new password again"
+                    :placeholder="$t('Enter your new password again')"
                     type="text"
                     @input="validateField('password_confirmation')"
                 />
@@ -56,7 +56,7 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-success" :disabled="hasErrors">Update Password</button>
+          <button class="btn btn-success" :disabled="hasErrors">{{$t('Update Password')}}</button>
         </form>
       </div>
     </div>

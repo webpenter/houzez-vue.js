@@ -2,13 +2,13 @@
     <table class="dashboard-table dashboard-table-properties table-lined responsive-table">
         <thead>
             <tr>
-                <th>Thumbnail</th>
-                <th>Address</th>
+                <th>{{$t('Thumbnail')}}</th>
+                <th>{{$t('Address')}}</th>
                 <th></th>
-                <th>Type</th>
-                <th>Status</th>
-                <th>Price</th>
-                <th class="action-col">Actions</th>
+                <th>{{$t('Type')}}</th>
+                <th>{{$t('Status')}}</th>
+                <th>{{$t('Price')}}</th>
+                <th class="action-col">{{$t('Actions')}}</th>
             </tr>
         </thead>
         <tbody>
@@ -23,7 +23,7 @@
                 <tr v-for="property in dashboardProperties" :key="property.id">
                   <td class="property-table-thumbnail" data-label="Thumbnail">
                     <div class="table-property-thumb">
-                      <span v-if="property.is_paid" class="label property-payment-status">Paid</span>
+                      <span v-if="property.is_paid" class="label property-payment-status">{{$t('Paid')}}</span>
                       <a href="#">
                         <div v-if="!property.thumbnail" style="width: 100px;height: 60px;background-color: #F1F3F3"></div>
                         <img v-else :src="property.thumbnail" width="100px">
@@ -55,10 +55,10 @@
                         name:'dashboard.create-listing.step-1',
                         params:{propertyId:property.id}
                         }">
-                          Edit
+                          {{$t('Edit')}}
                         </RouterLink>
-                        <a class="dropdown-item" @click.prevent="$emit('deleteProperty',property.id)" href="#">Delete</a>
-                        <a class="dropdown-item" @click.prevent="$emit('duplicateProperty',property.id)" href="#">Duplicate</a>
+                        <a class="dropdown-item" @click.prevent="$emit('deleteProperty',property.id)" href="#">{{$t('Delete')}}</a>
+                        <a class="dropdown-item" @click.prevent="$emit('duplicateProperty',property.id)" href="#">{{$t('Duplicate')}}</a>
                       </div>
                     </div>
                   </td>

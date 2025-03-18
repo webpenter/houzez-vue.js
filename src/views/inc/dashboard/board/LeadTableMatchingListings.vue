@@ -13,14 +13,14 @@ import LeadTableMatchingListingItem from './LeadTableMatchingListingItem.vue';
                     <span class="control__indicator"></span>
                 </label>
             </th>
-            <th>ID</th>
-            <th>Property</th>
-            <th>Price</th>
-            <th>Bedrooms</th>
-            <th>Bathrooms</th>
-            <th>Area</th>
-            <th>Lot Area</th>
-            <th>Location</th>
+            <th>{{$t('ID')}}</th>
+            <th>{{$t('Property')}}</th>
+            <th>{{$t('Price')}}</th>
+            <th>{{$t('Bedrooms')}}</th>
+            <th>{{$t('Bathrooms')}}</th>
+            <th>{{$t('Area')}}</th>
+            <th>{{$t('Lot Area')}}</th>
+            <th>{{$t('Location')}}</th>
         </tr>
     </thead>
     <tbody>
@@ -40,7 +40,7 @@ import LeadTableMatchingListingItem from './LeadTableMatchingListingItem.vue';
     <tfoot>
         <tr>
             <td colspan="8">
-                <label class="mr-2">Items per page</label>
+                <label class="mr-2">{{$t('Items per page')}}</label>
                 <select class="selectpicker form-control bs-select-hidden table-select-auto" title="10" data-live-search="false" data-dropdown-align-right="auto">
                     <option>10</option>
                     <option>20</option>

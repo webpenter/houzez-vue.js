@@ -1,7 +1,7 @@
 <template>
   <DashboardHeader heading="Create Package">
     <RouterLink :to="{name:'dashboard.settings.all-packages'}" class="btn btn-primary-outlined">
-      All Packages
+      {{$t('All Packages')}}
     </RouterLink>
   </DashboardHeader>
   <section class="dashboard-content-wrap dashboard-add-new-listing">
@@ -10,13 +10,13 @@
         <div class="dashboard-content-block-wrap">
           <div class="dashboard-content-block">
             <div class="form-group">
-              <label>Package Name *</label>
+              <label>{{$t('Package Name *')}}</label>
               <input
                   class="form-control"
                   :class="{ 'is-invalid': localErrors.name }"
                   @input="validateField('name')"
                   v-model="formData.name"
-                  placeholder="Enter the package name"
+                  :placeholder="$t('Enter the package name')"
                   type="text"
               >
               <div class="text-danger mt-1" v-if="localErrors.name">
@@ -26,13 +26,13 @@
             <div class="row">
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Price *</label>
+                  <label>{{$t( 'Price *')}}</label>
                   <input
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.amount }"
                       @input="validateField('amount')"
                       v-model="formData.amount"
-                      placeholder="Enter the price"
+                      :placeholder="$t('Enter the price')"
                       type="text"
                   >
                   <div class="text-danger mt-1" v-if="localErrors.amount">
@@ -42,13 +42,13 @@
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Currency *</label>
+                  <label>{{$t('Currency *')}}</label>
                   <input
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.currency }"
                       @input="validateField('currency')"
                       v-model="formData.currency"
-                      placeholder="Enter the currency"
+                      :placeholder="$t('Enter the currency')"
                       type="text"
                   >
                   <div class="text-danger mt-1" v-if="localErrors.currency">
@@ -58,13 +58,13 @@
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Number of Listings *</label>
+                  <label>{{$t('Number of Listings *')}}</label>
                   <input
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.number_of_listings }"
                       @input="validateField('number_of_listings')"
                       v-model="formData.number_of_listings"
-                      placeholder="Enter the total number of listings"
+                      :placeholder="$t('Enter the total number of listings')"
                       type="text"
                   >
                   <div class="text-danger mt-1" v-if="localErrors.number_of_listings">
@@ -74,13 +74,13 @@
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Number of Images *</label>
+                  <label>{{$t('Number of Images *')}}</label>
                   <input
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.number_of_images }"
                       @input="validateField('number_of_images')"
                       v-model="formData.number_of_images"
-                      placeholder="Enter the total number of images"
+                      :placeholder="$t('Enter the total number of images')"
                       type="text"
                   >
                   <div class="text-danger mt-1" v-if="localErrors.number_of_images">
@@ -92,7 +92,7 @@
             <div class="row">
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Billing Method *</label>
+                  <label>{{$t('Billing Method *')}}</label>
                   <div>
                     <el-select
                         v-model="formData.billing_period"
@@ -100,7 +100,7 @@
                         filterable
                         default-first-option
                         :reserve-keyword="false"
-                        placeholder="Choose billing method for your package"
+                        :placeholder="$t('Choose billing method for your package')"
                         style="width: 100%"
                     >
                       <el-option
@@ -118,7 +118,7 @@
               </div><!-- col-md-4 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Interval Count *</label>
+                  <label>{{$t('Interval Count *')}}</label>
                   <div>
                     <el-select
                         v-model="formData.interval_count"
@@ -126,7 +126,7 @@
                         filterable
                         default-first-option
                         :reserve-keyword="false"
-                        placeholder="Choose interval count for your package"
+                        :placeholder="$t('Choose interval count for your package')"
                         style="width: 100%"
                     >
                       <el-option
@@ -148,7 +148,7 @@
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" v-model="formData.active" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                  Active
+                  {{$t('Active')}}
                 </label>
               </div>
             </div>
@@ -157,10 +157,10 @@
 
         <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
           <RouterLink class="btn btn-primary-outlined" :to="{name:'dashboard.settings.all-packages'}">
-            Cancel
+            {{$t('Cancel')}}
           </RouterLink>
           <button class="btn btn-primary" type="submit" :disabled="btnLoading || hasErrors">
-            Create Package
+            {{$t('Create Package')}}
             <span v-if="btnLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
           </button>
         </div><!-- add-new-listing-bottom-nav-wrap -->

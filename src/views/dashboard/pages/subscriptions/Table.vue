@@ -2,15 +2,15 @@
   <table class="dashboard-table dashboard-table-properties table-lined responsive-table">
     <thead>
     <tr>
-      <th>Subscription</th>
-      <th>Status</th>
-      <th>Price</th>
-      <th>Qty</th>
-      <th>Trial Start</th>
-      <th>Trial End</th>
-      <th>Package</th>
-      <th>Items</th>
-      <th class="action-col">Renew</th>
+      <th>{{$t('Subscription')}}</th>
+      <th>{{$t('Status')}}</th>
+      <th>{{$t('Price')}}</th>
+      <th>{{$t('Qty')}}</th>
+      <th>{{$t('Trial Start')}}</th>
+      <th>{{$t('Trial End')}}</th>
+      <th>{{$t('Package')}}</th>
+      <th>{{$t('Items')}}</th>
+      <th class="action-col">{{$t('Renew')}}</th>
     </tr>
     </thead>
     <tbody>
@@ -45,7 +45,7 @@
         </td>
         <td class="property-table-status">
           <el-button plain @click="centerDialogVisible = true">
-            Details
+            {{$t('Details')}}
           </el-button>
           <el-dialog
               v-model="centerDialogVisible"
@@ -58,23 +58,23 @@
               <table class="table">
                 <tbody>
                 <tr>
-                  <th scope="row">Package Name</th>
+                  <th scope="row">{{$t('Package Name')}}</th>
                   <td>{{ subscription.plan.name }}</td>
                 </tr>
                 <tr>
-                  <th scope="row">Price</th>
+                  <th scope="row">{{$t('Price')}}</th>
                   <td>{{ subscription.plan.currency_symbol + subscription.plan.price }}</td>
                 </tr>
                 <tr>
-                  <th scope="row">Time Period</th>
+                  <th scope="row">{{$t('Time Period')}}</th>
                   <td>{{ subscription.plan.time_period }}</td>
                 </tr>
                 <tr>
-                  <th scope="row">No of Listings</th>
+                  <th scope="row">{{$t('No of Listings')}}</th>
                   <td>{{ subscription.plan.properties }}</td>
                 </tr>
                 <tr>
-                  <th scope="row">No of Images</th>
+                  <th scope="row">{{$t('No of Images')}}</th>
                   <td>{{ subscription.plan.images }}</td>
                 </tr>
                 </tbody>
@@ -83,7 +83,7 @@
             <template #footer>
               <div class="dialog-footer">
                 <el-button type="primary" @click="centerDialogVisible = false">
-                  Cancel
+                  {{$t('Cancel')}}
                 </el-button>
               </div>
             </template>
@@ -93,7 +93,7 @@
           <div style="display: flex; align-items: center">
             <el-popover placement="right" :width="400" trigger="click">
               <template #reference>
-                <el-button style="margin-right: 16px">View</el-button>
+                <el-button style="margin-right: 16px">{{$t('View')}}</el-button>
               </template>
               <el-table :data="subscription.items">
                 <el-table-column width="200" property="stripe_product" label="Product #" />
@@ -107,17 +107,17 @@
         <td class="property-table-actions" data-label="Actions">
           <div class="dropdown property-action-menu">
             <button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Renew
+              {{$t('Renew')}}
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
               <template v-if="subscription.ends_at != null">
                 <a @click.prevent="$emit('resumeSubscription',subscription.type)" class="dropdown-item" href="#">
-                  Cancel
+                  {{$t('Cancel')}}
                 </a>
               </template>
               <template v-else>
                 <a @click.prevent="$emit('cancelSubscription',subscription.type)" class="dropdown-item" href="#">
-                  Resume
+                  {{$t('Resume')}}
                 </a>
               </template>
             </div>

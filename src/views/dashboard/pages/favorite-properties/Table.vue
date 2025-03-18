@@ -2,13 +2,13 @@
   <table class="dashboard-table dashboard-table-properties table-lined responsive-table">
     <thead>
     <tr>
-      <th>Thumbnail</th>
-      <th>Address</th>
+      <th>{{$t('Thumbnail')}}</th>
+      <th>{{$t('Address')}}</th>
       <th></th>
-      <th>Type</th>
-      <th>Status</th>
-      <th>Price</th>
-      <th class="action-col">Actions</th>
+      <th>{{$t('Type')}}</th>
+      <th>{{$t('Status')}}</th>
+      <th>{{$t('Price')}}</th>
+      <th class="action-col">{{$t('Actions')}}</th>
     </tr>
     </thead>
     <tbody>
@@ -23,7 +23,7 @@
       <tr v-for="property in properties" :key="property.id">
         <td class="property-table-thumbnail" data-label="Thumbnail">
           <div class="table-property-thumb">
-            <span v-if="property.is_paid" class="label property-payment-status">Paid</span>
+            <span v-if="property.is_paid" class="label property-payment-status">{{$t('Paid')}}</span>
             <a href="#">
               <div v-if="!property.thumbnail" style="width: 100px;height: 60px;background-color: #F1F3F3"></div>
               <img v-else :src="property.thumbnail" width="100px">
@@ -47,21 +47,21 @@
         <td class="property-table-actions" data-label="Actions">
           <div class="dropdown property-action-menu">
             <button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Actions
+              {{$t('Actions')}}
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
               <RouterLink
                   class="dropdown-item"
                   :to="{name:'app.property-details',params:{propertySlug:property.slug}}"
               >
-                Details
+                {{$t('Details')}}
               </RouterLink>
               <a
                   class="dropdown-item"
                   @click.prevent="$emit('deleteProperty',property.id)"
                   href="#"
               >
-                Delete
+                {{$t('Delete')}}
               </a>
             </div>
           </div>

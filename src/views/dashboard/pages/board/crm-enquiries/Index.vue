@@ -1,6 +1,6 @@
 <template>
     <DashboardHeader heading="Enquiries">
-        <a class="btn btn-primary" href="#" @click.prevent="toggleModalAddNewEnquiry">Add New Enquiry</a>
+        <a class="btn btn-primary" href="#" @click.prevent="toggleModalAddNewEnquiry">{{$t('Add New Enquiry')}}</a>
     </DashboardHeader>
 
     <AddNewEnquiryPanel v-if="isModelVisibleAddNewEnquiry" @close="toggleModalAddNewEnquiry"/>
@@ -9,20 +9,20 @@
         <div class="dashboard-content-inner-wrap">
             <div class="dashboard-content-block-wrap">
                 <div class="dashboard-content-block">
-                    You don't have any enquiry at this moment. <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewEnquiry"><strong>Add New Enquiry</strong></a>
+                    {{$t("You don't have any enquiry at this moment.")}} <a class="open-close-slide-panel" href="#" @click.prevent="toggleModalAddNewEnquiry"><strong>{{$t('Add New Enquiry')}}</strong></a>
                 </div><!-- dashboard-content-block -->
                 <CrmToolBar />                
                 <table class="dashboard-table table-lined responsive-table">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Date</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Type</th>
-                            <th>Source</th>
-                            <th class="action-col">Actions</th>
+                            <th>{{$t('ID')}}</th>
+                            <th>{{$t('Date')}}</th>
+                            <th>{{$t('Name')}}</th>
+                            <th>{{$t('Email')}}</th>
+                            <th>{{$t('Phone')}}</th>
+                            <th>{{$t('Type')}}</th>
+                            <th>{{$t('Source')}}</th>
+                            <th class="action-col">{{$t('Actions')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,29 +31,29 @@
                                 01
                             </td>
                             <td data-label="Date">
-                                March 9, 2019
+                                {{$t('March 9, 2019')}}
                             </td>
                             <td data-label="name">
-                                Martin Moore <a href="#"><i class="houzez-icon icon-messages-bubble ml-2 "></i></a>
+                                {{$t('Martin Moore')}} <a href="#"><i class="houzez-icon icon-messages-bubble ml-2 "></i></a>
                             </td>
                             <td data-label="Email">
-                                <a href="#">martin.moore@houzez.co</a>
+                                <a href="#">{{$t('martin.moore@houzez.co')}}</a>
                             </td>
                             <td data-label="Phone">
-                                879-345-1233
+                                {{$t('879-345-1233')}}
                             </td>
                             <td data-label="Type">
-                                Buyer
+                                {{$t('Buyer')}}
                             </td>
                             <td class="table-nowrap" data-label="Source">
-                                <a href="#">Property Title</a>
+                                <a href="#">{{$t('Property Title')}}</a>
                             </td>
                             <td class="text-right">
                                 <router-link 
                                     :to="{ 
                                         name: 'dashboard.crm-lead-enquiry-from-property-detail-page' 
                                     }">
-                                    View
+                                    {{$t('View')}}
                                 </router-link>
                             </td>
                         </tr>
@@ -62,13 +62,13 @@
                                 02
                             </td>
                             <td data-label="Date">
-                                March 9, 2019
+                                {{$t('March 9, 2019')}}
                             </td>
                             <td data-label="name">
-                                Isabel Wynwood
+                                {{$t('Isabel Wynwood')}}
                             </td>
                             <td data-label="Email">
-                                <a href="#">isa.wyn@houzez.co</a>
+                                <a href="#">{{$t('isa.wyn@houzez.co')}}</a>
                             </td>
                             <td data-label="Phone">
                                 -
@@ -77,14 +77,14 @@
                                 -
                             </td>
                             <td class="table-nowrap" data-label="Source">
-                                <a href="#">Agent Page</a>
+                                <a href="#">{{$t('Agent Page')}}</a>
                             </td>
                             <td class="text-right">
                                 <router-link 
                                     :to="{ 
                                         name: 'dashboard.crm-lead-enquiry-from-property-detail-page' 
                                     }">
-                                    View
+                                    {{$t('View')}}
                                 </router-link>
                             </td>
                         </tr>

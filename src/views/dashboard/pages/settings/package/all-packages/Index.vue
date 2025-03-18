@@ -1,7 +1,7 @@
 <template>
   <DashboardHeader heading="All Packages">
          <RouterLink class="btn btn-primary" :to="{name:'dashboard.settings.create-package'}">
-           Create package
+           {{$t('Create package')}}
          </RouterLink>
   </DashboardHeader>
   <section class="dashboard-content-wrap">
@@ -25,6 +25,7 @@ import {useConfirm, useMessage, useNotification, usePackage} from "@/stores/inde
 import {storeToRefs} from "pinia";
 import {onMounted, ref} from "vue";
 import Table from "@/views/dashboard/pages/settings/package/all-packages/Table.vue";
+import NoDataMsg from "@/views/dashboard/components/NoDataMsg.vue";
 
 const packageToRefs = usePackage();
 const {allPlans} = storeToRefs(packageToRefs);

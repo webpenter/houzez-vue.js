@@ -8,7 +8,7 @@
        <template v-else>
          <div class="row">
            <div class="col-md-3 col-sm-12">
-             <h2>Social Media</h2>
+             <h2>{{$t('Social Media')}}</h2>
            </div><!-- col-md-3 col-sm-12 -->
 
            <div class="col-md-9 col-sm-12">
@@ -16,66 +16,66 @@
                <div class="row">
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
-                     <label>Facebook</label>
-                     <input class="form-control" v-model="socialMedia.facebook" placeholder="Enter the Facebook URL" type="text">
+                     <label>{{$t('Facebook')}}</label>
+                     <input class="form-control" v-model="socialMedia.facebook" :placeholder="$t('Enter the Facebook URL')" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
-                     <label>Twitter</label>
-                     <input class="form-control" v-model="socialMedia.twitter" name="name" placeholder="Enter the Twitter URL" type="text">
+                     <label>{{$t('Twitter')}}</label>
+                     <input class="form-control" v-model="socialMedia.twitter" name="name" :placeholder="$t('Enter the Twitter URL')" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
-                     <label>Linkedin</label>
-                     <input class="form-control" v-model="socialMedia.linkedin" placeholder="Enter the Linkedin URL" type="text">
+                     <label>{{$t('Linkedin')}}</label>
+                     <input class="form-control" v-model="socialMedia.linkedin" :placeholder="$t('Enter the Linkedin URL')" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
-                     <label>Instagram</label>
-                     <input class="form-control" v-model="socialMedia.instagram" placeholder="Enter the Instagram URL" type="text">
+                     <label>{{$t('Instagram')}}</label>
+                     <input class="form-control" v-model="socialMedia.instagram" :placeholder="$t('Enter the Instagram URL')" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
-                     <label>Google Plus</label>
-                     <input class="form-control" v-model="socialMedia.google_plus"  placeholder="Enter the Google Plus URL" type="text">
+                     <label>{{$t('Google Plus')}}</label>
+                     <input class="form-control" v-model="socialMedia.google_plus"  :placeholder="$t('Enter the Google Plus URL')" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
-                     <label>Youtube</label>
-                     <input class="form-control" v-model="socialMedia.youtube" placeholder="Enter the Youtube URL" type="text">
+                     <label>{{$t('Youtube')}}</label>
+                     <input class="form-control" v-model="socialMedia.youtube" :placeholder="$t('Enter the Youtube URL')" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
-                     <label>Pinterest</label>
-                     <input class="form-control" v-model="socialMedia.pinterest"  placeholder="Enter the Pinterest URL" type="text">
+                     <label>{{$t('Pinterest')}}</label>
+                     <input class="form-control" v-model="socialMedia.pinterest"  :placeholder="$t('Enter the Pinterest URL')" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
-                     <label>Vimeo</label>
-                     <input class="form-control" v-model="socialMedia.vimeo" placeholder="Enter the Vimeo URL" type="text">
+                     <label>{{$t('Vimeo')}}</label>
+                     <input class="form-control" v-model="socialMedia.vimeo" :placeholder="$t('Enter the Vimeo URL')" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
-                     <label>Skype</label>
-                     <input class="form-control" v-model="socialMedia.skype" placeholder="Enter your Skupe ID" type="text">
+                     <label>{{$t('Skype')}}</label>
+                     <input class="form-control" v-model="socialMedia.skype" :placeholder="$t('Enter your Skupe ID')" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
-                     <label>Website</label>
-                     <input class="form-control" v-model="socialMedia.website" placeholder="Enter your website URL" type="text">
+                     <label>{{$t('Website')}}</label>
+                     <input class="form-control" v-model="socialMedia.website" :placeholder="$t('Enter your website URL')" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                </div><!-- row -->
-               <button class="btn btn-success">Update Profile</button>
+               <button class="btn btn-success">{{$t('Update Profile')}}</button>
              </form>
            </div><!-- col-md-9 col-sm-12 -->
          </div><!-- row -->

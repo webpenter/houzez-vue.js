@@ -1,5 +1,5 @@
 <template>
-    <h2>Information</h2>
+    <h2>{{$t('Information')}}</h2>
   <div class="dashboard-content-block">
     <template v-if="loading">
       <div class="row">
@@ -27,7 +27,7 @@
             </el-skeleton>
           </template>
           <button @click="triggerFileInput" type="button" class="btn btn-primary btn-full-width mt-3">
-            Update Profile Picture
+            {{$t('Update Profile Picture')}}
           </button>
           <input
               type="file"
@@ -42,19 +42,19 @@
             <div class="row">
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Email</label>
-                  <input class="form-control" v-model="formData.email" placeholder="Enter your email" type="text" readonly />
+                  <label>{{$t('Email')}}</label>
+                  <input class="form-control" v-model="formData.email" :placeholder="$t('Enter your email')" type="text" readonly />
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Username</label>
+                  <label>{{$t('Username')}}</label>
                   <input
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.username }"
                       @input="validateField('username')"
                       v-model="formData.username"
-                      placeholder="Enter your username"
+                      :placeholder="$t('Enter your username')"
                       type="text">
                   <span class="text-danger mt-1 d-block" v-if="localErrors.username">
                                         {{ localErrors.username }}
@@ -63,90 +63,90 @@
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>First Name</label>
-                  <input class="form-control" v-model="formData.first_name" placeholder="Enter your first name" type="text">
+                  <label>{{$t('First Name')}}</label>
+                  <input class="form-control" v-model="formData.first_name" :placeholder="$t('Enter your first name')" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Last Name</label>
-                  <input class="form-control" v-model="formData.last_name" placeholder="Enter your last name" type="text">
+                  <label>{{$t('Last Name')}}</label>
+                  <input class="form-control" v-model="formData.last_name" :placeholder="$t('Enter your last name')" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Public Name</label>
-                  <input class="form-control" v-model="formData.public_name" placeholder="Enter your last name" type="text">
+                  <label>{{$t('Public Name')}}</label>
+                  <input class="form-control" v-model="formData.public_name" :placeholder="$t('Enter your public name')" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Title</label>
-                  <input class="form-control" v-model="formData.title" placeholder="Enter your title" type="text">
+                  <label>{{$t('Title')}}</label>
+                  <input class="form-control" v-model="formData.title" :placeholder="$t('Enter your title')" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Position</label>
-                  <input class="form-control" v-model="formData.position" placeholder="Enter your title" type="text">
+                  <label>{{$t('Position')}}</label>
+                  <input class="form-control" v-model="formData.position" :placeholder="$t('Enter your title')" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>License</label>
-                  <input class="form-control" v-model="formData.license" placeholder="Enter your license" type="text">
+                  <label>{{$t('License')}}</label>
+                  <input class="form-control" v-model="formData.license" :placeholder="$t('Enter your license')" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Tax Number</label>
-                  <input class="form-control" v-model="formData.tax_number" placeholder="Enter your tax number" type="text">
+                  <label>{{$t('Tax Number')}}</label>
+                  <input class="form-control" v-model="formData.tax_number" :placeholder="$t('Enter your tax number')" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Mobile</label>
-                  <input class="form-control" v-model="formData.mobile" placeholder="Enter your phone number" type="text">
+                  <label>{{$t('Mobile')}}</label>
+                  <input class="form-control" v-model="formData.mobile" :placeholder="$t('Enter your phone number')" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Phone</label>
-                  <input class="form-control" v-model="formData.phone" placeholder="Enter your phone number" type="text">
+                  <label>{{$t('Phone')}}</label>
+                  <input class="form-control" v-model="formData.phone" :placeholder="$t('Enter your phone number')" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Whatsapp</label>
-                  <input class="form-control" v-model="formData.whatsapp" placeholder="Enter your phone number" type="text">
+                  <label>{{$t('Whatsapp')}}</label>
+                  <input class="form-control" v-model="formData.whatsapp" :placeholder="$t('Enter your whatsapp number')" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Company Name</label>
-                  <input class="form-control" v-model="formData.company_name" placeholder="Enter your company name" type="text">
+                  <label>{{$t('Company Name')}}</label>
+                  <input class="form-control" v-model="formData.company_name" :placeholder="$t('Enter your company name')" type="text">
                 </div><!-- form-group -->
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Service area</label>
-                  <input class="form-control" v-model="formData.service_areas" placeholder="Enter your company name" type="text">
-                </div><!-- form-group -->
-              </div><!-- col-md-6 col-sm-12 -->
-              <div class="col-md-12 col-sm-12">
-                <div class="form-group">
-                  <label>Address</label>
-                  <textarea class="form-control" v-model="formData.address" rows="3" placeholder="Enter your address"></textarea>
+                  <label>{{$t('Service area')}}</label>
+                  <input class="form-control" v-model="formData.service_areas" :placeholder="$t('Enter your service area')" type="text">
                 </div><!-- form-group -->
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-12 col-sm-12">
                 <div class="form-group">
-                  <label>About me</label>
-                  <textarea class="form-control" v-model="formData.about_me" rows="6" placeholder="Enter a description about you"></textarea>
+                  <label>{{$t('Address')}}</label>
+                  <textarea class="form-control" v-model="formData.address" rows="3" :placeholder="$t('Enter your address')"></textarea>
+                </div><!-- form-group -->
+              </div><!-- col-md-6 col-sm-12 -->
+              <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                  <label>{{$t('About me')}}</label>
+                  <textarea class="form-control" v-model="formData.about_me" rows="6" :placeholder="$t('Enter a description about you')"></textarea>
                 </div><!-- form-group -->
               </div><!-- col-md-6 col-sm-12 -->
             </div><!-- row -->
-            <button class="btn btn-success" :disabled="hasErrors" type="submit">Update Profile</button>
+            <button class="btn btn-success" :disabled="hasErrors" type="submit">{{$t('Update Profile')}}</button>
           </form>
         </div><!-- col-md-9 col-sm-12 -->
       </div><!-- row -->

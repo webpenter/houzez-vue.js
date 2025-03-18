@@ -1,5 +1,5 @@
 <template>
-  <DashboardHeader heading="All Properties">
+  <DashboardHeader :heading="$t('All Properties')">
     <CreateListingBtn/>
   </DashboardHeader>
 

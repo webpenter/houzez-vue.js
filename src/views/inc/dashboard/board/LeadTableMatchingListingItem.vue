@@ -10,7 +10,7 @@
 		01
 	</td>
 	<td class="table-nowrap" data-label="Property Type">
-		Apartment
+		{{$t('Apartment')}}
 	</td>
 	<td data-label="Price">
 		$345,000
@@ -28,7 +28,7 @@
 		4,576 Sq Ft
 	</td>
 	<td data-label="Location">
-		Miami, FL, 33139
+		{{$t('Miami, FL, 33139')}}
 	</td>
 </tr>
 </template>

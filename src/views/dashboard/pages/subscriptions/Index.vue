@@ -1,5 +1,5 @@
 <template>
-  <DashboardHeader heading="My Subscriptions"/>
+  <DashboardHeader :heading="$t('My Subscriptions')"/>
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">
       <div class="dashboard-content-block-wrap">
@@ -22,6 +22,7 @@ import {useNotification, useSubscription} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 import {onMounted, ref} from "vue";
 import Table from "./Table.vue";
+import NoDataMsg from "../../components/NoDataMsg.vue";
 
 const subscriptionStore = useSubscription();
 const {userSubscriptions} = storeToRefs(subscriptionStore);

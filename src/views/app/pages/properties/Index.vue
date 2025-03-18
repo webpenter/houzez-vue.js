@@ -4,7 +4,7 @@
       <div class="property-search-bar" style="background-color: #ffffff">
         <i class="fa-solid fa-magnifying-glass"></i>
         <input
-            placeholder="Search properties..."
+            :placeholder="$t('Search properties...')"
             v-model="formData.search"
             type="search"
             class="search-property input"
@@ -13,7 +13,7 @@
       </div>
       <div id="properties-filters">
         <div>
-          <label style="margin-bottom: 0">Property Type</label>
+          <label style="margin-bottom: 0">{{$t('Property Type')}}</label>
           <el-select
               v-model="formData.types"
               multiple
@@ -21,7 +21,7 @@
               filterable
               default-first-option
               :reserve-keyword="false"
-              placeholder="Choose/Search Types"
+              :placeholder="('Choose/Search Types')"
               @change="searchProperty"
               style="width: 100%"
           >
@@ -34,14 +34,14 @@
           </el-select>
         </div>
         <div>
-          <label style="margin-bottom: 0">Location</label>
+          <label style="margin-bottom: 0">{{$t('Location')}}</label>
           <el-select
               v-model="formData.city"
               clearable
               filterable
               default-first-option
               :reserve-keyword="false"
-              placeholder="Choose/Search City"
+              :placeholder="('Choose/Search City')"
               @change="searchProperty"
               style="width: 100%"
           >
@@ -54,14 +54,14 @@
           </el-select>
         </div>
         <div>
-          <label style="margin-bottom: 0">Property Size</label>
+          <label style="margin-bottom: 0">{{$t('Property Size')}}</label>
           <el-select
               v-model="formData.bedrooms"
               filterable
               clearable
               default-first-option
               :reserve-keyword="false"
-              placeholder="Choose/Search Max Bedrooms"
+              :placeholder="('Choose/Search Max Bedrooms')"
               @change="searchProperty"
               style="width:100%"
           >
@@ -74,14 +74,14 @@
           </el-select>
         </div>
         <div>
-          <label style="margin-bottom: 0">Your Budget</label>
+          <label style="margin-bottom: 0">{{$t('Your Budget')}}</label>
           <el-select
               v-model="formData.maxPrice"
               filterable
               clearable
               default-first-option
               :reserve-keyword="false"
-              placeholder="Choose/Search Max Price"
+              :placeholder="('Choose/Search Max Price')"
               @change="searchProperty"
               style="width: 100%"
           >
@@ -94,25 +94,25 @@
           </el-select>
         </div>
       </div>
-      <button @click.prevent="resetFilters" class="sidebar-search-btn">Reset filters</button>
+      <button @click.prevent="resetFilters" class="sidebar-search-btn">{{$t('Reset filters')}}</button>
     </div>
     <div id="properties">
       <div class="properties-header">
         <div class="from-to-from">
           <i class="fa-regular fa-house"></i>
-          <RouterLink :to="{name:'app.home'}">Home</RouterLink>
+          <RouterLink :to="{name:'app.home'}">{{$t('Home')}}</RouterLink>
           <i class="fa-regular fa-chevron-right"></i>
           <a href="#">
-            Properties
+            {{$t('Properties')}}
           </a>
         </div>
-        <h1>Properties</h1>
+        <h1>{{$t('Properties')}}</h1>
         <template v-if="allProperties.length > 0">
           <div class="total-properties">
             <p>{{ $filters.formatTextWithNumber(allProperties.length,"Property") }} </p>
             <div @click.prevent="refreshProperties" style="cursor: pointer">
               <i :class="{'fa-solid fa-rotate': true, 'rotate-animation': isRefreshing}"></i>
-              Refresh
+              {{$t('Refresh')}}
             </div>
           </div>
         </template>
