@@ -12,7 +12,7 @@ export const useTeamSectionStore = defineStore('teamSection', {
   actions: {
     async fetchTeamMembers() {
       try {
-        const response = await axiosInstance.get('/stripe-payments/team');
+        const response = await axiosInstance.get('/get-all-teams');
         console.log("API Response:", response);
 
         if (!response || !response.data) {

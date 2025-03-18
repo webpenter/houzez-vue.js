@@ -12,7 +12,7 @@ export const useTeamStore = defineStore('team', {
     async fetchTeamMembers() {
       this.loading = true;
       try {
-        const response = await axiosInstance.get('/stripe-payments/team/team');
+        const response = await axiosInstance.get('/get-all-teams');
         console.log("API Response:", response.data); // ✅ Debugging Response
         this.teamMembers = response.data || [];
       } catch (error) {
@@ -23,7 +23,7 @@ export const useTeamStore = defineStore('team', {
     },
     async deleteTeamMember(id) {
       try {
-        await axiosInstance.delete(`/stripe-payments/team/team/${id}`);
+        await axiosInstance.delete(`/delete-team/${id}`);
         this.teamMembers = this.teamMembers.filter(member => member.id !== id);
       } catch (error) {
         this.handleError(error, 'Failed to delete team member');
