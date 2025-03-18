@@ -1,5 +1,5 @@
 <template>
-  <DashboardHeader heading="Saved Searches"/>
+  <DashboardHeader :heading="$t('Saved Searches')"/>
 
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">

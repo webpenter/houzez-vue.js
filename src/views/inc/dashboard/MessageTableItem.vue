@@ -16,11 +16,11 @@
 	<td data-label="Actions">
 		<div class="dropdown property-action-menu">
 			<button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Actions
+				{{$t('Actions')}}
 			</button>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-				<RouterLink class="dropdown-item" to="/dashboard/dashboard-agent-message">Reply</RouterLink>
-				<a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
+				<RouterLink class="dropdown-item" to="/dashboard/dashboard-agent-message">{{$t('Reply')}}</RouterLink>
+				<a class="dropdown-item" href="#modal-delete" data-toggle="modal">{{$t('Delete')}}</a>
 			</div>
 		</div>
 	</td>

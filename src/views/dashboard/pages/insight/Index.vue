@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Insight">
+    <DashboardHeader :heading="$t('Insight')">
         <!-- <a class="btn btn-primary" href="#">View Public Profile</a> -->
     </DashboardHeader>
     <section class="dashboard-content-wrap">
@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group insight-search">
-                                <label>Select a Property</label>
+                                <label>{{$t('Select a Property')}}</label>
                                 <select class="selectpicker form-control bs-select-hidden" title="Select" data-live-search="true" data-selected-text-format="count" multiple data-actions-box="false">
                                     <option>Apartment With Ocean View</option>
                                     <option>Luxury Apartment On The Bay</option>

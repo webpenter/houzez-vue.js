@@ -103,7 +103,17 @@ export function getDashboardRoutes() {
 			icon:'icon-layout-dashboard',
 			sub:[
 				{id:1, title:'General', name:'dashboard.settings.general'},
-				{id:1, title:'Packages', name:'dashboard.settings.all-packages'},
+				{id:2, title:'Packages', name:'dashboard.settings.all-packages'},
+			]
+		},
+		{
+			id:12,
+			title:'Administration',
+			name:'dashboard.admin.users',
+			icon:'icon-single-neutral-circle',
+			sub:[
+				{id:1, title:'All Users', name:'dashboard.admin.users'},
+				{id:2, title:'All Subscribers', name:'dashboard.admin.subscribers'},
 			]
 		},
 	]);

@@ -2,8 +2,8 @@
   <table class="dashboard-table dashboard-table-properties table-lined responsive-table">
     <thead>
     <tr>
-      <th>Search Parameters</th>
-      <th class="action-col">Actions</th>
+      <th>{{$t('Search Parameters')}}</th>
+      <th class="action-col">{{$t('Actions')}}</th>
     </tr>
     </thead>
     <tbody>
@@ -37,17 +37,17 @@
                 aria-haspopup="true"
                 aria-expanded="false"
             >
-              Actions
+              {{$t('Actions')}}
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
               <router-link
                   class="dropdown-item"
                   :to="{ path: '/search-results', query: getQueryObject(search.parameters) }"
               >
-                View
+                {{$t('View')}}
               </router-link>
               <a class="dropdown-item" @click.prevent="$emit('deleteSearch', search.id)" href="#">
-                Delete
+                {{$t('Delete')}}
               </a>
             </div>
           </div>

@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Deals">
+    <DashboardHeader :heading="$t('Deals')">
       <a class="btn btn-primary" href="#" @click.prevent="toggleModalAddNewDeal">{{$t('Add New Deal')}}</a>
     </DashboardHeader>
   

@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Messages">
+    <DashboardHeader :heading="$t('Messages')">
         <!-- <a class="btn btn-primary" href="#">View Public Profile</a> -->
     </DashboardHeader>
     <section class="dashboard-content-wrap">
@@ -12,11 +12,11 @@
                     <table class="dashboard-table table-lined responsive-table">
                         <thead>
                             <tr>
-                                <th>From</th>
-                                <th>Property</th>
-                                <th>Last Message</th>
-                                <th>Date</th>
-                                <th class="action-col">Actions</th>
+                                <th>{{$t('From')}}</th>
+                                <th>{{$t('Property')}}</th>
+                                <th>{{$t('Last Message')}}</th>
+                                <th>{{$t('Date')}}</th>
+                                <th class="action-col">{{$t('Actions')}}</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -22,6 +22,7 @@ export * from './settings/city.js';
 export * from './settings/price.js';
 export * from './settings/bedroom.js';
 export * from './settings/features.js';
+export * from './settings/role.js';
 
 // ------------- Properties Dir
 export * from './properties/property.js';

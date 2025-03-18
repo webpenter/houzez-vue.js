@@ -16,8 +16,8 @@ body {
     font-size: 16px;
 }
 a{
-    text-decoration: none;
-    color: #000;
+    text-decoration: none !important;
+    color: #000 ;
 }
 ul{
     padding: 0;
@@ -82,7 +82,7 @@ div.btn-group .dropdown-menu{
 }
 div.btn-group:hover{
     background-color:var(--primary-color);
-    color: #fff;
+    color: white !important;
 }
 button{
     border: none;

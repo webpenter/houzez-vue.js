@@ -1,5 +1,5 @@
 <template>
-  <DashboardHeader heading="My Favorite Properties"/>
+  <DashboardHeader :heading="$t('My Favorite Properties')"/>
 
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">

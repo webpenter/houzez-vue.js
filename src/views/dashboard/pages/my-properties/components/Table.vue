@@ -1,5 +1,7 @@
 <template>
     <table class="dashboard-table dashboard-table-properties table-lined responsive-table">
+      <pre>
+      </pre>
         <thead>
             <tr>
                 <th>{{$t('Thumbnail')}}</th>
@@ -24,14 +26,17 @@
                   <td class="property-table-thumbnail" data-label="Thumbnail">
                     <div class="table-property-thumb">
                       <span v-if="property.is_paid" class="label property-payment-status">{{$t('Paid')}}</span>
-                      <a href="#">
+                      <RouterLink :to="{name:'app.property-details',params:{propertySlug:property.slug}}">
                         <div v-if="!property.thumbnail" style="width: 100px;height: 60px;background-color: #F1F3F3"></div>
                         <img v-else :src="property.thumbnail" width="100px">
-                      </a>
+                      </RouterLink>
                     </div><!-- table-property-thumb -->
                   </td>
                   <td class="property-table-address" data-label="Address">
-                    <a href="#"><strong>{{ property.title }}</strong></a><br>
+                    <RouterLink :to="{name:'app.property-details',params:{propertySlug:property.slug}}">
+                      <strong>{{ property.title }}</strong>
+                    </RouterLink>
+                    <br>
                     {{ $filters.subStr(property.address,0,40) }}<br>
                     <!--                              <strong>Expiration:</strong> June 9, 2019 - 6:46 pm-->
                   </td>
@@ -69,6 +74,8 @@
 </template>
 
 <script setup>
+import {RouterLink} from "vue-router";
+
 const props = defineProps({
   dashboardProperties: Object,
   loading: Boolean,

@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Activities">
+    <DashboardHeader :heading="$t('Activities')">
         <!-- <a class="btn btn-primary" href="#">View Public Profile</a> -->
     </DashboardHeader>
     

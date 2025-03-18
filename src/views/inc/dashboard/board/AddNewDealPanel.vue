@@ -1,23 +1,23 @@
 <template>
     <div class="dashboard-slide-panel-wrap">
-	<h2>Add New Deal</h2>
+	<h2>{{$t('Add New Deal')}}</h2>
 	<button type="button" class="btn open-close-slide-panel" @click="closePanel">
 		<span aria-hidden="true">&times;</span>
 	</button>
 	<div class="form-group">
-		<label>Group</label>
+		<label>{{$t('Group')}}</label>
 		<select v-model="Group" class="selectpicker form-control bs-select-hidden" title="Select" data-live-search="false" data-selected-text-format="count" data-actions-box="false">
-			<option>Active Deals</option>
-			<option>Won Deals</option>
-			<option>Lost Deals</option>
+			<option>{{$t('Active Deals')}}</option>
+			<option>{{$t('Won Deals')}}</option>
+			<option>{{$t('Lost Deals')}}</option>
 		</select><!-- selectpicker -->
 	</div><!-- form-group -->
 	<div class="form-group">
-		<label>Title</label>
-		<input class="form-control is-valid" name="name" placeholder="Enter the deal title" type="text">
+		<label>{{$t('Title')}}</label>
+		<input class="form-control is-valid" name="name" :placeholder="$t('Enter the deal title')" type="text">
 	</div>
 	<div class="form-group">
-		<label>Contact Name</label>
+		<label>{{$t('Contact Name')}}</label>
 		<select v-model="Contact" class="selectpicker form-control bs-select-hidden" title="Select" data-live-search="true" data-selected-text-format="count" data-actions-box="false">
 			<option>Option</option>
 			<option>Option</option>
@@ -27,7 +27,7 @@
 		</select><!-- selectpicker -->
 	</div><!-- form-group -->
 	<div class="form-group">
-		<label>Agent</label>
+		<label>{{$t('Agent')}}</label>
 		<select v-model="Agent" class="selectpicker form-control bs-select-hidden" title="Select" data-live-search="true" data-selected-text-format="count" data-actions-box="false">
 			<option>Option</option>
 			<option>Option</option>
@@ -37,10 +37,10 @@
 		</select><!-- selectpicker -->
 	</div><!-- form-group -->
 	<div class="form-group">
-		<label>Deal Value</label>
-		<input class="form-control is-invalid" name="name" placeholder="Enter the deal value" type="text">
+		<label>{{$t('Deal Value')}}</label>
+		<input class="form-control is-invalid" name="name" :placeholder="$t('Enter the deal value')" type="text">
 	</div>
-	<button type="button" class="btn btn-primary btn-full-width mt-2">Save</button>
+	<button type="button" class="btn btn-primary btn-full-width mt-2">{{$t('Save')}}</button>
 </div><!-- dashboard-slide-panel-wrap -->
 </template>
 

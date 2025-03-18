@@ -14,6 +14,7 @@ import axiosInstance from "@/services/axiosService.js";
 
 export const useNewsletterSubscriber = defineStore('newsletterSubscribe', {
     state: () => ({
+        newsletterSubscribers: {},
         errors: {},
         loading: false,
     }),
@@ -36,6 +37,51 @@ export const useNewsletterSubscriber = defineStore('newsletterSubscribe', {
                 }
                 throw error.response;
             }
-        }
+        },
+
+        /**
+         * Fetch all newsletter subscribers.
+         *
+         * @function getAllSubscribers
+         * @returns {Promise<Object>} Resolves with the response data if successful, otherwise rejects with an error response.
+         */
+        async getAllSubscribers() {
+            const url = `/get-all-subscribers`;
+
+            try {
+                const response = await axiosInstance.get(url);
+                this.newsletterSubscribers = response.data;
+
+                return Promise.resolve(response);
+            } catch (error) {
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
+            }
+        },
+
+        /**
+         * Delete a specific subscriber by ID.
+         *
+         * @param {number|string} subscriberId - The ID of the subscriber to delete.
+         * @returns {Promise<Object>} Resolves with the response data if successful, otherwise rejects with an error response.
+         */
+        async deleteSubscriber(subscriberId) {
+            const url = `/delete-subscriber/${subscriberId}`;
+
+            try {
+                const response = await axiosInstance.post(url);
+
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
     }
 });
