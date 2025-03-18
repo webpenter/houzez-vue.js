@@ -66,7 +66,8 @@
 
 <script setup>
 import { ref, reactive } from "vue";
-import { useTeamStore } from "@/stores/teaminformation.js";
+import {  useConfirm, useMessage, useNotification } from "@/stores/index.js";
+import { useTeamStore  } from "@/stores/teaminformation.js";
 
 const teamStore = useTeamStore();
 const loading = ref(false);
@@ -89,15 +90,30 @@ const submitForm = async () => {
   loading.value = true;
   errors.value = {}; // Clear previous errors
 
-  const response = await teamStore.addTeamMember(form);
+  try {
+    const response = await teamStore.addTeamMember(form);
 
-  if (response.success) {
-    alert(response.message);
-    Object.assign(form, { name: "", designation: "", image: null, contact_no: "", description: "" });
-  } else {
-    errors.value = response.errors; // Store validation errors
-    alert(response.message);
+    if (response.success) {
+      useNotification().Success("Team member added successfully!");
+
+      // Reset form fields
+      Object.assign(form, {
+        name: "",
+        designation: "",
+        image: null,
+        contact_no: "",
+        description: ""
+      });
+    } else {
+      errors.value = response.errors; // Store validation errors
+      useNotification().Error(response.message || "Something went wrong!");
+    }
+  } catch (error) {
+    useNotification().Error("An error occurred, please try again!");
   }
+
   loading.value = false;
 };
+
+
 </script>

@@ -3,7 +3,7 @@ import axiosInstance from "@/services/axiosService.js";
 
 export const useTeamStore = defineStore('team', {
   state: () => ({
-    baseUrl: '/stripe-payments/team/teams'
+    baseUrl: '/stripe-payments/teams'
   }),
 
   actions: {

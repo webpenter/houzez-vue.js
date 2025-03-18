@@ -3,7 +3,7 @@ import axiosInstance from "@/services/axiosService.js";
 
 export const useTeamSectionStore = defineStore('teamSection', {
   state: () => ({
-    baseUrl: '/stripe-payments/team/team',
+    baseUrl: '/stripe-payments/team',
     teamMembers: [],
     loading: false,
     error: null
@@ -12,7 +12,7 @@ export const useTeamSectionStore = defineStore('teamSection', {
   actions: {
     async fetchTeamMembers() {
       try {
-        const response = await axiosInstance.get('/stripe-payments/team/team');
+        const response = await axiosInstance.get('/stripe-payments/team');
         console.log("API Response:", response);
 
         if (!response || !response.data) {

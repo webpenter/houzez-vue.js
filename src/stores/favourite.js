@@ -3,7 +3,7 @@ import axiosInstance from "@/services/axiosService.js";
 
 export const useFavoriteStore = defineStore('favorite', {
   state: () => ({
-    baseUrl: '/properties/favorites', // Correct base URL
+    baseUrl: 'http://127.0.0.1:8000/api/v1/properties/add-or-remove', // Correct base URL
     favoriteProperties: new Set(),
   }),
 

@@ -21,7 +21,14 @@ export const useTeamStore = defineStore('team', {
         this.loading = false;
       }
     },
-
+    async deleteTeamMember(id) {
+      try {
+        await axiosInstance.delete(`/stripe-payments/team/team/${id}`);
+        this.teamMembers = this.teamMembers.filter(member => member.id !== id);
+      } catch (error) {
+        this.handleError(error, 'Failed to delete team member');
+      }
+    },
     handleError(error, defaultMessage) {
       console.error("API Error:", error); // ✅ Debugging Error
       this.errors = error.response?.data?.errors || { 

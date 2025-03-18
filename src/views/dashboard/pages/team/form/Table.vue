@@ -29,7 +29,7 @@
 			</button>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
 				<a class="dropdown-item" href="#">Details</a>
-				<a class="dropdown-item" href="#modal-delete" data-toggle="modal">Delete</a>
+        <a class="dropdown-item" href="#" @click.prevent="deleteMember(member.id)">Delete</a>
 			</div>
 		</div>
 	</td>
@@ -40,6 +40,8 @@
 
 <script setup>
 import { defineProps } from "vue";
+import {  useConfirm, useMessage, useNotification } from "@/stores/index.js";
+
 
 defineProps({
   teamMembers: {
@@ -51,4 +53,26 @@ defineProps({
     default: false
   }
 });
+import { useTeamStore } from '@/stores/fetchinformation';
+
+
+
+const teamStore = useTeamStore();
+
+const deleteMember = async (id) => {
+  try {
+    const confirm = await useConfirm().Warning("Are you sure you want to delete this team member?");
+    
+    if (confirm) {
+      await teamStore.deleteTeamMember(id);
+      useNotification().Success("Team member deleted successfully");
+    }
+  } catch (error) {
+    if (error !== "cancel") {
+      useNotification().Error("Failed to delete team member");
+    } else {
+      useNotification().Info("Request cancelled.");
+    }
+  }
+};
 </script>

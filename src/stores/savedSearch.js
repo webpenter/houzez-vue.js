@@ -3,7 +3,7 @@ import axiosInstance from "@/services/axiosService.js";
 
 export const useSavedSearch = defineStore('savedSearch', {
   state: () => ({
-    baseUrl: '/SavedSearch/saved-searches', // Updated endpoint
+    baseUrl: '/saved-searches', // Updated endpoint
   }),
 
   actions: {
