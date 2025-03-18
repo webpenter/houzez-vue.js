@@ -55,7 +55,7 @@ const routes = [
                 meta:{ title:'Property' }
             },
             /***
-             * @route App/Property
+             * @route App/Property-Details
              ***/
             {
                 path: '/property-details/:propertySlug',
