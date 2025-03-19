@@ -508,5 +508,6 @@
   "Check your Package": "Vérifier votre forfait",
   "Time Period:": "Période:",
   "Something went wrong": "Quelque chose s'est mal passé",
-  "manage_listing": "Gérer l'annonce"
+  "manage_listing": "Gérer l'annonce",
+  "Enter video iframe/embeded code": "Entrez le code iframe/embeddé de la vidéo"
 }

@@ -25,7 +25,6 @@
                 <div class="fw-bold">{{$t('Garage')}}</div>
                 <span>{{ property.garages }}</span>
               </div>
-
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
               <div

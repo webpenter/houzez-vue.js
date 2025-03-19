@@ -19,9 +19,9 @@
                   <Gallery :images="property.images"/>
                   <EnergyClass :property="property"/>
                   <Features :propertyFeature="property.property_feature"/>
-                  <MortgageCalculator :property="property"/>
-                  <FloorPlans :property="property"/>
-                  <Video :property="property"/>
+<!--                  <MortgageCalculator :property="property"/>-->
+<!--                  <FloorPlans :property="property"/>-->
+                  <Video :videoUrl="property.video_url"/>
                   <VirtualTour :virtualTour="property.virtual_tour"/>
                   <Review :property="property"/>
                 </div>
