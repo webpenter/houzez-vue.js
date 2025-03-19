@@ -8,12 +8,12 @@
 
                 <form @submit.prevent="formSubmit">
                   <div class="dashboard-content-block-wrap">
-                    <h2>360° Virtual Tour</h2>
+                    <h2>{{$t('360° Virtual Tour')}}</h2>
                     <div class="dashboard-content-block">
                       <div class="form-group">
-                        <label>Enter virtual tour iframe/embeded code</label>
+                        <label>{{$t('Enter virtual tour iframe/embeded code')}}</label>
                         <textarea
-                            class="form-control" v-model="formData.virtual_tour" rows="7" placeholder="Enter the code here"></textarea>
+                            class="form-control" v-model="formData.virtual_tour" rows="7" :placeholder="$t('Enter the code here')"></textarea>
                       </div>
                     </div><!-- dashboard-content-block -->
                   </div><!-- dashboard-content-block-wrap -->

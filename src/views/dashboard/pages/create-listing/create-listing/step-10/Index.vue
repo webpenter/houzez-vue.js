@@ -7,24 +7,24 @@
             <div class="dashboard-content-inner-wrap">
               <form @submit.prevent="formSubmit">
                 <div class="dashboard-content-block-wrap">
-                  <h2>Contact Information</h2>
+                  <h2>{{$t('Contact Information')}}</h2>
                   <div class="dashboard-content-block">
-                    <p class="mb-3">What information do you want to display in agent data container?</p>
+                    <p class="mb-3">{{$t("What information do you want to display in agent data container?")}}</p>
                     <div class="form-group">
                       <label class="control control--checkbox ">
-                        <input type="radio" value="author_data" v-model="formData.contact_information[0]">Author Data
+                        <input type="radio" value="author_data" v-model="formData.contact_information[0]">{{$t('Author Data')}}
                         <span class="control__indicator"></span>
                       </label>
                       <label class="control control--checkbox">
-                        <input type="radio"  value="agent_data" v-model="formData.contact_information[0]">Agent Data
+                        <input type="radio"  value="agent_data" v-model="formData.contact_information[0]">{{$t('Agent Data')}}
                         <span class="control__indicator"></span>
                       </label>
                       <label class="control control--checkbox">
-                        <input type="radio"  value="agency_data" v-model="formData.contact_information[0]">Agency Data
+                        <input type="radio"  value="agency_data" v-model="formData.contact_information[0]">{{$t('Agency Data')}}
                         <span class="control__indicator"></span>
                       </label>
                       <label class="control control--checkbox">
-                        <input type="radio" value="not_display" v-model="formData.contact_information[0]">Do not display
+                        <input type="radio" value="not_display" v-model="formData.contact_information[0]">{{$t('Do not display')}}
                         <span class="control__indicator"></span>
                       </label>
                     </div>

@@ -7,16 +7,16 @@
             <div class="dashboard-content-inner-wrap">
               <form @submit.prevent="formSubmit">
                 <div class="dashboard-content-block-wrap">
-                  <h2>Description</h2>
+                  <h2>{{$t('Description')}}</h2>
                   <div class="dashboard-content-block">
                     <div class="form-group">
-                      <label>Title *</label>
+                      <label>{{$t('Title')}} *</label>
                       <input
                           class="form-control"
                           :class="{ 'is-invalid': localErrors.title }"
                           @input="validateField('title')"
                           v-model="formData.title"
-                          placeholder="Enter the property title"
+                          :placeholder="$t('Enter the property title')"
                           type="text"
                       >
                       <span class="text-danger" v-if="localErrors.title">
@@ -24,20 +24,20 @@
                       </span>
                     </div>
                     <div class="form-group">
-                      <label>Description</label>
-                      <textarea class="form-control" v-model="formData.description" rows="10" placeholder="Enter the property description"></textarea>
+                      <label>{{$t('Description')}}</label>
+                      <textarea class="form-control" v-model="formData.description" rows="10" :placeholder="$t('Enter the property description')"></textarea>
                     </div>
                     <div class="row">
                       <div class="col-md-4 col-sm-12">
                         <div class="form-group">
-                          <label>Type</label>
+                          <label>{{$t('Type')}}</label>
                           <div>
                             <el-select
                                 v-model="formData.type"
                                 filterable
                                 default-first-option
                                 :reserve-keyword="false"
-                                placeholder="Choose type for your property"
+                                :placeholder="$t('Choose type for your property')"
                                 style="width: 300px"
                             >
                               <el-option
@@ -52,14 +52,14 @@
                       </div><!-- col-md-4 col-sm-12 -->
                       <div class="col-md-4 col-sm-12">
                         <div class="form-group">
-                          <label>Status</label>
+                          <label>{{$t('Status')}}</label>
                           <div>
                             <el-select
                                 v-model="formData.status"
                                 filterable
                                 default-first-option
                                 :reserve-keyword="false"
-                                placeholder="Choose status for your property"
+                                :placeholder="$t('Choose status for your property')"
                                 style="width: 300px"
                             >
                               <el-option
@@ -74,14 +74,14 @@
                       </div><!-- col-md-4 col-sm-12 -->
                       <div class="col-md-4 col-sm-12">
                         <div class="form-group">
-                          <label>Label</label>
+                          <label>{{$t('Label')}}</label>
                           <div>
                             <el-select
                                 v-model="formData.label"
                                 filterable
                                 default-first-option
                                 :reserve-keyword="false"
-                                placeholder="Choose label for your property"
+                                :placeholder="$t('Choose label for your property')"
                                 style="width: 300px"
                             >
                               <el-option
@@ -99,18 +99,18 @@
                 </div><!-- dashboard-content-block-wrap -->
 
                 <div class="dashboard-content-block-wrap">
-                  <h2>Price</h2>
+                  <h2>{{$t('Price')}}</h2>
                   <div class="dashboard-content-block">
                     <div class="row">
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Sale or Rent Price *</label>
+                          <label>{{$t('Sale or Rent Price')}} *</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.price }"
                               @input="validateField('price')"
                               v-model="formData.price"
-                              placeholder="Enter the price"
+                              :placeholder="$t('Enter the price')"
                               type="text"
                           >
                           <span class="text-danger" v-if="localErrors.price">
@@ -120,13 +120,13 @@
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Second Price (Optional)</label>
+                          <label>{{$t('Second Price (Optional)')}}</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.second_price }"
                               @input="validateField('second_price')"
                               v-model="formData.second_price"
-                              placeholder="Enter the second price"
+                              :placeholder="$t('Enter the second price')"
                               type="text"
                           >
                           <span class="text-danger" v-if="localErrors.second_price">
@@ -136,16 +136,16 @@
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>After The Price Label</label>
-                          <input class="form-control" v-model="formData.after_price" placeholder="Enter the label after price" type="text">
-                          <small class="form-text text-muted">For example: Monthly</small>
+                          <label>{{$t('After The Price Label')}}</label>
+                          <input class="form-control" v-model="formData.after_price" :placeholder="$t('Enter the label after price')" type="text">
+                          <small class="form-text text-muted">{{$t('For example: Monthly')}}</small>
                         </div>
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Price Prefix</label>
-                          <input class="form-control" v-model="formData.price_prefix" placeholder="Enter the price prefix" type="text">
-                          <small class="form-text text-muted">For example: Start from</small>
+                          <label>{{$t('Price Prefix')}}</label>
+                          <input class="form-control" v-model="formData.price_prefix" :placeholder="$t('Enter the price prefix')" type="text">
+                          <small class="form-text text-muted">{{$t('For example: Start from')}}</small>
                         </div><!-- form-group -->
                       </div><!-- col-md-6 col-sm-12 -->
                     </div><!-- row -->
@@ -154,7 +154,7 @@
 
                 <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
                       <RouterLink class="btn btn-primary-outlined" :to="{name:'dashboard.my-properties'}">
-                          Cancel
+                          {{$t('Cancel')}}
                       </RouterLink>
                     <NextBtn :btnLoading="btnLoading" :hasErrors="hasErrors"/>
                   </div><!-- add-new-listing-bottom-nav-wrap -->

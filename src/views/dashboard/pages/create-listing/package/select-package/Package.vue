@@ -18,21 +18,21 @@
           <ul class="list-unstyled">
             <li>
               <i class="houzez-icon icon-check-circle-1 primary-text mr-1"></i>
-              Time Period: <strong>{{ plan.time_period }}</strong>
+              {{$t('Time Period:')}} <strong>{{ plan.time_period }}</strong>
             </li>
             <li>
               <i class="houzez-icon icon-check-circle-1 primary-text mr-1"></i>
-              Properties: <strong>{{ plan.properties }}</strong>
+              {{$t('Properties:')}} <strong>{{ plan.properties }}</strong>
             </li>
             <li>
               <i class="houzez-icon icon-check-circle-1 primary-text mr-1"></i>
-              Listing Images: <strong>{{ plan.images }}</strong>
+              {{$t('Listing Images:')}} <strong>{{ plan.images }}</strong>
             </li>
           </ul>
         </div><!-- price-table-description -->
         <div class="price-table-button">
           <RouterLink class="btn btn-primary" :to="{name:'dashboard.create-listing.checkout',params:{planId:plan.plan_id}}">
-            Get Started
+            {{$t('Get Started')}}
           </RouterLink>
         </div><!-- price-table-button -->
       </div><!-- taxonomy-grids-module -->

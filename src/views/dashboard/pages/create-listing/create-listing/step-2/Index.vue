@@ -7,18 +7,18 @@
             <div class="dashboard-content-inner-wrap">
               <form @submit.prevent="formSubmit">
                 <div class="dashboard-content-block-wrap">
-                  <h2>Property Details</h2>
+                  <h2>{{$t('Property Details')}}</h2>
                   <div class="dashboard-content-block">
                     <div class="row">
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Bedrooms *</label>
+                          <label>{{$t('Bedrooms')}} *</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.bedrooms }"
                               @input="validateField('bedrooms')"
                               v-model="formData.bedrooms"
-                              placeholder="Enter number of bedrooms"
+                              :placeholder="$t('Enter number of bedrooms')"
                               type="text"
                           >
                           <span class="text-danger" v-if="localErrors.bedrooms">
@@ -28,13 +28,13 @@
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Bathrooms *</label>
+                          <label>{{$t('Bathrooms')}} *</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.bathrooms }"
                               @input="validateField('bathrooms')"
                               v-model="formData.bathrooms"
-                              placeholder="Enter number of bathrooms"
+                              :placeholder="$t('Enter number of bathrooms')"
                               type="text"
                           >
                           <span class="text-danger" v-if="localErrors.bathrooms">
@@ -44,13 +44,13 @@
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Garages</label>
+                          <label>{{$t('Garages')}}</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.garages }"
                               @input="validateField('garages')"
                               v-model="formData.garages"
-                              placeholder="Enter number of garages"
+                              :placeholder="$t('Enter number of garages')"
                               type="text"
                           >
                           <span class="text-danger" v-if="localErrors.garages">
@@ -60,20 +60,20 @@
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Garages Size</label>
-                          <input class="form-control" v-model="formData.garages_size" placeholder="Enter the garages size" type="text">
-                          <small class="form-text text-muted">For example: 200 Sq Ft</small>
+                          <label>{{$t('Garages Size')}}</label>
+                          <input class="form-control" v-model="formData.garages_size" :placeholder="$t('Enter the garages size')" type="text">
+                          <small class="form-text text-muted">{{$t('For example: 200 Sq Ft')}}</small>
                         </div>
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Area Size *</label>
+                          <label>{{$t('Area Size')}} *</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.area_size }"
                               @input="validateField('area_size')"
                               v-model="formData.area_size"
-                              placeholder="Enter property area size"
+                              :placeholder="$t('Enter property area size')"
                               type="text"
                           >
                           <span class="text-danger" v-if="localErrors.area_size">
@@ -83,20 +83,20 @@
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Size Prefix</label>
-                          <input class="form-control" v-model="formData.size_prefix" placeholder="Enter the size prefix" type="text">
-                          <small class="form-text text-muted">For example: Sq Ft</small>
+                          <label>{{$t('Size Prefix')}}</label>
+                          <input class="form-control" v-model="formData.size_prefix" :placeholder="$t('Enter the size prefix')" type="text">
+                          <small class="form-text text-muted">{{$t('For example: Sq Ft')}}</small>
                         </div>
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Land Area</label>
+                          <label>{{$t('Land Area')}}</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.land_area }"
                               @input="validateField('land_area')"
                               v-model="formData.land_area"
-                              placeholder="Enter property land area size"
+                              :placeholder="$t('Enter property land area size')"
                               type="text"
                           >
                           <span class="text-danger" v-if="localErrors.land_area">
@@ -106,27 +106,27 @@
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Land Area Size Postfix</label>
-                          <input class="form-control" v-model="formData.land_area_size_postfix" placeholder="Enter property land area postfix" type="text">
-                          <small class="form-text text-muted">For example: Sq Ft</small>
+                          <label>{{$t('Land Area Size Postfix')}}</label>
+                          <input class="form-control" v-model="formData.land_area_size_postfix" :placeholder="$t('Enter property land area postfix')" type="text">
+                          <small class="form-text text-muted">{{$t('For example: Sq Ft')}}</small>
                         </div>
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Property ID</label>
-                          <input class="form-control" v-model="formData.property_id" placeholder="Enter property ID" type="text">
-                          <small class="form-text text-muted">For example: HZ-01</small>
+                          <label>{{$t('Property ID')}}</label>
+                          <input class="form-control" v-model="formData.property_id" :placeholder="$t('Enter property ID')" type="text">
+                          <small class="form-text text-muted">{{$t('For example: HZ-01')}}</small>
                         </div>
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Year Built</label>
+                          <label>{{$t('Year Built')}}</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.year_built }"
                               @input="validateField('year_built')"
                               v-model="formData.year_built"
-                              placeholder="Enter year built"
+                              :placeholder="$t('Enter year built')"
                               type="text"
                           >
                           <span class="text-danger" v-if="localErrors.year_built">

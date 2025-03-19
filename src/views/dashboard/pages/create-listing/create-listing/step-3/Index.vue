@@ -7,7 +7,7 @@
             <div class="dashboard-content-inner-wrap">
               <form @submit.prevent="formSubmit">
                 <div class="dashboard-content-block-wrap">
-                  <h2>Property Features</h2>
+                  <h2>{{$t('Property Features')}}</h2>
                   <div class="dashboard-content-block">
                     <div class="row">
                       <div v-for="feature in features" :key="feature.id" class="col-md-3 col-sm-6 col-6">

@@ -17,18 +17,18 @@
         <router-link 
             to="/dashboard-import-csv" 
             class="btn btn-primary-outlined">
-            Import
+            {{$t('Import')}}
         </router-link>
     </div>
 
         <div class="dashboard-tool-button">
-            <button class="btn btn-primary-outlined">Export</button>
+            <button class="btn btn-primary-outlined">{{$t('Export')}}</button>
         </div>
         <div class="dashboard-tool-button">
-            <button id="btn-delete" class="btn btn-grey-outlined">Delete</button>
+            <button id="btn-delete" class="btn btn-grey-outlined">{{$t('Delete')}}</button>
         </div>
         <div class="dashboard-tool-button">
-            <div class="btn"><i class="houzez-icon icon-single-neutral-circle mr-2 grey"></i>36 Records</div>
+            <div class="btn"><i class="houzez-icon icon-single-neutral-circle mr-2 grey"></i>{{$t('36 Records')}}</div>
         </div>    
     </div><!-- dashboard-tool-buttons-block -->
     
@@ -40,10 +40,10 @@
                         <div class="d-flex">
                             <div class="form-group">
                                 <div class="search-icon">
-                                    <input type="text" class="form-control" placeholder="Search">
+                                    <input type="text" class="form-control" :placeholder="$t('Search')">
                                 </div><!-- search-icon -->
                             </div><!-- form-group -->
-                            <button type="submit" class="btn btn-search btn-secondary">Search</button>
+                            <button type="submit" class="btn btn-search btn-secondary">{{$t('Search')}}</button>
                         </div>
                     </div>
                 </div>

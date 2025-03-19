@@ -4,10 +4,10 @@
             <snake-nav active="11"/>
             <div class="dashboard-content-inner-wrap">
               <div class="dashboard-content-block-wrap">
-                <h2>Attachments</h2>
+                <h2>{{$t('Attachments')}}</h2>
                 <div class="dashboard-content-block">
-                  <p>You can attach PDF files, Map images OR other documents to provide further details related to property.</p>
-                  <p><button @click="triggerFileInput" class="btn btn-primary mt-2">Select Attachment</button></p>
+                  <p>{{$t('You can attach PDF files, Map images OR other documents to provide further details related to property.')}}</p>
+                  <p><button @click="triggerFileInput" class="btn btn-primary mt-2">{{$t('Select Attachment')}}</button></p>
                   <input
                       type="file"
                       ref="fileInput"
@@ -21,7 +21,7 @@
                       <thead>
                       <tr>
                         <td colspan="4">
-                          <label>Uploaded Attachments</label>
+                          <label>{{$t('Uploaded Attachments')}}</label>
                         </td>
                       </tr>
                       </thead>
@@ -45,7 +45,7 @@
                       <thead>
                       <tr>
                         <td colspan="4">
-                          <label>No attachments are available.</label>
+                          <label>{{$t('No attachments are available.')}}</label>
                         </td>
                       </tr>
                       </thead>

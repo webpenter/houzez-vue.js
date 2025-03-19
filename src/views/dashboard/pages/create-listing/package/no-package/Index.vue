@@ -6,20 +6,20 @@
                 <div class="dashboard-content-block-wrap">
                     <div class="dashboard-content-block">
                       <div>
-                       <strong> You cannot create a property because:</strong>
+                       <strong> {{$t('You cannot create a property because:')}}</strong>
                         <div class="ml-3 my-2">
-                          <li>You haven't purchased a package.</li>
-                          <li>Your current package requires an upgrade.</li>
-                          <li>Your package might not be active, so please check its status.</li>
+                          <li>{{$t("You haven't purchased a package.")}}</li>
+                          <li>{{$t('Your current package requires an upgrade.')}}</li>
+                          <li>{{$t('Your package might not be active, so please check its status.')}}</li>
                         </div>
-                        To proceed, you need an active subscription. Please subscribe to a plan or check your current package details to continue.
+                       {{$t(' To proceed, you need an active subscription. Please subscribe to a plan or check your current package details to continue.')}}
                       </div>
                       <hr>
                         <RouterLink :to="{name:'dashboard.create-listing.select-package'}" class="btn btn-primary mt-2">
-                            Subscribe Package
+                            {{$t('Subscribe Package')}}
                         </RouterLink>
                         <RouterLink :to="{name:'dashboard.subscriptions'}" class="btn btn-primary-outlined mt-2 ml-2">
-                            Check your Package
+                            {{$t('Check your Package')}}
                         </RouterLink>
                     </div><!-- dashboard-content-block -->
                     

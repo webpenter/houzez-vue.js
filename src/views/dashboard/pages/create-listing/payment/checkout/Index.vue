@@ -11,16 +11,16 @@
       <div class="order-1 flex-grow-1">
         <div class="dashboard-content-inner-wrap">
           <div class="dashboard-content-block-wrap">
-            <h2>Payment Method</h2>
+            <h2>{{$t('Payment Method')}}</h2>
             <div class="dashboard-content-block">
               <form @submit.prevent="handlePayment">
                 <div>
-                  <label for="card-holder-name">Card Holder Name (optional)</label>
-                  <input id="card-holder-name" v-model="cardHolderName" type="text" style="width: 100%;padding-block: 5px;padding-inline: 10px" class="input-field" placeholder="Enter card holder name"/>
+                  <label for="card-holder-name">{{$t('Card Holder Name (optional)')}}</label>
+                  <input id="card-holder-name" v-model="cardHolderName" type="text" style="width: 100%;padding-block: 5px;padding-inline: 10px" class="input-field" :placeholder="$t('Enter card holder name')"/>
                 </div>
 
                 <div class="mt-3">
-                  <label for="card-element">Credit or Debit Card</label>
+                  <label for="card-element">{{$t('Credit or Debit Card')}}</label>
                   <div id="card-element" class="StripeElement"></div>
                   <div id="card-errors" role="alert" class="mt-2 text-danger">{{ errorMessage }}</div>
                 </div>

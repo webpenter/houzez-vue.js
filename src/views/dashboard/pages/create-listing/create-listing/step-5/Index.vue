@@ -7,18 +7,18 @@
     <div class="dashboard-content-inner-wrap">
       <form @submit.prevent="formSubmit">
         <div class="dashboard-content-block-wrap">
-          <h2>Property Location</h2>
+          <h2>{{$t('Property Location')}}</h2>
           <div class="dashboard-content-block">
             <div class="row">
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Address *</label>
+                  <label>{{$t('Address')}} *</label>
                   <input
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.address }"
                       @input="validateField('address')"
                       v-model="formData.address"
-                      placeholder="Enter your property address"
+                      :placeholder="$t('Enter your property address')"
                       type="text"
                       autocomplete="off"
                   >
@@ -29,25 +29,25 @@
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Country</label>
-                  <input class="form-control" v-model="formData.country" placeholder="Enter your property country" type="text">
+                  <label>{{$t('Country')}}</label>
+                  <input class="form-control" v-model="formData.country" :placeholder="$t('Enter your property country')" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>County / State</label>
-                  <input class="form-control" v-model="formData.county_state" placeholder="Enter your property county/state" type="text">
+                  <label>{{$t( 'County / State')}}</label>
+                  <input class="form-control" v-model="formData.county_state" :placeholder="$t('Enter your property county/state')" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>City *</label>
+                  <label>{{$t('City')}} *</label>
                   <input
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.city }"
                       @input="validateField('city')"
                       v-model="formData.city"
-                      placeholder="Enter your property city"
+                      :placeholder="$t('Enter your property city')"
                       type="text"
                   >
                   <span class="text-danger" v-if="localErrors.city">
@@ -57,32 +57,32 @@
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Neighborhood</label>
-                  <input class="form-control" v-model="formData.neighborhood" placeholder="Enter your property neighborhood" type="text">
+                  <label>{{$t('Neighborhood')}}</label>
+                  <input class="form-control" v-model="formData.neighborhood" :placeholder="$t('Enter your property neighborhood')" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Postal Code / Zip</label>
-                  <input class="form-control" v-model="formData.zip_postal_code" placeholder="Enter your property zip code" type="text">
+                  <label>{{$t('Postal Code / Zip')}}</label>
+                  <input class="form-control" v-model="formData.zip_postal_code" :placeholder="('Enter your property zip code')" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
             </div><!-- row -->
           </div><!-- dashboard-content-block -->
         </div><!-- dashboard-content-block-wrap -->
         <div class="dashboard-content-block-wrap">
-          <h2>Map</h2>
+          <h2>{{$t('Map')}}</h2>
           <div class="dashboard-content-block">
             <div class="row">
               <div class="col-md-12 col-sm-12">
                 <div class="form-group">
-                  <label>Maps Latitude</label>
+                  <label>{{$t('Maps Latitude')}}</label>
                   <input
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.latitude }"
                       @input="validateField('latitude')"
                       v-model.number="formData.latitude"
-                      placeholder="Enter maps latitude"
+                      :placeholder="$t('Enter maps latitude')"
                       type="text"
                   >
                   <span class="text-danger" v-if="localErrors.latitude">
@@ -90,13 +90,13 @@
                 </span>
                 </div>
                 <div class="form-group">
-                  <label>Maps Longitude</label>
+                  <label>{{$t('Maps Longitude')}}</label>
                   <input
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.longitude }"
                       @input="validateField('longitude')"
                       v-model.number="formData.longitude"
-                      placeholder="Enter maps longitude"
+                      :placeholder="$t('Enter maps longitude')"
                       type="text"
                   >
                   <span class="text-danger" v-if="localErrors.longitude">

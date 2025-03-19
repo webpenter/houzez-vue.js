@@ -8,31 +8,31 @@
 
                 <form @submit.prevent="formSubmit">
                   <div class="dashboard-content-block-wrap">
-                    <h2>Energy Class</h2>
+                    <h2>{{$t('Energy Class')}}</h2>
                     <div class="dashboard-content-block">
                       <div class="row">
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
-                            <label>Energy Class</label>
-                            <input class="form-control" v-model="formData.energy_class" placeholder="Energy class" type="text">
+                            <label>{{$t('Energy Class')}}</label>
+                            <input class="form-control" v-model="formData.energy_class" :placeholder="$t('Energy class')" type="text">
                           </div>
                         </div><!-- col-md-6 col-sm-12 -->
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
-                            <label>Global Energy Performance Index</label>
-                            <input class="form-control" v-model="formData.global_energy_performance_index" placeholder="For example: 92.42 kWh / m²a" type="text">
+                            <label>{{$t('Global Energy Performance Index')}}</label>
+                            <input class="form-control" v-model="formData.global_energy_performance_index" :placeholder="$t('For example: 92.42 kWh / m²a')" type="text">
                           </div>
                         </div><!-- col-md-6 col-sm-12 -->
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
-                            <label>Renewable energy performance index</label>
-                            <input class="form-control" v-model="formData.renewable_energy_performance_index" placeholder="For example: 0.00 kWh / m²a" type="text">
+                            <label>{{$t('Renewable energy performance index')}}</label>
+                            <input class="form-control" v-model="formData.renewable_energy_performance_index" :placeholder="$t('For example: 0.00 kWh / m²a')" type="text">
                           </div>
                         </div><!-- col-md-6 col-sm-12 -->
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
-                            <label>Energy performance of the building</label>
-                            <input class="form-control" v-model="formData.energy_performance_of_the_building" placeholder="Energy performance of the building" type="text">
+                            <label>{{$t('Energy performance of the building')}}</label>
+                            <input class="form-control" v-model="formData.energy_performance_of_the_building" :placeholder="$t('Energy performance of the building')" type="text">
                           </div>
                         </div><!-- col-md-6 col-sm-12 -->
                       </div><!-- row -->

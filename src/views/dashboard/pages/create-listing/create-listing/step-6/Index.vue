@@ -7,7 +7,7 @@
             <div class="dashboard-content-inner-wrap">
 
                   <div class="dashboard-content-block-wrap">
-                    <h2>Property Media</h2>
+                    <h2>{{$t('Property Media')}}</h2>
                     <div class="dashboard-content-block">
                       <div class="upload-property-media">
                         <div class="media-drag-drop">
@@ -16,10 +16,10 @@
                           </div>
                           <div class="upload-image-counter">{{ propertyImages.length ?? '0' }} of 6</div>
                           <div>
-                            <span>(Maximum size 2MB)</span>
+                            <span>{{$t('(Maximum size 2MB)')}}</span>
                           </div>
                           <button @click="triggerFileInput" class="btn btn-primary btn-left-icon"><i class="houzez-icon icon-upload-button mr-1"></i>
-                            Select and Upload
+                            {{$t('Select and Upload')}}
                           </button>
                           <input
                               type="file"
@@ -45,7 +45,7 @@
                           </div>
                         </div>
                         <template v-if="propertyImages.length > 0">
-                          <p>Click on the star icon to select the cover image.</p>
+                          <p>{{$t('Click on the star icon to select the cover image.')}}</p>
                           <div class="upload-media-gallery">
                             <div class="row">
                               <template v-for="image in propertyImages">
@@ -73,16 +73,16 @@
                   </div><!-- dashboard-content-block-wrap -->
 
                   <div class="dashboard-content-block-wrap">
-                    <h2>Property Video</h2>
+                    <h2>{{$t('Property Video')}}</h2>
                     <div class="dashboard-content-block">
                       <div class="form-group">
-                        <label>Video URL</label>
+                        <label>{{$t('Video URL')}}</label>
                         <input
                             class="form-control"
                             :class="{ 'is-invalid': localErrors.video_url }"
                             @input="validateField('video_url')"
                             v-model="formData.video_url"
-                            placeholder="YouTube, Vimeo, SWF File and MOV File are supported"
+                            :placeholder="$t('YouTube, Vimeo, SWF File and MOV File are supported')"
                             type="text"
                         >
                         <span class="text-danger" v-if="localErrors.video_url">

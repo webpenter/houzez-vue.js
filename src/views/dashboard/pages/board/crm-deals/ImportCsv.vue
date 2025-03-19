@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Import">
+    <DashboardHeader :heading="$t('Import')">
         <!-- <a class="btn btn-primary" href="#">Add New Deal</a> -->
     </DashboardHeader>
 
