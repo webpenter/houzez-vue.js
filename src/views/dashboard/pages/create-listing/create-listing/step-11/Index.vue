@@ -1,7 +1,5 @@
 <template>
-    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
-      <SaveAsDraftBtn status=""/>
-    </DashboardHeader>
+    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING"/>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
             <snake-nav active="11"/>
             <div class="dashboard-content-inner-wrap">

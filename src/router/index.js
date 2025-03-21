@@ -604,6 +604,22 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/settings/package/create-package/Index.vue'),
                 meta:{ title:'Create Package', admin: true }
             },
+            /***
+             * @route Dashboard/Admin/Users
+             * @route Dashboard/Admin/Subscribers
+             ***/
+            {
+                path: '/dashboard/admin/users',
+                name:'dashboard.admin.users',
+                component:() => import('@/views/dashboard/pages/admin/users/Index.vue'),
+                meta:{ title:'All Users', admin: true }
+            },
+            {
+                path: '/dashboard/admin/subscribers',
+                name:'dashboard.admin.subscribers',
+                component:() => import('@/views/dashboard/pages/admin/subscribers/Index.vue'),
+                meta:{ title:'All Subscribers', admin: true }
+            },
         ]
     },
 

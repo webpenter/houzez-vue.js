@@ -27,6 +27,7 @@ export * from './settings/city.js';
 export * from './settings/price.js';
 export * from './settings/bedroom.js';
 export * from './settings/features.js';
+export * from './settings/role.js';
 
 // ------------- Properties Dir
 export * from './properties/property.js';
@@ -41,6 +42,7 @@ export * from './stripe-payments/invoices.js';
 // ------------- Others Dir
 export * from './others/newsletterSubscriber.js';
 export * from './others/savedSearch.js';
+export * from './others/language.js';
 
 // ------------- General-Settings Dir
 export * from './general-settings/get-in-touch.js';

@@ -5,7 +5,7 @@
 			<i class="houzez-icon icon-close"></i>
 		</div>
 		<div class="activitiy-item-left">
-			<img class="rounded-circle activities-avatar" src="/img/lead-avatar.png" width="40" height="40" alt="profile image">
+			<img class="rounded-circle activities-avatar" src="@/assets/img/lead-avatar.png" width="40" height="40" alt="profile image">
 		</div>
 		<div class="activitiy-item-body">
 			<div class="activity-time">Just now</div>
@@ -26,7 +26,7 @@
 			<i class="houzez-icon icon-close"></i>
 		</div>
 		<div class="activitiy-item-left">
-			<img class="rounded-circle activities-avatar" src="/img/lead-avatar.png" width="40" height="40" alt="profile image">
+			<img class="rounded-circle activities-avatar" src="@/assets/img/lead-avatar.png" width="40" height="40" alt="profile image">
 		</div>
 		<div class="activitiy-item-body">
 			<div class="activity-time">2 minutes ago</div>
@@ -39,7 +39,7 @@
 			<i class="houzez-icon icon-close"></i>
 		</div>
 		<div class="activitiy-item-left">
-			<img class="rounded-circle activities-avatar" src="/img/lead-avatar.png" width="40" height="40" alt="profile image">
+			<img class="rounded-circle activities-avatar" src="@/assets/img/lead-avatar.png" width="40" height="40" alt="profile image">
 		</div>
 		<div class="activitiy-item-body">
 			<div class="activity-time">3 minutes ago</div>
@@ -52,7 +52,7 @@
 			<i class="houzez-icon icon-close"></i>
 		</div>
 		<div class="activitiy-item-left">
-			<img class="rounded-circle activities-avatar" src="/img/lead-avatar.png" width="40" height="40" alt="profile image">
+			<img class="rounded-circle activities-avatar" src="@/assets/img/lead-avatar.png" width="40" height="40" alt="profile image">
 		</div>
 		<div class="activitiy-item-body">
 			<div class="activity-time">4 minutes ago</div>
@@ -64,7 +64,7 @@
 			<i class="houzez-icon icon-close"></i>
 		</div>
 		<div class="activitiy-item-left">
-			<img class="rounded-circle activities-avatar" src="/img/lead-avatar.png" width="40" height="40" alt="profile image">
+			<img class="rounded-circle activities-avatar" src="@/assets/img/lead-avatar.png" width="40" height="40" alt="profile image">
 		</div>
 		<div class="activitiy-item-body">
 			<div class="activity-time">6 minutes ago</div>
@@ -78,7 +78,7 @@
 			<i class="houzez-icon icon-close"></i>
 		</div>
 		<div class="activitiy-item-left">
-			<img class="rounded-circle activities-avatar" src="/img/lead-avatar.png" width="40" height="40" alt="profile image">
+			<img class="rounded-circle activities-avatar" src="@/assets/img/lead-avatar.png" width="40" height="40" alt="profile image">
 		</div>
 		<div class="activitiy-item-body">
 			<div class="activity-time">1 hour ago</div>
@@ -102,7 +102,7 @@
 			<i class="houzez-icon icon-close"></i>
 		</div>
 		<div class="activitiy-item-left">
-			<img class="rounded-circle activities-avatar" src="/img/lead-avatar.png" width="40" height="40" alt="profile image">
+			<img class="rounded-circle activities-avatar" src="@/assets/img/lead-avatar.png" width="40" height="40" alt="profile image">
 		</div>
 		<div class="activitiy-item-body">
 			<div class="activity-time">1 day ago</div>

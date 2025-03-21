@@ -2,22 +2,22 @@
   <div class="team-container-main">
     <div class="team-header">
       <div>
-        <h2>Meat Our Awesome Team</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.illum magnam. Repellat, ex.</p>
+        <h2>{{ $t('Meat Our Awesome Team')}}</h2>
+        <p>{{$t('team description')}}</p>
       </div>
       <div>
-        <a href="" class="view-all-team">View All Team<i class="fa-solid fa-arrow-right"></i></a>
+        <a href="" class="view-all-team">{{ $t('View All Team')}}<i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
     <div class="our-team-container">
       <div class="team-box-left"><i class="fa-solid fa-chevron-left"></i></div>
       <div class="" id="our-team-box">
         <div class="team-member">
-          <img src="/public/img/client-side/member.png" alt="">
+          <img src="@/assets/img/client-side/member.png" alt="">
           <div class="team-member-info">
             <div>
-              <p>Michel smith</p>
-              <p>Property Expert</p>
+              <p>{{ $t('Michel smith')}}</p>
+              <p>{{ $t('Property Expert')}}</p>
             </div>
             <div>
               <a href="" class="fa-solid fa-phone"></a>
@@ -25,11 +25,11 @@
           </div>
         </div>
         <div class="team-member">
-          <img src="/public/img/client-side/property.png" alt="">
+          <img src="@/assets/img/client-side/property.png" alt="">
           <div class="team-member-info">
             <div>
-              <p>Michel smith</p>
-              <p>Property Expert</p>
+              <p>{{ $t('Michel smith')}}</p>
+              <p>{{ $t('Property Expert')}}</p>
             </div>
             <div>
               <a href="" class="fa-solid fa-phone"></a>
@@ -37,11 +37,11 @@
           </div>
         </div>
         <div class="team-member">
-          <img src="/public/img/client-side/ss.png" alt="">
+          <img src="@/assets/img/client-side/ss.png" alt="">
           <div class="team-member-info">
             <div>
-              <p>Michel smith</p>
-              <p>Property Expert</p>
+              <p>{{ $t('Michel smith')}}</p>
+              <p>{{ $t('Property Expert')}}</p>
             </div>
             <div>
               <a href="" class="fa-solid fa-phone"></a>
@@ -49,11 +49,11 @@
           </div>
         </div>
         <div class="team-member">
-          <img src="/public/img/client-side/hero-section-img.png" alt="">
+          <img src="@/assets/img/client-side/hero-section-img.png" alt="">
           <div class="team-member-info">
             <div>
-              <p>Michel smith</p>
-              <p>Property Expert</p>
+              <p>{{ $t('Michel smith')}}</p>
+              <p>{{ $t('Property Expert')}}</p>
             </div>
             <div>
               <a href="" class="fa-solid fa-phone"></a>
@@ -61,11 +61,11 @@
           </div>
         </div>
         <div class="team-member">
-          <img src="/public/img/client-side/bg-hero.png" alt="">
+          <img src="@/assets/img/client-side/bg-hero.png" alt="">
           <div class="team-member-info">
             <div>
-              <p>Michel smith</p>
-              <p>Property Expert</p>
+              <p>{{ $t('Michel smith')}}</p>
+              <p>{{ $t('Property Expert')}}</p>
             </div>
             <div>
               <a href="" class="fa-solid fa-phone"></a>
@@ -73,11 +73,11 @@
           </div>
         </div>
         <div class="team-member">
-          <img src="/public/img/client-side/logo (1).png" alt="">
+          <img src="@/assets/img/client-side/logo (1).png" alt="">
           <div class="team-member-info">
             <div>
-              <p>Michel smith</p>
-              <p>Property Expert</p>
+              <p>{{ $t('Michel smith')}}</p>
+              <p>{{ $t('Property Expert')}}</p>
             </div>
             <div>
               <a href="" class="fa-solid fa-phone"></a>

@@ -2,11 +2,11 @@
   <div class="container mt-5">
     <!-- Newsletter Section -->
     <div class="newsletter d-flex">
-      <h2>Newsletter To Get Updated<br> The Latest News</h2>
+      <h2>{{ $t('Newsletter To Get Updated')}}<br> {{ $t('The Latest News')}}</h2>
       <div class="d-flex flex-grow-1 subscribe-input-btn">
-        <input type="email" v-model="email" class="form-control" placeholder="Enter your Email">
+        <input type="email" v-model="email" class="form-control" :placeholder="$t('Enter your Email')">
         <button @click="subscribeNewsletter" class="btn subscribe-btn">
-          Subscribe Now <i class="fas fa-paper-plane"></i>
+          {{ $t('Subscribe Now')}} <i class="fas fa-paper-plane"></i>
         </button>
       </div>
     </div>
