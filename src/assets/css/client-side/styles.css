@@ -279,7 +279,7 @@ button{
     width: -webkit-fill-available;
 }
 .search-input-box input::placeholder{
-    color: #000;
+    /*color: #000;*/
 }
 .search-bar-select-options{
     padding:10px;

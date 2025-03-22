@@ -2,8 +2,12 @@
   <div class="searchbar-pattern-container">
     <div id="search-container">
       <div class="search-input-box">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="search" v-model="formData.search" :placeholder="$t('search placeholder')">
+        <el-input
+            v-model="formData.search"
+            style="width: 100%"
+            :placeholder="$t('search placeholder')"
+            :suffix-icon="Search"
+        />
       </div>
       <div class="search-bar-select-options">
         <div>
@@ -99,6 +103,7 @@ import {storeToRefs} from "pinia";
 import {useAppProperty, useBedroom, useCity, useNotification, usePrice, useType} from "@/stores/index.js";
 import {ref} from "vue";
 import {useRouter} from "vue-router";
+import { Search } from '@element-plus/icons-vue'
 
 const btnLoading = ref(false);
 const router = useRouter();
