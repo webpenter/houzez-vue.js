@@ -184,7 +184,6 @@ const searchProperty = async () => {
 
   } catch (error) {
     useNotification().Error("Error fetching properties:", error);
-    loading.value = false;
   }
 };
 

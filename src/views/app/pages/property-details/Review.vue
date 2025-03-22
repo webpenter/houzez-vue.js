@@ -3,7 +3,7 @@
     <div class="block-title-wrap review-title-wrap d-flex align-items-center">
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
-          <h5 class="my-4">6 Reviews</h5>
+          <h4 class="my-4">6 Reviews</h4>
           <div class="rating-score-wrap flex-grow-1 ms-1">
             <span class="star"><i class="fa-solid fa-star"></i></span>
             <span class="star"><i class="fa-solid fa-star"></i></span>
@@ -11,54 +11,18 @@
             <span class="star"><i class="fa-solid empty-star"></i></span>
             <span class="star"><i class="fa-solid empty-star"></i></span>
             <span class="star-text star-text-right">
-                                                        (
-                                                        <span itemprop="ratingValue">3.33</span>
-                                                        out of
-                                                        <span itemprop="bestRating">5
-                                                        </span>
-                                                        )
-                                                    </span>
+              (
+              <span itemprop="ratingValue">3.33</span>
+              out of
+              <span itemprop="bestRating">5</span>
+              )
+            </span>
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
-          <div class="row w-100">
-            <div class="col-6">
-              <div class="d-flex align-items-center">
-                <div class="sort-by-title">
-                  <p class="pe-2">Sort&nbsp;by:</p>
-                </div>
-                <!-- sort-by-title -->
-                <div class="me-2">
-                  <div class="dropdown bootstrap-select">
-                    <select id="sort_review"
-                            class="selectpicker form-control" title=""
-                            data-live-search="false"
-                            data-dropdown-align-right="auto">
-                      <option value="">Default Order</option>
-                      <option value="a_date">Date Old to New</option>
-                      <option value="d_date">Date New to Old</option>
-                      <option value="a_rating">Rating (Low to High)
-                      </option>
-                      <option value="d_rating">Rating (High to Low)
-                      </option>
-                    </select>
-                    <div class="dropdown-menu">
-                      <div class="inner show" role="listbox"
-                           id="bs-select-3" tabindex="-1">
-                        <div class="dropdown-menu inner show"
-                             role="presentation"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- d-flex -->
-            </div>
-            <div class="col-6">
-              <a class="btn hz-btn-lreview btn-primary" href="">
-                <p class="fs-6 text-white">Leave&nbsp;a&nbsp;Review</p>
-              </a>
-            </div>
-          </div>
+          <a class="btn hz-btn-lreview btn-primary" href="">
+            <p class="fs-6 text-white">Leave&nbsp;a&nbsp;Review</p>
+          </a>
         </div>
         <div class="col-12">
           <div class="d-flex mt-3">
@@ -71,8 +35,7 @@
               <div class="d-flex align-items-center">
                 <p class="fw-bold">ijd</p>
                 <div class="rating-score-wrap flex-grow-1 ps-2">
-                                                                <span class="star"><i
-                                                                    class="fa-solid fa-star"></i></span>
+                  <span class="star"><i class="fa-solid fa-star"></i></span>
                   <span class="star"><i
                       class="fa-solid fa-star"></i></span>
                   <span class="star"><i
@@ -164,6 +127,8 @@
             </div><!-- review-message -->
           </div>
         </div>
+      </div>
+      <div class="row">
       </div>
     </div>
   </div>
