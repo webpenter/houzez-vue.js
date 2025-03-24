@@ -2,6 +2,7 @@
   <div class="searchbar-pattern-container">
     <div id="search-container">
       <div class="search-input-box">
+        <label>{{ $t("Property Search") }}</label>
         <el-input
             v-model="formData.search"
             style="width: 100%"

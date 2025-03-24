@@ -26,7 +26,7 @@
                   <Review :property="property"/>
                 </div>
               </div>
-              <SideForm/>
+              <SideForm :propertyId="property.id"/>
             </div>
           </div>
         </div>
