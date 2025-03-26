@@ -11,11 +11,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-if="loading">
-        <td colspan="5" class="text-center">
-          <i class="el-icon-loading"></i> Loading...
+      <template v-if="loading">
+      <tr>
+        <td colspan="2">
+          <el-skeleton :rows="10" animated />
         </td>
       </tr>
+    </template>
       <tr v-for="member in teamMembers" :key="member.id">
         <td><img :src="member.image" :alt="member.name" width="50"></td>
         <td>{{ member.name }}</td>
@@ -54,6 +56,7 @@ defineProps({
   }
 });
 import { useTeamStore } from '@/stores/fetchinformation';
+
 
 
 

@@ -1,9 +1,9 @@
 <template>
   <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
-    <SaveAsDraftBtn/>
+    <SaveAsDraftBtn :status="property.property_status ?? ''"/>
   </DashboardHeader>
   <section class="dashboard-content-wrap dashboard-add-new-listing">
-    <snake-nav active="listing"/>
+    <snake-nav active="5"/>
     <div class="dashboard-content-inner-wrap">
       <form @submit.prevent="formSubmit">
         <div class="dashboard-content-block-wrap">
@@ -12,7 +12,7 @@
             <div class="row">
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>Address</label>
+                  <label>Address *</label>
                   <input
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.address }"
@@ -41,8 +41,18 @@
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                  <label>City</label>
-                  <input class="form-control" v-model="formData.city" placeholder="Enter your property city" type="text">
+                  <label>City *</label>
+                  <input
+                      class="form-control"
+                      :class="{ 'is-invalid': localErrors.city }"
+                      @input="validateField('city')"
+                      v-model="formData.city"
+                      placeholder="Enter your property city"
+                      type="text"
+                  >
+                  <span class="text-danger" v-if="localErrors.city">
+                      {{ localErrors.city }}
+                  </span>
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
@@ -112,22 +122,18 @@ import SnakeNav from '../../components/SnakeNav.vue';
 import SaveAsDraftBtn from '../components/SaveAsDraftBtn.vue';
 import NextBtn from '../components/NextBtn.vue';
 import BackBtn from '../components/BackBtn.vue';
-import SectionLocation from '@/views/inc/dashboard/property/SectionLocation.vue';
-import Map from "@/views/inc/Map.vue";
 import { useRoute, useRouter } from "vue-router";
 import { useNotification, useProperty } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
-import { computed, onMounted, ref, watch } from "vue";
-import {MAP_CONFIG, PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
+import { onMounted, ref, watch } from "vue";
+import {MAP_CONFIG, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
+import {useEditProperty, usePropertyForm} from "@/traits/property/manageProperty.js";
 import L from "leaflet";
 
 const route = useRoute();
-const router = useRouter();
 const propertyId = route.params.propertyId;
 const propertyToRefs = useProperty();
 const { property } = storeToRefs(propertyToRefs);
-const notify = useNotification();
-const btnLoading = ref(false);
 
 const formData = ref({
   address: "",
@@ -142,6 +148,7 @@ const formData = ref({
 
 const localErrors = ref({
   address: "",
+  city: "",
   latitude: "",
   longitude: "",
 });
@@ -149,6 +156,8 @@ const localErrors = ref({
 const validateField = (field) => {
   if (field === "address" && !formData.value.address) {
     localErrors.value.address = "Address field is required.";
+  } else if (field === "city" && !formData.value.city) {
+    localErrors.value.city = "City field is required.";
   } else if (field === "latitude") {
     if (formData.value.latitude && isNaN(formData.value.latitude)) {
       localErrors.value.latitude = "Latitude must be a number.";
@@ -176,72 +185,18 @@ const validateField = (field) => {
   }
 };
 
-const hasErrors = computed(() =>
-  Object.values(localErrors.value).some((error) => error !== "")
+const {editData} = useEditProperty();
+
+const { formSubmit, btnLoading, hasErrors } = usePropertyForm(
+    propertyId,
+    formData,
+    localErrors,
+    validateField,
+    5,
 );
 
-const editData = async () => {
-  const res = await propertyToRefs.edit(propertyId);
-  if (res.status === 404) {
-    return router.push({ name: "property-not-found-404" });
-  } else if (res.status === 403) {
-    return router.push({ name: "unauthorized-403" });
-  }
-};
-
-const formSubmit = async () => {
-  Object.keys(localErrors.value).forEach((field) => validateField(field));
-
-  if (hasErrors.value) {
-    notify.Error("Please fix the validation errors before proceeding.");
-    return;
-  }
-
-  btnLoading.value = true;
-
-  try {
-    const res = await propertyToRefs.createOrUpdate(formData.value, propertyId);
-
-    btnLoading.value = false;
-
-    if (res.status === 200) {
-      notify.Success(
-        `Step 5 of ${PROPERTY_TOTAL_STEPS} completed. Your property has been recorded`
-      );
-      router.push({
-        name: "dashboard.create-listing.step-6",
-        params: { propertyId: propertyId },
-      });
-    } else if (res.status === 404) {
-      notify.Error("Property not found.");
-    } else if (res.status === 403) {
-      notify.Error("You are not authorized to perform this action.");
-    } else {
-      console.error("Unexpected error:", res); // Log full response
-      notify.Error("An error occurred while processing the request.");
-    }
-} catch (error) {
-    btnLoading.value = false;
-
-    // Log the full error response to the console
-    console.error("Request failed:", error);
-
-    // Display error details if available
-    if (error.response) {
-      console.error("Server Response:", error.response);
-      notify.Error(error.response.data.message || "An error occurred.");
-    } else if (error.request) {
-      console.error("No response received:", error.request);
-      notify.Error("Server did not respond. Please check your connection.");
-    } else {
-      console.error("Error Message:", error.message);
-      notify.Error("An error occurred. Please try again.");
-    }
-}
-};
-
 onMounted(() => {
-  editData();
+  editData(propertyId);
 
   if (property.value) {
     formData.value = { ...property.value };

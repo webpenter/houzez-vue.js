@@ -12,7 +12,8 @@
 
 import { defineStore } from 'pinia'
 import axiosInstance from '@/services/axiosService'
-import {useAdmin, useToken} from '@/stores'
+import {useAdmin, useIsSubscribed, useToken} from '@/stores'
+import data from "bootstrap/js/src/dom/data.js";
 
 export const useAuth = defineStore('userAuth', {
     state: () => ({
@@ -40,6 +41,12 @@ export const useAuth = defineStore('userAuth', {
     },
 
     actions: {
+        /**
+         * Fetch User Info
+         * @function getUserInfo
+         * @returns {Promise<Object>} Resolves with the user data response on success.
+         * @throws {Object} Rejects with the error response if the request fails.
+         */
         async getUserInfo () {
             try {
                 const res = await axiosInstance.get('/user');
@@ -59,6 +66,7 @@ export const useAuth = defineStore('userAuth', {
                 })
             }
         },
+
         /**
          * @feature Registers a new user by sending their details to the server.
          * @param {Object} formData - The registration data (e.g., name, email, password, etc.).
@@ -192,16 +200,20 @@ export const useAuth = defineStore('userAuth', {
         setAuthInfo (data) {
             const token = useToken()
             const admin = useAdmin()
+            const isSubscribed = useIsSubscribed()
             this.user = data?.data
             token.setToken(data?.token)
             admin.setAdmin(data?.admin)
+            isSubscribed.setIsSubscribed(data?.isSubscribed)
             this.isLggedIn = true;
         },
         removeAuthInfo () {
             const token = useToken()
             const admin = useAdmin()
+            const isSubscribed = useIsSubscribed()
             token.removeToken()
             admin.removeAdmin()
+            isSubscribed.removeIsSubscribed()
             this.isLoggedIn = false
             this.$reset()
         }

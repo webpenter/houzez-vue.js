@@ -18,6 +18,7 @@ export const useAppProperty = defineStore('appProperty', {
         featuredProperties:{},
         searchedAndFilteredProperties:{},
         allProperties:{},
+        property:{},
         errors: {},
         loading: false,
         prefix:"/app/properties",
@@ -110,6 +111,26 @@ export const useAppProperty = defineStore('appProperty', {
                     }
                 });
                 this.allProperties = response.data.properties;
+
+                return Promise.resolve(response);
+            } catch (error) {
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
+            }
+        },
+
+        /**
+         * ## Fetches property data based on the provided slug.
+         *
+         * @param {string} slug - The unique identifier for the property.
+         * @returns {Promise} - Resolves with the response data or rejects with an error response.
+         */
+        async getProperty(slug) {
+            let url = `${this.prefix}/get-property/${slug}`;
+
+            try {
+                const response = await axiosInstance.get(url);
+                this.property = response.data.property;
 
                 return Promise.resolve(response);
             } catch (error) {

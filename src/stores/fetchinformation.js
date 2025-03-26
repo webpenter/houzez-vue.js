@@ -3,7 +3,7 @@ import axiosInstance from "@/services/axiosService.js";
 
 export const useTeamStore = defineStore('team', {
   state: () => ({
-    teamMembers: {},
+    teamMembers: [], // ✅ Should be an array, not an object
     loading: false,
     errors: {}
   }),
@@ -13,7 +13,7 @@ export const useTeamStore = defineStore('team', {
       this.loading = true;
       try {
         const response = await axiosInstance.get('/get-all-teams');
-        console.log("API Response:", response.data); // ✅ Debugging Response
+        console.log("API Response:", response.data);
         this.teamMembers = response.data || [];
       } catch (error) {
         this.handleError(error, 'Failed to fetch team members');
@@ -30,7 +30,7 @@ export const useTeamStore = defineStore('team', {
       }
     },
     handleError(error, defaultMessage) {
-      console.error("API Error:", error); // ✅ Debugging Error
+      console.error("API Error:", error);
       this.errors = error.response?.data?.errors || { 
         general: [error.response?.data?.message || defaultMessage]
       };

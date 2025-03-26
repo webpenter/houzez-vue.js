@@ -1,9 +1,9 @@
 <template>
     <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
-        <SaveAsDraftBtn/>
+      <SaveAsDraftBtn :status="property.property_status ?? ''"/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
-            <snake-nav active="listing"/>
+            <snake-nav active="3"/>
             <div class="dashboard-content-inner-wrap">
               <form @submit.prevent="formSubmit">
                 <div class="dashboard-content-block-wrap">
@@ -36,12 +36,12 @@ import SnakeNav from '../../components/SnakeNav.vue';
 import SaveAsDraftBtn from '../components/SaveAsDraftBtn.vue';
 import NextBtn from '../components/NextBtn.vue';
 import BackBtn from '../components/BackBtn.vue';
-import SectionFeature from '@/views/inc/dashboard/property/SectionFeature.vue';
 import {onMounted, ref, watch} from 'vue';
 import {storeToRefs} from "pinia";
-import {useFeatures, useNotification, useProperty} from "@/stores/index.js";
-import {PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
+import {useFeatures, useProperty} from "@/stores/index.js";
+import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 import {useRoute, useRouter} from "vue-router";
+import {useEditProperty,usePropertyForm} from "@/traits/property/manageProperty.js";
 
 const {features} = storeToRefs(useFeatures());
 
@@ -50,49 +50,22 @@ const formData = ref({
 });
 
 const route = useRoute();
-const router = useRouter();
 const propertyId = route.params.propertyId;
 const propertyToRefs = useProperty();
 const {property} = storeToRefs(propertyToRefs);
-const notify = useNotification();
-const btnLoading = ref(false);
 
-const formSubmit = async () => {
-  btnLoading.value = true;
+const {editData} = useEditProperty();
 
-  try {
-    const res = await propertyToRefs.createOrUpdate(formData.value, propertyId);
-
-    btnLoading.value = false;
-
-    if (res.status === 200) {
-      notify.Success(`Step 3 of ${PROPERTY_TOTAL_STEPS} completed. Your property has been recorded`);
-      router.push({name:"dashboard.create-listing.step-4",params:{propertyId:propertyId}});
-    } else if (res.status === 404) {
-      notify.Error("Property not found.");
-    } else if (res.status === 403) {
-      notify.Error("You are not authorized to perform this action.");
-    } else {
-      notify.Error("An error occurred while processing the request.");
-    }
-  } catch (error) {
-    btnLoading.value = false;
-    notify.Error("An error occurred");
-  }
-};
-
-const editData = async () => {
-  const res = await propertyToRefs.edit(propertyId);
-
-  if (res.status === 404) {
-    return router.push({name:"property-not-found-404"});
-  } else if (res.status === 403) {
-    return router.push({name:"unauthorized-403"});
-  }
-}
+const { formSubmit, btnLoading } = usePropertyForm(
+    propertyId,
+    formData,
+    ref({}),
+    () => {},
+    3
+);
 
 onMounted(() => {
-  editData();
+  editData(propertyId);
 
   if (property.value){
     formData.value = { ...property.value };

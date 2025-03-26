@@ -2,15 +2,17 @@
   <div class="team-container-main">
     <div class="team-header">
       <div>
-        <h2>Meet Our Awesome Team</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.illum magnam. Repellat, ex.</p>
+
+        <h2>{{ $t('Meat Our Awesome Team')}}</h2>
+        <p>{{$t('team description')}}</p>
       </div>
       <div>
-        <a href="" class="view-all-team">View All Team<i class="fa-solid fa-arrow-right"></i></a>
+        <a href="" class="view-all-team">{{ $t('View All Team')}}<i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
     <div class="our-team-container">
       <div class="team-box-left"><i class="fa-solid fa-chevron-left"></i></div>
+
       <div id="our-team-box">
         <div 
           v-for="(member, index) in teamMembers" 
@@ -27,6 +29,7 @@
             </div>
             <div>
               <a :href="`tel:${member.contact_no}`" class="fa-solid fa-phone"></a>
+
             </div>
           </div>
         </div>

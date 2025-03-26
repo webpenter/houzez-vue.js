@@ -16,7 +16,7 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
-import { useTeamStore } from '@/stores/fetchinformation'; // ✅ Correct Import
+import { useTeamStore } from '@/stores/fetchinformation';
 import Table from "./Table.vue";
 
 // ✅ Store ko initialize karein
@@ -24,6 +24,10 @@ const teamStore = useTeamStore();
 const { teamMembers, loading } = storeToRefs(teamStore);
 
 onMounted(() => {
-  teamStore.fetchTeamMembers(); // ✅ Fetch Data on Component Load
+  if (typeof teamStore.fetchTeamMembers === "function") {
+    teamStore.fetchTeamMembers();  // ✅ Call fetch function
+  } else {
+    console.error("fetchTeamMembers is not a function");
+  }
 });
 </script>

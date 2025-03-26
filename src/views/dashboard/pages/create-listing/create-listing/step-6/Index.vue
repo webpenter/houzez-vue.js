@@ -1,15 +1,14 @@
 <template>
     <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
-        <SaveAsDraftBtn/>
+      <SaveAsDraftBtn :status="property.property_status ?? ''"/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
-            <snake-nav active="listing"/>
+            <snake-nav active="6"/>
             <div class="dashboard-content-inner-wrap">
 
                   <div class="dashboard-content-block-wrap">
                     <h2>Property Media</h2>
                     <div class="dashboard-content-block">
-                      <p>Drag and drop the images to customize the image gallery order.</p>
                       <div class="upload-property-media">
                         <div class="media-drag-drop">
                           <div class="upload-icon">
@@ -17,7 +16,6 @@
                           </div>
                           <div class="upload-image-counter">{{ propertyImages.length ?? '0' }} of 6</div>
                           <div>
-                            Drag and drop the gallery images here<br>
                             <span>(Maximum size 2MB)</span>
                           </div>
                           <button @click="triggerFileInput" class="btn btn-primary btn-left-icon"><i class="houzez-icon icon-upload-button mr-1"></i>
@@ -109,12 +107,12 @@ import SnakeNav from '../../components/SnakeNav.vue';
 import SaveAsDraftBtn from '../components/SaveAsDraftBtn.vue';
 import NextBtn from '../components/NextBtn.vue';
 import BackBtn from '../components/BackBtn.vue';
-import SectionMedia from '@/views/inc/dashboard/property/SectionMedia.vue';
 import {useRoute, useRouter} from "vue-router";
 import {useNotification, useProperty} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 import {computed, onMounted, ref, watch} from "vue";
 import {PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
+import {useEditProperty} from "@/traits/property/manageProperty.js";
 
 const route = useRoute();
 const router = useRouter();
@@ -124,7 +122,7 @@ const {property,propertyImages} = storeToRefs(propertyToRefs);
 const notify = useNotification();
 const btnLoading = ref(false);
 const fileInput = ref(null);
-const hasPropertyImages = ref(false);
+const {editData} = useEditProperty();
 
 const formData = ref({
   video_url: "",
@@ -160,16 +158,6 @@ const isValidUrl = (url) => {
 const hasErrors = computed(() =>
     Object.values(localErrors.value).some((error) => error !== "")
 );
-
-const editData = async () => {
-  const res = await propertyToRefs.edit(propertyId);
-
-  if (res.status === 404) {
-    return router.push({name:"property-not-found-404"});
-  } else if (res.status === 403) {
-    return router.push({name:"unauthorized-403"});
-  }
-}
 
 const editImagesData = async () => await propertyToRefs.editImages(propertyId);
 
@@ -271,7 +259,7 @@ const formSubmit = async () => {
     btnLoading.value = false;
 
     if (res.status === 200) {
-      notify.Success(`Step 6 of ${PROPERTY_TOTAL_STEPS} completed. Your property has been recorded`);
+      notify.Success(`Step 6 of ${PROPERTY_TOTAL_STEPS} completed.`);
       router.push({name:"dashboard.create-listing.step-7",params:{propertyId:propertyId}});
     } else if (res.status === 404) {
       notify.Error("Property not found.");
@@ -317,7 +305,7 @@ const deleteImage = async (imgId) => {
 }
 
 onMounted(() => {
-  editData();
+  editData(propertyId);
   editImagesData();
 
   if (property.value){

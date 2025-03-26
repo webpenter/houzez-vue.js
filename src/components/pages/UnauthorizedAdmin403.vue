@@ -4,7 +4,7 @@
             <LogoWhite class="mb-4"/>
             <h1>403</h1>
             <p>You are not authorized for admin access.</p>
-            <router-link :to="{name:'dashboard'}" class="btn-home mt-3">
+            <router-link :to="{name:'dashboard'}" class="btn-home mt-4">
               Go to dashboard
             </router-link>
         </div>

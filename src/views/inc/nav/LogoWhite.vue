@@ -1,7 +1,7 @@
 <template>
     <div class="logo">
         <RouterLink :to="{name:'app.home'}">
-            <img src="/img/logo-houzez-white.png" alt="logo">
+            <img src="@/assets/img/logo-houzez-white.png" alt="logo">
         </RouterLink>
     </div><!-- .logo -->
 </template>

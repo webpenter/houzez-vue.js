@@ -8,7 +8,7 @@
               You do not have permission to view this page using the credentials that you have provided while login. <br />
               Please contact your site administrator or Check your plan.
             </p>
-            <router-link :to="{name:'app.home'}" class="btn-home">
+            <router-link :to="{name:'app.home'}" class="btn-home mt-4">
               Check Your Plan
             </router-link>
         </div>

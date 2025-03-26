@@ -1,11 +1,10 @@
 <template>
     <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
-        <SaveAsDraftBtn/>
+        <SaveAsDraftBtn :status="property.property_status ?? ''"/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
-            <SnakeNav active="listing"/>
+            <SnakeNav active="1"/>
             <div class="dashboard-content-inner-wrap">
-
               <form @submit.prevent="formSubmit">
                 <div class="dashboard-content-block-wrap">
                   <h2>Description</h2>
@@ -100,12 +99,12 @@
                 </div><!-- dashboard-content-block-wrap -->
 
                 <div class="dashboard-content-block-wrap">
-                  <h2>Price *</h2>
+                  <h2>Price</h2>
                   <div class="dashboard-content-block">
                     <div class="row">
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Sale or Rent Price</label>
+                          <label>Sale or Rent Price *</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.price }"
@@ -175,6 +174,7 @@ import {useLabel,useType, useNotification, useProperty, useStatus} from "@/store
 import {storeToRefs} from "pinia";
 import {PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 import NextBtn from "@/views/dashboard/pages/create-listing/create-listing/components/NextBtn.vue";
+import {useEditProperty} from "@/traits/property/manageProperty.js";
 
 const route = useRoute();
 const router = useRouter();
@@ -214,12 +214,12 @@ const validateField = (field) => {
     if (!formData.value.price) {
       localErrors.value.price = "Price field is required.";
     } else if (isNaN(formData.value.price)) {
-      localErrors.value.price = "Price must be a number.";
+      localErrors.value.price = "Price field must be a number.";
     } else {
       localErrors.value.price = "";
     }
   } else if (field === "second_price" && formData.value.second_price && isNaN(formData.value.second_price)) {
-    localErrors.value.second_price = "Second price must be a number.";
+    localErrors.value.second_price = "Second price field must be a number.";
   } else {
     localErrors.value[field] = "";
   }
@@ -229,15 +229,7 @@ const hasErrors = computed(() =>
     Object.values(localErrors.value).some((error) => error !== "")
 );
 
-const editData = async () => {
-  const res = await propertyToRefs.edit(propertyId);
-
-  if (res.status === 404) {
-      return router.push({name:"property-not-found-404"});
-  } else if (res.status === 403) {
-      return router.push({name:"unauthorized-403"});
-  }
-}
+const {editData} = useEditProperty();
 
 const formSubmit = async () => {
   Object.keys(localErrors.value).forEach((field) => validateField(field));
@@ -257,26 +249,26 @@ try {
 
   btnLoading.value = false;
 
-  if ([200, 201].includes(res.status)) {
-    const newPropertyId = res.data.property.id;
-    notify.Success(`Step 1 of ${PROPERTY_TOTAL_STEPS} completed. Your property has been recorded`);
-    router.push({ name: "dashboard.create-listing.step-2", params: { propertyId: newPropertyId } });
-  } else {
-    console.error("API Response:", res);
-    notify.Error(res.data?.message || "An error occurred while processing the request.");
+    if ([200, 201].includes(res.status)) {
+      const newPropertyId = res.data.property.id;
+      notify.Success(`Step 1 of ${PROPERTY_TOTAL_STEPS} completed.`);
+      router.push({name:"dashboard.create-listing.step-2",params:{propertyId:newPropertyId}});
+    } else if (res.status === 404) {
+      notify.Error("Property not found.");
+    } else if (res.status === 403) {
+      notify.Error("You are not authorized to perform this action.");
+    } else {
+      notify.Error("An error occurred while processing the request.");
+    }
+  } catch (error) {
+    btnLoading.value = false;
+    notify.Error("An error occurred");
   }
-} catch (error) {
-  btnLoading.value = false;
-
-  console.error("API Error:", error.response?.data || error);
-  notify.Error(error.response?.data?.message || "An unexpected error occurred.");
-}
-
 };
 
 onMounted(() => {
   if (propertyId){
-    editData();
+    editData(propertyId);
   }
 
   if (property.value){

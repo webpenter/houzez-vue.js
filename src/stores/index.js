@@ -2,6 +2,7 @@
 export * from './auth/auth.js';
 export * from './auth/token.js';
 export * from './auth/admin.js';
+export * from './auth/isSubscribed.js';
 export * from './auth/profile.js';
 
 // ------------- Element-Plus Dir
@@ -21,9 +22,11 @@ export * from './settings/city.js';
 export * from './settings/price.js';
 export * from './settings/bedroom.js';
 export * from './settings/features.js';
+export * from './settings/role.js';
 
 // ------------- Properties Dir
 export * from './properties/property.js';
+export * from './properties/favoriteProperty.js';
 export * from './properties/appProperty.js';
 
 // ------------- Stripe-Payments Dir
@@ -31,10 +34,18 @@ export * from './stripe-payments/package.js';
 export * from './stripe-payments/subscription.js';
 export * from './stripe-payments/invoices.js';
 
-// savedsearch
+// ------------- Others Dir
+export * from './others/newsletterSubscriber.js';
+export * from './others/savedSearch.js';
+export * from './others/language.js';
 
-export * from './savedSearch.js';
-export * from './favourite.js';
-export * from './teaminformation.js';
+
+
+// ------------- team Dir
 export * from './teamSection.js';
+export * from './teaminformation.js';
 export * from './fetchinformation.js';
+export * from './favourite.js';
+
+
+

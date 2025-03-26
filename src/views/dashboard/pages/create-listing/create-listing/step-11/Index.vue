@@ -1,15 +1,13 @@
 <template>
-    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
-        <SaveAsDraftBtn/>
-    </DashboardHeader>
+    <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING"/>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
-            <snake-nav active="listing"/>
+            <snake-nav active="11"/>
             <div class="dashboard-content-inner-wrap">
               <div class="dashboard-content-block-wrap">
                 <h2>Attachments</h2>
                 <div class="dashboard-content-block">
                   <p>You can attach PDF files, Map images OR other documents to provide further details related to property.</p>
-                  <p><button @click="triggerFileInput" class="btn btn-primary">Select Attachment</button></p>
+                  <p><button @click="triggerFileInput" class="btn btn-primary mt-2">Select Attachment</button></p>
                   <input
                       type="file"
                       ref="fileInput"
@@ -69,10 +67,9 @@ import SnakeNav from '../../components/SnakeNav.vue';
 import SaveAsDraftBtn from '../components/SaveAsDraftBtn.vue';
 import NextBtn from '../components/NextBtn.vue';
 import BackBtn from '../components/BackBtn.vue';
-import SectionAttachments from '@/views/inc/dashboard/property/SectionAttachments.vue';
-import {RouterLink ,useRoute, useRouter} from "vue-router";
+import { useRoute, useRouter} from "vue-router";
 import {PROPERTY_TOTAL_STEPS, TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
-import {computed, onMounted, ref, watch} from "vue";
+import {onMounted, ref} from "vue";
 import {useNotification, useProperty} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 
@@ -118,7 +115,7 @@ const handleFileChange = async (event) => {
 
 
 const nextBtn = () => {
-  notify.Success(`Step 11 of ${PROPERTY_TOTAL_STEPS} completed. Your property has been recorded`);
+  notify.Success(`Step 11 of ${PROPERTY_TOTAL_STEPS} completed.`);
   router.push({name:"dashboard.create-listing.step-12",params:{propertyId:propertyId}});
 };
 
