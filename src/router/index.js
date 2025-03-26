@@ -448,20 +448,20 @@ const routes = [
             },
 
             /***
-             * @route Dashboard/Messages
+             * @route Dashboard/Messages/AllMessages
+             * @route Dashboard/Messages/Details
              ***/
             {
                 path: '/dashboard/messages',
                 name:'dashboard.messages',
-                component:() => import('@/views/dashboard/pages/messages/Index.vue'),
+                component:() => import('@/views/dashboard/pages/messages/all-messages/Index.vue'),
                 meta:{ title:'Messages' }
             },
-            
             {
-                path: '/dashboard/dashboard-agent-message',
-                name:'dashboard.dashboard-agent-message',
-                component:() => import('@/views/inc/dashboard/DashboardAgentMessage.vue'),
-                meta:{ title:'Messages' }
+                path: '/dashboard/messages/details/:messageId(\\d+)',
+                name:'dashboard.messages.details',
+                component:() => import('@/views/dashboard/pages/messages/message-details/Index.vue'),
+                meta:{ title:'Message Details' }
             },
             /***
              * @route Dashboard/My-Profile
