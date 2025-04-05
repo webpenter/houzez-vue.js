@@ -20,10 +20,29 @@
                 </span>
               </nav>
               <div class="icons">
-                <span @click="toggleFavoriteProperty"  :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }"><i class="fa-solid fa-heart"></i></span>
+                <template v-if="token">
+                  <span @click="toggleFavoriteProperty"  :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }"><i class="fa-solid fa-heart"></i></span>
+                </template>
+                <template v-else>
+                  <span @click="noAuthDialog = true"  :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }"><i class="fa-solid fa-heart"></i></span>
+                </template>
+
                 <span @click="openShareDialog = true" style="cursor: pointer;color: green"><i class="fa-solid fa-share"></i></span>
                 <span @click="handlePrint" style="cursor: pointer;color: blue"><i class="fa-solid fa-print"></i></span>
               </div>
+              <el-dialog v-model="noAuthDialog" title="Alert" width="500" align-center>
+                <span>
+                  You can add a property to your favorites only if you are authenticated. Please log in or sign up first to access this feature.
+                </span>
+                <template #footer>
+                  <div class="dialog-footer">
+                    <el-button @click="noAuthDialog = false">Cancel</el-button>
+                    <el-button type="primary" @click="showLoginPage">
+                      Login
+                    </el-button>
+                  </div>
+                </template>
+              </el-dialog>
               <el-dialog
                   v-model="openShareDialog"
                   title="Share"
@@ -88,12 +107,16 @@
 </template>
 
 <script setup>
-import {RouterLink} from "vue-router";
+import {RouterLink, useRouter} from "vue-router";
 import {computed, onMounted, ref} from "vue";
-import {useFavoriteProperty, useNotification} from "@/stores/index.js";
+import {useFavoriteProperty, useNotification, useToken} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 
 const props =  defineProps(['property']);
+
+const router = useRouter();
+const token = useToken().getToken;
+
 const propertySlug = props.property.slug;
 const propertyId = ref(props.property.id);
 
@@ -101,6 +124,12 @@ const handlePrint = () => window.print();
 const currentDomain = computed(() => window.location.origin);
 
 const openShareDialog = ref(false)
+const noAuthDialog = ref(false)
+
+const showLoginPage = () => {
+  router.push({name:'auth'});
+  noAuthDialog.value = false;
+}
 
 const getShareUrl = () => `${currentDomain.value}/property/${propertySlug}`;
 
@@ -142,5 +171,9 @@ const toggleFavoriteProperty = async () => {
 
 const isFavoriteProperty = async () => await favoritePropertyStore.isFavoriteProperty(propertyId.value);
 
-onMounted(isFavoriteProperty);
+onMounted(() => {
+  if (token){
+    isFavoriteProperty();
+  }
+});
 </script>

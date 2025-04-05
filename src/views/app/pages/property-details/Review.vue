@@ -3,7 +3,7 @@
     <div class="block-title-wrap review-title-wrap d-flex align-items-center">
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
-          <h5 class="my-4">6 Reviews</h5>
+          <h4 class="my-4">6 Reviews</h4>
           <div class="rating-score-wrap flex-grow-1 ms-1">
             <span class="star"><i class="fa-solid fa-star"></i></span>
             <span class="star"><i class="fa-solid fa-star"></i></span>
@@ -11,54 +11,18 @@
             <span class="star"><i class="fa-solid empty-star"></i></span>
             <span class="star"><i class="fa-solid empty-star"></i></span>
             <span class="star-text star-text-right">
-                                                        (
-                                                        <span itemprop="ratingValue">3.33</span>
-                                                        out of
-                                                        <span itemprop="bestRating">5
-                                                        </span>
-                                                        )
-                                                    </span>
+              (
+              <span itemprop="ratingValue">3.33</span>
+              out of
+              <span itemprop="bestRating">5</span>
+              )
+            </span>
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
-          <div class="row w-100">
-            <div class="col-6">
-              <div class="d-flex align-items-center">
-                <div class="sort-by-title">
-                  <p class="pe-2">Sort&nbsp;by:</p>
-                </div>
-                <!-- sort-by-title -->
-                <div class="me-2">
-                  <div class="dropdown bootstrap-select">
-                    <select id="sort_review"
-                            class="selectpicker form-control" title=""
-                            data-live-search="false"
-                            data-dropdown-align-right="auto">
-                      <option value="">Default Order</option>
-                      <option value="a_date">Date Old to New</option>
-                      <option value="d_date">Date New to Old</option>
-                      <option value="a_rating">Rating (Low to High)
-                      </option>
-                      <option value="d_rating">Rating (High to Low)
-                      </option>
-                    </select>
-                    <div class="dropdown-menu">
-                      <div class="inner show" role="listbox"
-                           id="bs-select-3" tabindex="-1">
-                        <div class="dropdown-menu inner show"
-                             role="presentation"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- d-flex -->
-            </div>
-            <div class="col-6">
-              <a class="btn hz-btn-lreview btn-primary" href="">
-                <p class="fs-6 text-white">Leave&nbsp;a&nbsp;Review</p>
-              </a>
-            </div>
-          </div>
+          <a class="btn hz-btn-lreview btn-primary" href="">
+            <p class="fs-6 text-white">{{$t('Leave a Review')}}</p>
+          </a>
         </div>
         <div class="col-12">
           <div class="d-flex mt-3">
@@ -71,8 +35,7 @@
               <div class="d-flex align-items-center">
                 <p class="fw-bold">ijd</p>
                 <div class="rating-score-wrap flex-grow-1 ps-2">
-                                                                <span class="star"><i
-                                                                    class="fa-solid fa-star"></i></span>
+                  <span class="star"><i class="fa-solid fa-star"></i></span>
                   <span class="star"><i
                       class="fa-solid fa-star"></i></span>
                   <span class="star"><i
@@ -165,33 +128,35 @@
           </div>
         </div>
       </div>
+      <div class="row">
+      </div>
     </div>
   </div>
   <div class="Leave-Review mt-3 p-lg-4 p-md-3 p-sm-2 p-1">
     <div
         class="py-lg-5 py-md-3 py-sm-2 py-2 d-flex justify-content-between align-items-center">
-      <h5>Leave a Review</h5>
+      <h5>{{$t('Leave a Review')}}</h5>
     </div><!-- block-title-wrap -->
     <div class="block-content-wrap">
       <form method="post" action="#">
         <div class="row">
           <div class="col-md-12 col-sm-12">
             <div class="form-group">
-              <div class="my-2 fw-bold">Email</div>
+              <div class="my-2 fw-bold">{{$t('Email')}}</div>
               <input class="form-control" name="name"
                      placeholder="you@example.com" type="text">
             </div>
           </div><!-- col-md-6 col-sm-12 -->
           <div class="col-md-6 col-sm-12">
             <div class="form-group">
-              <div class="my-2 fw-bold">Title</div>
+              <div class="my-2 fw-bold">{{$t('Title')}}</div>
               <input class="form-control" name="mobile"
                      placeholder="Enter your Title" type="text">
             </div>
           </div><!-- col-md-6 col-sm-12 -->
           <div class="col-md-6 col-sm-12">
             <div class="form-group">
-              <div class="my-2 fw-bold">Rating</div>
+              <div class="my-2 fw-bold">{{ $t('Rating') }}</div>
               <input class="form-control" name="email"
                      placeholder="Enter your Rating" type="email">
             </div>
@@ -199,7 +164,7 @@
           <!-- col-md-6 col-sm-12 -->
           <div class="col-sm-12 col-xs-12">
             <div class="form-group form-group-textarea">
-              <div class="fw-bold py-2">Review</div>
+              <div class="fw-bold py-2">{{$t('Review')}}</div>
               <textarea class="form-control hz-form-message" name="message"
                         rows="5"
                         placeholder="Enter your Message">Hello, I am interested in [Renovated apartment at last floor]</textarea>
@@ -215,7 +180,7 @@
                 </div>
                 <button class="btn btn-secondary bg-success">
                   <span class="btn-loader houzez-loader-js"></span>
-                  Submit Review
+                  {{$t('Submit Review')}}
                 </button>
               </div>
             </div><!-- form-group -->

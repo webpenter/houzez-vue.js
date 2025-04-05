@@ -140,8 +140,8 @@ import {onMounted, ref} from "vue";
 import {useAppProperty, useBedroom, useCity, useNotification, usePrice, useType} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 import {RouterLink, useRoute, useRouter} from "vue-router";
-import Cards from "@/views/app/pages/properties/Cards.vue";
 import NoDataFound from "@/views/app/components/NoDataFound.vue";
+import Cards from "@/views/app/components/TwoColCards.vue";
 
 const router = useRouter();
 const route = useRoute();
@@ -184,7 +184,6 @@ const searchProperty = async () => {
 
   } catch (error) {
     useNotification().Error("Error fetching properties:", error);
-    loading.value = false;
   }
 };
 

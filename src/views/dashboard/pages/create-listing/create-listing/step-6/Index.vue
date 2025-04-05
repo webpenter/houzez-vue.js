@@ -76,7 +76,7 @@
                     <h2>Property Video</h2>
                     <div class="dashboard-content-block">
                       <div class="form-group">
-                        <label>Video URL</label>
+                        <label>Enter video iframe/embeded code</label>
                         <input
                             class="form-control"
                             :class="{ 'is-invalid': localErrors.video_url }"
@@ -88,7 +88,7 @@
                         <span class="text-danger" v-if="localErrors.video_url">
                             {{ localErrors.video_url }}
                         </span>
-                        <small class="form-text text-muted">For example: https://www.youtube.com/watch?v=49d3Gn41IaA</small>
+                        <small class="form-text text-muted">Input contains an "iframe" or "embed" tag</small>
                       </div>
                     </div><!-- dashboard-content-block -->
                   </div><!-- dashboard-content-block-wrap -->
@@ -134,26 +134,16 @@ const localErrors = ref({
 });
 
 const validateField = (field) => {
-  if (field === "video_url" && formData.value.video_url && !isValidUrl(formData.value.video_url)) {
-    localErrors.value.video_url = "Please enter a valid URL.";
-  }  else {
+  if (field === "video_url" && formData.value.video_url && !isEmbedCode(formData.value.video_url)) {
+    localErrors.value.video_url = "Please enter a valid embed code.";
+  } else {
     localErrors.value[field] = "";
   }
 };
 
-const isValidUrl = (url) => {
-  const urlPattern = new RegExp(
-      "^(https?:\\/\\/)" +
-      "((([a-zA-Z0-9\\-]+\\.)+[a-zA-Z]{2,})|" +
-      "((\\d{1,3}\\.){3}\\d{1,3}))" +
-      "(\\:\\d+)?(\\/[-a-zA-Z0-9@:%._+~#=]*)*" +
-      "(\\?[;&a-zA-Z0-9@:%._+~#=]*)?" +
-      "(\\#[-a-zA-Z0-9@:%._+~#=]*)?$",
-      "i"
-  );
-  return urlPattern.test(url);
+const isEmbedCode = (input) => {
+  return /<iframe[\s\S]*<\/iframe>|<embed[\s\S]*>/.test(input);
 };
-
 
 const hasErrors = computed(() =>
     Object.values(localErrors.value).some((error) => error !== "")

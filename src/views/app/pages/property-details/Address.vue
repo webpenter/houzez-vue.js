@@ -2,7 +2,7 @@
   <div class="Address mt-3 p-lg-4 p-md-3 p-sm-2 p-1">
     <div
         class="block-title-wrap pb-4 d-flex justify-content-between align-items-center">
-      <h4>Address</h4>
+      <h4>{{$t('Address')}}</h4>
 
     </div><!-- block-title-wrap -->
     <div class="block-content-wrap">
@@ -11,29 +11,29 @@
           <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
               <div class="py-2 w-100 border-bottom">
-                <span class="fw-bold">Address: </span>
+                <span class="fw-bold">{{$t('Address:')}} </span>
                 <span>{{property.address}}</span>
               </div>
               <div class="py-2 w-100 border-bottom">
-                <span class="fw-bold">City: </span>
+                <span class="fw-bold">{{$t('City:')}} </span>
                 <span>{{property.city}}</span>
               </div>
               <div class="py-2 w-100 border-bottom">
-                <span class="fw-bold">State: </span>
+                <span class="fw-bold">{{$t('State:')}} </span>
                 <span>{{property.county_state}}</span>
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
               <div class="py-2 w-100 border-bottom">
-                <span class="fw-bold">Zip Code: </span>
+                <span class="fw-bold">{{$t('Zip Code:')}} </span>
                 <span>{{property.zip_postal_code}}</span>
               </div>
               <div class="py-2 w-100 border-bottom">
-                <span class="fw-bold">Neighborhood: </span>
+                <span class="fw-bold">{{$t('Neighborhood:')}} </span>
                 <span>{{property.neighborhood}}</span>
               </div>
               <div class="py-2 w-100 border-bottom">
-                <span class="fw-bold">Country: </span>
+                <span class="fw-bold">{{$t('Country')}}: </span>
                 <span>{{property.country}}</span>
               </div>
             </div>
@@ -46,7 +46,8 @@
   <div class="Address mt-3 p-lg-4 p-md-3 p-sm-2 p-1">
     <div
         class="block-title-wrap pb-4 d-flex justify-content-between align-items-center">
-      <h4>Google Map</h4>
+      <h4>
+        {{$t('Google Map')}}</h4>
 
     </div><!-- block-title-wrap -->
     <div class="block-content-wrap">

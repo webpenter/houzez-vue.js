@@ -38,14 +38,5 @@ export * from './stripe-payments/invoices.js';
 export * from './others/newsletterSubscriber.js';
 export * from './others/savedSearch.js';
 export * from './others/language.js';
-
-
-
-// ------------- team Dir
-export * from './teamSection.js';
-export * from './teaminformation.js';
-export * from './fetchinformation.js';
-export * from './favourite.js';
-
-
+export * from './others/tourRequest.js';
 
