@@ -15,12 +15,19 @@
               {{ route.title }}
             </RouterLink>
           </template>
+		  <template v-else-if="route.name == 'dashboard.my-blog'">
+            <RouterLink :to="{name:route.name}" active-class="active" @click.prevent="isOpenBlog = !isOpenBlog">
+              <i class="houzez-icon mr-2" :class="route.icon"></i>
+              {{ route.title }}
+            </RouterLink>
+          </template>
           <template v-else-if="route.name == 'dashboard.settings.general'">
               <RouterLink v-show="admin" :to="{name:route.name}" active-class="active" @click.prevent="isOpenSettings = !isOpenSettings">
                 <i class="houzez-icon mr-2" :class="route.icon"></i>
                 {{ route.title }}
               </RouterLink>
           </template>
+		  
           <template v-else>
             <RouterLink :to="{name:route.name}" active-class="active">
               <i class="houzez-icon mr-2" :class="route.icon"></i>
@@ -63,6 +70,18 @@
 								</template>
 							</ul>
 					</template>
+					<template v-if="route.name == 'dashboard.my-blog'">
+							<ul class="side-menu-dropdown list-unstyled" v-show="isOpenBlog">
+								<template v-for="sub_route in route.sub" :key="sub_route.id">
+									<li class="side-menu-item">
+										<RouterLink :to="{name:sub_route.name}" active-class="active" >
+											<i class="houzez-icon icon-arrow-right-1"></i>
+											{{ sub_route.title }}
+										</RouterLink>
+									</li>
+								</template>
+							</ul>
+					</template>
 					<span v-if="route.title == 'Messages'" class="notification-circle"></span>
 				</li>
 		</template>
@@ -86,6 +105,7 @@ import {useAdmin} from "@/stores/index.js";
 const isOpenBoard = ref(false);
 const isOpenProperties = ref(false);
 const isOpenSettings = ref(false);
+const isOpenBlog = ref(false);
 
 const admin = useAdmin().getAdmin;
 </script>

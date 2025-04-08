@@ -540,8 +540,14 @@ const routes = [
             {
                 path: '/dashboard/my-blog',
                 name:'dashboard.my-blog',
-                component:() => import('@/views/dashboard/pages/my-blog/Index.vue'),
+                component:() => import('@/views/dashboard/pages/create blog/Index.vue'),
                 meta:{ title:'My Blog' }
+            },
+            {
+                path: '/dashboard/my-blog/blogs',
+                name:'dashboard.my-blog.blogs',
+                component:() => import('@/views/dashboard/pages/my-blog/Index.vue'),
+                meta:{ title:'My Blogs' }
             },
         ]
     },

@@ -98,6 +98,11 @@ export const DASHBOARD_ROUTES = [
 			{id:1, title:'Packages', name:'dashboard.settings.all-packages'},
 		]
 	},
-	{ id:12, title:'My Blog', name:'dashboard.my-blog', icon:'icon-single-neutral-circle', sub:[] },
+	{ id:12, title:'My Blog', name:'dashboard.my-blog', icon:'icon-single-neutral-circle', sub:[
+		{id:1, title:'Create Blog', name:'dashboard.my-blog'},
+		{id:2, title:'My Blogs', name:'dashboard.my-blog.blogs'},
+
+	] },
+
 
 ];
