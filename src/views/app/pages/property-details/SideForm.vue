@@ -16,7 +16,7 @@
           <div class="col-12 ">
             <div class="container">
               <div class="property-schedule-tour-form-title my-3 fw-bold">
-                Tour Type
+                {{ $t('Tour Type') }}
               </div>
               <form @submit.prevent="submitTourRequest">
                 <div class="row">

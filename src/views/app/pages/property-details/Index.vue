@@ -28,7 +28,7 @@
                   <template v-if="property.virtual_tour">
                     <VirtualTour :virtualTour="property.virtual_tour"/>
                   </template>
-                  <Review :property="property"/>
+                  <Review :propertyId="property.id"/>
                 </div>
               </div>
               <SideForm :propertyId="property.id"/>
