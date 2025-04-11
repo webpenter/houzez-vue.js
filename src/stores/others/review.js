@@ -21,7 +21,12 @@ export const useReview = defineStore('review', {
     }),
     getters: {},
     actions: {
-
+        /**
+         * Fetches reviews for a specific property.
+         *
+         * @param {number|string} propertyId - The ID of the property to fetch reviews for.
+         * @return {Promise} Resolves with the response containing the reviews or rejects with an error response.
+         */
         async fetchReviews(propertyId) {
             let url = `/app/reviews/show/${propertyId}`;
 
@@ -36,6 +41,16 @@ export const useReview = defineStore('review', {
             }
         },
 
+        /**
+         * Adds a new review and refreshes the review list.
+         *
+         * @param {Object} reviewData - The review data object to be submitted.
+         * @param {number|string} reviewData.property_id - The ID of the property being reviewed.
+         * @param {string} reviewData.title - The title of the review.
+         * @param {number} reviewData.rating - The numeric rating.
+         * @param {string} reviewData.comment - The comment text.
+         * @return {Promise} Resolves with the response after submitting the review or rejects with an error response.
+         */
         async addReview(reviewData) {
             const url = `/reviews/store`;
 

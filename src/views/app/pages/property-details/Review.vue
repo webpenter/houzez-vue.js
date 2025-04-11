@@ -26,9 +26,6 @@
               <p class="fs-6 text-white">Leave&nbsp;a&nbsp;Review</p>
             </button>
           </template>
-<!--          <button @click="leaveReviewForm = true" class="btn hz-btn-lreview btn-primary">-->
-<!--            <p class="fs-6 text-white">Leave&nbsp;a&nbsp;Review</p>-->
-<!--          </button>-->
         </div>
 
         <!-- All Reviews -->
@@ -148,7 +145,6 @@ const form = ref({
 
 const errors = ref({});
 
-// Real-time validation for each field
 const validateField = (field) => {
   switch (field) {
     case 'email':
@@ -192,7 +188,6 @@ const validateField = (field) => {
   }
 };
 
-// Full form validation (before submission)
 const validateForm = () => {
   validateField('email');
   validateField('title');
@@ -201,7 +196,6 @@ const validateForm = () => {
   return Object.keys(errors.value).length === 0;
 };
 
-// Submit Review
 const submitReview = async () => {
   if (!validateForm()) return;
   try {
@@ -219,7 +213,6 @@ const submitReview = async () => {
   }
 };
 
-// Reviews & Stats
 const reviews = computed(() => reviewStore.reviews);
 const loading = computed(() => reviewStore.loading);
 
