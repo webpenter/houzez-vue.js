@@ -21,9 +21,9 @@ export function getAppRoutes() {
 			id: 2,
 			title: t('Property'),
 			sub: [
-				{ id: 1, title: `${t('Property')} ${t('V1')}`, name: 'app.property' },
-				{ id: 2, title: `${t('Property')} ${t('V2')}`, name: 'app.property' },
-				{ id: 3, title: `${t('Property')} ${t('V3')}`, name: 'app.property' },
+				{ id: 1, title: `${t('Property')} ${t('V1')}`, name: 'app.property-details' },
+				{ id: 2, title: `${t('Property')} ${t('V2')}`, name: 'app.property-details' },
+				{ id: 3, title: `${t('Property')} ${t('V3')}`, name: 'app.property-details' },
 			]
 		},
 		{

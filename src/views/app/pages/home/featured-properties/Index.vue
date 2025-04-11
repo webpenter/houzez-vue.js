@@ -3,7 +3,9 @@
     <p class="featured-rentals-btn">{{$t('Latest Properties')}}</p>
     <div class="featured-rentals-header">
       <h2> {{$t('Featured Rentals')}}</h2>
-      <a href=""><p> {{$t('View all')}}</p> <i class="fa-solid fa-arrow-right"></i></a>
+      <RouterLink :to="{name:'app.properties'}">
+        <p> {{$t('View all')}}</p> <i class="fa-solid fa-arrow-right"></i>
+      </RouterLink>
     </div>
 
     <div class="featured-rentals-container">
@@ -26,6 +28,7 @@ import { useAppProperty } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
 import { onMounted, ref } from "vue";
 import Cards from "./Cards.vue";
+import {RouterLink} from "vue-router";
 
 const propertyToRefs = useAppProperty();
 const { featuredProperties } = storeToRefs(propertyToRefs);
