@@ -448,44 +448,20 @@ const routes = [
             },
 
             /***
-             * @route Dashboard/Messages
+             * @route Dashboard/Messages/AllMessages
+             * @route Dashboard/Messages/Details
              ***/
             {
                 path: '/dashboard/messages',
                 name:'dashboard.messages',
-                component:() => import('@/views/dashboard/pages/messages/Index.vue'),
+                component:() => import('@/views/dashboard/pages/messages/all-messages/Index.vue'),
                 meta:{ title:'Messages' }
             },
             {
-                path: '/dashboard/settings',
-                name:'dashboard.settings.all-packages',
-                component:() => import('@/views/dashboard/pages/settings/package/all-packages/Index.vue'),
-                meta:{ title:'Settings' }
-            },
-            {
-                path: '/dashboard/settings',
-                name:'dashboard.settings.general',
-                component:() => import('@/views/dashboard/pages/settings/general/Index.vue'),
-                meta:{ title:'Settings' }
-            },
-            {
-                path: '/dashboard/dashboard-agent-message',
-                name:'dashboard.dashboard-agent-message',
-                component:() => import('@/views/inc/dashboard/DashboardAgentMessage.vue'),
-                meta:{ title:'Messages' }
-            },
-            {
-                path: '/dashboard/tools',
-                name:'dashboard.tools',
-                component:() => import('@/views/dashboard/pages/tools/index/Index.vue'),
-                meta:{ title:'Tools' }
-            },
-            //  @route Dashboard/Tools
-            {
-                path: '/dashboard/tools/export',
-                name:'dashboard.tools.export',
-                component:() => import('@/views/dashboard/pages/tools/export/Index.vue'),
-                meta:{ title:'Tools' }
+                path: '/dashboard/messages/details/:messageId(\\d+)',
+                name:'dashboard.messages.details',
+                component:() => import('@/views/dashboard/pages/messages/message-details/Index.vue'),
+                meta:{ title:'Message Details' }
             },
             /***
              * @route Dashboard/My-Profile
@@ -550,7 +526,19 @@ const routes = [
                 path: '/dashboard/team/our-team',
                 name:'dashboard.team.fetch',
                 component:() => import('@/views/dashboard/pages/team/form/Index.vue'),
-                meta:{ title:'All Subscribers', admin: true }
+                meta:{ title:'All Team', admin: true }
+            },
+            {
+                path: '/dashboard/blog/blog',
+                name:'dashboard.blog.blogs',
+                component:() => import('@/views/dashboard/pages/blog/Blog.vue'),
+                meta:{ title:'Blogs', admin: true }
+            },
+            {
+                path: '/dashboard/blog/allblogs',
+                name:'dashboard.blog.all blogs',
+                component:() => import('@/views/dashboard/pages/blog/Index.vue'),
+                meta:{ title:'Blogs', admin: true }
             },
         ]
     },

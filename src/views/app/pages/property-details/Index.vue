@@ -1,9 +1,8 @@
 <template>
   <template v-if="loading">
-    <h1>Loading...</h1>
+    <PropertyDetailsSkeleton/>
   </template>
   <template v-else>
-<!--    <pre>{{property}}</pre>-->
     <TopBar :property="property" />
     <div class="container-fluid">
       <div class="row">
@@ -18,11 +17,17 @@
                   <Details :property="property"/>
                   <Gallery :images="property.images"/>
                   <EnergyClass :property="property"/>
-                  <Features :propertyFeature="property.property_feature"/>
+                  <template v-if="property.property_feature?.length > 0">
+                    <Features :propertyFeature="property.property_feature"/>
+                  </template>
 <!--                  <MortgageCalculator :property="property"/>-->
 <!--                  <FloorPlans :property="property"/>-->
-                  <Video :videoUrl="property.video_url"/>
-                  <VirtualTour :virtualTour="property.virtual_tour"/>
+                  <template v-if="property.video_url">
+                    <Video :videoUrl="property.video_url"/>
+                  </template>
+                  <template v-if="property.virtual_tour">
+                    <VirtualTour :virtualTour="property.virtual_tour"/>
+                  </template>
                   <Review :property="property"/>
                 </div>
               </div>
@@ -54,6 +59,7 @@ import {useAppProperty} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 import {onMounted, ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
+import PropertyDetailsSkeleton from "@/components/skeleton/PropertyDetailsSkeleton.vue";
 
 const {params} = useRoute();
 const router = useRouter();
@@ -81,3 +87,4 @@ const getPropertyData = async () => {
 
 onMounted(() => getPropertyData());
 </script>
+

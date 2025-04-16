@@ -122,5 +122,11 @@ export function getDashboardRoutes() {
 				{id:2, title:'Our Team', name:'dashboard.team.fetch'},
 			]
 		},
+		{ id:14, title:'Blog', name:'dashboard.blog.blogs', icon:'icon-single-neutral-circle',
+			sub:[
+				{id:1, title:'Blog', name:'dashboard.blog.blogs'},
+				{id:2, title:'All Blog', name:'dashboard.blog.all blogs'},
+			]
+		},
 	]);
 }
