@@ -114,6 +114,7 @@ export function getDashboardRoutes() {
 			sub:[
 				{id:1, title:'All Users', name:'dashboard.admin.users'},
 				{id:2, title:'All Subscribers', name:'dashboard.admin.subscribers'},
+				{id:3, title:'All Blogs', name:'dashboard.admin.all-blogs'},
 			]
 		},
 	]);

@@ -498,6 +498,8 @@ const routes = [
             /***
              * @route Dashboard/Admin/Users
              * @route Dashboard/Admin/Subscribers
+             * @route Dashboard/Admin/All-Blogs
+             * @route Dashboard/Admin/Create-Blog
              ***/
             {
                 path: '/dashboard/admin/users',
@@ -510,6 +512,18 @@ const routes = [
                 name:'dashboard.admin.subscribers',
                 component:() => import('@/views/dashboard/pages/admin/subscribers/Index.vue'),
                 meta:{ title:'All Subscribers', admin: true }
+            },
+            {
+                path: '/dashboard/admin/all-blogs',
+                name:'dashboard.admin.all-blogs',
+                component:() => import('@/views/dashboard/pages/admin/blogs/all-blogs/Index.vue'),
+                meta:{ title:'All Blogs', admin: true }
+            },
+            {
+                path: '/dashboard/admin/create-blog',
+                name:'dashboard.admin.create-blog',
+                component:() => import('@/views/dashboard/pages/admin/blogs/create-blog/Index.vue'),
+                meta:{ title:'Create Blog', admin: true }
             },
         ]
     },

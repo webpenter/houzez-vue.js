@@ -40,4 +40,5 @@ export * from './others/savedSearch.js';
 export * from './others/language.js';
 export * from './others/tourRequest.js';
 export * from './others/review.js';
+export * from './others/blog.js';
 
