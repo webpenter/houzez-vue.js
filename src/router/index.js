@@ -525,6 +525,18 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/admin/blogs/create-blog/Index.vue'),
                 meta:{ title:'Create Blog', admin: true }
             },
+            {
+                path: '/dashboard/admin/all-teams',
+                name:'dashboard.admin.all-teams',
+                component:() => import('@/views/dashboard/pages/admin/teams/all-teams/Index.vue'),
+                meta:{ title:'All Teams', admin: true }
+            },
+            {
+                path: '/dashboard/admin/create-team',
+                name:'dashboard.admin.create-team',
+                component:() => import('@/views/dashboard/pages/admin/teams/create-team/Index.vue'),
+                meta:{ title:'Create Team', admin: true }
+            },
         ]
     },
 
