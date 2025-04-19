@@ -4,7 +4,7 @@
       <div class="row mt-1">
         <div class="col-12 position-relative">
           <div class="position-absolute top-50 start-50 translate-middle text-white text-center fw-bold fs-4">
-            Schedule a tour
+            {{ $t('Schedule a tour') }}
           </div>
           <div class="mx-4 position-relative">
             <img src="@/assets/img/client-side/schedule-tour.jpg" class="img-fluid w-100 custom-img">
@@ -24,13 +24,13 @@
                     <el-radio-group v-model="formData.tour_type">
                       <div class="row gy-2">
                         <div class="col-12">
-                          <el-radio value="in-person" class="w-100" size="large" border>In Person</el-radio>
+                          <el-radio value="in-person" class="w-100" size="large" border>{{$t('In Person')}}</el-radio>
                         </div>
                         <div class="col-6 d-flex">
-                          <el-radio value="video-chat" class="w-100" size="large" border>Video Chat</el-radio>
+                          <el-radio value="video-chat" class="w-100" size="large" border>{{$t('Video Chat')}}</el-radio>
                         </div>
                         <div class="col-6 d-flex">
-                          <el-radio value="phone-call" class="w-100" size="large" border>Phone Call</el-radio>
+                          <el-radio value="phone-call" class="w-100" size="large" border>{{$t('Phone Call')}}</el-radio>
                         </div>
                       </div>
                     </el-radio-group>
@@ -41,7 +41,7 @@
                     <el-date-picker
                         v-model="formData.tour_date_time"
                         type="datetime"
-                        placeholder="Date and Time"
+                        :placeholder="$t('Date and Time')"
                         format="YYYY/MM/DD HH:mm:ss"
                         class="w-100"
                         @change="validateForm"
@@ -55,7 +55,7 @@
                         v-model="formData.name"
                         type="text"
                         class="form-control"
-                        placeholder="Name"
+                        :placeholder="$t('Name')"
                         @input="validateForm"
                     />
                     <p class="text-danger small" v-if="errors.name">{{ errors.name }}</p>
@@ -67,7 +67,7 @@
                         v-model="formData.phone"
                         type="text"
                         class="form-control"
-                        placeholder="Phone"
+                        :placeholder="$t('Phone')"
                         @input="validateForm"
                     />
                     <p class="text-danger small" v-if="errors.phone">{{ errors.phone }}</p>
@@ -79,7 +79,7 @@
                         v-model="formData.email"
                         type="text"
                         class="form-control"
-                        placeholder="Email"
+                        :placeholder="$t('Email')"
                         @input="validateForm"
                     />
                     <p class="text-danger small" v-if="errors.email">{{ errors.email }}</p>
@@ -91,7 +91,7 @@
                         v-model="formData.message"
                         class="form-control"
                         rows="2"
-                        placeholder="Enter your Message"
+                        :placeholder="$t('Enter your message')"
                         @input="validateForm"
                     ></textarea>
                     <p class="text-danger small" v-if="errors.message">{{ errors.message }}</p>
@@ -103,7 +103,7 @@
                     <span v-if="isLoading">
                       <i class="fa fa-spinner fa-spin"></i> Submitting...
                     </span>
-                      <span v-else>Submit a Tour Request</span>
+                      <span v-else>{{ $t('Submit a Tour Request') }}</span>
                     </button>
                   </div>
 

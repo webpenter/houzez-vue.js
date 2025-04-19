@@ -1,7 +1,7 @@
 <template>
   <div class="Features mt-3 p-lg-4 p-md-3 p-sm-2 p-1">
     <div class="block-title-wrap pb-5 border-bottom">
-      <h4>Features</h4>
+      <h4>{{ $t('Features') }}</h4>
     </div><!-- block-title-wrap -->
     <div class="block-content-wrap mt-4">
       <div class="row">

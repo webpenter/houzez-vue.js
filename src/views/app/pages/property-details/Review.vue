@@ -4,7 +4,7 @@
     <div class="block-title-wrap review-title-wrap d-flex align-items-center">
       <div class="row w-100">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
-          <h4 class="my-4">{{ reviews.length }} Reviews</h4>
+          <h4 class="my-4">{{ reviews.length }} {{ $t('Reviews') }}</h4>
           <div class="rating-score-wrap flex-grow-1 ms-1">
             <span v-for="n in 5" :key="n" class="star">
               <i :class="n <= averageRating ? 'fa-solid fa-star' : 'fa-solid empty-star'"></i>
@@ -18,12 +18,12 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center justify-content-end">
           <template v-if="token">
             <button @click="leaveReviewForm = true" class="btn hz-btn-lreview btn-primary">
-              <p class="fs-6 text-white">Leave&nbsp;a&nbsp;Review</p>
+              <p class="fs-6 text-white">{{ $t('Leave a Review') }}</p>
             </button>
           </template>
           <template v-else>
             <button @click="noAuthDialog = true" class="btn hz-btn-lreview btn-primary">
-              <p class="fs-6 text-white">Leave&nbsp;a&nbsp;Review</p>
+              <p class="fs-6 text-white">{{ $t('Leave a Review') }}</p>
             </button>
           </template>
         </div>
@@ -55,13 +55,13 @@
     </div>
 
     <!-- Review Modal -->
-    <el-dialog v-model="leaveReviewForm" title="Leave a Review" width="500" align-center>
+    <el-dialog v-model="leaveReviewForm" :title="$t('Leave a Review')" width="500" align-center>
       <form @submit.prevent="submitReview">
         <div class="row">
           <!-- Email -->
           <div class="col-md-12 col-sm-12">
             <div class="form-group">
-              <label class="my-2 fw-bold">Email</label>
+              <label class="my-2 fw-bold">{{ $t('Email') }}</label>
               <input v-model="form.email" @input="validateField('email')" class="form-control" placeholder="you@example.com" type="text">
               <small v-if="errors.email" class="text-danger">{{ errors.email }}</small>
             </div>
@@ -70,8 +70,8 @@
           <!-- Title -->
           <div class="col-md-6 col-sm-12">
             <div class="form-group">
-              <label class="my-2 fw-bold">Title</label>
-              <input v-model="form.title" @input="validateField('title')" class="form-control" placeholder="Enter your Title" type="text">
+              <label class="my-2 fw-bold">{{ $t('Title') }}</label>
+              <input v-model="form.title" @input="validateField('title')" class="form-control" :placeholder="$t('Enter your title')" type="text">
               <small v-if="errors.title" class="text-danger">{{ errors.title }}</small>
             </div>
           </div>
@@ -79,7 +79,7 @@
           <!-- Rating -->
           <div class="col-md-6 col-sm-12">
             <div class="form-group">
-              <label class="my-2 fw-bold">Rating</label>
+              <label class="my-2 fw-bold">{{ $t('Rating') }}</label>
               <input v-model.number="form.rating" @input="validateField('rating')" class="form-control" placeholder="Enter Rating (1-5)" type="number" min="1" max="5">
               <small v-if="errors.rating" class="text-danger">{{ errors.rating }}</small>
             </div>
@@ -88,8 +88,8 @@
           <!-- Comment -->
           <div class="col-sm-12">
             <div class="form-group form-group-textarea">
-              <label class="fw-bold py-2">Review</label>
-              <textarea v-model="form.comment" @input="validateField('comment')" class="form-control hz-form-message" rows="5" placeholder="Enter your Message"></textarea>
+              <label class="fw-bold py-2 capitalize">{{ $filters.capitalize($t('review')) }}</label>
+              <textarea v-model="form.comment" @input="validateField('comment')" class="form-control hz-form-message" rows="5" :placeholder="$t('Enter your message')"></textarea>
               <small v-if="errors.comment" class="text-danger">{{ errors.comment }}</small>
             </div>
           </div>
@@ -98,7 +98,7 @@
           <div class="col-sm-12 col-12 mt-3">
             <button class="btn btn-success w-100" :disabled="loading">
               <span v-if="loading" class="spinner-border spinner-border-sm me-1"></span>
-              Submit Review
+              {{ $t('Submit')  + ' ' +  $t('review') }}
             </button>
           </div>
         </div>

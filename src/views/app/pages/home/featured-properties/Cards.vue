@@ -34,7 +34,7 @@
           {{ $filters.formatPrice(property.price) }}
         </div>
         <RouterLink :to="{name:'app.property-details',params:{propertySlug:property.slug}}" class="details-button">
-          Details <i class="fas fa-arrow-right"></i>
+          {{ $t('Details') }} <i class="fas fa-arrow-right"></i>
         </RouterLink>
       </div>
     </div>

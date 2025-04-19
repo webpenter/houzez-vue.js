@@ -1,7 +1,7 @@
 <template>
   <div class="Energy-Class mt-3 p-lg-4 p-md-3 p-sm-2 p-1">
     <div class="block-title-wrap pb-4">
-      <h4>Energy Class</h4>
+      <h4>{{ $t('Energy Class') }}</h4>
     </div><!-- block-title-wrap -->
     <div class="block-content-wrap">
       <div class="row">
