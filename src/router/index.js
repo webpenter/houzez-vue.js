@@ -46,15 +46,6 @@ const routes = [
                 meta:{ title:'Properties' }
             },
             /***
-             * @route App/Property
-             ***/
-            {
-                path: '/property',
-                name:'app.property',
-                component:() => import('@/views/app/pages/property/Index.vue'),
-                meta:{ title:'Property' }
-            },
-            /***
              * @route App/Property-Details
              ***/
             {
@@ -73,13 +64,13 @@ const routes = [
                 meta:{ title:'Realtor' }
             },
             /***
-             * @route App/Others
+             * @route App/AboutUs
              ***/
             {
-                path: '/others',
-                name:'app.others',
-                component:() => import('@/views/app/pages/others/Index.vue'),
-                meta:{ title:'Others' }
+                path: '/about-us',
+                name:'app.about-us',
+                component:() => import('@/views/app/pages/about-us/Index.vue'),
+                meta:{ title:'About Us' }
             },
             /***
              * @route App/Search-Results
