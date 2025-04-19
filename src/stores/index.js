@@ -14,13 +14,13 @@ export * from './element-plus/message.js';
 export * from './model/model.js';
 
 // ------------- Settings Dir
-export * from './settings/generalSettings.js';
+// export * from './settings/generalSettings.js';
 export * from './settings/label.js';
 export * from './settings/status.js';
 export * from './settings/type.js';
 export * from './settings/role.js';
 export * from './settings/postCategory.js';
-export * from './settings/language.js';
+// export * from './settings/language.js';
 export * from './settings/timezone.js';
 export * from './settings/weekday.js';
 export * from './settings/city.js';
