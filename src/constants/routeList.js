@@ -68,7 +68,7 @@ export function getDashboardRoutes() {
 			icon:'icon-layout-dashboard',
 			sub:[
 				{id:1, title:'Activities', name:'dashboard.crm'},
-				{id:2, title:'Deals', name:'dashboard.crm-deals'},
+				{id:2, title:'Deals', name:'dashboard.active-deals'},
 				{id:3, title:'Leads', name:'dashboard.crm-leads'},
 				{id:4, title:'Enquiries', name:'dashboard.crm-enquiries'},
 			]

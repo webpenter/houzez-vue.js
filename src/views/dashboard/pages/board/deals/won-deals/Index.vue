@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Deals">
+    <DashboardHeader :heading="$t('Won Deals')">
         <a class="btn btn-primary" href="#">{{$t('Add New Deal')}}</a>
     </DashboardHeader>
 
@@ -12,30 +12,7 @@
                 </div>
             </div>
             <div class="deals-table-wrap">
-
-            <ul class="nav nav-pills deals-nav-tab" role="tablist">
-                <li class="nav-item">
-                    <router-link 
-                        class="nav-link active-deals active" 
-                        to="/dashboard/crm-deals">
-                        {{$t('Active Deals (6)')}}
-                    </router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link 
-                        class="nav-link won-deals" 
-                        to="/dashboard/crm-won-deals">
-                        {{$t('Won Deals (2)')}}
-                    </router-link>
-                </li>
-                <li class="nav-item lost-deals">
-                    <router-link 
-                        class="nav-link" 
-                        to="/dashboard/crm-lost-deals">
-                        {{$t('Lost Deals (2)')}}
-                    </router-link>
-                </li>
-            </ul>
+              <NavPills tab="won"/>
                 <div class="deal-content-wrap p-0">
                     <table class="dashboard-table table-lined deals-table responsive-table">
                         <thead>
@@ -86,5 +63,6 @@
 
 <script setup lang="ts">
 import DealsTableItem from '@/views/inc/dashboard/board/DealsTableItem.vue';
+import NavPills from "@/views/dashboard/pages/board/deals/components/NavPills.vue";
 
 </script>

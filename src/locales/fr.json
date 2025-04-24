@@ -112,9 +112,9 @@
   "Lost": "Perdu",
   "10": "10",
   "Add New Deal": "Ajouter une nouvelle transaction",
-  "Active Deals (6)": "Transactions actives (6)",
-  "Won Deals (2)": "Transactions gagnées (2)",
-  "Lost Deals (2)": "Transactions perdues (2)",
+  "Active Deals": "Transactions actives",
+  "Won Deals": "Transactions gagnées",
+  "Lost Deals": "Transactions perdues",
   "You don't have any deals at this moment.": "Vous n'avez aucune transaction pour le moment.",
   "Title": "Titre",
   "Contact Name": "Nom du contact",
@@ -193,6 +193,7 @@
   "Reviews": "Avis",
   "Leave a Review": "Laisser un avis",
   "Rating": "Notation",
-  "Submit": "Soumettre"
+  "Submit": "Soumettre",
+  "Date": "Date"
 
 }

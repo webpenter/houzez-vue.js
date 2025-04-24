@@ -111,9 +111,9 @@
   "Lost": "Lost",
   "10": "10",
   "Add New Deal": "Add New Deal",
-  "Active Deals (6)": "Active Deals (6)",
-  "Won Deals (2)": "Won Deals (2)",
-  "Lost Deals (2)": "Lost Deals (2)",
+  "Active Deals": "Active Deals",
+  "Won Deals": "Won Deals",
+  "Lost Deals": "Lost Deals",
   "You don't have any deals at this moment.": "You don't have any deals at this moment.",
   "Title": "Title",
   "Contact Name": "Contact Name",
@@ -193,5 +193,6 @@
   "Reviews": "Reviews",
   "Leave a Review": "Leave a Review",
   "Rating": "Rating",
-  "Submit": "Submit"
+  "Submit": "Submit",
+  "Date": "Date"
 }
