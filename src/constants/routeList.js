@@ -104,6 +104,8 @@ export function getDashboardRoutes() {
 			sub:[
 				{id:1, title:'General', name:'dashboard.settings.general'},
 				{id:2, title:'Packages', name:'dashboard.settings.all-packages'},
+				{id:3, title:'Navbar', name:'dashboard.settings.navbar-btn'},
+				{id:4, title:'Payment Gateway', name:'dashboard.settings.payment-gateway'},
 			]
 		},
 		{

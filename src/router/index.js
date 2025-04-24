@@ -490,6 +490,18 @@ const routes = [
                 meta:{ title:'All Packages', admin: true }
             },
             {
+                path: '/dashboard/settings/navbar-btn',
+                name:'dashboard.settings.navbar-btn',
+                component:() => import('@/views/dashboard/pages/settings/navbar-btn/Index.vue'),
+                meta:{ title:'Navbar Button', admin: true }
+            },
+            {
+                path: '/dashboard/settings/payment-gateway',
+                name:'dashboard.settings.payment-gateway',
+                component:() => import('@/views/dashboard/pages/settings/payment-gateway/Index.vue'),
+                meta:{ title:'Navbar Button', admin: true }
+            },
+            {
                 path: '/dashboard/settings/create-package',
                 name:'dashboard.settings.create-package',
                 component:() => import('@/views/dashboard/pages/settings/package/create-package/Index.vue'),
