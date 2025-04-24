@@ -16,6 +16,7 @@ import axiosInstance from "@/services/axiosService.js";
 export const useAppProperty = defineStore('appProperty', {
     state: () => ({
         featuredProperties:{},
+        latestProperties:{},
         searchedAndFilteredProperties:{},
         allProperties:{},
         property:{},
@@ -39,6 +40,28 @@ export const useAppProperty = defineStore('appProperty', {
             try {
                 const response = await axiosInstance.get(url);
                 this.featuredProperties = response.data.properties;
+
+                return Promise.resolve(response);
+            } catch (error) {
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
+            }
+        },
+
+        /**
+         * ## Get Latest Properties
+         *
+         * Asynchronously fetches latest properties.
+         * Makes a GET request to retrieve latest properties.
+         *
+         * @returns {Promise} Resolves with response data or rejects with an error.
+         */
+        async getLatestProperties() {
+            let url = `${this.prefix}/get-latest`;
+
+            try {
+                const response = await axiosInstance.get(url);
+                this.latestProperties = response.data.properties;
 
                 return Promise.resolve(response);
             } catch (error) {

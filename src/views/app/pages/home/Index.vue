@@ -5,12 +5,14 @@
   </div>
   <featured-properties/>
   <TeamSection/>
+  <LatestProperties/>
   <NewsAndBlogs/>
 </template>
 
 <script setup>
 import HeroSection from "@/views/app/pages/home/HeroSection.vue";
 import FeaturedProperties from "@/views/app/pages/home/featured-properties/Index.vue";
+import LatestProperties from "@/views/app/pages/home/latest-properties/Index.vue";
 import TeamSection from "@/views/app/pages/home/TeamSection.vue";
 import NewsAndBlogs from "@/views/app/pages/home/NewsAndBlogs.vue";
 import SearchBar from "@/views/app/pages/home/SearchBar.vue";
