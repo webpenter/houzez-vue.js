@@ -45,4 +45,5 @@ export * from './others/tourRequest.js';
 export * from './others/review.js';
 export * from './others/blog.js';
 export * from './others/team.js';
+export * from './others/service.js';
 
