@@ -1,8 +1,8 @@
 <template>
   <div class="rentals-container-main">
-    <p class="featured-rentals-btn">{{$t('Featured Listings')}}</p>
+    <p class="featured-rentals-btn">{{$t('Discover')}}</p>
     <div class="featured-rentals-header">
-      <h2> {{$t('Featured Rentals')}}</h2>
+      <h2> {{$t('Latest Properties')}}</h2>
       <RouterLink :to="{name:'app.properties'}">
         <p> {{$t('View all')}}</p> <i class="fa-solid fa-arrow-right"></i>
       </RouterLink>
@@ -14,7 +14,7 @@
       </template>
       <template v-else>
         <PropertyCards
-            v-for="property in featuredProperties"
+            v-for="property in latestProperties"
             :key="property.id"
             :property="property"
         />
@@ -31,17 +31,17 @@ import {RouterLink} from "vue-router";
 import PropertyCards from "@/views/app/pages/home/components/PropertyCards.vue";
 
 const propertyToRefs = useAppProperty();
-const { featuredProperties } = storeToRefs(propertyToRefs);
+const { latestProperties } = storeToRefs(propertyToRefs);
 const loading = ref(true);
 
-const fetchFeaturedProperties = async () => {
+const fetchLatestProperties = async () => {
   loading.value = true;
-  const res = await propertyToRefs.getFeaturedProperties();
+  const res = await propertyToRefs.getLatestProperties();
 
   if (res.status === 200) {
     loading.value = false;
   }
 };
 
-onMounted(() => fetchFeaturedProperties());
+onMounted(() => fetchLatestProperties());
 </script>

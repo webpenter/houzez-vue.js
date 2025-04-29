@@ -34,6 +34,9 @@ export * from './stripe-payments/package.js';
 export * from './stripe-payments/subscription.js';
 export * from './stripe-payments/invoices.js';
 
+// ------------- Board Dir
+export * from './board/deal.js';
+
 // ------------- Others Dir
 export * from './others/newsletterSubscriber.js';
 export * from './others/savedSearch.js';
@@ -42,4 +45,5 @@ export * from './others/tourRequest.js';
 export * from './others/review.js';
 export * from './others/blog.js';
 export * from './others/team.js';
+export * from './others/service.js';
 

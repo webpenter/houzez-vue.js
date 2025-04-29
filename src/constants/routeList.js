@@ -35,22 +35,22 @@ export function getAppRoutes() {
 				{ id: 3, title: `${t('Properties')} ${t('V3')}`, name: 'app.properties' },
 			]
 		},
+		// {
+		// 	id: 4,
+		// 	title: t('Realtor'),
+		// 	sub: [
+		// 		{ id: 1, title: `${t('Realtor')} ${t('V1')}`, name: 'app.realtor' },
+		// 		{ id: 2, title: `${t('Realtor')} ${t('V2')}`, name: 'app.realtor' },
+		// 		{ id: 3, title: `${t('Realtor')} ${t('V3')}`, name: 'app.realtor' },
+		// 	]
+		// },
 		{
 			id: 4,
-			title: t('Realtor'),
-			sub: [
-				{ id: 1, title: `${t('Realtor')} ${t('V1')}`, name: 'app.realtor' },
-				{ id: 2, title: `${t('Realtor')} ${t('V2')}`, name: 'app.realtor' },
-				{ id: 3, title: `${t('Realtor')} ${t('V3')}`, name: 'app.realtor' },
-			]
-		},
-		{
-			id: 5,
 			title: t('Others'),
 			sub: [
-				{ id: 1, title: `${t('Others')} ${t('V1')}`, name: 'app.others' },
-				{ id: 2, title: `${t('Others')} ${t('V2')}`, name: 'app.others' },
-				{ id: 3, title: `${t('Others')} ${t('V3')}`, name: 'app.others' },
+				{ id: 1, title: `${t('About Us')}`, name: 'app.about-us' },
+				{ id: 2, title: `${t('Others')} ${t('V1')}`, name: 'app.about-us' },
+				{ id: 3, title: `${t('Others')} ${t('V2')}`, name: 'app.about-us' },
 			]
 		},
 	]);
@@ -68,7 +68,7 @@ export function getDashboardRoutes() {
 			icon:'icon-layout-dashboard',
 			sub:[
 				{id:1, title:'Activities', name:'dashboard.crm'},
-				{id:2, title:'Deals', name:'dashboard.crm-deals'},
+				{id:2, title:'Deals', name:'dashboard.active-deals'},
 				{id:3, title:'Leads', name:'dashboard.crm-leads'},
 				{id:4, title:'Enquiries', name:'dashboard.crm-enquiries'},
 			]
@@ -106,6 +106,7 @@ export function getDashboardRoutes() {
 				{id:2, title:'Packages', name:'dashboard.settings.all-packages'},
 				{id:3, title:'Navbar', name:'dashboard.settings.navbar-btn'},
 				{id:4, title:'Payment Gateway', name:'dashboard.settings.payment-gateway'},
+				{id:5, title:'Social Login', name:'dashboard.settings.social-login'},
 			]
 		},
 		{

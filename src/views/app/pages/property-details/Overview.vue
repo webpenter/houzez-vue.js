@@ -2,7 +2,7 @@
   <div class="Overview">
     <div class="row p-4">
       <div class="col-12 d-flex justify-content-between py-5 border-bottom">
-        <h4>Overview</h4>
+        <h4>{{ $t('Overview') }}</h4>
       </div>
 
       <div class=" row d-flex flex-wrap text-center mt-4">
@@ -53,7 +53,7 @@
 
   <div class="Description mt-3 p-lg-4 p-md-3 p-sm-2 p-1">
     <div class="block-title-wrap">
-      <h4 class="pb-5 border-bottom">Description</h4>
+      <h4 class="pb-5 border-bottom">{{ $t('Description') }}</h4>
     </div>
     <div class="block-content-wrap mt-4">
       <div class="property-description-content">

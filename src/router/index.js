@@ -46,15 +46,6 @@ const routes = [
                 meta:{ title:'Properties' }
             },
             /***
-             * @route App/Property
-             ***/
-            {
-                path: '/property',
-                name:'app.property',
-                component:() => import('@/views/app/pages/property/Index.vue'),
-                meta:{ title:'Property' }
-            },
-            /***
              * @route App/Property-Details
              ***/
             {
@@ -73,13 +64,13 @@ const routes = [
                 meta:{ title:'Realtor' }
             },
             /***
-             * @route App/Others
+             * @route App/AboutUs
              ***/
             {
-                path: '/others',
-                name:'app.others',
-                component:() => import('@/views/app/pages/others/Index.vue'),
-                meta:{ title:'Others' }
+                path: '/about-us',
+                name:'app.about-us',
+                component:() => import('@/views/app/pages/about-us/Index.vue'),
+                meta:{ title:'About Us' }
             },
             /***
              * @route App/Search-Results
@@ -153,21 +144,21 @@ const routes = [
                 meta:{ title:'Activities' }
             },
             {
-                path: '/dashboard/crm-deals',
-                name:'dashboard.crm-deals',
-                component:() => import('@/views/dashboard/pages/board/crm-deals/Index.vue'),
-                meta:{ title:'Deals' }
+                path: '/dashboard/active-deals',
+                name:'dashboard.active-deals',
+                component:() => import('@/views/dashboard/pages/board/deals/active-deals/Index.vue'),
+                meta:{ title:'Active Deals' }
             },
             {
-                path: '/dashboard/crm-won-deals',
+                path: '/dashboard/won-deals',
                 name: 'dashboard.won-deals',
-                component: () => import('@/views/dashboard/pages/board/crm-deals/won-deals/Index.vue'),
+                component: () => import('@/views/dashboard/pages/board/deals/won-deals/Index.vue'),
                 meta: { title: 'Won Deals' }
             },
             {
-                path: '/dashboard/crm-lost-deals',
+                path: '/dashboard/lost-deals',
                 name: 'dashboard.lost-deals',
-                component: () => import('@/views/dashboard/pages/board/crm-deals/lost-deals/Index.vue'),
+                component: () => import('@/views/dashboard/pages/board/deals/lost-deals/Index.vue'),
                 meta: { title: 'Lost Deals' }
             },
             {
@@ -506,6 +497,12 @@ const routes = [
                 name:'dashboard.settings.create-package',
                 component:() => import('@/views/dashboard/pages/settings/package/create-package/Index.vue'),
                 meta:{ title:'Create Package', admin: true }
+            },
+            {
+                path: '/dashboard/settings/social-login',
+                name:'dashboard.settings.social-login',
+                component:() => import('@/views/dashboard/pages/settings/social-login/Index.vue'),
+                meta:{ title:'Social Login', admin: true }
             },
             /***
              * @route Dashboard/Admin/Users
