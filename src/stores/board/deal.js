@@ -24,6 +24,11 @@ export const useDeal = defineStore('deal', {
     }),
     getters: {},
     actions: {
+        /**
+         * Fetches all active deals from the server and stores them in `this.activeDeals`.
+         *
+         * @returns {Promise<Object>} A promise that resolves with the Axios response object.
+         */
         async  getActiveDeals() {
             const url = `${this.prefix}/group/active`;
             try {
@@ -45,13 +50,62 @@ export const useDeal = defineStore('deal', {
         },
 
         /**
-         * Stores a new blog using provided formData.
+         * Fetches all won deals from the server and stores them in `this.wonDeals`.
          *
-         * @async
-         * @param {FormData} formData - Blog data to be submitted
-         * @return {Promise<Object>} Axios response after blog creation
+         * @returns {Promise<Object>} A promise that resolves with the Axios response object.
          */
-        async  storeBlog(formData) {
+        async  getWonDeals() {
+            const url = `${this.prefix}/group/won`;
+            try {
+                const response = await axiosInstance.get(url);
+
+                this.wonDeals = response.data.data;
+
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
+
+        /**
+         * Fetches all lost deals from the server and stores them in `this.lostDeals`.
+         *
+         * @returns {Promise<Object>} A promise that resolves with the Axios response object.
+         */
+        async  getLostDeals() {
+            const url = `${this.prefix}/group/lost`;
+            try {
+                const response = await axiosInstance.get(url);
+
+                this.lostDeals = response.data.data;
+
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
+
+        /**
+         * Stores a new deal by posting the provided form data to the server.
+         *
+         * @param {Object} formData - The data representing the new deal.
+         * @returns {Promise<Object>} A promise that resolves with the Axios response object.
+         */
+        async  storeDeal(formData) {
             try {
                 const response = await apiService().post(this.prefix, formData);
 
@@ -68,37 +122,17 @@ export const useDeal = defineStore('deal', {
             }
         },
 
+        /**
+         * Delete a specific deal by its ID from the server.
+         *
+         * @param {number|string} dealId - The ID of the deal to be deleted.
+         * @returns {Promise<Object>} A promise that resolves with the Axios response object.
+         */
         async  deleteDeal(dealId) {
             const url = `${this.prefix}/${dealId}`;
 
             try {
                 const response = await axiosInstance.delete(url);
-
-                return new Promise(resolve => {
-                    resolve(response)
-                })
-            } catch (error) {
-                if (error.response.data) {
-                    this.errors = error.response
-                }
-                return new Promise(reject => {
-                    reject(error.response)
-                })
-            }
-        },
-
-        /**
-         * Fetches blogs for public app view and stores in `this.appBlogs`.
-         *
-         * @async
-         * @return {Promise<Object>} Axios response containing app blogs
-         */
-        async  getAppBlogs() {
-            const url = `/app${this.prefix}`;
-            try {
-                const response = await axiosInstance.get(url);
-
-                this.appBlogs = response.data.data;
 
                 return new Promise(resolve => {
                     resolve(response)

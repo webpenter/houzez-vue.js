@@ -144,6 +144,12 @@ const routes = [
                 meta:{ title:'Activities' }
             },
             {
+                path: '/dashboard/create-deal',
+                name:'dashboard.create-deal',
+                component:() => import('@/views/dashboard/pages/board/deals/create-deal/Index.vue'),
+                meta:{ title:'Create Deal' }
+            },
+            {
                 path: '/dashboard/active-deals',
                 name:'dashboard.active-deals',
                 component:() => import('@/views/dashboard/pages/board/deals/active-deals/Index.vue'),
