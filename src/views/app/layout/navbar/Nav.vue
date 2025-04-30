@@ -1,61 +1,88 @@
 <template>
-  <template v-for="route in routes">
-    <div class="btn-group position-relative">
-      <p class=" btn-sm py-1 px-2 bg-none m-0" type="button" data-bs-toggle="dropdown"
-         aria-expanded="false">
-        {{ route.title }}
-      </p>
-      <ul class="dropdown-menu bg-white position-absolute border-none">
-        <template v-for="subRoute in route.sub">
-          <template v-if="subRoute.name === 'app.property-details'">
-            <RouterLink :to="{ name: subRoute.name,params: { propertySlug: DEFAULT_PROPERTY_DETAIL_PAGE_SLUG } }">
-              <li>{{ subRoute.title }}</li>
-            </RouterLink>
-          </template>
-          <template v-else>
-            <RouterLink :to="{ name: subRoute.name }">
-              <li>{{ subRoute.title }}</li>
-            </RouterLink>
-          </template>
-        </template>
-      </ul>
-    </div>
-  </template>
-  <div class="btn-group position-relative">
-    <p class=" btn-sm py-1 px-2 bg-none m-0" type="button" data-bs-toggle="dropdown"
-       aria-expanded="false">
-      {{locale === 'en' ? 'English' : 'Français'}}
-    </p>
-    <ul class="dropdown-menu bg-white position-absolute border-none">
-      <template v-for="currentLocale in availableLocales">
-        <a
-            href="javascript:void(0);"
-            @click="changeLang(currentLocale)"
-        >
-          <li>{{currentLocale === 'en' ? 'English' : 'Français'}}</li>
-        </a>
-      </template>
-    </ul>
-  </div>
+    	<!-- -------------------------------------------------------------------------------------------
+	note: to add have the nav bar on the right add this class "justify-content-end" to "navbar-nav"
+	-------------------------------------------------------------------------------------------- -->	
+	<ul class="navbar-nav">
+		<li class="nav-item active">
+			<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Item</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Item</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Item</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Item</a>
+		</li>
+		<li class="nav-item dropdown">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Item</a>
+			<ul class="dropdown-menu">
+				<li class="nav-item">
+					<a class="dropdown-item" href="#">Action</a>
+				</li>
+				<li class="nav-item">
+					<a class="dropdown-item" href="#">Another action</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="dropdown-item dropdown-toggle" data-toggle="dropdown" href="#">Submenu</a>
+					<ul class="dropdown-menu">
+						<li class="nav-item">
+							<a class="dropdown-item" href="#">Submenu action</a>
+						</li>
+						<li class="nav-item">
+							<a class="dropdown-item" href="#">Another submenu action</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>
+							<ul class="dropdown-menu">
+								<li class="nav-item"><a class="dropdown-item" href="#">Subsubmenu action aa</a></li>
+								<li class="nav-item"><a class="dropdown-item" href="#">Another subsubmenu action</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="dropdown-item dropdown-toggle" href="#">Second subsubmenu</a>
+							<ul class="dropdown-menu">
+								<li class="nav-item"><a class="dropdown-item" href="#">Subsubmenu action bb</a></li>
+								<li class="nav-item"><a class="dropdown-item" href="#">Another subsubmenu action</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<a class="dropdown-item dropdown-toggle" href="#">Submenu 2</a>
+					<ul class="dropdown-menu">
+						<li class="nav-item"><a class="dropdown-item" href="#">Submenu action 2</a></li>
+						<li class="nav-item"><a class="dropdown-item" href="#">Another submenu action 2</a></li>
+
+
+						<li class="nav-item"><a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>
+							<ul class="dropdown-menu">
+								<li class="nav-item"><a class="dropdown-item" href="#">Subsubmenu action 1 3</a></li>
+								<li class="nav-item"><a class="dropdown-item" href="#">Another subsubmenu action 2 3</a></li>
+							</ul>
+						</li>
+						<li class="nav-item"><a class="dropdown-item dropdown-toggle" href="#">Second subsubmenu 3</a>
+							<ul class="dropdown-menu">
+								<li class="nav-item"><a class="dropdown-item" href="#">Subsubmenu action 3 </a></li>
+								<li class="nav-item"><a class="dropdown-item" href="#">Another subsubmenu action 3</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li class="nav-item dropdown megamenu-item">
+			<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Megamenu</a>
+            <MegaMenu />
+		</li>
+	</ul>
 </template>
 
-<script setup>
-import {RouterLink} from "vue-router";
-import {DEFAULT_PROPERTY_DETAIL_PAGE_SLUG, getAppRoutes} from "@/constants/index.js";
-import {useI18n} from "vue-i18n";
-import {useLanguage} from "@/stores/index.js";
+<script setup lang="ts">
+import MegaMenu from './MegaMenu.vue';
 
-const routes = getAppRoutes();
-
-import { storeToRefs } from 'pinia';
-
-const { t, locale, availableLocales } = useI18n();
-const languageStore = useLanguage();
-const { locale: selectedLocale } = storeToRefs(languageStore);
-
-const changeLang = (lang) => {
-  selectedLocale.value = lang;
-  locale.value = lang;
-  languageStore.setLanguage(lang);
-};
 </script>
