@@ -121,5 +121,15 @@ export function getDashboardRoutes() {
 				{id:4, title:'All Teams', name:'dashboard.admin.all-teams'},
 			]
 		},
+		{
+			id:13,
+			title:'Layout Manager',
+			name:'dashboard.settings.home-layout',
+			icon:'icon-layout-dashboard',
+			sub:[
+				{id:1, title:'Home Layout', name:'dashboard.settings.home-layout'},
+				{id:2, title:'Listing Layout', name:'dashboard.settings.listing-layout'},
+			]
+		},
 	]);
 }

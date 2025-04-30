@@ -546,6 +546,21 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/admin/teams/create-team/Index.vue'),
                 meta:{ title:'Create Team', admin: true }
             },
+            /***
+             * @route Dashboard/Settings/Layout-Manager
+             ***/
+            {
+                path: '/dashboard/layout-manager/home',
+                name:'dashboard.settings.home-layout',
+                component:() => import('@/views/dashboard/pages/settings/layout-manager/home/Index.vue'),
+                meta:{ title:'Home Layout', admin: true }
+            },
+            {
+                path: '/dashboard/layout-manager/listing',
+                name:'dashboard.settings.listing-layout',
+                component:() => import('@/views/dashboard/pages/settings/layout-manager/listing/Index.vue'),
+                meta:{ title:'Listing Layout', admin: true }
+            },
         ]
     },
 
