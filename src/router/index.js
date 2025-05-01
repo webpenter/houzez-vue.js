@@ -168,10 +168,16 @@ const routes = [
                 meta: { title: 'Lost Deals' }
             },
             {
-                path: '/dashboard-import-csv',
-                name: 'dashboard.importCsv',
-                component: () => import('@/views/dashboard/pages/board/crm-deals/ImportCsv.vue'),
-                meta: { title: 'Import Csv' }
+                path: '/dashboard/create-lead',
+                name:'dashboard.create-lead',
+                component:() => import('@/views/dashboard/pages/board/leads/create-lead/Index.vue'),
+                meta:{ title:'Create Lead' }
+            },
+            {
+                path: '/dashboard/all-leads',
+                name:'dashboard.all-leads',
+                component:() => import('@/views/dashboard/pages/board/leads/all-leads/Index.vue'),
+                meta:{ title:'All Leads' }
             },
             {
                 path: '/dashboard/crm-enquiries',
@@ -185,44 +191,6 @@ const routes = [
                 component: () => import('@/views/dashboard/pages/board/crm-enquiries/CrmLeadEnquiryFromPropertyDetailPage.vue'),
                 meta: { title: 'Enquiries Details' }
             },
-
-            {
-                path: '/dashboard/crm-leads',
-                name: 'dashboard.crm-leads',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/Index.vue'), // Default view
-                meta: { title: 'Leads' }
-            },
-            {
-                path: '/dashboard/crm-lead-enquiries',
-                name: 'dashboard.crm-lead-enquiries',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEnquiries.vue'), // Enquiries view
-                meta: { title: 'Lead Enquiries' }
-            },
-            {
-                path: '/dashboard/crm-lead-enquiries-propert-detail',
-                name: 'dashboard.crm-lead-enquiries-propert-detail',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEnquiryFromPropertyDetailPage.vue'), // Enquiries view
-                meta: { title: 'Lead Enquiries Property' }
-            },
-            {
-                path: '/dashboard/crm-lead-events',
-                name: 'dashboard.crm-lead.events',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEvents.vue'),
-                meta: { title: 'Lead Events' }
-            },
-            {
-                path: '/dashboard/crm-lead-listings-viewed',
-                name: 'dashboard.crm-lead.listings-viewed',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadListingsViewed.vue'),
-                meta: { title: 'Lead Listings Viewed' }
-            },
-            {
-                path: '/dashboard/crm-lead-saved-searches',
-                name: 'dashboard.crm-lead-saved-searches',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadSavedSearches.vue'),
-                meta: { title: 'Lead Saved Searches' }
-            },
-
 
             /***
              * @route Dashboard/Insight

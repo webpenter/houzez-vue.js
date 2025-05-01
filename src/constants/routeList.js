@@ -35,17 +35,8 @@ export function getAppRoutes() {
 				{ id: 3, title: `${t('Properties')} ${t('V3')}`, name: 'app.properties' },
 			]
 		},
-		// {
-		// 	id: 4,
-		// 	title: t('Realtor'),
-		// 	sub: [
-		// 		{ id: 1, title: `${t('Realtor')} ${t('V1')}`, name: 'app.realtor' },
-		// 		{ id: 2, title: `${t('Realtor')} ${t('V2')}`, name: 'app.realtor' },
-		// 		{ id: 3, title: `${t('Realtor')} ${t('V3')}`, name: 'app.realtor' },
-		// 	]
-		// },
 		{
-			id: 5,
+			id: 4,
 			title: t('Others'),
 			sub: [
 				{ id: 1, title: `${t('About Us')}`, name: 'app.about-us' },
@@ -69,7 +60,7 @@ export function getDashboardRoutes() {
 			sub:[
 				{id:1, title:'Activities', name:'dashboard.crm'},
 				{id:2, title:'Deals', name:'dashboard.active-deals'},
-				{id:3, title:'Leads', name:'dashboard.crm-leads'},
+				{id:3, title:'Leads', name:'dashboard.all-leads'},
 				{id:4, title:'Enquiries', name:'dashboard.crm-enquiries'},
 			]
 		},

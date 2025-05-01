@@ -36,6 +36,7 @@ export * from './stripe-payments/invoices.js';
 
 // ------------- Board Dir
 export * from './board/deal.js';
+export * from './board/lead.js';
 
 // ------------- Others Dir
 export * from './others/newsletterSubscriber.js';
