@@ -1,6 +1,11 @@
 import { createApp } from 'vue';
 
 /* ------------ Import files/libraries  ---------- */
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.bundle' // includes Popper
+
 import "@/assets/css/index.css";
 import "element-plus/dist/index.css";
 import "@/assets/js/index.js";
