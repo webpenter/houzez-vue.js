@@ -180,16 +180,16 @@ const routes = [
                 meta:{ title:'All Leads' }
             },
             {
-                path: '/dashboard/crm-enquiries',
-                name:'dashboard.crm-enquiries',
-                component:() => import('@/views/dashboard/pages/board/crm-enquiries/Index.vue'),
-                meta:{ title:'Enquiries' }
+                path: '/dashboard/create-enquiry',
+                name:'dashboard.create-enquiry',
+                component:() => import('@/views/dashboard/pages/board/enquires/create-enquiry/Index.vue'),
+                meta:{ title:'Create Enquiry' }
             },
             {
-                path: '/dashboard/crm-lead-enquiry-from-property-detail-page',
-                name: 'dashboard.crm-lead-enquiry-from-property-detail-page',
-                component: () => import('@/views/dashboard/pages/board/crm-enquiries/CrmLeadEnquiryFromPropertyDetailPage.vue'),
-                meta: { title: 'Enquiries Details' }
+                path: '/dashboard/all-enquiries',
+                name:'dashboard.all-enquiries',
+                component:() => import('@/views/dashboard/pages/board/enquires/all-enquires/Index.vue'),
+                meta:{ title:'All Enquiries' }
             },
 
             /***
