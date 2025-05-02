@@ -132,15 +132,15 @@ const routes = [
         component:() => import('@/views/dashboard/layout/Index.vue'),
         children:[
             /***
-             * @route Dashboard/Board-CRM
-             * @route Dashboard/Board-CRM-Active-Deals
-             * @route Dashboard/Board-CRM-Enquiries
-             * @route Dashboard/Board-CRM-Leads
+             * @route Dashboard/Board-Activities
+             * @route Dashboard/Board-Deals
+             * @route Dashboard/Board-Leads
+             * @route Dashboard/Board-Enquiries
              ***/
             {
                 path: '/dashboard/crm',
                 name:'dashboard.crm',
-                component:() => import('@/views/dashboard/pages/board/crm/Index.vue'),
+                component:() => import('@/views/dashboard/pages/board/activities/Index.vue'),
                 meta:{ title:'Activities' }
             },
             {

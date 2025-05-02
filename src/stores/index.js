@@ -38,6 +38,7 @@ export * from './stripe-payments/invoices.js';
 export * from './board/deal.js';
 export * from './board/lead.js';
 export * from './board/enquiry.js';
+export * from './board/activity.js';
 
 // ------------- Others Dir
 export * from './others/newsletterSubscriber.js';

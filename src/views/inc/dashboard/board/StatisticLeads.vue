@@ -43,5 +43,4 @@
 		</div><!-- col-md-4 col-sm-12 -->
 	</div>
 </div><!-- dashboard-statistic-block -->
-
 </template>

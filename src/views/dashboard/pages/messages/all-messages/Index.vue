@@ -20,7 +20,6 @@ import {useConfirm, useMessage, useNotification, useRole, useTourRequest} from "
 import {storeToRefs} from "pinia";
 import {onMounted, ref} from "vue";
 import Table from "./Table.vue";
-import {useUsers} from "@/stores/auth/users.js";
 
 const tourRequestStore = useTourRequest();
 const {userMessages} = storeToRefs(tourRequestStore);
