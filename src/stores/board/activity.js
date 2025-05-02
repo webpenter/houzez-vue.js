@@ -85,7 +85,7 @@ export const useActivity = defineStore('activity', {
             try {
                 const response = await axiosInstance.get(url);
 
-                this.deals = response.data;
+                this.deals = response.data.data;
 
                 return new Promise(resolve => {
                     resolve(response)
@@ -110,7 +110,7 @@ export const useActivity = defineStore('activity', {
             try {
                 const response = await axiosInstance.get(url);
 
-                this.enquiries = response.data;
+                this.enquiries = response.data.data;
 
                 return new Promise(resolve => {
                     resolve(response)
