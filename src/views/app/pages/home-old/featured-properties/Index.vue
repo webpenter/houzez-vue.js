@@ -26,9 +26,10 @@
 <script setup>
 import { useAppProperty } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
-import { onMounted, ref } from "vue";
+import { onMounted, ref } from "vue"; 
 import {RouterLink} from "vue-router";
 import PropertyCards from "@/views/app/pages/home-old/components/PropertyCards.vue";
+import PropertyCardSkeleton from '@/components/skeleton/PropertyCardSkeleton.vue';
 
 const propertyToRefs = useAppProperty();
 const { featuredProperties } = storeToRefs(propertyToRefs);

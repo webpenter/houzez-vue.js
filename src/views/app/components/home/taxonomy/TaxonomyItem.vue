@@ -1,5 +1,5 @@
 <template>
-    <div class="taxonomy-item" style="background-image: url(http://placehold.it/770x700);">
+    <div class="taxonomy-item" style="background-image: url();">
 	<a class="taxonomy-link hover-effect-flat" href="#">
 		<div class="taxonomy-text-wrap">
 			<div class="taxonomy-title">Taxonomy Title</div>

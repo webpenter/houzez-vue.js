@@ -4,21 +4,26 @@
         
         <!-- Phone Number -->
         <span class="btn-phone-number d-flex align-items-center me-3">
-          <a href="tel:+18009876543" class="text-decoration-none d-flex align-items-center">
-            <i class="houzez-icon icon-phone-actions-ring me-1  mr-2"></i> +1 (800) 987 6543
-          </a>
+        <a :href="`tel:${profile.mobile}`" class="text-decoration-none d-flex align-items-center">
+          <i class="houzez-icon icon-phone-actions-ring me-1 mr-2"></i> {{ profile.mobile }}
+        </a>
         </span>
   
         <!-- Create Listing Button -->
-        <a class="btn btn-create-listing hidden-xs hidden-sm me-3" 
-           href="add-new-property-frontend-single-page-step-1.php">
+        <RouterLink class="btn btn-create-listing hidden-xs hidden-sm me-3" :to="{name:'dashboard'}">
           Create a Listing
-        </a>
+        </RouterLink>
   
         <!-- Profile Avatar Dropdown -->
         <div class="navbar-logged-in-wrap navbar dropdown">
           <a href="#" class="dropdown-toggle d-flex align-items-center" data-toggle="dropdown">
-            <img width="42" height="42" alt="author" src="https://placehold.co/42" class="rounded-circle">
+            <img
+                width="42"
+                height="42"
+                alt="author"
+                :src="profilePicture || 'https://placehold.co/42'"
+                class="rounded-circle"
+              />
           </a>
           <ul class="logged-in-nav dropdown-menu dropdown-menu-end">
             <li><a href="crm.php"><i class="houzez-icon icon-layout-dashboard me-2"></i>Board</a></li>
@@ -37,4 +42,22 @@
       </div>
     </nav>
   </template>
+  
+  <script setup>
+ import { onMounted } from "vue";
+import { storeToRefs } from "pinia";
+import { useProfile } from "@/stores/index.js";
+import { RouterLink } from "vue-router";
+
+// Initialize store
+const profileStore = useProfile();
+const { profile, profilePicture } = storeToRefs(profileStore);
+
+// Fetch profile data
+onMounted(async () => {
+  await profileStore.getProfileInfo();
+  await profileStore.getProfilePicture();
+});
+</script>
+
   

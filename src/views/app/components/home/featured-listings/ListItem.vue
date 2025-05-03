@@ -6,12 +6,12 @@
                     <span class="label-featured label">Featured</span><!-- label-featured -->
                     <span class="labels-wrap labels-right">
                         <a href="#" class="label-status label">
-                            Label
+                            {{ property.label }}
                         </a><!-- label-status -->
                     </span><!-- labels-wrap -->
                     <ul class="item-price-wrap hide-on-list">
-                        <li class="item-price"><span class="price-prefix">From </span>$9,990<span
-                                class="price-postfix">/mo</span></li>
+                            <li class="item-price"><span class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}<span
+                                class="price-postfix">/{{ property.after_price }}</span></li>
                         <li class="item-sub-price">$1,200/Sq Ft</li>
                     </ul>
                     <ul class="item-tools item-tools-v2">
@@ -37,8 +37,20 @@
                             </span><!-- item-tool-compare -->
                         </li><!-- item-tool -->
                     </ul><!-- item-tools -->
-                    <a href="#" class="hover-effect">
-                        <img class="img-fluid" src="../../../../../assets/img/app-side/placeholder.jpg" alt="">
+                    <a href="#" class="hover-effect d-block position-relative">
+                        <img
+                            v-if="!isLoaded"
+                            class="img-fluid placeholder-image"
+                            src="@/assets/img/app-side/placeholder.jpg"
+                            alt="Loading..."
+                        />
+                        <img
+                            class="img-fluid main-image"
+                            :src="property.thumbnail"
+                            :alt="property.title || 'Property Image'"
+                            @load="imageLoaded"
+                            loading="lazy"
+                        />
                     </a><!-- hover-effect -->
                 </div><!-- item-header -->
 
@@ -49,63 +61,83 @@
                         </a><!-- label-status -->
                     </span><!-- labels-wrap -->
                     <h2 class="item-title">
-                        <a href="#">Item Title</a>
+                        <a href="#">{{ $filters.subStr($filters.capitalize(property.title), 0, 30) }}</a>
                     </h2><!-- item-title -->
                     <ul class="item-price-wrap hide-on-list">
                         <li class="item-price"><span class="price-prefix">From </span>$9,990<span
                                 class="price-postfix">/mo</span></li>
                         <li class="item-sub-price">$1,200/Sq Ft</li>
                     </ul>
-                    <address class="item-address"><i class="houzez-icon icon-pin mr-1"></i>Miami Beach, FL 33154, United
-                        States</address><!-- item-address -->
-                    <!-- <address class="item-address"><i class="houzez-icon icon-pin mr-1"></i>9701 W Broadview Dr, Bay Harbor Islands, FL 33154, United States</address> --><!-- item-address -->
-                    <div class="item-short-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    <address class="item-address"><i class="houzez-icon icon-pin mr-1"></i>
+                        {{ $filters.subStr(property.address, 0, 40) }} 
+                        {{ $filters.subStr(property.city, 0, 40) }}, 
+                        {{ $filters.subStr(property.county_state, 0, 40) }}, 
+                        {{ $filters.subStr(property.country, 0, 40) }} 
+                    </address><!-- item-address -->
+                    <!-- <address class="item-address"><i class="houzez-icon icon-pin mr-1"></i>9701 W Broadview Dr, Bay Harbor Islands, FL 33154, United States</address>item-address -->
+                    <div class="item-short-description">
+                        {{ $filters.subStr(property.description, 0, 60) }}
+                    </div>
                     <!-- add the class item-amenities-with-icons to display the icons -->
                     <ul class="item-amenities item-amenities-with-icons">
                         <li class="h-beds">
                             <i class="houzez-icon icon-hotel-double-bed-1 mr-1"></i>
-                            <span class="item-amenities-text">Beds:</span> <span>3</span>
+                            <span class="item-amenities-text">Beds:</span> <span>{{ property.bedrooms }}</span>
                         </li>
                         <li class="h-baths">
                             <i class="houzez-icon icon-bathroom-shower-1 mr-1"></i>
-                            <span class="item-amenities-text">Baths:</span> <span>2</span>
+                            <span class="item-amenities-text">Baths:</span> <span>{{ property.bathrooms }}</span>
                         </li>
                         <li class="h-cars">
                             <i class="houzez-icon icon-car-1 mr-1"></i>
-                            <span class="item-amenities-text">Parkings:</span> <span>1</span>
+                            <span class="item-amenities-text">Parkings:</span> <span>{{ property.garages }}</span>
                         </li>
                         <li class="h-area">
                             <i class="houzez-icon icon-ruler-triangle mr-1"></i>
-                            <span>1,234</span> <span class="area_postfix">Sq Ft</span>
+                            <span>{{ property.area_size }}</span> <span class="area_postfix">{{ property.size_prefix }}</span>
                         </li>
                         <li class="h-type">
-                            <span>Apartment</span>
+                            <span>{{ property.type }}</span>
                         </li>
                     </ul>
-                    <a class="btn btn-primary btn-item" href="#">
+                    <RouterLink :to="{name:'app.property-details', params:{propertySlug:property.slug}}" class="btn btn-primary btn-item">
                         Details
-                    </a><!-- btn-item -->
+                    </RouterLink><!-- btn-item -->
                     <div class="item-author">
                         <i class="houzez-icon icon-single-neutral mr-1"></i>
-                        <a href="#">John Doe</a>
+                        <a href="#">{{ property.user?.user_name }}</a>
                     </div><!-- item-author -->
                     <div class="item-date">
                         <i class="houzez-icon icon-attachment mr-1"></i>
-                        3 Days ago
+                        {{ property.created_ago }}
                     </div><!-- item-date -->
                 </div><!-- item-body -->
                 <div class="item-footer clearfix">
                     <div class="item-author">
                         <i class="houzez-icon icon-single-neutral mr-1"></i>
-                        <a href="#">John Doe</a>
+                        <a href="#">{{ property.user?.user_name }}</a>
                     </div><!-- item-author -->
                     <div class="item-date">
                         <i class="houzez-icon icon-attachment mr-1"></i>
-                        3 Days ago
+                        {{ property.created_ago }}
                     </div><!-- item-date -->
                 </div>
             </div><!-- d-flex -->
         </div><!-- item-wrap -->
     </div><!-- item-listing-wrap -->
 </template>
+
+<script setup>  
+import { ref } from "vue";
+import { RouterLink } from "vue-router";
+
+defineProps({
+    property: Object,
+});
+
+const isLoaded = ref(false);
+
+const imageLoaded = () => {
+    isLoaded.value = true;
+};
+</script>
