@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle' // includes Popper
+import 'bootstrap-select/dist/css/bootstrap-select.min.css'
+import 'bootstrap-select/dist/js/bootstrap-select.min.js'
 
 import "@/assets/css/index.css";
 import "element-plus/dist/index.css";

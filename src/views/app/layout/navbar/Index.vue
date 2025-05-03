@@ -10,7 +10,8 @@
       <HeaderV4LoggedIn />
        <HeaderMobile />
     </header><!-- .header-main-wrap -->
-  </main><!-- .main-wrap -->
+  </main>
+  <!-- .main-wrap -->
 
   <!-- <div style="height: 800px"></div> -->
   <!-- delete this -->
