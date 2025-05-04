@@ -39,21 +39,21 @@ const routes = [
             /***
              * @route App/Properties
              ***/
-            {
-                path: '/properties',
-                name:'app.properties',
-                component:() => import('@/views/app/pages/properties/Index.vue'),
-                meta:{ title:'Properties' }
-            },
+            // {
+            //     path: '/properties',
+            //     name:'app.properties',
+            //     component:() => import('@/views/app/pages/properties/Index.vue'),
+            //     meta:{ title:'Properties' }
+            // },
             /***
              * @route App/Property-Details
              ***/
-            {
-                path: '/property-details/:propertySlug',
-                name:'app.property-details',
-                component:() => import('@/views/app/pages/property-details/Index.vue'),
-                meta:{ title:'Property Details' }
-            },
+            // {
+            //     path: '/property-details/:propertySlug',
+            //     name:'app.property-details',
+            //     component:() => import('@/views/app/pages/property-details/Index.vue'),
+            //     meta:{ title:'Property Details' }
+            // },
             /***
              * @route App/Realtor
              ***/

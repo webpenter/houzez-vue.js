@@ -100,7 +100,7 @@
                             <span>{{ property.type }}</span>
                         </li>
                     </ul>
-                    <RouterLink :to="{name:'app.property-details', params:{propertySlug:property.slug}}" class="btn btn-primary btn-item">
+                    <RouterLink :to="{name:'app.property-details'}" class="btn btn-primary btn-item">
                         Details
                     </RouterLink><!-- btn-item -->
                     <div class="item-author">
