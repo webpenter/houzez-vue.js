@@ -44,7 +44,7 @@ export const useProperty = defineStore('property', {
             }
 
             try {
-                const response = await axiosInstance.get(url);
+                const response = await axiosInstance.post(url);
                 this.dashboardProperties = response.data.properties;
 
                 return Promise.resolve(response);
