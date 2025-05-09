@@ -55,7 +55,7 @@ import MortgageCalculator from "./MortgageCalculator.vue";
 import Video from "./Video.vue";
 import Review from "./Review.vue";
 import VirtualTour from "@/views/app/pages/property-details/VirtualTour.vue";
-import {useAppProperty} from "@/stores/index.js";
+import {useAppProperty, useInsight} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 import {onMounted, ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
@@ -85,6 +85,11 @@ const getPropertyData = async () => {
   }
 };
 
-onMounted(() => getPropertyData());
+const propertyViews = async () => await useInsight().propertyViews(propertySlug);
+
+onMounted(() => {
+  getPropertyData();
+  propertyViews();
+});
 </script>
 

@@ -10,9 +10,6 @@ export * from './element-plus/notification.js';
 export * from './element-plus/confirm.js';
 export * from './element-plus/message.js';
 
-// ------------- Model Dir
-export * from './model/model.js';
-
 // ------------- Settings Dir
 export * from './settings/generalSettings.js';
 export * from './settings/label.js';
@@ -39,6 +36,9 @@ export * from './board/deal.js';
 export * from './board/lead.js';
 export * from './board/enquiry.js';
 export * from './board/activity.js';
+
+// ------------- Insights Dir
+export * from './insights/insight.js';
 
 // ------------- Others Dir
 export * from './others/newsletterSubscriber.js';

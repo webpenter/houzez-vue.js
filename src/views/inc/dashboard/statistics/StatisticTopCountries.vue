@@ -40,9 +40,9 @@
   <script setup>
   import { ref, onMounted } from 'vue';
   import Chart from 'chart.js/auto';
-  
+
   const topcountriesDoughnutChart = ref(null);
-  
+
   onMounted(() => {
 	const ctx = topcountriesDoughnutChart.value.getContext('2d');
 	new Chart(ctx, {
