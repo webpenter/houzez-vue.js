@@ -22,6 +22,7 @@
             :loading="loading"
             @delete-property="(id) => deleteProperty(id)"
             @duplicate-property="(id) => duplicateProperty(id)"
+            @statusChanged="handleStatusChange"
         />
 
         <NoProperty :propertyStatus="propertyStatus" v-if="dashboardProperties.length < 1"/>
@@ -46,6 +47,7 @@ import {
   updateSortOption,
   searchQuery,
   selectedSort,
+  handleStatusChange,
   loading
 } from "@/traits/property/dashboardProperties.js";
 import { useProperty } from "@/stores/index.js";
