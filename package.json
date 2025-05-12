@@ -15,7 +15,7 @@
     "axios": "^1.7.9",
     "bootstrap": "^4.5.3",
     "bootstrap-select": "^1.13.18",
-    "chart.js": "^4.4.7",
+    "chart.js": "^4.4.9",
     "element-plus": "^2.9.3",
     "ev-emitter": "^2.1.2",
     "jquery": "^3.7.1",

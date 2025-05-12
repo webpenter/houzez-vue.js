@@ -71,11 +71,31 @@
                             <?php include 'inc/property/property-reviews.php';?>
                             <?php include 'inc/property/similar-properties.php';?>
                             <?php include 'inc/property/property-nav.php';?> -->
+                            
                             <PropertyOverviewBlockV1 />
                             <PropertyOverviewBlock />
                             <PropertyDescriptionBlock />
-                            <PropertyScheduleATourBlockV1 />
+                            <PropertyScheduleATourBlockV2 />
                             <PropertyGalleryBlock />
+                            <PropertyAddressBlock />
+                            <PropertyDetailBlock />
+                            <PropertyMortgageCalculatorBlock />
+                            <PropertySubListingsTableBlock />
+                            <PropertySubListingsBlock />
+                            <PropertyEnergyClassBlock />
+                            <PropertyFeaturesBlockWithCustomIcons />
+                            <PropertyFloorPlansBlock />
+                            <PropertyWalkscoreBlock />  
+                            <PropertyWalkscoreBlockV2 />
+                            <PropertyNearbyBlock />
+                            <PropertyVideoBlock />
+                            <PropertyScheduleATourBlock />
+                            <PropertyVirtualTourBlock />
+                            <PropertyAvailabilityCalendarBlock />
+                            <PropertyAgentBlock />
+                            <PropertyReviews />
+                            <PropertySimilarProperties />
+                            <PropertyNav />
                     </div><!-- listing-view -->
                 </div><!-- bt-content-wrap -->
                 <div class="col-lg-4 col-md-12 bt-sidebar-wrap houzez_sticky">
@@ -99,8 +119,27 @@ import Sidebar from '@/views/app/components/property-details/sidebar/Index.vue';
 import PropertyOverviewBlockV1 from '@/views/app/components/property-details/property/PropertyOverviewBlockV1.vue';
 import PropertyOverviewBlock from '@/views/app/components/property-details/property/PropertyOverviewBlock.vue';
 import PropertyDescriptionBlock from '@/views/app/components/property-details/property/PropertyDescriptionBlock.vue';
-import PropertyScheduleATourBlockV1 from '@/views/app/components/property-details/property/PropertyScheduleATourBlockV1.vue';
+import PropertyScheduleATourBlockV2 from '@/views/app/components/property-details/property/PropertyScheduleATourBlockV2.vue';
 import PropertyGalleryBlock from '@/views/app/components/property-details/property/PropertyGalleryBlock.vue';
+import PropertyAddressBlock from '../../components/property-details/property/PropertyAddressBlock.vue';
+import PropertyDetailBlock from '@/views/app/components/property-details/property/PropertyDetailBlock.vue';
+import PropertyMortgageCalculatorBlock from '@/views/app/components/property-details/property/PropertyMortgageCalculatorBlock.vue';
+import PropertySubListingsTableBlock from '@/views/app/components/property-details/property/PropertySubListingsTableBlock.vue';
+import PropertySubListingsBlock from '@/views/app/components/property-details/property/PropertySubListingsBlock.vue';
+import PropertyEnergyClassBlock from '@/views/app/components/property-details/property/PropertyEnergyClassBlock.vue';
+import PropertyFeaturesBlockWithCustomIcons from '@/views/app/components/property-details/property/PropertyFeaturesBlockWithCustomIcons.vue';
+import PropertyFloorPlansBlock from '@/views/app/components/property-details/property/PropertyFloorPlansBlock.vue';
+import PropertyWalkscoreBlock from '@/views/app/components/property-details/property/PropertyWalkscoreBlock.vue';
+import PropertyWalkscoreBlockV2 from '@/views/app/components/property-details/property/PropertyWalkscoreBlockV2.vue';
+import PropertyNearbyBlock from '@/views/app/components/property-details/property/PropertyNearbyBlock.vue';
+import PropertyVideoBlock from '@/views/app/components/property-details/property/PropertyVideoBlock.vue';
+import PropertyScheduleATourBlock from '@/views/app/components/property-details/property/PropertyScheduleATourBlock.vue';
+import PropertyVirtualTourBlock from '@/views/app/components/property-details/property/PropertyVirtualTourBlock.vue';
+import PropertyAvailabilityCalendarBlock from '@/views/app/components/property-details/property/PropertyAvailabilityCalendarBlock.vue';
+import PropertyAgentBlock from '@/views/app/components/property-details/property/PropertyAgentBlock.vue';
+import PropertyReviews from '@/views/app/components/property-details/property/PropertyReviews.vue';
+import PropertySimilarProperties from '@/views/app/components/property-details/property/SimilarProperties.vue';
+import PropertyNav from '@/views/app/components/property-details/property/PropertyNav.vue';
 export default {
     name: 'PropertyDetails',
     components: {
@@ -113,8 +152,27 @@ export default {
         PropertyOverviewBlockV1,
         PropertyOverviewBlock,
         PropertyDescriptionBlock,
-        PropertyScheduleATourBlockV1,
+        PropertyScheduleATourBlockV2,
         PropertyGalleryBlock,
+        PropertyAddressBlock,
+        PropertyDetailBlock,
+        PropertyMortgageCalculatorBlock,
+        PropertySubListingsTableBlock,
+        PropertySubListingsBlock,
+        PropertyEnergyClassBlock,
+        PropertyFeaturesBlockWithCustomIcons,
+        PropertyFloorPlansBlock,
+        PropertyWalkscoreBlock,
+        PropertyWalkscoreBlockV2,
+        PropertyNearbyBlock,
+        PropertyVideoBlock,
+        PropertyScheduleATourBlock,
+        PropertyVirtualTourBlock,
+        PropertyAvailabilityCalendarBlock,
+        PropertyAgentBlock,
+        PropertyReviews,
+        PropertySimilarProperties,
+        PropertyNav
     },
     data() {
         return {

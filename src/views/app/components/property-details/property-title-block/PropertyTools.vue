@@ -39,3 +39,10 @@
         </li><!-- item-tool -->
     </ul><!-- item-tools -->
 </template>
+
+<style scoped>
+span i {
+
+    margin: 7px;
+}
+</style>    
