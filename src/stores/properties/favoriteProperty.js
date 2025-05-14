@@ -54,16 +54,18 @@ export const useFavoriteProperty = defineStore('favorite_property', {
          * @returns {Promise<Object>} Resolves with the response if successful, otherwise rejects with an error response.
          */
         async isFavoriteProperty(propertyId) {
-            let url = `${this.prefix}/is-favorite/${propertyId}`;
+            if(typeof propertyId !== 'undefined') {
+                let url = `${this.prefix}/is-favorite/${propertyId}`;
 
-            try {
-                const response = await axiosInstance.get(url);
-                this.isFavorite = response.data.isFavorite;
+                try {
+                    const response = await axiosInstance.get(url);
+                    this.isFavorite = response.data.isFavorite;
 
-                return Promise.resolve(response);
-            } catch (error) {
-                this.errors = error.response || error;
-                return Promise.reject(error.response);
+                    return Promise.resolve(response);
+                } catch (error) {
+                    this.errors = error.response || error;
+                    return Promise.reject(error.response);
+                }
             }
         },
 

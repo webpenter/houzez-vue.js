@@ -1,6 +1,6 @@
 <template>
   <template v-if="loading">
-    <PropertyDetailsSkeleton/>
+    <PropertyDetailsSkeleton/>  
   </template>
   <template v-else>
     <TopBar :property="property" />

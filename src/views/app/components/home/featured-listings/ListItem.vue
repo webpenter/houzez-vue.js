@@ -1,5 +1,5 @@
 <template>
-    <div class="item-listing-wrap card">
+    <div class="item-listing-wrap card"> 
         <div class="item-wrap item-wrap-v1 item-wrap-no-frame h-100">
             <div class="d-flex align-items-center h-100">
                 <div class="item-header">
@@ -100,9 +100,12 @@
                             <span>{{ property.type }}</span>
                         </li>
                     </ul>
-                    <RouterLink :to="{name:'app.property-details'}" class="btn btn-primary btn-item">
+                    <RouterLink
+                        :to="{ name: 'app.property-details', params: { slug: property.slug } }"
+                        class="btn btn-primary btn-item"
+                        >
                         Details
-                    </RouterLink><!-- btn-item -->
+                    </RouterLink>
                     <div class="item-author">
                         <i class="houzez-icon icon-single-neutral mr-1"></i>
                         <a href="#">{{ property.user?.user_name }}</a>
