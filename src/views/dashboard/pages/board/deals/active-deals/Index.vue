@@ -1,6 +1,6 @@
 <template>
     <DashboardHeader :heading="$t('Active Deals')">
-      <a class="btn btn-primary" @click="addNewDeal = true" href="#">{{$t('Add New Deal')}}</a>
+      <router-link :to="{name:'dashboard.create-deal'}" class="btn btn-primary">{{$t('Add New Deal')}}</router-link>
     </DashboardHeader>
 
     <section class="dashboard-content-wrap">
@@ -18,10 +18,6 @@
           </template>
         </div>
     </section>
-
-  <el-dialog v-model="addNewDeal" :title="$t('Add New Deal')" width="500" align-center>
-    <AddNewDealModal/>
-  </el-dialog>
 </template>
 <script setup>
 import {onMounted, ref} from 'vue';
@@ -29,13 +25,11 @@ import {useConfirm, useDeal, useMessage, useNotification} from '@/stores/index.j
 import NavPills from "@/views/dashboard/pages/board/deals/components/NavPills.vue";
 import {storeToRefs} from "pinia";
 import Table from "@/views/dashboard/pages/board/deals/components/Table.vue";
-import AddNewDealModal from "@/views/dashboard/pages/board/deals/components/AddNewDealModal.vue";
 
 const dealStore = useDeal();
 const {activeDeals} = storeToRefs(dealStore);
 
 const loading = ref(false);
-const addNewDeal = ref(false);
 
 const getDeals = async () => {
   loading.value = true;

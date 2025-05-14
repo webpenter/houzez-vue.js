@@ -169,16 +169,22 @@ const routes = [
         component:() => import('@/views/dashboard/layout/Index.vue'),
         children:[
             /***
-             * @route Dashboard/Board-CRM
-             * @route Dashboard/Board-CRM-Active-Deals
-             * @route Dashboard/Board-CRM-Enquiries
-             * @route Dashboard/Board-CRM-Leads
+             * @route Dashboard/Board-Activities
+             * @route Dashboard/Board-Deals
+             * @route Dashboard/Board-Leads
+             * @route Dashboard/Board-Enquiries
              ***/
             {
                 path: '/dashboard/crm',
                 name:'dashboard.crm',
-                component:() => import('@/views/dashboard/pages/board/crm/Index.vue'),
+                component:() => import('@/views/dashboard/pages/board/activities/Index.vue'),
                 meta:{ title:'Activities' }
+            },
+            {
+                path: '/dashboard/create-deal',
+                name:'dashboard.create-deal',
+                component:() => import('@/views/dashboard/pages/board/deals/create-deal/Index.vue'),
+                meta:{ title:'Create Deal' }
             },
             {
                 path: '/dashboard/active-deals',
@@ -199,61 +205,29 @@ const routes = [
                 meta: { title: 'Lost Deals' }
             },
             {
-                path: '/dashboard-import-csv',
-                name: 'dashboard.importCsv',
-                component: () => import('@/views/dashboard/pages/board/crm-deals/ImportCsv.vue'),
-                meta: { title: 'Import Csv' }
+                path: '/dashboard/create-lead',
+                name:'dashboard.create-lead',
+                component:() => import('@/views/dashboard/pages/board/leads/create-lead/Index.vue'),
+                meta:{ title:'Create Lead' }
             },
             {
-                path: '/dashboard/crm-enquiries',
-                name:'dashboard.crm-enquiries',
-                component:() => import('@/views/dashboard/pages/board/crm-enquiries/Index.vue'),
-                meta:{ title:'Enquiries' }
+                path: '/dashboard/all-leads',
+                name:'dashboard.all-leads',
+                component:() => import('@/views/dashboard/pages/board/leads/all-leads/Index.vue'),
+                meta:{ title:'All Leads' }
             },
             {
-                path: '/dashboard/crm-lead-enquiry-from-property-detail-page',
-                name: 'dashboard.crm-lead-enquiry-from-property-detail-page',
-                component: () => import('@/views/dashboard/pages/board/crm-enquiries/CrmLeadEnquiryFromPropertyDetailPage.vue'),
-                meta: { title: 'Enquiries Details' }
-            },
-
-            {
-                path: '/dashboard/crm-leads',
-                name: 'dashboard.crm-leads',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/Index.vue'), // Default view
-                meta: { title: 'Leads' }
+                path: '/dashboard/create-enquiry',
+                name:'dashboard.create-enquiry',
+                component:() => import('@/views/dashboard/pages/board/enquires/create-enquiry/Index.vue'),
+                meta:{ title:'Create Enquiry' }
             },
             {
-                path: '/dashboard/crm-lead-enquiries',
-                name: 'dashboard.crm-lead-enquiries',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEnquiries.vue'), // Enquiries view
-                meta: { title: 'Lead Enquiries' }
+                path: '/dashboard/all-enquiries',
+                name:'dashboard.all-enquiries',
+                component:() => import('@/views/dashboard/pages/board/enquires/all-enquires/Index.vue'),
+                meta:{ title:'All Enquiries' }
             },
-            {
-                path: '/dashboard/crm-lead-enquiries-propert-detail',
-                name: 'dashboard.crm-lead-enquiries-propert-detail',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEnquiryFromPropertyDetailPage.vue'), // Enquiries view
-                meta: { title: 'Lead Enquiries Property' }
-            },
-            {
-                path: '/dashboard/crm-lead-events',
-                name: 'dashboard.crm-lead.events',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEvents.vue'),
-                meta: { title: 'Lead Events' }
-            },
-            {
-                path: '/dashboard/crm-lead-listings-viewed',
-                name: 'dashboard.crm-lead.listings-viewed',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadListingsViewed.vue'),
-                meta: { title: 'Lead Listings Viewed' }
-            },
-            {
-                path: '/dashboard/crm-lead-saved-searches',
-                name: 'dashboard.crm-lead-saved-searches',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadSavedSearches.vue'),
-                meta: { title: 'Lead Saved Searches' }
-            },
-
 
             /***
              * @route Dashboard/Insight

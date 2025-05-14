@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav nav-pills deals-nav-tab" role="tablist">
+  <ul class="nav nav-pills deals-nav-tab mb-2" role="tablist">
     <li class="nav-item">
       <router-link
           class="nav-link active-deals" :class="tab === 'active' ? 'active' : ''"

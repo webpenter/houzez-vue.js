@@ -46,8 +46,8 @@
                                 <PropertyDescriptionBlock :property="property" />
                                 <PropertyScheduleATourBlockV2 :property="property" />
                                 <PropertyGalleryBlock :property="property" />
-                                <PropertyAddressBlock />
-                                <PropertyDetailBlock />
+                                <PropertyAddressBlock :property="property" />
+                                <PropertyDetailBlock :property="property"/>
                                 <PropertyMortgageCalculatorBlock />
                                 <PropertySubListingsTableBlock />
                                 <PropertySubListingsBlock />
