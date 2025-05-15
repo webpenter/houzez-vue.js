@@ -153,7 +153,7 @@ export const useAppProperty = defineStore('appProperty', {
             try {
                 const response = await axiosInstance.get(url);
                 this.property = response.data.property;
-                console.log("propertyggggggg", 	this.property);
+                console.log("nareshhhh", 	this.property);
 
                 return Promise.resolve(response);
             } catch (error) {

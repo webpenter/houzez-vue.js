@@ -5,7 +5,7 @@
         <?php include 'inc/widgets/logged-in-widget.php';?>
         <?php include 'inc/widgets/login-register-widget.php';?> 
         -->
-        <BrochureButton />
+        
         <PropertyFormTabs />
         <PropertyForm />
         <LongListWidget />
