@@ -9,7 +9,7 @@
 		</div><!-- d-flex -->
 	</div><!-- agent-details -->
 	
-	<!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
 		The field <strong>Name</strong> is empty.
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
@@ -20,7 +20,7 @@
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
 		</button>
-	</div> -->
+	</div>
 
 	
 
