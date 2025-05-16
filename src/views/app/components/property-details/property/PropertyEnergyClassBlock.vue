@@ -6,10 +6,10 @@
 		</div><!-- block-title-wrap -->
 		<div class="block-content-wrap">
 			<ul class="class-energy-list list-unstyled">
-				<li><strong>Energetic class:</strong> <span>A+</span></li>
-				<li><strong>Global energy performance index:</strong> <span>92.42 kWh / m²a</span></li>
-				<li><strong>Renewable energy performance index:</strong> <span>0.00 kWh / m²a</span></li>
-				<li><strong>Energy performance of the building:</strong> <span>Good</span></li>
+				<li><strong>Energetic class:</strong> <span>{{ property.energy_class }}</span></li>
+				<li><strong>Global energy performance index:</strong> <span>{{ property.global_energy_performance_index }}</span></li>
+				<li><strong>Renewable energy performance index:</strong> <span>{{ property.renewable_energy_performance_index }}</span></li>
+				<li><strong>Energy performance of the building:</strong> <span>{{ property.energy_performance_of_the_building }}</span></li>
 			</ul>
 			<ul class="class-energy energy-class-10">
 				<li class="class-energy-indicator">
@@ -49,7 +49,7 @@
 					<span class="energy-H">H</span>
 				</li>   
 				<li class="class-energy-indicator">
-					<div class="indicator-energy" data-energyclass="A+">92.42 kWh / m²a | Energy class A+</div>
+					<div class="indicator-energy" data-energyclass="A+">{{ property.global_energy_performance_index }} | Energy class {{ property.energy_class }}</div>
 					<span class="energy-ND">ND</span>
 				</li>                                        
 			</ul>
@@ -57,3 +57,12 @@
 	</div><!-- block-wrap -->
 </div><!-- property-address-wrap -->
 </template>
+
+<script setup>
+const props = defineProps({
+  property: {
+    type: Object,
+    required: true
+  }
+})
+</script>

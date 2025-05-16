@@ -41,7 +41,7 @@
                                 </div><!-- mobile-top-wrap -->
                             </div><!-- visible-on-mobile -->
                             
-                                <!-- <PropertyOverviewBlockV1 :property="property" /> -->
+                                <!-- <PropertyOverviewBlockV1 :property="property" /> not similiar to provided demo01 -->
                                 <PropertyOverviewBlock :property="property" />
                                 <PropertyDescriptionBlock :property="property" />
                                 <PropertyScheduleATourBlockV2 :property="property" />
@@ -49,11 +49,11 @@
                                 <PropertyAddressBlock :property="property" />
                                 <PropertyDetailBlock :property="property"/>
                                 <PropertyMortgageCalculatorBlock />
-                                <PropertySubListingsTableBlock />
-                                <PropertySubListingsBlock />
-                                <PropertyEnergyClassBlock />
-                                <PropertyFeaturesBlockWithCustomIcons />
-                                <PropertyFloorPlansBlock />
+                                <PropertySubListingsTableBlock :property="property" />
+                                <!-- <PropertySubListingsBlock :property="property" /> not similiar to provided demo01 -->
+                                <PropertyEnergyClassBlock :property="property"/>
+                                <PropertyFeaturesBlockWithCustomIcons :property="property" />
+                                <PropertyFloorPlansBlock :property="property" />
                                 <PropertyWalkscoreBlock />  
                                 <PropertyWalkscoreBlockV2 />
                                 <PropertyNearbyBlock />

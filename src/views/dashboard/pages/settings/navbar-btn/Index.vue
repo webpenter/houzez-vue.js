@@ -82,11 +82,9 @@ const updateVisibility = async () => {
       }
     )
 
-    console.log('Visibility updated')
     // optional: re-fetch to ensure value is synced
     await fetchVisibility()
   } catch (error) {
-    console.error('Failed to update visibility:', error)
   }
 }
 

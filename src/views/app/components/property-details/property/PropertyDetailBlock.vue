@@ -16,23 +16,13 @@
                         <li><strong>Bathrooms:</strong> <span>{{ property.bathrooms }}</span></li>
                         <li><strong>Garage:</strong> <span>{{ property.garages }}</span></li>
                         <li><strong>Garage Size:</strong> <span>{{ property.garages_size }} {{property.size_prefix}}</span></li>
-                        <li><strong>Year Built:</strong> <span>2016-01-09</span></li>
+                        <li><strong>Year Built:</strong> <span>{{ property.year_built }}</span></li>
                         <li class="prop_type"><strong>Property Type:</strong> <span>{{property.type}}</span></li>
                         <li class="prop_status"><strong>Property Status:</strong> <span>For {{ property.label }}</span></li>
                     </ul>
                 </div>
 
-                <div class="block-title-wrap">
-                    <h3>Additional Details</h3>
-                </div><!-- block-title-wrap -->
-                <ul class="list-2-cols list-unstyled">
-                    <li><strong>Deposit:</strong> <span>20%</span></li>
-                    <li><strong>Pool Size:</strong> <span>300 Sqft</span></li>
-                    <li><strong>Last remodel year:</strong> <span>1987</span></li>
-                    <li><strong>Amenities:</strong> <span>Clubhouse</span></li>
-                    <li><strong>Additional Rooms:</strong> <span>Guest Bath</span></li>
-                    <li><strong>Equipment:</strong> <span>Grill - Gas</span></li>
-                </ul>
+                
             </div><!-- block-content-wrap -->
         </div><!-- block-wrap -->
     </div><!-- property-detail-wrap -->

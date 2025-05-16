@@ -113,7 +113,7 @@ const routes = [
              * @feature It uses a different component for the updated design.
              ***/
             {
-                path: '/property-details/:slug',
+                path: '/property/:slug',
                 name:'app.property-details',
                 component:() => import('@/views/app/pages/property-details/Index.vue'),
                 meta:{ title:'Property Details' }

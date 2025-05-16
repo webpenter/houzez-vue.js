@@ -134,7 +134,7 @@
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
 
-defineProps({
+const props = defineProps({
     property: Object,
 });
 
@@ -143,4 +143,5 @@ const isLoaded = ref(false);
 const imageLoaded = () => {
     isLoaded.value = true;
 };
+
 </script>

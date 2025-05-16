@@ -28,7 +28,6 @@ onMounted(async () => {
     const res = await axios.get(`${import.meta.env.VITE_API_URL}/navbar/buttons`)
     if (res.data.length > 0) {
       button.value = res.data[0]
-      console.log('Fetched navbar button:\n', JSON.stringify(button.value, null, 2))
     }
   } catch (error) {
     console.error('Failed to load navbar button:', error)
