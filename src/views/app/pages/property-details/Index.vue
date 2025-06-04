@@ -48,7 +48,7 @@
                                 <PropertyGalleryBlock :property="property" />
                                 <PropertyAddressBlock :property="property" />
                                 <PropertyDetailBlock :property="property"/>
-                                <PropertyMortgageCalculatorBlock />
+                                <PropertyMortgageCalculatorBlock :property="property" />
                                 <PropertySubListingsTableBlock :property="property" />
                                 <!-- <PropertySubListingsBlock :property="property" /> not similiar to provided demo01 -->
                                 <PropertyEnergyClassBlock :property="property"/>
@@ -58,11 +58,11 @@
                                 <PropertyWalkscoreBlockV2 />
                                 <PropertyNearbyBlock />
                                 <PropertyVideoBlock />
-                                <PropertyScheduleATourBlock />
+                                <PropertyScheduleATourBlock :property="property" />
                                 <PropertyVirtualTourBlock />
                                 <PropertyAvailabilityCalendarBlock />
-                                <PropertyAgentBlock />
-                                <PropertyReviews />
+                                <PropertyAgentBlock :property="property" />
+                                <PropertyReviews :property="property" />
                                 <PropertySimilarProperties />
                                 <PropertyNav />
                         </div><!-- listing-view -->
@@ -70,7 +70,7 @@
                     <div class="col-lg-4 col-md-12 bt-sidebar-wrap houzez_sticky">
                         <div class="theiaStickySidebar">
                             <!-- <?php include 'inc/sidebar.php';?>  -->
-                            <Sidebar />
+                            <Sidebar :property="property" />
                         </div><!-- theiaStickySidebar -->
                     </div><!-- bt-sidebar-wrap -->
                 </div><!-- row -->

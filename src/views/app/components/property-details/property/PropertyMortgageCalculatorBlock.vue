@@ -1,107 +1,154 @@
 <template>
-    <div class="property-mortgage-calculator-wrap property-section-wrap" id="property-mortgage-calculator-wrap">
-        <div class="block-wrap">
-            <div class="block-title-wrap">
-                <h2>Morgage Calculator</h2>
-            </div><!-- block-title-wrap -->
-            <div class="block-content-wrap">
-                <div class="d-flex align-items-center sm-column">
-                    <div class="mortgage-calculator-chart flex-fill">
-                        <div class="mortgage-calculator-monthly-payment-wrap">
-                            <div class="mortgage-calculator-monthly-payment">$1,956</div>
-                            <div class="mortgage-calculator-monthly-requency">Monthly</div>
-                        </div><!-- mortgage-calculator-monthly-payment-wrap -->
-                        <canvas id="mortgage-calculator-chart" width="200" height="200"></canvas>
-                       
-                    </div><!-- mortgage-calculator-chart -->
-                    <div class="mortgage-calculator-data flex-fill">
-                        <ul class="list-unstyled">
-                            <li class="mortgage-calculator-data-1 stats-data-1">
-                                <i class="houzez-icon icon-sign-badge-circle mr-1"></i> <strong>Principal &
-                                    Interest</strong> <span>$1,686</span>
-                            </li>
-                            <li class="mortgage-calculator-data-2 stats-data-2">
-                                <i class="houzez-icon icon-sign-badge-circle mr-1"></i> <strong>Property Tax</strong>
-                                <span>$2,548</span>
-                            </li>
-                            <li class="mortgage-calculator-data-3 stats-data-3">
-                                <i class="houzez-icon icon-sign-badge-circle mr-1"></i> <strong>Home Insurance</strong>
-                                <span>$678</span>
-                            </li>
-                            <li class="mortgage-calculator-data-4 stats-data-4">
-                                <i class="houzez-icon icon-sign-badge-circle mr-1"></i> <strong>Home Owners Association
-                                    Fee</strong> <span>$898</span>
-                            </li>
-                        </ul>
-                    </div><!-- mortgage-calculator-data -->
-                </div><!-- d-flex -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Total Amount</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">$</div>
-                                </div><!-- input-group-prepend -->
-                                <input type="text" class="form-control" placeholder="Total Amount" value="1,990,000">
-                            </div><!-- input-group -->
-                        </div><!-- form-group -->
-                    </div><!-- col-md-6 -->
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Down Payment</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">$</div>
-                                </div><!-- input-group-prepend -->
-                                <input type="text" class="form-control" placeholder="Down Payment" value="90,000">
-                            </div><!-- input-group -->
-                        </div><!-- form-group -->
-                    </div><!-- col-md-6 -->
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Interest Rate</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">%</div>
-                                </div><!-- input-group-prepend -->
-                                <input type="text" class="form-control" placeholder="Interest Rate" value="3.935">
-                            </div><!-- input-group -->
-                        </div><!-- form-group -->
-                    </div><!-- col-md-6 -->
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Loan Terms (Years)</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="houzez-icon icon-attachment"></i>
-                                    </div>
-                                </div><!-- input-group-prepend -->
-                                <input type="text" class="form-control" placeholder="Loan Terms (Years)" value="30">
-                            </div><!-- input-group -->
-                        </div><!-- form-group -->
-                    </div><!-- col-md-6 -->
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-search btn-primary">Calculate</button>
-                    </div><!-- col-md-12 -->
-                </div><!-- row -->
-            </div><!-- block-content-wrap -->
-        </div><!-- block-wrap -->
-    </div><!-- property-mortgage-calculator-wrap -->
-</template>
-<script setup>
-import { onMounted } from 'vue';
-import Chart from 'chart.js/auto';
+  <div class="property-mortgage-calculator-wrap property-section-wrap" id="property-mortgage-calculator-wrap">
+    <div class="block-wrap">
+      <div class="block-title-wrap">
+        <h2>Mortgage Calculator</h2>
+      </div>
 
-onMounted(() => {
-  const ctx = document.getElementById('mortgage-calculator-chart')?.getContext('2d');
-  if (ctx) {
-    new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        datasets: [{
-          data: [40, 30, 20, 10],
+      <div class="block-content-wrap">
+        <div class="d-flex align-items-center sm-column">
+          <div class="mortgage-calculator-chart flex-fill">
+            <div class="mortgage-calculator-monthly-payment-wrap">
+              <div class="mortgage-calculator-monthly-payment">
+                ${{ monthlyPayment.toFixed(0) }}
+              </div>
+              <div class="mortgage-calculator-monthly-requency">Monthly</div>
+            </div>
+            <canvas id="mortgage-calculator-chart" width="200" height="200"></canvas>
+          </div>
+
+          <div class="mortgage-calculator-data flex-fill">
+            <ul class="list-unstyled">
+              <li>
+                <strong>Principal & Interest:</strong> <span>${{ breakdown.principalAndInterest.toFixed(0) }}</span>
+              </li>
+              <li>
+                <strong>Property Tax:</strong> <span>${{ breakdown.propertyTax.toFixed(0) }}</span>
+              </li>
+              <li>
+                <strong>Home Insurance:</strong> <span>${{ breakdown.homeInsurance.toFixed(0) }}</span>
+              </li>
+              <li>
+                <strong>HOA Fee:</strong> <span>${{ breakdown.hoaFee.toFixed(0) }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-6" v-for="field in inputFields" :key="field.label">
+            <div class="form-group">
+              <label>{{ field.label }}</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">{{ field.symbol }}</div>
+                </div>
+                <input
+                  v-model.number="form[field.model]"
+                  type="number"
+                  class="form-control"
+                  :placeholder="field.label"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { reactive, computed, onMounted, watch } from 'vue'
+import Chart from 'chart.js/auto'
+
+// Props
+const props = defineProps({
+  property: {
+    type: Object,
+    required: true
+  }
+})
+
+// Form data
+const form = reactive({
+  amount: 0, // Total amount
+  downPayment: 1000,
+  interestRate: 5,
+  loanTerm: 10
+})
+
+// Set amount from property.price
+watch(
+  () => props.property?.price,
+  (newPrice) => {
+    if (newPrice) {
+      form.amount = parseFloat(newPrice)
+    }
+  },
+  { immediate: true }
+)
+
+// Input field config
+const inputFields = [
+  { label: 'Total Amount', model: 'amount', symbol: '$' },
+  { label: 'Down Payment', model: 'downPayment', symbol: '$' },
+  { label: 'Interest Rate', model: 'interestRate', symbol: '%' },
+  { label: 'Loan Terms (Years)', model: 'loanTerm', symbol: '📄' }
+]
+
+// Breakdown of monthly payment
+const breakdown = reactive({
+  principalAndInterest: 0,
+  propertyTax: 0,
+  homeInsurance: 0,
+  hoaFee: 0
+})
+
+// Monthly Payment Calculation
+const monthlyPayment = computed(() => {
+  const loanAmount = form.amount - form.downPayment
+  const monthlyInterest = form.interestRate / 100 / 12
+  const numPayments = form.loanTerm * 12
+
+  const monthly =
+    loanAmount *
+    (monthlyInterest * Math.pow(1 + monthlyInterest, numPayments)) /
+    (Math.pow(1 + monthlyInterest, numPayments) - 1)
+
+  breakdown.principalAndInterest = monthly
+  breakdown.propertyTax = monthly * 0.15
+  breakdown.homeInsurance = monthly * 0.1
+  breakdown.hoaFee = monthly * 0.2
+
+  updateChart()
+
+  return (
+    breakdown.principalAndInterest +
+    breakdown.propertyTax +
+    breakdown.homeInsurance +
+    breakdown.hoaFee
+  )
+})
+
+// Chart instance
+let chart
+
+// Chart setup
+const setupChart = () => {
+  const ctx = document.getElementById('mortgage-calculator-chart').getContext('2d')
+  chart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Principal & Interest', 'Tax', 'Insurance', 'HOA Fee'],
+      datasets: [
+        {
+          data: [
+            breakdown.principalAndInterest,
+            breakdown.propertyTax,
+            breakdown.homeInsurance,
+            breakdown.hoaFee
+          ],
           backgroundColor: [
             'rgba(255, 99, 132, 0.5)',
             'rgba(54, 162, 235, 0.5)',
@@ -109,24 +156,64 @@ onMounted(() => {
             'rgba(75, 192, 192, 0.5)'
           ],
           borderColor: [
-            'rgba(255 ,99, 132, 1)',
+            'rgba(255, 99, 132, 1)',
             'rgba(54, 162, 235, 1)',
             'rgba(255, 206, 86, 1)',
             'rgba(75, 192, 192, 1)'
           ],
           borderWidth: 1
-        }]
-      },
-      options: {
-        cutout: '85%', // updated for Chart.js v3+ (cutoutPercentage was deprecated)
-        responsive: false,
-        plugins: {
-          tooltip: {
-            enabled: false
-          }
         }
+      ]
+    },
+    options: {
+      cutout: '85%',
+      responsive: false,
+      plugins: {
+        tooltip: { enabled: false },
+        legend: { display: false }
       }
-    });
+    }
+  })
+}
+
+// Update chart data
+const updateChart = () => {
+  if (chart) {
+    chart.data.datasets[0].data = [
+      breakdown.principalAndInterest,
+      breakdown.propertyTax,
+      breakdown.homeInsurance,
+      breakdown.hoaFee
+    ]
+    chart.update()
   }
-});
+}
+
+// Mount chart once
+onMounted(() => {
+  setupChart()
+})
+
+// Watch form changes to recalculate
+watch(
+  form,
+  () => {
+    monthlyPayment.value // trigger computed
+  },
+  { deep: true }
+)
 </script>
+
+<style scoped>
+.property-mortgage-calculator-wrap {
+  background: #f9f9f9;
+  padding: 20px;
+}
+.mortgage-calculator-monthly-payment {
+  font-size: 24px;
+  font-weight: bold;
+}
+.list-unstyled li {
+  margin-bottom: 8px;
+}
+</style>

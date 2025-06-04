@@ -15,8 +15,7 @@
                             <h2>Schedule a Tour</h2>
 
                             <!-- Alerts -->
-                            <div v-if="errorMessage" class="alert alert-danger alert-dismissible fade show"
-                                role="alert">
+                            <div v-if="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
                                 {{ errorMessage }}
                                 <button type="button" class="close" @click="errorMessage = ''" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>

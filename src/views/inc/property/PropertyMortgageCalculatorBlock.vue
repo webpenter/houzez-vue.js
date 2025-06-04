@@ -2,7 +2,7 @@
     <div class="property-mortgage-calculator-wrap property-section-wrap" id="property-mortgage-calculator-wrap">
 	<div class="block-wrap">
 		<div class="block-title-wrap">
-			<h2>Morgage Calculator</h2>
+			<h2>Mortgage Calculator</h2>
 		</div><!-- block-title-wrap -->
 		<div class="block-content-wrap">
 			<div class="d-flex align-items-center sm-column">

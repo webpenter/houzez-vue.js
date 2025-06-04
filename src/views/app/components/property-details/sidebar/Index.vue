@@ -6,7 +6,7 @@
         <?php include 'inc/widgets/login-register-widget.php';?> 
         -->
         
-        <PropertyFormTabs />
+        <PropertyFormTabs :property="property" />
         <PropertyForm />
         <LongListWidget />
         <AdvancedSearchWidget />
@@ -38,5 +38,12 @@ import BlogPostsWidget from './widgets/BlogPostsWidget.vue';
 import LoggedInWidget from './widgets/LoggedInWidget.vue';
 import LoginRegisterWidget from './widgets/LoginRegisterWidget.vue';
 
+
+const props = defineProps({
+  property: {
+    type: Object,
+    required: true
+  }
+})
 </script>
 

@@ -16,7 +16,7 @@
         <div class="tab-content">
             <div class="property-form-tabs-tab-pane tab-pane fade show active" id="tab_01" role="tabpanel">
                 <!-- <?php include 'inc/property/property-schedule-a-tour-form.php';?> -->
-                <PropertyScheduleATourForm />
+                <PropertyScheduleATourForm :property="property" />
             </div>
             <div class="property-tabs-module-tab-pane tab-pane fade" id="tab_02" role="tabpanel">
                 <!-- <?php include 'inc/property/property-form.php';?> -->
@@ -30,4 +30,12 @@
 <script setup>
 import PropertyScheduleATourForm from '@/views/app/components/property-details/property/PropertyScheduleATourForm.vue';
 import PropertyForm from '@/views/app/components/property-details/property/PropertyForm.vue';
+
+const props = defineProps({
+  property: {
+    type: Object,
+    required: true
+  }
+})
+
 </script>

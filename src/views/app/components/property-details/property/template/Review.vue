@@ -6,15 +6,12 @@
             </div>
             <div class="review-message">
                 <div class="d-flex align-items-center">
-                    <h4 class="review-title">This is a review title</h4>
-                    <Rating />
+                    <h4 class="review-title">{{ review.title }}</h4>
+                    <Rating :review="review" />
                 </div><!-- d-flex -->
                 <time class="review-date" datetime="2018-07-26T04:37:21+00:00"><i
-                        class="houzez-icon icon-attachment mr-1"></i> July 26, 2018</time>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+                        class="houzez-icon icon-attachment mr-1"></i> {{ review.created_at }}</time>
+                <p>{{ review.comment }}</p>
 
                 <div class="review-like mt-2">
                     <ul class="list-inline">
@@ -33,4 +30,13 @@
 
 <script setup>
 import Rating from './Rating.vue';
+
+const props = defineProps({
+    review: {
+        type: Object,
+        required: true
+    }
+});
+
+
 </script>
