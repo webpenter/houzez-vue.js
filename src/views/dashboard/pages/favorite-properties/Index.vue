@@ -36,8 +36,8 @@ const getProperties = async () => {
 
   try {
     const res = await favoritePropertyStore.getUserFavoriteProperties();
-
     if (res.status === 200) {
+
       loading.value = false;
     } else {
       loading.value = false;

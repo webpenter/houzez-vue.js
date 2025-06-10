@@ -39,6 +39,7 @@ export const useFavoriteProperty = defineStore('favorite_property', {
             try {
                 const response = await axiosInstance.get(url);
                 this.properties = response.data.properties;
+                console.log("aaaaaaaa",this.properties);
 
                 return Promise.resolve(response);
             } catch (error) {
