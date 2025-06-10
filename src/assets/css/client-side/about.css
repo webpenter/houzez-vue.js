@@ -1,0 +1,33 @@
+/* Hero Section */
+.about-us {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
+    url('@/assets/img/client-side/home1.png') no-repeat center;
+    background-size: cover;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 36px;
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #222;
+    text-align: center;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width:425px){
+    .about-us-text{
+        display: block !important;
+    }
+    .about-us-text .container{
+        padding: 20px 10px 10px 10px !important;
+    }
+}

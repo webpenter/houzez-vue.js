@@ -46,16 +46,7 @@ const routes = [
                 meta:{ title:'Properties' }
             },
             /***
-             * @route App/Property
-             ***/
-            {
-                path: '/property',
-                name:'app.property',
-                component:() => import('@/views/app/pages/property/Index.vue'),
-                meta:{ title:'Property' }
-            },
-            /***
-             * @route App/Property
+             * @route App/Property-Details
              ***/
             {
                 path: '/property-details/:propertySlug',
@@ -73,13 +64,13 @@ const routes = [
                 meta:{ title:'Realtor' }
             },
             /***
-             * @route App/Others
+             * @route App/AboutUs
              ***/
             {
-                path: '/others',
-                name:'app.others',
-                component:() => import('@/views/app/pages/others/Index.vue'),
-                meta:{ title:'Others' }
+                path: '/about-us',
+                name:'app.about-us',
+                component:() => import('@/views/app/pages/about-us/Index.vue'),
+                meta:{ title:'About Us' }
             },
             /***
              * @route App/Search-Results
@@ -141,91 +132,65 @@ const routes = [
         component:() => import('@/views/dashboard/layout/Index.vue'),
         children:[
             /***
-             * @route Dashboard/Board-CRM
-             * @route Dashboard/Board-CRM-Active-Deals
-             * @route Dashboard/Board-CRM-Enquiries
-             * @route Dashboard/Board-CRM-Leads
+             * @route Dashboard/Board-Activities
+             * @route Dashboard/Board-Deals
+             * @route Dashboard/Board-Leads
+             * @route Dashboard/Board-Enquiries
              ***/
             {
                 path: '/dashboard/crm',
                 name:'dashboard.crm',
-                component:() => import('@/views/dashboard/pages/board/crm/Index.vue'),
+                component:() => import('@/views/dashboard/pages/board/activities/Index.vue'),
                 meta:{ title:'Activities' }
             },
             {
-                path: '/dashboard/crm-deals',
-                name:'dashboard.crm-deals',
-                component:() => import('@/views/dashboard/pages/board/crm-deals/Index.vue'),
-                meta:{ title:'Deals' }
+                path: '/dashboard/create-deal',
+                name:'dashboard.create-deal',
+                component:() => import('@/views/dashboard/pages/board/deals/create-deal/Index.vue'),
+                meta:{ title:'Create Deal' }
             },
             {
-                path: '/dashboard/crm-won-deals',
+                path: '/dashboard/active-deals',
+                name:'dashboard.active-deals',
+                component:() => import('@/views/dashboard/pages/board/deals/active-deals/Index.vue'),
+                meta:{ title:'Active Deals' }
+            },
+            {
+                path: '/dashboard/won-deals',
                 name: 'dashboard.won-deals',
-                component: () => import('@/views/dashboard/pages/board/crm-deals/won-deals/Index.vue'),
+                component: () => import('@/views/dashboard/pages/board/deals/won-deals/Index.vue'),
                 meta: { title: 'Won Deals' }
             },
             {
-                path: '/dashboard/crm-lost-deals',
+                path: '/dashboard/lost-deals',
                 name: 'dashboard.lost-deals',
-                component: () => import('@/views/dashboard/pages/board/crm-deals/lost-deals/Index.vue'),
+                component: () => import('@/views/dashboard/pages/board/deals/lost-deals/Index.vue'),
                 meta: { title: 'Lost Deals' }
             },
             {
-                path: '/dashboard-import-csv',
-                name: 'dashboard.importCsv',
-                component: () => import('@/views/dashboard/pages/board/crm-deals/ImportCsv.vue'),
-                meta: { title: 'Import Csv' }
+                path: '/dashboard/create-lead',
+                name:'dashboard.create-lead',
+                component:() => import('@/views/dashboard/pages/board/leads/create-lead/Index.vue'),
+                meta:{ title:'Create Lead' }
             },
             {
-                path: '/dashboard/crm-enquiries',
-                name:'dashboard.crm-enquiries',
-                component:() => import('@/views/dashboard/pages/board/crm-enquiries/Index.vue'),
-                meta:{ title:'Enquiries' }
+                path: '/dashboard/all-leads',
+                name:'dashboard.all-leads',
+                component:() => import('@/views/dashboard/pages/board/leads/all-leads/Index.vue'),
+                meta:{ title:'All Leads' }
             },
             {
-                path: '/dashboard/crm-lead-enquiry-from-property-detail-page',
-                name: 'dashboard.crm-lead-enquiry-from-property-detail-page',
-                component: () => import('@/views/dashboard/pages/board/crm-enquiries/CrmLeadEnquiryFromPropertyDetailPage.vue'),
-                meta: { title: 'Enquiries Details' }
-            },
-
-            {
-                path: '/dashboard/crm-leads',
-                name: 'dashboard.crm-leads',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/Index.vue'), // Default view
-                meta: { title: 'Leads' }
+                path: '/dashboard/create-enquiry',
+                name:'dashboard.create-enquiry',
+                component:() => import('@/views/dashboard/pages/board/enquires/create-enquiry/Index.vue'),
+                meta:{ title:'Create Enquiry' }
             },
             {
-                path: '/dashboard/crm-lead-enquiries',
-                name: 'dashboard.crm-lead-enquiries',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEnquiries.vue'), // Enquiries view
-                meta: { title: 'Lead Enquiries' }
+                path: '/dashboard/all-enquiries',
+                name:'dashboard.all-enquiries',
+                component:() => import('@/views/dashboard/pages/board/enquires/all-enquires/Index.vue'),
+                meta:{ title:'All Enquiries' }
             },
-            {
-                path: '/dashboard/crm-lead-enquiries-propert-detail',
-                name: 'dashboard.crm-lead-enquiries-propert-detail',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEnquiryFromPropertyDetailPage.vue'), // Enquiries view
-                meta: { title: 'Lead Enquiries Property' }
-            },
-            {
-                path: '/dashboard/crm-lead-events',
-                name: 'dashboard.crm-lead.events',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadEvents.vue'),
-                meta: { title: 'Lead Events' }
-            },
-            {
-                path: '/dashboard/crm-lead-listings-viewed',
-                name: 'dashboard.crm-lead.listings-viewed',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadListingsViewed.vue'),
-                meta: { title: 'Lead Listings Viewed' }
-            },
-            {
-                path: '/dashboard/crm-lead-saved-searches',
-                name: 'dashboard.crm-lead-saved-searches',
-                component: () => import('@/views/dashboard/pages/board/crm-leads/CrmLeadSavedSearches.vue'),
-                meta: { title: 'Lead Saved Searches' }
-            },
-
 
             /***
              * @route Dashboard/Insight
@@ -448,20 +413,20 @@ const routes = [
             },
 
             /***
-             * @route Dashboard/Messages
+             * @route Dashboard/Messages/AllMessages
+             * @route Dashboard/Messages/Details
              ***/
             {
                 path: '/dashboard/messages',
                 name:'dashboard.messages',
-                component:() => import('@/views/dashboard/pages/messages/Index.vue'),
+                component:() => import('@/views/dashboard/pages/messages/all-messages/Index.vue'),
                 meta:{ title:'Messages' }
             },
-            
             {
-                path: '/dashboard/dashboard-agent-message',
-                name:'dashboard.dashboard-agent-message',
-                component:() => import('@/views/inc/dashboard/DashboardAgentMessage.vue'),
-                meta:{ title:'Messages' }
+                path: '/dashboard/messages/details/:messageId(\\d+)',
+                name:'dashboard.messages.details',
+                component:() => import('@/views/dashboard/pages/messages/message-details/Index.vue'),
+                meta:{ title:'Message Details' }
             },
             /***
              * @route Dashboard/Tools
@@ -607,6 +572,8 @@ const routes = [
             /***
              * @route Dashboard/Admin/Users
              * @route Dashboard/Admin/Subscribers
+             * @route Dashboard/Admin/All-Blogs
+             * @route Dashboard/Admin/Create-Blog
              ***/
             {
                 path: '/dashboard/admin/users',
@@ -619,6 +586,30 @@ const routes = [
                 name:'dashboard.admin.subscribers',
                 component:() => import('@/views/dashboard/pages/admin/subscribers/Index.vue'),
                 meta:{ title:'All Subscribers', admin: true }
+            },
+            {
+                path: '/dashboard/admin/all-blogs',
+                name:'dashboard.admin.all-blogs',
+                component:() => import('@/views/dashboard/pages/admin/blogs/all-blogs/Index.vue'),
+                meta:{ title:'All Blogs', admin: true }
+            },
+            {
+                path: '/dashboard/admin/create-blog',
+                name:'dashboard.admin.create-blog',
+                component:() => import('@/views/dashboard/pages/admin/blogs/create-blog/Index.vue'),
+                meta:{ title:'Create Blog', admin: true }
+            },
+            {
+                path: '/dashboard/admin/all-teams',
+                name:'dashboard.admin.all-teams',
+                component:() => import('@/views/dashboard/pages/admin/teams/all-teams/Index.vue'),
+                meta:{ title:'All Teams', admin: true }
+            },
+            {
+                path: '/dashboard/admin/create-team',
+                name:'dashboard.admin.create-team',
+                component:() => import('@/views/dashboard/pages/admin/teams/create-team/Index.vue'),
+                meta:{ title:'Create Team', admin: true }
             },
         ]
     },

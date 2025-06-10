@@ -11,7 +11,7 @@
 @import url("@/assets/css/fullcalendar-daygrid.min.css");
 @import url("@/assets/css/magnific-popup.css");
 @import url("@/assets/css/photoswipe.css");
-@import url("@/assets/css/main-ltr.css");
+/*@import url("@/assets/css/main-ltr.css");*/
 @import url("@/assets/css/styling-options.css");
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700|Roboto:300,400,500,700");
@@ -26,6 +26,10 @@
 @import url("@/assets/css/client-side/properties.css");
 /* Responsive pages */
 @import url("@/assets/css/client-side/responsive.css");
+/* Properties page */
+@import url("@/assets/css/client-side/property-details.css");
+/* About-US page */
+@import url("@/assets/css/client-side/about.css");
 /*@import url("/css/app-wa-54e7be3a62ca9b7580d7f8c669f59e74.css?vsn=d")*/
 @import url("https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css");
 @import url("https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-duotone-solid.css");

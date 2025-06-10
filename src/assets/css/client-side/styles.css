@@ -16,8 +16,8 @@ body {
     font-size: 16px;
 }
 a{
-    text-decoration: none;
-    color: #000;
+    text-decoration: none !important;
+    color: #000 ;
 }
 ul{
     padding: 0;
@@ -82,7 +82,7 @@ div.btn-group .dropdown-menu{
 }
 div.btn-group:hover{
     background-color:var(--primary-color);
-    color: #fff;
+    color: white !important;
 }
 button{
     border: none;
@@ -268,7 +268,7 @@ button{
 }
 /* SEARCH CONTAINER */
 .search-input-box{
-    display: flex;
+    /*display: flex;*/
     gap: 10px;
     padding: 10px;
     align-items: center;
@@ -279,7 +279,7 @@ button{
     width: -webkit-fill-available;
 }
 .search-input-box input::placeholder{
-    color: #000;
+    /*color: #000;*/
 }
 .search-bar-select-options{
     padding:10px;

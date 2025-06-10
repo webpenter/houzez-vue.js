@@ -16,8 +16,10 @@ import axiosInstance from "@/services/axiosService.js";
 export const useAppProperty = defineStore('appProperty', {
     state: () => ({
         featuredProperties:{},
+        latestProperties:{},
         searchedAndFilteredProperties:{},
         allProperties:{},
+        property:{},
         errors: {},
         loading: false,
         prefix:"/app/properties",
@@ -38,6 +40,28 @@ export const useAppProperty = defineStore('appProperty', {
             try {
                 const response = await axiosInstance.get(url);
                 this.featuredProperties = response.data.properties;
+
+                return Promise.resolve(response);
+            } catch (error) {
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
+            }
+        },
+
+        /**
+         * ## Get Latest Properties
+         *
+         * Asynchronously fetches latest properties.
+         * Makes a GET request to retrieve latest properties.
+         *
+         * @returns {Promise} Resolves with response data or rejects with an error.
+         */
+        async getLatestProperties() {
+            let url = `${this.prefix}/get-latest`;
+
+            try {
+                const response = await axiosInstance.get(url);
+                this.latestProperties = response.data.properties;
 
                 return Promise.resolve(response);
             } catch (error) {
@@ -110,6 +134,26 @@ export const useAppProperty = defineStore('appProperty', {
                     }
                 });
                 this.allProperties = response.data.properties;
+
+                return Promise.resolve(response);
+            } catch (error) {
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
+            }
+        },
+
+        /**
+         * ## Fetches property data based on the provided slug.
+         *
+         * @param {string} slug - The unique identifier for the property.
+         * @returns {Promise} - Resolves with the response data or rejects with an error response.
+         */
+        async getProperty(slug) {
+            let url = `${this.prefix}/get-property/${slug}`;
+
+            try {
+                const response = await axiosInstance.get(url);
+                this.property = response.data.property;
 
                 return Promise.resolve(response);
             } catch (error) {

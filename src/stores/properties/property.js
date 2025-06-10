@@ -338,5 +338,25 @@ export const useProperty = defineStore('property', {
                 })
             }
         },
+
+        /**
+         * @usage Asynchronously change status of property.
+         * @request This method sends a GET request to the server to change status of property. It also handles errors and returns the server response or error response.
+         * @param {int} propertyId - The ID of the property to be changed.
+         * @param {string} status - The status of the property to be changed.
+         * @returns {Promise} - Resolves with the response or rejects with the error response.
+         */
+        async changeStatus(propertyId,status) {
+            let url = `${this.prefix}/change-status/${propertyId}/${status}`;
+
+            try {
+                const response = await axiosInstance.post(url);
+
+                return Promise.resolve(response);
+            } catch (error) {
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
+            }
+        },
     }
 });

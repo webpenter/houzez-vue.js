@@ -16,6 +16,7 @@ import axiosInstance from "@/services/axiosService.js";
 export const useSavedSearch = defineStore('saved_search', {
     state: () => ({
         searches:{},
+        checkSearchSaved: false,
         errors: {},
         loading: false,
         prefix:"/saved-searches",
@@ -43,28 +44,39 @@ export const useSavedSearch = defineStore('saved_search', {
         },
 
         /**
-         * Stores a new search on the server.
-         *
-         * @param {Object} parameters - The search parameters to be stored.
-         * @returns {Promise<Object>} Resolves with the server response upon successful storage,
-         *                            or rejects with the error response.
+         * Store or remove a saved search based on existence.
+         * @param {string} parameters
+         * @returns {Promise<Response>}
          */
-        async  storeSearch(parameters) {
-            const url = `${this.prefix}/store`;
+        async storeOrRemoveSearch(parameters) {
+            const url = `${this.prefix}/store-or-remove`;
 
             try {
-                const response = await axiosInstance.post(url, parameters);
-
-                return new Promise(resolve => {
-                    resolve(response)
-                })
+                const response = await axiosInstance.post(url, { parameters }); // ✅ Send plain string
+                return response;
             } catch (error) {
-                if (error.response.data) {
-                    this.errors = error.response
+                if (error.response?.data) {
+                    this.errors = error.response;
                 }
-                return new Promise(reject => {
-                    reject(error.response)
-                })
+                throw error.response;
+            }
+        },
+
+        /**
+         * Check if a search is already saved for the user.
+         * @param {string} parameters
+         * @returns {Promise<boolean>}
+         */
+        async isSearchSaved(parameters) {
+            const url = `${this.prefix}/is-saved`;
+            try {
+                const response = await axiosInstance.post(url, { parameters });
+                this.checkSearchSaved = response.data.isSaved;
+
+                return Promise.resolve(response);
+            } catch (error) {
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
             }
         },
 

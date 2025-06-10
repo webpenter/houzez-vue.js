@@ -1,13 +1,15 @@
 <template>
   <div class="footer-bottom">
-    <p>{{ $t('Copyright © 2024 Realar, All rights reserved.')}} </p>
+    <p>{{ $t('Copyright') }} © {{ currentYear }}, {{ $t('All rights reserved') }}.</p>
     <div>
-      <a href="#">{{ $t('Terms of service')}}</a>
-      <a href="#">{{ $t('Privacy policy')}}</a>
-      <a href="#">{{ $t('Cookies')}}</a>
+      <RouterLink :to="{name:'app.about-us'}">{{ $t('Meat Our Awesome Team')}}</RouterLink>
+      <RouterLink :to="{name:'app.about-us'}">{{ $t('About Us')}}</RouterLink>
     </div>
   </div>
 </template>
 
 <script setup>
+import { RouterLink } from "vue-router";
+
+const currentYear = new Date().getFullYear();
 </script>

@@ -14,14 +14,10 @@
             <SideWrap/>
         </section>
     </main><!-- .main-wrap -->
-    <!-- <AddNewDealPanel /> -->
     <DashboardFooter/>
-    
-    <!-- <?php include 'inc/dashboard/board/add-new-deal-panel.php'; ?> -->
 </template>
 
 <script setup>
-import AddNewDealPanel from '@/views/inc/dashboard/board/AddNewDealPanel.vue';
 import DashboardFooter from '@/views/inc/dashboard/DashboardFooter.vue';
 import SideWrap from '@/views/inc/dashboard/SideWrap.vue';
 import HeaderMobile from '@/views/inc/nav/HeaderMobile.vue';
@@ -29,3 +25,7 @@ import MobileUserNav from '@/views/inc/nav/MobileUserNav.vue';
 import Nav from '@/views/inc/nav/Nav.vue';
 import { RouterView } from 'vue-router';
 </script>
+
+<style>
+@import url("@/assets/css/main-ltr.css");
+</style>

@@ -7,9 +7,16 @@
       </p>
       <ul class="dropdown-menu bg-white position-absolute border-none">
         <template v-for="subRoute in route.sub">
-          <RouterLink :to="{ name: subRoute.name }">
-            <li>{{ subRoute.title }}</li>
-          </RouterLink>
+          <template v-if="subRoute.name === 'app.property-details'">
+            <RouterLink :to="{ name: subRoute.name,params: { propertySlug: DEFAULT_PROPERTY_DETAIL_PAGE_SLUG } }">
+              <li>{{ subRoute.title }}</li>
+            </RouterLink>
+          </template>
+          <template v-else>
+            <RouterLink :to="{ name: subRoute.name }">
+              <li>{{ subRoute.title }}</li>
+            </RouterLink>
+          </template>
         </template>
       </ul>
     </div>
@@ -34,7 +41,7 @@
 
 <script setup>
 import {RouterLink} from "vue-router";
-import {getAppRoutes} from "@/constants/index.js";
+import {DEFAULT_PROPERTY_DETAIL_PAGE_SLUG, getAppRoutes} from "@/constants/index.js";
 import {useI18n} from "vue-i18n";
 import {useLanguage} from "@/stores/index.js";
 

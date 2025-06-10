@@ -81,7 +81,7 @@
 								</template>
 							</ul>
 					</template>
-					<span v-if="route.title == 'Messages'" class="notification-circle"></span>
+<!--					<span v-if="route.title == 'Messages'" class="notification-circle"></span>-->
 				</li>
 		</template>
 

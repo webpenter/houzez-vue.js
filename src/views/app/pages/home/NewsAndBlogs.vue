@@ -1,55 +1,37 @@
 <template>
   <div class="news-container position-relative">
     <button class="slider-btn left-btn"><i class="fas fa-chevron-left"></i></button>
-    <p class="news-blog-txt">{{ $t('News & Blogs')}}</p>
+    <p class="news-blog-txt">{{ $t('News & Blogs') }}</p>
+
     <div class="news-blogs-header">
-      <h2 class="news-title">{{ $t('News & Update')}}</h2>
-      <a href="" class="blogs-txt">{{ $t('View All Blogs')}} <i class="fa-solid fa-arrow-right"></i></a>
+      <h2 class="news-title">{{ $t('News & Update') }}</h2>
+      <RouterLink :to="{name:'app'}" class="blogs-txt">{{ $t('View All Blogs') }} <i class="fa-solid fa-arrow-right"></i></RouterLink>
     </div>
 
     <div class="news-slider" id="newsSlider">
-      <div class="news-card">
-        <img src="@/assets/img/client-side/hero-section-img.png" alt="News">
+      <!-- Skeleton Loader -->
+      <div class="news-card" v-if="loading" v-for="n in 5" :key="'skeleton-' + n">
+        <div class="skeleton-img shimmer"></div>
         <div class="news-card-body">
-          <div class="news-date"><p>{{ $t('March 17, 2024')}}</p><p>{{ $t('3 min read')}}</p></div>
-          <p class="news-title-text">{{ $t('Dynamically simplify superior human capital')}}</p>
-          <a href="#" class="news-btn">{{ $t('Read More')}} <i class="fas fa-arrow-right"></i></a>
+          <div class="news-date">
+            <p class="skeleton-text shimmer" style="width: 60px; height: 10px;"></p>
+          </div>
+          <p class="news-title-text skeleton-text shimmer" style="height: 16px; width: 80%;"></p>
+          <div class="news-btn skeleton-text shimmer" style="width: 100px; height: 12px;"></div>
         </div>
       </div>
 
-      <div class="news-card">
-        <img src="@/assets/img/client-side/bg-hero.png" alt="News">
+      <!-- Actual Blogs -->
+      <div class="news-card" v-else v-for="(blog, index) in appBlogs" :key="index">
+        <img :src="blog.image" alt="News">
         <div class="news-card-body">
-          <div class="news-date"><p>{{ $t('March 17, 2024')}}</p><p>{{ $t('3 min read')}}</p></div>
-          <p class="news-title-text">{{ $t('Enrich Your Mind Envision Your Future Education')}}</p>
-          <a href="#" class="news-btn">{{ $t('Read More')}} <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <img src="@/assets/img/client-side/hero-section-img.png" alt="News">
-        <div class="news-card-body">
-          <div class="news-date"><p>{{ $t('March 17, 2024')}}</p><p>{{ $t('3 min read')}}</p></div>
-          <p class="news-title-text">{{ $t('University class starting soon with teamwork')}}</p>
-          <a href="#" class="news-btn">{{ $t('Read More')}} <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <img src="@/assets/img/client-side/bg-hero.png" alt="News">
-        <div class="news-card-body">
-          <div class="news-date"><p>{{ $t('March 17, 2024')}}</p><p>{{ $t('3 min read')}}</p></div>
-          <p class="news-title-text">{{ $t('Emphasizes the importance of continuous learning')}}</p>
-          <a href="#" class="news-btn">{{ $t('Read More')}} <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <img src="@/assets/img/client-side/hero-section-img.png" alt="News">
-        <div class="news-card-body">
-          <div class="news-date"><p>{{ $t('March 17, 2024')}}</p><p>{{ $t('3 min read')}}</p></div>
-          <p class="news-title-text">{{ $t('Emphasizes the importance of continuous learning')}}</p>
-          <a href="#" class="news-btn">{{ $t('Read More')}} <i class="fas fa-arrow-right"></i></a>
+          <div class="news-date">
+            <p>{{ blog.date }}</p>
+          </div>
+          <p class="news-title-text">{{ blog.title }}</p>
+          <RouterLink :to="{name:'app'}" class="news-btn">
+            {{ $t('Read More') }} <i class="fas fa-arrow-right"></i>
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -60,6 +42,19 @@
 
 <script setup>
 import { onMounted, ref, onBeforeUnmount } from "vue";
+import { useBlog } from "@/stores/index.js";
+import { storeToRefs } from "pinia";
+import {RouterLink} from "vue-router";
+
+const blogStore = useBlog();
+const { appBlogs } = storeToRefs(blogStore);
+const loading = ref(false);
+
+const getBlog = async () => {
+  loading.value = true;
+  await blogStore.getAppBlogs();
+  loading.value = false;
+};
 
 const slider = ref(null);
 const leftBtn = ref(null);
@@ -75,6 +70,8 @@ const scrollLeft = () => {
 };
 
 onMounted(() => {
+  getBlog();
+
   slider.value = document.getElementById("newsSlider");
   leftBtn.value = document.querySelector(".left-btn");
   rightBtn.value = document.querySelector(".right-btn");
@@ -88,3 +85,39 @@ onBeforeUnmount(() => {
   leftBtn.value.removeEventListener("click", scrollLeft);
 });
 </script>
+
+<style scoped>
+.skeleton-img {
+  width: 100%;
+  height: 180px;
+  background-color: #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.skeleton-text {
+  background-color: #ddd;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.shimmer {
+  background: linear-gradient(
+      to right,
+      #dddddd 0%,
+      #f3f3f3 50%,
+      #dddddd 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+</style>

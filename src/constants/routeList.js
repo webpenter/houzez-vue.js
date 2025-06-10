@@ -22,9 +22,9 @@ export function getAppRoutes() {
 			id: 2,
 			title: t('Property'),
 			sub: [
-				{ id: 1, title: `${t('Property')} ${t('V1')}`, name: 'app.property' },
-				{ id: 2, title: `${t('Property')} ${t('V2')}`, name: 'app.property' },
-				{ id: 3, title: `${t('Property')} ${t('V3')}`, name: 'app.property' },
+				{ id: 1, title: `${t('Property')} ${t('V1')}`, name: 'app.property-details' },
+				{ id: 2, title: `${t('Property')} ${t('V2')}`, name: 'app.property-details' },
+				{ id: 3, title: `${t('Property')} ${t('V3')}`, name: 'app.property-details' },
 			]
 		},
 		{
@@ -38,20 +38,11 @@ export function getAppRoutes() {
 		},
 		{
 			id: 4,
-			title: t('Realtor'),
-			sub: [
-				{ id: 1, title: `${t('Realtor')} ${t('V1')}`, name: 'app.realtor' },
-				{ id: 2, title: `${t('Realtor')} ${t('V2')}`, name: 'app.realtor' },
-				{ id: 3, title: `${t('Realtor')} ${t('V3')}`, name: 'app.realtor' },
-			]
-		},
-		{
-			id: 5,
 			title: t('Others'),
 			sub: [
-				{ id: 1, title: `${t('Others')} ${t('V1')}`, name: 'app.others' },
-				{ id: 2, title: `${t('Others')} ${t('V2')}`, name: 'app.others' },
-				{ id: 3, title: `${t('Others')} ${t('V3')}`, name: 'app.others' },
+				{ id: 1, title: `${t('About Us')}`, name: 'app.about-us' },
+				{ id: 2, title: `${t('Others')} ${t('V1')}`, name: 'app.about-us' },
+				{ id: 3, title: `${t('Others')} ${t('V2')}`, name: 'app.about-us' },
 			]
 		},
 	]);
@@ -69,9 +60,9 @@ export function getDashboardRoutes() {
 			icon:'icon-layout-dashboard',
 			sub:[
 				{id:1, title:'Activities', name:'dashboard.crm'},
-				{id:2, title:'Deals', name:'dashboard.crm-deals'},
-				{id:3, title:'Leads', name:'dashboard.crm-leads'},
-				{id:4, title:'Enquiries', name:'dashboard.crm-enquiries'},
+				{id:2, title:'Deals', name:'dashboard.active-deals'},
+				{id:3, title:'Leads', name:'dashboard.all-leads'},
+				{id:4, title:'Enquiries', name:'dashboard.all-enquiries'},
 			]
 		},
 		{ id:2, title:'Insight', name:'dashboard.insight', icon:'icon-analytics-bars', sub:[] },
@@ -115,6 +106,8 @@ export function getDashboardRoutes() {
 			sub:[
 				{id:1, title:'All Users', name:'dashboard.admin.users'},
 				{id:2, title:'All Subscribers', name:'dashboard.admin.subscribers'},
+				{id:3, title:'All Blogs', name:'dashboard.admin.all-blogs'},
+				{id:4, title:'All Teams', name:'dashboard.admin.all-teams'},
 			]
 		},
 	]);
