@@ -62,7 +62,7 @@
                                 <PropertyVirtualTourBlock />
                                 <PropertyAvailabilityCalendarBlock />
                                 <PropertyAgentBlock :property="property" />
-                                <!-- <PropertyReviews :property="property" /> -->
+                                <PropertyReviews :property="property" />
                                 <PropertySimilarProperties />
                                 <PropertyNav />
                         </div><!-- listing-view -->
@@ -80,37 +80,36 @@
 </template>
 
 <script setup>
-import PropertyNavigation from '@/views/demos/components/property-details/property-navigation/Index.vue';
-import PropertyTitleBlock from '@/views/demos/components/property-details/property-title-block/Index.vue';
-import PropertyBannerV1 from '@/views/demos/components/property-details/property-banner-v1/Index.vue';
-import BannerNav from '@/views/demos/components/property-details/property-banner-v1/BannerNav.vue';
-import PropertyTools from '@/views/demos/components/property-details/property-title-block/PropertyTools.vue';
-import Sidebar from '@/views/demos/components/property-details/sidebar/Index.vue';
-import PropertyOverviewBlockV1 from '@/views/demos/components/property-details/property/PropertyOverviewBlockV1.vue';
-import PropertyOverviewBlock from '@/views/demos/components/property-details/property/PropertyOverviewBlock.vue';
-import PropertyDescriptionBlock from '@/views/demos/components/property-details/property/PropertyDescriptionBlock.vue';
-import PropertyScheduleATourBlockV2 from '@/views/demos/components/property-details/property/PropertyScheduleATourBlockV2.vue';
-import PropertyGalleryBlock from '@/views/demos/components/property-details/property/PropertyGalleryBlock.vue';
-import PropertyAddressBlock from '@/views/demos/components/property-details/property/PropertyAddressBlock.vue';
-import PropertyDetailBlock from '@/views/demos/components/property-details/property/PropertyDetailBlock.vue';
-import PropertyMortgageCalculatorBlock from '@/views/demos/components/property-details/property/PropertyMortgageCalculatorBlock.vue';
-import PropertySubListingsTableBlock from '@/views/demos/components/property-details/property/PropertySubListingsTableBlock.vue';
-import PropertySubListingsBlock from '@/views/demos/components/property-details/property/PropertySubListingsBlock.vue';
-import PropertyEnergyClassBlock from '@/views/demos/components/property-details/property/PropertyEnergyClassBlock.vue';
-import PropertyFeaturesBlockWithCustomIcons from '@/views/demos/components/property-details/property/PropertyFeaturesBlockWithCustomIcons.vue';
-import PropertyFloorPlansBlock from '@/views/demos/components/property-details/property/PropertyFloorPlansBlock.vue';
-import PropertyWalkscoreBlock from '@/views/demos/components/property-details/property/PropertyWalkscoreBlock.vue';
-import PropertyWalkscoreBlockV2 from '@/views/demos/components/property-details/property/PropertyWalkscoreBlockV2.vue';
-import PropertyNearbyBlock from '@/views/demos/components/property-details/property/PropertyNearbyBlock.vue';
-import PropertyVideoBlock from '@/views/demos/components/property-details/property/PropertyVideoBlock.vue';
-import PropertyScheduleATourBlock from '@/views/demos/components/property-details/property/PropertyScheduleATourBlock.vue';
-import PropertyVirtualTourBlock from '@/views/demos/components/property-details/property/PropertyVirtualTourBlock.vue';
-import PropertyAvailabilityCalendarBlock from '@/views/demos/components/property-details/property/PropertyAvailabilityCalendarBlock.vue';
-import PropertyAgentBlock from '@/views/demos/components/property-details/property/PropertyAgentBlock.vue';
-import PropertyReviews from '@/views/demos/components/property-details/property/PropertyReviews.vue';
-import PropertySimilarProperties from '@/views/demos/components/property-details/property/SimilarProperties.vue';
-import PropertyNav from '@/views/demos/components/property-details/property/PropertyNav.vue';
-
+import PropertyNavigation from '@/views/app/components/property-details/property-navigation/Index.vue';
+import PropertyTitleBlock from '@/views/app/components/property-details/property-title-block/Index.vue';
+import PropertyBannerV1 from '@/views/app/components/property-details/property-banner-v1/Index.vue';
+import BannerNav from '@/views/app/components/property-details/property-banner-v1/BannerNav.vue';
+import PropertyTools from '@/views/app/components/property-details/property-title-block/PropertyTools.vue';
+import Sidebar from '@/views/app/components/property-details/sidebar/Index.vue';
+import PropertyOverviewBlockV1 from '@/views/app/components/property-details/property/PropertyOverviewBlockV1.vue';
+import PropertyOverviewBlock from '@/views/app/components/property-details/property/PropertyOverviewBlock.vue';
+import PropertyDescriptionBlock from '@/views/app/components/property-details/property/PropertyDescriptionBlock.vue';
+import PropertyScheduleATourBlockV2 from '@/views/app/components/property-details/property/PropertyScheduleATourBlockV2.vue';
+import PropertyGalleryBlock from '@/views/app/components/property-details/property/PropertyGalleryBlock.vue';
+import PropertyAddressBlock from '../../components/property-details/property/PropertyAddressBlock.vue';
+import PropertyDetailBlock from '@/views/app/components/property-details/property/PropertyDetailBlock.vue';
+import PropertyMortgageCalculatorBlock from '@/views/app/components/property-details/property/PropertyMortgageCalculatorBlock.vue';
+import PropertySubListingsTableBlock from '@/views/app/components/property-details/property/PropertySubListingsTableBlock.vue';
+import PropertySubListingsBlock from '@/views/app/components/property-details/property/PropertySubListingsBlock.vue';
+import PropertyEnergyClassBlock from '@/views/app/components/property-details/property/PropertyEnergyClassBlock.vue';
+import PropertyFeaturesBlockWithCustomIcons from '@/views/app/components/property-details/property/PropertyFeaturesBlockWithCustomIcons.vue';
+import PropertyFloorPlansBlock from '@/views/app/components/property-details/property/PropertyFloorPlansBlock.vue';
+import PropertyWalkscoreBlock from '@/views/app/components/property-details/property/PropertyWalkscoreBlock.vue';
+import PropertyWalkscoreBlockV2 from '@/views/app/components/property-details/property/PropertyWalkscoreBlockV2.vue';
+import PropertyNearbyBlock from '@/views/app/components/property-details/property/PropertyNearbyBlock.vue';
+import PropertyVideoBlock from '@/views/app/components/property-details/property/PropertyVideoBlock.vue';
+import PropertyScheduleATourBlock from '@/views/app/components/property-details/property/PropertyScheduleATourBlock.vue';
+import PropertyVirtualTourBlock from '@/views/app/components/property-details/property/PropertyVirtualTourBlock.vue';
+import PropertyAvailabilityCalendarBlock from '@/views/app/components/property-details/property/PropertyAvailabilityCalendarBlock.vue';
+import PropertyAgentBlock from '@/views/app/components/property-details/property/PropertyAgentBlock.vue';
+import PropertyReviews from '@/views/app/components/property-details/property/PropertyReviews.vue';
+import PropertySimilarProperties from '@/views/app/components/property-details/property/SimilarProperties.vue';
+import PropertyNav from '@/views/app/components/property-details/property/PropertyNav.vue';
 import PropertyDetailsSkeleton from '@/components/skeleton/PropertyDetailsSkeleton.vue';
 
 import { ref, onMounted } from 'vue';
@@ -122,7 +121,7 @@ import { storeToRefs } from 'pinia';
 // Store and Routing
 const route = useRoute();
 const router = useRouter();
-const propertySlug = route.params.propertySlug;
+const propertySlug = route.params.slug;
 
 
 // Pinia Store

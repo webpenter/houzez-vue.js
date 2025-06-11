@@ -6,6 +6,6 @@
 
 <script setup>
 import { RouterView } from 'vue-router';
-import Navbar from "@/views/app/layout/navbar/Index.vue";
-import Footer from "@/views/app/layout/footer/Index.vue";
+import Navbar from "@/views/demos/demo01/layout/navbar/Index.vue";
+import Footer from "@/views/demos/demo01/layout/footer/Index.vue";
 </script>

@@ -14,6 +14,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import {DEFAULT_TITLE, TITLE_CREATE_UPDATE_LISTING, URL_CREATE_UPDATE_LISTING} from "@/constants";
 import {useToken, useGeneralSettings, useAdmin, useIsSubscribed} from "@/stores/index.js";
 
+// Import demo routes
+import demo01Routes from './demo01'
+
 const routes = [
     /**
      * @route 'localhost:3000/'
@@ -83,18 +86,6 @@ const routes = [
             },
         ]
     },
-
-    ////////////////////  UPDATED BY NARAISH   /////////////////////////
-    /**
-     * @route 'localhost:3000/'
-     * @name app
-     * @prefix app
-     * @auth not-required
-     **/
-    
-
-
-
 
     /***
      * @route 'localhost:3000/auth/'
@@ -620,6 +611,9 @@ const routes = [
         component: () => import('@/components/pages/NotFound404.vue'),
         meta: { title: "404 Not Found" },
     },
+
+    // --- Demos Routes ---
+    ...demo01Routes,
 ];
 
 const router = createRouter({
