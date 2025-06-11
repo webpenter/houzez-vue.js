@@ -49,22 +49,22 @@
                                 <PropertyAddressBlock :property="property" />
                                 <PropertyDetailBlock :property="property"/>
                                 <PropertyMortgageCalculatorBlock :property="property" />
-                                <PropertySubListingsTableBlock :property="property" />
+                                <PropertySubListingsTableBlock v-if="property.sub_properties && property.sub_properties.length" :property="property" />
                                 <!-- <PropertySubListingsBlock :property="property" /> not similiar to provided demo01 -->
                                 <PropertyEnergyClassBlock :property="property"/>
                                 <PropertyFeaturesBlockWithCustomIcons :property="property" />
-                                <PropertyFloorPlansBlock :property="property" />
-                                <PropertyWalkscoreBlock />  
-                                <PropertyWalkscoreBlockV2 />
-                                <PropertyNearbyBlock />
+                                <PropertyFloorPlansBlock  v-if="property.floorplan && property.floorplan.length" :property="property" />
+                                <!-- <PropertyWalkscoreBlock />   -->
+                                <!-- <PropertyWalkscoreBlockV2 /> -->
+                                <!-- <PropertyNearbyBlock /> -->
                                 <PropertyVideoBlock />
                                 <PropertyScheduleATourBlock :property="property" />
                                 <PropertyVirtualTourBlock />
                                 <PropertyAvailabilityCalendarBlock />
                                 <PropertyAgentBlock :property="property" />
                                 <!-- <PropertyReviews :property="property" /> -->
-                                <PropertySimilarProperties />
-                                <PropertyNav />
+                                <!-- <PropertySimilarProperties /> -->
+                                <!-- <PropertyNav /> -->
                         </div><!-- listing-view -->
                     </div><!-- bt-content-wrap -->
                     <div class="col-lg-4 col-md-12 bt-sidebar-wrap houzez_sticky">

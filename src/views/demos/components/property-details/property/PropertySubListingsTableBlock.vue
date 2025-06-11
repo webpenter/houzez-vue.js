@@ -1,9 +1,7 @@
 <template>
 	<div
 		class="property-sub-listings-table-wrap property-section-wrap"
-		id="property-sub-listings-wrap"
-		v-if="property.sub_properties && property.sub_properties.length"
-	>
+		id="property-sub-listings-wrap" >
 		<div class="block-wrap">
 			<div class="block-title-wrap">
 				<h2>Sub Listings</h2>
