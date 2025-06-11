@@ -13,7 +13,6 @@
 import { defineStore } from 'pinia'
 import axiosInstance from '@/services/axiosService'
 import {useAdmin, useIsSubscribed, useToken} from '@/stores'
-// import data from "bootstrap/js/src/dom/data.js";
 
 export const useAuth = defineStore('userAuth', {
     state: () => ({
