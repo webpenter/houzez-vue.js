@@ -77,4 +77,9 @@ export const duplicateProperty = async (propertyId) => {
     }
 };
 
+export const handleStatusChange = ({ id, newStatus }) => {
+    useNotification().Success(`Status changed to ${newStatus}`);
+    getProperties(currentPropertyStatus.value);
+}
+
 export { searchQuery, selectedSort, loading };

@@ -23,6 +23,7 @@
             :loading="loading"
             @delete-property="(id) => deleteProperty(id)"
             @duplicate-property="(id) => duplicateProperty(id)"
+            @statusChanged="handleStatusChange"
         />
       </div><!-- dashboard-content-block-wrap -->
     </div><!-- dashboard-content-inner-wrap -->
@@ -45,6 +46,7 @@ import {
   updateSortOption,
   searchQuery,
   selectedSort,
+  handleStatusChange,
   loading
 } from "@/traits/property/dashboardProperties.js";
 import { useProperty } from "@/stores/index.js";
