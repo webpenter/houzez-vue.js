@@ -22,38 +22,38 @@ const routes = [
      * @auth not-required
      **/
     {
-        path: '/home-old',
-        name:'app.home-old',
-        redirect:'/home-old',
-        component:() => import('@/views/app/layout/IndexOld.vue'),
+        path: '/',
+        name:'app',
+        redirect:'/',
+        component:() => import('@/views/app/layout/Index.vue'),
         children:[
             /***
              * @route App/Home
              ***/
             {
-                path: '/home-old',
-                name:'app.old-home',
-                component:() => import('@/views/app/pages/home-old/Index.vue'),
+                path: '/',
+                name:'app.home',
+                component:() => import('@/views/app/pages/home/Index.vue'),
                 meta:{ title:'Home' }
             },
             /***
              * @route App/Properties
              ***/
-            // {
-            //     path: '/properties',
-            //     name:'app.properties',
-            //     component:() => import('@/views/app/pages/properties/Index.vue'),
-            //     meta:{ title:'Properties' }
-            // },
+            {
+                path: '/properties',
+                name:'app.properties',
+                component:() => import('@/views/app/pages/properties/Index.vue'),
+                meta:{ title:'Properties' }
+            },
             /***
              * @route App/Property-Details
              ***/
-            // {
-            //     path: '/property-details/:propertySlug',
-            //     name:'app.property-details',
-            //     component:() => import('@/views/app/pages/property-details/Index.vue'),
-            //     meta:{ title:'Property Details' }
-            // },
+            {
+                path: '/property-details/:propertySlug',
+                name:'app.property-details',
+                component:() => import('@/views/app/pages/property-details/Index.vue'),
+                meta:{ title:'Property Details' }
+            },
             /***
              * @route App/Realtor
              ***/
@@ -83,6 +83,7 @@ const routes = [
             },
         ]
     },
+
     ////////////////////  UPDATED BY NARAISH   /////////////////////////
     /**
      * @route 'localhost:3000/'
@@ -90,36 +91,10 @@ const routes = [
      * @prefix app
      * @auth not-required
      **/
-    {
-        path: '/',
-        name:'app',
-        redirect:'/',
-        component:() => import('@/views/app/layout/Index.vue'),
-        children:[
-            /***
-             * @route App/Home
-             * @description This route is for the home page layout.
-             * @feature It uses a different component for the updated design.
-             ***/
-            {
-                path: '/',
-                name:'app.home',
-                component:() => import('@/views/app/pages/home/Index.vue'),
-                meta:{ title:'Home' }
-            },
-            /***
-             * @route App/Properties-details
-             * @description This route is for the property details page layout.
-             * @feature It uses a different component for the updated design.
-             ***/
-            {
-                path: '/property/:slug',
-                name:'app.property-details',
-                component:() => import('@/views/app/pages/property-details/Index.vue'),
-                meta:{ title:'Property Details' }
-            },
-        ]
-    },
+    
+
+
+
 
     /***
      * @route 'localhost:3000/auth/'

@@ -1,8 +1,8 @@
 <template>
   <div class="rentals-container-main">
-    <p class="featured-rentals-btn">{{$t('Discover')}}</p>
+    <p class="featured-rentals-btn">{{$t('Featured Listings')}}</p>
     <div class="featured-rentals-header">
-      <h2> {{$t('Latest Properties')}}</h2>
+      <h2> {{$t('Featured Rentals')}}</h2>
       <RouterLink :to="{name:'app.properties'}">
         <p> {{$t('View all')}}</p> <i class="fa-solid fa-arrow-right"></i>
       </RouterLink>
@@ -14,7 +14,7 @@
       </template>
       <template v-else>
         <PropertyCards
-            v-for="property in latestProperties"
+            v-for="property in featuredProperties"
             :key="property.id"
             :property="property"
         />
@@ -26,22 +26,23 @@
 <script setup>
 import { useAppProperty } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
-import { onMounted, ref } from "vue";
+import { onMounted, ref } from "vue"; 
 import {RouterLink} from "vue-router";
-import PropertyCards from "@/views/app/pages/home-old/components/PropertyCards.vue";
+import PropertyCards from "@/views/app/pages/home/components/PropertyCards.vue";
+import PropertyCardSkeleton from '@/components/skeleton/PropertyCardSkeleton.vue';
 
 const propertyToRefs = useAppProperty();
-const { latestProperties } = storeToRefs(propertyToRefs);
+const { featuredProperties } = storeToRefs(propertyToRefs);
 const loading = ref(true);
 
-const fetchLatestProperties = async () => {
+const fetchFeaturedProperties = async () => {
   loading.value = true;
-  const res = await propertyToRefs.getLatestProperties();
+  const res = await propertyToRefs.getFeaturedProperties();
 
   if (res.status === 200) {
     loading.value = false;
   }
 };
 
-onMounted(() => fetchLatestProperties());
+onMounted(() => fetchFeaturedProperties());
 </script>
