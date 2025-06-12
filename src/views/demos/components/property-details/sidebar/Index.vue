@@ -12,7 +12,7 @@
         <AdvancedSearchWidget />
         <MortgageCalculatorWidget />
         <RecentlyViewedWidget />
-        <TaxonomyWidget />
+        <!-- <TaxonomyWidget /> -->
         <PropertiesWidget />
         <FeaturedPropertiesSliderWidget />  
         <FeaturedPropertiesWidget />

@@ -1,9 +1,9 @@
 <template>
     <template v-if="loading">
-        <PropertyDetailsSkeleton/>  
+        <PropertyDetailsSkeleton />
     </template>
-    <template v-else> 
-        <section class="content-wrap property-wrap property-detail-v3"> 
+    <template v-else>
+        <section class="content-wrap property-wrap property-detail-v3">
             <PropertyNavigation :property="property" />
             <PropertyTitleBlock :property="property" />
             <div class="container">
@@ -13,7 +13,6 @@
                             <PropertyBannerV1 :property="property" />
                         </div><!-- property-top-wrap -->
                         <div class="property-view">
-
                             <div class="visible-on-mobile">
                                 <div class="mobile-top-wrap">
                                     <div class="mobile-property-tools clearfix">
@@ -23,14 +22,20 @@
                                         <PropertyTools :property="property" />
                                     </div><!-- mobile-property-tools -->
                                     <div class="mobile-property-title clearfix">
-                                        <span v-if="property?.is_featured" class="label-featured label">Featured</span><!-- label-featured -->
+                                        <span v-if="property?.is_featured"
+                                            class="label-featured label">Featured</span><!-- label-featured -->
                                         <div class="page-title">
                                             <h1>{{ property?.title || 'Untitled Property' }}</h1>
                                         </div><!-- page-title -->
-                                        <address class="item-address"><i class="houzez-icon icon-pin mr-1"></i>{{ property?.address }}  {{ property?.city }},  {{ property?.county_state }},  {{ property?.country }}</address><!-- item-address -->
+                                        <address class="item-address"><i class="houzez-icon icon-pin mr-1"></i>{{
+                                            property?.address }} {{ property?.city }}, {{ property?.county_state }}, {{
+                                            property?.country }}</address><!-- item-address -->
                                         <ul class="item-price-wrap hide-on-list">
-                                            <li class="item-price"><span class="price-prefix">From </span>{{ property.price_prefix }}{{ property?.price }}<span class="price-postfix">/{{ property?.after_price }}</span></li>
-                                            <li class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{ property.size_prefix }}</li>
+                                            <li class="item-price"><span class="price-prefix">From </span>{{
+                                                property.price_prefix }}{{ property?.price }}<span
+                                                    class="price-postfix">/{{ property?.after_price }}</span></li>
+                                            <li class="item-sub-price">{{ property.price_prefix }}{{
+                                                property.second_price }}/{{ property.size_prefix }}</li>
                                         </ul>
                                         <div class="property-labels-wrap">
                                             <a href="#" class="label-status label">For {{ property?.label }}</a>
@@ -40,31 +45,36 @@
                                     </div><!-- mobile-property-title -->
                                 </div><!-- mobile-top-wrap -->
                             </div><!-- visible-on-mobile -->
-                            
-                                <!-- <PropertyOverviewBlockV1 :property="property" /> not similiar to provided demo01 -->
-                                <PropertyOverviewBlock :property="property" />
-                                <PropertyDescriptionBlock :property="property" />
-                                <PropertyScheduleATourBlockV2 :property="property" />
-                                <PropertyGalleryBlock :property="property" />
-                                <PropertyAddressBlock :property="property" />
-                                <PropertyDetailBlock :property="property"/>
-                                <PropertyMortgageCalculatorBlock :property="property" />
-                                <PropertySubListingsTableBlock v-if="property.sub_properties && property.sub_properties.length" :property="property" />
-                                <!-- <PropertySubListingsBlock :property="property" /> not similiar to provided demo01 -->
-                                <PropertyEnergyClassBlock :property="property"/>
-                                <PropertyFeaturesBlockWithCustomIcons :property="property" />
-                                <PropertyFloorPlansBlock  v-if="property.floorplan && property.floorplan.length" :property="property" />
-                                <!-- <PropertyWalkscoreBlock />   -->
-                                <!-- <PropertyWalkscoreBlockV2 /> -->
-                                <!-- <PropertyNearbyBlock /> -->
-                                <PropertyVideoBlock />
-                                <PropertyScheduleATourBlock :property="property" />
-                                <PropertyVirtualTourBlock />
-                                <PropertyAvailabilityCalendarBlock />
-                                <PropertyAgentBlock :property="property" />
-                                <!-- <PropertyReviews :property="property" /> -->
-                                <!-- <PropertySimilarProperties /> -->
-                                <!-- <PropertyNav /> -->
+
+                            <!-- <PropertyOverviewBlockV1 :property="property" /> not similiar to provided demo01 -->
+                            <PropertyOverviewBlock :property="property" />
+                            <PropertyDescriptionBlock :property="property" />
+                            <PropertyScheduleATourBlockV2
+                                :property="{ id: property.id, thumbnail: property.thumbnail }" />
+                            <PropertyGalleryBlock :property="property" />
+                            <PropertyAddressBlock :property="property" />
+                            <PropertyDetailBlock :property="property" />
+                            <PropertyMortgageCalculatorBlock :property="property" />
+                            <PropertySubListingsTableBlock
+                                v-if="property.sub_properties && property.sub_properties.length" :property="property" />
+                            <!-- <PropertySubListingsBlock :property="property" /> not similiar to provided demo01 -->
+                            <PropertyEnergyClassBlock :property="property" />
+                            <PropertyFeaturesBlockWithCustomIcons :property="property" />
+                            <PropertyFloorPlansBlock v-if="property.floorplans && property.floorplans.length"
+                                :floorplans="property.floorplans" :price-prefix="property.price_prefix"
+                                :size-prefix="property.size_prefix" />
+                            <!-- <PropertyWalkscoreBlock />   -->
+                            <!-- <PropertyWalkscoreBlockV2 /> -->
+                            <!-- <PropertyNearbyBlock /> -->
+                            <PropertyVideoBlock v-if="property.video_url" :iframeCode="property.video_url" />
+                            <PropertyScheduleATourBlock :property-id="property.id" />
+                            <PropertyVirtualTourBlock v-if="property.virtual_tour"
+                                :iframeCode="property.virtual_tour" />
+                            <PropertyAvailabilityCalendarBlock />
+                            <PropertyAgentBlock :property="property" />
+                            <!-- <PropertyReviews :property="property" /> -->
+                            <!-- <PropertySimilarProperties /> -->
+                            <!-- <PropertyNav /> -->
                         </div><!-- listing-view -->
                     </div><!-- bt-content-wrap -->
                     <div class="col-lg-4 col-md-12 bt-sidebar-wrap houzez_sticky">
@@ -134,20 +144,20 @@ const loading = ref(false);
 
 // Fetch Property
 const getPropertyData = async () => {
-  loading.value = true;
-  try {
-    const res = await propertyStore.getProperty(propertySlug);
-    loading.value = false;
+    loading.value = true;
+    try {
+        const res = await propertyStore.getProperty(propertySlug);
+        loading.value = false;
 
-    if (res.status !== 200) {
-      router.push({ name: 'property-not-found-404' });
+        if (res.status !== 200) {
+            router.push({ name: 'property-not-found-404' });
+        }
+    } catch (error) {
+        router.push({ name: 'property-not-found-404' });
     }
-  } catch (error) {
-    router.push({ name: 'property-not-found-404' });
-  }
 };
 
 onMounted(() => {
-  getPropertyData();
+    getPropertyData();
 });
 </script>

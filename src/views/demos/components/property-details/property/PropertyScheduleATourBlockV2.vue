@@ -6,7 +6,8 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="property-schedule-tour-image"
-                            :style="{ backgroundImage: `url(${property.thumbnail || 'img/apt.jpg'})` }"></div>
+                            :style="{ backgroundImage: `url(${property.thumbnail || 'img/apt.jpg'})` }">
+                        </div>
                     </div>
                     <!-- col-md-6 col-sm-12 -->
 
@@ -147,7 +148,11 @@ import { ref, computed, onMounted } from "vue";
 import { useTourRequest } from "@/stores/index"; // Adjust path accordingly
 
 const props = defineProps({
-    property: Object,
+  property: {
+    type: Object,
+    required: true,
+    default: () => ({ id: null, thumbnail: null })
+  }
 });
 
 const tourRequestStore = useTourRequest();

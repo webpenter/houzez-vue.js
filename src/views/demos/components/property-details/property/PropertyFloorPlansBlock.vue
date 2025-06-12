@@ -8,12 +8,12 @@
             <div class="block-content-wrap">
                 <div class="accordion">
                     <FloorPlan
-                        v-for="(floor, index) in property.floorplan"
+                        v-for="(floor, index) in floorplans"
                         :key="floor.id"
                         :floor="floor"
                         :index="index"
-                        :price-prefix="property.price_prefix"
-                        :size-prefix="property.size_prefix"
+                        :price-prefix="pricePrefix"
+                        :size-prefix="sizePrefix"
                     />
                 </div><!-- accordion -->
             </div><!-- block-content-wrap -->
@@ -26,10 +26,17 @@
 import FloorPlan from './template/FloorPlan.vue';
 
 const props = defineProps({
-    property: {
-        type: Object,
+    floorplans: {
+        type: Array,
         required: true
+    },
+    pricePrefix: {
+        type: String,
+        default: ''
+    },
+    sizePrefix: {
+        type: String,
+        default: ''
     }
-})
-
+});
 </script>

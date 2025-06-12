@@ -7,7 +7,7 @@
             <div class="block-content-wrap">
                 <ul class="list-3-cols list-unstyled">
                     <li v-for="(feature, index) in property.property_feature" :key="index">
-                        <img src="../../../../../assets/img/app-side/custom-icon-1.png" class="mr-1" />
+                        <i class="houzez-icon icon-check-circle-1 me-2"></i>
                         <a href="#">{{ feature }}</a>
                     </li>
                 </ul>

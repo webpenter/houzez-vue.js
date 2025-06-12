@@ -7,7 +7,7 @@
 			<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">Item</a>
+			<a class="nav-link" href="#">Properties</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="#">Item</a>
@@ -19,7 +19,7 @@
 			<a class="nav-link" href="#">Item</a>
 		</li>
 		<li class="nav-item dropdown">
-			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Item</a>
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
 			<ul class="dropdown-menu">
 				<li class="nav-item">
 					<a class="dropdown-item" href="#">Action</a>
@@ -75,10 +75,10 @@
 				</li>
 			</ul>
 		</li>
-		<li class="nav-item dropdown megamenu-item">
+		<!-- <li class="nav-item dropdown megamenu-item">
 			<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Megamenu</a>
             <MegaMenu />
-		</li>
+		</li> -->
 	</ul>
 </template>
 

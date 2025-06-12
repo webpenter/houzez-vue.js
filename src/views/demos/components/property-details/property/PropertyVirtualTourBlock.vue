@@ -7,9 +7,21 @@
 		<div class="block-content-wrap">
 			<div class="block-virtual-video-wrap">
 				<!-- Copy & Pasted from YouTube -->
-				<iframe width="853" height="480" src="https://my.matterport.com/show/?m=zEWsxhZpGba&play=1&qs=1" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+				<!-- <iframe width="853" height="480" src="https://my.matterport.com/show/?m=zEWsxhZpGba&play=1&qs=1" frameborder="0" allowfullscreen="allowfullscreen"></iframe> -->
+				 <div class="block-video-wrap" v-html="iframeCode"></div>
 			</div>
 		</div><!-- block-content-wrap -->
 	</div><!-- block-wrap -->
 </div><!-- property-virtual-tour-wrap -->
 </template>
+
+<script>
+export default {
+    props: {
+        iframeCode: {
+            type: String,
+            required: true
+        }
+    }
+};
+</script>

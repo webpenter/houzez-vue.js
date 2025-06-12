@@ -10,8 +10,8 @@
                         </a><!-- label-status -->
                     </span><!-- labels-wrap -->
                     <ul class="item-price-wrap hide-on-list">
-                        <li class="item-price"><span class="price-prefix">From </span>{{ property.price_prefix }}{{
-                            property.price }}<span class="price-postfix">/{{ property.after_price }}</span></li>
+                        <li class="item-price"><span class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}
+                            <span class="price-postfix">/{{ property.after_price }}</span></li>
                         <li class="item-sub-price">$1,200/Sq Ft</li>
                     </ul>
                     <ul class="item-tools item-tools-v2">
