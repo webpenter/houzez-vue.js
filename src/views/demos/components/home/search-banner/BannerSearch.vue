@@ -16,36 +16,36 @@
     <div class="advanced-search-banner-wrap">
         <div class="d-flex flex-sm-max-column">
             <div class="flex-grow-1 flex-search">
-                <!-- <?php include 'inc/search/fields/search-field.php';?> -->
                 <div class="form-group">
                     <div class="search-icon">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" placeholder="Search" v-model="formData.search" />
                     </div><!-- search-icon -->
                 </div><!-- form-group -->
             </div><!-- flex-search -->
             <div class="flex-search">
-                <!-- <?php include 'inc/search/fields/submit-button.php';?> -->
-                <button type="submit" class="btn btn-search btn-secondary btn-full-width">Search</button>
+                <button @click.prevent="searchProperty" :disabled="btnLoading"
+                    class="btn btn-search btn-secondary btn-full-width">
+                    {{ btnLoading ? 'Searching...' : 'Search' }}
+                </button>
             </div><!-- flex-search -->
         </div><!-- d-flex -->
         <div class="d-flex flex-sm-max-column">
             <div class="flex-search flex-sm-max-column">
-                <!-- <?php include 'inc/search/fields/cities-field.php';?> -->
                 <div class="form-group">
-                    <select class="selectpicker form-control" title="Cities" data-live-search="false"
-                        data-selected-text-format="count" multiple data-actions-box="true">
-                        <option data-subtext="Illinois">Chicago</option>
-                        <option data-subtext="Florida">Miami</option>
-                        <option data-subtext="New York">New York</option>
-                        <option data-subtext="California">San Francisco</option>
+                    <select v-model="formData.city" class="selectpicker form-control" title="Cities" multiple
+                        data-actions-box="true">
+                        <option>Chicago</option>
+                        <option>Miami</option>
+                        <option>New York</option>
+                        <option>San Francisco</option>
                     </select>
+
                 </div>
             </div><!-- flex-search -->
             <div class="flex-search">
-                <!-- <?php include 'inc/search/fields/type-field.php';?> -->
                 <div class="form-group">
-                    <select class="selectpicker form-control" title="Type" data-live-search="false"
-                        data-selected-text-format="count" multiple data-actions-box="true">
+                    <select v-model="formData.types" class="selectpicker form-control" title="Type" multiple
+                        data-actions-box="true">
                         <option>Apartment</option>
                         <option>Condo</option>
                         <option>Loft</option>
@@ -56,25 +56,23 @@
                 </div>
             </div><!-- flex-search -->
             <div class="flex-search">
-                <!-- <?php include 'inc/search/fields/min-price-field.php';?> -->
                 <div class="form-group">
-                    <select class="selectpicker form-control" title="Min. Price" data-live-search="false">
-                        <option>Any</option>
-                        <option>$5,000</option>
-                        <option>$10,000</option>
-                        <option>$50,000</option>
-                        <option>$100,000</option>
-                        <option>$200,000</option>
-                        <option>$300,000</option>
-                        <option>$400,000</option>
-                        <option>$500,000</option>
+                    <select v-model="formData.bedrooms" class="selectpicker form-control" title="Max. Bedrooms">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
                     </select>
                 </div>
             </div><!-- flex-search -->
             <div class="flex-search">
-                <!-- <?php include 'inc/search/fields/max-price-field.php';?> -->
                 <div class="form-group">
-                    <select class="selectpicker form-control" title="Max. Price" data-live-search="false">
+                    <select v-model="formData.maxPrice" class="selectpicker form-control" title="Max. Price">
                         <option>Any</option>
                         <option>$5,000</option>
                         <option>$10,000</option>
@@ -85,6 +83,7 @@
                         <option>$400,000</option>
                         <option>$500,000</option>
                     </select>
+
                 </div>
             </div><!-- flex-search -->
         </div><!-- d-flex -->
@@ -96,11 +95,76 @@ import 'bootstrap-select/dist/css/bootstrap-select.min.css'
 import 'bootstrap-select/dist/js/bootstrap-select.min.js'
 import $ from 'jquery'
 
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useAppProperty, useNotification } from "@/stores/index.js";
+
 export default {
     name: 'BannerSearch',
     mounted() {
-        // Initialize all selectpickers
         $('.selectpicker').selectpicker();
-    }
-}
+    },
+    setup() {
+        const btnLoading = ref(false);
+        const router = useRouter();
+        const propertyToRefs = useAppProperty();
+
+        const formData = ref({
+            search: "",
+            types: [],
+            city: [],
+            bedrooms: "",
+            maxPrice: "",
+        });
+
+        const searchProperty = async () => {
+            btnLoading.value = true;
+
+            const hasAnyFilter =
+                formData.value.search ||
+                formData.value.types.length > 0 ||
+                formData.value.city ||
+                formData.value.bedrooms ||
+                formData.value.maxPrice;
+
+            try {
+                if (hasAnyFilter) {
+                    await propertyToRefs.getSearchedAndFilteredProperties(formData.value);
+                }
+
+                btnLoading.value = false;
+
+                router.push({
+                    name: "demo01.search-results",
+                    query: hasAnyFilter
+                        ? {
+                            ...(formData.value.search && { search: formData.value.search }),
+                            ...(formData.value.types.length && {
+                                types: formData.value.types.join(","),
+                            }),
+                            ...(formData.value.city.length && { 
+                                city: formData.value.city.join(","),    
+                            }),
+                            ...(formData.value.bedrooms && {
+                                bedrooms: formData.value.bedrooms,
+                            }),
+                            ...(formData.value.maxPrice && {
+                                maxPrice: formData.value.maxPrice,
+                            }),
+                        }
+                        : undefined,
+                });
+            } catch (error) {
+                useNotification().Error("Error fetching properties:", error);
+                btnLoading.value = false;
+            }
+        };
+
+        return {
+            formData,
+            searchProperty,
+            btnLoading,
+        };
+    },
+};
 </script>

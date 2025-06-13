@@ -47,9 +47,5 @@ const fetchFeaturedProperties = async () => {
   }
 };
 
-onMounted(() => {
-  fetchFeaturedProperties().then(() => {
-    console.log('Total featured properties:', featuredProperties.value.length);
-  });
-});
+onMounted(() => fetchFeaturedProperties());
 </script>

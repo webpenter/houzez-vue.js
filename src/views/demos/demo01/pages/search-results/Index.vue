@@ -8,7 +8,7 @@
             <div class="page-title-wrap">
                 <div class="d-flex align-items-center">
                     <div class="page-title flex-grow-1">
-                        <h1>58 results found</h1>
+                        <h1>{{ allProperties.length }} results found</h1>
                     </div><!-- page-title -->
                     <div class="sort-by">
                         <div class="d-flex align-items-center">

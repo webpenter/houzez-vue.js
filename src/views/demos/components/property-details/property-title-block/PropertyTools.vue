@@ -7,7 +7,7 @@
                     <i class="houzez-icon icon-love-it"></i>
                 </span><!-- item-tool-favorite -->
             </template>
-            <template v-else>
+            <template v-else> 
                 <span @click="noAuthDialog = true" :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }"
                     class="item-tool-favorite">
                     <i class="houzez-icon icon-love-it"></i>
