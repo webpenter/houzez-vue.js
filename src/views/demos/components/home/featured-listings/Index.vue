@@ -13,7 +13,8 @@
                                 <ListItem
                                     v-for="property in featuredProperties"
                                     :key="property.id"
-                                    :property="property" />
+                                    :property="property" 
+                                />
                             </template>
                         </div><!-- listing-view -->
                         <div class="load-more-wrap">
@@ -46,5 +47,9 @@ const fetchFeaturedProperties = async () => {
   }
 };
 
-onMounted(() => fetchFeaturedProperties());
+onMounted(() => {
+  fetchFeaturedProperties().then(() => {
+    console.log('Total featured properties:', featuredProperties.value.length);
+  });
+});
 </script>

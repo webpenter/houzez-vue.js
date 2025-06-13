@@ -3,7 +3,7 @@
         <div class="item-wrap item-wrap-v1 item-wrap-no-frame h-100">
             <div class="d-flex align-items-center h-100">
                 <div class="item-header">
-                    <span class="label-featured label">Featured</span><!-- label-featured -->
+                    <span v-if="property.is_featured" class="label-featured label">Featured</span><!-- label-featured -->
                     <span class="labels-wrap labels-right">
                         <a href="#" class="label-status label">
                             {{ property.label }}
@@ -12,7 +12,7 @@
                     <ul class="item-price-wrap hide-on-list">
                         <li class="item-price"><span class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}
                             <span class="price-postfix">/{{ property.after_price }}</span></li>
-                        <li class="item-sub-price">$1,200/Sq Ft</li>
+                        <li class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{ property.size_prefix }}</li>
                     </ul>
                     <ul class="item-tools item-tools-v2">
                         <li class="item-tool">
@@ -37,27 +37,44 @@
                             </span><!-- item-tool-compare -->
                         </li><!-- item-tool -->
                     </ul><!-- item-tools -->
-                    <a href="#" class="hover-effect d-block position-relative">
-                        <img v-if="!isLoaded" class="img-fluid placeholder-image"
-                            src="@/assets/img/app-side/placeholder.jpg" alt="Loading..." />
-                        <img class="img-fluid main-image" :src="property.thumbnail"
-                            :alt="property.title || 'Property Image'" @load="imageLoaded" loading="lazy" />
-                    </a><!-- hover-effect -->
+                    <RouterLink
+                        :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }"
+                        class="hover-effect d-block position-relative"
+                    >
+                        <img
+                            v-if="!isLoaded"
+                            class="img-fluid placeholder-image"
+                            src="@/assets/img/app-side/bg.png"
+                            alt="Loading..."
+                        />
+                        <img
+                            class="img-fluid main-image"
+                            :src="property.thumbnail"
+                            :alt="property.title || 'Property Image'"
+                            @load="imageLoaded"
+                            loading="lazy"
+                        />
+                    </RouterLink><!-- hover-effect -->
                 </div><!-- item-header -->
 
                 <div class="item-body flex-grow-1">
                     <span class="labels-wrap labels-right">
                         <a href="#" class="label-status label">
-                            Label
+                            {{ property.label }}
                         </a><!-- label-status -->
                     </span><!-- labels-wrap -->
                     <h2 class="item-title">
-                        <a href="#">{{ $filters.subStr($filters.capitalize(property.title), 0, 30) }}</a>
+                        <RouterLink
+                            :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }"
+                        >
+                            {{ property.title }}
+                        </RouterLink>
+
                     </h2><!-- item-title -->
                     <ul class="item-price-wrap hide-on-list">
-                        <li class="item-price"><span class="price-prefix">From </span>$9,990<span
-                                class="price-postfix">/mo</span></li>
-                        <li class="item-sub-price">$1,200/Sq Ft</li>
+                        <li class="item-price"><span class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}<span
+                                class="price-postfix">/{{ property.after_price }}</span></li>
+                        <li class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{ property.size_prefix }}</li>
                     </ul>
                     <address class="item-address"><i class="houzez-icon icon-pin mr-1"></i>
                         {{ $filters.subStr(property.address, 0, 40) }}
