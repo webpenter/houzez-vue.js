@@ -12,9 +12,9 @@ export function getAppRoutes() {
 			id:1,
 			title:t('Home'),
 			sub:[
-				{id:1, title:`${t('Home')} ${t('V1')}`, name:'app.home'},
-				{id:2, title:`${t('Home')} ${t('V2')}`, name:'app.home'},
-				{id:3, title:`${t('Home')} ${t('V3')}`, name:'app.home'},
+				{id:1, title:`${t('Home')} (Default)`, name:'app.home'},
+				{id:2, title:`${t('Home')} (Demo 01)`, name:'demo01'},
+				{id:3, title:`${t('Home')} (Demo 02)`, name:'demo01'},
 			]
 		},
 		{
