@@ -23,6 +23,7 @@ export default [
   {
     path: '/demo01',
     name:'demo01',
+    redirect:'/demo01',
     component: () => import('@/views/demos/demo01/layout/Index.vue'),
     children: [
       /**

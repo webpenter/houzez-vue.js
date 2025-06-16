@@ -611,7 +611,7 @@ const routes = [
         component: () => import('@/components/pages/NotFound404.vue'),
         meta: { title: "404 Not Found" },
     },
-
+    
     // --- Demos Routes ---
     ...demo01Routes,
 ];

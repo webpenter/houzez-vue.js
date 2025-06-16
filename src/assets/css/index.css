@@ -11,7 +11,7 @@
 @import url("@/assets/css/fullcalendar-daygrid.min.css");
 @import url("@/assets/css/magnific-popup.css");
 @import url("@/assets/css/photoswipe.css");
-@import url("@/assets/css/main-ltr.css");
+@import url("@/assets/css/main-ltr.css"); /* create some issues */
 @import url("@/assets/css/styling-options.css");
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700|Roboto:300,400,500,700");

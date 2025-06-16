@@ -1,15 +1,21 @@
 <template>
-    <div class="form-group">
-	<select class="selectpicker form-control bs-select-hidden" title="Max. Price" data-live-search="false">
-		<option>Any</option>
-		<option>$5,000</option>
-		<option>$10,000</option>
-		<option>$50,000</option>
-		<option>$100,000</option>
-		<option>$200,000</option>
-		<option>$300,000</option>
-		<option>$400,000</option>
-		<option>$500,000</option>
-	</select><!-- selectpicker -->
-</div><!-- form-group -->
+  <div class="form-group">
+    <input
+      type="number"
+      class="form-control"
+      placeholder="Max Price"
+      v-model="price"
+      @input="emitPrice"
+    />
+  </div>
 </template>
+
+<script setup>
+import { ref } from 'vue';
+const emit = defineEmits(['update:maxPrice']);
+const price = ref('');
+
+const emitPrice = () => {
+  emit('update:maxPrice', price.value);
+};
+</script>

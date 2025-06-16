@@ -1,11 +1,36 @@
 <template>
-    <div class="form-group">
-        <select class="selectpicker form-control bs-select-hidden" title="Cities" data-live-search="false"
-            data-selected-text-format="count" multiple data-actions-box="true">
-            <option data-subtext="Illinois">Chicago</option>
-            <option data-subtext="Florida">Miami</option>
-            <option data-subtext="New York">New York</option>
-            <option data-subtext="California">San Francisco</option>
-        </select><!-- selectpicker -->
-    </div><!-- form-group -->
+  <div class="form-group">
+    <select
+      class="selectpicker form-control bs-select-hidden"
+      title="Cities"
+      data-live-search="false"
+      multiple
+      data-actions-box="true"
+      @change="emitCities"
+      ref="selectRef"
+    >
+      <option>Rahim Yar Khan</option>
+      <option>Miami</option>
+      <option>New York</option>
+      <option>San Francisco</option>
+    </select>
+  </div>
 </template>
+
+<script setup>
+import { onMounted, ref } from 'vue';
+
+const emit = defineEmits(['update:cities']);
+const selectRef = ref(null);
+
+const emitCities = () => {
+  const selected = Array.from(selectRef.value.selectedOptions).map(opt => opt.value);
+  emit('update:cities', selected);
+};
+
+onMounted(() => {
+  setTimeout(() => {
+    $('.selectpicker').selectpicker('refresh');
+  }, 0);
+});
+</script>

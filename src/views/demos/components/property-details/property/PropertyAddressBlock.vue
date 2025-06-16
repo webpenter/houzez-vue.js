@@ -17,7 +17,17 @@
 		</div><!-- block-content-wrap -->
 		<div class="block-map-wrap">
 			<!-- <Map :latitude="34.0522" :longitude="-118.2437" :zoom="12" :mapType="mapType" :marker="marker" /> -->
-			 <Map></Map>
+			 <!-- <Map></Map> -->
+			<iframe
+				:src="mapUrl"
+				width="100%"
+				height="450"
+				style="border:0;"
+				allowfullscreen=""
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"
+        	>
+			</iframe>
 		</div><!-- block-map-wrap -->
 	</div><!-- block-wrap -->
 </div><!-- property-address-wrap -->
@@ -25,6 +35,7 @@
 
 <script setup>
 import Map from '../property-banner-v1/Map.vue'
+import { ref } from 'vue';
 
 const props = defineProps({
   property: {
@@ -32,4 +43,8 @@ const props = defineProps({
     required: true
   }
 })
+
+const address = ref(`${props.property.latitude},${props.property.longitude}`);
+
+const mapUrl = ref(`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3151.8354345093707!2d${address.value.split(',')[1]}!3d${address.value.split(',')[0]}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1645488305008`);
 </script>
