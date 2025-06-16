@@ -32,9 +32,9 @@
         <div class="d-flex flex-sm-max-column">
             <div class="flex-search flex-sm-max-column">
                 <div class="form-group">
-                    <select v-model="formData.city" class="selectpicker form-control" title="Cities" multiple
-                        data-actions-box="true">
-                        <option>Chicago</option>
+                    <select id="city-select" v-model="formData.city" class="selectpicker form-control" title="Cities"
+                        multiple data-actions-box="true">
+                        <option>Rahim Yar Khan</option>
                         <option>Miami</option>
                         <option>New York</option>
                         <option>San Francisco</option>
@@ -44,10 +44,10 @@
             </div><!-- flex-search -->
             <div class="flex-search">
                 <div class="form-group">
-                    <select v-model="formData.types" class="selectpicker form-control" title="Type" multiple
-                        data-actions-box="true">
-                        <option>Apartment</option>
-                        <option>Condo</option>
+                    <select id="types-select" v-model="formData.types" class="selectpicker form-control" title="Type"
+                        multiple data-actions-box="true">
+                        <option>Office</option>
+                        <option>Villa</option>
                         <option>Loft</option>
                         <option>Multi Family Home</option>
                         <option>Single Family Home</option>
@@ -91,19 +91,15 @@
 </template>
 
 <script>
-import 'bootstrap-select/dist/css/bootstrap-select.min.css'
-import 'bootstrap-select/dist/js/bootstrap-select.min.js'
-import $ from 'jquery'
-
-import { ref } from "vue";
+import 'bootstrap-select/dist/css/bootstrap-select.min.css';
+import 'bootstrap-select/dist/js/bootstrap-select.min.js';
+import $ from 'jquery';
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useAppProperty, useNotification } from "@/stores/index.js";
 
 export default {
     name: 'BannerSearch',
-    mounted() {
-        $('.selectpicker').selectpicker();
-    },
     setup() {
         const btnLoading = ref(false);
         const router = useRouter();
@@ -117,48 +113,52 @@ export default {
             maxPrice: "",
         });
 
+        const updateSelectValues = () => {
+            formData.value.city = $('#city-select').val() || [];
+            formData.value.types = $('#types-select').val() || [];
+        };
+
         const searchProperty = async () => {
             btnLoading.value = true;
+            updateSelectValues(); // sync latest multiselect values
 
             const hasAnyFilter =
                 formData.value.search ||
                 formData.value.types.length > 0 ||
-                formData.value.city ||
+                formData.value.city.length > 0 ||
                 formData.value.bedrooms ||
-                formData.value.maxPrice;
+                (formData.value.maxPrice && formData.value.maxPrice !== "Any");
 
             try {
                 if (hasAnyFilter) {
                     await propertyToRefs.getSearchedAndFilteredProperties(formData.value);
                 }
 
-                btnLoading.value = false;
-
                 router.push({
                     name: "demo01.search-results",
-                    query: hasAnyFilter
-                        ? {
-                            ...(formData.value.search && { search: formData.value.search }),
-                            ...(formData.value.types.length && {
-                                types: formData.value.types.join(","),
-                            }),
-                            ...(formData.value.city.length && { 
-                                city: formData.value.city.join(","),    
-                            }),
-                            ...(formData.value.bedrooms && {
-                                bedrooms: formData.value.bedrooms,
-                            }),
-                            ...(formData.value.maxPrice && {
-                                maxPrice: formData.value.maxPrice,
-                            }),
-                        }
-                        : undefined,
+                    query: {
+                        ...(formData.value.search && { search: formData.value.search }),
+                        ...(formData.value.types.length && { types: formData.value.types.join(",") }),
+                        ...(formData.value.city.length && { city: formData.value.city.join(",") }),
+                        ...(formData.value.bedrooms && { bedrooms: formData.value.bedrooms }),
+                        ...(formData.value.maxPrice && formData.value.maxPrice !== "Any" && {
+                            maxPrice: formData.value.maxPrice.replace(/\D/g, ""),
+                        }),
+                    }
                 });
+
+
             } catch (error) {
                 useNotification().Error("Error fetching properties:", error);
+            } finally {
                 btnLoading.value = false;
             }
         };
+
+        onMounted(() => {
+            $.fn.selectpicker.Constructor.BootstrapVersion = '4'; 
+            $('.selectpicker').selectpicker().on('changed.bs.select', updateSelectValues);
+        });
 
         return {
             formData,

@@ -4,7 +4,7 @@
             <Map />
         </div><!-- half-map-left-wrap -->
         <div class="half-map-right-wrap">
-            <SearchHalfMapGeolocation />
+            <SearchHalfMapGeolocation @search="handleSearch" />
             <div class="page-title-wrap">
                 <div class="d-flex align-items-center">
                     <div class="page-title flex-grow-1">
@@ -105,10 +105,20 @@ const showLoginPage = () => {
 const formData = ref({
     search: route.query.search || "",
     types: route.query.types ? route.query.types.split(',') : [],
-    city: route.query.city || "",
+    cities: route.query.cities ? route.query.cities.split(',') : [],
     bedrooms: route.query.bedrooms || "",
     maxPrice: route.query.maxPrice || "",
 });
+
+const handleSearch = async (data) => {
+    formData.value = {
+        ...formData.value,
+        ...data,
+    };
+
+    await searchProperty(); // this will hit the API and update listings
+};
+
 
 const searchProperty = async () => {
     loading.value = true;
@@ -118,7 +128,7 @@ const searchProperty = async () => {
             query: {
                 search: formData.value.search,
                 types: formData.value.types.join(','),
-                city: formData.value.city,
+                cities: formData.value.cities.join(','),
                 bedrooms: formData.value.bedrooms,
                 maxPrice: formData.value.maxPrice,
             },

@@ -1,12 +1,34 @@
 <template>
-    <div class="form-group">
-	<select class="selectpicker form-control bs-select-hidden" title="Type" data-live-search="false" data-selected-text-format="count" multiple data-actions-box="true" >
-		<option>Apartment</option>
-		<option>Condo</option>
-		<option>Loft</option>
-		<option>Multi Family Home</option>
-		<option>Single Family Home</option>
-		<option>Townhouse</option>
-	</select><!-- selectpicker -->
-</div><!-- form-group -->
+  <div class="form-group">
+    <select
+      class="selectpicker form-control"
+      title="Type"
+      data-live-search="false"
+      multiple
+      data-actions-box="true"
+      @change="emitTypes"
+      ref="selectRef"
+    >
+      <option>Apartment</option>
+      <option>Villa</option>
+      <option>Office</option>
+    </select>
+  </div>
 </template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+const emit = defineEmits(['update:types']);
+const selectRef = ref(null);
+
+const emitTypes = () => {
+  const selected = Array.from(selectRef.value.selectedOptions).map(opt => opt.value);
+  emit('update:types', selected);
+};
+
+onMounted(() => {
+  setTimeout(() => {
+    $('.selectpicker').selectpicker('refresh');
+  }, 0);
+});
+</script>

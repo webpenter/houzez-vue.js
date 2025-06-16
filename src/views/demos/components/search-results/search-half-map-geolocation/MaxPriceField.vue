@@ -1,6 +1,12 @@
 <template>
     <div class="form-group">
-	<select class="selectpicker form-control bs-select-hidden" title="Max. Price" data-live-search="false">
+	<select
+      class="selectpicker form-control"
+      title="Max. Price"
+      data-live-search="false"
+      @change="emitMaxPrice"
+      ref="selectRef"
+    >
 		<option>Any</option>
 		<option>$5,000</option>
 		<option>$10,000</option>
@@ -13,3 +19,21 @@
 	</select><!-- selectpicker -->
 </div><!-- form-group -->
 </template>
+
+
+<script setup>
+import { ref, onMounted } from 'vue';
+const emit = defineEmits(['update:maxPrice']);
+const selectRef = ref(null);
+
+const emitMaxPrice = () => {
+  const selected = selectRef.value.value;
+  emit('update:maxPrice', selected);	
+};
+
+onMounted(() => {
+  setTimeout(() => {
+    $('.selectpicker').selectpicker('refresh');
+  }, 0);
+});
+</script>
