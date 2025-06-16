@@ -11,11 +11,15 @@
           data-toggle="modal"
           data-target="#property-lightbox"
         >
-          <img
-            class="img-fluid"
-            :src="currentImage.image_path"
-            :alt="'Image ' + (currentIndex + 1)"
-          />
+          <div class="main-img-wrapper" :class="{ loading: !mainImageLoaded }">
+            <img
+              v-show="mainImageLoaded"
+              class="img-fluid"
+              :src="currentImage.image_path"
+              :alt="'Image ' + (currentIndex + 1)"
+              @load="mainImageLoaded = true"
+            />
+          </div>
         </a>
       </div>
 
@@ -45,23 +49,26 @@
       <div
         v-for="(image, index) in property.images"
         :key="'thumb-' + image.id"
-        @click="currentIndex = index"
+        @click="selectThumbnail(index)"
         style="margin-right: 5px; cursor: pointer;"
       >
-        <img
-          class="img-fluid"
-          :src="image.image_path"
-          :data-lazy="image.image_path"
-          :alt="'Thumbnail ' + (index + 1)"
-          style="width: 100px; height: 73px; object-fit: cover;"
-        />
+        <div class="thumb-img-wrapper" :class="{ loading: !thumbnailLoaded[index] }">
+          <img
+            v-show="thumbnailLoaded[index]"
+            class="img-fluid"
+            :src="image.image_path"
+            :alt="'Thumbnail ' + (index + 1)"
+            style="width: 100px; height: 73px; object-fit: cover;"
+            @load="onThumbLoad(index)"
+          />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 
 const props = defineProps({
   property: {
@@ -71,12 +78,16 @@ const props = defineProps({
 });
 
 const currentIndex = ref(0);
+const mainImageLoaded = ref(false);
+const thumbnailLoaded = ref([]);
 
 const currentImage = computed(() => {
-  if (!props.property || !props.property.images || props.property.images.length === 0) {
-    return null;
-  }
+  if (!props.property?.images?.length) return null;
   return props.property.images[currentIndex.value];
+});
+
+watch(() => currentIndex.value, () => {
+  mainImageLoaded.value = false;
 });
 
 function prevImage() {
@@ -94,4 +105,44 @@ function nextImage() {
     currentIndex.value = 0;
   }
 }
+
+function selectThumbnail(index) {
+  currentIndex.value = index;
+}
+
+function onThumbLoad(index) {
+  thumbnailLoaded.value[index] = true;
+}
+
+// Initialize thumbnail load state
+watch(() => props.property.images, (images) => {
+  if (images?.length) {
+    thumbnailLoaded.value = Array(images.length).fill(false);
+  }
+}, { immediate: true });
 </script>
+
+<style scoped>
+.main-img-wrapper,
+.thumb-img-wrapper {
+  background-color: #f0f0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-img-wrapper {
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+}
+
+.thumb-img-wrapper {
+  width: 100px;
+  height: 73px;
+}
+
+.main-img-wrapper.loading,
+.thumb-img-wrapper.loading {
+  background-color: #f0f0f0;
+}
+</style>
