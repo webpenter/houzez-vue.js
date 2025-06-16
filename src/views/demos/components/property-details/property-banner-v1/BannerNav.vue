@@ -12,7 +12,7 @@
                 <i class="houzez-icon icon-maps"></i>
             </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" id="pills-street-view-tab" data-toggle="pill" href="#pills-street-view" role="tab"
                 aria-controls="pills-street-view" aria-selected="false">
                 <i class="houzez-icon icon-location-user"></i>
@@ -29,6 +29,6 @@
                 aria-controls="pills-video-view" aria-selected="false">
                 <i class="houzez-icon icon-video-player-movie-1"></i>
             </a>
-        </li>
+        </li> -->
     </ul><!-- nav -->
 </template>
