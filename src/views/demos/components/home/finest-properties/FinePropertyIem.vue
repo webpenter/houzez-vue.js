@@ -2,13 +2,22 @@
     <div class="item-listing-wrap item-listing-wrap-v3 card">
         <div class="item-wrap item-wrap-v3 h-100">
             <a href="#" class="hover-effect">
-                <img class="img-fluid" :src="property.thumbnail" alt="property image"
-                     :alt="property.title || 'Property Image'" loading="lazy" />
-            </a><!-- hover-effect -->
+                <div class="image-wrapper" :class="{ loading: !isLoaded }">
+                    <img
+                        v-show="isLoaded"
+                        class="img-fluid"
+                        :src="property.thumbnail"
+                        :alt="property.title || 'Property Image'"
+                        @load="imageLoaded"
+                        loading="lazy"
+                    />
+                </div>
+            </a>
+
             <h2 class="item-title">
                 <a href="#">{{ property.title }}</a>
-            </h2><!-- item-title -->
-            <!-- add the class item-amenities-with-icons to display the icons -->
+            </h2>
+
             <ul class="item-amenities item-amenities-with-icons">
                 <li class="h-beds">
                     <i class="houzez-icon icon-hotel-double-bed-1 mr-1"></i>
@@ -30,25 +39,56 @@
                     <span>{{ property.type }}</span>
                 </li>
             </ul>
+
             <ul class="item-price-wrap hide-on-list">
-                <li class="item-price"><span class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}
-                    <span class="price-postfix">/{{ property.after_price }}</span></li>
+                <li class="item-price">
+                    <span class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}
+                    <span class="price-postfix">/{{ property.after_price }}</span>
+                </li>
                 <li class="item-sub-price">$1,200/Sq Ft</li>
             </ul>
+
             <span class="labels-wrap labels-right">
-                <a href="#" class="label-status label">
-                    {{ property.label }}
-                </a><!-- label-status -->
-            </span><!-- labels-wrap -->
-            <span class="label-featured label">{{ property.type }}</span><!-- label-featured -->
-        </div><!-- item-wrap -->
-    </div><!-- item-listing-wrap -->
+                <a href="#" class="label-status label">{{ property.label }}</a>
+            </span>
+
+            <span class="label-featured label">{{ property.type }}</span>
+        </div>
+    </div>
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router'
+import { ref } from 'vue'
 
 defineProps({
   property: Object
 })
+
+const isLoaded = ref(false)
+
+const imageLoaded = () => {
+  isLoaded.value = true
+}
 </script>
+
+<style scoped>
+.image-wrapper {
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: transparent;
+  position: relative;
+}
+
+.image-wrapper.loading {
+  background-color: #f0f0f0; /* Light gray background */
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+</style>

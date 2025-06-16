@@ -45,3 +45,4 @@ const fetchFeaturedProperties = async () => {
 
 onMounted(() => fetchFeaturedProperties());
 </script>
+
