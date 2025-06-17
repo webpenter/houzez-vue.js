@@ -1,39 +1,49 @@
 <template>
-    <div class="form-group">
-	<select
+  <div class="form-group">
+    <select
+      v-model="selectedMaxPrice"
       class="selectpicker form-control"
       title="Max. Price"
       data-live-search="false"
       @change="emitMaxPrice"
       ref="selectRef"
     >
-		<option>Any</option>
-		<option>$5,000</option>
-		<option>$10,000</option>
-		<option>$50,000</option>
-		<option>$100,000</option>
-		<option>$200,000</option>
-		<option>$300,000</option>
-		<option>$400,000</option>
-		<option>$500,000</option>
-	</select><!-- selectpicker -->
-</div><!-- form-group -->
+      <option
+        v-for="price in prices"
+        :key="price.id"
+        :value="price.name"
+      >
+        {{ price.name === 'Any' ? 'Any' : formatPrice(price.name) }}
+      </option>
+    </select>
+  </div>
 </template>
 
-
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
+import { usePrice } from '@/stores/index.js';
+
+const { prices } = usePrice();
 const emit = defineEmits(['update:maxPrice']);
 const selectRef = ref(null);
+const selectedMaxPrice = ref('Any');
 
+// Emit max price to parent
 const emitMaxPrice = () => {
-  const selected = selectRef.value.value;
-  emit('update:maxPrice', selected);	
+  emit('update:maxPrice', selectedMaxPrice.value);
+};
+
+// Format price (e.g., $500,000)
+const formatPrice = (value) => {
+  const numeric = parseInt(value.replace(/\D/g, ''));
+  return `$${numeric.toLocaleString()}`;
 };
 
 onMounted(() => {
   setTimeout(() => {
-    $('.selectpicker').selectpicker('refresh');
+    $(selectRef.value).selectpicker('refresh');
   }, 0);
 });
+
+watch(selectedMaxPrice, emitMaxPrice);
 </script>

@@ -1,37 +1,44 @@
 <template>
   <div class="form-group">
     <select
-      class="selectpicker form-control bs-select-hidden"
+      id="city-select"
+      ref="selectRef"
+      v-model="selectedCities"
+      class="selectpicker form-control"
       title="Cities"
-      data-live-search="false"
       multiple
       data-actions-box="true"
       @change="emitCities"
-      ref="selectRef"
     >
-      <option>Rahim Yar Khan</option>
-      <option>Turkey</option>
-      <option>denmark</option>
-      <option>New York</option>
-      <option>San Francisco</option>
+      <option v-for="city in cities" :key="city.id" :value="city.name">
+        {{ city.name }}
+      </option>
     </select>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref, onMounted, watch } from 'vue';
+import { useCity } from '@/stores/index.js';
+
+const { cities } = useCity();
 
 const emit = defineEmits(['update:cities']);
+
 const selectRef = ref(null);
+const selectedCities = ref([]); // Local state bound to v-model
 
 const emitCities = () => {
-  const selected = Array.from(selectRef.value.selectedOptions).map(opt => opt.value);
-  emit('update:cities', selected);
+  emit('update:cities', selectedCities.value);
 };
 
 onMounted(() => {
+  // Initialize selectpicker after DOM is ready
   setTimeout(() => {
-    $('.selectpicker').selectpicker('refresh');
+    $(selectRef.value).selectpicker('refresh');
   }, 0);
 });
+
+watch(selectedCities, emitCities);
+
 </script>

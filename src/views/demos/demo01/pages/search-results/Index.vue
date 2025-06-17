@@ -1,7 +1,12 @@
 <template>
     <section class="half-map-wrap map-on-left clearfix">
         <div id="map-view-wrap" class="half-map-left-wrap">
-            <Map />
+            <Map
+                v-for="property in allProperties"
+                    :key="property.id"
+                    :property="property"
+                    :view="viewType" 
+            />
         </div><!-- half-map-left-wrap -->
         <div class="half-map-right-wrap">
             <SearchHalfMapGeolocation 
@@ -22,7 +27,7 @@
                             <select class="selectpicker form-control bs-select-hidden" title="Default Order"
                                 data-live-search="false" data-dropdown-align-right="auto">
                                 <option>Default Order</option>
-                                <option>Price - Hight to Low</option>
+                                <option>Price - High to Low</option>
                                 <option>Price - Low to Hight</option>
                                 <option>Featured First</option>
                                 <option>Date - New to Old</option>

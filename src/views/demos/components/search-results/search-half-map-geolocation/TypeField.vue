@@ -1,34 +1,47 @@
 <template>
   <div class="form-group">
     <select
+      ref="selectRef"
+      v-model="selectedTypes"
       class="selectpicker form-control"
       title="Type"
-      data-live-search="false"
       multiple
       data-actions-box="true"
       @change="emitTypes"
-      ref="selectRef"
     >
-      <option>Apartment</option>
-      <option>Villa</option>
-      <option>Office</option>
+      <option
+        v-for="type in types"
+        :key="type.id"
+        :value="type.name"
+      >
+        {{ type.name }}
+      </option>
     </select>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-const emit = defineEmits(['update:types']);
-const selectRef = ref(null);
+import { ref, onMounted, watch } from 'vue';
+import { useType } from '@/stores/index.js';
 
+const { types } = useType();
+const emit = defineEmits(['update:types']);
+
+const selectRef = ref(null);
+const selectedTypes = ref([]);
+
+// Emit on change
 const emitTypes = () => {
-  const selected = Array.from(selectRef.value.selectedOptions).map(opt => opt.value);
-  emit('update:types', selected);
+  emit('update:types', selectedTypes.value);
 };
 
+// Refresh selectpicker
 onMounted(() => {
   setTimeout(() => {
-    $('.selectpicker').selectpicker('refresh');
+    $(selectRef.value).selectpicker('refresh');
   }, 0);
 });
+
+// Watch to emit when programmatically updated
+watch(selectedTypes, emitTypes);
 </script>

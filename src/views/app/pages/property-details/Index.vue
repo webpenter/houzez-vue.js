@@ -74,7 +74,7 @@ const getPropertyData = async () => {
   loading.value = true;
   try {
     const res = await propertyStore.getProperty(propertySlug);
-
+    console.log(res);
     loading.value = false;
 
     if (res.status !== 200)  {

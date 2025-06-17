@@ -1,37 +1,43 @@
 <template>
   <div class="form-group">
     <select
+      ref="selectRef"
+      v-model="selectedBedroom"
       class="selectpicker form-control"
       title="Bedrooms"
       data-live-search="false"
       @change="emitBedrooms"
-      ref="selectRef"
-    >
-      <option value="">Any</option>
-      <option value="1">1 Bedroom</option>
-      <option value="2">2 Bedrooms</option>
-      <option value="3">3 Bedrooms</option>
-      <option value="4">4 Bedrooms</option>	
-      <option value="5">5 Bedrooms</option>	
-      <option value="6">6 Bedrooms</option>	
-      <option value="7">7 Bedrooms</option>	
+    > 
+      <option
+        v-for="bedroom in bedrooms"
+        :key="bedroom.id"
+        :value="bedroom.name"
+      >
+        {{ bedroom.name }}
+      </option>
     </select>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
+import { useBedroom } from '@/stores/index.js';
+
+const { bedrooms } = useBedroom();
 const emit = defineEmits(['update:bedrooms']);
 const selectRef = ref(null);
+const selectedBedroom = ref('');
 
+// Emit the value to the parent
 const emitBedrooms = () => {
-  const selected = selectRef.value.value;
-  emit('update:bedrooms', selected);
+  emit('update:bedrooms', selectedBedroom.value);
 };
 
 onMounted(() => {
   setTimeout(() => {
-    $('.selectpicker').selectpicker('refresh');
+    $(selectRef.value).selectpicker('refresh');
   }, 0);
 });
+
+watch(selectedBedroom, emitBedrooms);
 </script>
