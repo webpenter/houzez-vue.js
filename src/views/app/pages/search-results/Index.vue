@@ -238,7 +238,6 @@ const resetFilters = () => {
 
   router.replace({ name: "app.search-results", query: {} });
   searchProperty();
-  isSaveSearch()
 };
 
 const queryString = computed(() => route.fullPath.split('?')[1] || '');

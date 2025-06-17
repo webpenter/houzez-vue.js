@@ -1,3 +1,9 @@
 <template>
-    <button type="submit" class="btn reset-search-btn btn-grey-outlined">Clear</button>
+  <button
+    type="button"
+    class="btn reset-search-btn btn-grey-outlined"
+    @click="$emit('reset')"
+  >
+    Clear
+  </button>
 </template>

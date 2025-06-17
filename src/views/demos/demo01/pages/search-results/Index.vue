@@ -4,7 +4,11 @@
             <Map />
         </div><!-- half-map-left-wrap -->
         <div class="half-map-right-wrap">
-            <SearchHalfMapGeolocation @search="handleSearch" />
+            <SearchHalfMapGeolocation 
+                @search="handleSearch" 
+                @reset="resetFilters"
+                @save-search="saveSearchResult" 
+            />
             <div class="page-title-wrap">
                 <div class="d-flex align-items-center">
                     <div class="page-title flex-grow-1">
@@ -146,14 +150,13 @@ const resetFilters = () => {
     formData.value = {
         search: "",
         types: [],
-        city: "",
+        cities: [],
         bedrooms: "",
         maxPrice: "",
     };
 
     router.replace({ name: "demo01.search-results", query: {} });
     searchProperty();
-    isSaveSearch()
 };
 
 const queryString = computed(() => route.fullPath.split('?')[1] || '');

@@ -4,9 +4,9 @@
       <input
         type="text"
         class="form-control"
-        placeholder="Location"
-        v-model="location"
-        @input="emitLocation"
+        placeholder="Search"
+        v-model="search"
+        @input="emitSearch"
       />
       <a class="btn location-trigger" href="#">
         <i class="houzez-icon icon-location-target"></i>
@@ -18,10 +18,10 @@
 <script setup>
 import { ref } from 'vue';
 
-const location = ref('');
-const emit = defineEmits(['update:location']);
+const search = ref('');
+const emit = defineEmits(['update:search']);
 
-const emitLocation = () => {
-  emit('update:location', location.value);
+const emitSearch = () => {
+  emit('update:search', search.value);
 };
 </script>

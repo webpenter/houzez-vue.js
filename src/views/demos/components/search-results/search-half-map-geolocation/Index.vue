@@ -4,11 +4,11 @@
     <div class="container">
       <div class="d-flex">
         <div class="flex-search flex-grow-1">
-          <GeolocationField @update:location="formData.location = $event" />
+          <GeolocationField @update:search="formData.search = $event" />
         </div>
       </div>
 
-      <DistanceRange @update:radius="formData.radius = $event" />
+      <!-- <DistanceRange @update:radius="formData.radius = $event" /> -->
 
       <div class="d-flex">
         <div class="flex-search">
@@ -27,8 +27,8 @@
 
       <div class="d-flex half-map-buttons-wrap">
         <SubmitButton @search="searchProperty" />
-        <SaveSearchBtn />
-        <ResetSearchButton />
+        <SaveSearchBtn @save-search="saveSearchClicked" />
+        <ResetSearchButton @reset="resetFilters" />
       </div>
     </div>
   </section>
@@ -46,10 +46,11 @@ import SubmitButton from './SubmitButton.vue';
 import SaveSearchBtn from './SaveSearchBtn.vue';
 import ResetSearchButton from './ResetSearchButton.vue';
 
-const emit = defineEmits(['search']);
+const emit = defineEmits(['search', 'reset', 'save-search']);
+
 
 const formData = reactive({
-  location: '',
+  search: '',
   radius: '',
   cities: [],
   types: [],
@@ -57,9 +58,19 @@ const formData = reactive({
   maxPrice: ''
 });
 
+// Emit to parent when search button is clicked
 const searchProperty = () => {
-   console.log('Search Button Clicked:', formData); // ✅ Debug
   emit('search', { ...formData });
+};
+
+// Emit to parent when reset button is clicked  
+const resetFilters = () => {
+  emit('reset');
+};
+
+// Emit to parent when save search button is clicked
+const saveSearchClicked = () => {
+  emit('save-search');
 };
 
 onMounted(() => {
