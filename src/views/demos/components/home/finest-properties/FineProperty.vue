@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { useAppProperty } from "@/stores/index.js";
+import { useAppPropertyDemo01 } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
 import { onMounted, ref } from "vue";  
 import FinePropertyItem from './FinePropertyIem.vue';
@@ -29,13 +29,13 @@ import PropertyCardSkeleton from '@/components/skeleton/PropertyCardSkeleton.vue
 import FinePropertiesSkeleton from "@/components/skeleton/FinePropertiesSkeleton.vue";
 
 
-const propertyToRefs = useAppProperty();
+const propertyToRefs = useAppPropertyDemo01();
 const { latestProperties } = storeToRefs(propertyToRefs);
 const loading = ref(true);
 
 const fetchLatestProperties = async () => {
   loading.value = true;
-  const res = await propertyToRefs.getLatestProperties();
+  const res = await propertyToRefs.getLatestPropertiesDemo01();
 
   if (res.status === 200) { 
     loading.value = false;

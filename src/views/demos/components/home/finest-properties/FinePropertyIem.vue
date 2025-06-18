@@ -45,7 +45,7 @@
                     <span class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}
                     <span class="price-postfix">/{{ property.after_price }}</span>
                 </li>
-                <li class="item-sub-price">$1,200/Sq Ft</li>
+                <li class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{ property.size_prefix }}</li>
             </ul>
 
             <span class="labels-wrap labels-right">

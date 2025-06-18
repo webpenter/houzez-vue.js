@@ -7,7 +7,7 @@
             <div class="review-message">
                 <div class="d-flex align-items-center">
                     <h4 class="review-title">{{ review.title }}</h4>
-                    <Rating :review="review" />
+                    <Rating :rating="review.rating" />
                 </div><!-- d-flex -->
                 <time class="review-date" datetime="2018-07-26T04:37:21+00:00"><i
                         class="houzez-icon icon-attachment mr-1"></i> {{ review.created_at }}</time>
@@ -16,10 +16,10 @@
                 <div class="review-like mt-2">
                     <ul class="list-inline">
                         <li class="list-inline-item review-like-button">
-                            <a><i class="houzez-icon icon-like mr-1"></i></a> 3
+                            <!-- <a><i class="houzez-icon icon-like mr-1"></i></a> 3 -->
                         </li>
                         <li class="list-inline-item review-dislike-button">
-                            <a><i class="houzez-icon icon-dislike mr-1"></i></a> 1
+                            <!-- <a><i class="houzez-icon icon-dislike mr-1"></i></a> 1 -->
                         </li>
                     </ul>
                 </div>
@@ -37,6 +37,4 @@ const props = defineProps({
         required: true
     }
 });
-
-
 </script>

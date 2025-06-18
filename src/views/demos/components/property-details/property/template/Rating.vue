@@ -1,16 +1,21 @@
 <template>
-    <div class="rating-score-wrap flex-grow-1">
-	<span class="star">
-		<span class="icon-rating full-star"></span>
-		<span class="icon-rating full-star"></span>
-		<span class="icon-rating full-star"></span>
-		<span class="icon-rating half-star"></span>
-		<span class="icon-rating empty-star"></span>
-		<!-- <i class="houzez-icon icon-rating-star full-star"></i>
-		<i class="houzez-icon icon-rating-star full-star"></i>
-		<i class="houzez-icon icon-rating-star full-star"></i>
-		<i class="houzez-icon icon-rating-star full-star"></i>
-		<i class="houzez-icon icon-rating-star half-star"></i> -->
-	</span><!-- star -->
-</div><!-- rating-score-wrap -->
+  <div class="rating-score-wrap flex-grow-1">
+    <span class="star">
+      <span
+        v-for="index in 5"
+        :key="index"
+        class="icon-rating"
+        :class="{ 'full-star': index <= rating }"
+      ></span>
+    </span>
+  </div>
 </template>
+
+<script setup>
+const props = defineProps({
+  rating: {
+    type: Number,
+    required: true
+  }
+});
+</script>

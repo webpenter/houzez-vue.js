@@ -72,7 +72,7 @@
                                 :iframeCode="property.virtual_tour" />
                             <PropertyAvailabilityCalendarBlock />
                             <PropertyAgentBlock :property="property" />
-                            <!-- <PropertyReviews :property="property" /> -->
+                            <PropertyReviews :property="property" />
                             <!-- <PropertySimilarProperties /> -->
                             <!-- <PropertyNav /> -->
                         </div><!-- listing-view -->
@@ -125,7 +125,7 @@ import PropertyDetailsSkeleton from '@/components/skeleton/PropertyDetailsSkelet
 
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useAppProperty } from '@/stores/index.js';
+import { useAppPropertyDemo01  } from '@/stores/index.js';
 import { storeToRefs } from 'pinia';
 
 
@@ -136,7 +136,7 @@ const propertySlug = route.params.propertySlug;
 
 
 // Pinia Store
-const propertyStore = useAppProperty();
+const propertyStore = useAppPropertyDemo01();
 const { property } = storeToRefs(propertyStore);
 
 // Loading State
@@ -146,7 +146,8 @@ const loading = ref(false);
 const getPropertyData = async () => {
     loading.value = true;
     try {
-        const res = await propertyStore.getProperty(propertySlug);
+        const res = await propertyStore.getPropertyDemo01(propertySlug);
+        console.log('Property Data:', res.data);
         loading.value = false;
 
         if (res.status !== 200) {

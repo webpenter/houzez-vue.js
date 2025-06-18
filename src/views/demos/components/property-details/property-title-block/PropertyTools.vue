@@ -77,7 +77,6 @@ const token = useToken().getToken;
 const propertySlug = props.property.slug;
 const propertyId = ref(props.property.id);
 
-
 const handlePrint = () => window.print();
 const currentDomain = computed(() => window.location.origin);
 
@@ -91,8 +90,11 @@ const showLoginPage = () => {
 const favoritePropertyStore = useFavoriteProperty();
 const { isFavorite } = storeToRefs(favoritePropertyStore);
 
-const isFavoriteProperty = async () => await favoritePropertyStore.isFavoriteProperty(propertyId.value);
-
+// const isFavoriteProperty = async () => await favoritePropertyStore.isFavoriteProperty(propertyId.value);
+const isFavoriteProperty = async () => {
+  if (!propertyId.value) return;
+  await favoritePropertyStore.isFavoriteProperty(propertyId.value);
+};
 
 const toggleFavoriteProperty = async () => {
     try {

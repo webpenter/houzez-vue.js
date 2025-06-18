@@ -3,7 +3,7 @@
         <div class="block-title-wrap review-title-wrap d-flex align-items-center">
             <h2>{{ reviews.length }} Reviews</h2>
             <Rating />
-            <ListingSortBy />
+            <ReviewsSortBy />
             <a class="btn btn-primary btn-slim" href="#property-review-form">Leave a Review</a>
         </div>
 
@@ -102,7 +102,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import Rating from './template/Rating.vue';
-import ListingSortBy from './template/ListingSortBy.vue';
+import ReviewsSortBy from './template/ListingSortBy.vue';
 import Review from './template/Review.vue';
 import { useReview } from '@/stores/index';
 import { storeToRefs } from 'pinia';
@@ -163,4 +163,5 @@ const submitReview = async () => {
         reviewStore.loading = false;
     }
 };
+
 </script>

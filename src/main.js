@@ -20,6 +20,7 @@ import {
     formatDate,
 } from "./helpers"
 
+
 const app = createApp(App);
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);

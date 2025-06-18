@@ -37,19 +37,19 @@
 </template>
 
 <script setup>
-import { useAppProperty } from "@/stores/index.js";
+import { useAppPropertyDemo01 } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
 import { onMounted, ref } from "vue";  
 import FeaturedPropertiesSkeleton from '@/components/skeleton/FeaturedPropertiesSkeleton.vue';
 import ListItem from './ListItem.vue';
 
-const propertyToRefs = useAppProperty();
+const propertyToRefs = useAppPropertyDemo01();
 const { featuredProperties } = storeToRefs(propertyToRefs);
 const loading = ref(true);
 
 const fetchFeaturedProperties = async () => {
   loading.value = true;
-  const res = await propertyToRefs.getFeaturedProperties();
+  const res = await propertyToRefs.getFeaturedPropertiesDemo01();
 
   if (res.status === 200) { 
     loading.value = false;

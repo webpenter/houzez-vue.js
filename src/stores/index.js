@@ -1,3 +1,6 @@
+// ------------- Demos Dir
+export * from './demos/index';
+
 // -------------- Auth Dir
 export * from './auth/auth.js';
 export * from './auth/token.js';
@@ -49,4 +52,3 @@ export * from './others/review.js';
 export * from './others/blog.js';
 export * from './others/team.js';
 export * from './others/service.js';
-
