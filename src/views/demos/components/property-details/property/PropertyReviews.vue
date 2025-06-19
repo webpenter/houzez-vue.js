@@ -100,7 +100,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref, watch } from 'vue';
 import Rating from './template/Rating.vue';
 import ReviewsSortBy from './template/ListingSortBy.vue';
 import Review from './template/Review.vue';
@@ -130,10 +130,15 @@ const form = ref({
     comment: ''
 });
 
-// Fetch reviews on mount
-onMounted(() => {
-    reviewStore.fetchReviews(props.property.id);
-});
+watch(
+  () => props.property.id,
+  (id) => {
+    if (id) {
+      reviewStore.fetchReviews(id);
+    }
+  },
+  { immediate: true }
+);
 
 // Submit review
 const submitReview = async () => {
