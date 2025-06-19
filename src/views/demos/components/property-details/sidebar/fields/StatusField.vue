@@ -7,11 +7,3 @@
 </div><!-- form-group -->
 </template>
 
-<script setup>
-import { onMounted } from 'vue'
-import $ from 'jquery'
-
-onMounted(() => {
-  $('.selectpicker').selectpicker('render')
-})
-</script>
