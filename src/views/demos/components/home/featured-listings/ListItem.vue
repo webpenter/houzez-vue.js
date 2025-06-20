@@ -5,7 +5,7 @@
                 <div class="item-header">
                     <span v-if="property.is_featured" class="label-featured label">Featured</span>
                     <span class="labels-wrap labels-right">
-                        <a href="#" class="label-status label">{{ property.status }}</a>
+                        <a v-if="property?.status" href="#" class="label-status label">{{ property.status }}</a>
                     </span>
 
                     <ul class="item-price-wrap hide-on-list">
@@ -72,7 +72,7 @@
                     </ul>
 
                     <address class="item-address">
-                        <i class="houzez-icon icon-pin mr-1"></i>
+                        <i v-if="property?.address && property?.city && property?.county_state && property?.country" class="houzez-icon icon-pin mr-1"></i>
                         {{ $filters.subStr(property.address, 0, 40) }}
                         {{ $filters.subStr(property.city, 0, 40) }},
                         {{ $filters.subStr(property.county_state, 0, 40) }},
