@@ -68,7 +68,7 @@ import 'bootstrap-select/dist/css/bootstrap-select.min.css';
 import 'bootstrap-select/dist/js/bootstrap-select.min.js';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { useAppProperty, useNotification, useType, useCity, useBedroom, usePrice } from '@/stores/index.js';
+import { useAppPropertyDemo01, useNotification, useType, useCity, useBedroom, usePrice } from '@/stores/index.js';
 import $ from 'jquery';
 
 export default {
@@ -76,7 +76,7 @@ export default {
   setup() {
     const btnLoading = ref(false);
     const router = useRouter();
-    const propertyToRefs = useAppProperty();
+    const propertyToRefs = useAppPropertyDemo01();
 
     const formData = ref({
       search: "",
@@ -105,7 +105,7 @@ export default {
       updateSelectValues();
 
       try {
-        await propertyToRefs.getSearchedAndFilteredProperties(formData.value);
+        await propertyToRefs.getSearchedAndFilteredPropertiesDemo01(formData.value);
         router.push({
           name: "demo01.search-results",
           query: {

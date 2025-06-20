@@ -70,7 +70,7 @@
 <script setup>
 import { computed, onMounted, ref, watch } from "vue";
 import {
-    useAppProperty,
+    useAppPropertyDemo01,
     useBedroom,
     useCity,
     useNotification,
@@ -93,7 +93,7 @@ const viewType = ref('list')
 const loading = ref(false);
 const bellRef = ref(null);
 
-const propertyToRefs = useAppProperty();
+const propertyToRefs = useAppPropertyDemo01();
 const { allProperties } = storeToRefs(propertyToRefs);
 
 const saveSearchStore = useSavedSearch();
@@ -143,7 +143,7 @@ const searchProperty = async () => {
             },
         });
 
-        await propertyToRefs.getAllProperties(formData.value);
+        await propertyToRefs.getAllPropertiesDemo01(formData.value);
         loading.value = false;
 
     } catch (error) {

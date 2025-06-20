@@ -84,7 +84,7 @@ export const useAppPropertyDemo01 = defineStore('appPropertyDemo01', {
          * @param {string|number} formData.maxPrice - Maximum price to filter (can be 'any').
          * @returns {Promise} Resolves with response data or rejects with an error.
          */
-        async getSearchedAndFilteredProperties(formData) {
+        async getSearchedAndFilteredPropertiesDemo01(formData) {
             let url = `${this.prefix}/get-searched-and-filtered`;
 
             try {
@@ -92,7 +92,7 @@ export const useAppPropertyDemo01 = defineStore('appPropertyDemo01', {
                     params: {
                         search: formData.search,
                         propertyTypes: formData.types,
-                        city: formData.city,
+                        cities: formData.cities,
                         maxBedrooms: formData.bedrooms,
                         maxPrice: formData.maxPrice
                     }
@@ -120,7 +120,7 @@ export const useAppPropertyDemo01 = defineStore('appPropertyDemo01', {
          * @param {string|number} formData.maxPrice - Maximum price to filter (can be 'any').
          * @returns {Promise} Resolves with response data or rejects with an error.
          */
-        async getAllProperties(formData) {
+        async getAllPropertiesDemo01(formData) {
             let url = `${this.prefix}/get-all`;
 
             try {
