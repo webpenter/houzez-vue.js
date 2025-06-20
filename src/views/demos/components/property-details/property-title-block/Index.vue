@@ -17,7 +17,8 @@
             </div><!-- d-flex -->
             <div class="property-labels-wrap">
                 <span v-if="property?.is_featured" class="label-featured label">Featured</span>
-                <a href="#" class="label-status label">For {{ property?.label }}</a>
+                <a href="#" class="label-status label"> {{ property?.status }}</a>
+                <a href="#" class="label-status label"> {{ property?.label }}</a>
             </div>
             <address class="item-address"><i class="houzez-icon icon-pin mr-1"></i> {{ property?.address }}  {{ property?.city }},  {{ property?.county_state }},  {{ property?.country }}</address><!-- item-address -->
         </div><!-- container -->

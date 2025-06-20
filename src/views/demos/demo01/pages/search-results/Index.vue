@@ -117,6 +117,7 @@ const formData = ref({
     cities: route.query.cities ? route.query.cities.split(',') : [],
     bedrooms: route.query.bedrooms || "",
     maxPrice: route.query.maxPrice || "",
+     status: route.query.status || "",
 });
 
 const handleSearch = async (data) => {
@@ -140,6 +141,7 @@ const searchProperty = async () => {
                 cities: formData.value.cities.join(','),
                 bedrooms: formData.value.bedrooms,
                 maxPrice: formData.value.maxPrice,
+                status: formData.value.status
             },
         });
 

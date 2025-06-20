@@ -5,7 +5,7 @@
                 <div class="item-header">
                     <span v-if="property.is_featured" class="label-featured label">Featured</span>
                     <span class="labels-wrap labels-right">
-                        <a href="#" class="label-status label">{{ property.label }}</a>
+                        <a href="#" class="label-status label">{{ property.status }}</a>
                     </span>
 
                     <ul class="item-price-wrap hide-on-list">
@@ -16,7 +16,7 @@
                         <li class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{ property.size_prefix }}</li>
                     </ul>
 
-                    <ul class="item-tools item-tools-v2">
+                    <!-- <ul class="item-tools item-tools-v2">
                         <li class="item-tool">
                             <span class="item-tool-favorite" data-propid="425" data-toggle="modal" data-target="#listing-lightbox-v2">
                                 <span data-toggle="tooltip" data-placement="top" title="Preview">
@@ -34,7 +34,7 @@
                                 <i class="houzez-icon icon-add-circle" style="margin-top: 8px;"></i>
                             </span>
                         </li>
-                    </ul>
+                    </ul> -->
 
                     <RouterLink
                         :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }"

@@ -9,16 +9,16 @@
  * @date 26 Jan,2025
  */
 
-import {defineStore} from "pinia";
+import { defineStore } from "pinia";
 
 export const useLabel = defineStore('label', {
     state: () => ({
-        labels:[
-            {id: 1, name: "option 1"},
-            {id: 2, name: "option 2"},
-            {id: 3, name: "option 3"},
-            {id: 4, name: "option 4"},
-            {id: 5, name: "option 5"},
+        labels: [
+            { id: 1, name: "Sold" },
+            { id: 2, name: "Rented" },
+            { id: 3, name: "Hot Deal" },
+            { id: 4, name: "New" },
+            { id: 5, name: "Available Now" },
         ],
     }),
     getters: {},

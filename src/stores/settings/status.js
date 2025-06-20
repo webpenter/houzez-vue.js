@@ -14,8 +14,8 @@ import {defineStore} from "pinia";
 export const useStatus = defineStore('status', {
     state: () => ({
         statuses:[
-            {id: 1, name: "sale"},
-            {id: 2, name: "rent"},
+            {id: 1, name: "For Sale"},
+            {id: 2, name: "For Rent"},
         ],
     }),
     getters: {},

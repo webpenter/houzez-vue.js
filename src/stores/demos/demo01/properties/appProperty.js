@@ -94,7 +94,8 @@ export const useAppPropertyDemo01 = defineStore('appPropertyDemo01', {
                         propertyTypes: formData.types,
                         cities: formData.cities,
                         maxBedrooms: formData.bedrooms,
-                        maxPrice: formData.maxPrice
+                        maxPrice: formData.maxPrice,
+                        status: formData.status
                     }
                 });
                 this.searchedAndFilteredProperties = response.data.properties;
@@ -130,7 +131,8 @@ export const useAppPropertyDemo01 = defineStore('appPropertyDemo01', {
                         propertyTypes: formData.types,
                         city: formData.city,
                         maxBedrooms: formData.bedrooms,
-                        maxPrice: formData.maxPrice
+                        maxPrice: formData.maxPrice,
+                        status: formData.status
                     }
                 });
                 this.allProperties = response.data.properties;
