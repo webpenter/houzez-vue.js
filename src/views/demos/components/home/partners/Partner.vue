@@ -1,31 +1,23 @@
 <template> 
-    <div class="partners-module partners-module-slider">
-	<div class="property-carousel-buttons-wrap">
-        <button type="button" class="slick-prev btn-primary-outlined">Prev</button>
-        <button type="button" class="slick-next btn-primary-outlined">Next</button>
-    </div><!-- property-carousel-buttons-wrap -->
+<div class="partners-module partners-module-slider my-5">
     <div class="partners-slider-wrap">
         <PartnerItem
-            v-for="(team, index) in appTeams"
-            :key="team.id || index"
-            :team="team"
+            v-for="(partner, index) in partners"
+            :key="partner.id || index"
+            :partner="partner"
         />
     </div><!-- testimonials-slider -->
 </div><!-- testimonials-module -->
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
-import { useTeam } from '@/stores/index';
-import { storeToRefs } from 'pinia';
 import PartnerItem from './PartnerItem.vue';
+import { usePartners } from "@/stores/index.js";
+import { storeToRefs } from "pinia";
 
-const teamStore = useTeam();
-const { appTeams } = storeToRefs(teamStore);
+const partnerStore = usePartners();
+const { partners } = storeToRefs(partnerStore);
 
-onMounted(async () => {
-  await teamStore.getAppTeams();
-});
 </script>
 
 <style scoped>
