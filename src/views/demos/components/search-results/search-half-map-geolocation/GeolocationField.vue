@@ -16,12 +16,27 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
-const search = ref('');
+const props = defineProps({
+  modelValue: {
+    type: String,
+    default: ''
+  }
+});
+
 const emit = defineEmits(['update:search']);
+const search = ref(props.modelValue);
 
 const emitSearch = () => {
   emit('update:search', search.value);
 };
+
+watch(
+  () => props.modelValue,
+  (val) => {
+    search.value = val;
+  }
+);
 </script>
+

@@ -24,24 +24,43 @@
 import { ref, onMounted, watch } from 'vue';
 import { useType } from '@/stores/index.js';
 
-const { types } = useType();
+const props = defineProps({
+  modelValue: {
+    type: Array,
+    default: () => []
+  }
+});
+
 const emit = defineEmits(['update:types']);
+const { types } = useType();
 
 const selectRef = ref(null);
-const selectedTypes = ref([]);
+const selectedTypes = ref([...props.modelValue]);
 
-// Emit on change
 const emitTypes = () => {
   emit('update:types', selectedTypes.value);
 };
 
-// Refresh selectpicker
+// Sync external changes to local state
+watch(
+  () => props.modelValue,
+  (newVal) => {
+    selectedTypes.value = [...newVal];
+    setTimeout(() => {
+      $(selectRef.value).selectpicker('val', newVal);
+      $(selectRef.value).selectpicker('refresh');
+    }, 0);
+  },
+  { immediate: true }
+);
+
+// Emit on local change
+watch(selectedTypes, emitTypes, { deep: true });
+
 onMounted(() => {
   setTimeout(() => {
+    $(selectRef.value).selectpicker('val', selectedTypes.value);
     $(selectRef.value).selectpicker('refresh');
   }, 0);
 });
-
-// Watch to emit when programmatically updated
-watch(selectedTypes, emitTypes);
 </script>

@@ -37,8 +37,7 @@
     <div class="d-flex flex-sm-max-column">
       <div class="flex-search flex-sm-max-column">
         <div class="form-group">
-          <select id="city-select" v-model="formData.city" class="selectpicker form-control" title="Cities" multiple
-            data-actions-box="true">
+          <select id="city-select" v-model="formData.cities" class="selectpicker form-control" title="Cities" multiple>
             <option v-for="city in cities" :key="city.id" :value="city.name">{{ city.name }}</option>
           </select>
         </div>
@@ -120,7 +119,7 @@ export default {
           query: {
             ...(formData.value.search && { search: formData.value.search }),
             ...(formData.value.types.length && { types: formData.value.types.join(',') }),
-            ...(formData.value.cities.length && { cities: formData.value.city.join(',') }),
+            ...(formData.value.cities.length && { cities: formData.value.cities.join(',') }),
             ...(formData.value.bedrooms && { bedrooms: formData.value.bedrooms }),
             ...(formData.value.maxPrice && { maxPrice: formData.value.maxPrice }),
             ...(formData.value.status && { status: formData.value.status }),

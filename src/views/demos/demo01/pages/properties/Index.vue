@@ -10,7 +10,6 @@
         </div><!-- half-map-left-wrap -->
         <div class="half-map-right-wrap">
             <SearchHalfMapGeolocation 
-                :modelValue="formData"
                 @search="handleSearch" 
                 @reset="resetFilters"
                 @save-search="saveSearchResult" 
@@ -18,7 +17,7 @@
             <div class="page-title-wrap">
                 <div class="d-flex align-items-center">
                     <div class="page-title flex-grow-1">
-                        <h1>{{ allProperties.length }} results found</h1>
+                        <h1>{{ filteredProperties.length }} results found</h1>
                     </div><!-- page-title -->
                     <div class="sort-by">
                         <div class="d-flex align-items-center">
@@ -57,7 +56,7 @@
             </div><!-- page-title-wrap -->
             <div class="listing-view" :class="viewType + '-view'">
                 <ListItem
-                    v-for="property in allProperties"
+                     v-for="property in filteredProperties"
                     :key="property.id"
                     :property="property"
                     class="item-listing-wrap card"
@@ -77,7 +76,8 @@ import {
     useNotification,
     usePrice,
     useSavedSearch, useToken,
-    useType
+    useType,
+    useViewMode 
 } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
 import { RouterLink, useRoute, useRouter } from "vue-router";
@@ -90,12 +90,31 @@ const token = useToken().getToken;
 const router = useRouter();
 const route = useRoute();
 
+const isFeatured = computed(() => route.query.featured === 'true');
+
 const viewType = ref('list')
 const loading = ref(false);
 const bellRef = ref(null);
 
 const propertyToRefs = useAppPropertyDemo01();
 const { allProperties } = storeToRefs(propertyToRefs);
+
+const viewMode = useViewMode();
+
+const filteredProperties = computed(() => {
+  const props = allProperties.value;
+
+  if (!Array.isArray(props)) {
+    return []; // fallback to empty list
+  }
+
+  if (viewMode.isFeaturedView) {
+    const featured = props.filter(property => property.is_featured === true);
+    return featured;    
+  }
+
+  return props;
+});
 
 const saveSearchStore = useSavedSearch();
 const { checkSearchSaved } = storeToRefs(saveSearchStore);
@@ -135,7 +154,7 @@ const searchProperty = async () => {
     loading.value = true;
     try {
         await router.push({
-            name: "demo01.search-results",
+            name: "demo01.properties",
             query: {
                 search: formData.value.search,
                 types: formData.value.types.join(','),
@@ -163,7 +182,7 @@ const resetFilters = () => {
         maxPrice: "",
     };
 
-    router.replace({ name: "demo01.search-results", query: {} });
+    router.replace({ name: "demo01.properties", query: {} });
     searchProperty();
 };
 
@@ -196,15 +215,7 @@ const saveSearchResult = async () => {
     }
 };
 
-
-const isSaveSearch = async () => {
-    if (!parameters.value || parameters.value.trim() === "") {
-        // no query parameters; skip API call
-        return;
-    }
-
-    await saveSearchStore.isSearchSaved(parameters.value);
-};
+const isSaveSearch = async () => await saveSearchStore.isSearchSaved(parameters.value);
 
 onMounted(() => {
     searchProperty();

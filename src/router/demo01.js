@@ -63,6 +63,18 @@ export default [
         component: () => import('@/views/demos/demo01/pages/search-results/Index.vue'),
         meta: { title: 'Search Results' },
       },
+      /**
+       * @route /demo01/properties
+       * @name demo01.properties
+       * @auth not-required
+       * @description Properties page of Demo01
+       */
+       {
+        path: '/demo01/properties',
+        name: 'demo01.properties',
+        component: () => import('@/views/demos/demo01/pages/properties/Index.vue'),
+        meta: { title: 'Search Results' },
+      },
     ],
   },
 ];

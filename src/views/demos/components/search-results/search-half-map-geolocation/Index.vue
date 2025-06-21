@@ -1,10 +1,13 @@
-<!-- SearchHalfMapGeolocation.vue -->
 <template>
   <section class="advanced-search advanced-search-half-map">
     <div class="container">
       <div class="d-flex">
         <div class="flex-search flex-grow-1">
-          <GeolocationField @update:search="formData.search = $event" />
+          <GeolocationField
+            :modelValue="formData.search"
+            @update:search="formData.search = $event"
+          />
+
         </div>
       </div>
 
@@ -12,18 +15,22 @@
 
       <div class="d-flex">
         <div class="flex-search">
-          <CitiesField @update:cities="formData.cities = $event" />
+          <CitiesField :modelValue="formData.cities" @update:cities="formData.cities = $event" />
         </div>
         <div class="flex-search">
-          <TypeField @update:types="formData.types = $event" />
+          <TypeField :modelValue="formData.types" @update:types="formData.types = $event" />
         </div>
         <div class="flex-search">
-          <BedroomsField @update:bedrooms="formData.bedrooms = $event" />
+         <BedroomsField
+          :modelValue="formData.bedrooms"
+          @update:bedrooms="formData.bedrooms = $event"
+        />
         </div>
         <div class="flex-search">
-          <MaxPriceField @update:maxPrice="formData.maxPrice = $event" />
+          <MaxPriceField :modelValue="formData.maxPrice" @update:maxPrice="formData.maxPrice = $event" />
         </div>
       </div>
+
 
       <div class="d-flex half-map-buttons-wrap">
         <SubmitButton @search="searchProperty" />
@@ -35,7 +42,7 @@
 </template>
 
 <script setup>
-import { reactive, onMounted } from 'vue';
+import { reactive, onMounted, watch } from 'vue';
 import CitiesField from './CitiesField.vue';
 import DistanceRange from './DistanceRange.vue';
 import GeolocationField from './GeolocationField.vue';
@@ -47,32 +54,34 @@ import SaveSearchBtn from './SaveSearchBtn.vue';
 import ResetSearchButton from './ResetSearchButton.vue';
 
 const emit = defineEmits(['search', 'reset', 'save-search']);
-
-
-const formData = reactive({
-  search: '',
-  radius: '',
-  cities: [],
-  types: [],
-  bedrooms: '',
-  maxPrice: ''
+const props = defineProps({
+  modelValue: {
+    type: Object,
+    required: true
+  }
 });
 
-// Emit to parent when search button is clicked
-const searchProperty = () => {
-  emit('search', { ...formData });
-};
+// ✅ Sync incoming formData to local reactive state
+const formData = reactive({ ...props.modelValue });
 
-// Emit to parent when reset button is clicked  
-const resetFilters = () => {
-  emit('reset');
-};
+// ✅ Watch for future changes to props and update local formData
+watch(
+  () => props.modelValue,
+  (val) => {
+    Object.assign(formData, val);
+    setTimeout(() => {
+      $('.selectpicker').selectpicker('refresh');
+    }, 0);
+  },
+  { deep: true }
+);
 
-// Emit to parent when save search button is clicked
-const saveSearchClicked = () => {
-  emit('save-search');
-};
+// ✅ Emit to parent when buttons are clicked
+const searchProperty = () => emit('search', { ...formData });
+const resetFilters = () => emit('reset');
+const saveSearchClicked = () => emit('save-search');
 
+// ✅ Refresh selectpicker after mount
 onMounted(() => {
   setTimeout(() => {
     $('.selectpicker').selectpicker('refresh');

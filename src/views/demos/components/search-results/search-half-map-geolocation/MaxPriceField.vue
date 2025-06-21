@@ -23,12 +23,19 @@
 import { ref, onMounted, watch } from 'vue';
 import { usePrice } from '@/stores/index.js';
 
-const { prices } = usePrice();
-const emit = defineEmits(['update:maxPrice']);
-const selectRef = ref(null);
-const selectedMaxPrice = ref('Any');
+const props = defineProps({
+  modelValue: {
+    type: String,
+    default: 'Any',
+  },
+});
 
-// Emit max price to parent
+const emit = defineEmits(['update:maxPrice']);
+const { prices } = usePrice();
+const selectRef = ref(null);
+const selectedMaxPrice = ref(props.modelValue);
+
+// Emit to parent
 const emitMaxPrice = () => {
   emit('update:maxPrice', selectedMaxPrice.value);
 };
@@ -39,11 +46,38 @@ const formatPrice = (value) => {
   return `$${numeric.toLocaleString()}`;
 };
 
+// Watch for prop updates (e.g., when URL query param changes)
+watch(
+  () => props.modelValue,
+  (val) => {
+    selectedMaxPrice.value = val;
+    setTimeout(() => {
+      $(selectRef.value).selectpicker('refresh');
+    }, 0);
+  }
+);
+
+// Watch local changes
+watch(
+  () => props.modelValue,
+  (val) => {
+    selectedMaxPrice.value = val;
+    setTimeout(() => {
+      if (selectRef.value) {
+        $(selectRef.value).selectpicker('val', val); // ✅ Set selected value
+        $(selectRef.value).selectpicker('refresh');   // ✅ Refresh UI
+      }
+    }, 0);
+  }
+);
+
+// Init selectpicker
 onMounted(() => {
   setTimeout(() => {
-    $(selectRef.value).selectpicker('refresh');
+    if (selectRef.value) {
+      $(selectRef.value).selectpicker('val', selectedMaxPrice.value); // ✅ Set selected on mount
+      $(selectRef.value).selectpicker('refresh');
+    }
   }, 0);
 });
-
-watch(selectedMaxPrice, emitMaxPrice);
 </script>

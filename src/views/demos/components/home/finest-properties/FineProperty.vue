@@ -15,19 +15,26 @@
 			
 		</div><!-- listing-view -->
 	<div class="load-more-wrap">
-		<a class="btn btn-primary-outlined btn-load-more" href="#">Load More</a>	
+		<router-link
+			class="btn btn-primary-outlined btn-load-more"
+			:to="{ name: 'demo01.properties' }"
+			@click.native="viewMode.setFeaturedView(false)"
+		>
+			See All
+		</router-link>
 	</div><!-- load-more-wrap -->
 </div><!-- property-grid-module -->
 </template>
 
 <script setup>
-import { useAppPropertyDemo01 } from "@/stores/index.js";
+import { useAppPropertyDemo01, useViewMode  } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
 import { onMounted, ref } from "vue";  
 import FinePropertyItem from './FinePropertyIem.vue';
 import PropertyCardSkeleton from '@/components/skeleton/PropertyCardSkeleton.vue';
 import FinePropertiesSkeleton from "@/components/skeleton/FinePropertiesSkeleton.vue";
 
+const viewMode = useViewMode();
 
 const propertyToRefs = useAppPropertyDemo01();
 const { latestProperties } = storeToRefs(propertyToRefs);
