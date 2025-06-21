@@ -17,6 +17,7 @@ export const useTeam = defineStore('team', {
     state: () => ({
         allTeams:{},
         appTeams:{},
+        appTeamsDemo01:{},
         errors: {},
         loading: false,
         prefix:"/teams",
@@ -110,6 +111,32 @@ export const useTeam = defineStore('team', {
                 const response = await axiosInstance.get(url);
 
                 this.appTeams = response.data.data;
+
+                return new Promise(resolve => {
+                    resolve(response)
+                })
+            } catch (error) {
+                if (error.response.data) {
+                    this.errors = error.response
+                }
+                return new Promise(reject => {
+                    reject(error.response)
+                })
+            }
+        },
+
+        /**
+         * Fetches teams for public app view and stores in `this.appTeams`.
+         *
+         * @async
+         * @return {Promise<Object>} Axios response containing app teams
+         */
+        async  getAppTeamsDemo01() {
+            const url = `/demo01${this.prefix}`;
+            try {
+                const response = await axiosInstance.get(url);
+
+                this.appTeamsDemo01 = response.data.data;
 
                 return new Promise(resolve => {
                     resolve(response)
