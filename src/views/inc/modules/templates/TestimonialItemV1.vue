@@ -1,10 +1,10 @@
 <template>
     <div class="testimonial-item testimonial-item-v1">
 	<div class="testimonial-thumb">
-		<img class="img-fluid rounded-circle" src="http://placehold.it/70x70" alt="testimonial">
+		<img class="img-fluid rounded-circle" src="" alt="testimonial">
 	</div><!-- testimonial-thumb -->
 	<div class="testimonial-logo">
-		<img src="http://placehold.it/100x30" alt="logo">
+		<img src="" alt="logo">
 	</div><!-- testimonial-logo -->
 	<div class="testimonial-body">
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

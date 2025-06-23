@@ -8,9 +8,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab_02" role="tab">
+                <!-- <a class="nav-link" data-toggle="tab" href="#tab_02" role="tab">
                     <span class="tab-title">Request Info</span>
-                </a>
+                </a> -->
             </li>
         </ul>
         <div class="tab-content">
@@ -20,7 +20,7 @@
             </div>
             <div class="property-tabs-module-tab-pane tab-pane fade" id="tab_02" role="tabpanel">
                 <!-- <?php include 'inc/property/property-form.php';?> -->
-                <PropertyForm />
+                <!-- <PropertyForm /> -->
             </div>
         </div>
     </div><!-- property-form-tabs -->

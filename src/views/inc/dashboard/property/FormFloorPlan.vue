@@ -45,7 +45,7 @@
 		<div class="form-group">
 			<label>Plan Image</label>
 			<div class="d-flex align-items-start">
-				<img class="img-fluid" src="http://placehold.it/100x75" alt="thumb">	
+				<img class="img-fluid" src="" alt="thumb">	
 				<div class="ml-2">
 					<button type="button" class="btn btn-primary btn-full-width">Select An Image To Upload</button>
 					<small class="form-text text-muted">Minimum size 800 x 600 px</small>

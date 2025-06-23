@@ -8,7 +8,7 @@
 	<div class="widget-body">
 		<div class="logged-in-wrap">
 			<div class="d-flex align-items-center">
-				<img class="rounded-circle" src="http://placehold.it/64x64" alt="image">
+				<img class="rounded-circle" src="" alt="image">
 				<div>
 					Martin Moore<br>
 					<a href="#">Log out</a>

@@ -3,7 +3,7 @@
 	<div class="d-flex">
 		<div class="blog-post-image-widget">
 			<a href="#">
-				<img class="img-fluid" src="http://placehold.it/150x150" alt="image">	
+				<img class="img-fluid" src="" alt="image">	
 			</a>
 		</div><!-- blog-post-image-widget -->
 		<div class="blog-post-content-widget">

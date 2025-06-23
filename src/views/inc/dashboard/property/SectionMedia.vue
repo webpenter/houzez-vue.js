@@ -19,42 +19,42 @@
             <div class="upload-media-gallery">
                 <div class="row">
                     <div class="col-md-2 col-sm-4 col-6">
-                        <img class="img-fluid" src="http://placehold.it/200x150" alt="thumb">
+                        <img class="img-fluid" src="" alt="thumb">
                         <div class="upload-gallery-thumb-buttons">
                             <button><i class="houzez-icon icon-rating-star full-star text-success"></i></button>
                             <button><i class="houzez-icon icon-remove-circle"></i></button>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-6">
-                        <img class="img-fluid" src="http://placehold.it/200x150" alt="thumb">
+                        <img class="img-fluid" src="" alt="thumb">
                         <div class="upload-gallery-thumb-buttons">
                             <button><i class="houzez-icon icon-rating-star full-star"></i></button>
                             <button><i class="houzez-icon icon-remove-circle"></i></button>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-6">
-                        <img class="img-fluid" src="http://placehold.it/200x150" alt="thumb">
+                        <img class="img-fluid" src="" alt="thumb">
                         <div class="upload-gallery-thumb-buttons">
                             <button><i class="houzez-icon icon-rating-star full-star"></i></button>
                             <button><i class="houzez-icon icon-remove-circle"></i></button>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-6">
-                        <img class="img-fluid" src="http://placehold.it/200x150" alt="thumb">
+                        <img class="img-fluid" src="" alt="thumb">
                         <div class="upload-gallery-thumb-buttons">
                             <button><i class="houzez-icon icon-rating-star full-star"></i></button>
                             <button><i class="houzez-icon icon-remove-circle"></i></button>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-6">
-                        <img class="img-fluid" src="http://placehold.it/200x150" alt="thumb">
+                        <img class="img-fluid" src="" alt="thumb">
                         <div class="upload-gallery-thumb-buttons">
                             <button><i class="houzez-icon icon-rating-star full-star"></i></button>
                             <button><i class="houzez-icon icon-remove-circle"></i></button>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-6">
-                        <img class="img-fluid" src="http://placehold.it/200x150" alt="thumb">
+                        <img class="img-fluid" src="" alt="thumb">
                         <div class="upload-gallery-thumb-buttons">
                             <button><i class="houzez-icon icon-rating-star full-star"></i></button>
                             <button><i class="houzez-icon icon-remove-circle"></i></button>
