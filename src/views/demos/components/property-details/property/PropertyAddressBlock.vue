@@ -3,7 +3,7 @@
 	<div class="block-wrap">
 		<div class="block-title-wrap d-flex justify-content-between align-items-center">
 			<h2>Address</h2>
-			<a class="btn btn-primary btn-slim" href="#" target="_blank"><i class="houzez-icon icon-maps mr-1"></i> Open on Google Maps</a>
+			<!-- <a class="btn btn-primary btn-slim" href="#" target="_blank"><i class="houzez-icon icon-maps mr-1"></i> Open on Google Maps</a> -->
 		</div><!-- block-title-wrap -->
 		<div class="block-content-wrap">
 			<ul class="list-2-cols list-unstyled">

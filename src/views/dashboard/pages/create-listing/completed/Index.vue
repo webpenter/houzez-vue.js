@@ -7,7 +7,7 @@
             <div class="dashboard-content-inner-wrap">
                 <div class="dashboard-content-block-wrap">
                     <div class="dashboard-content-block">
-                        <p><strong>You have successfully submitted your property for review and it has noot been published yet.</strong></p>
+                        <p><strong>You have successfully submitted your property for review and it has not been published yet.</strong></p>
                         <p>You will be notified by email when the review has been completed, or if our reviews have any questions about your submission. You can find your listing on the 
                             <RouterLink :to="{name:'dashboard.my-properties.pending'}">
                                 <strong>pending</strong>

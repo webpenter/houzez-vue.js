@@ -121,7 +121,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, watch } from 'vue';
 import {useReview, useToken} from "@/stores/index.js";
 import {useRouter} from "vue-router";
 
@@ -227,7 +227,14 @@ const showLoginPage = () => {
   noAuthDialog.value = false;
 }
 
-onMounted(() => {
-  reviewStore.fetchReviews(propertyId);
-});
+watch(
+  () => props.propertyId,
+  (newId) => {
+    if (newId) {
+      form.value.property_id = newId;
+      reviewStore.fetchReviews(newId);
+    }
+  },
+  { immediate: true }
+);
 </script>

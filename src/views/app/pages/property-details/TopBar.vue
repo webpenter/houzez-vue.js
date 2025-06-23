@@ -169,7 +169,11 @@ const toggleFavoriteProperty = async () => {
   }
 }
 
-const isFavoriteProperty = async () => await favoritePropertyStore.isFavoriteProperty(propertyId.value);
+
+const isFavoriteProperty = async () => {
+  if (!propertyId.value) return;
+  await favoritePropertyStore.isFavoriteProperty(propertyId.value);
+};
 
 onMounted(() => {
   if (token){

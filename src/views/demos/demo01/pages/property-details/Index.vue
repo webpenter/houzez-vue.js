@@ -70,8 +70,8 @@
                             <PropertyScheduleATourBlock :property-id="property.id" />
                             <PropertyVirtualTourBlock v-if="property.virtual_tour"
                                 :iframeCode="property.virtual_tour" />
-                            <PropertyAvailabilityCalendarBlock />
-                            <PropertyAgentBlock :property="property" />
+                            <!-- <PropertyAvailabilityCalendarBlock /> -->
+                            <!-- <PropertyAgentBlock :property="property" /> -->
                             <PropertyReviews :property="property" />
                             <!-- <PropertySimilarProperties /> -->
                             <!-- <PropertyNav /> -->

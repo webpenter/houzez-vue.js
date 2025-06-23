@@ -9,13 +9,13 @@
  * @date 28 Mar,2025
  */
 
-import {defineStore} from "pinia";
+import { defineStore } from "pinia";
 import apiService from "@/services/apiService.js";
 import axiosInstance from "@/services/axiosService.js";
 
 export const useReview = defineStore('review', {
     state: () => ({
-        reviews:[],
+        reviews: [],
         errors: {},
         loading: false,
     }),
@@ -57,20 +57,24 @@ export const useReview = defineStore('review', {
             try {
                 const response = await axiosInstance.post(url, reviewData);
 
-                this.fetchReviews(reviewData.property_id);
+                // Clear any previous errors
+                this.errors = {};
 
-                return new Promise(resolve => {
-                    resolve(response);
-                });
+                // Fetch updated reviews
+                await this.fetchReviews(reviewData.property_id);
+
+                return response;
             } catch (error) {
-                if (error.response.data) {
+                if (error.response?.status === 422) {
+                    // Set validation errors
                     this.errors = error.response;
+                } else {
+                    console.error('Unexpected error:', error);
                 }
-                return new Promise(reject => {
-                    reject(error.response);
-                });
+
+                throw error.response; // Let the component catch and handle it
             }
-        },
+        }
 
     }
 });

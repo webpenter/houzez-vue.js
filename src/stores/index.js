@@ -54,3 +54,4 @@ export * from './others/team.js';
 export * from './others/service.js';
 export * from './others/testimonials.js';
 export * from './others/featuredView.js';
+export * from './others/partners.js';

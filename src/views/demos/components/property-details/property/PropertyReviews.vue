@@ -3,27 +3,35 @@
         <div class="block-title-wrap review-title-wrap d-flex align-items-center">
             <h2>{{ reviews.length }} Reviews</h2>
             <Rating />
-            <ReviewsSortBy />
+            <!-- <ReviewsSortBy /> -->
             <a class="btn btn-primary btn-slim" href="#property-review-form">Leave a Review</a>
         </div>
 
         <ul class="review-list-wrap list-unstyled">
-            <Review v-for="(review, index) in reviews" :key="index" :review="review" />
+            <Review v-for="(review, index) in paginatedReviews" :key="index" :review="review" />
         </ul>
 
-        <div class="pagination-wrap">
+        <div class="pagination-wrap" v-if="totalPages > 1">
             <nav>
                 <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <i class="houzez-icon icon-arrow-left-1"></i>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <i class="houzez-icon icon-arrow-right-1"></i>
-                        </a>
-                    </li>
+                <li class="page-item" :class="{ disabled: currentPage === 1 }">
+                    <a class="page-link" href="#" aria-label="Previous" @click.prevent="goToPage(currentPage - 1)">
+                    <i class="houzez-icon icon-arrow-left-1"></i>
+                    </a>
+                </li>
+                <li
+                    v-for="page in totalPages"
+                    :key="page"
+                    class="page-item"
+                    :class="{ active: page === currentPage }"
+                >
+                    <a class="page-link" href="#" @click.prevent="goToPage(page)">{{ page }}</a>
+                </li>
+                <li class="page-item" :class="{ disabled: currentPage === totalPages }">
+                    <a class="page-link" href="#" aria-label="Next" @click.prevent="goToPage(currentPage + 1)">
+                    <i class="houzez-icon icon-arrow-right-1"></i>
+                    </a>
+                </li>
                 </ul>
             </nav>
         </div>
@@ -89,7 +97,7 @@
                     </div><!-- col-sm-12 col-xs-12 -->
                     <div class="col-sm-12 col-xs-12">
                         <button class="btn btn-secondary btn-sm-full-width" @click.prevent="submitReview">
-                            <span class="btn-loader" v-if="loading">Submitting...</span>
+                            <span v-if="loading">Submitting...</span>
                             <span v-else>Submit</span>
                         </button>
                     </div><!-- col-sm-12 col-xs-12 -->
@@ -100,7 +108,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 import Rating from './template/Rating.vue';
 import ReviewsSortBy from './template/ListingSortBy.vue';
 import Review from './template/Review.vue';
@@ -130,6 +138,7 @@ const form = ref({
     comment: ''
 });
 
+// Fetch reviews when property changes
 watch(
   () => props.property.id,
   (id) => {
@@ -149,11 +158,11 @@ const submitReview = async () => {
     try {
         await reviewStore.addReview(form.value);
 
-        // ✅ Only show success if there are no validation errors
-        if (!Object.keys(reviewStore.errors.value?.data?.errors || {}).length) {
+        const hasErrors = Object.keys(reviewStore.errors.value?.data?.errors || {}).length > 0;
+
+        if (!hasErrors) {
             successMessage.value = 'Your review has been submitted.';
 
-            // ✅ Reset form
             form.value = {
                 property_id: props.property.id,
                 title: '',
@@ -163,10 +172,31 @@ const submitReview = async () => {
             };
         }
     } catch (error) {
-        // Do nothing — error alert will show in the template
+        // Error already stored in store
     } finally {
         reviewStore.loading = false;
     }
 };
 
+
+// 👉 Pagination Logic
+const currentPage = ref(1);
+const perPage = 4;
+
+const paginatedReviews = computed(() => {
+    const start = (currentPage.value - 1) * perPage;
+    const end = start + perPage;
+    return reviews.value.slice(start, end);
+});
+
+const totalPages = computed(() => {
+    return Math.ceil(reviews.value.length / perPage);
+});
+
+const goToPage = (page) => {
+    if (page >= 1 && page <= totalPages.value) {
+        currentPage.value = page;
+    }
+};
 </script>
+
