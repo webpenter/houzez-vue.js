@@ -3,19 +3,24 @@
     class="taxonomy-item"
     :style="{ backgroundImage: `url(${backgroundUrl})` }"
   >
-    <a class="taxonomy-link hover-effect-flat" href="#">
+    <router-link class="taxonomy-link hover-effect-flat" :to="{
+			name:'demo01.property-type',
+			params:{
+				propertyType:link
+			}
+		}">
       <div class="taxonomy-text-wrap">
         <div class="taxonomy-title">{{ title }}</div>
         <div class="taxonomy-subtitle">More Details</div>
       </div>
-    </a>
+    </router-link>
   </div>
 </template>
 
 <script setup>
 import { computed } from 'vue'
 
-const props = defineProps(['img', 'title'])
+const props = defineProps(['img', 'title','link'])
 
 const backgroundUrl = computed(() => {
   return new URL(`/src/assets/img/types/${props.img}`, import.meta.url).href

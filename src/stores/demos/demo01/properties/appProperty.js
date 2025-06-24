@@ -19,6 +19,7 @@ export const useAppPropertyDemo01 = defineStore('appPropertyDemo01', {
         latestProperties:{},
         searchedAndFilteredProperties:{},
         allProperties:{},
+        propertyTypes:{},
         property:{},
         errors: {},
         loading: false,
@@ -156,6 +157,25 @@ export const useAppPropertyDemo01 = defineStore('appPropertyDemo01', {
             try {
                 const response = await axiosInstance.get(url);
                 this.property = response.data.property;
+
+                return Promise.resolve(response);
+            } catch (error) {
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
+            }
+        },
+
+        /**
+         * ## Fetch all properties based on the provided type.
+         *
+         * @param {string} type.
+         */
+        async getPropertyTypeDemo01(type) {
+            let url = `${this.prefix}/get-property-type/${type}`;
+
+            try {
+                const response = await axiosInstance.get(url);
+                this.propertyTypes = response.data.properties;
 
                 return Promise.resolve(response);
             } catch (error) {
