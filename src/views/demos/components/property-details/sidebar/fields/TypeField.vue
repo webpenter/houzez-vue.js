@@ -1,13 +1,57 @@
 <template>
-	<div class="form-group">
-		<select class="selectpicker form-control bs-select-hidden" title="Type" data-live-search="false"
-			data-selected-text-format="count" multiple data-actions-box="true">
-			<option>Apartment</option>
-			<option>Condo</option>
-			<option>Loft</option>
-			<option>Multi Family Home</option>
-			<option>Single Family Home</option>
-			<option>Townhouse</option>
-		</select><!-- selectpicker -->
-	</div><!-- form-group -->
+  <div class="form-group">
+    <select
+      class="selectpicker form-control"
+      title="Type"
+      multiple
+      data-actions-box="true"
+      v-model="localValue"
+      ref="selectRef"
+    >
+      <option
+        v-for="type in typeOptions"
+        :key="type.id"
+        :value="type.name"
+      >
+        {{ type.name }}
+      </option>
+    </select>
+  </div>
 </template>
+
+<script setup>
+import { ref, computed, onMounted, watch, nextTick } from 'vue';
+import { useType } from '@/stores/index.js'; // or '@/stores/type.js' if direct import
+
+// Props & Emits for v-model
+const props = defineProps({
+  modelValue: {
+    type: Array,
+    default: () => [],
+  }
+});
+const emit = defineEmits(['update:modelValue']);
+
+// Computed two-way binding
+const localValue = computed({
+  get: () => props.modelValue,
+  set: (val) => emit('update:modelValue', val)
+});
+
+// Load type options from Pinia store
+const typeStore = useType();
+const typeOptions = typeStore.types;
+
+// Refresh selectpicker when options are ready
+const selectRef = ref(null);
+
+onMounted(() => {
+  $(selectRef.value).selectpicker('refresh');
+});
+
+watch(typeOptions, () => {
+  nextTick(() => {
+    $(selectRef.value).selectpicker('refresh');
+  });
+});
+</script>

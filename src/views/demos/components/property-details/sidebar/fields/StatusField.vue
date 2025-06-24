@@ -7,3 +7,10 @@
 </div><!-- form-group -->
 </template>
 
+<script setup>
+import { onMounted } from 'vue';
+
+onMounted(() => {
+    $('.selectpicker').selectpicker('refresh');
+});
+</script>
