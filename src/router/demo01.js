@@ -45,7 +45,7 @@ export default [
        * @auth not-required
        * @description Property details page of Demo01
        */
-       {
+      {
         path: '/demo01/property-details/:propertySlug',
         name: 'demo01.property-details',
         component: () => import('@/views/demos/demo01/pages/property-details/Index.vue'),

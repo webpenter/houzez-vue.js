@@ -3,7 +3,7 @@
         <PropertyFormTabs :property="property" />
         <LongListWidget />
         <AdvancedSearchWidget />
-        <MortgageCalculatorWidget />
+        <MortgageCalculatorWidget /> 
         <RecentlyViewedWidget />
         <PropertiesWidget />
         <FeaturedPropertiesWidget />

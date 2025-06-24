@@ -54,7 +54,7 @@
                             <PropertyGalleryBlock :property="property" />
                             <PropertyAddressBlock :property="property" />
                             <PropertyDetailBlock :property="property" />
-                            <PropertyMortgageCalculatorBlock :property="property" />
+                            <!-- <PropertyMortgageCalculatorBlock :property="property" /> -->
                             <PropertySubListingsTableBlock
                                 v-if="property.sub_properties && property.sub_properties.length" :property="property" />
                             <!-- <PropertySubListingsBlock :property="property" /> not similiar to provided demo01 -->
