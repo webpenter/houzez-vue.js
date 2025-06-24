@@ -8,16 +8,16 @@
                     <div class="taxonomy-grids-module taxonomy-grids-module-v1">
                         <div class="taxonomy-grids-module-grid">
                             <div class="taxonomy-item-square">
-                                <TaxonomyItem />
+                                <TaxonomyItem :img="'apartment.jpg'" title="Apartment" />
                             </div><!-- taxonomy-item-square -->
                             <div class="taxonomy-item-rectangle">
-                                <TaxonomyItem />
+                                <TaxonomyItem :img="'villa.jpg'" title="Villa" />
                             </div><!-- taxonomy-item-rectangle -->
                             <div class="taxonomy-item-rectangle">
-                                <TaxonomyItem />
+                                <TaxonomyItem :img="'home.jpg'" title="Home" />
                             </div><!-- taxonomy-item-rectangle -->
                             <div class="taxonomy-item-square">
-                                <TaxonomyItem />
+                                <TaxonomyItem :img="'office.jpg'" title="Office" />
                             </div><!-- taxonomy-item-square -->
                         </div><!-- taxonomy-grids-module-grid -->
                     </div><!-- taxonomy-grids-module -->
@@ -28,7 +28,7 @@
     </section><!-- listing-wrap -->
 </template>
 
-<script setup lang="ts">
+<script setup>
 import TaxonomyItem from './TaxonomyItem.vue';
 
 </script>

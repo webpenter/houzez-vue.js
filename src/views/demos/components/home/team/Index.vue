@@ -9,7 +9,7 @@
           <div class="row">
             <div
               class="col-12 col-md-4 mb-4"
-              v-for="(member, index) in appTeams"
+              v-for="(member, index) in appTeamsDemo01"
               :key="index"
             >
               <Team :member="member" />
@@ -29,9 +29,9 @@ import { useTeam } from '@/stores/index';
 import { storeToRefs } from 'pinia';
 
 const teamStore = useTeam();
-const { appTeams } = storeToRefs(teamStore);
+const { appTeamsDemo01 } = storeToRefs(teamStore);
 
 onMounted(async () => {
-  await teamStore.getAppTeams();
+  await teamStore.getAppTeamsDemo01();
 });
 </script>

@@ -5,7 +5,7 @@
   <LatestProperties />
   <Team />
   <Testimonial />
-  <!-- <Partners /> -->
+  <Partners />
 </template>
 
 <script setup>
