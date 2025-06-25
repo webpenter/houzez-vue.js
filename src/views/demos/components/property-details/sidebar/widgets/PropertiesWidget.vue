@@ -3,23 +3,20 @@
     <div class="widget-header">
       <h3 class="widget-title">Properties</h3>
     </div>
-
     <div class="widget-body">
-      <template>
-        <PropertyItem
-          v-for="property in latestProperties"
-          :key="property.id"
-          :property="property"
-        />
-      </template>
+      <PropertyItem 
+        v-for="property in latestProperties" 
+        :key="property.id" 
+        :property="property" 
+      />
     </div>
   </div>
 </template>
 
 <script setup>
-import { useAppPropertyDemo01, useViewMode  } from "@/stores/index.js";
+import { useAppPropertyDemo01 } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
-import { onMounted, ref } from "vue"; 
+import { onMounted, ref } from "vue";
 import PropertyItem from './template/PropertyItem.vue';
 
 const propertyToRefs = useAppPropertyDemo01();
@@ -29,8 +26,8 @@ const loading = ref(true);
 const fetchLatestProperties = async () => {
   loading.value = true;
   const res = await propertyToRefs.getLatestPropertiesDemo01();
-
-  if (res.status === 200) { 
+  console.log("Latest Properties:", res.data);
+  if (res.status === 200) {
     loading.value = false;
   }
 };

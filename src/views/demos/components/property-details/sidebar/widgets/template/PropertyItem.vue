@@ -1,7 +1,7 @@
 <template>
     <div class="property-item-widget">
 	<div class="d-flex align-items-start">
-		<div class="left-property-item-widget-wrap">{{ property.title }}
+		<div class="left-property-item-widget-wrap">
 			<ItemImage :thumbnail="property.thumbnail" />
 		</div><!-- left-property-item-widget-wrap -->
 		<div class="right-property-item-widget-wrap">
@@ -36,6 +36,6 @@ const props = defineProps({
 });
 
 onMounted(() => {
-  console.log('PropertyItem received nk:', props.property);
+  
 });
 </script>

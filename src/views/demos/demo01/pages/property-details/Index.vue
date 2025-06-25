@@ -147,7 +147,7 @@ const getPropertyData = async () => {
     loading.value = true;
     try {
         const res = await propertyStore.getPropertyDemo01(propertySlug);
-        console.log('Property Data:', res.data);
+        
         loading.value = false;
 
         if (res.status !== 200) {
