@@ -54,10 +54,8 @@ import {
     useNotification,
 } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
-import { RouterLink, useRoute, useRouter } from "vue-router";
+import {  useRoute, useRouter } from "vue-router";
 import ListItem from "@/views/demos/components/home/featured-listings/ListItem.vue";
-import NoDataFound from "@/views/app/components/NoDataFound.vue";
-import SearchHalfMapGeolocation from '@/views/demos/components/search-results/search-half-map-geolocation/Index.vue';
 import Map from '@/views/demos/components/search-results/map/Index.vue';
 
 const router = useRouter();

@@ -7,27 +7,12 @@
 	</div><!-- widget-header -->
 	<div class="widget-body">
 		<ul class="collapse" id="collapseExample" aria-expanded="false">
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
-			<li><a href="#">Taxonomy <span>(32)</span></a></li>
+			<li v-for="type in types" :key="type.id">
+				<router-link :to="{name:'demo01.property-type',params:{propertyType:type.name}}">
+					{{ type.name }} 
+					<span>(More Details)</span>
+				</router-link>
+			</li>
 		</ul>
 		<a role="button" class="collapsed" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></a>
 	</div><!-- widget-body -->
@@ -35,6 +20,14 @@
 
 
 </template>
+
+<script setup>
+import { useType } from "@/stores/index.js"
+import {storeToRefs} from "pinia"
+
+const typeStore = useType()
+const { types } = storeToRefs(typeStore)
+</script>
 
 <style>
 #widget-list-more-01 .collapse:not(.show) {

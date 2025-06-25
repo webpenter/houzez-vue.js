@@ -23,8 +23,6 @@ export const useType = defineStore('type', {
             {id: 7, name: "Commercial"},
             {id: 8, name: "Residential"},
             {id: 9, name: "Condo"},
-            {id: 10, name: "Multi family home"},
-            {id: 11, name: "Single family home"},
         ],
     }),
     getters: {},
