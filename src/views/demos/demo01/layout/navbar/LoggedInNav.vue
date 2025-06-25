@@ -71,26 +71,28 @@
 
   
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import { storeToRefs } from "pinia";
-import { useProfile,useToken } from "@/stores/index.js";
+import { useProfile, useToken } from "@/stores/index.js";
 import { RouterLink } from "vue-router";
 
-// Token check
-const {token} = useToken();
+// ✅ Use storeToRefs to make it reactive
+const tokenStore = useToken();
+const { token } = storeToRefs(tokenStore);
 
-// Initialize store
+// Profile store
 const profileStore = useProfile();
 const { profile, profilePicture } = storeToRefs(profileStore);
 
-// Fetch profile data only if token exists
+// Fetch profile info if token exists
 onMounted(async () => {
-  if (token) {
+  if (token.value) {
     await profileStore.getProfileInfo();
     await profileStore.getProfilePicture();
   }
 });
 </script>
+
 
 
   

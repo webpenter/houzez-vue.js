@@ -1,20 +1,22 @@
 <template>
-    <div class="alert alert-success" role="alert">
-        <i class="houzez-icon icon-check-circle-1 mr-1"></i> The message goes here
-    </div><!-- alert-success -->
-    <div class="alert alert-danger" role="alert">
-        <i class="houzez-icon icon-remove-circle mr-1"></i> The message goes here
+<form @submit.prevent="submitLogin">
+    <div v-if="error" class="alert alert-danger d-flex align-items-center justify-content-between" role="alert">
+        <div class="d-flex align-items-center">
+            <span>{{ error }}</span>
+        </div>
+        <i class="houzez-icon icon-remove-circle ms-3 cursor-pointer" style="cursor: pointer;" @click="error = null"
+            title="Dismiss"></i>
     </div><!-- alert-danger -->
 
     <div class="login-form-wrap">
         <div class="form-group">
             <div class="form-group-field username-field">
-                <input type="text" class="form-control" placeholder="Username">
+                <input v-model="email" type="email" class="form-control" placeholder="Email" />
             </div><!-- input-group -->
         </div><!-- form-group -->
         <div class="form-group">
             <div class="form-group-field password-field">
-                <input type="text" class="form-control" placeholder="Password">
+                <input v-model="password" type="password" class="form-control" placeholder="Password" />
             </div><!-- input-group -->
         </div><!-- form-group -->
     </div><!-- login-form-wrap -->
@@ -30,11 +32,60 @@
         </div><!-- d-flex -->
     </div><!-- form-tools -->
 
-    <button type="button" class="btn btn-primary btn-full-width">Login</button>
+     <button type="submit" class="btn btn-primary btn-full-width">Login</button>
 
     <div class="social-login-wrap">
         <button type="button" class="btn btn-facebook-login btn-full-width"> Continue with Facebook</button>
         <button type="button" class="btn btn-google-plus-lined btn-full-width"><img class="google-icon"
                 src="../../../../../assets/img/app-side/Google__G__Logo.svg" /> Sign in with google</button>
     </div><!-- social-login-wrap -->
+</form>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+import { useAuth, useProfile } from '@/stores/index' // ✅ import useProfile
+const auth = useAuth()
+const profileStore = useProfile() // ✅ initialize profile store
+
+const email = ref('')
+const password = ref('')
+const error = ref(null)
+
+const submitLogin = async () => {
+  error.value = null
+
+  // Front-end validations
+  if (!email.value) {
+    error.value = 'Email is required'
+    return
+  }
+  if (!/^\S+@\S+\.\S+$/.test(email.value)) {
+    error.value = 'Please enter a valid email'
+    return
+  }
+  if (!password.value) {
+    error.value = 'Password is required'
+    return
+  }
+
+  try {
+    const response = await auth.login({
+      email: email.value,
+      password: password.value
+    })
+
+    if (response.status === 401) {
+        error.value = response.data.message || 'Invalid email or password'
+        return
+    }
+    // ✅ Immediately fetch profile data after login
+    await profileStore.getProfileInfo()
+    await profileStore.getProfilePicture()
+
+    error.value = null
+  } catch (err) {
+    error.value = err?.response?.data?.message || 'Invalid email or password'
+  }
+}
+</script>

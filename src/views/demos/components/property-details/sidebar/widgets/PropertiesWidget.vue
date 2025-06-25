@@ -26,7 +26,6 @@ const loading = ref(true);
 const fetchLatestProperties = async () => {
   loading.value = true;
   const res = await propertyToRefs.getLatestPropertiesDemo01();
-  console.log("Latest Properties:", res.data);
   if (res.status === 200) {
     loading.value = false;
   }
