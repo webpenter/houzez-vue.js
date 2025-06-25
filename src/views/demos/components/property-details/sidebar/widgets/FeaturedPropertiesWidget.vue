@@ -6,7 +6,11 @@
 			</h3><!-- widget-title -->
 		</div><!-- widget-header -->
 		<div class="widget-body">
-			<FeaturedPropertyItem v-for="property in featuredProperties" :key="property.id" :property="property" />
+			<FeaturedPropertyItem 
+				v-for="property in featuredProperties" 
+				:key="property.id" 
+				:property="property" 
+			/>
 		</div><!-- widget-body -->
 	</div><!-- widget-featured-property -->
 </template>

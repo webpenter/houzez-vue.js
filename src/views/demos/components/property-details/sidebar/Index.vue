@@ -8,8 +8,8 @@
         <PropertiesWidget />
         <FeaturedPropertiesWidget />
         <BlogPostsWidget />
-        <LoggedInWidget />
-        <LoginRegisterWidget />
+        <LoggedInWidget v-if="isLoggedIn" />
+        <LoginRegisterWidget v-else />
     </aside><!-- sidebar-wrap -->
 </template>
 
@@ -32,5 +32,14 @@ const props = defineProps({
     required: true
   }
 })
+
+
+import { computed } from 'vue'
+
+// Example: Check if token is stored in localStorage
+const isLoggedIn = computed(() => {
+  return !!localStorage.getItem('token') // or 'auth_token' based on your app
+})
+
 </script>
 

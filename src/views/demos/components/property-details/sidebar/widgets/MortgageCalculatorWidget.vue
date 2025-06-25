@@ -6,7 +6,7 @@
 		</div>
 
 		<!-- ✅ Result Block (just add this!) -->
-		<div v-if="monthlyPayment !== null" class="mortgage-details detail-wrap p-3">
+		<div v-if="monthlyPayment !== null" class="">
 			<ul>
 				<li><strong>Monthly Payment:</strong> ${{ monthlyPayment.toLocaleString() }}</li>
 				<li><strong>Amount Financed:</strong> ${{ financedAmount.toLocaleString() }}</li>
@@ -16,7 +16,7 @@
 		</div>
 
 		<!-- Form -->
-		<div class="widget-body">
+		<div class="widget-body" style="margin-top: 20px;">
 			<!-- Loan Amount -->
 			<div class="form-group">
 				<div class="input-group">
