@@ -75,6 +75,18 @@ export default [
         component: () => import('@/views/demos/demo01/pages/properties/Index.vue'),
         meta: { title: 'Search Results' },
       },
+      /**
+       * @route /demo01/property-type/:propertyType
+       * @name demo01.property-type
+       * @auth not-required
+       * @description Property type page of Demo01
+       */
+       {
+        path: '/demo01/property-type/:propertyType',
+        name: 'demo01.property-type',
+        component: () => import('@/views/demos/demo01/pages/property-type/Index.vue'),
+        meta: { title: 'Property Type' },
+      },
     ],
   },
 ];
