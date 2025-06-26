@@ -12,7 +12,9 @@
 				<div>
 					{{ profile.username || 'Guest' }}
 					<br>
-					<a href="#">Log out</a>
+					{{ profile.email || 'Guest Email' }}
+					<br>
+					<a role="button" class="logout-link" @click.prevent="handleLogout">Log out</a>
 				</div>	
 			</div><!-- d-flex -->
 		</div><!-- logged-in-wrap -->		
@@ -22,10 +24,17 @@
 
 <script setup>
 import { onMounted } from "vue";
+import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
-import { useProfile, useToken } from "@/stores/index.js";
+import { useProfile, useToken, useAuth } from "@/stores/index.js";
 
-// ✅ Use storeToRefs to make it reactive
+// Router for redirect
+const router = useRouter();
+
+// Auth store
+const auth = useAuth();
+
+// Token store
 const tokenStore = useToken();
 const { token } = storeToRefs(tokenStore);
 
@@ -40,4 +49,15 @@ onMounted(async () => {
     await profileStore.getProfilePicture();
   }
 });
+
+// 🔑 Handle logout
+const handleLogout = async () => {
+  try {
+    await auth.logout();
+    profileStore.clearProfile(); // Optional: clear profile
+    router.push('/login'); // Redirect to login
+  } catch (err) {
+    console.error('Logout failed:', err);
+  }
+};
 </script>
