@@ -4,9 +4,7 @@
       
       <!-- Phone Number (only if logged in) -->
       <span v-if="token" class="btn-phone-number d-flex align-items-center me-3">
-        <a :href="`tel:${profile.mobile}`" class="text-decoration-none d-flex align-items-center">
-          <i class="houzez-icon icon-phone-actions-ring me-1 mr-2"></i> {{ profile.mobile }}
-        </a>
+           {{ profile.username }}
       </span>
 
       <!-- Create Listing Button (optional: protect this as well) -->
@@ -88,6 +86,7 @@ const { profile, profilePicture } = storeToRefs(profileStore);
 onMounted(async () => {
   if (token.value) {
     await profileStore.getProfileInfo();
+    console.log('Profile:', profile.value.username);
     await profileStore.getProfilePicture();
   }
 });
