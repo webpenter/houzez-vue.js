@@ -136,10 +136,8 @@ const propertyStore = useAppPropertyDemo01();
 const insightStore = useInsight();
 
 const { property } = storeToRefs(propertyStore);
-const { recentlyViewed } = storeToRefs(insightStore);
 
 const loading = ref(false);
-const insightLoading = ref(false); // optional
 
 const fetchProperty = async () => {
   loading.value = true;
@@ -155,20 +153,9 @@ const fetchProperty = async () => {
   }
 };
 
-const trackAndFetchInsights = async () => {
-  insightLoading.value = true;
-  try {
-    await insightStore.getRecentlyViewed(propertySlug);
-    console.log('🕵️ Recently Viewed Properties:', recentlyViewed.value);
-  } catch (error) {
-    console.error('Insight tracking failed:', error?.response?.data || error.message);
-  } finally {
-    insightLoading.value = false;
-  }
-};
-
 onMounted(async () => {
   await fetchProperty();
-  await trackAndFetchInsights();
+  await insightStore.storePropertyView(propertySlug);            
+  await insightStore.getRecentlyViewed();
 });
 </script>

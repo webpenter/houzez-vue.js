@@ -6,19 +6,20 @@
 		</h3><!-- widget-title -->
 	</div><!-- widget-header -->
 	<div class="widget-body">
-		<!-- <?php include 'inc/widgets/templates/recently-viewed.php';?>
-		<?php include 'inc/widgets/templates/recently-viewed.php';?>
-		<?php include 'inc/widgets/templates/recently-viewed.php';?>
-		<?php include 'inc/widgets/templates/recently-viewed.php';?>
-		<?php include 'inc/widgets/templates/recently-viewed.php';?> -->
-        <RecentlyViewed />
-        <RecentlyViewed />
-        <RecentlyViewed />
-        <RecentlyViewed />
-        <RecentlyViewed />
+        <RecentlyViewed
+			v-for="(property, index) in recentlyViewed"
+			:key="property.id"
+			:property="property"
+		/>
 	</div><!-- widget-body -->
 </div><!-- widget-properties -->
 </template>
+
 <script setup>
 import RecentlyViewed from './template/RecentlyViewed.vue';
+import { useInsight } from '@/stores';
+import { storeToRefs } from 'pinia';
+
+const insightStore = useInsight();
+const { recentlyViewed } = storeToRefs(insightStore);
 </script>

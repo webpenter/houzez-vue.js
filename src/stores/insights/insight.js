@@ -9,7 +9,7 @@
  * @date 06 May,2025
  */
 
-import {defineStore} from "pinia";
+import { defineStore } from "pinia";
 import apiService from "@/services/apiService.js";
 import axiosInstance from "@/services/axiosService.js";
 
@@ -25,7 +25,7 @@ export const useInsight = defineStore('insight', {
         browserStats: {},
         recentlyViewed: [], // ✅ ADD THIS
         loading: false,
-        prefix:"/insights"
+        prefix: "/insights"
     }),
     getters: {},
     actions: {
@@ -207,17 +207,34 @@ export const useInsight = defineStore('insight', {
             }
         },
 
+        /**
+         * Fetches the list of recently viewed properties stored in session.
+         *
+         * @return {Promise<void>} Updates the `recentlyViewed` state with properties.
+         */
 
-        // ✅ Recently Viewed Properties
-        async getRecentlyViewed(slug) {
+        async getRecentlyViewed() {
             try {
-                const res = await axiosInstance.get(`/demo01/properties/recently-viewed/${slug}`);
-                this.recentlyViewed = res.data.properties;
+                const res = await axiosInstance.get('/demo01/insights/get-recent-views');
+                this.recentlyViewed = res.data.data;
+                console.log('Recently viewed properties:', this.recentlyViewed);
             } catch (error) {
                 console.error('Failed to fetch recently viewed properties:', error);
             }
+        },
+
+        /**
+         * Stores the currently viewed property in session (recent views).
+         *
+         * @param {string} slug - The slug of the property to store.
+         * @return {Promise<void>}
+         */
+        async storePropertyView(slug) {
+        try {
+            await axiosInstance.get(`/demo01/insights/store-recent-view/${slug}`);
+        } catch (error) {
+                console.error('❌ Failed to store property view:', error);
+            }
         }
-
-
     }
-});
+})
