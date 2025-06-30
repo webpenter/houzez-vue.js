@@ -116,17 +116,20 @@
                                 </div><!-- d-flex -->
                             </div><!-- listing-tools-wrap -->
                             <div class="listing-view list-view">
-                                <!-- <?php include 'inc/listing/item-v1.php';?>
-                                <?php include 'inc/listing/item-v1.php';?>
-                                <?php include 'inc/listing/item-v1.php';?>
-                                <?php include 'inc/listing/item-v1.php';?>
-                                <?php include 'inc/listing/item-v1.php';?>
-                                <?php include 'inc/listing/item-v1.php';?>
-                                <?php include 'inc/listing/item-v1.php';?>
-                                <?php include 'inc/listing/item-v1.php';?>
-                                <?php include 'inc/listing/item-v1.php';?>
-                                <?php include 'inc/listing/item-v1.php';?>     -->
+                                
                                 this is created
+                                <!-- <ListItem /> -->
+                                <!-- <ListItem /> -->
+                                <!-- <ListItem /> -->
+                                <!-- <ListItem /> -->
+                                <!-- <ListItem /> -->
+                                <!-- <ListItem /> -->
+                                <!-- <ListItem /> -->
+                                <!-- <ListItem /> -->
+                                <!-- <ListItem /> -->
+                                <!-- <ListItem /> -->
+                                <!-- <ListItem /> -->
+                                <!-- <ListItem /> -->
                             </div><!-- listing-view -->
                             <div class="load-more-wrap">
                                 <a class="btn btn-primary-outlined btn-load-more" href="#">Load More</a>    
@@ -155,4 +158,6 @@ import StatsPropertyTypes from '@/views/demos/components/agents/StatsPropertyTyp
 import StatsPropertyStatus from '@/views/demos/components/agents/StatsPropertyStatus.vue';
 import StatsPropertyCities from '@/views/demos/components/agents/StatsPropertyCities.vue';   
 import AgentContact from '@/views/demos/components/agents/AgentContact.vue';   
+import ListItem from '../../../components/home/featured-listings/ListItem.vue';
+
 </script>
