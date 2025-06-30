@@ -3,10 +3,10 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item breadcrumb-item-home"><i class="houzez-icon icon-house"></i>
-                    <RouterLink :to="{name:'app'}">{{ $t("Home") }}</RouterLink>
+                    <RouterLink :to="{name:'demo01'}">{{ $t("Home") }}</RouterLink>
                 </li>
-                <li class="breadcrumb-item">
-                    <RouterLink :to="{ name: 'app.property-details', params: { slug: property.slug } }">
+                <li v-if="property.type" class="breadcrumb-item">
+                    <RouterLink :to="{ name: 'demo01.property-type', params: { propertyType: property.type } }">
                         {{ $filters.capitalize(property.type) }}
                     </RouterLink>
                 </li>

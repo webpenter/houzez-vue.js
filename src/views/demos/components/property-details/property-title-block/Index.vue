@@ -17,7 +17,7 @@
             </div><!-- d-flex -->
             <div class="property-labels-wrap">
                 <span v-if="property?.is_featured" class="label-featured label">Featured</span>
-                <a v-if="property?.status" href="#" class="label-status label"> {{ property.status }}</a>
+                <a v-if="property?.status" href="#" class="label-status label">For {{ property.status }}</a>
                 <a
                     v-if="property?.label"
                     href="#"
