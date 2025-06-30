@@ -138,6 +138,7 @@
                         <div class="tab-pane fade" id="tab-reviews">
                             <!-- <?php include 'inc/property/property-reviews.php';?> -->
                              this is created
+                             <!-- <PropertyReviews /> -->
                         </div><!-- tab-pane -->
                     </div><!-- tab-content -->
 
@@ -159,5 +160,6 @@ import StatsPropertyStatus from '@/views/demos/components/agents/StatsPropertySt
 import StatsPropertyCities from '@/views/demos/components/agents/StatsPropertyCities.vue';   
 import AgentContact from '@/views/demos/components/agents/AgentContact.vue';   
 import ListItem from '../../../components/home/featured-listings/ListItem.vue';
+import PropertyReviews from '../../../components/property-details/property/PropertyReviews.vue';
 
 </script>
