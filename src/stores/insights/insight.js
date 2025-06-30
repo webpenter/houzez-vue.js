@@ -23,6 +23,7 @@ export const useInsight = defineStore('insight', {
         countriesStats: {},
         platformStats: {},
         browserStats: {},
+        recentlyViewed: [], // ✅ ADD THIS
         loading: false,
         prefix:"/insights"
     }),
@@ -205,6 +206,18 @@ export const useInsight = defineStore('insight', {
                 return new Promise((_, reject) => reject(error.response));
             }
         },
+
+
+        // ✅ Recently Viewed Properties
+        async getRecentlyViewed(slug) {
+            try {
+                const res = await axiosInstance.get(`/demo01/properties/recently-viewed/${slug}`);
+                this.recentlyViewed = res.data.properties;
+            } catch (error) {
+                console.error('Failed to fetch recently viewed properties:', error);
+            }
+        }
+
 
     }
 });

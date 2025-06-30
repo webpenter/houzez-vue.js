@@ -125,40 +125,50 @@ import PropertyDetailsSkeleton from '@/components/skeleton/PropertyDetailsSkelet
 
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useAppPropertyDemo01  } from '@/stores/index.js';
+import { useAppPropertyDemo01, useInsight } from '@/stores/index.js';
 import { storeToRefs } from 'pinia';
 
-
-// Store and Routing
 const route = useRoute();
 const router = useRouter();
 const propertySlug = route.params.propertySlug;
 
-
-// Pinia Store
 const propertyStore = useAppPropertyDemo01();
+const insightStore = useInsight();
+
 const { property } = storeToRefs(propertyStore);
+const { recentlyViewed } = storeToRefs(insightStore);
 
-// Loading State
 const loading = ref(false);
+const insightLoading = ref(false); // optional
 
-// Fetch Property
-const getPropertyData = async () => {
-    loading.value = true;
-    try {
-        const res = await propertyStore.getPropertyDemo01(propertySlug);
-        
-        loading.value = false;
-
-        if (res.status !== 200) {
-            router.push({ name: 'property-not-found-404' });
-        }
-    } catch (error) {
-        router.push({ name: 'property-not-found-404' });
+const fetchProperty = async () => {
+  loading.value = true;
+  try {
+    const response = await propertyStore.getPropertyDemo01(propertySlug);
+    if (response.status !== 200) {
+      router.push({ name: 'property-not-found-404' });
     }
+  } catch (error) {
+    router.push({ name: 'property-not-found-404' });
+  } finally {
+    loading.value = false;
+  }
 };
 
-onMounted(() => {
-    getPropertyData();
+const trackAndFetchInsights = async () => {
+  insightLoading.value = true;
+  try {
+    await insightStore.getRecentlyViewed(propertySlug);
+    console.log('🕵️ Recently Viewed Properties:', recentlyViewed.value);
+  } catch (error) {
+    console.error('Insight tracking failed:', error?.response?.data || error.message);
+  } finally {
+    insightLoading.value = false;
+  }
+};
+
+onMounted(async () => {
+  await fetchProperty();
+  await trackAndFetchInsights();
 });
 </script>

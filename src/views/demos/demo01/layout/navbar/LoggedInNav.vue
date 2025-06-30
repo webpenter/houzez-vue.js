@@ -86,7 +86,6 @@ const { profile, profilePicture } = storeToRefs(profileStore);
 onMounted(async () => {
   if (token.value) {
     await profileStore.getProfileInfo();
-    console.log('Profile:', profile.value.username);
     await profileStore.getProfilePicture();
   }
 });

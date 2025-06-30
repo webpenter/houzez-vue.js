@@ -1,72 +1,77 @@
 <template>
-    <section class="half-map-wrap map-on-left clearfix">
-        <div id="map-view-wrap" class="half-map-left-wrap">
-            <Map
-                v-for="property in allProperties"
-                    :key="property.id"
-                    :property="property"
-                    :view="viewType" 
-            />
-        </div><!-- half-map-left-wrap -->
-        <div class="half-map-right-wrap">
-            <SearchHalfMapGeolocation 
-                :modelValue="formData"
-                @search="handleSearch" 
-                @reset="resetFilters"
-                @save-search="saveSearchResult" 
-            />
-            <div class="page-title-wrap">
-                <div class="d-flex align-items-center">
-                    <div class="page-title flex-grow-1">
-                        <h1>{{ allProperties.length }} results found</h1>
-                    </div><!-- page-title -->
-                    <div class="sort-by">
-                        <div class="d-flex align-items-center">
-                            <div class="sort-by-title">
-                                Sort by:
-                            </div><!-- sort-by-title -->
-                            <select class="selectpicker form-control bs-select-hidden" title="Default Order"
-                                data-live-search="false" data-dropdown-align-right="auto">
-                                <option>Default Order</option>
-                                <option>Price - High to Low</option>
-                                <option>Price - Low to Hight</option>
-                                <option>Featured First</option>
-                                <option>Date - New to Old</option>
-                                <option>Date - Old to New</option>
-                            </select><!-- selectpicker -->
-                        </div><!-- d-flex -->
-                    </div><!-- sort-by -->
-                    <div class="listing-switch-view">
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                                <a class="switch-btn btn-list" :class="{ active: viewType === 'list' }" href="#"
-                                    @click.prevent="viewType = 'list'">
-                                    <i class="houzez-icon icon-layout-bullets"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="switch-btn btn-grid" :class="{ active: viewType === 'grid' }" href="#"
-                                    @click.prevent="viewType = 'grid'">
-                                    <i class="houzez-icon icon-layout-module-1"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- listing-switch-view -->
-                </div><!-- d-flex -->
-            </div><!-- page-title-wrap -->
-            <div class="listing-view" :class="viewType + '-view'">
-                <ListItem
+    <template v-if="loading">
+        <SearchSkeleton />
+    </template>
+    <template v-else>
+        <section class="half-map-wrap map-on-left clearfix">
+            <div id="map-view-wrap" class="half-map-left-wrap">
+                <Map
                     v-for="property in allProperties"
-                    :key="property.id"
-                    :property="property"
-                    class="item-listing-wrap card"
-                    :view="viewType"
+                        :key="property.id"
+                        :property="property"
+                        :view="viewType" 
                 />
-            </div><!-- listing-view -->
-            <!-- <?php include 'inc/listing/pagination.php';?> -->
-        </div><!-- half-map-right-wrap -->
-    </section><!-- half-map-wrap -->
+            </div><!-- half-map-left-wrap -->
+            <div class="half-map-right-wrap">
+                <SearchHalfMapGeolocation 
+                    :modelValue="formData"
+                    @search="handleSearch" 
+                    @reset="resetFilters"
+                    @save-search="saveSearchResult" 
+                />
+                <div class="page-title-wrap">
+                    <div class="d-flex align-items-center">
+                        <div class="page-title flex-grow-1">
+                            <h1>{{ allProperties.length }} results found</h1>
+                        </div><!-- page-title -->
+                        <div class="sort-by">
+                            <div class="d-flex align-items-center">
+                                <div class="sort-by-title">
+                                    Sort by:
+                                </div><!-- sort-by-title -->
+                                <select class="selectpicker form-control bs-select-hidden" title="Default Order"
+                                    data-live-search="false" data-dropdown-align-right="auto">
+                                    <option>Default Order</option>
+                                    <option>Price - High to Low</option>
+                                    <option>Price - Low to Hight</option>
+                                    <option>Featured First</option>
+                                    <option>Date - New to Old</option>
+                                    <option>Date - Old to New</option>
+                                </select><!-- selectpicker -->
+                            </div><!-- d-flex -->
+                        </div><!-- sort-by -->
+                        <div class="listing-switch-view">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a class="switch-btn btn-list" :class="{ active: viewType === 'list' }" href="#"
+                                        @click.prevent="viewType = 'list'">
+                                        <i class="houzez-icon icon-layout-bullets"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="switch-btn btn-grid" :class="{ active: viewType === 'grid' }" href="#"
+                                        @click.prevent="viewType = 'grid'">
+                                        <i class="houzez-icon icon-layout-module-1"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- listing-switch-view -->
+                    </div><!-- d-flex -->
+                </div><!-- page-title-wrap -->
+                <div class="listing-view" :class="viewType + '-view'">
+                    <ListItem
+                        v-for="property in allProperties"
+                        :key="property.id"
+                        :property="property"
+                        class="item-listing-wrap card"
+                        :view="viewType"
+                    />
+                </div><!-- listing-view -->
+                <!-- <?php include 'inc/listing/pagination.php';?> -->
+            </div><!-- half-map-right-wrap -->
+        </section><!-- half-map-wrap -->
+    </template>
 </template>
 <script setup>
 import { computed, onMounted, ref, watch } from "vue";
@@ -85,6 +90,8 @@ import ListItem from "@/views/demos/components/home/featured-listings/ListItem.v
 import NoDataFound from "@/views/app/components/NoDataFound.vue";
 import SearchHalfMapGeolocation from '@/views/demos/components/search-results/search-half-map-geolocation/Index.vue';
 import Map from '@/views/demos/components/search-results/map/Index.vue';
+import SearchSkeleton from '@/components/skeleton/SearchSkeleton.vue';
+
 
 const token = useToken().getToken;
 const router = useRouter();

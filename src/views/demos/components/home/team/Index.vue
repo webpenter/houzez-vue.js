@@ -1,5 +1,5 @@
 <template>
-  <section class="content-wrap">
+  <section class="content-wrap" v-if="appTeamsDemo01.length">
     <div class="container">
       <div class="row">
         <div class="col-12">

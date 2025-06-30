@@ -87,6 +87,18 @@ export default [
         component: () => import('@/views/demos/demo01/pages/property-type/Index.vue'),
         meta: { title: 'Property Type' },
       },
+      /**
+       * @route /demo01/agent/:agentUsername
+       * @name demo01.agent-details
+       * @auth not-required     
+       * @description Agent details page of Demo01
+       */
+       {
+        path: '/demo01/agent/agentUsername',
+        name: 'demo01.agent-details',
+        component: () => import('@/views/demos/demo01/pages/agents/Index.vue'),
+        meta: { title: 'Property Type' },
+      },
     ],
   },
 ];
