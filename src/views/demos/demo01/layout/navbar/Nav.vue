@@ -43,7 +43,7 @@
 			</a>
 			<ul class="dropdown-menu">
 				<li class="nav-item">
-					<router-link class="dropdown-item" :to="{name:'app.about-us'}">
+					<router-link class="dropdown-item" :to="{name:'demo01.about-us'}">
 						{{ $t('About Us') }} ({{ $t('Demo') }} 01)
 					</router-link>
 				</li>

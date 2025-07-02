@@ -99,6 +99,17 @@ export default [
         component: () => import('@/views/demos/demo01/pages/agents/Index.vue'),
         meta: { title: 'Property Type' },
       },
+      /**
+       * @route /demo01/about-us
+       * @name demo01.about-us
+       * @auth not-required
+       */
+       {
+        path: '/demo01/about-us',
+        name: 'demo01.about-us',
+        component: () => import('@/views/demos/demo01/pages/about-us/Index.vue'),
+        meta: { title: 'About Us' },
+      },
     ],
   },
 ];
