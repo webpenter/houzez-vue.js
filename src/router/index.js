@@ -577,6 +577,16 @@ const routes = [
         name: "not-found-404",
         component: () => import('@/components/pages/NotFound404.vue'),
         meta: { title: "404 Not Found" },
+    }, 
+    /*** ---------------
+     * @route 404-Agent-Not-Found
+     * @auth not-required
+     ***/
+    {
+        path: "/agent-not-found-404",
+        name: "agent-not-found-404",
+        component: () => import('@/components/pages/AgentNotFound404.vue'),
+        meta: { title: "404 Agent Not Found" },
     },
     
     // --- Demos Routes ---

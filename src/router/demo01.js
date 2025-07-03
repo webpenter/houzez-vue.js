@@ -73,7 +73,7 @@ export default [
         path: '/demo01/properties',
         name: 'demo01.properties',
         component: () => import('@/views/demos/demo01/pages/properties/Index.vue'),
-        meta: { title: 'Search Results' },
+        meta: { title: 'Properties' },
       },
       /**
        * @route /demo01/property-type/:propertyType
@@ -88,16 +88,28 @@ export default [
         meta: { title: 'Property Type' },
       },
       /**
+       * @route /demo01/agents
+       * @name demo01.agents
+       * @auth not-required
+       * @description Agents page of Demo01
+       */
+      {
+        path: '/demo01/agents',
+        name: 'demo01.agents',
+        component: () => import('@/views/demos/demo01/pages/agents/Index.vue'),
+        meta: { title: 'Agents' },
+      },
+      /**
        * @route /demo01/agent/:agentUsername
        * @name demo01.agent-details
        * @auth not-required     
        * @description Agent details page of Demo01
        */
        {
-        path: '/demo01/agent/agentUsername',
+        path: '/demo01/agent/:agentUsername',
         name: 'demo01.agent-details',
-        component: () => import('@/views/demos/demo01/pages/agents/Index.vue'),
-        meta: { title: 'Property Type' },
+        component: () => import('@/views/demos/demo01/pages/agent-details/Index.vue'),
+        meta: { title: 'Agent Detail' },
       },
     ],
   },

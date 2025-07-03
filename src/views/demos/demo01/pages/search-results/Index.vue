@@ -59,7 +59,7 @@
                         <!-- listing-switch-view -->
                     </div><!-- d-flex -->
                 </div><!-- page-title-wrap -->
-                <div class="listing-view" :class="viewType + '-view'">
+                <div v-if="allProperties.length > 0" class="listing-view" :class="viewType + '-view'">
                     <ListItem
                         v-for="property in allProperties"
                         :key="property.id"
@@ -68,6 +68,13 @@
                         :view="viewType"
                     />
                 </div><!-- listing-view -->
+                <div v-else id="houzez_ajax_container">
+                    <div class="listing-view grid-view row row-cols-1 row-cols-md-2 gy-4 gx-4 mx-0" role="list" data-view="grid" data-layout="v1" data-css="listing-view grid-view row row-cols-1 row-cols-md-2 gy-4 gx-4 mx-0">
+                        <div class="search-no-results-found flex-grow-1 text-center">
+                            We didn't find any results
+                        </div>
+                    </div>
+                </div>
                 <!-- <?php include 'inc/listing/pagination.php';?> -->
             </div><!-- half-map-right-wrap -->
         </section><!-- half-map-wrap -->
