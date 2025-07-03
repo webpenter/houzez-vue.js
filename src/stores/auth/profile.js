@@ -32,7 +32,7 @@ export const useProfile = defineStore("userProfile", {
         /**
          * @feature the user's profile information from the server.
          * @returns {Promise<Object>} - Resolves with the server's response containing the user's profile data.Rejects with the server's error response if the request fails.
-         */
+         */ 
         async getProfileInfo () {
             try {
                 this.loading = true;

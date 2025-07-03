@@ -13,12 +13,15 @@
                             <div class="agent-image">
                                 <div class="agent-company-logo">
                                     <img class="img-fluid"
-                                        src="F:\naraish\webpenter\houzez\houzez-vue.js\src\assets\img\app-side\logo-houzez-color.png"
-                                        alt="company logo">
+                                    :src="Logo"
+                                        alt="agent-company-logo"
+                                    >
                                 </div>
-                                <img class="img-fluid"
-                                    src="F:\naraish\webpenter\houzez\houzez-vue.js\src\assets\img\app-side\agent.jpg"
-                                    alt="">
+                                <img
+                                    class="img-fluid"
+                                    :src="agent.profile?.profile_picture"
+                                    alt="Agent"
+                                />
                             </div><!-- agent-image -->
                         </div><!-- col-lg-4 col-md-4 col-sm-12 -->
                         <div class="col-lg-8 col-md-8 col-sm-12">
@@ -38,25 +41,25 @@
                                         <a href="#tab-content">See all reviews</a>
                                     </div><!-- rating-score-wrap -->
                                 </div><!-- agent-profile-content -->
-                                <p class="agent-list-position"> Senior Real Estate Agent at <a href="#">Modern House
+                                <p class="agent-list-position"> {{ agent.profile?.position || null }} <a href="#">Modern House
                                         Real Estate</a></p>
                             </div><!-- agent-profile-header -->
                             <div class="agent-profile-content">
                                 <ul class="list-unstyled">
-                                    <li><strong>Agent License:</strong> 090-0348-8346</li>
-                                    <li><strong>Tax Number:</strong> HGT-92384-3434</li>
-                                    <li><strong>Service Areas:</strong> Grand Rapids, Forest Hills, Comstock Park,
-                                        Caledonia, Kentwood, Grandville, Rockford, Walker, Belmont, Lowell</li>
-                                    <li><strong>Specialties:</strong> Property Management, Consulting, Buyer's Agent,
-                                        Listing Agent, Relocation</li>
+                                    <li><strong>Agent License:</strong> {{ agent.profile?.license || null }} </li>
+                                    <li><strong>Tax Number:</strong> {{ agent.profile?.tax_number || null }} </li>
+                                    <li><strong>Service Areas:</strong> {{ agent.profile?.service_areas || null }} </li>
+                                    <li><strong>Specialties:</strong> {{ agent.profile?.specialties || null }} </li>
                                 </ul>
                             </div><!-- agent-profile-content -->
                             <div class="agent-profile-buttons">
                                 <button class="btn btn-secondary" data-toggle="modal"
-                                    data-target="#mobile-property-form">Send Email</button>
+                                    data-target="#mobile-property-form">
+                                    Send Email
+                                </button>
                                 <button type="button" class="btn btn-call">
                                     <span class="hide-on-click">Call</span>
-                                    <span class="show-on-click">(987) 345 8765</span>
+                                    <span class="show-on-click">{{ agent.profile?.phone || null }}</span>
                                 </button>
                             </div><!-- agent-profile-buttons -->
                         </div><!-- col-lg-8 col-md-8 col-sm-12 -->
@@ -80,13 +83,8 @@
                     <div class="col-lg-8 col-md-12 bt-content-wrap">
 
                         <div class="agent-bio-wrap">
-                            <h2>About Brittany Watkins</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam imperdiet ullamcorper
-                                nisl, sed venenatis massa eleifend a. Sed at turpis id est dapibus fermentum at ac orci.
-                                Maecenas purus leo, feugiat vel lacinia non, dignissim sed nisl. Cras sit amet arcu quis
-                                mauris commodo commodo quis a quam. Etiam vitae aliquet eros. Etiam pharetra ultrices
-                                risus, eu pellentesque odio cursus sed. In ligula enim, dignissim id posuere placerat,
-                                scelerisque sit amet ipsum. Nunc ut nibh dignissim enim iaculis.</p>
+                            <h2>About {{ agent.name }}</h2>
+                            <p>{{ agent.profile?.about_me || null }}</p>
                             <p><i class="houzez-icon icon-messages-bubble mr-1"></i> <strong>Languages:</strong>
                                 English, Spanish, French</p>
                         </div><!-- agent-bio-wrap -->
@@ -172,7 +170,7 @@
                     </div><!-- bt-content-wrap -->
                     <div class="col-lg-4 col-md-12 bt-sidebar-wrap">
                         <aside class="sidebar-wrap">
-                            <AgentContact />
+                            <AgentContact :agent="agent" />
                         </aside>
                     </div><!-- bt-sidebar-wrap -->
                 </div><!-- row -->
@@ -187,6 +185,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useAgent } from '@/stores/index.js'
 import { storeToRefs } from 'pinia'
 
+import Logo from '@/assets/img/app-side/logo-houzez-color.png';
 import StatsPropertyTypes from '@/views/demos/components/agents/StatsPropertyTypes.vue';
 import StatsPropertyStatus from '@/views/demos/components/agents/StatsPropertyStatus.vue';
 import StatsPropertyCities from '@/views/demos/components/agents/StatsPropertyCities.vue';
@@ -210,7 +209,8 @@ onMounted(async () => {
 
         if (!agent.value || !agent.value.username) {
             router.push({ name: 'agent-not-found-404' })
-        }
+        } 
+        console.log('Agent fetched successfully:', agent.value)
     } catch (error) {
         console.error('Agent fetch failed:', error)
         router.push({ name: 'agent-not-found-404' })
