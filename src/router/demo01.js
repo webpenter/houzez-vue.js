@@ -111,6 +111,17 @@ export default [
         component: () => import('@/views/demos/demo01/pages/agent-details/Index.vue'),
         meta: { title: 'Agent Detail' },
       },
+      /**
+       * @route /demo01/about-us
+       * @name demo01.about-us
+       * @auth not-required
+       */
+       {
+        path: '/demo01/about-us',
+        name: 'demo01.about-us',
+        component: () => import('@/views/demos/demo01/pages/about-us/Index.vue'),
+        meta: { title: 'About Us' },
+      },
     ],
   },
 ];
