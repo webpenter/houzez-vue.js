@@ -26,13 +26,30 @@
 			</a>
 			<ul class="dropdown-menu">
 				<li class="nav-item">
-					<router-link class="dropdown-item" :to="{name:'app.properties'}">
+					<router-link class="dropdown-item" :to="{name:'demo01.properties'}">
 						{{ $t('Properties') }} ({{ $t('Demo') }} 01)
 					</router-link>
 				</li>
 				<li class="nav-item">
 					<router-link class="dropdown-item" :to="{name:'app.properties'}">
 						{{ $t('Properties') }}
+					</router-link>
+				</li>
+			</ul>
+		</li>
+		<li class="nav-item dropdown">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+				{{ $t('Realtor') }}
+			</a>
+			<ul class="dropdown-menu">
+				<li class="nav-item">
+					<router-link class="dropdown-item" :to="{name:'demo01.agents'}">
+						{{ $t('Agents') }}
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link class="dropdown-item" :to="{name:'demo01.agents'}">
+						{{ $t('Agent Profile') }}
 					</router-link>
 				</li>
 			</ul>
