@@ -5,6 +5,7 @@
   <LatestProperties />
   <Team />
   <Testimonial />
+  <Agents />
   <Partners />
 </template>
 
@@ -16,5 +17,6 @@ import LatestProperties from '@/views/demos/components/home/finest-properties/In
 import Team from '@/views/demos/components/home/team/Index.vue';
 import Testimonial from '@/views/demos/components/home/testimonial/Index.vue';
 import Partners from '@/views/demos/components/home/partners/Index.vue';
+import Agents from '@/views/demos/components/home/agents/Index.vue';
 
 </script>
