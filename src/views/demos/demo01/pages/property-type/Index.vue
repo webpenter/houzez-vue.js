@@ -47,7 +47,7 @@
                         :view="viewType"
                     />
                 </div><!-- listing-view -->
-                <!-- <?php include 'inc/listing/pagination.php';?> -->
+                 <Pagination />
             </div><!-- half-map-right-wrap -->
         </section><!-- half-map-wrap -->
     </template>
@@ -63,6 +63,7 @@ import {  useRoute, useRouter } from "vue-router";
 import ListItem from "@/views/demos/components/home/featured-listings/ListItem.vue";
 import Map from '@/views/demos/components/search-results/map/Index.vue';
 import PropertyTypeSkeleton from '@/components/skeleton/PropertyTypeSkeleton.vue';
+import Pagination from "@/views/demos/components/inc/Pagination.vue";
 
 const router = useRouter();
 const route = useRoute();

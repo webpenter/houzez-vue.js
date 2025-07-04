@@ -75,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <?php include 'inc/listing/pagination.php';?> -->
+                 <Pagination />
             </div><!-- half-map-right-wrap -->
         </section><!-- half-map-wrap -->
     </template>
@@ -98,6 +98,7 @@ import NoDataFound from "@/views/app/components/NoDataFound.vue";
 import SearchHalfMapGeolocation from '@/views/demos/components/search-results/search-half-map-geolocation/Index.vue';
 import Map from '@/views/demos/components/search-results/map/Index.vue';
 import SearchSkeleton from '@/components/skeleton/SearchSkeleton.vue';
+import Pagination from "@/views/demos/components/inc/Pagination.vue";
 
 
 const token = useToken().getToken;

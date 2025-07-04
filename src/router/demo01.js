@@ -105,7 +105,7 @@ export default [
        * @auth not-required     
        * @description Agent details page of Demo01
        */
-       {
+      {
         path: '/demo01/agent/:agentUsername',
         name: 'demo01.agent-details',
         component: () => import('@/views/demos/demo01/pages/agent-details/Index.vue'),

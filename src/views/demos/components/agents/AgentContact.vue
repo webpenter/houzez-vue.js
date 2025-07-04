@@ -34,14 +34,19 @@
 					<i class="houzez-icon icon-professional-network-linkedin mr-2"></i>
 				</a>
 			</span>
-			<span v-if="agent.profile.youtube">
-				<a class="btn-googleplus" target="_blank" :href=" agent.profile.youtube ">
+			<span v-if="agent.profile.google_plus">
+				<a class="btn-googleplus" target="_blank" :href=" agent.profile.google_plus ">
 					<i class="houzez-icon icon-social-media-google-plus-1 mr-2"></i>
 				</a>
 			</span>
 			<span v-if="agent.profile.youtube">
 				<a class="btn-youtube" target="_blank" :href=" agent.profile.youtube ">
 					<i class="houzez-icon icon-social-video-youtube-clip mr-2"></i>
+				</a>
+			</span>
+			<span v-if="agent.profile.skype">
+				<a class="btn-pinterest" target="_blank" :href=" agent.profile.skype ">
+					<i class="houzez-icon icon-social-skype mr-2"></i>
 				</a>
 			</span>
 			<span v-if="agent.profile.pinterest">
@@ -54,6 +59,7 @@
 					<i class="houzez-icon icon-social-video-vimeo mr-2"></i>
 				</a>
 			</span>
+			
 		</div><!-- agent-social-media -->
 	</div><!-- agent-bio-wrap -->
 </template>

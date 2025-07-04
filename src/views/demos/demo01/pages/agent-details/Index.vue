@@ -27,9 +27,11 @@
                         <div class="col-lg-8 col-md-8 col-sm-12">
                             <div class="agent-profile-top-wrap">
                                 <div class="agent-profile-header">
-                                    <h1>{{ agent.name }} <span class="badge badge-success agent-verified-badge"><i
-                                                class="houzez-icon icon-check-circle-1 mr-1"></i> Verified</span></h1>
-                                    <div class="rating-score-wrap">
+                                    <h1>{{ agent.name }} 
+                                        <!-- <span class="badge badge-success agent-verified-badge"><i
+                                                class="houzez-icon icon-check-circle-1 mr-1"></i> Verified</span> -->
+                                            </h1>
+                                    <!-- <div class="rating-score-wrap">
                                         <span class="rating-score-text">3.4</span>
                                         <span class="star">
                                             <span class="icon-rating full-star"></span>
@@ -37,12 +39,15 @@
                                             <span class="icon-rating full-star"></span>
                                             <span class="icon-rating half-star"></span>
                                             <span class="icon-rating empty-star"></span>
-                                        </span><!-- star -->
+                                        </span>
                                         <a href="#tab-content">See all reviews</a>
-                                    </div><!-- rating-score-wrap -->
-                                </div><!-- agent-profile-content -->
-                                <p class="agent-list-position"> {{ agent.profile?.position || null }} <a href="#">Modern House
-                                        Real Estate</a></p>
+                                    </div> -->
+                                </div>
+                                <!-- agent-profile-content -->
+                                <p class="agent-list-position">
+                                     {{ agent.profile?.position || null }} 
+                                     <a href="#"><!-- Modern HouseReal Estate --></a>
+                                </p>
                             </div><!-- agent-profile-header -->
                             <div class="agent-profile-content">
                                 <ul class="list-unstyled">
@@ -53,10 +58,10 @@
                                 </ul>
                             </div><!-- agent-profile-content -->
                             <div class="agent-profile-buttons">
-                                <button class="btn btn-secondary" data-toggle="modal"
+                                <!-- <button class="btn btn-secondary" data-toggle="modal"
                                     data-target="#mobile-property-form">
                                     Send Email
-                                </button>
+                                </button> -->
                                 <button type="button" class="btn btn-call">
                                     <span class="hide-on-click">Call</span>
                                     <span class="show-on-click">{{ agent.profile?.phone || null }}</span>
@@ -65,19 +70,20 @@
                         </div><!-- col-lg-8 col-md-8 col-sm-12 -->
                     </div><!-- row -->
                 </div><!-- agent-profile-wrap -->
-                <div class="agent-stats-wrap">
+                <!-- <div class="agent-stats-wrap">
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <StatsPropertyTypes />
-                        </div><!-- col-lg-4 col-md-4 col-sm-12 -->
+                        </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <StatsPropertyStatus />
-                        </div><!-- col-lg-4 col-md-4 col-sm-12 -->
+                        </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <StatsPropertyCities />
-                        </div><!-- col-lg-4 col-md-4 col-sm-12 -->
+                        </div>
                     </div>
-                </div><!-- agent-stats-wrap -->
+                </div> -->
+                <!-- agent-stats-wrap -->
 
                 <div class="row">
                     <div class="col-lg-8 col-md-12 bt-content-wrap">
@@ -85,8 +91,10 @@
                         <div class="agent-bio-wrap">
                             <h2>About {{ agent.name }}</h2>
                             <p>{{ agent.profile?.about_me || null }}</p>
-                            <p><i class="houzez-icon icon-messages-bubble mr-1"></i> <strong>Languages:</strong>
-                                English, Spanish, French</p>
+                            <!-- <p><i class="houzez-icon icon-messages-bubble mr-1"></i> 
+                                <strong>Languages:</strong>
+                                English, Spanish, French
+                            </p> -->
                         </div><!-- agent-bio-wrap -->
 
                         <div class="agent-nav-wrap">
