@@ -10,7 +10,10 @@
                 <div class="detail-wrap">
                     <ul class="list-2-cols list-unstyled">
                         <li><strong>Property ID:</strong> <span>{{ property.property_id }}</span></li>
-                        <li><strong>Price:</strong> <span><span class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}</span></li>
+                        <li>
+                            <strong>Price:</strong> 
+                            <span>{{ property.price }}</span>
+                        </li>
                         <li><strong>Property Size:</strong> <span>{{ property.area_size }} {{ property.size_prefix}}</span></li>
                         <li><strong>Bedrooms:</strong> <span>{{ property.bedrooms }}</span></li>
                         <li><strong>Bathrooms:</strong> <span>{{ property.bathrooms }}</span></li>

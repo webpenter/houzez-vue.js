@@ -1,7 +1,11 @@
 <template>
   <div class="team-module hover-effect">
-    <a href="#" class="team-mobile-link"></a>
-
+    <router-link 
+      v-if="agent.username" 
+      class="team-mobile-link" 
+      :to="{name:'demo01.agent-details',params:{agentUsername:agent.username}}">
+    </router-link>
+  
     <template v-if="imageLoading">
       <div class="skeleton-card animate-skeleton p-3 rounded">
         <div class="skeleton-img mb-3 rounded"></div>
@@ -14,7 +18,8 @@
     </template>
 
     <template v-else>
-      <img class="img-fluid" :src="agent.profile" alt="agent" style="width: 100%; height: auto;" />
+      <router-link :to="{name:'demo01.agent-details',params:{agentUsername:agent.username}}">
+              <img class="img-fluid" :src="agent.profile" alt="agent" style="width: 100%; height: auto;" />
 
       <div class="team-content-wrap team-content-wrap-before">
         <div class="team-content">
@@ -42,6 +47,7 @@
           </div>
         </div>
       </div>
+      </router-link>
     </template>
   </div>
 </template>
