@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-12">
 
-                    <h2 style="margin: 30px 0; text-align: center;">Taxonomy</h2>
+                    <h2 style="margin: 30px 0; text-align: center;">{{ $t('Taxonomy') }}</h2>
                     <div class="taxonomy-grids-module taxonomy-grids-module-v1">
                         <div class="taxonomy-grids-module-grid">
                             <div class="taxonomy-item-square">

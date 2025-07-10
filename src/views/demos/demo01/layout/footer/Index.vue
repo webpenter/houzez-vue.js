@@ -8,18 +8,16 @@
                         <div class="widget widget-wrap widget-about-site">
                             <div class="widget-header">
                                 <h3 class="widget-title">
-                                    About This Website
+                                    {{ $t('About Real Estate') }}
                                 </h3><!-- widget-title -->
                             </div><!-- widget-header -->
                             <div class="widget-body">
                                 <div class="widget-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    <p>{{ $t('footer real estate text') }}
                                     </p>
                                 </div><!-- widget-content -->
                                 <div class="widget-read-more">
-                                    <a href="#">Read more</a>
+                                    <router-link :to="{name:'demo01.about-us'}">{{ $t('Read more') }}</router-link>
                                 </div><!-- widget-read-more -->
                             </div><!-- widget-body -->
                         </div><!-- widget-about-site -->
@@ -29,18 +27,17 @@
                         <div class="widget widget-wrap widget-about-site">
                             <div class="widget-header">
                                 <h3 class="widget-title">
-                                    About This Website
+                                    {{ $t('About This Website') }}
                                 </h3><!-- widget-title -->
                             </div><!-- widget-header -->
                             <div class="widget-body">
                                 <div class="widget-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    <p>{{ $t('footer website text') }}
+
                                     </p>
                                 </div><!-- widget-content -->
                                 <div class="widget-read-more">
-                                    <a href="#">Read more</a>
+                                    <router-link :to="{name:'demo01.about-us'}">{{ $t('Read more') }}</router-link>
                                 </div><!-- widget-read-more -->
                             </div><!-- widget-body -->
                         </div><!-- widget-about-site -->
@@ -50,18 +47,17 @@
                         <div class="widget widget-wrap widget-about-site">
                             <div class="widget-header">
                                 <h3 class="widget-title">
-                                    About This Website
+                                    {{ $t('About Houzez') }}
                                 </h3><!-- widget-title -->
                             </div><!-- widget-header -->
                             <div class="widget-body">
                                 <div class="widget-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    <p>{{ $t('footer houzez text') }}
+
                                     </p>
                                 </div><!-- widget-content -->
                                 <div class="widget-read-more">
-                                    <a href="#">Read more</a>
+                                    <router-link :to="{name:'demo01.about-us'}">{{ $t('Read more') }}</router-link>
                                 </div><!-- widget-read-more -->
                             </div><!-- widget-body -->
                         </div><!-- widget-about-site -->
@@ -69,14 +65,12 @@
                 </div><!-- row -->
             </div><!-- container -->
         </div><!-- footer-top-wrap -->
-        <!-- <?php include 'inc/footer/footer-bottom-v4.php';?> -->
         <div class="footer-bottom-wrap footer-bottom-wrap-v4">
             <div class="container">
                 <div class="d-flex justify-content-between">
                     <div class="footer-copyright">
-                        &copy; Houzez - All rights reserved
+                        &copy; Buy WebPenter - {{ $t('All rights reserved') }}
                     </div><!-- footer-copyright -->
-                    <!-- <?php include 'inc/nav/logo-white.php';?> -->
                     <div class="logo">
                         <RouterLink :to="{ name: 'app' }">
                             <img src="@/assets/img/app-side/logo-houzez-white.png" alt="logo" />

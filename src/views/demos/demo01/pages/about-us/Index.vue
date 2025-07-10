@@ -8,9 +8,8 @@
   
       <!-- Banner content -->
       <div class="banner-caption text-white text-center position-relative" style="z-index: 2; padding-top: 0px;">
-        <h2 class="banner-title display-4 font-weight-bold mb-3">About Us</h2>
-        <p class="banner-subtitle lead" style="padding-inline: 150px;">
-          Houzez is a modern and feature-rich real estate platform designed to meet the needs of real estate professionals, including agents, agencies, and property developers. It provides a complete solution for managing property listings, handling inquiries, and delivering an intuitive property search experience for users. With its elegant design and customizable features, Houzez makes it easy to create a professional real estate presence that attracts and converts potential buyers and renters
+        <h2 class="banner-title display-4 font-weight-bold mb-3">{{ $t('About Us') }}</h2>
+        <p class="banner-subtitle lead" style="padding-inline: 150px;">{{ $t('houzez about page text') }}
         </p>
   
       </div>

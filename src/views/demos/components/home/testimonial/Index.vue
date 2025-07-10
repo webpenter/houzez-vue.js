@@ -3,7 +3,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h2 style="margin: 100px 0 30px 0; text-align: center;">Testimonials</h2>
+                        <h2 style="margin: 100px 0 30px 0; text-align: center;">{{ $t('Testimonials') }}</h2>
                         <Testimonial />
                     </div><!-- col-12 -->
                 </div><!-- row -->

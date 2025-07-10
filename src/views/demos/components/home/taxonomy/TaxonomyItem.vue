@@ -11,7 +11,7 @@
 		}">
       <div class="taxonomy-text-wrap">
         <div class="taxonomy-title">{{ title }}</div>
-        <div class="taxonomy-subtitle">More Details</div>
+        <div class="taxonomy-subtitle">{{ $t('More Details') }}</div>
       </div>
     </router-link>
   </div>

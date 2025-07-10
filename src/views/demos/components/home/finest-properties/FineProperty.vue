@@ -20,7 +20,7 @@
 			:to="{ name: 'demo01.properties' }"
 			@click.native="viewMode.setFeaturedView(false)"
 		>
-			See All
+			{{ $t('See More') }}
 		</router-link>
 	</div><!-- load-more-wrap -->
 </div><!-- property-grid-module -->

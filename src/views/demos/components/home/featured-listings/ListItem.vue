@@ -109,7 +109,7 @@
                         :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }"
                         class="btn btn-primary btn-item"
                     >
-                        Details
+                        {{ $t('Details') }}
                     </RouterLink>
 
                     <div class="item-author">

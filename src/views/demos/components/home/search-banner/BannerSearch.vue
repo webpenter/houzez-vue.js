@@ -2,19 +2,19 @@
   <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist" style="margin-top: 65px;">
     <li class="nav-item">
       <a class="nav-link" :class="{ active: formData.status === '' }" @click.prevent="formData.status = ''">
-        All Status
+        {{ $t('All Status') }}
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" :class="{ active: formData.status === 'For Rent' }"
         @click.prevent="formData.status = 'For Rent'">
-        For Rent
+        {{ $t('For Rent') }}
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" :class="{ active: formData.status === 'For Sale' }"
         @click.prevent="formData.status = 'For Sale'">
-        For Sale
+        {{ $t('For Sale') }}
       </a>
     </li>
   </ul><!-- nav -->
@@ -23,28 +23,29 @@
       <div class="flex-grow-1 flex-search">
         <div class="form-group">
           <div class="search-icon">
-            <input type="text" class="form-control" placeholder="Search" v-model="formData.search" />
+            <input type="text" class="form-control" :placeholder="$t('Search')" v-model="formData.search" />
           </div><!-- search-icon -->
         </div><!-- form-group -->
       </div><!-- flex-search -->
       <div class="flex-search">
         <button @click.prevent="searchProperty" :disabled="btnLoading"
           class="btn btn-search btn-secondary btn-full-width">
-          {{ btnLoading ? 'Searching...' : 'Search' }}
+          {{ btnLoading ? $t('Searching')+'...' : $t('Search') }}
         </button>
       </div><!-- flex-search -->
     </div><!-- d-flex -->
     <div class="d-flex flex-sm-max-column">
       <div class="flex-search flex-sm-max-column">
         <div class="form-group">
-          <select id="city-select" v-model="formData.cities" class="selectpicker form-control" title="Cities" multiple>
+          <select id="city-select" v-model="formData.cities" class="selectpicker form-control" 
+          :title="$t('Cities')" multiple>
             <option v-for="city in cities" :key="city.id" :value="city.name">{{ city.name }}</option>
           </select>
         </div>
       </div><!-- flex-search -->
       <div class="flex-search">
         <div class="form-group">
-          <select id="types-select" v-model="formData.types" class="selectpicker form-control" title="Type" multiple
+          <select id="types-select" v-model="formData.types" class="selectpicker form-control" :title="$t('Type')" multiple
             data-actions-box="true">
             <option v-for="type in types" :key="type.id" :value="type.name">{{ type.name }}</option>
           </select>
@@ -52,15 +53,15 @@
       </div><!-- flex-search -->
       <div class="flex-search">
         <div class="form-group">
-          <select v-model="formData.bedrooms" class="selectpicker form-control" title="Max. Bedrooms">
+          <select v-model="formData.bedrooms" class="selectpicker form-control" :title="$t('Max. Bedrooms')">
             <option v-for="bedroom in bedrooms" :key="bedroom.id" :value="bedroom.name">{{ bedroom.name }}</option>
           </select>
         </div>
       </div><!-- flex-search -->
       <div class="flex-search">
         <div class="form-group">
-          <select v-model="formData.maxPrice" class="selectpicker form-control" title="Max. Price">
-            <option v-for="price in prices" :key="price.id" :value="price.name">{{ price.name === 'Any' ? 'Any' :
+          <select v-model="formData.maxPrice" class="selectpicker form-control" :title="$t('Max. Price')">
+            <option v-for="price in prices" :key="price.id" :value="price.name">{{ price.name === 'Any' ? $t('Any') :
               formatPrice(price.name) }}</option>
           </select>
 

@@ -8,8 +8,8 @@
   
       <!-- Banner content -->
       <div class="banner-caption text-white text-center position-relative" style="z-index: 2; padding-top: 0px;">
-        <h2 class="banner-title display-4 font-weight-bold mb-3">Welcome to Houzez 2.0</h2>
-        <p class="banner-subtitle lead">WordPress Theme For Real Estate</p>
+        <h2 class="banner-title display-4 font-weight-bold mb-3">{{ $t('Welcome to Buy WebPenter') }}</h2>
+        <p class="banner-subtitle lead">{{ $t('Housing Suite Theme for Real Estate') }}</p>
   
         <!-- Search Component -->
         <BannerSearch />

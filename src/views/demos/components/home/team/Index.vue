@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-12">
 
-          <h2 style="margin: 100px 0 30px 0; text-align: center;">Meet Our Team</h2>
+          <h2 style="margin: 100px 0 30px 0; text-align: center;">{{ $t('Meet Our Team') }}</h2>
 
           <div class="row">
             <div
