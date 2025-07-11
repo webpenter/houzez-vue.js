@@ -1,5 +1,5 @@
 <template>
-<section class="content-wrap">
+  <section class="content-wrap">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -17,11 +17,7 @@
 
               <!-- Show actual properties after loading -->
               <template v-else>
-                <ListItem
-                  v-for="property in featuredProperties"
-                  :key="property.id"
-                  :property="property"
-                />
+                <PropertyCard v-for="property in featuredProperties" :key="property.id" :property="property" />
               </template>
 
             </div><!-- listing-view -->
@@ -47,9 +43,9 @@
 <script setup>
 import { useAppPropertyDemo01, useViewMode } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
-import { onMounted, ref } from "vue";  
+import { onMounted, ref } from "vue";
 import FeaturedPropertiesSkeleton from '@/components/skeleton/FeaturedPropertiesSkeleton.vue';
-import ListItem from './ListItem.vue';
+import PropertyCard from './ListItem.vue';
 const viewMode = useViewMode();
 const propertyToRefs = useAppPropertyDemo01();
 const { featuredProperties } = storeToRefs(propertyToRefs);
@@ -58,8 +54,7 @@ const loading = ref(true);
 const fetchFeaturedProperties = async () => {
   loading.value = true;
   const res = await propertyToRefs.getFeaturedPropertiesDemo01();
-
-  if (res.status === 200) { 
+  if (res.status === 200) {
     loading.value = false;
   }
 };

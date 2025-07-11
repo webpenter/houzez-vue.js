@@ -20,7 +20,6 @@
     <template v-else>
       <router-link :to="{name:'demo01.agent-details',params:{agentUsername:agent.username}}">
               <img class="img-fluid" :src="agent.profile" alt="agent" style="width: 100%; height: auto;" />
-
       <div class="team-content-wrap team-content-wrap-before">
         <div class="team-content">
           <div class="team-name">
@@ -62,7 +61,7 @@ const props = defineProps({
   },
   loading: Boolean,
 });
-console.log('Received agent prop:', props.agent);
+
 const imageLoading = ref(true);
 
 // Watch for loading and image to handle lazy load
@@ -83,6 +82,7 @@ watch(
   { immediate: true }
 );
 </script>
+
 
 <style scoped>
 .animate-skeleton {

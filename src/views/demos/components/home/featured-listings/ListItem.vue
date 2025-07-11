@@ -114,7 +114,11 @@
 
                     <div class="item-author">
                         <i class="houzez-icon icon-single-neutral mr-1"></i>
-                        <a href="#">{{ property.user?.user_name }}</a>
+                        <RouterLink
+                            :to="{ name: 'demo01.agent-details', params: { agentUsername: property.user?.username } }"
+                            >
+                            {{ property.user?.name }}
+                        </RouterLink>
                     </div>
 
                     <div class="item-date">
@@ -126,7 +130,11 @@
                 <div class="item-footer clearfix">
                     <div class="item-author">
                         <i class="houzez-icon icon-single-neutral mr-1"></i>
-                        <a href="#">{{ property.user?.user_name }}</a>
+                       <RouterLink
+                            :to="{ name: 'demo01.agent-details', params: { agentUsername: property.user?.username } }"
+                            >
+                            {{ property.user?.name }}
+                        </RouterLink>
                     </div>
                     <div class="item-date">
                         <i class="houzez-icon icon-attachment mr-1"></i>

@@ -1,61 +1,61 @@
 <template>
 	<div class="agent-contacts-wrap">
 		<h3 class="widget-title">Contacts</h3>
-		<div v-if="agent.profile.address" class="agent-map">
+		<div v-if="agent.address" class="agent-map">
 			<address><i class="houzez-icon icon-pin"></i> {{ agent.profile.address }}
 			</address>
 		</div>
 		<ul class="list-unstyled">
-			<li v-if="agent.profile.phone"><strong>Office:</strong> <span>{{ agent.profile.phone }}</span></li>
-			<li v-if="agent.profile.mobile"><strong>Mobile:</strong> <span>{{ agent.profile.mobile }}</span></li>
-			<li v-if="agent.profile.fax_number"><strong>Fax:</strong> <span>{{ agent.profile.fax_number }}</span></li>
+			<li v-if="agent.phone"><strong>Office:</strong> <span>{{ agent.phone }}</span></li>
+			<li v-if="agent.mobile"><strong>Mobile:</strong> <span>{{ agent.mobile }}</span></li>
+			<li v-if="agent.fax_number"><strong>Fax:</strong> <span>{{ agent.fax_number }}</span></li>
 			<li v-if="agent.email"><strong>Email:</strong> <span><a href="#">{{ agent.email }}</a></span></li>
-			<li v-if="agent.profile.website"><strong>Website</strong> <span><a href="#">{{ agent.profile.website }}</a></span></li>
+			<li v-if="agent.website"><strong>Website</strong> <span><a href="#">{{ agent.website }}</a></span></li>
 		</ul>
 		<p>Find {{ agent.name }} on:</p>
 		<div class="agent-social-media d-flex">
-			<span v-if="agent.profile.facebook">
-				<a class="btn-facebook" target="_blank" :href=" agent.profile.facebook ">
+			<span v-if="agent.facebook">
+				<a class="btn-facebook" target="_blank" :href=" agent.facebook ">
 					<i class="houzez-icon icon-social-media-facebook mr-2"></i>
 				</a>
 			</span>
-			<span v-if="agent.profile.instagram">
-				<a class="btn-instagram" target="_blank" :href=" agent.profile.instagram ">
+			<span v-if="agent.instagram">
+				<a class="btn-instagram" target="_blank" :href=" agent.instagram ">
 					<i class="houzez-icon icon-social-instagram mr-2"></i>
 				</a>
 			</span>
-			<span v-if="agent.profile.twitter">
-				<a class="btn-twitter" target="_blank" :href=" agent.profile.twitter">
+			<span v-if="agent.twitter">
+				<a class="btn-twitter" target="_blank" :href=" agent.twitter">
 					<i class="houzez-icon icon-x-logo-twitter-logo-2 mr-2"></i>
 				</a>
 			</span>
-			<span v-if="agent.profile.linkedin">
-				<a class="btn-linkedin" target="_blank" :href=" agent.profile.linkedin">
+			<span v-if="agent.linkedin">
+				<a class="btn-linkedin" target="_blank" :href=" agent.linkedin">
 					<i class="houzez-icon icon-professional-network-linkedin mr-2"></i>
 				</a>
 			</span>
-			<span v-if="agent.profile.google_plus">
-				<a class="btn-googleplus" target="_blank" :href=" agent.profile.google_plus ">
+			<span v-if="agent.google_plus">
+				<a class="btn-googleplus" target="_blank" :href=" agent.google_plus ">
 					<i class="houzez-icon icon-social-media-google-plus-1 mr-2"></i>
 				</a>
 			</span>
-			<span v-if="agent.profile.youtube">
-				<a class="btn-youtube" target="_blank" :href=" agent.profile.youtube ">
+			<span v-if="agent.youtube">
+				<a class="btn-youtube" target="_blank" :href=" agent.youtube ">
 					<i class="houzez-icon icon-social-video-youtube-clip mr-2"></i>
 				</a>
 			</span>
-			<span v-if="agent.profile.skype">
-				<a class="btn-pinterest" target="_blank" :href=" agent.profile.skype ">
+			<span v-if="agent.skype">
+				<a class="btn-pinterest" target="_blank" :href=" agent.skype ">
 					<i class="houzez-icon icon-social-skype mr-2"></i>
 				</a>
 			</span>
-			<span v-if="agent.profile.pinterest">
-				<a class="btn-pinterest" target="_blank" :href=" agent.profile.pinterest ">
+			<span v-if="agent.pinterest">
+				<a class="btn-pinterest" target="_blank" :href=" agent.pinterest ">
 					<i class="houzez-icon icon-social-pinterest mr-2"></i>
 				</a>
 			</span>
-			<span v-if="agent.profile.vimeo">
-				<a class="btn-vimeo" target="_blank" :href=" agent.profile.vimeo">
+			<span v-if="agent.vimeo">
+				<a class="btn-vimeo" target="_blank" :href=" agent.vimeo">
 					<i class="houzez-icon icon-social-video-vimeo mr-2"></i>
 				</a>
 			</span>

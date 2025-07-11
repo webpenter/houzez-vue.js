@@ -19,7 +19,7 @@
                                 </div>
                                 <img
                                     class="img-fluid"
-                                    :src="agent.profile?.profile_picture"
+                                    :src="agent.profile"
                                     alt="Agent"
                                 />
                             </div><!-- agent-image -->
@@ -45,16 +45,16 @@
                                 </div>
                                 <!-- agent-profile-content -->
                                 <p class="agent-list-position">
-                                     {{ agent.profile?.position || null }} 
+                                     {{ agent.position || null }} 
                                      <a href="#"><!-- Modern HouseReal Estate --></a>
                                 </p>
                             </div><!-- agent-profile-header -->
                             <div class="agent-profile-content">
                                 <ul class="list-unstyled">
-                                    <li><strong>Agent License:</strong> {{ agent.profile?.license || null }} </li>
-                                    <li><strong>Tax Number:</strong> {{ agent.profile?.tax_number || null }} </li>
-                                    <li><strong>Service Areas:</strong> {{ agent.profile?.service_areas || null }} </li>
-                                    <li><strong>Specialties:</strong> {{ agent.profile?.specialties || null }} </li>
+                                    <li><strong>Agent License:</strong> {{ agent.license || null }} </li>
+                                    <li><strong>Tax Number:</strong> {{ agent.tax_number || null }} </li>
+                                    <li><strong>Service Areas:</strong> {{ agent.service_areas || null }} </li>
+                                    <li><strong>Specialties:</strong> {{ agent.specialties || null }} </li>
                                 </ul>
                             </div><!-- agent-profile-content -->
                             <div class="agent-profile-buttons">
@@ -64,7 +64,7 @@
                                 </button> -->
                                 <button type="button" class="btn btn-call">
                                     <span class="hide-on-click">Call</span>
-                                    <span class="show-on-click">{{ agent.profile?.phone || null }}</span>
+                                    <span class="show-on-click">{{ agent.phone || null }}</span>
                                 </button>
                             </div><!-- agent-profile-buttons -->
                         </div><!-- col-lg-8 col-md-8 col-sm-12 -->
@@ -90,7 +90,7 @@
 
                         <div class="agent-bio-wrap">
                             <h2>About {{ agent.name }}</h2>
-                            <p>{{ agent.profile?.about_me || null }}</p>
+                            <p>{{ agent.about_me || null }}</p>
                             <!-- <p><i class="houzez-icon icon-messages-bubble mr-1"></i> 
                                 <strong>Languages:</strong>
                                 English, Spanish, French
@@ -99,24 +99,23 @@
 
                         <div class="agent-nav-wrap">
                             <ul class="nav nav-pills nav-justified">
-                                <li class="nav-item">
+                                <li class="nav-item mr-2">
                                     <a class="nav-link active" href="#tab-properties" data-toggle="pill"
-                                        role="tab">Listings
-                                        (20)</a>
+                                        role="tab">Listings ({{ agent.properties.length }})</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#tab-reviews" data-toggle="pill" role="tab">Reviews
-                                        (3)</a>
+                                    <!-- <a class="nav-link" href="#tab-reviews" data-toggle="pill" role="tab">Reviews
+                                        (3)</a> -->
                                 </li>
                             </ul>
                         </div><!-- agent-nav-wrap -->
 
                         <div class="tab-content" id="tab-content">
                             <div class="tab-pane fade show active" id="tab-properties">
-                                <div class="listing-tools-wrap">
+                                <div class="listing-tools-wrap mb-3">
                                     <div class="d-flex align-items-center">
                                         <div class="listing-tabs flex-grow-1">
-                                            <ul class="nav nav-tabs">
+                                            <!-- <ul class="nav nav-tabs" style="justify-content: none;">
                                                 <li class="nav-item">
                                                     <a class="nav-link active" href="#">All</a>
                                                 </li>
@@ -126,13 +125,14 @@
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="#">For Rent</a>
                                                 </li>
-                                            </ul><!-- nav-tabs -->
+                                            </ul> -->
+                                            <!-- nav-tabs -->
                                         </div><!-- listing-tabs -->
-                                        <div class="sort-by">
+                                        <div class="sort-by mr-3">
                                             <div class="d-flex align-items-center">
-                                                <div class="sort-by-title">
+                                                <!-- <div class="sort-by-title">
                                                     Sort by:
-                                                </div><!-- sort-by-title -->
+                                                </div>
                                                 <select class="selectpicker form-control bs-select-hidden"
                                                     title="Default Order" data-live-search="false"
                                                     data-dropdown-align-right="auto">
@@ -142,30 +142,34 @@
                                                     <option>Featured First</option>
                                                     <option>Date - New to Old</option>
                                                     <option>Date - Old to New</option>
-                                                </select><!-- selectpicker -->
+                                                </select> -->
+                                                <!-- selectpicker -->
                                             </div><!-- d-flex -->
                                         </div><!-- sort-by -->
+                                        <div class="listing-switch-view">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item">
+                                                    <a class="switch-btn btn-grid" :class="{ active: viewType === 'grid' }" href="#"
+                                                        @click.prevent="viewType = 'grid'">
+                                                        <i class="houzez-icon icon-layout-module-1"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a class="switch-btn btn-list" :class="{ active: viewType === 'list' }" href="#"
+                                                        @click.prevent="viewType = 'list'">
+                                                        <i class="houzez-icon icon-layout-bullets"></i>
+                                                    </a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                        <!-- listing-switch-view -->
                                     </div><!-- d-flex -->
                                 </div><!-- listing-tools-wrap -->
-                                <div class="listing-view list-view">
-
-                                    this is created
-                                    <!-- <ListItem /> -->
-                                    <!-- <ListItem /> -->
-                                    <!-- <ListItem /> -->
-                                    <!-- <ListItem /> -->
-                                    <!-- <ListItem /> -->
-                                    <!-- <ListItem /> -->
-                                    <!-- <ListItem /> -->
-                                    <!-- <ListItem /> -->
-                                    <!-- <ListItem /> -->
-                                    <!-- <ListItem /> -->
-                                    <!-- <ListItem /> -->
-                                    <!-- <ListItem /> -->
+                                <div v-if="agent.properties.length > 0" class="listing-view" :class="viewType + '-view'">
+                                    <PropertyCard v-for="property in agent.properties" :key="property.id" :property="property" />
                                 </div><!-- listing-view -->
-                                <div class="load-more-wrap">
-                                    <a class="btn btn-primary-outlined btn-load-more" href="#">Load More</a>
-                                </div><!-- load-more-wrap -->
+                               <!-- <Pagination /> -->
                             </div><!-- tab-pane -->
                             <div class="tab-pane fade" id="tab-reviews">
                                 <!-- <?php include 'inc/property/property-reviews.php';?> -->
@@ -188,7 +192,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAgent } from '@/stores/index.js'
 import { storeToRefs } from 'pinia'
@@ -198,11 +202,13 @@ import StatsPropertyTypes from '@/views/demos/components/agents/StatsPropertyTyp
 import StatsPropertyStatus from '@/views/demos/components/agents/StatsPropertyStatus.vue';
 import StatsPropertyCities from '@/views/demos/components/agents/StatsPropertyCities.vue';
 import AgentContact from '@/views/demos/components/agents/AgentContact.vue';
-import ListItem from '../../../components/home/featured-listings/ListItem.vue';
+import Pagination from '@/views/demos/components/inc/Pagination.vue';
+import PropertyCard from '../../../components/home/featured-listings/ListItem.vue';
 import PropertyReviews from '../../../components/property-details/property/PropertyReviews.vue';
 import AgentSkeleton from '@/components/skeleton/AgentSkeleton.vue'
 
 // Setup
+const viewType = ref('grid')
 const route = useRoute()
 const router = useRouter()
 const loading = ref(true) // ✅ Add this
@@ -218,12 +224,17 @@ onMounted(async () => {
         if (!agent.value || !agent.value.username) {
             router.push({ name: 'agent-not-found-404' })
         } 
-        console.log('Agent fetched successfully:', agent.value)
+        
     } catch (error) {
         console.error('Agent fetch failed:', error)
         router.push({ name: 'agent-not-found-404' })
     } finally {
-        loading.value = false // ✅ Set loading false after request
+        loading.value = false
+
+        nextTick(() => {
+            $('.selectpicker').selectpicker('render')
+        })
     }
+    
 })
 </script>
