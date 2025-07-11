@@ -1,10 +1,10 @@
 <template>
     <div class="property-review-wrap property-section-wrap" id="property-review-wrap">
         <div class="block-title-wrap review-title-wrap d-flex align-items-center">
-            <h2>{{ reviews.length }} Reviews</h2>
+            <h2>{{ reviews.length }} {{ $t('Reviews') }}</h2>
             <Rating />
             <!-- <ReviewsSortBy /> -->
-            <a class="btn btn-primary btn-slim" href="#property-review-form">Leave a Review</a>
+            <a class="btn btn-primary btn-slim" href="#property-review-form">{{ $t('Leave a Review') }}</a>
         </div>
 
         <ul class="review-list-wrap list-unstyled">
@@ -38,7 +38,7 @@
 
         <div class="block-wrap" id="property-review-form">
             <div class="block-title-wrap">
-                <h3>Leave a Review</h3>
+                <h3>{{ $t('Leave a Review') }}</h3>
             </div><!-- block-title-wrap -->
             <div class="block-content-wrap">
                 <!-- Error Alert -->
@@ -64,41 +64,41 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label>Title</label>
-                            <input class="form-control" placeholder="Enter a title" type="text" v-model="form.title">
+                            <label>{{ $t('Title') }}</label>
+                            <input class="form-control" :placeholder="$t('Enter a title')" type="text" v-model="form.title">
                         </div>
                     </div><!-- col-md-6 col-sm-12 -->
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label>Rating</label>
+                            <label>{{ $t('Rating') }}</label>
                             <select class="form-control" v-model="form.rating">
-                                <option disabled value="">Select a rating</option>
-                                <option value="1">1 Star - Poor</option>
-                                <option value="2">2 Star - Fair</option>
-                                <option value="3">3 Star - Average</option>
-                                <option value="4">4 Star - Good</option>
-                                <option value="5">5 Star - Excellent</option>
+                                <option disabled value="">{{ $t('Select a rating') }}</option>
+                                <option value="1">{{ $t('1 Star - Poor') }}</option>
+                                <option value="2">{{ $t('2 Star - Fair') }}</option>
+                                <option value="3">{{ $t('3 Star - Average') }}</option>
+                                <option value="4">{{ $t('4 Star - Good') }}</option>
+                                <option value="5">{{ $t('5 Star - Excellent') }}</option>
                             </select><!-- selectpicker -->
                         </div>
                     </div><!-- col-md-6 col-sm-12 -->
                     <div class="col-md-12 col-sm-12">
                         <div class="form-group">
-                            <label>Email</label>
-                            <input class="form-control" placeholder="Enter your email" type="email"
+                            <label>{{ $t('Email') }}</label>
+                            <input class="form-control" :placeholder="$t('Enter your email')" type="email"
                                 v-model="form.email">
                         </div>
                     </div><!-- col-md-6 col-sm-12 -->
                     <div class="col-sm-12 col-xs-12">
                         <div class="form-group form-group-textarea">
-                            <label>Review</label>
-                            <textarea class="form-control" rows="5" placeholder="Write a review"
+                            <label>{{ $t('Review') }}</label>
+                            <textarea class="form-control" rows="5" :placeholder="$t('Write a review')"
                                 v-model="form.comment"></textarea>
                         </div>
                     </div><!-- col-sm-12 col-xs-12 -->
                     <div class="col-sm-12 col-xs-12">
                         <button class="btn btn-secondary btn-sm-full-width" @click.prevent="submitReview">
-                            <span v-if="loading">Submitting...</span>
-                            <span v-else>Submit</span>
+                            <span v-if="loading">{{ $t('Submitting') }}...</span>
+                            <span v-else>{{ $t('Submit') }}</span>
                         </button>
                     </div><!-- col-sm-12 col-xs-12 -->
                 </div><!-- row -->
@@ -114,6 +114,9 @@ import ReviewsSortBy from './template/ListingSortBy.vue';
 import Review from './template/Review.vue';
 import { useReview } from '@/stores/index';
 import { storeToRefs } from 'pinia';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const props = defineProps({
     property: {
@@ -161,7 +164,7 @@ const submitReview = async () => {
         const hasErrors = Object.keys(reviewStore.errors.value?.data?.errors || {}).length > 0;
 
         if (!hasErrors) {
-            successMessage.value = 'Your review has been submitted.';
+            successMessage.value = t('Your review has been submitted');
 
             form.value = {
                 property_id: props.property.id,

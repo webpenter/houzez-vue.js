@@ -1,7 +1,7 @@
 <template>
   <div class="widget widget-wrap widget-advanced-search">
     <div class="widget-header">
-      <h3 class="widget-title">Find Your Home</h3>
+      <h3 class="widget-title">{{ $t('Find Your Home') }}</h3>
     </div>
     <div class="widget-body">
       <div class="advanced-search-widget">

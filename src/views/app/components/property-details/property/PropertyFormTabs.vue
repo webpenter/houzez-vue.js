@@ -4,7 +4,7 @@
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#tab_01" role="tab">
-                    <span class="tab-title">Schedule a tour</span>
+                    <span class="tab-title">{{ $t('Schedule a tour') }}</span>
                 </a>
             </li>
             <li class="nav-item">

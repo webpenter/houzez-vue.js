@@ -2,7 +2,7 @@
   <div class="property-description-wrap property-section-wrap" id="property-description-wrap">
     <div class="block-wrap">
       <div class="block-title-wrap">
-        <h2>Description</h2>
+        <h2>{{ $t('Description') }}</h2>
       </div><!-- block-title-wrap -->
 
       <div class="block-content-wrap">
@@ -10,7 +10,7 @@
 
         <div v-if="property.attachments && property.attachments.length">
           <div class="block-title-wrap">
-            <h3>Property Documents</h3>
+            <h3>{{ $t('Property Documents') }}</h3>
           </div><!-- block-title-wrap -->
 
           <div class="property-documents" v-for="(attachment, index) in property.attachments" :key="attachment.id">
@@ -21,7 +21,7 @@
               </div>
               <div class="property-document-link">
                 <a :href="attachment.file_path" target="_blank" download>
-                  Download <i class="houzez-icon icon-download-bottom ml-2"></i>
+                  {{ $t('Download') }} <i class="houzez-icon icon-download-bottom ml-2"></i>
                 </a>
               </div>
             </div><!-- d-flex -->

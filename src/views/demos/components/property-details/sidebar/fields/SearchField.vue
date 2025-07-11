@@ -4,7 +4,7 @@
       <input
         type="text"
         class="form-control"
-        placeholder="Search"
+        :placeholder="$t('Search')"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
       >

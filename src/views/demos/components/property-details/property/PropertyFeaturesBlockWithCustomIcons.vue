@@ -2,7 +2,7 @@
     <div class="property-features-wrap property-section-wrap" id="property-features-wrap">
         <div class="block-wrap">
             <div class="block-title-wrap d-flex justify-content-between align-items-center">
-                <h2>Features</h2>
+                <h2>{{ $t('Features') }}</h2>
             </div><!-- block-title-wrap -->
             <div class="block-content-wrap">
                 <ul class="list-3-cols list-unstyled">

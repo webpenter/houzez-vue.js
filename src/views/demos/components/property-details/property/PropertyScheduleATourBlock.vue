@@ -2,7 +2,7 @@
 	<div class="property-schedule-tour-wrap property-section-wrap" id="property-schedule-tour-wrap">
 		<div class="block-wrap">
 			<div class="block-title-wrap d-flex justify-content-between align-items-center">
-				<h2>Schedule a Tour</h2>
+				<h2>{{ $t('Schedule a Tour') }}</h2>
 			</div>
 
 			<div class="block-content-wrap">
@@ -10,10 +10,10 @@
 					<!-- Tour Type -->
 					<div class="col-md-4 col-sm-12">
 						<div class="form-group">
-							<label>Tour Type</label>
+							<label>{{ $t('Tour Type') }}</label>
 							<select v-model="form.tour_type" class="form-control">
-								<option>In Person</option>
-								<option>Video Chat</option>
+								<option>{{ $t('In Person') }}</option>
+								<option>{{ $t('Video Chat') }}</option>
 							</select>
 						</div>
 					</div>
@@ -21,7 +21,7 @@
 					<!-- Date Picker -->
 					<div class="col-md-4 col-sm-12">
 						<div class="form-group">
-							<label>Date</label>
+							<label>{{ $t('Date') }}</label>
 							<input type="date" v-model="selectedDateInput" class="form-control" />
 						</div>
 					</div>
@@ -29,7 +29,7 @@
 					<!-- Time -->
 					<div class="col-md-4 col-sm-12">
 						<div class="form-group">
-							<label>Time</label>
+							<label>{{ $t('Time') }}*</label>
 							<input v-model="form.time" type="time" class="form-control" placeholder="Select a Time" />
 							<div v-if="errors.time" class="text-danger">{{ errors.time }}</div>
 						</div>
@@ -53,23 +53,23 @@
 
 				<!-- Your Information -->
 				<div class="block-title-wrap">
-					<h3>Your Information</h3>
+					<h3>{{ $t('Your Information') }}</h3>
 				</div>
 
 				<div class="row">
 					<!-- Name -->
 					<div class="col-md-6 col-sm-12">
 						<div class="form-group">
-							<label>Name</label>
-							<input class="form-control" v-model="form.name" placeholder="Enter your name" type="text" />
+							<label>{{ $t('Name') }}*</label>
+							<input class="form-control" v-model="form.name" :placeholder="$t('Enter your name')" type="text" />
 						</div>
 					</div>
 
 					<!-- Phone -->
 					<div class="col-md-6 col-sm-12">
 						<div class="form-group">
-							<label>Phone</label>
-							<input class="form-control" v-model="form.phone" placeholder="Enter your phone number"
+							<label>{{ $t('Phone') }}*</label>
+							<input class="form-control" v-model="form.phone" :placeholder="$t('Enter your phone number')"
 								type="text" />
 						</div>
 					</div>
@@ -77,8 +77,8 @@
 					<!-- Email -->
 					<div class="col-md-6 col-sm-12">
 						<div class="form-group">
-							<label>Email</label>
-							<input class="form-control" v-model="form.email" placeholder="Enter your email address"
+							<label>{{ $t('Email') }}*</label>
+							<input class="form-control" v-model="form.email" :placeholder="$t('Enter your email address')"
 								type="email" />
 						</div>
 					</div>
@@ -86,9 +86,9 @@
 					<!-- Message -->
 					<div class="col-sm-12 col-xs-12">
 						<div class="form-group form-group-textarea">
-							<label>Message</label>
+							<label>{{ $t('Message') }}</label>
 							<textarea class="form-control" v-model="form.message" rows="5"
-								placeholder="Message"></textarea>
+								:placeholder="$t('Message')"></textarea>
 						</div>
 					</div>
 
@@ -98,7 +98,7 @@
 							<input class="form-check-input " type="checkbox" v-model="form.agreeTerms"
 								id="agreeTerms" />
 							<label class="form-check-label ml-4" for="agreeTerms">
-								I agree to the Terms of Use
+								{{ $t('I agree to the Terms of Use') }}
 							</label>
 						</div>
 					</div>
@@ -106,7 +106,7 @@
 					<!-- Submit Button -->
 					<div class="col-sm-12 col-xs-12">
 						<button class="btn btn-secondary btn-sm-full-width" @click="submitForm" :disabled="loading">
-							{{ loading ? "Submitting..." : "Submit a Tour Request" }}
+							{{ loading ? $t('Submitting')+"..." : $t('Submit a Tour Request') }}
 						</button>
 					</div>
 				</div>

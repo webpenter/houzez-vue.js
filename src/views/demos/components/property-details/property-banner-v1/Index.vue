@@ -5,7 +5,7 @@
 		</div><!-- container -->
 		<div class="tab-content" id="pills-tabContent">
 			<div class="tab-pane show active" id="pills-gallery" role="tabpanel" aria-labelledby="pills-gallery-tab">
-				<div class="property-image-count"><i class="houzez-icon icon-picture-sun"></i> 6</div>
+				<!-- <div class="property-image-count"><i class="houzez-icon icon-picture-sun"></i> 6</div> -->
 				<PropertyGallery :property="property" />
 			</div><!-- tab-pane -->
 			<div class="tab-pane" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">

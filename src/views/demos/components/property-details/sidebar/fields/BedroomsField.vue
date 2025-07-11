@@ -2,7 +2,7 @@
   <div class="form-group">
     <select
       class="selectpicker form-control"
-      title="Bedrooms"
+      :title="$t('Bedrooms')"
       v-model="selectedBedrooms"
       ref="selectRef"
       @change="emitBedrooms"

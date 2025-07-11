@@ -2,7 +2,7 @@
     <div id="widget-list-more-01" class="widget widget-wrap widget-taxonomy widget-list-more">
 	<div class="widget-header">
 		<h3 class="widget-title">
-			Property Taxonomy
+			{{ $t('Property Taxonomy') }}
 		</h3><!-- widget-title -->
 	</div><!-- widget-header -->
 	<div class="widget-body">
@@ -10,7 +10,7 @@
 			<li v-for="type in types" :key="type.id">
 				<router-link :to="{name:'demo01.property-type',params:{propertyType:type.name}}">
 					{{ type.name }} 
-					<span>(More Details)</span>
+					<span>({{ $t('More Details') }})</span>
 				</router-link>
 			</li>
 		</ul>

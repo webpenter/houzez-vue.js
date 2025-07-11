@@ -2,7 +2,7 @@
   <div class="form-group">
     <select
       class="selectpicker form-control"
-      title="Max. Price"
+      :title="$t('Max. Price')"
       v-model="selectedPrice"
       ref="selectRef"
       @change="emitPrice"

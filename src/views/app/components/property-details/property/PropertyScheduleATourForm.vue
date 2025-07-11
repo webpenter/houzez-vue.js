@@ -52,18 +52,18 @@
 		</div>
 
 		<!-- Tour Type -->
-		<div class="property-schedule-tour-form-title">Tour type</div>
+		<div class="property-schedule-tour-form-title">{{ $t('Tour type') }}</div>
 		<div class="property-schedule-tour-type-form d-flex justify-content-between">
 			<div class="form-group">
 				<label class="control control--radio">
 					<input type="radio" value="In Person" v-model="form.tour_type" />
-					<span class="control__indicator">In Person</span>
+					<span class="control__indicator">{{ $t('In Person') }}</span>
 				</label>
 			</div>
 			<div class="form-group">
 				<label class="control control--radio">
 					<input type="radio" value="Video Call" v-model="form.tour_type" />
-					<span class="control__indicator">Video Call</span>
+					<span class="control__indicator">{{ $t('Video Call') }}</span>
 				</label>
 			</div>
 		</div>
@@ -75,21 +75,21 @@
 
 		<!-- Form Inputs -->
 		<div class="form-group">
-			<input class="form-control" name="name" placeholder="Name" type="text" v-model="form.name"
+			<input class="form-control" name="name" :placeholder="$t('Name')" type="text" v-model="form.name"
 				:class="{ 'is-invalid': errors.name }" />
 		</div>
 		<div class="form-group">
-			<input class="form-control" name="phone" placeholder="Phone" type="text" v-model="form.phone"
+			<input class="form-control" name="phone" :placeholder="$t('Phone')" type="text" v-model="form.phone"
 				:class="{ 'is-invalid': errors.phone }" />
 		</div>
 		<div class="form-group">
-			<input class="form-control" name="email" placeholder="Email" type="email" v-model="form.email"
+			<input class="form-control" name="email" :placeholder="$t('Email')" type="email" v-model="form.email"
 				:class="{ 'is-invalid': errors.email }" />
 		</div>
 
 		<!-- Message Textarea -->
 		<div class="form-group form-group-textarea">
-			<textarea class="form-control" name="message" rows="5" placeholder="Message"
+			<textarea class="form-control" name="message" rows="5" :placeholder="$t('Message')"
 				v-model="form.message"></textarea>
 		</div>
 
@@ -97,14 +97,14 @@
 		<div class="form-group form-group-terms">
 			<label class="control control--checkbox">
 				<input type="checkbox" v-model="form.agreeTerms" />
-				By submitting this form I agree to <a href="#">Terms of Use</a>
+				 {{ $t('By submitting this form I agree to') }}<a href="#">{{ $t('Terms of Use') }}</a>
 				<span class="control__indicator"></span>
 			</label>
 		</div>
 
 		<!-- Submit Button -->
 		<button class="btn btn-secondary btn-full-width" :disabled="loading" @click="submitForm">
-			{{ loading ? "Submitting..." : "Submit a Tour Request" }}
+			{{ loading ? $t('Submitting')+"..." : $t('Submit a Tour Request') }}
 		</button>
 	</div>
 </template>

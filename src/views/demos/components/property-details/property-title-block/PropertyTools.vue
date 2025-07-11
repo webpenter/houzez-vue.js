@@ -68,6 +68,9 @@ import { RouterLink, useRouter } from "vue-router";
 import { computed, onMounted, ref } from "vue";
 import { useFavoriteProperty, useNotification, useToken } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const props = defineProps(['property']);
 
@@ -101,16 +104,16 @@ const toggleFavoriteProperty = async () => {
         const res = await favoritePropertyStore.addOrRemovePropertyToFavorite(propertyId.value);
 
         if (res.status === 201) {
-            useNotification().Success("Property added to favorites.");
+            useNotification().Success(t('Property added to favorites'));
             await isFavoriteProperty()
         } else if (res.status === 200) {
-            useNotification().Success("Property removed from favorites.");
+            useNotification().Success(t('Property removed from favorites'));
             await isFavoriteProperty()
         } else {
-            useNotification().Error("An error occurred.");
+            useNotification().Error(t('An error occurred.'));
         }
     } catch (error) {
-        useNotification().Error("An error occurred while processing.");
+        useNotification().Error(t('An error occurred while processing'));
     }
 }
 

@@ -2,14 +2,14 @@
     <div class="property-energy-class-wrap property-section-wrap" id="property-energy-class-wrap">
 	<div class="block-wrap">
 		<div class="block-title-wrap">
-			<h2>Energy Efficiency</h2>
+			<h2>{{ $t('Energy Efficiency') }}</h2>
 		</div><!-- block-title-wrap -->
 		<div class="block-content-wrap">
 			<ul class="class-energy-list list-unstyled">
-				<li><strong>Energetic class:</strong> <span>{{ property.energy_class }}</span></li>
-				<li><strong>Global energy performance index:</strong> <span>{{ property.global_energy_performance_index }}</span></li>
-				<li><strong>Renewable energy performance index:</strong> <span>{{ property.renewable_energy_performance_index }}</span></li>
-				<li><strong>Energy performance of the building:</strong> <span>{{ property.energy_performance_of_the_building }}</span></li>
+				<li><strong>{{ $t('Energetic class') }}:</strong> <span>{{ property.energy_class }}</span></li>
+				<li><strong>{{ $t('Global energy performance index') }}:</strong> <span>{{ property.global_energy_performance_index }}</span></li>
+				<li><strong>{{ $t('Renewable energy performance index') }}:</strong> <span>{{ property.renewable_energy_performance_index }}</span></li>
+				<li><strong>{{ $t('Energy performance of the building') }}:</strong> <span>{{ property.energy_performance_of_the_building }}</span></li>
 			</ul>
 			<ul class="class-energy energy-class-10">
 				<li class="class-energy-indicator">
@@ -49,7 +49,7 @@
 					<span class="energy-H">H</span>
 				</li>   
 				<li class="class-energy-indicator">
-					<div class="indicator-energy" data-energyclass="A+">{{ property.global_energy_performance_index }} | Energy class {{ property.energy_class }}</div>
+					<div class="indicator-energy" data-energyclass="A+">{{ property.global_energy_performance_index }} | {{ $t('Energy class') }} {{ property.energy_class }}</div>
 					<span class="energy-ND">ND</span>
 				</li>                                        
 			</ul>
