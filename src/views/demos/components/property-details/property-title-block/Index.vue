@@ -10,7 +10,9 @@
                     <h1>{{ property?.title || 'Untitled Property' }}</h1>
                 </div><!-- page-title -->
                 <ul class="item-price-wrap hide-on-list">
-                    <li class="item-price"><span class="price-prefix">From </span>{{ property.price_prefix }}{{ property?.price }}<span
+                    <li class="item-price"><span class="price-prefix">
+                        {{ $filters.capitalize($t('from')) }} 
+                    </span>{{ property.price_prefix }}{{ property?.price }}<span
                             class="price-postfix">/{{ property?.after_price }}</span></li>
                     <li class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{ property.size_prefix }}</li>
                 </ul>
