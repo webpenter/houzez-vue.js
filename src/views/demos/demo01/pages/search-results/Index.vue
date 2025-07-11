@@ -26,9 +26,9 @@
                         </div><!-- page-title -->
                         <div class="sort-by">
                             <div class="d-flex align-items-center">
-                                <div class="sort-by-title">
+                                <!-- <div class="sort-by-title">
                                     Sort by:
-                                </div><!-- sort-by-title -->
+                                </div>
                                 <select class="selectpicker form-control bs-select-hidden" title="Default Order"
                                     data-live-search="false" data-dropdown-align-right="auto">
                                     <option>Default Order</option>
@@ -37,7 +37,8 @@
                                     <option>Featured First</option>
                                     <option>Date - New to Old</option>
                                     <option>Date - Old to New</option>
-                                </select><!-- selectpicker -->
+                                </select> -->
+                                <!-- selectpicker -->
                             </div><!-- d-flex -->
                         </div><!-- sort-by -->
                         <div class="listing-switch-view">
@@ -75,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-                 <Pagination />
+                 <!-- <Pagination /> -->
             </div><!-- half-map-right-wrap -->
         </section><!-- half-map-wrap -->
     </template>

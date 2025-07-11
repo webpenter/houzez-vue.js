@@ -34,6 +34,11 @@
       <div class="col-lg-4 col-md-12 col-sm-12">
         <div class="skeleton-box h-150 mb-3"></div>
       </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-4 col-md-12 col-sm-12">
+        <div class="skeleton-box h-150 mb-3"></div>
+      </div>
       <div class="col-lg-4 col-md-12 col-sm-12">
         <div class="skeleton-box h-150 mb-3"></div>
       </div>

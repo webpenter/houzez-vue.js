@@ -14,7 +14,7 @@
     </template>
 
     <template v-else>
-      <img class="img-fluid" :src="agent.profile.profile_picture" alt="agent" style="width: 100%; height: auto;" />
+      <img class="img-fluid" :src="agent.profile" alt="agent" style="width: 100%; height: auto;" />
 
       <div class="team-content-wrap team-content-wrap-before">
         <div class="team-content">
@@ -22,7 +22,7 @@
             <strong>{{ agent.name }}</strong>
           </div>
           <div class="team-title">
-            {{ agent.profile.position }}
+            {{ agent.position }}
           </div>
         </div>
       </div>
@@ -33,12 +33,12 @@
             <strong>{{ agent.name }}</strong>
           </div>
           <div class="team-title">
-            {{ agent.profile.position }}
+            {{ agent.position }}
           </div>
           <div class="team-description">
-            <div><i class="bi bi-telephone-fill me-2"></i>{{ agent.profile.phone }}</div>
+            <div><i class="bi bi-telephone-fill me-2"></i>{{ agent.phone }}</div>
             <div><i class="bi bi-envelope-fill me-2"></i>{{ agent.email }}</div>
-            <div><i class="bi bi-geo-alt-fill me-2"></i>{{ agent.profile.address }}</div>
+            <div><i class="bi bi-geo-alt-fill me-2"></i>{{ agent.address }}</div>
           </div>
         </div>
       </div>
@@ -56,16 +56,16 @@ const props = defineProps({
   },
   loading: Boolean,
 });
-console.log('Received agent prop:', props.agent);
+
 const imageLoading = ref(true);
 
 // Watch for loading and image to handle lazy load
 watch(
   () => props.loading,
   (newVal) => {
-    if (!newVal && props.agent?.profile?.profile_picture) {
+    if (!newVal && props.agent?.profile) {
       const img = new Image();
-      img.src = props.agent.profile.profile_picture;
+      img.src = props.agent.profile;
       img.onload = () => {
         imageLoading.value = false;
       };
