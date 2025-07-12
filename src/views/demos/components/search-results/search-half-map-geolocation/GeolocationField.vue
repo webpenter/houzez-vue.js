@@ -4,7 +4,8 @@
       <input
         type="text"
         class="form-control"
-        placeholder="Search"
+        :placeholder="$t('Search')
+"
         v-model="search"
         @input="emitSearch"
       />

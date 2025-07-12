@@ -10,7 +10,7 @@
 			<h4><a href="#">{{ blog.title }}</a></h4>
 			<p>{{ blog.description }}</p>
 			<div class="widget-read-more">
-				<a href="#">Read more</a>
+				<a href="#">{{ $t('Read more') }}</a>
 			</div><!-- widget-read-more -->
 		</div><!-- blog-post-content-widget -->
 	</div><!-- d-flex -->

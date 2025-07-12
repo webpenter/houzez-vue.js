@@ -1,7 +1,7 @@
 <template>
   <div class="widget widget-wrap widget-properties">
     <div class="widget-header">
-      <h3 class="widget-title">Properties</h3>
+      <h3 class="widget-title">{{ $t('Properties') }}</h3>
     </div>
     <div class="widget-body">
       <PropertyItem 

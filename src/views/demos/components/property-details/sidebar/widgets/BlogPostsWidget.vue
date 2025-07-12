@@ -2,7 +2,7 @@
     <div class="widget widget-wrap widget-blog-posts">
 	<div class="widget-header">
 		<h3 class="widget-title">
-			Lastes Blogs
+			{{ $t('Latest Blogs') }}
 		</h3><!-- widget-title -->
 	</div><!-- widget-header -->
 	<div class="widget-body">

@@ -2,16 +2,16 @@
 	<div class="widget widget-wrap widget-mortgage-calculator">
 		<!-- Header -->
 		<div class="widget-header">
-			<h3 class="widget-title">Mortgage Calculator</h3>
+			<h3 class="widget-title">{{ $t('Mortgage Calculator') }}</h3>
 		</div>
 
 		<!-- ✅ Result Block (just add this!) -->
 		<div v-if="monthlyPayment !== null" class="">
 			<ul>
-				<li><strong>Monthly Payment:</strong> ${{ monthlyPayment.toLocaleString() }}</li>
-				<li><strong>Amount Financed:</strong> ${{ financedAmount.toLocaleString() }}</li>
-				<li><strong>Mortgage Payments:</strong> ${{ totalPayment.toLocaleString() }}</li>
-				<li><strong>Loan Annual Cost:</strong> ${{ annualCost.toLocaleString() }}</li>
+				<li><strong>{{ $t('Monthly Payment') }}:</strong> ${{ monthlyPayment.toLocaleString() }}</li>
+				<li><strong>{{ $t('Amount Financed') }}:</strong> ${{ financedAmount.toLocaleString() }}</li>
+				<li><strong>{{ $t('Mortgage Payments') }}:</strong> ${{ totalPayment.toLocaleString() }}</li>
+				<li><strong>{{ $t('Loan Annual Cost') }}:</strong> ${{ annualCost.toLocaleString() }}</li>
 			</ul>
 		</div>
 
@@ -23,7 +23,7 @@
 					<div class="input-group-prepend">
 						<div class="input-group-text">$</div>
 					</div>
-					<input type="number" v-model.number="loanAmount" class="form-control" placeholder="Total Amount" />
+					<input type="number" v-model.number="loanAmount" class="form-control" :placeholder="$t('Total Amount')" />
 				</div>
 			</div>
 
@@ -33,7 +33,7 @@
 					<div class="input-group-prepend">
 						<div class="input-group-text">$</div>
 					</div>
-					<input type="number" v-model.number="downPayment" class="form-control" placeholder="Down Payment" />
+					<input type="number" v-model.number="downPayment" class="form-control" :placeholder="$t('Down Payment')" />
 				</div>
 			</div>
 
@@ -44,7 +44,7 @@
 						<div class="input-group-text">%</div>
 					</div>
 					<input type="number" v-model.number="interestRate" class="form-control"
-						placeholder="Interest Rate" />
+						:placeholder="$t('Interest Rate')" />
 				</div>
 			</div>
 
@@ -57,22 +57,22 @@
 						</div>
 					</div>
 					<input type="number" v-model.number="loanTerm" class="form-control"
-						placeholder="Loan Terms (Years)" />
+						:placeholder="$t('Loan Terms (Years)')" />
 				</div>
 			</div>
 
 			<!-- Payment Frequency (optional visual only) -->
 			<div class="form-group">
 				<select class="selectpicker form-control" v-model="paymentFrequency" title="Select">
-					<option value="monthly">Monthly</option>
-					<option value="biweekly">Bi-Weekly</option>
-					<option value="weekly">Weekly</option>
+					<option value="monthly">{{ $t('Monthly') }}</option>
+					<option value="biweekly">{{ $t('Bi-Weekly') }}</option>
+					<option value="weekly">{{ $t('Weekly') }}</option>
 				</select>
 			</div>
 
 			<!-- Calculate Button -->
 			<button type="button" class="btn btn-search btn-secondary btn-full-width" @click="calculateMortgage">
-				Calculate
+				{{ $t('Calculate') }}
 			</button>
 		</div>
 

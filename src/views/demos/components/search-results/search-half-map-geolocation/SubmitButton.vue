@@ -8,6 +8,6 @@ const emit = defineEmits(['search']);
     class="btn btn-search btn-secondary btn-full-width"
     @click="emit('search')"
   >
-    Search
+    {{ $t('Search') }}
   </button>
 </template>

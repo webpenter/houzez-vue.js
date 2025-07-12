@@ -3,7 +3,8 @@
     <select
       v-model="selectedMaxPrice"
       class="selectpicker form-control"
-      title="Max. Price"
+      :title="$t('Max. Price')
+"
       data-live-search="false"
       @change="emitMaxPrice"
       ref="selectRef"

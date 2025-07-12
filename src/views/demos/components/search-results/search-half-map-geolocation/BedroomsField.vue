@@ -4,7 +4,8 @@
       ref="selectRef"
       v-model="selectedBedroom"
       class="selectpicker form-control"
-      title="Bedrooms"
+      :title="$t('Bedrooms')
+"
       data-live-search="false"
       @change="emitBedrooms"
     >

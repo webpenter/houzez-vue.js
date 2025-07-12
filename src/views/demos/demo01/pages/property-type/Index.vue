@@ -17,7 +17,7 @@
                     <h1 class="mb-4">{{ $filters.capitalize(propertyType) }}</h1>
                     <div class="d-flex align-items-center">
                         <div class="page-title flex-grow-1">
-                            <h1>{{ propertyTypes.length }} Properties Found</h1>
+                            <h1>{{ propertyTypes.length }} {{ $t('Properties Found') }}</h1>
                         </div><!-- page-title -->
                         <div class="listing-switch-view">
                             <ul class="list-inline">

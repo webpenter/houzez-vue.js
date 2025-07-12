@@ -4,6 +4,6 @@
     class="btn reset-search-btn btn-grey-outlined"
     @click="$emit('reset')"
   >
-    Clear
+    {{ $t('Clear') }}
   </button>
 </template>

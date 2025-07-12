@@ -2,7 +2,7 @@
     <div class="widget widget-wrap widget-login-register">
 	<div class="widget-header">
 		<h3 class="widget-title">
-			WELL COME
+			{{ $t('WELL COME') }}
 		</h3><!-- widget-title -->
 	</div><!-- widget-header -->
 	<div class="widget-body">
@@ -14,7 +14,8 @@
 					<br>
 					{{ profile.email || 'Guest Email' }}
 					<br>
-					<a role="button" class="logout-link" @click.prevent="handleLogout">Log out</a>
+					<a role="button" class="logout-link" @click.prevent="handleLogout">{{ $t('Log out') }}
+</a>
 				</div>	
 			</div><!-- d-flex -->
 		</div><!-- logged-in-wrap -->		

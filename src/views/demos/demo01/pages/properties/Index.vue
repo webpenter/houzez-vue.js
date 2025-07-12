@@ -21,21 +21,21 @@
                 <div class="page-title-wrap">
                     <div class="d-flex align-items-center">
                         <div class="page-title flex-grow-1">
-                            <h1>{{ filteredProperties.length }} Properties Found</h1>
+                            <h1>{{ filteredProperties.length }} {{ $t('Properties Found') }}</h1>
                         </div><!-- page-title -->
                         <div class="sort-by">
                             <div class="d-flex align-items-center">
                                 <div class="sort-by-title">
-                                    Sort by:
+                                    {{ $t('Sort by') }}:
                                 </div><!-- sort-by-title -->
                                 <select class="selectpicker form-control bs-select-hidden" title="Default Order"
                                     data-live-search="false" data-dropdown-align-right="auto">
-                                    <option>Default Order</option>
-                                    <option>Price - High to Low</option>
-                                    <option>Price - Low to Hight</option>
-                                    <option>Featured First</option>
-                                    <option>Date - New to Old</option>
-                                    <option>Date - Old to New</option>
+                                    <option>{{ $t('Default Order') }}</option>
+                                    <option>{{ $t('Price - High to Low') }}</option>
+                                    <option>{{ $t('Price - Low to Hight') }}</option>
+                                    <option>{{ $t('Featured First') }}</option>
+                                    <option>{{ $t('Date - New to Old') }}</option>
+                                    <option>{{ $t('Date - Old to New') }}</option>
                                 </select><!-- selectpicker -->
                             </div><!-- d-flex -->
                         </div><!-- sort-by -->

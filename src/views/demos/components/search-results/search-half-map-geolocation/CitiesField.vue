@@ -5,7 +5,8 @@
       ref="selectRef"
       v-model="selectedCities"
       class="selectpicker form-control"
-      title="Cities"
+      :title="$t('Cities')
+"
       multiple
       data-actions-box="true"
       @change="emitCities"

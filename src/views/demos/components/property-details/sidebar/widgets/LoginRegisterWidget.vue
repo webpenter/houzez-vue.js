@@ -2,17 +2,17 @@
     <div class="widget widget-wrap widget-login-register">
         <div class="widget-header">
             <h3 class="widget-title">
-                Login / Register
+                {{ $t('Login / Register') }}
             </h3><!-- widget-title -->
         </div><!-- widget-header -->
         <div class="widget-body">
             <div class="login-register-tabs">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#widget-login-form-tab" role="tab">Login</a>
+                        <a class="nav-link active" data-toggle="tab" href="#widget-login-form-tab" role="tab">{{ $t('Login') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#widget-register-form-tab" role="tab">Register</a>
+                        <a class="nav-link" data-toggle="tab" href="#widget-register-form-tab" role="tab">{{ $t('Register') }}</a>
                     </li>
                 </ul>
             </div><!-- login-register-tabs -->
