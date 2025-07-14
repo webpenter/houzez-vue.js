@@ -1,18 +1,18 @@
 <template>
 	<div class="agent-contacts-wrap">
-		<h3 class="widget-title">Contacts</h3>
+		<h3 class="widget-title">{{ $t('Contacts') }}</h3>
 		<div v-if="agent.address" class="agent-map">
 			<address><i class="houzez-icon icon-pin"></i> {{ agent.profile.address }}
 			</address>
 		</div>
 		<ul class="list-unstyled">
-			<li v-if="agent.phone"><strong>Office:</strong> <span>{{ agent.phone }}</span></li>
-			<li v-if="agent.mobile"><strong>Mobile:</strong> <span>{{ agent.mobile }}</span></li>
-			<li v-if="agent.fax_number"><strong>Fax:</strong> <span>{{ agent.fax_number }}</span></li>
-			<li v-if="agent.email"><strong>Email:</strong> <span><a href="#">{{ agent.email }}</a></span></li>
-			<li v-if="agent.website"><strong>Website</strong> <span><a href="#">{{ agent.website }}</a></span></li>
+			<li v-if="agent.phone"><strong>{{ $t('Office') }}:</strong> <span>{{ agent.phone }}</span></li>
+			<li v-if="agent.mobile"><strong>{{ $t('Mobile') }}:</strong> <span>{{ agent.mobile }}</span></li>
+			<li v-if="agent.fax_number"><strong>{{ $t('Fax') }}:</strong> <span>{{ agent.fax_number }}</span></li>
+			<li v-if="agent.email"><strong>{{ $t('Email') }}:</strong> <span><a href="#">{{ agent.email }}</a></span></li>
+			<li v-if="agent.website"><strong>{{ $t('Website') }}</strong> <span><a href="#">{{ agent.website }}</a></span></li>
 		</ul>
-		<p>Find {{ agent.name }} on:</p>
+		<p>{{ $t('Find') }} {{ agent.name }} {{ $t('on') }}:</p>
 		<div class="agent-social-media d-flex">
 			<span v-if="agent.facebook">
 				<a class="btn-facebook" target="_blank" :href=" agent.facebook ">

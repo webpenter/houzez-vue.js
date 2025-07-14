@@ -20,12 +20,12 @@
 				<p class="agent-list-position"> {{ agent.position || null }} <a
 						href="#"><!--  Modern House Real Estate --></a></p>
 				<ul class="agent-list-contact list-unstyled">
-					<li><strong>Office</strong> <span class="agent-phone agent-phone-hidden">{{ agent.phone || null
+					<li><strong>{{ $t('Office') }}</strong> <span class="agent-phone agent-phone-hidden">{{ agent.phone || null
 							}}</span></li>
-					<li><strong>Mobile</strong> <span class="agent-phone agent-phone-hidden">{{ agent.mobile || null
+					<li><strong>{{ $t('Mobile') }}</strong> <span class="agent-phone agent-phone-hidden">{{ agent.mobile || null
 							}}</span></li>
-					<li><strong>Fax</strong> <span>{{ agent.fax_number || null }}</span></li>
-					<li><strong>Email</strong> <a href="tel:#">{{ agent?.email || null }}</a></li>
+					<li><strong>{{ $t('Fax') }}</strong> <span>{{ agent.fax_number || null }}</span></li>
+					<li><strong>{{ $t('Email') }}</strong> <a href="tel:#">{{ agent?.email || null }}</a></li>
 				</ul><!-- agent-list-contact -->
 				<div class="d-flex sm-column">
 					<div class="agent-social-media flex-grow-1 d-flex mt-4">
@@ -76,7 +76,7 @@
 						</span>
 					</div><!-- agent-social-media -->
 					<RouterLink :to="{ name: 'demo01.agent-details', params: { agentUsername: agent.username } }"
-						class="agent-list-link mt-3"><strong>View My Listings</strong></RouterLink>
+						class="agent-list-link mt-3"><strong>{{ $t('View My Listings') }}</strong></RouterLink>
 				</div><!-- d-flex -->
 			</div><!-- agent-list-content -->
 		</div><!-- d-flex -->

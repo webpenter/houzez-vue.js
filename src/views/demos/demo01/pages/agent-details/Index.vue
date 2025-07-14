@@ -51,10 +51,10 @@
                             </div><!-- agent-profile-header -->
                             <div class="agent-profile-content">
                                 <ul class="list-unstyled">
-                                    <li><strong>Agent License:</strong> {{ agent.license || null }} </li>
-                                    <li><strong>Tax Number:</strong> {{ agent.tax_number || null }} </li>
-                                    <li><strong>Service Areas:</strong> {{ agent.service_areas || null }} </li>
-                                    <li><strong>Specialties:</strong> {{ agent.specialties || null }} </li>
+                                    <li><strong>{{ $t('Agent License') }}:</strong> {{ agent.license || null }} </li>
+                                    <li><strong>{{ $t('Tax Number') }}:</strong> {{ agent.tax_number || null }} </li>
+                                    <li><strong>{{ $t('Service Areas') }}:</strong> {{ agent.service_areas || null }} </li>
+                                    <li><strong>{{ $t('Specialties') }}:</strong> {{ agent.specialties || null }} </li>
                                 </ul>
                             </div><!-- agent-profile-content -->
                             <div class="agent-profile-buttons">
@@ -63,7 +63,7 @@
                                     Send Email
                                 </button> -->
                                 <button type="button" class="btn btn-call">
-                                    <span class="hide-on-click">Call</span>
+                                    <span class="hide-on-click">{{ $t('Call') }}</span>
                                     <span class="show-on-click">{{ agent.phone || null }}</span>
                                 </button>
                             </div><!-- agent-profile-buttons -->
@@ -89,7 +89,7 @@
                     <div class="col-lg-8 col-md-12 bt-content-wrap">
 
                         <div class="agent-bio-wrap">
-                            <h2>About {{ agent.name }}</h2>
+                            <h2>{{ $t('About') }} {{ agent.name }}</h2>
                             <p>{{ agent.about_me || null }}</p>
                             <!-- <p><i class="houzez-icon icon-messages-bubble mr-1"></i> 
                                 <strong>Languages:</strong>
@@ -101,7 +101,7 @@
                             <ul class="nav nav-pills nav-justified">
                                 <li class="nav-item mr-2">
                                     <a class="nav-link active" href="#tab-properties" data-toggle="pill"
-                                        role="tab">Listings ({{ agent.properties.length }})</a>
+                                        role="tab">{{ $t('Listings') }} ({{ agent.properties.length }})</a>
                                 </li>
                                 <li class="nav-item">
                                     <!-- <a class="nav-link" href="#tab-reviews" data-toggle="pill" role="tab">Reviews
