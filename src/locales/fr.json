@@ -348,6 +348,16 @@
    "Website": "Site web",
    "Contacts": "Contacts",
    "Find": "Trouver",
-  "on": "sur"
+  "on": "sur",
+  "Board": "Tableau de bord",
+  "Favourites": "Favoris",
+  "Saved Searches": "Recherches sauvegardées",
+  "Messages": "Messages",
+  "Membership": "Abonnement",
+  "Invoices": "Factures",
+  "My Profile": "Mon profil",
+  "Log Out": "Se déconnecter",
+  "Auth / Sign Up": "Authentification / Inscription",
+  "Auth / Sign In": "Authentification / Connexion"
 
 }
