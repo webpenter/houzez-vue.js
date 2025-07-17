@@ -122,6 +122,30 @@ export default [
         component: () => import('@/views/demos/demo01/pages/about-us/Index.vue'),
         meta: { title: 'About Us' },
       },
+      /**
+       * @route /demo01/agencies
+       * @name demo01.agencies
+       * @auth not-required
+       * @description agencies page of Demo01
+       */
+      {
+        path: '/demo01/agencies',
+        name: 'demo01.agencies',
+        component: () => import('@/views/demos/demo01/pages/agencies/Index.vue'),
+        meta: { title: 'Agencies' },
+      },
+       /**
+       * @route /demo01/agency/:agentUsername
+       * @name demo01.agency-details
+       * @auth not-required     
+       * @description Agent details page of Demo01
+       */
+      {
+        path: '/demo01/agency/:agentUsername',
+        name: 'demo01.agency-details',
+        component: () => import('@/views/demos/demo01/pages/agency-details/Index.vue'),
+        meta: { title: 'Agency Detail' },
+      },
     ],
   },
 ];

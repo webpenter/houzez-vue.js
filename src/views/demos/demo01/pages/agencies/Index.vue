@@ -3,10 +3,10 @@
   <section class="listing-wrap">
     <div class="container">
       <div class="page-title-wrap">
-        <Breadcrumb :param="{ name: $t('Agents') }" />
+        <Breadcrumb :param="{ name: $t('Agencies') }" />
         <div class="d-flex align-items-center">
           <div class="page-title flex-grow-1">
-            <h1>{{$t('Agents')}}</h1>
+            <h1>{{$t('Agencies')}}</h1>
           </div><!-- page-title -->
         </div><!-- d-flex -->
       </div><!-- page-title-wrap -->

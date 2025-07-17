@@ -20,9 +20,9 @@
                 </template>
 
                 <!-- Agent breadcrumb -->
-                <template v-else-if="agent">
+                <template v-else-if="param">
                     <li class="breadcrumb-item">
-                        {{ agent.name }}
+                        {{ param.name }}
                     </li>
                     
                 </template>
@@ -35,6 +35,6 @@
 <script setup>
 defineProps({
     property: Object,
-    agent: Object
+    param: Object
 });
 </script>

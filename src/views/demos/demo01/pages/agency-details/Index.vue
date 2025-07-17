@@ -28,10 +28,8 @@
                             <div class="agent-profile-top-wrap">
                                 <div class="agent-profile-header">
                                     <h1>{{ agent.name }} 
-                                        <span v-if="agent.is_verified" class="badge badge-success agent-verified-badge">
-                                            <i class="houzez-icon icon-check-circle-1 mr-1"></i> 
-                                            Verified
-                                        </span>
+                                        <!-- <span class="badge badge-success agent-verified-badge"><i
+                                                class="houzez-icon icon-check-circle-1 mr-1"></i> Verified</span> -->
                                             </h1>
                                     <!-- <div class="rating-score-wrap">
                                         <span class="rating-score-text">3.4</span>
@@ -46,14 +44,9 @@
                                     </div> -->
                                 </div>
                                 <!-- agent-profile-content -->
-                                 <p class="agent-list-position">
-                                    {{ agent.position || '' }}
-                                    <template v-if="agent.agencies && agent.agencies.length">
-                                        <br>
-                                        <span v-for="agency in agent.agencies" :key="agency.id">
-                                        <a href="#">{{ agency.name }}</a><br>
-                                        </span>
-                                    </template>
+                                <p class="agent-list-position">
+                                     {{ agent.position || null }} 
+                                     <a href="#"><!-- Modern HouseReal Estate --></a>
                                 </p>
                             </div><!-- agent-profile-header -->
                             <div class="agent-profile-content">
@@ -65,11 +58,11 @@
                                 </ul>
                             </div><!-- agent-profile-content -->
                             <div class="agent-profile-buttons">
-                                <button class="btn btn-secondary" data-toggle="modal"
+                                <!-- <button class="btn btn-secondary" data-toggle="modal"
                                     data-target="#mobile-property-form">
                                     Send Email
-                                </button>
-                                <button type="button" class="btn btn-call" @click="triggerCall(agent.phone)">
+                                </button> -->
+                                <button type="button" class="btn btn-call">
                                     <span class="hide-on-click">{{ $t('Call') }}</span>
                                     <span class="show-on-click">{{ agent.phone || null }}</span>
                                 </button>
@@ -98,10 +91,10 @@
                         <div class="agent-bio-wrap">
                             <h2>{{ $t('About') }} {{ agent.name }}</h2>
                             <p>{{ agent.about_me || null }}</p>
-                            <p v-if="agent.languages"><i class="houzez-icon icon-messages-bubble mr-1"></i> 
+                            <!-- <p><i class="houzez-icon icon-messages-bubble mr-1"></i> 
                                 <strong>Languages:</strong>
-                                {{ agent.languages }}
-                            </p>
+                                English, Spanish, French
+                            </p> -->
                         </div><!-- agent-bio-wrap -->
 
                         <div class="agent-nav-wrap">
@@ -111,8 +104,8 @@
                                         role="tab">{{ $t('Listings') }} ({{ agent.properties.length }})</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#tab-reviews" data-toggle="pill" role="tab">Reviews
-                                        (3)</a>
+                                    <!-- <a class="nav-link" href="#tab-reviews" data-toggle="pill" role="tab">Reviews
+                                        (3)</a> -->
                                 </li>
                             </ul>
                         </div><!-- agent-nav-wrap -->
@@ -179,7 +172,9 @@
                                <!-- <Pagination /> -->
                             </div><!-- tab-pane -->
                             <div class="tab-pane fade" id="tab-reviews">
-                                <AgentReviews :reviews="agent.agent_reviews" />
+                                <!-- <?php include 'inc/property/property-reviews.php';?> -->
+                                this is created
+                                <!-- <PropertyReviews /> -->
                             </div><!-- tab-pane -->
                         </div><!-- tab-content -->
 
@@ -209,7 +204,7 @@ import StatsPropertyCities from '@/views/demos/components/agents/StatsPropertyCi
 import AgentContact from '@/views/demos/components/agents/AgentContact.vue';
 import Pagination from '@/views/demos/components/inc/Pagination.vue';
 import PropertyCard from '../../../components/home/featured-listings/ListItem.vue';
-import AgentReviews from '../../../components/agents/AgentReviews.vue';
+import PropertyReviews from '../../../components/property-details/property/PropertyReviews.vue';
 import AgentSkeleton from '@/components/skeleton/AgentSkeleton.vue'
 
 // Setup
@@ -222,16 +217,10 @@ const agentStore = useAgent()
 const { agent } = storeToRefs(agentStore)
 const agentUsername = route.params.agentUsername
 
-const triggerCall = (phone) => {
-  if (!phone) return;
-  // Open system dialer with "Pick an app" option
-  window.location.href = `tel:${phone}`;
-};
-
 onMounted(async () => {
     try {
         await agentStore.getAgentByUsername(agentUsername)
-    console.log('Agent fetched:', agent.value)
+        
         if (!agent.value || !agent.value.username) {
             router.push({ name: 'agent-not-found-404' })
         } 

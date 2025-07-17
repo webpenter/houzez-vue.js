@@ -2,7 +2,7 @@
     <div class="property-review-wrap property-section-wrap" id="property-review-wrap">
         <div class="block-title-wrap review-title-wrap d-flex align-items-center">
             <h2>{{ reviews.length }} {{ $t('Reviews') }}</h2>
-            <Rating />
+            <!-- <Rating /> -->
             <!-- <ReviewsSortBy /> -->
             <a class="btn btn-primary btn-slim" href="#property-review-form">{{ $t('Leave a Review') }}</a>
         </div>
