@@ -2,7 +2,7 @@
 	<div class="agent-contacts-wrap">
 		<h3 class="widget-title">{{ $t('Contacts') }}</h3>
 		<div v-if="agent.address" class="agent-map">
-			<address><i class="houzez-icon icon-pin"></i> {{ agent.profile.address }}
+			<address><i class="houzez-icon icon-pin"></i> {{ agent.address }}
 			</address>
 		</div>
 		<ul class="list-unstyled">
