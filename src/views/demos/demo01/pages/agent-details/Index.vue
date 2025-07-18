@@ -12,27 +12,20 @@
                         <div class="col-lg-4 col-md-4 col-sm-12">
                             <div class="agent-image">
                                 <div class="agent-company-logo">
-                                    <img class="img-fluid"
-                                    :src="Logo"
-                                        alt="agent-company-logo"
-                                    >
+                                    <img class="img-fluid" :src="Logo" alt="agent-company-logo">
                                 </div>
-                                <img
-                                    class="img-fluid"
-                                    :src="agent.profile"
-                                    alt="Agent"
-                                />
+                                <img class="img-fluid" :src="agent.profile" alt="Agent" />
                             </div><!-- agent-image -->
                         </div><!-- col-lg-4 col-md-4 col-sm-12 -->
                         <div class="col-lg-8 col-md-8 col-sm-12">
                             <div class="agent-profile-top-wrap">
                                 <div class="agent-profile-header">
-                                    <h1>{{ agent.name }} 
+                                    <h1>{{ agent.name }}
                                         <span v-if="agent.is_verified" class="badge badge-success agent-verified-badge">
-                                            <i class="houzez-icon icon-check-circle-1 mr-1"></i> 
+                                            <i class="houzez-icon icon-check-circle-1 mr-1"></i>
                                             Verified
                                         </span>
-                                            </h1>
+                                    </h1>
                                     <!-- <div class="rating-score-wrap">
                                         <span class="rating-score-text">3.4</span>
                                         <span class="star">
@@ -46,12 +39,12 @@
                                     </div> -->
                                 </div>
                                 <!-- agent-profile-content -->
-                                 <p class="agent-list-position">
+                                <p class="agent-list-position">
                                     {{ agent.position || '' }}
                                     <template v-if="agent.agencies && agent.agencies.length">
                                         <br>
                                         <span v-for="agency in agent.agencies" :key="agency.id">
-                                        <a href="#">{{ agency.name }}</a><br>
+                                            <a href="#">{{ agency.name }}</a><br>
                                         </span>
                                     </template>
                                 </p>
@@ -60,7 +53,8 @@
                                 <ul class="list-unstyled">
                                     <li><strong>{{ $t('Agent License') }}:</strong> {{ agent.license || null }} </li>
                                     <li><strong>{{ $t('Tax Number') }}:</strong> {{ agent.tax_number || null }} </li>
-                                    <li><strong>{{ $t('Service Areas') }}:</strong> {{ agent.service_areas || null }} </li>
+                                    <li><strong>{{ $t('Service Areas') }}:</strong> {{ agent.service_areas || null }}
+                                    </li>
                                     <li><strong>{{ $t('Specialties') }}:</strong> {{ agent.specialties || null }} </li>
                                 </ul>
                             </div><!-- agent-profile-content -->
@@ -68,6 +62,7 @@
                                 <button class="btn btn-secondary" data-toggle="modal"
                                     data-target="#mobile-property-form">
                                     Send Email
+                                    <!-- model and show  -->
                                 </button>
                                 <button type="button" class="btn btn-call" @click="triggerCall(agent.phone)">
                                     <span class="hide-on-click">{{ $t('Call') }}</span>
@@ -98,7 +93,7 @@
                         <div class="agent-bio-wrap">
                             <h2>{{ $t('About') }} {{ agent.name }}</h2>
                             <p>{{ agent.about_me || null }}</p>
-                            <p v-if="agent.languages"><i class="houzez-icon icon-messages-bubble mr-1"></i> 
+                            <p v-if="agent.languages"><i class="houzez-icon icon-messages-bubble mr-1"></i>
                                 <strong>Languages:</strong>
                                 {{ agent.languages }}
                             </p>
@@ -107,12 +102,13 @@
                         <div class="agent-nav-wrap">
                             <ul class="nav nav-pills nav-justified">
                                 <li class="nav-item mr-2">
-                                    <a class="nav-link active" href="#tab-properties" data-toggle="pill"
-                                        role="tab">{{ $t('Listings') }} ({{ agent.properties.length }})</a>
+                                    <a class="nav-link active" href="#tab-properties" data-toggle="pill" role="tab">{{
+                                        $t('Listings') }}
+                                        ({{ agent.properties.length }})</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#tab-reviews" data-toggle="pill" role="tab">Reviews
-                                        (3)</a>
+                                        ({{ agentStore.reviews.length }})</a>
                                 </li>
                             </ul>
                         </div><!-- agent-nav-wrap -->
@@ -122,18 +118,22 @@
                                 <div class="listing-tools-wrap mb-3">
                                     <div class="d-flex align-items-center">
                                         <div class="listing-tabs flex-grow-1">
-                                            <!-- <ul class="nav nav-tabs" style="justify-content: none;">
+                                            <ul class="nav nav-tabs" style="justify-content: none;">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" href="#">All</a>
+                                                    <a class="nav-link" :class="{ active: selectedStatus === 'All' }"
+                                                        href="#" @click.prevent="selectedStatus = 'All'">All</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#">For Sale</a>
+                                                    <a class="nav-link"
+                                                        :class="{ active: selectedStatus === 'For Sale' }" href="#"
+                                                        @click.prevent="selectedStatus = 'For Sale'">For Sale</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#">For Rent</a>
+                                                    <a class="nav-link"
+                                                        :class="{ active: selectedStatus === 'For Rent' }" href="#"
+                                                        @click.prevent="selectedStatus = 'For Rent'">For Rent</a>
                                                 </li>
-                                            </ul> -->
-                                            <!-- nav-tabs -->
+                                            </ul><!-- nav-tabs -->                                            
                                         </div><!-- listing-tabs -->
                                         <div class="sort-by mr-3">
                                             <div class="d-flex align-items-center">
@@ -156,34 +156,35 @@
                                         <div class="listing-switch-view">
                                             <ul class="list-inline">
                                                 <li class="list-inline-item">
-                                                    <a class="switch-btn btn-grid" :class="{ active: viewType === 'grid' }" href="#"
+                                                    <a class="switch-btn btn-grid"
+                                                        :class="{ active: viewType === 'grid' }" href="#"
                                                         @click.prevent="viewType = 'grid'">
                                                         <i class="houzez-icon icon-layout-module-1"></i>
                                                     </a>
                                                 </li>
                                                 <li class="list-inline-item">
-                                                    <a class="switch-btn btn-list" :class="{ active: viewType === 'list' }" href="#"
+                                                    <a class="switch-btn btn-list"
+                                                        :class="{ active: viewType === 'list' }" href="#"
                                                         @click.prevent="viewType = 'list'">
                                                         <i class="houzez-icon icon-layout-bullets"></i>
                                                     </a>
                                                 </li>
-                                                
                                             </ul>
                                         </div>
                                         <!-- listing-switch-view -->
                                     </div><!-- d-flex -->
                                 </div><!-- listing-tools-wrap -->
-                                <div v-if="agent.properties.length > 0" class="listing-view" :class="viewType + '-view'">
-                                    <PropertyCard v-for="property in agent.properties" :key="property.id" :property="property" />
+                                <div v-if="agent.properties.length > 0" class="listing-view"
+                                    :class="viewType + '-view'">
+                                    <PropertyCard v-for="property in filteredProperties" :key="property.id"
+                                        :property="property" />
                                 </div><!-- listing-view -->
-                               <!-- <Pagination /> -->
+                                <!-- <Pagination /> -->
                             </div><!-- tab-pane -->
                             <div class="tab-pane fade" id="tab-reviews">
-                                <AgentReviews :reviews="agent.agent_reviews" />
+                                <AgentReviews :reviews="agentStore.reviews" :agent="agent" />
                             </div><!-- tab-pane -->
                         </div><!-- tab-content -->
-
-
                     </div><!-- bt-content-wrap -->
                     <div class="col-lg-4 col-md-12 bt-sidebar-wrap">
                         <aside class="sidebar-wrap">
@@ -197,7 +198,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAgent } from '@/stores/index.js'
 import { storeToRefs } from 'pinia'
@@ -213,29 +214,33 @@ import AgentReviews from '../../../components/agents/AgentReviews.vue';
 import AgentSkeleton from '@/components/skeleton/AgentSkeleton.vue'
 
 // Setup
+const selectedStatus = ref('All')
 const viewType = ref('grid')
 const route = useRoute()
 const router = useRouter()
 const loading = ref(true) // ✅ Add this
 
 const agentStore = useAgent()
-const { agent } = storeToRefs(agentStore)
+const { agent, reviews } = storeToRefs(agentStore)
 const agentUsername = route.params.agentUsername
 
 const triggerCall = (phone) => {
-  if (!phone) return;
-  // Open system dialer with "Pick an app" option
-  window.location.href = `tel:${phone}`;
+    if (!phone) return;
+    // Open system dialer with "Pick an app" option
+    window.location.href = `tel:${phone}`;
 };
 
 onMounted(async () => {
     try {
         await agentStore.getAgentByUsername(agentUsername)
-    console.log('Agent fetched:', agent.value)
+
         if (!agent.value || !agent.value.username) {
             router.push({ name: 'agent-not-found-404' })
-        } 
-        
+        } else {
+            await agentStore.fetchReviews(agent.value.id)
+
+        }
+
     } catch (error) {
         console.error('Agent fetch failed:', error)
         router.push({ name: 'agent-not-found-404' })
@@ -246,6 +251,12 @@ onMounted(async () => {
             $('.selectpicker').selectpicker('render')
         })
     }
-    
+
+})
+const filteredProperties = computed(() => {
+    if (selectedStatus.value === 'All') return agent.value.properties
+    return agent.value.properties.filter(
+        (prop) => prop.status === selectedStatus.value
+    )
 })
 </script>

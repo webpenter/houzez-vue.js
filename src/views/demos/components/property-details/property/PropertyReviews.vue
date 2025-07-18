@@ -2,8 +2,8 @@
     <div class="property-review-wrap property-section-wrap" id="property-review-wrap">
         <div class="block-title-wrap review-title-wrap d-flex align-items-center">
             <h2>{{ reviews.length }} {{ $t('Reviews') }}</h2>
-            <!-- <Rating /> -->
-            <!-- <ReviewsSortBy /> -->
+            <OverallRating :value="parseFloat(averageRating)" />
+            <ReviewsSortBy />
             <a class="btn btn-primary btn-slim" href="#property-review-form">{{ $t('Leave a Review') }}</a>
         </div>
 
@@ -109,7 +109,7 @@
 
 <script setup>
 import { ref, watch, computed } from 'vue';
-import Rating from './template/Rating.vue';
+import OverallRating from './template/OverallRating.vue';
 import ReviewsSortBy from './template/ListingSortBy.vue';
 import Review from './template/Review.vue';
 import { useReview } from '@/stores/index';
@@ -132,6 +132,7 @@ const { reviews, errors, loading } = storeToRefs(reviewStore);
 // Success message
 const successMessage = ref('');
 
+
 // Review form data
 const form = ref({
     property_id: props.property.id,
@@ -151,6 +152,7 @@ watch(
   },
   { immediate: true }
 );
+
 
 // Submit review
 const submitReview = async () => {
@@ -201,5 +203,20 @@ const goToPage = (page) => {
         currentPage.value = page;
     }
 };
+
+const averageRating = ref(0);
+
+watch(
+  reviews,
+  (newReviews) => {
+    if (!newReviews.length) {
+      averageRating.value = 0;
+    } else {
+      const total = newReviews.reduce((sum, review) => sum + review.rating, 0);
+      averageRating.value = parseFloat((total / newReviews.length).toFixed(1));
+    }
+  },
+  { immediate: true, deep: true }
+);
 </script>
 
