@@ -52,6 +52,16 @@
 						{{ $t('Agent Profile') }}
 					</router-link>
 				</li>
+				<li class="nav-item">
+					<router-link class="dropdown-item" :to="{name:'demo01.agencies'}">
+						{{ $t('Agencies') }}
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link class="dropdown-item" :to="{name:'demo01.agencies'}">
+						{{ $t('Agency Profile') }}
+					</router-link>
+				</li>
 			</ul>
 		</li>
 		<li class="nav-item dropdown">
