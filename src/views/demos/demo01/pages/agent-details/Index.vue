@@ -112,7 +112,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#tab-reviews" data-toggle="pill" role="tab">Reviews
-                                        (3)</a>
+                                        ({{ agentStore.reviews.length }})</a>
                                 </li>
                             </ul>
                         </div><!-- agent-nav-wrap -->
@@ -179,7 +179,7 @@
                                <!-- <Pagination /> -->
                             </div><!-- tab-pane -->
                             <div class="tab-pane fade" id="tab-reviews">
-                                <AgentReviews :reviews="agent.agent_reviews" />
+                                <AgentReviews :reviews="agentStore.reviews" :agent="agent" />
                             </div><!-- tab-pane -->
                         </div><!-- tab-content -->
 
@@ -219,7 +219,7 @@ const router = useRouter()
 const loading = ref(true) // ✅ Add this
 
 const agentStore = useAgent()
-const { agent } = storeToRefs(agentStore)
+const { agent, reviews } = storeToRefs(agentStore)
 const agentUsername = route.params.agentUsername
 
 const triggerCall = (phone) => {
@@ -231,10 +231,13 @@ const triggerCall = (phone) => {
 onMounted(async () => {
     try {
         await agentStore.getAgentByUsername(agentUsername)
-    console.log('Agent fetched:', agent.value)
+        
         if (!agent.value || !agent.value.username) {
             router.push({ name: 'agent-not-found-404' })
-        } 
+        }else {
+            await agentStore.fetchReviews(agent.value.id)
+
+        }
         
     } catch (error) {
         console.error('Agent fetch failed:', error)
