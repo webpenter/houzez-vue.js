@@ -2,10 +2,14 @@
 	<div class="agent-list-wrap">
 		<div class="d-flex">
 			<div class="agent-list-image">
-				<RouterLink v-if="agent.profile"
-					:to="{ name: 'demo01.agent-details', params: { agentUsername: agent.username } }">
-					<img class="img-fluid" :src="agent.profile" alt="Agent">
-				</RouterLink><!-- hover-effect -->
+			<RouterLink :to="{ name: 'demo01.agent-details', params: { agentUsername: agent.username } }">
+			<img
+				class="img-fluid"
+				:src="imgSrc"
+				alt="Agent"
+				@error="onImageError"
+			/>
+			</RouterLink>
 			</div><!-- agent-list-image -->
 			<div class="agent-list-content flex-grow-1">
 				<div class="d-flex xxs-column">
@@ -84,12 +88,30 @@
 </template>
 
 <script setup>
-import { param } from 'jquery';
+import { ref, watch } from 'vue';
+import defaultAvatar from '@/assets/img/fb-avatar.png'; // ✅ Relative path for Vite/Webpack
 
-defineProps({
-	agent: {
-		type: Object,
-		required: true,
-	}
-})
+const props = defineProps({
+  agent: {
+    type: Object,
+    required: true,
+  }
+});
+
+// Reactive image source
+const imgSrc = ref(props.agent.profile || defaultAvatar);
+
+// Fallback on image error
+const onImageError = () => {
+  imgSrc.value = defaultAvatar;
+};
+
+// Watch for prop changes (if agent is reactive)
+watch(
+  () => props.agent.profile,
+  (newVal) => {
+    imgSrc.value = newVal || defaultAvatar;
+  }
+);
+
 </script>

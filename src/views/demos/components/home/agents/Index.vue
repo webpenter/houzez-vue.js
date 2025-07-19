@@ -45,7 +45,6 @@ const getAgents = async () => {
   loading.value = true;
   await agentStore.getAllAgents();
   loading.value = false;
-console.log('Agents fetched successfully:', allAgents.value);
 };
 
 onMounted(() => getAgents());

@@ -64,7 +64,8 @@
                                     Send Email
                                     <!-- model and show  -->
                                 </button>
-                                <button type="button" class="btn btn-call" @click="triggerCall(agent.phone)">
+                                <button v-if="agent.phone" type="button" class="btn btn-call"
+                                    @click="triggerCall(agent.phone)">
                                     <span class="hide-on-click">{{ $t('Call') }}</span>
                                     <span class="show-on-click">{{ agent.phone || null }}</span>
                                 </button>
@@ -133,7 +134,7 @@
                                                         :class="{ active: selectedStatus === 'For Rent' }" href="#"
                                                         @click.prevent="selectedStatus = 'For Rent'">For Rent</a>
                                                 </li>
-                                            </ul><!-- nav-tabs -->                                            
+                                            </ul><!-- nav-tabs -->
                                         </div><!-- listing-tabs -->
                                         <div class="sort-by mr-3">
                                             <div class="d-flex align-items-center">
@@ -176,10 +177,11 @@
                                 </div><!-- listing-tools-wrap -->
                                 <div v-if="agent.properties.length > 0" class="listing-view"
                                     :class="viewType + '-view'">
-                                    <PropertyCard v-for="property in filteredProperties" :key="property.id"
+                                    <PropertyCard v-for="property in paginatedProperties" :key="property.id"
                                         :property="property" />
                                 </div><!-- listing-view -->
-                                <!-- <Pagination /> -->
+                                <Pagination :total-items="filteredProperties.length" :page-size="pageSize"
+                                    v-model:current-page="currentPage" />
                             </div><!-- tab-pane -->
                             <div class="tab-pane fade" id="tab-reviews">
                                 <AgentReviews :reviews="agentStore.reviews" :agent="agent" />
@@ -198,7 +200,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick, computed } from 'vue'
+import { ref, onMounted, nextTick, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAgent } from '@/stores/index.js'
 import { storeToRefs } from 'pinia'
@@ -253,10 +255,26 @@ onMounted(async () => {
     }
 
 })
+const currentPage = ref(1)
+const pageSize = 6 // Set how many properties per page
+
+// Total filtered properties by status
 const filteredProperties = computed(() => {
-    if (selectedStatus.value === 'All') return agent.value.properties
-    return agent.value.properties.filter(
-        (prop) => prop.status === selectedStatus.value
-    )
+    if (selectedStatus.value === 'All') return agent.value.properties || []
+    return agent.value.properties.filter((prop) => prop.status === selectedStatus.value)
 })
+
+// Paginated properties to show on screen
+const paginatedProperties = computed(() => {
+    const start = (currentPage.value - 1) * pageSize
+    const end = start + pageSize
+    return filteredProperties.value.slice(start, end)
+})
+
+// When status filter changes, reset to page 1
+watch(selectedStatus, () => {
+    currentPage.value = 1
+})
+
+
 </script>

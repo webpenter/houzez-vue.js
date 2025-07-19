@@ -1,13 +1,11 @@
 <template>
   <div class="team-module hover-effect">
-    <router-link 
-      v-if="agent.username" 
-      class="team-mobile-link" 
-      :to="{name:'demo01.agent-details',params:{agentUsername:agent.username}}">
+    <router-link v-if="agent.username" class="team-mobile-link"
+      :to="{ name: 'demo01.agent-details', params: { agentUsername: agent.username } }">
     </router-link>
-  
+
     <template v-if="imageLoading">
-      <div class="skeleton-card animate-skeleton p-3 rounded">
+      <div v-if="agent.profile" class="skeleton-card animate-skeleton p-3 rounded">
         <div class="skeleton-img mb-3 rounded"></div>
         <div class="skeleton-line w-75 mb-2"></div>
         <div class="skeleton-line w-50 mb-4"></div>
@@ -18,34 +16,34 @@
     </template>
 
     <template v-else>
-      <router-link :to="{name:'demo01.agent-details',params:{agentUsername:agent.username}}">
-              <img class="img-fluid" :src="agent.profile" alt="agent" style="width: 100%; height: auto;" />
-      <div class="team-content-wrap team-content-wrap-before">
-        <div class="team-content">
-          <div class="team-name">
-            <strong>{{ agent.name }}</strong>
-          </div>
-          <div class="team-title">
-            {{ agent.position }}
+      <router-link :to="{ name: 'demo01.agent-details', params: { agentUsername: agent.username } }">
+        <img class="img-fluid" :src="agent.profile" alt="agent" style="width: 100%; height: auto;" />
+        <div class="team-content-wrap team-content-wrap-before">
+          <div class="team-content">
+            <div class="team-name">
+              <strong v-if="agent.name" >{{ agent.name }}</strong>
+            </div>
+            <div v-if="agent.position" class="team-title">
+              {{ agent.position }}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="team-content-wrap team-content-wrap-after">
-        <div class="team-content">
-          <div class="team-name">
-            <strong>{{ agent.name }}</strong>
-          </div>
-          <div class="team-title">
-            {{ agent.position }}
-          </div>
-          <div class="team-description">
-            <div><i class="bi bi-telephone-fill me-2"></i>{{ agent.phone }}</div>
-            <div><i class="bi bi-envelope-fill me-2"></i>{{ agent.email }}</div>
-            <div><i class="bi bi-geo-alt-fill me-2"></i>{{ agent.address }}</div>
+        <div class="team-content-wrap team-content-wrap-after">
+          <div class="team-content">
+            <div class="team-name">
+              <strong v-if="agent.name">{{ agent.name }}</strong>
+            </div>
+            <div v-if="agent.position" class="team-title">
+              {{ agent.position }}
+            </div>
+            <div class="team-description">
+              <div v-if="agent.phone"><i class="bi bi-telephone-fill me-2"></i>{{ agent.phone }}</div>
+              <div><i class="bi bi-envelope-fill me-2"></i>{{ agent.email }}</div>
+              <div v-if="agent.address"><i class="bi bi-geo-alt-fill me-2"></i>{{ agent.address }}</div>
+            </div>
           </div>
         </div>
-      </div>
       </router-link>
     </template>
   </div>

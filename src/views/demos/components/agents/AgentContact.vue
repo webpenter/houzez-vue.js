@@ -8,6 +8,7 @@
 		<ul class="list-unstyled">
 			<li v-if="agent.phone"><strong>{{ $t('Office') }}:</strong> <span>{{ agent.phone }}</span></li>
 			<li v-if="agent.mobile"><strong>{{ $t('Mobile') }}:</strong> <span>{{ agent.mobile }}</span></li>
+			<li v-if="agent.whatsapp"><strong>{{ $t('Whatsapp') }}:</strong> <span>{{ agent.whatsapp }}</span></li>
 			<li v-if="agent.fax_number"><strong>{{ $t('Fax') }}:</strong> <span>{{ agent.fax_number }}</span></li>
 			<li v-if="agent.email"><strong>{{ $t('Email') }}:</strong> <span><a href="#">{{ agent.email }}</a></span></li>
 			<li v-if="agent.website"><strong>{{ $t('Website') }}</strong> <span><a href="#">{{ agent.website }}</a></span></li>
