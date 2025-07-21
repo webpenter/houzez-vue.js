@@ -73,19 +73,19 @@
                         </div><!-- col-lg-8 col-md-8 col-sm-12 -->
                     </div><!-- row -->
                 </div><!-- agent-profile-wrap -->
-                <!-- <div class="agent-stats-wrap">
+                <div class="agent-stats-wrap">
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
-                            <StatsPropertyTypes />
+                            <StatsPropertyTypes :types="agent.top_types"/>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
-                            <StatsPropertyStatus />
+                            <StatsPropertyStatus :statuses="agent.status_summary"/>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
-                            <StatsPropertyCities />
+                            <StatsPropertyCities :cities="agent.top_cities"/>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <!-- agent-stats-wrap -->
 
                 <div class="row">
