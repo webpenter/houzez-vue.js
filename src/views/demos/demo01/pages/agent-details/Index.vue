@@ -26,17 +26,17 @@
                                             Verified
                                         </span>
                                     </h1>
-                                    <!-- <div class="rating-score-wrap">
-                                        <span class="rating-score-text">3.4</span>
+                                    <div class="rating-score-wrap">
+                                        <span class="rating-score-text">{{ averageRating.toFixed(1) }}</span>
                                         <span class="star">
-                                            <span class="icon-rating full-star"></span>
-                                            <span class="icon-rating full-star"></span>
-                                            <span class="icon-rating full-star"></span>
-                                            <span class="icon-rating half-star"></span>
-                                            <span class="icon-rating empty-star"></span>
+                                            <span class="icon-rating" :class="getStarClass(1)"></span>
+                                            <span class="icon-rating" :class="getStarClass(2)"></span>
+                                            <span class="icon-rating" :class="getStarClass(3)"></span>
+                                            <span class="icon-rating" :class="getStarClass(4)"></span>
+                                            <span class="icon-rating" :class="getStarClass(5)"></span>
                                         </span>
                                         <a href="#tab-content">See all reviews</a>
-                                    </div> -->
+                                    </div>
                                 </div>
                                 <!-- agent-profile-content -->
                                 <p class="agent-list-position">
@@ -44,7 +44,7 @@
                                     <template v-if="agent.agencies && agent.agencies.length">
                                         <br>
                                         <span v-for="agency in agent.agencies" :key="agency.id">
-                                            <a href="#">{{ agency.name }}</a><br>
+                                            <a href="#">{{ agency.agency_name }}</a><br>
                                         </span>
                                     </template>
                                 </p>
@@ -109,7 +109,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#tab-reviews" data-toggle="pill" role="tab">Reviews
-                                        ({{ agentStore.reviews.length }})</a>
+                                        ({{ reviews.data.length }})</a>
                                 </li>
                             </ul>
                         </div><!-- agent-nav-wrap -->
@@ -184,7 +184,8 @@
                                     v-model:current-page="currentPage" />
                             </div><!-- tab-pane -->
                             <div class="tab-pane fade" id="tab-reviews">
-                                <AgentReviews :reviews="agentStore.reviews" :agent="agent" />
+                                <AgentReviews :reviews="reviews.data" :agent="agent"
+                                    @updateAverageRating="handleAverageRating" />
                             </div><!-- tab-pane -->
                         </div><!-- tab-content -->
                     </div><!-- bt-content-wrap -->
@@ -226,6 +227,21 @@ const agentStore = useAgent()
 const { agent, reviews } = storeToRefs(agentStore)
 const agentUsername = route.params.agentUsername
 
+const averageRating = ref(0)
+
+const handleAverageRating = (val) => {
+    averageRating.value = val
+}
+
+const getStarClass = (index) => {
+  const full = Math.floor(averageRating.value)
+  const half = averageRating.value % 1 >= 0.5
+
+  if (index <= full) return 'full-star'
+  if (index === full + 1 && half) return 'half-star'
+  return 'empty-star'
+}
+
 const triggerCall = (phone) => {
     if (!phone) return;
     // Open system dialer with "Pick an app" option
@@ -235,7 +251,7 @@ const triggerCall = (phone) => {
 onMounted(async () => {
     try {
         await agentStore.getAgentByUsername(agentUsername)
-
+        
         if (!agent.value || !agent.value.username) {
             router.push({ name: 'agent-not-found-404' })
         } else {
@@ -275,6 +291,5 @@ const paginatedProperties = computed(() => {
 watch(selectedStatus, () => {
     currentPage.value = 1
 })
-
 
 </script>

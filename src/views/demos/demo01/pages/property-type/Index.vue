@@ -47,7 +47,7 @@
                         :view="viewType"
                     />
                 </div><!-- listing-view -->
-                 <Pagination />
+                 <!-- <Pagination /> -->
             </div><!-- half-map-right-wrap -->
         </section><!-- half-map-wrap -->
     </template>

@@ -14,12 +14,14 @@
 			<div class="agent-list-content flex-grow-1">
 				<div class="d-flex xxs-column">
 					<h2>
-						<!-- <span class="badge badge-success agent-verified-badge"><i class="houzez-icon icon-check-circle-1 mr-1"></i> Verified</span>  -->
+						<span v-if="agent.is_verified" class="badge badge-success agent-verified-badge mr-2"><i class="houzez-icon icon-check-circle-1 mr-1"></i> Verified</span> 
 						<RouterLink :to="{ name: 'demo01.agent-details', params: { agentUsername: agent.username } }">
 							{{ agent.name }}
 						</RouterLink>
 					</h2>
 					<!-- <?php include 'inc/property/templates/rating.php';?> -->
+					 <!-- <OverallRating /> -->
+					  <OverallRating :value="agent.average_rating" />
 				</div><!-- d-flex -->
 				<p class="agent-list-position"> {{ agent.position || null }} <a
 						href="#"><!--  Modern House Real Estate --></a></p>
@@ -90,6 +92,7 @@
 <script setup>
 import { ref, watch } from 'vue';
 import defaultAvatar from '@/assets/img/fb-avatar.png'; // ✅ Relative path for Vite/Webpack
+import OverallRating from '../property-details/property/template/OverallRating.vue';
 
 const props = defineProps({
   agent: {

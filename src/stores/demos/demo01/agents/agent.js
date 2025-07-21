@@ -15,7 +15,8 @@ import axiosInstance from '@/services/axiosService.js';
 export const useAgent = defineStore('agent', {
     state: () => ({
         allAgents: [],
-        agent: [],
+        agent: {},
+        reviews: [],
         errors: {},
         loading: false,
         prefix: '/demo01',
