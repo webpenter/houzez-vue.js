@@ -2,119 +2,140 @@
 	<div class="agent-list-wrap">
 		<div class="d-flex">
 			<div class="agent-list-image">
-			<RouterLink :to="{ name: 'demo01.agent-details', params: { agentUsername: agent.username } }">
-			<img
-				class="img-fluid"
-				:src="imgSrc"
-				alt="Agent"
-				@error="onImageError"
-			/>
-			</RouterLink>
-			</div><!-- agent-list-image -->
+				<RouterLink v-if="type === 'agent'"
+					:to="{ name: 'demo01.agent-details', params: { agentUsername: data.username } }">
+					<img class="img-fluid" :src="imgSrc" alt="Agent" @error="onImageError" />
+				</RouterLink>
+
+				<RouterLink v-else :to="{ name: 'demo01.agency-details', params: { agencyUsername: data.username } }">
+					<img class="img-fluid" :src="imgSrc" alt="Agency" @error="onImageError" />
+				</RouterLink>
+			</div>
+
 			<div class="agent-list-content flex-grow-1">
 				<div class="d-flex xxs-column">
 					<h2>
-						<span v-if="agent.is_verified" class="badge badge-success agent-verified-badge mr-2"><i class="houzez-icon icon-check-circle-1 mr-1"></i> Verified</span> 
-						<RouterLink :to="{ name: 'demo01.agent-details', params: { agentUsername: agent.username } }">
-							{{ agent.name }}
+						<span v-if="type === 'agent' && data.is_verified"
+							class="badge badge-success agent-verified-badge mr-2">
+							<i class="houzez-icon icon-check-circle-1 mr-1"></i> Verified
+						</span>
+						<span v-else class="badge badge-success agent-verified-badge mr-2">
+							<i class="houzez-icon icon-check-circle-1 mr-1"></i> Verified
+						</span>
+
+						<RouterLink :to="type === 'agent'
+							? { name: 'demo01.agent-details', params: { agentUsername: data.username } }
+							: { name: 'demo01.agency-details', params: { agencyUsername: data.username } }">
+							{{ data.name }}
 						</RouterLink>
 					</h2>
-					<!-- <?php include 'inc/property/templates/rating.php';?> -->
-					 <!-- <OverallRating /> -->
-					  <OverallRating :value="agent.average_rating" />
-				</div><!-- d-flex -->
-				<p class="agent-list-position"> {{ agent.position || null }} <a
-						href="#"><!--  Modern House Real Estate --></a></p>
+
+					<OverallRating :value="data.average_rating" />
+				</div>
+
+				<p v-if="type === 'agent' && data.position" class="agent-list-position">
+					{{ data.position }}
+					<span v-if="data.agencies?.[0]?.agency_name">
+						at 
+						<RouterLink style="color: #00aeff;"
+							:to="{
+								name: 'demo01.agency-details',
+								params: { agencyUsername: data.agencies[0].username }
+							}"
+							>
+							{{ data.agencies[0].agency_name }}
+						</RouterLink>
+					</span>
+				</p>
+				<p v-else class="agent-list-position">
+					<i class="houzez-icon icon-pin"></i>
+					{{ data.address }}
+				</p>
+
 				<ul class="agent-list-contact list-unstyled">
-					<li><strong>{{ $t('Office') }}</strong> <span class="agent-phone agent-phone-hidden">{{ agent.phone || null
-							}}</span></li>
-					<li><strong>{{ $t('Mobile') }}</strong> <span class="agent-phone agent-phone-hidden">{{ agent.mobile || null
-							}}</span></li>
-					<li><strong>{{ $t('Fax') }}</strong> <span>{{ agent.fax_number || null }}</span></li>
-					<li><strong>{{ $t('Email') }}</strong> <a href="tel:#">{{ agent?.email || null }}</a></li>
-				</ul><!-- agent-list-contact -->
+					<li><strong>{{ $t('Office') }}</strong> <span>{{ data.phone || null }}</span></li>
+					<li><strong>{{ $t('Mobile') }}</strong> <span>{{ data.mobile || null }}</span></li>
+					<li><strong>{{ $t('Fax') }}</strong> <span>{{ data.fax_number || null }}</span></li>
+					<li><strong>{{ $t('Email') }}</strong> <a href="mailto:#">{{ data.email || null }}</a></li>
+				</ul>
+
 				<div class="d-flex sm-column">
 					<div class="agent-social-media flex-grow-1 d-flex mt-4">
-						<span v-if="agent.facebook">
-							<a class="btn-facebook" target="_blank" :href="agent.facebook">
-								<i class="houzez-icon icon-social-media-facebook mr-2"></i>
-							</a>
-						</span>
-						<span v-if="agent.instagram">
-							<a class="btn-instagram" target="_blank" :href="agent.instagram">
-								<i class="houzez-icon icon-social-instagram mr-2"></i>
-							</a>
-						</span>
-						<span v-if="agent.twitter">
-							<a class="btn-twitter" target="_blank" :href="agent.twitter">
-								<i class="houzez-icon icon-x-logo-twitter-logo-2 mr-2"></i>
-							</a>
-						</span>
-						<span v-if="agent.linkedin">
-							<a class="btn-linkedin" target="_blank" :href="agent.linkedin">
-								<i class="houzez-icon icon-professional-network-linkedin mr-2"></i>
-							</a>
-						</span>
-						<span v-if="agent.google_plus">
-							<a class="btn-googleplus" target="_blank" :href="agent.google_plus">
-								<i class="houzez-icon icon-social-media-google-plus-1 mr-2"></i>
-							</a>
-						</span>
-						<span v-if="agent.youtube">
-							<a class="btn-youtube" target="_blank" :href="agent.youtube">
-								<i class="houzez-icon icon-social-video-youtube-clip mr-2"></i>
-							</a>
-						</span>
-						<span v-if="agent.pinterest">
-							<a class="btn-pinterest" target="_blank" :href="agent.pinterest">
-								<i class="houzez-icon icon-social-pinterest mr-2"></i>
-							</a>
-						</span>
-						<span v-if="agent.vimeo">
-							<a class="btn-vimeo" target="_blank" :href="agent.vimeo">
-								<i class="houzez-icon icon-social-video-vimeo mr-2"></i>
-							</a>
-						</span>
-						<span v-if="agent.skype">
-							<a class="btn-skype" target="_blank" :href="agent.skype">
-								<i class="houzez-icon icon-skype-5 mr-2"></i>
-							</a>
-						</span>
-					</div><!-- agent-social-media -->
-					<RouterLink :to="{ name: 'demo01.agent-details', params: { agentUsername: agent.username } }"
-						class="agent-list-link mt-3"><strong>{{ $t('View My Listings') }}</strong></RouterLink>
-				</div><!-- d-flex -->
-			</div><!-- agent-list-content -->
-		</div><!-- d-flex -->
-	</div><!-- agent-list-wrap -->
+						<template v-for="(value, key) in socialLinks" :key="key">
+							<span v-if="value">
+								<a :class="'btn-' + key" target="_blank" :href="value">
+									<i :class="iconClass(key)" class="mr-2"></i>
+								</a>
+							</span>
+						</template>
+					</div>
+
+					<RouterLink v-if="type === 'agent'"
+						:to="{ name: 'demo01.agent-details', params: { agentUsername: data.username } }"
+						class="agent-list-link mt-3">
+						<strong>{{ $t('View My Listings') }}</strong>
+					</RouterLink>
+
+					<RouterLink v-else
+						:to="{ name: 'demo01.agency-details', params: { agencyUsername: data.username } }"
+						class="agent-list-link mt-3">
+						<strong>{{ $t('View Agency Listings') }}</strong>
+					</RouterLink>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
-import defaultAvatar from '@/assets/img/fb-avatar.png'; // ✅ Relative path for Vite/Webpack
+import { ref, computed, watch } from 'vue';
 import OverallRating from '../property-details/property/template/OverallRating.vue';
+import defaultAvatar from '@/assets/img/fb-avatar.png';
 
 const props = defineProps({
-  agent: {
-    type: Object,
-    required: true,
-  }
+	data: { type: Object, required: true },
+	type: { type: String, default: 'agent' }, // 'agent' or 'agency'
 });
 
-// Reactive image source
-const imgSrc = ref(props.agent.profile || defaultAvatar);
-
-// Fallback on image error
+// fallback image logic
+const imgSrc = ref(props.data.profile || defaultAvatar);
 const onImageError = () => {
-  imgSrc.value = defaultAvatar;
+	imgSrc.value = defaultAvatar;
 };
 
-// Watch for prop changes (if agent is reactive)
 watch(
-  () => props.agent.profile,
-  (newVal) => {
-    imgSrc.value = newVal || defaultAvatar;
-  }
+	() => props.data.profile,
+	(newVal) => {
+		imgSrc.value = newVal || defaultAvatar;
+	}
 );
 
+// social icons (agent & agency share similar keys)
+const socialLinks = computed(() => ({
+	facebook: props.data.facebook,
+	instagram: props.data.instagram,
+	twitter: props.data.twitter,
+	linkedin: props.data.linkedin,
+	googleplus: props.data.google_plus,
+	youtube: props.data.youtube,
+	pinterest: props.data.pinterest,
+	vimeo: props.data.vimeo,
+	skype: props.data.skype,
+}));
+
+// social icon class mapping
+const iconClass = (platform) => {
+	const map = {
+		facebook: 'houzez-icon icon-social-media-facebook',
+		instagram: 'houzez-icon icon-social-instagram',
+		twitter: 'houzez-icon icon-x-logo-twitter-logo-2',
+		linkedin: 'houzez-icon icon-professional-network-linkedin',
+		googleplus: 'houzez-icon icon-social-media-google-plus-1',
+		youtube: 'houzez-icon icon-social-video-youtube-clip',
+		pinterest: 'houzez-icon icon-social-pinterest',
+		vimeo: 'houzez-icon icon-social-video-vimeo',
+		skype: 'houzez-icon icon-skype-5',
+	};
+	return map[platform] || '';
+};
 </script>

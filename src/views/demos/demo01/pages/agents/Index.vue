@@ -17,7 +17,7 @@
               <AgentCardSkeleton v-for="n in 4" :key="n" />
             </template>
             <template v-else>
-              <AgentCard v-for="agent in agentStore.allAgents" :key="agent.id" :agent="agent" />
+              <AgentCard v-for="agent in agentStore.allAgents" :key="agent.id" :data="agent" type="agent" />
             </template>
           </div><!-- listing-view -->
           <!-- <Pagination /> -->
@@ -48,6 +48,7 @@ const loading = ref(true)
 onMounted(async () => {
   try {
     await agentStore.getAllAgents()
+    console.log('Agents fetched successfully:', agentStore.allAgents)
   } catch (err) {
     console.error('Failed to fetch agents:', err)
   } finally {

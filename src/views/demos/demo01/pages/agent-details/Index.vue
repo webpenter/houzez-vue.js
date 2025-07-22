@@ -14,7 +14,8 @@
                                 <div class="agent-company-logo">
                                     <img class="img-fluid" :src="Logo" alt="agent-company-logo">
                                 </div>
-                                <img class="img-fluid" :src="agent.profile" alt="Agent" />
+                                <img class="img-fluid" :src="agent.profile || defaultAvatar" alt="Agent" style="height: 370px;"
+                                    @error="event => event.target.src = defaultAvatar" />
                             </div><!-- agent-image -->
                         </div><!-- col-lg-4 col-md-4 col-sm-12 -->
                         <div class="col-lg-8 col-md-8 col-sm-12">
@@ -42,9 +43,15 @@
                                 <p class="agent-list-position">
                                     {{ agent.position || '' }}
                                     <template v-if="agent.agencies && agent.agencies.length">
-                                        <br>
+                                        <br>at
                                         <span v-for="agency in agent.agencies" :key="agency.id">
-                                            <a href="#">{{ agency.agency_name }}</a><br>
+                                            <RouterLink style="color: #00aeff;" :to="{
+                                                name: 'demo01.agency-details',
+                                                params: { agencyUsername: agency.username }
+                                            }">
+                                                {{ agency.agency_name }}
+                                            </RouterLink>
+                                            <br />
                                         </span>
                                     </template>
                                 </p>
@@ -76,13 +83,13 @@
                 <div class="agent-stats-wrap">
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
-                            <StatsPropertyTypes :types="agent.top_types"/>
+                            <StatsPropertyTypes :types="agent.top_types" />
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
-                            <StatsPropertyStatus :statuses="agent.status_summary"/>
+                            <StatsPropertyStatus :statuses="agent.status_summary" />
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
-                            <StatsPropertyCities :cities="agent.top_cities"/>
+                            <StatsPropertyCities :cities="agent.top_cities" />
                         </div>
                     </div>
                 </div>
@@ -183,7 +190,7 @@
                                 <Pagination :total-items="filteredProperties.length" :page-size="pageSize"
                                     v-model:current-page="currentPage" />
                             </div><!-- tab-pane -->
-                            <div class="tab-pane fade" id="tab-reviews">
+                            <div v-if="agent.properties.length != 0" class="tab-pane fade" id="tab-reviews">
                                 <AgentReviews :reviews="reviews.data" :agent="agent"
                                     @updateAverageRating="handleAverageRating" />
                             </div><!-- tab-pane -->
@@ -207,6 +214,7 @@ import { useAgent } from '@/stores/index.js'
 import { storeToRefs } from 'pinia'
 
 import Logo from '@/assets/img/app-side/logo-houzez-color.png';
+import defaultAvatar from '@/assets/img/fb-avatar.png';
 import StatsPropertyTypes from '@/views/demos/components/agents/StatsPropertyTypes.vue';
 import StatsPropertyStatus from '@/views/demos/components/agents/StatsPropertyStatus.vue';
 import StatsPropertyCities from '@/views/demos/components/agents/StatsPropertyCities.vue';
@@ -234,12 +242,12 @@ const handleAverageRating = (val) => {
 }
 
 const getStarClass = (index) => {
-  const full = Math.floor(averageRating.value)
-  const half = averageRating.value % 1 >= 0.5
+    const full = Math.floor(averageRating.value)
+    const half = averageRating.value % 1 >= 0.5
 
-  if (index <= full) return 'full-star'
-  if (index === full + 1 && half) return 'half-star'
-  return 'empty-star'
+    if (index <= full) return 'full-star'
+    if (index === full + 1 && half) return 'half-star'
+    return 'empty-star'
 }
 
 const triggerCall = (phone) => {
@@ -251,7 +259,7 @@ const triggerCall = (phone) => {
 onMounted(async () => {
     try {
         await agentStore.getAgentByUsername(agentUsername)
-        
+
         if (!agent.value || !agent.value.username) {
             router.push({ name: 'agent-not-found-404' })
         } else {

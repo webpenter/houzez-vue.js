@@ -40,6 +40,24 @@ export const useAgency = defineStore('agency', {
             }
         },
 
+        /**
+         * ## Fetch single agency by username.
+         * @param {string} username - Agency username.
+         * @returns {Promise}
+         */
+        async getAgencyByUsername(username) {
+            this.loading = true;
+            try {
+                const response = await axiosInstance.get(`${this.prefix}/agency/${username}`);
+                this.agency = response.data.data;
+                this.loading = false;
+                return Promise.resolve(response);
+            } catch (error) {
+                this.loading = false;
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
+            }
+        },
         
     }
 });

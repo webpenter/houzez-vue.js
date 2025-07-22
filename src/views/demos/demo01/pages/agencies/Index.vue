@@ -17,7 +17,7 @@
               <AgentCardSkeleton v-for="n in 4" :key="n" />
             </template>
             <template v-else>
-              <AgentCard v-for="agent in agentStore.allAgents" :key="agent.id" :agent="agent" />
+              <AgencyCard v-for="agency in agencyStore.allAgencies" :key="agency.id" :data="agency" type="agency" />
             </template>
           </div><!-- listing-view -->
           <!-- <Pagination /> -->
@@ -33,21 +33,22 @@
 <script setup>
 import { onMounted, ref  } from 'vue'
 import { storeToRefs } from 'pinia';
-import { useAgent } from '@/stores/index.js'
+import { useAgency } from '@/stores/index.js'
 import Breadcrumb from '@/views/demos/components/property-details/property-title-block/BreadCrumb.vue';
 import Pagination from "@/views/demos/components/inc/Pagination.vue";
-import AgentCard from "@/views/demos/components/agents/AgentCard.vue";
+import AgencyCard from "@/views/demos/components/agents/AgentCard.vue";
 import AgentSearch from "@/views/demos/components/agents/AgentSearch.vue";
 import AgentCardSkeleton from '@/components/skeleton/AgentCardSkeleton.vue'
 
 
 
-const agentStore = useAgent()
-const { agent } = storeToRefs(agentStore);
+const agencyStore = useAgency()
+const { agency } = storeToRefs(agencyStore);
 const loading = ref(true)
 onMounted(async () => {
   try {
-    await agentStore.getAllAgents()
+    await agencyStore.getAllAgencies()
+    console.log('Agencies fetched successfully:', agencyStore.allAgencies)
   } catch (err) {
     console.error('Failed to fetch agents:', err)
   } finally {

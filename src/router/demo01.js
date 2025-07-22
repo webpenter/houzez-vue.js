@@ -141,7 +141,7 @@ export default [
        * @description Agent details page of Demo01
        */
       {
-        path: '/demo01/agency/:agentUsername',
+        path: '/demo01/agency/:agencyUsername',
         name: 'demo01.agency-details',
         component: () => import('@/views/demos/demo01/pages/agency-details/Index.vue'),
         meta: { title: 'Agency Detail' },
