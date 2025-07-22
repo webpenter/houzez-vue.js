@@ -215,7 +215,7 @@ const loading = ref(true) // ✅ Add this
 
 const agentStore = useAgent()
 const { agent } = storeToRefs(agentStore)
-const agentUsername = route.params.agentUsername
+const agentUsername = route.params.agencyUsername
 
 onMounted(async () => {
     try {
