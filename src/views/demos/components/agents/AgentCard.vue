@@ -14,12 +14,12 @@
 
 			<div class="agent-list-content flex-grow-1">
 				<div class="d-flex xxs-column">
-					<h2>
+					<h2 class="d-flex">
 						<span v-if="type === 'agent' && data.is_verified"
-							class="badge badge-success agent-verified-badge mr-2">
+							class="badge badge-success agent-verified-badge mr-2 pt-2 d-flex">
 							<i class="houzez-icon icon-check-circle-1 mr-1"></i> Verified
 						</span>
-						<span v-else class="badge badge-success agent-verified-badge mr-2">
+						<span v-else class="badge badge-success agent-verified-badge mr-2 pt-2 d-flex">
 							<i class="houzez-icon icon-check-circle-1 mr-1"></i> Verified
 						</span>
 
