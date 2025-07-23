@@ -6,7 +6,7 @@
           v-show="isLoaded"
           :src="property.thumbnail"
           :alt="property.title"
-          class="property-image"
+          class="property-image" 
           @load="imageLoaded"
       >
     </div>

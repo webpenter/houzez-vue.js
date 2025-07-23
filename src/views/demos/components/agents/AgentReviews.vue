@@ -127,9 +127,16 @@ const props = defineProps({
   },
   agent: {
     type: Object,
-    default: () => ({})
+    default: () => null
+  },
+  agency: {
+    type: Object,
+    default: () => null
   }
 });
+
+const entity = computed(() => props.agent || props.agency);
+const entityType = computed(() => (props.agent ? 'agent' : 'agency'));
 
 // Store
 const reviewStore = useAgent();
@@ -168,14 +175,25 @@ watch(averageRating, (newVal) => {
   emit('updateAverageRating', newVal);
 }, { immediate: true });
 
-// Form
+// Form and Submit
 const successMessage = ref('');
 const form = ref({
-  agent_id: props.agent.id,
   title: '',
   rating: '',
-  comment: ''
+  comment: '',
+  agent_id: props.agent?.id || null,
+  agency_id: props.agency?.id || null
 });
+
+const resetForm = () => {
+  form.value = {
+    title: '',
+    rating: '',
+    comment: '',
+    agent_id: props.agent?.id || null,
+    agency_id: props.agency?.id || null
+  };
+};
 
 const submitReview = async () => {
   successMessage.value = '';
@@ -183,17 +201,13 @@ const submitReview = async () => {
   reviewStore.loading = true;
 
   try {
-    await reviewStore.addReview(form.value);
+    await reviewStore.addReview(form.value); // Make sure addReview accepts agency_id/agent_id
+
     const hasErrors = Object.keys(reviewStore.errors.value?.data?.errors || {}).length > 0;
 
     if (!hasErrors) {
       successMessage.value = t('Your review has been submitted');
-      form.value = {
-        agent_id: props.agent.id,
-        title: '',
-        rating: '',
-        comment: ''
-      };
+      resetForm();
     }
   } catch (error) {
     // Errors handled in store

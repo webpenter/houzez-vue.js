@@ -99,9 +99,9 @@
                     <div class="col-lg-8 col-md-12 bt-content-wrap">
 
                         <div class="agent-bio-wrap">
-                            <h2>{{ $t('About') }} {{ agent.name }}</h2>
+                            <h2 v-if="agent.about_me">{{ $t('About') }} {{ agent.name }}</h2>
                             <p>{{ agent.about_me || null }}</p>
-                            <p v-if="agent.languages"><i class="houzez-icon icon-messages-bubble mr-1"></i>
+                            <p class="mt-3" v-if="agent.languages"><i class="houzez-icon icon-messages-bubble mr-1"></i>
                                 <strong>Languages:</strong>
                                 {{ agent.languages }}
                             </p>
@@ -190,7 +190,7 @@
                                 <Pagination :total-items="filteredProperties.length" :page-size="pageSize"
                                     v-model:current-page="currentPage" />
                             </div><!-- tab-pane -->
-                            <div v-if="agent.properties.length != 0" class="tab-pane fade" id="tab-reviews">
+                            <div class="tab-pane fade" id="tab-reviews">
                                 <AgentReviews :reviews="reviews.data" :agent="agent"
                                     @updateAverageRating="handleAverageRating" />
                             </div><!-- tab-pane -->
@@ -198,7 +198,7 @@
                     </div><!-- bt-content-wrap -->
                     <div class="col-lg-4 col-md-12 bt-sidebar-wrap">
                         <aside class="sidebar-wrap">
-                            <AgentContact :agent="agent" />
+                            <Contact :agent="agent" />
                         </aside>
                     </div><!-- bt-sidebar-wrap -->
                 </div><!-- row -->
@@ -218,7 +218,7 @@ import defaultAvatar from '@/assets/img/fb-avatar.png';
 import StatsPropertyTypes from '@/views/demos/components/agents/StatsPropertyTypes.vue';
 import StatsPropertyStatus from '@/views/demos/components/agents/StatsPropertyStatus.vue';
 import StatsPropertyCities from '@/views/demos/components/agents/StatsPropertyCities.vue';
-import AgentContact from '@/views/demos/components/agents/AgentContact.vue';
+import Contact from '@/views/demos/components/agents/AgentContact.vue';
 import Pagination from '@/views/demos/components/inc/Pagination.vue';
 import PropertyCard from '../../../components/home/featured-listings/ListItem.vue';
 import AgentReviews from '../../../components/agents/AgentReviews.vue';
