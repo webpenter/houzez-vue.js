@@ -198,7 +198,7 @@
                     </div><!-- bt-content-wrap -->
                     <div class="col-lg-4 col-md-12 bt-sidebar-wrap">
                         <aside class="sidebar-wrap">
-                            <Contact :agent="agent" />
+                            <Contact :contact="agent" />
                         </aside>
                     </div><!-- bt-sidebar-wrap -->
                 </div><!-- row -->

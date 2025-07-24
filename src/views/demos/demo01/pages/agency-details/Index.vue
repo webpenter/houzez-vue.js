@@ -171,9 +171,7 @@
                                 there are agents
                             </div><!-- tab-pane -->
                             <div class="tab-pane fade" id="tab-reviews">
-                                <!-- <?php include 'inc/property/property-reviews.php';?> -->
                                 <AgencyReviews :reviews="agencyStore.reviews?.data || []" :agency="agency" @updateAverageRating="handleAverageRating" />
-                                <!-- <PropertyReviews /> -->
                             </div><!-- tab-pane -->
                         </div><!-- tab-content -->
                     </div><!-- bt-content-wrap -->

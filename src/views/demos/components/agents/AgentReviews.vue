@@ -109,11 +109,11 @@
   </div>
 </template>
 
-<script setup>
+<!-- <script setup>
 import { ref, watch, computed } from 'vue';
 import OverallRating from '../../components/property-details/property/template/OverallRating.vue';
 import Review from '../../components/property-details/property/template/Review.vue';
-import { useAgent } from '@/stores/index';
+import { useAgent, useAgency } from '@/stores/index';
 import { storeToRefs } from 'pinia';
 import { useI18n } from 'vue-i18n';
 
@@ -195,13 +195,24 @@ const resetForm = () => {
   };
 };
 
+const { addReview: addAgentReview } = useAgent();
+const { addReview: addAgencyReview } = useAgency();
+
 const submitReview = async () => {
   successMessage.value = '';
   reviewStore.errors = {};
   reviewStore.loading = true;
 
   try {
-    await reviewStore.addReview(form.value); // Make sure addReview accepts agency_id/agent_id
+    let response;
+
+    if (entityType.value === 'agent') {
+      response = await addAgentReview(form.value);
+    } else if (entityType.value === 'agency') {
+      response = await addAgencyReview(form.value);
+    } else {
+      throw new Error('Unknown entity type');
+    }
 
     const hasErrors = Object.keys(reviewStore.errors.value?.data?.errors || {}).length > 0;
 
@@ -213,6 +224,77 @@ const submitReview = async () => {
     // Errors handled in store
   } finally {
     reviewStore.loading = false;
+  }
+};
+</script> -->
+
+<script setup>
+import { ref, watch, computed } from 'vue';
+import OverallRating from '../../components/property-details/property/template/OverallRating.vue';
+import Review from '../../components/property-details/property/template/Review.vue';
+import { useAgent, useAgency } from '@/stores/index';
+import { storeToRefs } from 'pinia';
+import { useI18n } from 'vue-i18n';
+
+const emit = defineEmits(['updateAverageRating']);
+const { t } = useI18n();
+
+const props = defineProps({
+  reviews: { type: Array, default: () => [] },
+  agent: { type: Object, default: () => null },
+  agency: { type: Object, default: () => null }
+});
+
+const entityType = computed(() => (props.agent ? 'agent' : 'agency'));
+const reviewsList = computed(() => (Array.isArray(props.reviews) ? props.reviews : []));
+
+// Store
+const { errors, loading } = storeToRefs(useAgent());
+const successMessage = ref('');
+const form = ref({
+  title: '',
+  rating: '',
+  comment: '',
+  agent_id: props.agent?.id || null,
+  agency_id: props.agency?.id || null
+});
+
+// Pagination
+const currentPage = ref(1);
+const perPage = 4;
+const paginatedReviews = computed(() => {
+  const start = (currentPage.value - 1) * perPage;
+  return reviewsList.value.slice(start, start + perPage);
+});
+const totalPages = computed(() => Math.ceil(reviewsList.value.length / perPage));
+const goToPage = (page) => { if (page >= 1 && page <= totalPages.value) currentPage.value = page; };
+
+// Average Rating
+const averageRating = computed(() =>
+  reviewsList.value.length
+    ? parseFloat((reviewsList.value.reduce((s, r) => s + r.rating, 0) / reviewsList.value.length).toFixed(1))
+    : 0
+);
+watch(averageRating, (val) => emit('updateAverageRating', val), { immediate: true });
+
+const submitReview = async () => {
+  successMessage.value = '';
+  errors.value = {};
+  loading.value = true;
+
+  try {
+    if (entityType.value === 'agent') {
+      await useAgent().addReview(form.value);
+    } else {
+      await useAgency().addReview(form.value);
+    }
+
+    if (!Object.keys(errors.value?.data?.errors || {}).length) {
+      successMessage.value = t('Your review has been submitted');
+      form.value = { title: '', rating: '', comment: '', agent_id: props.agent?.id || null, agency_id: props.agency?.id || null };
+    }
+  } finally {
+    loading.value = false;
   }
 };
 </script>
