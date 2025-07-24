@@ -218,10 +218,10 @@ import defaultAvatar from '@/assets/img/fb-avatar.png';
 import StatsPropertyTypes from '@/views/demos/components/agents/StatsPropertyTypes.vue';
 import StatsPropertyStatus from '@/views/demos/components/agents/StatsPropertyStatus.vue';
 import StatsPropertyCities from '@/views/demos/components/agents/StatsPropertyCities.vue';
-import Contact from '@/views/demos/components/agents/AgentContact.vue';
+import Contact from '@/views/demos/components/agents/Contact.vue';
 import Pagination from '@/views/demos/components/inc/Pagination.vue';
 import PropertyCard from '../../../components/home/featured-listings/ListItem.vue';
-import AgentReviews from '../../../components/agents/AgentReviews.vue';
+import AgentReviews from '../../../components/agents/Reviews.vue';
 import AgentSkeleton from '@/components/skeleton/AgentSkeleton.vue'
 
 // Setup

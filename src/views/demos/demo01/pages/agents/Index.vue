@@ -36,8 +36,8 @@ import { storeToRefs } from 'pinia';
 import { useAgent } from '@/stores/index.js'
 import Breadcrumb from '@/views/demos/components/property-details/property-title-block/BreadCrumb.vue';
 import Pagination from "@/views/demos/components/inc/Pagination.vue";
-import AgentCard from "@/views/demos/components/agents/AgentCard.vue";
-import AgentSearch from "@/views/demos/components/agents/AgentSearch.vue";
+import AgentCard from "@/views/demos/components/agents/Card.vue";
+import AgentSearch from "@/views/demos/components/agents/Search.vue";
 import AgentCardSkeleton from '@/components/skeleton/AgentCardSkeleton.vue'
 
 
