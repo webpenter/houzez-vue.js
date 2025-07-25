@@ -59,13 +59,13 @@ const imageLoaded = () => {
 <style scoped>
 .property-image-container {
   position: relative;
-  width: 255px;
+  width: 333px;
   height: 250px;
   border-radius: 10px;
 }
 
 .property-image {
-  width: 257px;
+  width: 333px;
   height: 250px;
   object-fit: cover;
   border-radius: 10px;
@@ -73,7 +73,7 @@ const imageLoaded = () => {
 
 .property-image-load {
   background-color: #f0f0f0;
-  width: 375px;
+  width: 333px;
   height: 250px;
   border-radius: 10px;
 }
