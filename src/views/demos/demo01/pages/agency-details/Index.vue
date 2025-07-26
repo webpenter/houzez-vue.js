@@ -94,7 +94,7 @@
                             <ul class="nav nav-pills nav-justified">
                                 <li class="nav-item mr-2">
                                     <a class="nav-link active" href="#tab-properties" data-toggle="pill" role="tab">{{
-                                        $t('Listings') }} ({{ agency.properties.length }})</a>
+                                        $t('Listings') }} (9)</a>
                                 </li>
                                 <li class="nav-item mr-2">
                                     <a class="nav-link" href="#tab-agents" data-toggle="pill" role="tab">Agents
@@ -165,11 +165,12 @@
                                         <!-- listing-switch-view -->
                                     </div><!-- d-flex -->
                                 </div><!-- listing-tools-wrap -->
-                                <div v-if="agency.properties.length > 0" class="listing-view"
+                                <!-- <div v-if="agency.properties.length > 0" class="listing-view"
                                     :class="viewType + '-view'">
                                     <PropertyCard v-for="property in agency.properties" :key="property.id"
                                         :property="property" />
-                                </div><!-- listing-view -->
+                                </div> -->
+                                <!-- listing-view -->
                                 <!-- <Pagination /> -->
                             </div><!-- tab-pane -->
                             <div class="tab-pane fade" id="tab-agents">
@@ -243,6 +244,7 @@ onMounted(async () => {
             router.push({ name: 'agent-not-found-404' })
         } else {
             await agencyStore.fetchReviews(agency.value.id)
+            
         }
 
     } catch (error) {

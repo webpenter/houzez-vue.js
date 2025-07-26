@@ -111,7 +111,26 @@ export const useAgency = defineStore('agency', {
 
                 throw error.response; // Let the component catch and handle it
             }
-        }
+        },
+
+        /**
+         * ## Fetch single agency by username and their properties.
+         * @param {string} username - Agency username.
+         * @returns {Promise}
+         */
+        async getAgencyProperties(username) {
+            this.loading = true;
+            try {
+                const response = await axiosInstance.get(`${this.prefix}/agency/${username}/properties`);
+                this.agency = response.data;
+                this.loading = false;
+                return Promise.resolve(response);
+            } catch (error) {
+                this.loading = false;
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
+            }
+        },
         
     }
 });

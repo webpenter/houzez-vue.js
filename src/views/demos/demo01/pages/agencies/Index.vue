@@ -48,7 +48,6 @@ const loading = ref(true)
 onMounted(async () => {
   try {
     await agencyStore.getAllAgencies()
-    console.log('Agencies fetched successfully:', agencyStore.allAgencies)
   } catch (err) {
     console.error('Failed to fetch agents:', err)
   } finally {

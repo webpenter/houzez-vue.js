@@ -13,7 +13,8 @@
                             <span class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}
                             <span class="price-postfix">/{{ property.after_price }}</span>
                         </li>
-                        <li class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{ property.size_prefix }}</li>
+                        <li class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{
+                            property.size_prefix }}</li>
                     </ul>
 
                     <!-- <ul class="item-tools item-tools-v2">
@@ -36,19 +37,11 @@
                         </li>
                     </ul> -->
 
-                    <RouterLink
-                        :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }"
-                        class="hover-effect d-block position-relative"
-                    >
+                    <RouterLink :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }"
+                        class="hover-effect d-block position-relative">
                         <div class="image-wrapper" :class="{ 'loading': !isLoaded }">
-                            <img
-                                v-show="isLoaded"
-                                class="img-fluid main-image"
-                                :src="property.thumbnail"
-                                :alt="property.title || 'Property Image'"
-                                @load="imageLoaded"
-                                loading="lazy"
-                            />
+                            <img v-show="isLoaded" class="img-fluid main-image" :src="property.thumbnail"
+                                :alt="property.title || 'Property Image'" @load="imageLoaded" loading="lazy" />
                         </div>
                     </RouterLink>
                 </div>
@@ -68,11 +61,13 @@
                             <span class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}
                             <span class="price-postfix">/{{ property.after_price }}</span>
                         </li>
-                        <li class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{ property.size_prefix }}</li>
+                        <li class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{
+                            property.size_prefix }}</li>
                     </ul>
 
                     <address class="item-address">
-                        <i v-if="property?.address && property?.city && property?.county_state && property?.country" class="houzez-icon icon-pin mr-1"></i>
+                        <i v-if="property?.address && property?.city && property?.county_state && property?.country"
+                            class="houzez-icon icon-pin mr-1"></i>
                         {{ $filters.subStr(property.address, 0, 40) }}
                         {{ $filters.subStr(property.city, 0, 40) }},
                         {{ $filters.subStr(property.county_state, 0, 40) }},
@@ -98,26 +93,43 @@
                         </li>
                         <li class="h-area">
                             <i class="houzez-icon icon-ruler-triangle mr-1"></i>
-                            <span>{{ property.area_size }}</span> <span class="area_postfix">{{ property.size_prefix }}</span>
+                            <span>{{ property.area_size }}</span> <span class="area_postfix">{{ property.size_prefix
+                            }}</span>
                         </li>
                         <li class="h-type">
                             <span>{{ property.type }}</span>
                         </li>
                     </ul>
 
-                    <RouterLink
-                        :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }"
-                        class="btn btn-primary btn-item"
-                    >
+                    <RouterLink :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }"
+                        class="btn btn-primary btn-item">
                         {{ $t('Details') }}
                     </RouterLink>
 
                     <div class="item-author">
-                        <i class="houzez-icon icon-single-neutral mr-1"></i>
-                        <RouterLink
-                            :to="{ name: 'demo01.agent-details', params: { agentUsername: property.user?.username } }"
-                            >
-                            {{ property.user?.name }}
+
+                        <RouterLink v-if="property.assigned_agent" :to="{
+                            name: 'demo01.agent-details',
+                            params: { agentUsername: property.assigned_agent.username }
+                        }">
+                            <i class="houzez-icon icon-single-neutral mr-1"></i>
+                            {{ property.assigned_agent.name }}
+                        </RouterLink>
+
+                        <RouterLink v-else-if="property.user?.role === 'agency'" :to="{
+                            name: 'demo01.agency-details',
+                            params: { agencyUsername: property.user.username }
+                        }">
+                            <i class="houzez-icon icon-single-neutral mr-1"></i>
+                            {{ property.user.name }}
+                        </RouterLink>
+
+                        <RouterLink v-else :to="{
+                            name: 'demo01.agent-details',
+                            params: { agentUsername: property.user.username }
+                        }">
+                            <i class="houzez-icon icon-single-neutral mr-1"></i>
+                            {{ property.user.name }}
                         </RouterLink>
                     </div>
 
@@ -129,11 +141,29 @@
 
                 <div class="item-footer clearfix">
                     <div class="item-author">
-                        <i class="houzez-icon icon-single-neutral mr-1"></i>
-                       <RouterLink
-                            :to="{ name: 'demo01.agent-details', params: { agentUsername: property.user?.username } }"
-                            >
-                            {{ property.user?.name }}
+
+                        <RouterLink v-if="property.assigned_agent" :to="{
+                            name: 'demo01.agent-details',
+                            params: { agentUsername: property.assigned_agent.username }
+                        }">
+                            <i class="houzez-icon icon-single-neutral mr-1"></i>
+                            {{ property.assigned_agent.name }}
+                        </RouterLink>
+
+                        <RouterLink v-else-if="property.user?.role === 'agency'" :to="{
+                            name: 'demo01.agency-details',
+                            params: { agencyUsername: property.user.username }
+                        }">
+                            <i class="houzez-icon icon-single-neutral mr-1"></i>
+                            {{ property.user.name }}
+                        </RouterLink>
+
+                        <RouterLink v-else :to="{
+                            name: 'demo01.agent-details',
+                            params: { agentUsername: property.user.username }
+                        }">
+                            <i class="houzez-icon icon-single-neutral mr-1"></i>
+                            {{ property.user.name }}
                         </RouterLink>
                     </div>
                     <div class="item-date">
@@ -163,22 +193,22 @@ const imageLoaded = () => {
 
 <style scoped>
 .image-wrapper {
-  width: 100%;
-  height: 250px;
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: transparent;
-  position: relative;
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: transparent;
+    position: relative;
 }
 
 .image-wrapper.loading {
-  background-color: #f0f0f0; 
+    background-color: #f0f0f0;
 }
 
 .image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 </style>
