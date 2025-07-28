@@ -15,7 +15,9 @@ import axiosInstance from '@/services/axiosService.js';
 export const useAgency = defineStore('agency', {
     state: () => ({
         allAgencies: [],
-        agency: [],
+        agency: {},
+        reviews: {}, 
+        properties: [],
         errors: {},
         loading: false,
         prefix: '/demo01',
@@ -118,19 +120,19 @@ export const useAgency = defineStore('agency', {
          * @param {string} username - Agency username.
          * @returns {Promise}
          */
-        async getAgencyProperties(username) {
+         async getAgencyProperties(username) {
             this.loading = true;
             try {
-                const response = await axiosInstance.get(`${this.prefix}/agency/${username}/properties`);
-                this.agency = response.data;
+                const res = await axiosInstance.get(`${this.prefix}/agency/${username}/properties`);
+                this.properties = res.data.data;  // ✅ Save separately
                 this.loading = false;
-                return Promise.resolve(response);
-            } catch (error) {
+                return res;
+            } catch (err) {
                 this.loading = false;
-                this.errors = error.response || error;
-                return Promise.reject(error.response);
+                this.errors = err.response || err;
+                throw err;
             }
-        },
+        }
         
     }
 });

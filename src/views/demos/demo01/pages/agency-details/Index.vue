@@ -94,11 +94,12 @@
                             <ul class="nav nav-pills nav-justified">
                                 <li class="nav-item mr-2">
                                     <a class="nav-link active" href="#tab-properties" data-toggle="pill" role="tab">{{
-                                        $t('Listings') }} (9)</a>
+                                        $t('Listings') }} ({{ paginatedProperties.length }})</a>
                                 </li>
                                 <li class="nav-item mr-2">
                                     <a class="nav-link" href="#tab-agents" data-toggle="pill" role="tab">Agents
-                                        ({{ agency.agents.length }})</a>
+                                        ({{ agency.agents.length }})
+                                    </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#tab-reviews" data-toggle="pill" role="tab">Reviews
@@ -112,17 +113,22 @@
                                 <div class="listing-tools-wrap mb-3">
                                     <div class="d-flex align-items-center">
                                         <div class="listing-tabs flex-grow-1">
-                                            <!-- <ul class="nav nav-tabs" style="justify-content: none;">
+                                            <ul class="nav nav-tabs" style="justify-content: none;">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" href="#">All</a>
+                                                    <a class="nav-link" :class="{ active: activeFilter === 'All' }"
+                                                        href="#" @click.prevent="filterProperties('All')">All</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#">For Sale</a>
+                                                    <a class="nav-link" :class="{ active: activeFilter === 'For Sale' }"
+                                                        href="#" @click.prevent="filterProperties('For Sale')">For
+                                                        Sale</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#">For Rent</a>
+                                                    <a class="nav-link" :class="{ active: activeFilter === 'For Rent' }"
+                                                        href="#" @click.prevent="filterProperties('For Rent')">For
+                                                        Rent</a>
                                                 </li>
-                                            </ul> -->
+                                            </ul>
                                             <!-- nav-tabs -->
                                         </div><!-- listing-tabs -->
                                         <div class="sort-by mr-3">
@@ -165,16 +171,21 @@
                                         <!-- listing-switch-view -->
                                     </div><!-- d-flex -->
                                 </div><!-- listing-tools-wrap -->
-                                <!-- <div v-if="agency.properties.length > 0" class="listing-view"
-                                    :class="viewType + '-view'">
-                                    <PropertyCard v-for="property in agency.properties" :key="property.id"
-                                        :property="property" />
-                                </div> -->
-                                <!-- listing-view -->
-                                <!-- <Pagination /> -->
+                                <div v-if="paginatedProperties.length">
+                                    <div v-for="property in paginatedProperties" :key="property.id" class="listing-view"
+                                        :class="viewType + '-view'">
+                                        <PropertyCard :property="property" />
+                                    </div>
+                                </div>
+                                <p v-else class="text-center mt-3">No properties found.</p><!-- listing-view -->
+                                <Pagination :total-items="filteredProperties.length" :page-size="pageSize"
+                                    v-model:currentPage="currentPage" />
                             </div><!-- tab-pane -->
                             <div class="tab-pane fade" id="tab-agents">
+                                <div v-if="agency.agents.length">
                                 <AgentCard v-for="agent in agency.agents" :key="agent.id" :data="agent" type="agent" />
+                                </div>
+                                <div v-else class="text-center mt-3">No agents found.</div>
                             </div><!-- tab-pane -->
                             <div class="tab-pane fade" id="tab-reviews">
                                 <AgencyReviews :reviews="agencyStore.reviews?.data || []" :agency="agency"
@@ -194,71 +205,80 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick, computed } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAgency } from '@/stores/index.js'
 import { storeToRefs } from 'pinia'
 
-import Logo from '@/assets/img/app-side/logo-houzez-color.png';
-import defaultAvatar from '@/assets/img/fb-avatar.png';
-import StatsPropertyTypes from '@/views/demos/components/agents/StatsPropertyTypes.vue';
-import StatsPropertyStatus from '@/views/demos/components/agents/StatsPropertyStatus.vue';
-import StatsPropertyCities from '@/views/demos/components/agents/StatsPropertyCities.vue';
-import Contact from '@/views/demos/components/agents/Contact.vue';
-import Pagination from '@/views/demos/components/inc/Pagination.vue';
-import PropertyCard from '../../../components/home/featured-listings/ListItem.vue';
-import AgencyReviews from '../../../components/agents/Reviews.vue';
-import AgentCard from '../../../components/agents/Card.vue';
+import defaultAvatar from '@/assets/img/fb-avatar.png'
+import Contact from '@/views/demos/components/agents/Contact.vue'
+import Pagination from '@/views/demos/components/inc/Pagination.vue'
+import PropertyCard from '../../../components/home/featured-listings/ListItem.vue'
+import AgencyReviews from '../../../components/agents/Reviews.vue'
+import AgentCard from '../../../components/agents/Card.vue'
 import AgentSkeleton from '@/components/skeleton/AgentSkeleton.vue'
 
-// Setup
+// ✅ State & Stores
 const viewType = ref('grid')
+const loading = ref(true)
 const route = useRoute()
 const router = useRouter()
-const loading = ref(true) // ✅ Add this
 
 const agencyStore = useAgency()
-const { agency } = storeToRefs(agencyStore)
+const { agency, reviews, properties } = storeToRefs(agencyStore)
 const agencyUsername = route.params.agencyUsername
 
+// ✅ Data
+const filteredProperties = ref([])
+const activeFilter = ref('All')
+const currentPage = ref(1)
+const pageSize = 6
+
+// ✅ Ratings
 const averageRating = ref(0)
-
-const handleAverageRating = (val) => {
-    averageRating.value = val
-}
-
-const getStarClass = (index) => {
+const handleAverageRating = (val) => (averageRating.value = val)
+const getStarClass = (i) => {
     const full = Math.floor(averageRating.value)
     const half = averageRating.value % 1 >= 0.5
-
-    if (index <= full) return 'full-star'
-    if (index === full + 1 && half) return 'half-star'
+    if (i <= full) return 'full-star'
+    if (i === full + 1 && half) return 'half-star'
     return 'empty-star'
 }
 
+// ✅ Fetch Agency Data
 onMounted(async () => {
     try {
         await agencyStore.getAgencyByUsername(agencyUsername)
-        console.log('Agency fetched successfully:', agency.value)
-        if (!agency.value || !agency.value.username) {
-            router.push({ name: 'agent-not-found-404' })
-        } else {
-            await agencyStore.fetchReviews(agency.value.id)
-            
-        }
+        if (!agency.value?.username) return router.push({ name: 'agent-not-found-404' })
 
-    } catch (error) {
-        console.error('Agency fetch failed:', error)
+        await agencyStore.fetchReviews(agency.value.id)
+        await agencyStore.getAgencyProperties(agencyUsername)
+
+        filteredProperties.value = properties.value
+    } catch (err) {
+        console.error("Agency fetch failed:", err)
         router.push({ name: 'agent-not-found-404' })
     } finally {
         loading.value = false
-
-        nextTick(() => {
-            $('.selectpicker').selectpicker('render')
-        })
     }
-
 })
 
-const reviewCount = computed(() => agencyStore.reviews?.data?.length || 0)
+// ✅ Filter Properties
+const filterProperties = (type) => {
+    activeFilter.value = type
+    filteredProperties.value =
+        type === 'All'
+            ? properties.value
+            : properties.value.filter((p) => p.status.toLowerCase() === type.toLowerCase())
+    currentPage.value = 1
+}
+
+// ✅ Paginated Properties
+const paginatedProperties = computed(() => {
+    const start = (currentPage.value - 1) * pageSize
+    return filteredProperties.value.slice(start, start + pageSize)
+})
+
+// ✅ Review Count
+const reviewCount = computed(() => reviews.value?.data?.length || 0)
 </script>

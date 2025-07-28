@@ -1,5 +1,5 @@
 <template>
-<div class="pagination-wrap">
+<div v-if="totalItems" class="pagination-wrap">
   <nav>
     <ul class="pagination justify-content-center">
       <li class="page-item" :class="{ disabled: currentPage === 1 }">

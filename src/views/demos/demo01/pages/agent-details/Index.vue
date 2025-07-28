@@ -112,7 +112,7 @@
                                 <li class="nav-item mr-2">
                                     <a class="nav-link active" href="#tab-properties" data-toggle="pill" role="tab">{{
                                         $t('Listings') }}
-                                        ({{ agent.properties.length }})</a>
+                                        ({{ filteredProperties.length }})</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#tab-reviews" data-toggle="pill" role="tab">Reviews
@@ -182,11 +182,11 @@
                                         <!-- listing-switch-view -->
                                     </div><!-- d-flex -->
                                 </div><!-- listing-tools-wrap -->
-                                <div v-if="agent.properties.length > 0" class="listing-view"
-                                    :class="viewType + '-view'">
-                                    <PropertyCard v-for="property in paginatedProperties" :key="property.id"
-                                        :property="property" />
-                                </div><!-- listing-view -->
+                                    <div v-if="agent.properties.length > 0" class="listing-view"
+                                        :class="viewType + '-view'">
+                                        <PropertyCard v-for="property in paginatedProperties" :key="property.id"
+                                            :property="property" />
+                                    </div><!-- listing-view -->
                                 <Pagination :total-items="filteredProperties.length" :page-size="pageSize"
                                     v-model:current-page="currentPage" />
                             </div><!-- tab-pane -->
