@@ -59,7 +59,7 @@
                                 v-if="property.sub_properties && property.sub_properties.length" :property="property" />
                             <!-- <PropertySubListingsBlock :property="property" /> not similiar to provided demo01 -->
                             <PropertyEnergyClassBlock :property="property" />
-                            <PropertyFeaturesBlockWithCustomIcons :property="property" />
+                            <PropertyFeaturesBlockWithCustomIcons v-if="property.property_feature && property.property_feature.length" :property="property" />
                             <PropertyFloorPlansBlock v-if="property.floorplans && property.floorplans.length"
                                 :floorplans="property.floorplans" :price-prefix="property.price_prefix"
                                 :size-prefix="property.size_prefix" />

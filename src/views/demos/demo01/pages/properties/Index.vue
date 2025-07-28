@@ -5,19 +5,11 @@
     <template v-else>
         <section class="half-map-wrap map-on-left clearfix">
             <div id="map-view-wrap" class="half-map-left-wrap">
-                <Map
-                    v-for="property in allProperties"
-                        :key="property.id"
-                        :property="property"
-                        :view="viewType" 
-                />
+                <Map v-for="property in allProperties" :key="property.id" :property="property" :view="viewType" />
             </div><!-- half-map-left-wrap -->
             <div class="half-map-right-wrap">
-                <SearchHalfMapGeolocation 
-                    @search="handleSearch" 
-                    @reset="resetFilters"
-                    @save-search="saveSearchResult" 
-                />
+                <SearchHalfMapGeolocation @search="handleSearch" @reset="resetFilters"
+                    @save-search="saveSearchResult" />
                 <div class="page-title-wrap">
                     <div class="d-flex align-items-center">
                         <div class="page-title flex-grow-1">
@@ -59,16 +51,12 @@
                     </div><!-- d-flex -->
                 </div><!-- page-title-wrap -->
                 <div class="listing-view" :class="viewType + '-view'">
-                    <ListItem
-                        v-for="property in filteredProperties"
-                        :key="property.id"
-                        :property="property"
-                        class="item-listing-wrap card"
-                        :view="viewType"
-                    />
+                    <ListItem v-for="property in paginatedProperties" :key="property.id" :property="property"
+                        class="item-listing-wrap card" :view="viewType" />
                 </div><!-- listing-view -->
                 <!-- <?php include 'inc/listing/pagination.php';?> -->
-                <Pagination />
+                <Pagination :total-items="filteredProperties.length" :page-size="pageSize" :current-page="currentPage"
+                    @update:currentPage="updatePage" />
             </div><!-- half-map-right-wrap -->
         </section><!-- half-map-wrap -->
     </template>
@@ -83,7 +71,7 @@ import {
     usePrice,
     useSavedSearch, useToken,
     useType,
-    useViewMode 
+    useViewMode
 } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
 import { RouterLink, useRoute, useRouter } from "vue-router";
@@ -111,19 +99,34 @@ const { allProperties } = storeToRefs(propertyToRefs);
 const viewMode = useViewMode();
 
 const filteredProperties = computed(() => {
-  const props = allProperties.value;
+    const props = allProperties.value;
 
-  if (!Array.isArray(props)) {
-    return []; // fallback to empty list
-  }
+    if (!Array.isArray(props)) {
+        return []; // fallback to empty list
+    }
 
-  if (viewMode.isFeaturedView) {
-    const featured = props.filter(property => property.is_featured === true);
-    return featured;    
-  }
+    if (viewMode.isFeaturedView) {
+        const featured = props.filter(property => property.is_featured === true);
+        return featured;
+    }
 
-  return props;
+    return props;
 });
+
+const currentPage = ref(1); // Track current page
+const pageSize = ref(6); // Number of items per page
+
+// Paginated properties
+const paginatedProperties = computed(() => {
+    const start = (currentPage.value - 1) * pageSize.value;
+    const end = start + pageSize.value;
+    return filteredProperties.value.slice(start, end);
+});
+
+// Update page handler
+const updatePage = (page) => {
+    currentPage.value = page;
+};
 
 const saveSearchStore = useSavedSearch();
 const { checkSearchSaved } = storeToRefs(saveSearchStore);
@@ -146,7 +149,7 @@ const formData = ref({
     cities: route.query.cities ? route.query.cities.split(',') : [],
     bedrooms: route.query.bedrooms || "",
     maxPrice: route.query.maxPrice || "",
-     status: route.query.status || "",
+    status: route.query.status || "",
 });
 
 const handleSearch = async (data) => {

@@ -5,20 +5,11 @@
     <template v-else>
         <section class="half-map-wrap map-on-left clearfix">
             <div id="map-view-wrap" class="half-map-left-wrap">
-                <Map
-                    v-for="property in allProperties"
-                        :key="property.id"
-                        :property="property"
-                        :view="viewType" 
-                />
+                <Map v-for="property in allProperties" :key="property.id" :property="property" :view="viewType" />
             </div><!-- half-map-left-wrap -->
             <div class="half-map-right-wrap">
-                <SearchHalfMapGeolocation 
-                    :modelValue="formData"
-                    @search="handleSearch" 
-                    @reset="resetFilters"
-                    @save-search="saveSearchResult" 
-                />
+                <SearchHalfMapGeolocation :modelValue="formData" @search="handleSearch" @reset="resetFilters"
+                    @save-search="saveSearchResult" />
                 <div class="page-title-wrap">
                     <div class="d-flex align-items-center">
                         <div class="page-title flex-grow-1">
@@ -61,22 +52,21 @@
                     </div><!-- d-flex -->
                 </div><!-- page-title-wrap -->
                 <div v-if="allProperties.length > 0" class="listing-view" :class="viewType + '-view'">
-                    <ListItem
-                        v-for="property in allProperties"
-                        :key="property.id"
-                        :property="property"
-                        class="item-listing-wrap card"
-                        :view="viewType"
-                    />
+                    <ListItem v-for="property in paginatedProperties" :key="property.id" :property="property"
+                        class="item-listing-wrap card" :view="viewType" />
+
                 </div><!-- listing-view -->
                 <div v-else id="houzez_ajax_container">
-                    <div class="listing-view grid-view row row-cols-1 row-cols-md-2 gy-4 gx-4 mx-0" role="list" data-view="grid" data-layout="v1" data-css="listing-view grid-view row row-cols-1 row-cols-md-2 gy-4 gx-4 mx-0">
+                    <div class="listing-view grid-view row row-cols-1 row-cols-md-2 gy-4 gx-4 mx-0" role="list"
+                        data-view="grid" data-layout="v1"
+                        data-css="listing-view grid-view row row-cols-1 row-cols-md-2 gy-4 gx-4 mx-0">
                         <div class="search-no-results-found flex-grow-1 text-center">
                             We didn't find any results
                         </div>
                     </div>
                 </div>
-                 <!-- <Pagination /> -->
+                <Pagination :total-items="allProperties.length" :page-size="pageSize" :current-page="currentPage"
+                    @update:currentPage="(page) => currentPage.value = page" />
             </div><!-- half-map-right-wrap -->
         </section><!-- half-map-wrap -->
     </template>
@@ -134,7 +124,7 @@ const formData = ref({
     cities: route.query.cities ? route.query.cities.split(',') : [],
     bedrooms: route.query.bedrooms || "",
     maxPrice: route.query.maxPrice || "",
-     status: route.query.status || "",
+    status: route.query.status || "",
 });
 
 const handleSearch = async (data) => {
@@ -169,6 +159,15 @@ const searchProperty = async () => {
         useNotification().Error("Error fetching properties:", error);
     }
 };
+
+const currentPage = ref(1);
+const pageSize = ref(6);
+
+const paginatedProperties = computed(() => {
+    const start = (currentPage.value - 1) * pageSize.value;
+    const end = start + pageSize.value;
+    return allProperties.value.slice(start, end);
+});
 
 const resetFilters = () => {
     formData.value = {

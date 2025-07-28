@@ -3,7 +3,7 @@
         <div class="block-title-wrap review-title-wrap d-flex align-items-center">
             <h2>{{ reviews.length }} {{ $t('Reviews') }}</h2>
             <OverallRating :value="parseFloat(averageRating)" />
-            <ReviewsSortBy />
+            <!-- <ReviewsSortBy /> -->
             <a class="btn btn-primary btn-slim" href="#property-review-form">{{ $t('Leave a Review') }}</a>
         </div>
 
@@ -193,6 +193,8 @@ const paginatedReviews = computed(() => {
     const end = start + perPage;
     return reviews.value.slice(start, end);
 });
+    
+
 
 const totalPages = computed(() => {
     return Math.ceil(reviews.value.length / perPage);

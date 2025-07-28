@@ -15,3 +15,12 @@
 	</div><!-- d-flex -->
 </div><!-- sort-by -->
 </template>
+
+<script setup>
+import { onMounted, nextTick } from 'vue';
+
+onMounted(async () => {
+  await nextTick();
+  $('.selectpicker').selectpicker(); // Initialize selectpicker
+});
+</script>
