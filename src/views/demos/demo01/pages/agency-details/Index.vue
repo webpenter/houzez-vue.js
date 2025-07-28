@@ -171,13 +171,12 @@
                                         <!-- listing-switch-view -->
                                     </div><!-- d-flex -->
                                 </div><!-- listing-tools-wrap -->
-                                <div v-if="paginatedProperties.length">
-                                    <div v-for="property in paginatedProperties" :key="property.id" class="listing-view"
+                                    <div v-if="paginatedProperties.length" class="listing-view"
                                         :class="viewType + '-view'">
-                                        <PropertyCard :property="property" />
+                                        <PropertyCard v-for="property in paginatedProperties" :key="property.id" :property="property" />
                                     </div>
-                                </div>
-                                <p v-else class="text-center mt-3">No properties found.</p><!-- listing-view -->
+                                    <div v-else class="text-center mt-3">No properties found.</div>
+                                <!-- listing-view -->
                                 <Pagination :total-items="filteredProperties.length" :page-size="pageSize"
                                     v-model:currentPage="currentPage" />
                             </div><!-- tab-pane -->

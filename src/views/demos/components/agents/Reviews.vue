@@ -1,4 +1,5 @@
 <template>
+   <p class="text-center mt-3" v-if="paginatedReviews.length == 0">No reviews found.</p>
   <div class="property-review-wrap property-section-wrap" id="property-review-wrap">
     <div class="block-title-wrap review-title-wrap d-flex align-items-center">
       <h2>{{ reviewsList.length }} {{ $t('Reviews') }}</h2>
