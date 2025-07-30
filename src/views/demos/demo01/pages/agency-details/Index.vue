@@ -62,19 +62,19 @@
                         </div><!-- col-lg-8 col-md-8 col-sm-12 -->
                     </div><!-- row -->
                 </div><!-- agent-profile-wrap -->
-                <!-- <div class="agent-stats-wrap">
+                <div class="agent-stats-wrap">
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
-                            <StatsPropertyTypes />
+                            <StatsPropertyTypes :types="agency.top_types" />
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
-                            <StatsPropertyStatus />
+                            <StatsPropertyStatus :statuses="agency.status_summary" />
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
-                            <StatsPropertyCities />
+                            <StatsPropertyCities :cities="agency.top_cities" />
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <!-- agent-stats-wrap -->
 
                 <div class="row">
@@ -209,6 +209,9 @@ import { useRoute, useRouter } from 'vue-router'
 import { useAgency } from '@/stores/index.js'
 import { storeToRefs } from 'pinia'
 
+import StatsPropertyTypes from '@/views/demos/components/agents/StatsPropertyTypes.vue';
+import StatsPropertyStatus from '@/views/demos/components/agents/StatsPropertyStatus.vue';
+import StatsPropertyCities from '@/views/demos/components/agents/StatsPropertyCities.vue';
 import defaultAvatar from '@/assets/img/fb-avatar.png'
 import Contact from '@/views/demos/components/agents/Contact.vue'
 import Pagination from '@/views/demos/components/inc/Pagination.vue'
