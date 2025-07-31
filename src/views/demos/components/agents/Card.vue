@@ -17,10 +17,10 @@
 					<h2 class="d-flex">
 						<span v-if="type === 'agent' && data.is_verified"
 							class="badge badge-success agent-verified-badge mr-2 pt-2 d-flex">
-							<i class="houzez-icon icon-check-circle-1 mr-1"></i> Verified
+							<i class="houzez-icon icon-check-circle-1 mr-1"></i> {{ $t('Verified') }}
 						</span>
 						<span v-else class="badge badge-success agent-verified-badge mr-2 pt-2 d-flex">
-							<i class="houzez-icon icon-check-circle-1 mr-1"></i> Verified
+							<i class="houzez-icon icon-check-circle-1 mr-1"></i> {{ $t('Verified') }}
 						</span>
 
 						<RouterLink :to="type === 'agent'
@@ -30,13 +30,13 @@
 						</RouterLink>
 					</h2>
 
-					<!-- <OverallRating :value="data.average_rating" /> -->
+					<OverallRating :value="data.average_rating" />
 				</div>
 
 				<p v-if="type === 'agent' && data.position" class="agent-list-position">
 					{{ data.position }}
 					<span v-if="data.agencies?.[0]?.agency_name">
-						at 
+						{{ $t('at') }} 
 						<RouterLink style="color: #00aeff;"
 							:to="{
 								name: 'demo01.agency-details',

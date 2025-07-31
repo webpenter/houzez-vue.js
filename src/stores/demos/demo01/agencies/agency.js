@@ -14,7 +14,7 @@ import axiosInstance from '@/services/axiosService.js';
 
 export const useAgency = defineStore('agency', {
     state: () => ({
-        allAgencies: [],
+        agencies: [],
         agency: {},
         reviews: {}, 
         properties: [],
@@ -32,7 +32,7 @@ export const useAgency = defineStore('agency', {
             this.loading = true;
             try {
                 const response = await axiosInstance.get(`${this.prefix}/agencies`);
-                this.allAgencies = response.data.data;
+                this.agencies = response.data.data;
                 this.loading = false;
                 return Promise.resolve(response);
             } catch (error) {

@@ -17,10 +17,14 @@
               <AgentCardSkeleton v-for="n in 4" :key="n" />
             </template>
             <template v-else>
-              <AgencyCard v-for="agency in agencyStore.allAgencies" :key="agency.id" :data="agency" type="agency" />
+              <AgencyCard v-for="agency in paginatedAgencies" :key="agency.id" :data="agency" type="agency" />
             </template>
           </div><!-- listing-view -->
-          <!-- <Pagination /> -->
+          <Pagination
+            :total-items="agencies.length"
+            :page-size="pageSize"
+            v-model:current-page="currentPage"
+          />
         </div><!-- bt-content-wrap -->
         <div class="col-lg-4 col-md-12 bt-sidebar-wrap left-bt-sidebar-wrap">
 
@@ -31,7 +35,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref  } from 'vue'
+import { onMounted, ref,computed  } from 'vue'
 import { storeToRefs } from 'pinia';
 import { useAgency } from '@/stores/index.js'
 import Breadcrumb from '@/views/demos/components/property-details/property-title-block/BreadCrumb.vue';
@@ -43,8 +47,12 @@ import AgentCardSkeleton from '@/components/skeleton/AgentCardSkeleton.vue'
 
 
 const agencyStore = useAgency()
-const { agency } = storeToRefs(agencyStore);
+const { agencies } = storeToRefs(agencyStore);
+
 const loading = ref(true)
+const currentPage = ref(1)     
+const pageSize = ref(6) 
+
 onMounted(async () => {
   try {
     await agencyStore.getAllAgencies()
@@ -53,5 +61,12 @@ onMounted(async () => {
   } finally {
     loading.value = false
   }
+})
+
+// ✅ Paginated agents (computed)
+const paginatedAgencies = computed(() => {
+  const start = (currentPage.value - 1) * pageSize.value
+  const end = start + pageSize.value
+  return agencies.value.slice(start, end)
 })
 </script>

@@ -6,7 +6,7 @@
         <Breadcrumb :param="{ name: $t('Agents') }" />
         <div class="d-flex align-items-center">
           <div class="page-title flex-grow-1">
-            <h1>{{$t('Agents')}}</h1>
+            <h1>{{ $t('Agents') }}</h1>
           </div><!-- page-title -->
         </div><!-- d-flex -->
       </div><!-- page-title-wrap -->
@@ -17,10 +17,10 @@
               <AgentCardSkeleton v-for="n in 4" :key="n" />
             </template>
             <template v-else>
-              <AgentCard v-for="agent in agentStore.allAgents" :key="agent.id" :data="agent" type="agent" />
+              <AgentCard v-for="agent in paginatedAgents" :key="agent.id" :data="agent" type="agent" />
             </template>
           </div><!-- listing-view -->
-          <!-- <Pagination /> -->
+          <Pagination :total-items="agents.length" :page-size="pageSize" v-model:current-page="currentPage" />
         </div><!-- bt-content-wrap -->
         <div class="col-lg-4 col-md-12 bt-sidebar-wrap left-bt-sidebar-wrap">
 
@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref  } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import { storeToRefs } from 'pinia';
 import { useAgent } from '@/stores/index.js'
 import Breadcrumb from '@/views/demos/components/property-details/property-title-block/BreadCrumb.vue';
@@ -43,16 +43,27 @@ import AgentCardSkeleton from '@/components/skeleton/AgentCardSkeleton.vue'
 
 
 const agentStore = useAgent()
-const { agent } = storeToRefs(agentStore);
+const { agents } = storeToRefs(agentStore);
+
 const loading = ref(true)
+
+const currentPage = ref(1)
+const pageSize = ref(6)
+
 onMounted(async () => {
   try {
     await agentStore.getAllAgents()
-    console.log('Agents fetched successfully:', agentStore.allAgents)
   } catch (err) {
     console.error('Failed to fetch agents:', err)
   } finally {
     loading.value = false
   }
+})
+
+// ✅ Paginated agents (computed)
+const paginatedAgents = computed(() => {
+  const start = (currentPage.value - 1) * pageSize.value
+  const end = start + pageSize.value
+  return agents.value.slice(start, end)
 })
 </script>

@@ -14,7 +14,7 @@ import axiosInstance from '@/services/axiosService.js';
 
 export const useAgent = defineStore('agent', {
     state: () => ({
-        allAgents: [],
+        agents: [],
         agent: {},
         reviews: [],
         errors: {},
@@ -31,7 +31,7 @@ export const useAgent = defineStore('agent', {
             this.loading = true;
             try {
                 const response = await axiosInstance.get(`${this.prefix}/agents`);
-                this.allAgents = response.data.data;
+                this.agents = response.data.data;
                 this.loading = false;
                 return Promise.resolve(response);
             } catch (error) {
@@ -71,7 +71,6 @@ export const useAgent = defineStore('agent', {
             try {
                 const response = await axiosInstance.get(`${this.prefix}/agent/reviews/${agentId}`);
                 this.reviews = response.data;
-                // console.log('Reviews hhhh fetched successfully:', this.reviews);
                 return Promise.resolve(response);
             } catch (error) {
                 this.errors = error.response || error;

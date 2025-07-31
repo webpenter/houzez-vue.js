@@ -21,19 +21,21 @@
                             <div class="agent-profile-top-wrap">
                                 <div class="agent-profile-header">
                                     <h1>{{ agency.name }}
-                                        <span class="badge badge-success agent-verified-badge"><i
-                                                class="houzez-icon icon-check-circle-1 mr-1"></i> Verified</span>
+                                        <div v-if="agency.is_verified" class="badge badge-success agent-verified-badge">
+                                            <i class="houzez-icon icon-check-circle-1 mr-1"></i>
+                                            {{ $t('Verified') }}  
+                                        </div>
                                     </h1>
                                     <div class="rating-score-wrap">
-                                        <span class="rating-score-text">{{ averageRating.toFixed(1) }}</span>
                                         <span class="star">
+                                            <span class="rating-score-text">{{ averageRating.toFixed(1) }}</span>
                                             <span class="icon-rating" :class="getStarClass(1)"></span>
                                             <span class="icon-rating" :class="getStarClass(2)"></span>
                                             <span class="icon-rating" :class="getStarClass(3)"></span>
                                             <span class="icon-rating" :class="getStarClass(4)"></span>
                                             <span class="icon-rating" :class="getStarClass(5)"></span>
+                                            <a href="#tab-content">{{ $t('See all reviews') }}</a>
                                         </span>
-                                        <a href="#tab-content">See all reviews</a>
                                     </div>
                                 </div>
                                 <!-- agent-profile-content -->
@@ -52,9 +54,10 @@
                             <div class="agent-profile-buttons">
                                 <button class="btn btn-secondary" data-toggle="modal"
                                     data-target="#mobile-property-form">
-                                    Send Email
+                                    {{ $t('Send Email') }} 
                                 </button>
-                                <button type="button" class="btn btn-call">
+                                <button v-if="agency.phone" type="button" class="btn btn-call"
+                                    @click="triggerCall(agency.phone)">
                                     <span class="hide-on-click">{{ $t('Call') }}</span>
                                     <span class="show-on-click">{{ agency.phone || null }}</span>
                                 </button>
@@ -85,7 +88,7 @@
                             <p>{{ agency.about_me || null }}</p>
                             <p class="mt-3" v-if="agency.languages"><i
                                     class="houzez-icon icon-messages-bubble mr-1"></i>
-                                <strong>Languages:</strong>
+                                <strong>{{ $t('Languages') }} :</strong>
                                 {{ agency.languages }}
                             </p>
                         </div><!-- agent-bio-wrap -->
@@ -93,17 +96,19 @@
                         <div class="agent-nav-wrap">
                             <ul class="nav nav-pills nav-justified">
                                 <li class="nav-item mr-2">
-                                    <a class="nav-link active" href="#tab-properties" data-toggle="pill" role="tab">{{
-                                        $t('Listings') }} ({{ paginatedProperties.length }})</a>
+                                    <a class="nav-link active" href="#tab-properties" data-toggle="pill" role="tab">
+                                        {{ $t('Listings') }} ({{ paginatedProperties.length }})
+                                    </a>
                                 </li>
                                 <li class="nav-item mr-2">
-                                    <a class="nav-link" href="#tab-agents" data-toggle="pill" role="tab">Agents
-                                        ({{ agency.agents.length }})
+                                    <a class="nav-link" href="#tab-agents" data-toggle="pill" role="tab">
+                                        {{ $t('Agents') }}  ({{ agency.agents.length }})
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#tab-reviews" data-toggle="pill" role="tab">Reviews
-                                        ({{ reviewCount }})</a>
+                                    <a class="nav-link" href="#tab-reviews" data-toggle="pill" role="tab">
+                                        {{ $t('Reviews') }}  ({{ reviewCount }})
+                                    </a>
                                 </li>
                             </ul>
                         </div><!-- agent-nav-wrap -->
@@ -116,17 +121,15 @@
                                             <ul class="nav nav-tabs" style="justify-content: none;">
                                                 <li class="nav-item">
                                                     <a class="nav-link" :class="{ active: activeFilter === 'All' }"
-                                                        href="#" @click.prevent="filterProperties('All')">All</a>
+                                                        href="#" @click.prevent="filterProperties('All')">{{ $t('All') }}</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" :class="{ active: activeFilter === 'For Sale' }"
-                                                        href="#" @click.prevent="filterProperties('For Sale')">For
-                                                        Sale</a>
+                                                        href="#" @click.prevent="filterProperties('For Sale')">{{ $t('For Sale') }}</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" :class="{ active: activeFilter === 'For Rent' }"
-                                                        href="#" @click.prevent="filterProperties('For Rent')">For
-                                                        Rent</a>
+                                                        href="#" @click.prevent="filterProperties('For Rent')">{{ $t('For Rent') }}</a>
                                                 </li>
                                             </ul>
                                             <!-- nav-tabs -->
@@ -153,14 +156,14 @@
                                             <ul class="list-inline">
                                                 <li class="list-inline-item">
                                                     <a class="switch-btn btn-grid"
-                                                        :class="{ active: viewType === 'grid' }" href="#"
+                                                        :class="{ active: viewType === 'grid' }" href=""
                                                         @click.prevent="viewType = 'grid'">
                                                         <i class="houzez-icon icon-layout-module-1"></i>
                                                     </a>
                                                 </li>
                                                 <li class="list-inline-item">
                                                     <a class="switch-btn btn-list"
-                                                        :class="{ active: viewType === 'list' }" href="#"
+                                                        :class="{ active: viewType === 'list' }" href=""
                                                         @click.prevent="viewType = 'list'">
                                                         <i class="houzez-icon icon-layout-bullets"></i>
                                                     </a>
@@ -171,20 +174,21 @@
                                         <!-- listing-switch-view -->
                                     </div><!-- d-flex -->
                                 </div><!-- listing-tools-wrap -->
-                                    <div v-if="paginatedProperties.length" class="listing-view"
-                                        :class="viewType + '-view'">
-                                        <PropertyCard v-for="property in paginatedProperties" :key="property.id" :property="property" />
-                                    </div>
-                                    <div v-else class="text-center mt-3">No properties found.</div>
+                                <div v-if="paginatedProperties.length" class="listing-view" :class="viewType + '-view'">
+                                    <PropertyCard v-for="property in paginatedProperties" :key="property.id"
+                                        :property="property" />
+                                </div>
+                                <div v-else class="text-center mt-3">{{ $t('No properties found.') }}</div>
                                 <!-- listing-view -->
                                 <Pagination :total-items="filteredProperties.length" :page-size="pageSize"
                                     v-model:currentPage="currentPage" />
                             </div><!-- tab-pane -->
                             <div class="tab-pane fade" id="tab-agents">
                                 <div v-if="agency.agents.length">
-                                <AgentCard v-for="agent in agency.agents" :key="agent.id" :data="agent" type="agent" />
+                                    <AgentCard v-for="agent in agency.agents" :key="agent.id" :data="agent"
+                                        type="agent" />
                                 </div>
-                                <div v-else class="text-center mt-3">No agents found.</div>
+                                <div v-else class="text-center mt-3">{{ $t('No agents found.') }}</div>
                             </div><!-- tab-pane -->
                             <div class="tab-pane fade" id="tab-reviews">
                                 <AgencyReviews :reviews="agencyStore.reviews?.data || []" :agency="agency"
@@ -244,11 +248,18 @@ const getStarClass = (i) => {
     return 'empty-star'
 }
 
+const triggerCall = (phone) => {
+    if (!phone) return;
+    // Open system dialer with "Pick an app" option
+    window.location.href = `tel:${phone}`;
+};
+
 // ✅ Fetch Agency Data
 onMounted(async () => {
     try {
         await agencyStore.getAgencyByUsername(agencyUsername)
-        if (!agency.value?.username) return router.push({ name: 'agent-not-found-404' })
+        if (!agency.value?.username)
+        return router.push({ name: 'agent-not-found-404' })
 
         await agencyStore.fetchReviews(agency.value.id)
         await agencyStore.getAgencyProperties(agencyUsername)

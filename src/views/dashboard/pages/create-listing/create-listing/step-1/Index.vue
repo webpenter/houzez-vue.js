@@ -66,7 +66,7 @@
                                   v-for="status in statuses"
                                   :key="status.id"
                                   :label="status.name"
-                                  :value="status.name"
+                                  :value="status.value"
                               />
                             </el-select>
                           </div>
