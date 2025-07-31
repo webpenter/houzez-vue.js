@@ -16,7 +16,7 @@
 
             <template v-else>
               <div
-                v-for="agent in allAgents"
+                v-for="agent in agents"
                 :key="agent.id"
                 class="col-4"
               >
@@ -38,7 +38,7 @@ import { useAgent } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
 
 const agentStore = useAgent();
-const { allAgents } = storeToRefs(agentStore); // ✅ Correct property
+const { agents } = storeToRefs(agentStore); // ✅ Correct property
 const loading = ref(true);
 
 const getAgents = async () => {
