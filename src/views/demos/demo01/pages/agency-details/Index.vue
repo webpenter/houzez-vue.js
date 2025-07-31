@@ -23,7 +23,7 @@
                                     <h1>{{ agency.name }}
                                         <div v-if="agency.is_verified" class="badge badge-success agent-verified-badge">
                                             <i class="houzez-icon icon-check-circle-1 mr-1"></i>
-                                            {{ $t('Verified') }}  
+                                            {{ $t('Verified') }}
                                         </div>
                                     </h1>
                                     <div class="rating-score-wrap">
@@ -54,7 +54,7 @@
                             <div class="agent-profile-buttons">
                                 <button class="btn btn-secondary" data-toggle="modal"
                                     data-target="#mobile-property-form">
-                                    {{ $t('Send Email') }} 
+                                    {{ $t('Send Email') }}
                                 </button>
                                 <button v-if="agency.phone" type="button" class="btn btn-call"
                                     @click="triggerCall(agency.phone)">
@@ -102,12 +102,12 @@
                                 </li>
                                 <li class="nav-item mr-2">
                                     <a class="nav-link" href="#tab-agents" data-toggle="pill" role="tab">
-                                        {{ $t('Agents') }}  ({{ agency.agents.length }})
+                                        {{ $t('Agents') }} ({{ agency.agents.length }})
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#tab-reviews" data-toggle="pill" role="tab">
-                                        {{ $t('Reviews') }}  ({{ reviewCount }})
+                                        {{ $t('Reviews') }} ({{ reviewCount }})
                                     </a>
                                 </li>
                             </ul>
@@ -121,15 +121,18 @@
                                             <ul class="nav nav-tabs" style="justify-content: none;">
                                                 <li class="nav-item">
                                                     <a class="nav-link" :class="{ active: activeFilter === 'All' }"
-                                                        href="#" @click.prevent="filterProperties('All')">{{ $t('All') }}</a>
+                                                        href="#" @click.prevent="filterProperties('All')">{{ $t('All')
+                                                        }}</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" :class="{ active: activeFilter === 'For Sale' }"
-                                                        href="#" @click.prevent="filterProperties('For Sale')">{{ $t('For Sale') }}</a>
+                                                        href="#" @click.prevent="filterProperties('For Sale')">{{
+                                                        $t('For Sale') }}</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" :class="{ active: activeFilter === 'For Rent' }"
-                                                        href="#" @click.prevent="filterProperties('For Rent')">{{ $t('For Rent') }}</a>
+                                                        href="#" @click.prevent="filterProperties('For Rent')">{{
+                                                        $t('For Rent') }}</a>
                                                 </li>
                                             </ul>
                                             <!-- nav-tabs -->
@@ -262,7 +265,7 @@ onMounted(async () => {
     try {
         await agencyStore.getAgencyByUsername(agencyUsername)
         if (!agency.value?.username)
-        return router.push({ name: 'agent-not-found-404' })
+            return router.push({ name: 'agent-not-found-404' })
 
         await agencyStore.fetchReviews(agency.value.id)
         await agencyStore.getAgencyProperties(agencyUsername)
