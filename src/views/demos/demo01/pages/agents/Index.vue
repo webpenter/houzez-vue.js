@@ -23,7 +23,7 @@
           <Pagination :total-items="agents.length" :page-size="pageSize" v-model:current-page="currentPage" />
         </div><!-- bt-content-wrap -->
         <div class="col-lg-4 col-md-12 bt-sidebar-wrap left-bt-sidebar-wrap">
-
+          <AgentSearch />
         </div><!-- bt-sidebar-wrap -->
       </div><!-- row -->
     </div><!-- container -->

@@ -30,7 +30,7 @@
 						</RouterLink>
 					</h2>
 
-					<OverallRating :value="data.average_rating" />
+					<!-- <OverallRating :value="data.average_rating" /> -->
 				</div>
 
 				<p v-if="type === 'agent' && data.position" class="agent-list-position">
