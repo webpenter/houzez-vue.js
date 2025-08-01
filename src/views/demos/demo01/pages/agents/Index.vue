@@ -1,5 +1,4 @@
 <template>
-  <!-- <AgentSearch /> -->
   <section class="listing-wrap">
     <div class="container">
       <div class="page-title-wrap">
@@ -16,6 +15,9 @@
             <template v-if="loading">
               <AgentCardSkeleton v-for="n in 4" :key="n" />
             </template>
+            <template v-else-if="paginatedAgents.length === 0">
+              <p class="text-center text-muted py-4">There are no agents.</p>
+            </template>
             <template v-else>
               <AgentCard v-for="agent in paginatedAgents" :key="agent.id" :data="agent" type="agent" />
             </template>
@@ -23,7 +25,7 @@
           <Pagination :total-items="agents.length" :page-size="pageSize" v-model:current-page="currentPage" />
         </div><!-- bt-content-wrap -->
         <div class="col-lg-4 col-md-12 bt-sidebar-wrap left-bt-sidebar-wrap">
-          <AgentSearch />
+          <AgentSearch type="agent"/>
         </div><!-- bt-sidebar-wrap -->
       </div><!-- row -->
     </div><!-- container -->

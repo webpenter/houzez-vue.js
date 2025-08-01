@@ -41,7 +41,7 @@ export const useAppPropertyDemo01 = defineStore('appPropertyDemo01', {
             try {
                 const response = await axiosInstance.get(url);
                 this.featuredProperties = response.data.properties;
-
+                console.log('inner', this.featuredProperties);
                 return Promise.resolve(response);
             } catch (error) {
                 this.errors = error.response || error;

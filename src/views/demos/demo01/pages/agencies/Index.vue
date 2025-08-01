@@ -16,6 +16,9 @@
             <template v-if="loading">
               <AgentCardSkeleton v-for="n in 4" :key="n" />
             </template>
+            <template v-else-if="paginatedAgencies.length === 0">
+              <p class="text-center text-muted py-4">There are no agencies.</p>
+            </template>
             <template v-else>
               <AgencyCard v-for="agency in paginatedAgencies" :key="agency.id" :data="agency" type="agency" />
             </template>
@@ -27,7 +30,7 @@
           />
         </div><!-- bt-content-wrap -->
         <div class="col-lg-4 col-md-12 bt-sidebar-wrap left-bt-sidebar-wrap">
-
+          <AgencySearch type="agency"/>
         </div><!-- bt-sidebar-wrap -->
       </div><!-- row -->
     </div><!-- container -->
@@ -41,7 +44,7 @@ import { useAgency } from '@/stores/index.js'
 import Breadcrumb from '@/views/demos/components/property-details/property-title-block/BreadCrumb.vue';
 import Pagination from "@/views/demos/components/inc/Pagination.vue";
 import AgencyCard from "@/views/demos/components/agents/Card.vue";
-import AgentSearch from "@/views/demos/components/agents/Search.vue";
+import AgencySearch from "@/views/demos/components/agents/Search.vue";
 import AgentCardSkeleton from '@/components/skeleton/AgentCardSkeleton.vue'
 
 

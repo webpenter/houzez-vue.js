@@ -117,34 +117,20 @@ export const useAgent = defineStore('agent', {
          * ## Fetch searched agent.
          * @returns {Promise}
          */
-        /**
-         * ## Fetch searched agent or all agents.
-         * @returns {Promise}
-         */
         async searchAgent(params = {}) {
-    this.loading = true;
-    try {
-        const response = await axiosInstance.get(`${this.prefix}/agents/search`, { params });
-
-        // ✅ Transform response to flatten profile data
-        this.agents = response.data.data.map(agent => ({
-            ...agent,
-            name: `${agent.profile?.first_name || ''} ${agent.profile?.last_name || ''}`.trim(),
-            address: agent.profile?.address || '',
-            phone: agent.profile?.phone || '',
-            profile: agent.profile?.profile_picture || null, 
-            ...agent, // keep existing user fields (email, username, etc.)
-        }));
-
-        console.log('agents search', this.agents);
-        this.loading = false;
-        return Promise.resolve(response);
-    } catch (error) {
-        this.loading = false;
-        this.errors = error.response || error;
-        return Promise.reject(error.response);
-    }
-}
+            this.loading = true;
+            try {
+                const response = await axiosInstance.get(`${this.prefix}/agents/search`, { params });
+                this.agents = response.data.data;
+                console.log('agents search', this.agents);
+                this.loading = false;
+                return Promise.resolve(response);
+            } catch (error) {
+                this.loading = false;
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
+            }
+        }
 
     }
 });

@@ -132,6 +132,25 @@ export const useAgency = defineStore('agency', {
                 this.errors = err.response || err;
                 throw err;
             }
+        },
+
+        /**
+         * ## Fetch searched agency.
+         * @returns {Promise}
+         */
+        async searchAgency(params = {}) {
+            this.loading = true;
+            try {
+                const response = await axiosInstance.get(`${this.prefix}/agencies/search`, { params });
+                this.agencies = response.data.data;
+                console.log('agencies search', this.agencies);
+                this.loading = false;
+                return Promise.resolve(response);
+            } catch (error) {
+                this.loading = false;
+                this.errors = error.response || error;
+                return Promise.reject(error.response);
+            }
         }
         
     }
