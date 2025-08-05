@@ -40,6 +40,19 @@ export default [
       },
 
       /**
+       * @route /demo01/search-parallax-banner
+       * @name demo01.search-parallax-banner
+       * @auth not-required
+       * @description Homepage of Demo01/SearchParallaxBanner
+       */
+      {
+        path: '/demo01/search-parallax-banner',
+        name: 'demo01.search-parallax-banner',
+        component: () => import('@/views/demos/demo01/pages/home/SearchParallaxBanner.vue'),
+        meta: { title: 'Home' },
+      },
+      
+      /**
        * @route /demo01/property-details/:propertySlug
        * @name demo01.property-details
        * @auth not-required
