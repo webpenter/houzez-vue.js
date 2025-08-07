@@ -76,12 +76,32 @@
 			<ul class="dropdown-menu">
 				<li class="nav-item">
 					<router-link class="dropdown-item" :to="{name:'demo01.about-us'}">
-						{{ $t('About Us') }} ({{ $t('Demo') }} 01)
+						{{ $t('About Us') }}
 					</router-link>
 				</li>
 				<li class="nav-item">
 					<router-link class="dropdown-item" :to="{name:'app.about-us'}">
-						{{ $t('About Us') }}
+						{{ $t('About Us') }} {{ $t('With New Theme') }}
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link class="dropdown-item" :to="{name:'404'}">
+						{{ $t('Page') }} 404
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link class="dropdown-item" :to="{name:'unauthorized'}">
+						{{ $t('Page') }} 302
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link class="dropdown-item" :to="{name:'unauthorized-403'}">
+						{{ $t('Page') }} 403
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link class="dropdown-item" :to="{name:'unauthorized-401'}">
+						{{ $t('Page') }} 401
 					</router-link>
 				</li>
 			</ul>
