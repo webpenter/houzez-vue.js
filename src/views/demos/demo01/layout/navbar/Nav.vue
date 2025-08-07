@@ -10,12 +10,17 @@
 			<ul class="dropdown-menu">
 				<li class="nav-item">
 					<router-link class="dropdown-item" :to="{name:'demo01'}">
-						{{$t('Home')}} ({{ $t('Demo') }} 01)
+						{{$t('Default')}}
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link class="dropdown-item" :to="{name:'demo01.search-parallax-banner'}">
+						{{$t('With Search Parallax Banner')}}
 					</router-link>
 				</li>
 				<li class="nav-item">
 					<router-link class="dropdown-item" :to="{name:'app'}">
-						{{$t('Home')}}
+						{{$t('With New Theme')}}
 					</router-link>
 				</li>
 			</ul>

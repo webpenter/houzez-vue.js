@@ -369,6 +369,9 @@
   "Send Email": "Envoyer un e-mail",
   "Languages": "Langues",
   "All": "Tous",
-  "License": "Licence"
+  "License": "Licence",
+  "Default": "Défaut",
+  "With New Theme": "Nouveau thème",
+  "With Search Parallax Banner": "Avec la bannière de recherche Parallax"
 
 }
