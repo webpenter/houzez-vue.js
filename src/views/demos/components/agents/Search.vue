@@ -27,7 +27,10 @@
 
                     <!-- Search Button -->
                     <div class="flex-search pb-3">
-                        <button @click="handleSearch" class="btn btn-search btn-secondary btn-full-width">Search</button>
+                        <button @click="handleSearch" class="btn btn-search btn-secondary btn-full-width">
+                            <span v-if="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                            <span>{{ isLoading ? 'Searching...' : 'Search' }}</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -49,6 +52,7 @@ const props = defineProps({
 
 const searchName = ref('');
 const searchAddress = ref('');
+const isLoading = ref(false);
 
 const agentStore = useAgent();
 const agencyStore = useAgency();
@@ -58,16 +62,21 @@ const cities = computed(() => cityStore.cities);
 const typeLabel = computed(() => props.type === 'agent' ? 'Agent' : 'Agency');
 
 const handleSearch = async () => {
-    if (props.type === 'agent') {
-        await agentStore.searchAgent({
-            name: searchName.value,
-            address: searchAddress.value,
-        });
-    } else {
-        await agencyStore.searchAgency({
-            name: searchName.value,
-            address: searchAddress.value,
-        });
+    isLoading.value = true; // Start loader
+    try{
+        if (props.type === 'agent') {
+            await agentStore.searchAgent({
+                name: searchName.value,
+                address: searchAddress.value,
+            });
+        } else {
+            await agencyStore.searchAgency({
+                name: searchName.value,
+                address: searchAddress.value,
+            });
+        }
+    } finally {
+        isLoading.value = false; // Stop loader
     }
 };
 
