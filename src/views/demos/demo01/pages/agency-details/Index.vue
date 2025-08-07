@@ -4,12 +4,7 @@
         <AgentSkeleton />
     </template>
 
-    <template v-else>09973678920qowierueiowalsjdfvbnm,./
-        v
-
-
-
-        
+    <template v-else> 
         <section class="content-wrap">
             <div class="container">
                 <div class="agent-profile-wrap">
