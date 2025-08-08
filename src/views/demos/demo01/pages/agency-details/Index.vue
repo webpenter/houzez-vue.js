@@ -4,7 +4,7 @@
         <AgentSkeleton />
     </template>
 
-    <template v-else>
+    <template v-else> 
         <section class="content-wrap">
             <div class="container">
                 <div class="agent-profile-wrap">
