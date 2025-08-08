@@ -2,29 +2,28 @@
   <div class="search-parallax-container mt-4">
     <div class="search-banner-wrap custom-width">
       <div class="d-flex flex-sm-max-column">
-      <!-- City Select -->
-      <div class="flex-search mt-3 ml-3">
-        <div class="form-group">
-          <select 
-            class="selectpicker form-control" 
-            title="Cities" 
-            data-live-search="false"
-            data-selected-text-format="count" 
-            multiple 
-            data-actions-box="true" 
-            v-model="selectedCities"
-            @change="onCityChange"
-          >
-            <option 
-              v-for="city in citiesStore.cities" 
-              :key="city.id" 
-              :value="city.name.toLowerCase()"
+        <!-- City Select -->
+        <div class="flex-search mt-3 ml-3">
+          <div class="form-group">
+            <select
+              class="selectpicker form-control"
+              title="Cities"
+              data-live-search="false"
+              multiple
+              data-actions-box="true"
+              v-model="selectedCities"
+              @change="onCityChange"
             >
-              {{ city.name }}
-            </option>
-          </select>
+              <option
+                v-for="city in citiesStore.cities"
+                :key="city.id"
+                :value="city.name.toLowerCase()"
+              >
+                {{ city.name }}
+              </option>
+            </select>
+          </div>
         </div>
-      </div>
 
         <!-- Search Field -->
         <div class="flex-grow-1 flex-search mt-3">
@@ -49,53 +48,46 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
 import 'bootstrap-select/dist/css/bootstrap-select.min.css';
 import 'bootstrap-select';
-import { useCity } from '@/stores/index'; // ✅ Import City Store
+import { useCity } from '@/stores/index';
+import { useAppPropertyDemo01 } from '@/stores/index';
 
-const citiesStore = useCity(); // ✅ Initialize store
+const citiesStore = useCity();
+const appPropertyStore = useAppPropertyDemo01(); // ✅ Import store
+
 const selectedCities = ref([]);
 const searchQuery = ref('');
 const emit = defineEmits(['results']);
 
 onMounted(() => {
-  $('.selectpicker').selectpicker();
+  $('.selectpicker').selectpicker('refresh');
 });
 
-// ✅ Fetch results when city changes
 const onCityChange = async () => {
-  await fetchResults();
+  await triggerSearch();
 };
 
-// ✅ Fetch results when search input changes
 const onSearchInput = async () => {
-  await fetchResults();
+  await triggerSearch();
 };
 
-// ✅ Reusable fetch function
-const fetchResults = async () => {
+const submitSearch = async () => {
+  await triggerSearch();
+};
+
+const triggerSearch = async () => {
   if (searchQuery.value.length || selectedCities.value.length) {
-    try {
-      const { data } = await axios.get('http://127.0.0.1:8000/api/v1/demo01/properties/get-auto-searched', {
-        params: {
-          query: searchQuery.value,
-          cities: selectedCities.value
-        }
-      });
-      console.log('Search Results:', data);
-      emit('results', data);
-    } catch (err) {
-      console.error('Search API error:', err);
-    }
+    const results = await appPropertyStore.fetchAutoSearchResults({
+      query: searchQuery.value,
+      cities: selectedCities.value,
+    });
+    emit('results', results); // ✅ Emit only the array
   } else {
     emit('results', []);
-    console.log('Search cleared');
   }
 };
 </script>
-
-
 
 
 
@@ -109,8 +101,6 @@ const fetchResults = async () => {
 
 .custom-width {
   width: 80%;
-  /* ✅ Increase or adjust width (70%, 80%, or px like 1000px) */
   max-width: 700px;
-  /* ✅ Optional: set a max width for large screens */
 }
 </style>

@@ -183,5 +183,26 @@ export const useAppPropertyDemo01 = defineStore('appPropertyDemo01', {
                 return Promise.reject(error.response);
             }
         },
+
+        async fetchAutoSearchResults({ query = '', cities = [] }) {
+            this.loading = true;
+            this.errors = {};
+            try {
+            const response = await axiosInstance.get(`${this.prefix}/get-auto-searched`, {
+                params: {
+                query,
+                cities,
+                },
+            });
+            this.searchedAndFilteredProperties = response.data.properties || [];
+            return this.searchedAndFilteredProperties;
+            } catch (error) {
+            console.error('Auto search error:', error);
+            this.errors = error.response?.data || { message: 'Something went wrong' };
+            return [];
+            } finally {
+            this.loading = false;
+            }
+        }
     }
 });

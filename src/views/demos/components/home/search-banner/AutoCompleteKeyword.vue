@@ -6,8 +6,8 @@
           <div class="auto-complete-image-wrap">
             <a href="#">
               <img class="img-fluid rounded"
-                :src="property.images.find(img => img.is_thumbnail === 1)?.image_path || 'https://placehold.co/40x40'"
-                :style="property.images.find(img => img.is_thumbnail === 1) ? 'width: 50px; height: 40px; object-fit: cover;' : ''"
+                :src="getThumbnail(property)"
+                :style="hasThumbnail(property) ? 'width: 50px; height: 40px; object-fit: cover;' : ''"
                 alt="image">
             </a>
           </div>
@@ -37,7 +37,16 @@
 
 <script setup>
 import { defineProps } from 'vue';
+
 const props = defineProps({
   results: { type: Array, default: () => [] }
 });
+
+function getThumbnail(property) {
+  return property.images?.find?.(img => img.is_thumbnail === 1)?.image_path || 'https://placehold.co/40x40';
+}
+
+function hasThumbnail(property) {
+  return !!property.images?.find?.(img => img.is_thumbnail === 1);
+}
 </script>

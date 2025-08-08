@@ -20,7 +20,6 @@
 
       <!-- Conditionally render components -->
       <BannerSearch v-if="searchType === 'banner'" />
-      <!-- ✅ Listen for emitted results -->
       <SearchParallaxBanner v-else-if="searchType === 'parallax'" @results="searchResults = $event" />
     </div>
   </section>
@@ -37,5 +36,5 @@ const props = defineProps({
   searchType: { type: String, default: 'banner' }
 });
 
-const searchResults = ref([]); // ✅ Store results here
+const searchResults = ref([]);
 </script>
