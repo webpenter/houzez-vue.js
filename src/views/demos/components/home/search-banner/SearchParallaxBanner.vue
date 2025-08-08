@@ -47,47 +47,70 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import 'bootstrap-select/dist/css/bootstrap-select.min.css';
-import 'bootstrap-select';
-import { useCity } from '@/stores/index';
-import { useAppPropertyDemo01 } from '@/stores/index';
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import 'bootstrap-select/dist/css/bootstrap-select.min.css'
+import 'bootstrap-select'
+import { useCity } from '@/stores/index'
+import { useAppPropertyDemo01 } from '@/stores/index'
 
-const citiesStore = useCity();
-const appPropertyStore = useAppPropertyDemo01(); // ✅ Import store
+const router = useRouter()
+const citiesStore = useCity()
+const appPropertyStore = useAppPropertyDemo01()
 
-const selectedCities = ref([]);
-const searchQuery = ref('');
-const emit = defineEmits(['results']);
+const selectedCities = ref([])
+const searchQuery = ref('')
+const emit = defineEmits(['results'])
 
+// Refresh bootstrap-select after mount
 onMounted(() => {
-  $('.selectpicker').selectpicker('refresh');
-});
+  $('.selectpicker').selectpicker('refresh')
+})
 
+// 🔁 Live trigger (city select or input)
 const onCityChange = async () => {
-  await triggerSearch();
-};
+  await triggerLiveSearch()
+}
 
 const onSearchInput = async () => {
-  await triggerSearch();
-};
+  await triggerLiveSearch()
+}
 
+// 🔍 Final Search button behavior
 const submitSearch = async () => {
-  await triggerSearch();
-};
+  const hasFilters = selectedCities.value.length > 0 || searchQuery.value.trim().length > 0
 
-const triggerSearch = async () => {
-  if (searchQuery.value.length || selectedCities.value.length) {
+  const queryParams = {
+    search: searchQuery.value || '',
+    types: '',         // Add when needed
+    cities: selectedCities.value.join(',') || '',
+    bedrooms: '',      // Add when needed
+    maxPrice: '',      // Add when needed
+    status: '',        // Add when needed
+  }
+
+  router.push({
+    path: '/demo01/search-results',
+    query: queryParams
+  })
+}
+
+// 💡 Used for live typing/filtering results
+const triggerLiveSearch = async () => {
+  const hasFilters = selectedCities.value.length > 0 || searchQuery.value.trim().length > 0
+
+  if (hasFilters) {
     const results = await appPropertyStore.fetchAutoSearchResults({
       query: searchQuery.value,
-      cities: selectedCities.value,
-    });
-    emit('results', results); // ✅ Emit only the array
+      cities: selectedCities.value
+    })
+    emit('results', results)
   } else {
-    emit('results', []);
+    emit('results', [])
   }
-};
+}
 </script>
+
 
 
 

@@ -75,7 +75,7 @@ export default [
         name: 'demo01.search-results',
         component: () => import('@/views/demos/demo01/pages/search-results/Index.vue'),
         meta: { title: 'Search Results' },
-      },
+       },
       /**
        * @route /demo01/properties
        * @name demo01.properties
