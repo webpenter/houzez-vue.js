@@ -1,5 +1,5 @@
 <template>
-  <RouterLink :to="{name:'dashboard'}">
+  <RouterLink :to="{name:'dashboard.create-listing.step-1'}">
     <div class="btn-group position-relative create-listing-btn-mobile">
       <p class="btn-sm py-1 px-2 bg-none m-0">{{ $t('Create Listing') }}</p><i class="fa-solid fa-arrow-right"></i>
     </div>

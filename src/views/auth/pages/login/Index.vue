@@ -108,7 +108,7 @@ const submit = async () => {
 
     if (response.status === 200) {
       notify.Success("Login successfully");
-      router.push({ name: 'dashboard' });
+      router.push({ name: 'dashboard.create-listing.step-1' });
     } else if (response.status === 401) {
       notify.Error("Invalid email or password");
     } else {

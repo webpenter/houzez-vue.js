@@ -158,7 +158,7 @@ const submit = async () => {
 
     if (response.status === 201) {
       notify.Success("Registration successful.");
-      router.push({ name: 'dashboard' });
+      router.push({ name: 'dashboard.create-listing.step-1' });
     } else if (response.status === 422) {
       const errors = response.data.errors;
       if (errors) {

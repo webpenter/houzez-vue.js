@@ -8,7 +8,10 @@
       </span>
 
       <!-- Create Listing Button (optional: protect this as well) -->
-      <RouterLink class="btn btn-create-listing hidden-xs hidden-sm me-3" :to="{ name: 'dashboard' }">
+      <RouterLink 
+      class="btn btn-create-listing hidden-xs hidden-sm me-3" 
+      :to="{ name: 'dashboard.create-listing.step-1' }"
+      >
         {{ $t('Create Listing') }}
       </RouterLink>
 
