@@ -12,7 +12,7 @@
 
 import { createRouter, createWebHistory } from 'vue-router';
 import {DEFAULT_TITLE, TITLE_CREATE_UPDATE_LISTING, URL_CREATE_UPDATE_LISTING} from "@/constants";
-import {useToken, useGeneralSettings, useAdmin, useIsSubscribed} from "@/stores/index.js";
+import {useToken, useGeneralSettings,useMessage, useNavigationStore, useAdmin, useIsSubscribed} from "@/stores/index.js";
 
 // Import demo routes
 import demo01Routes from './demo01'
@@ -651,6 +651,33 @@ router.beforeEach((to, from, next) => {
      */
     if (to.meta.isSubscribed && !isSubscribed) {
         return next({ name: 'dashboard.create-listing.no-package' });
+    }
+
+    /**
+     * @feature Completed Page Restriction and Tracking:
+     * - If navigating to the completed page without a propertyId in the previous route,
+     *   redirect to step-1 and show a warning.
+     * - Otherwise, store the previous route and propertyId, log it, and show an info message.
+     */
+    if (to.name === 'dashboard.create-listing.completed') {
+        const message = useMessage();
+        const navigationStore = useNavigationStore();
+        if (!from.params.propertyId) {
+        message.Warning('Cannot access completed page. Please complete all steps first.');
+        return next({ name: 'dashboard.create-listing.step-1' });
+        }
+        navigationStore.setPreviousRoute(from);
+        // console.log(`User came from route: ${from.name || 'unknown'} with path: ${from.path}`);
+        // message.Info(`Navigated to completed page from ${from.name || 'another page'}.`);
+    }
+
+    /**
+     * @feature Clear Navigation Store for New Create Flow:
+     * - If navigating to step-1 without a propertyId, clear the stored previous route and propertyId.
+     */
+    if (to.name === 'dashboard.create-listing.step-1' && !to.params.propertyId) {
+        const navigationStore = useNavigationStore();
+        navigationStore.clearPreviousRoute();
     }
 
     /**

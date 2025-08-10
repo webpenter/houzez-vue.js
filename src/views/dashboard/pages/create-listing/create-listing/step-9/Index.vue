@@ -1,6 +1,6 @@
 <template>
     <DashboardHeader :heading="TITLE_CREATE_UPDATE_LISTING">
-<!--      <SaveAsDraftBtn :status="property.property_status ?? ''"/>-->
+     <SaveAsDraftBtn :status="property.property_status ?? ''"/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
             <snake-nav active="9"/>
@@ -27,8 +27,12 @@ import BackBtn from '../components/BackBtn.vue';
 import SectionSubProperties from '@/views/inc/dashboard/property/SectionSubProperties.vue';
 import {RouterLink ,useRoute, useRouter} from "vue-router";
 import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
+import {useProperty} from "@/stores/index.js";
+import {storeToRefs} from "pinia";
 
 const route = useRoute();
 const router = useRouter();
 const propertyId = route.params.propertyId;
+const propertyToRefs = useProperty();
+const {property} = storeToRefs(propertyToRefs);
 </script>

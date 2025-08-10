@@ -1,6 +1,5 @@
 <template>
     <DashboardHeader heading="Congratulation!">
-        <SaveAsDraftBtn/>
     </DashboardHeader>
         <section class="dashboard-content-wrap dashboard-add-new-listing">
             <SnakeNav active="done"/>

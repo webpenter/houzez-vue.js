@@ -1,4 +1,4 @@
-import { useProperty, useConfirm, useMessage, useNotification } from "@/stores/index.js";
+import { useProperty, useConfirm, useDelete, useMessage, useNotification } from "@/stores/index.js";
 import { ref } from "vue";
 
 const loading = ref(false);
@@ -41,7 +41,7 @@ export const deleteProperty = async (propertyId) => {
     const propertyToRefs = useProperty();
 
     try {
-        await useConfirm().Warning("Are you sure you want to delete this property?");
+        await useDelete().Warning("Are you sure you want to delete this property?");
         const response = await propertyToRefs.deleteProperty(propertyId);
 
         if (response.status === 200) {

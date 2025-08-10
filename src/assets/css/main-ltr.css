@@ -18507,3 +18507,18 @@ html .ui-button.ui-state-disabled:active {
 .lSAction > a {
   z-index: 1 !important;
 }
+
+/*
+  this css for confirmation delete btn for property
+*/
+
+.custom-delete-btn {
+    background-color: #ff0000 !important; /* Red background */
+    border-color: #ff0000 !important; /* Red border */
+    color: #ffffff !important; /* White text */
+}
+
+.custom-delete-btn:hover {
+    background-color: #cc0000 !important; /* Darker red on hover */
+    border-color: #cc0000 !important;
+}

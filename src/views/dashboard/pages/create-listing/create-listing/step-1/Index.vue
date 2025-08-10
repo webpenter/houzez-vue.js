@@ -33,7 +33,7 @@
                           <label>Type</label>
                           <div>
                             <el-select
-                                v-model="formData.type"
+                                v-model="formData.type" 
                                 filterable
                                 default-first-option
                                 :reserve-keyword="false"

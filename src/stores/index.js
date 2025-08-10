@@ -12,6 +12,7 @@ export * from './auth/profile.js';
 export * from './element-plus/notification.js';
 export * from './element-plus/confirm.js';
 export * from './element-plus/message.js';
+export * from './element-plus/delete.js';
 
 // ------------- Settings Dir
 export * from './settings/generalSettings.js';
@@ -55,3 +56,4 @@ export * from './others/service.js';
 export * from './others/testimonials.js';
 export * from './others/featuredView.js';
 export * from './others/partners.js';
+export * from './others/navigation.js';
