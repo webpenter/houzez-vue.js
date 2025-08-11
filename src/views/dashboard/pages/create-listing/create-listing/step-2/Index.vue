@@ -62,7 +62,7 @@
                         <div class="form-group">
                           <label>Garages Size</label>
                           <input class="form-control" v-model="formData.garages_size" placeholder="Enter the garages size" type="text">
-                          <small class="form-text text-muted">For example: 200 Sq Ft</small>
+                          <!-- <small class="form-text text-muted">For example: 200 Sq Ft</small> -->
                         </div>
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">

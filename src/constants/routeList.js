@@ -1,7 +1,8 @@
-import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/general.js";
-
+import { TITLE_CREATE_UPDATE_LISTING } from "@/constants/general.js";
 import { useI18n } from "vue-i18n";
-import {computed} from "vue";
+import { computed } from "vue";
+import { useProperty } from "@/stores/index.js";
+import { storeToRefs } from "pinia";
 
 // -------------------- App Route List -----------------------
 export function getAppRoutes() {
@@ -49,7 +50,14 @@ export function getAppRoutes() {
 
 // ------------------ Dashboard Route List --------------------
 export function getDashboardRoutes() {
-	const { t } = useI18n();
+    const { t } = useI18n();
+    const propertyStore = useProperty();
+    const { propertyCounts } = storeToRefs(propertyStore);
+
+    // Fetch property counts when the function is first called
+    propertyStore.fetchPropertyCounts();
+
+
 
 	return computed(() => [
 		{
@@ -66,20 +74,20 @@ export function getDashboardRoutes() {
 		},
 		{ id:2, title:'Insight', name:'dashboard.insight', icon:'icon-analytics-bars', sub:[] },
 		{
-			id:3,
-			title:'All Properties',
-			name:'dashboard.my-properties',
-			icon:'icon-building-cloudy',
-			sub:[
-				{id:1, title:'All', name:'dashboard.my-properties'},
-				{id:2, title:'Published', name:'dashboard.my-properties.published'},
-				{id:3, title:'Pending', name:'dashboard.my-properties.pending'},
-				{id:4, title:'Expired', name:'dashboard.my-properties.expired'},
-				{id:5, title:'Draft', name:'dashboard.my-properties.draft'},
-				{id:6, title:'On Hold', name:'dashboard.my-properties.hold'},
-				{id:7, title:'Disapproved', name:'dashboard.my-properties.disapproved'},
-			]
-		},
+            id: 3,
+            title: 'All Properties',
+            name: 'dashboard.my-properties',
+            icon: 'icon-building-cloudy',
+            sub: [
+                { id: 1, title: `All (${propertyCounts.value.all})`, name: 'dashboard.my-properties' },
+                { id: 2, title: `Published (${propertyCounts.value.published})`, name: 'dashboard.my-properties.published' },
+                { id: 3, title: `Pending (${propertyCounts.value.pending})`, name: 'dashboard.my-properties.pending' },
+                { id: 4, title: `Expired (${propertyCounts.value.expired})`, name: 'dashboard.my-properties.expired' },
+                { id: 5, title: `Draft (${propertyCounts.value.draft})`, name: 'dashboard.my-properties.draft' },
+                { id: 6, title: `On Hold (${propertyCounts.value.hold})`, name: 'dashboard.my-properties.hold' },
+                { id: 7, title: `Disapproved (${propertyCounts.value.disapproved})`, name: 'dashboard.my-properties.disapproved' },
+            ],
+        },
 		{ id:4, title:TITLE_CREATE_UPDATE_LISTING, name:'dashboard.create-listing.step-1', icon:'icon-add-circle', sub:[] },
 		{ id:5, title:'Favorites', name:'dashboard.favorite-properties', icon:'icon-love-it', sub:[] },
 		{ id:6, title:'Saved Searches', name:'dashboard.saved-searches', icon:'icon-search', sub:[] },

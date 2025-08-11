@@ -10,11 +10,10 @@
 
                     <ul class="item-price-wrap hide-on-list">
                         <li class="item-price">
-                            <span class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}
-                            <span class="price-postfix">/{{ property.after_price }}</span>
+                            <span v-if="property.price" class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}
+                            <span v-if="property.after_price" class="price-postfix">/{{ property.after_price }}</span>
                         </li>
-                        <li class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{
-                            property.size_prefix }}</li>
+                        <li v-if="property.second_price" class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{ property.size_prefix }}</li>
                     </ul>
 
                     <!-- <ul class="item-tools item-tools-v2">
@@ -48,7 +47,7 @@
 
                 <div class="item-body flex-grow-1">
                     <span class="labels-wrap labels-right">
-                        <a href="#" class="label-status label">{{ property.label }}</a>
+                        <a v-if="property.label" href="#" class="label-status label">{{ property.label }}</a>
                     </span>
                     <h2 class="item-title">
                         <RouterLink :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }">
@@ -58,10 +57,10 @@
 
                     <ul class="item-price-wrap hide-on-list">
                         <li class="item-price">
-                            <span class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}
-                            <span class="price-postfix">/{{ property.after_price }}</span>
+                            <span v-if="property.price" class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}
+                            <span v-if="after_price" class="price-postfix">/{{ property.after_price }}</span>
                         </li>
-                        <li class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{
+                        <li v-if="property.second_price" class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{
                             property.size_prefix }}</li>
                     </ul>
 

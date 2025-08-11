@@ -120,7 +120,7 @@
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                          <label>Second Price (Optional)</label>
+                          <label>Per Sqft Price (Optional)</label>
                           <input
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.second_price }"
@@ -145,7 +145,7 @@
                         <div class="form-group">
                           <label>Price Prefix</label>
                           <input class="form-control" v-model="formData.price_prefix" placeholder="Enter the price prefix" type="text">
-                          <small class="form-text text-muted">For example: Start from</small>
+                          <small class="form-text text-muted">For example: $</small>
                         </div><!-- form-group -->
                       </div><!-- col-md-6 col-sm-12 -->
                     </div><!-- row -->
@@ -249,17 +249,46 @@ const formSubmit = async () => {
     if ([200, 201].includes(res.status)) {
       const newPropertyId = res.data.property.id;
       notify.Success(`Step 1 of ${PROPERTY_TOTAL_STEPS} completed.`);
-      router.push({name:"dashboard.create-listing.step-2",params:{propertyId:newPropertyId}});
+      router.push({ name: "dashboard.create-listing.step-2", params: { propertyId: newPropertyId } });
     } else if (res.status === 404) {
       notify.Error("Property not found.");
     } else if (res.status === 403) {
       notify.Error("You are not authorized to perform this action.");
     } else {
-      notify.Error("An error occurred while processing the request.");
+      // Log the full response for debugging
+      console.log("Non-200/201 response:", res);
+      // Handle server-side validation errors
+      if (res.data && res.data.errors) {
+        const serverErrors = res.data.errors;
+        if (serverErrors.description && serverErrors.description.length > 0) {
+          notify.Error(serverErrors.description[0]);
+        } else if (res.data.message) {
+          notify.Error(res.data.message);
+        } else {
+          notify.Error("An error occurred while processing the request.");
+        }
+      } else {
+        notify.Error("An error occurred while processing the request.");
+      }
     }
   } catch (error) {
     btnLoading.value = false;
-    notify.Error("An error occurred");
+    // Log the full error for debugging
+    console.log("Error in catch block:", error.response);
+    // Handle errors in catch block
+    if (error.response && error.response.data) {
+      const serverErrors = error.response.data.errors;
+      const errorMessage = error.response.data.message;
+      if (serverErrors && serverErrors.description && serverErrors.description.length > 0) {
+        notify.Error(serverErrors.description[0]);
+      } else if (errorMessage) {
+        notify.Error(errorMessage);
+      } else {
+        notify.Error("An error occurred");
+      }
+    } else {
+      notify.Error("An error occurred");
+    }
   }
 };
 

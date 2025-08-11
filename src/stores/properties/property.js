@@ -9,23 +9,35 @@
  * @date 25 Jan,2025
  */
 
-import {defineStore} from "pinia";
+import { defineStore } from "pinia";
 import apiService from "@/services/apiService.js";
 import axiosInstance from "@/services/axiosService.js";
 
 export const useProperty = defineStore('property', {
     state: () => ({
-        dashboardProperties:{},
-        property:{},
-        propertyImages:{},
-        propertyAttachments:{},
+        dashboardProperties: [],
+        property: {},
+        propertyImages: {},
+        propertyAttachments: {},
         errors: {},
         loading: false,
-        prefix:"/properties",
+        prefix: "/properties",
+        propertyCounts: {
+            all: 0,
+            published: 0,
+            pending: 0,
+            expired: 0,
+            draft: 0,
+            hold: 0,
+            disapproved: 0,
+        },
     }),
     getters: {
         getProperties: (state) => {
-            return state.properties;
+            return state.dashboardProperties;
+        },
+        getPropertyCounts: (state) => {
+            return state.propertyCounts;
         },
     },
     actions: {
@@ -44,15 +56,70 @@ export const useProperty = defineStore('property', {
             }
 
             try {
+                this.loading = true; // Set loading to true before the API call
                 const response = await axiosInstance.get(url);
                 this.dashboardProperties = response.data.properties;
+                this.loading = false; // Set loading to false after success
 
                 return Promise.resolve(response);
             } catch (error) {
+                this.loading = false; // Set loading to false on error
                 this.errors = error.response || error;
                 return Promise.reject(error.response);
             }
         },
+
+         /**
+         * @usage Fetch the count of properties for a specific status without updating dashboardProperties.
+         * @param {string} propertyStatus Optional property status filter.
+         * @returns {Promise<number>} Resolves with the count or 0 on error.
+         */
+        async fetchCount(propertyStatus = '') {
+            let url = `${this.prefix}/get-user?search=&sortBy=default`;
+
+            if (propertyStatus) {
+                url += `&propertyStatus=${encodeURIComponent(propertyStatus)}`;
+            }
+
+            try {
+                const response = await axiosInstance.get(url);
+                return response.data.properties.length || 0;
+            } catch (error) {
+                console.error(`Error fetching count for status "${propertyStatus}":`, error);
+                return 0;
+            }
+        },
+        /**
+         * @usage Fetch counts of properties for each status.
+         * @returns {Promise} Resolves when counts are updated.
+         */
+        async fetchPropertyCounts() {
+            const statuses = ['', 'published', 'pending', 'expired', 'draft', 'on-hold', 'disapproved'];
+            const counts = {
+                all: 0,
+                published: 0,
+                pending: 0,
+                expired: 0,
+                draft: 0,
+                hold: 0,
+                disapproved: 0,
+            };
+
+            try {
+                for (const status of statuses) {
+                    const key = status === '' ? 'all' : status.replace('on-hold', 'hold');
+                    counts[key] = await this.fetchCount(status);
+                }
+                this.propertyCounts = counts;
+                return Promise.resolve(counts);
+            } catch (error) {
+                console.error('Error fetching property counts:', error);
+                this.propertyCounts = counts; // Set to 0 on error
+                return Promise.reject(error);
+            }
+        },
+
+
         /**
          * @request Sends a POST request to the server with the given `formData` and `id`.
          * @usage Use this function to create a new resource or update an existing one. The `id` determines whether it's a creation (when null or a specific value) or an update (for an existing resource).
