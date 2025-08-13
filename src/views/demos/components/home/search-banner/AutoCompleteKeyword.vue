@@ -4,16 +4,16 @@
       <li v-for="property in results" :key="property.id" class="list-group-item">
         <div class="d-flex align-items-center">
           <div class="auto-complete-image-wrap">
-            <a href="#">
-              <img class="img-fluid rounded"
-                :src="getThumbnail(property)"
-                :style="hasThumbnail(property) ? 'width: 50px; height: 40px; object-fit: cover;' : ''"
-                alt="image">
-            </a>
+            <RouterLink :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }">
+              <img class="img-fluid rounded" :src="getThumbnail(property)"
+                :style="hasThumbnail(property) ? 'width: 50px; height: 40px; object-fit: cover;' : ''" alt="image">
+            </RouterLink> 
           </div>
           <div class="auto-complete-content-wrap ml-3">
             <div class="auto-complete-title">
-              <a href="#">{{ property.title }}</a>
+              <RouterLink :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }">
+                {{ property.title }}
+              </RouterLink>
             </div>
             <ul class="item-amenities item-amenities-with-icons">
               <li><i class="houzez-icon icon-hotel-double-bed-1 mr-1"></i>Beds: {{ property.bedrooms }}</li>

@@ -21,6 +21,7 @@
       <!-- Conditionally render components -->
       <BannerSearch v-if="searchType === 'banner'" />
       <SearchParallaxBanner v-else-if="searchType === 'parallax'" @results="searchResults = $event" />
+      <SearchBannerAdvanced v-else-if="searchType === 'advanced'"/>
     </div>
   </section>
 </template>
@@ -31,6 +32,7 @@ import BannerSearch from './BannerSearch.vue';
 import SearchParallaxBanner from './SearchParallaxBanner.vue';
 import AutoCompleteKeyword from './AutoCompleteKeyword.vue';
 import beachImg from '@/assets/img/app-side/miami-beach-1.jpg';
+import SearchBannerAdvanced from './SearchBannerAdvanced.vue';
 
 const props = defineProps({
   searchType: { type: String, default: 'banner' }

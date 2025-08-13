@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist" style="margin-top: 65px;">
+  <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist" style="margin-top: 65px; cursor: pointer;">
     <li class="nav-item">
       <a class="nav-link" :class="{ active: formData.status === '' }" @click.prevent="formData.status = ''">
         {{ $t('All Status') }}

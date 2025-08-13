@@ -19,8 +19,8 @@
 					</router-link>
 				</li>
 				<li class="nav-item">
-					<router-link class="dropdown-item" :to="{name:'app'}">
-						{{$t('With New Theme')}}
+					<router-link class="dropdown-item" :to="{name:'demo01.search-banner-advanced'}">
+						{{$t('With Search Banner Advanced')}}
 					</router-link>
 				</li>
 			</ul>

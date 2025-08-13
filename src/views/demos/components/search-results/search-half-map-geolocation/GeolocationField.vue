@@ -9,9 +9,9 @@
         v-model="search"
         @input="emitSearch"
       />
-      <a class="btn location-trigger" href="#">
+      <!-- <a class="btn location-trigger" href="#">
         <i class="houzez-icon icon-location-target"></i>
-      </a>
+      </a> -->
     </div>
   </div>
 </template>
