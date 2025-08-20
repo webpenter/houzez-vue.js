@@ -117,6 +117,11 @@
                                 <i class="houzez-icon icon-social-video-vimeo mr-2"></i>
                             </a>
                         </span>
+                        <span>
+                            <a class="btn-vimeo" target="_blank" href="#">
+                                <i class="fab fa-skype mr-2"></i>
+                            </a>
+                        </span>
                     </div><!-- footer-social -->
                 </div><!-- d-flex -->
             </div><!-- container -->

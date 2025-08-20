@@ -55,7 +55,6 @@ const fetchFeaturedProperties = async () => {
   loading.value = true;
   const res = await propertyToRefs.getFeaturedPropertiesDemo01();
   if (res.status === 200) {
-    console.log('helo', res.data);
     loading.value = false;
   }
 };
