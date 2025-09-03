@@ -2,7 +2,7 @@
   <div class="dashboard-content-block">
     <template v-if="loading">
       <div class="row">
-        <el-skeleton animated :rows="8"/>
+        <el-skeleton animated :rows="8" />
       </div>
     </template>
 
@@ -15,10 +15,17 @@
         <div class="col-md-9 col-sm-12">
           <form @submit.prevent="submitSocialMediaForm">
             <div class="row">
-              <div v-for="(value, key) in socialMedia" :key="key" class="col-md-6 col-sm-12">
+              <div v-for="(item, key) in socialMedia" :key="key" class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>{{ formatLabel(key) }}</label>
-                  <input class="form-control" v-model="socialMedia[key]" :placeholder="`Enter your ${formatLabel(key)} URL`" type="text">
+                  <div class="form-check mr-2 float-end">
+                    <input type="checkbox" class="form-check-input" v-model="item.is_visible" :id="`${key}_visible`">
+                    <label class="form-check-label" :for="`${key}_visible`">
+                      Visible
+                    </label>
+                  </div>
+                  <input class="form-control" v-model="item.value" :placeholder="`Enter your ${formatLabel(key)} URL`"
+                    type="text">
                   
                 </div>
               </div>
@@ -39,16 +46,16 @@ const notify = useNotification();
 const settingStore = useSetting();
 
 const socialMedia = ref({
-  facebook: "",
-  twitter: "",
-  linkedin: "",
-  instagram: "",
-  google_plus: "",
-  youtube: "",
-  pinterest: "",
-  vimeo: "",
-  skype: "",
-  website: ""
+  facebook: { value: "", is_visible: false },
+  twitter: { value: "", is_visible: false },
+  linkedin: { value: "", is_visible: false },
+  instagram: { value: "", is_visible: false },
+  google_plus: { value: "", is_visible: false },
+  youtube: { value: "", is_visible: false },
+  pinterest: { value: "", is_visible: false },
+  vimeo: { value: "", is_visible: false },
+  skype: { value: "", is_visible: false },
+  website: { value: "", is_visible: false }
 });
 
 const loading = ref(true);
@@ -58,7 +65,14 @@ const formatLabel = (key) => key.replace("_", " ").replace(/\b\w/g, l => l.toUpp
 
 const submitSocialMediaForm = async () => {
   try {
-    const res = await settingStore.updateSocialMedia(socialMedia.value);
+    const payload = {};
+    for (const key in socialMedia.value) {
+      payload[key] = {
+        value: socialMedia.value[key].value,
+        is_visible: socialMedia.value[key].is_visible ? 1 : 0
+      };
+    }
+    await settingStore.updateSocialMedia(payload);
     notify.Success("Social media updated successfully!");
   } catch (err) {
     notify.Error("Failed to update social media");

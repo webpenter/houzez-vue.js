@@ -1,4 +1,4 @@
-	<template>
+<template>
 	<div class="property-schedule-tour-wrap property-section-wrap" id="property-schedule-tour-wrap">
 		<div class="block-wrap">
 			<div class="block-title-wrap d-flex justify-content-between align-items-center">
@@ -23,6 +23,7 @@
 						<div class="form-group">
 							<label>{{ $t('Date') }}</label>
 							<input type="date" v-model="selectedDateInput" class="form-control" />
+							<div v-if="errors.date" class="text-danger">{{ errors.date }}</div>
 						</div>
 					</div>
 
@@ -36,14 +37,7 @@
 					</div>
 				</div>
 
-				<!-- Alerts -->
-				<div v-if="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
-					{{ errorMessage }}
-					<button type="button" class="close" @click="errorMessage = ''">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-
+				
 				<div v-if="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
 					{{ successMessage }}
 					<button type="button" class="close" @click="successMessage = ''">
@@ -62,6 +56,7 @@
 						<div class="form-group">
 							<label>{{ $t('Name') }}*</label>
 							<input class="form-control" v-model="form.name" :placeholder="$t('Enter your name')" type="text" />
+							<div v-if="errors.name" class="text-danger">{{ errors.name }}</div>
 						</div>
 					</div>
 
@@ -71,6 +66,7 @@
 							<label>{{ $t('Phone') }}*</label>
 							<input class="form-control" v-model="form.phone" :placeholder="$t('Enter your phone number')"
 								type="text" />
+							<div v-if="errors.phone" class="text-danger">{{ errors.phone }}</div>
 						</div>
 					</div>
 
@@ -80,6 +76,7 @@
 							<label>{{ $t('Email') }}*</label>
 							<input class="form-control" v-model="form.email" :placeholder="$t('Enter your email address')"
 								type="email" />
+							<div v-if="errors.email" class="text-danger">{{ errors.email }}</div>
 						</div>
 					</div>
 
@@ -92,14 +89,15 @@
 						</div>
 					</div>
 
-					<!-- Terms Checkbox (optional) -->
+					<!-- Terms Checkbox -->
 					<div class="col-sm-12 col-xs-12">
 						<div class="form-check mb-3">
-							<input class="form-check-input " type="checkbox" v-model="form.agreeTerms"
+							<input class="form-check-input" type="checkbox" v-model="form.agreeTerms"
 								id="agreeTerms" />
 							<label class="form-check-label ml-4" for="agreeTerms">
 								{{ $t('I agree to the Terms of Use') }}
 							</label>
+							<div v-if="errors.agreeTerms" class="text-danger">{{ errors.agreeTerms }}</div>
 						</div>
 					</div>
 
@@ -114,8 +112,6 @@
 		</div>
 	</div>
 </template>
-
-
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
@@ -212,6 +208,10 @@ function validate() {
 		errors.value.email = "Email is invalid.";
 		fieldsWithError.push("Email");
 	}
+	if (!form.value.date) {
+		errors.value.date = "Date is required.";
+		fieldsWithError.push("Date");
+	}
 	if (!form.value.time) {
 		errors.value.time = "Time is required.";
 		fieldsWithError.push("Time");
@@ -223,7 +223,6 @@ function validate() {
 
 	return fieldsWithError;
 }
-
 
 async function submitForm() {
 	errorMessage.value = "";

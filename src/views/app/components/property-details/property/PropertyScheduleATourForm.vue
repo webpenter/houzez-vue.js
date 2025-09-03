@@ -10,13 +10,6 @@
 		</div>
 
 		<!-- Alert Messages -->
-		<div v-if="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
-			{{ errorMessage }}
-			<button type="button" class="close" @click="errorMessage = ''" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-
 		<div v-if="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
 			{{ successMessage }}
 			<button type="button" class="close" @click="successMessage = ''" aria-label="Close">
@@ -68,23 +61,41 @@
 			</div>
 		</div>
 
-		<!-- Time Input -->
+		<!-- Time -->
 		<div class="form-group">
-			<input type="time" class="form-control" v-model="form.time" :class="{ 'is-invalid': errors.time }" />
+			<input type="time" class="form-control" v-model="form.time" :class="{ 'is-invalid': errors.time }"
+				@input="errors.time = ''" />
+			<div v-if="errors.time" class="invalid-feedback d-block">
+				{{ errors.time }}
+			</div>
 		</div>
 
 		<!-- Form Inputs -->
+		<!-- Name -->
 		<div class="form-group">
 			<input class="form-control" name="name" :placeholder="$t('Name')" type="text" v-model="form.name"
-				:class="{ 'is-invalid': errors.name }" />
+				:class="{ 'is-invalid': errors.name }" @input="errors.name = ''" />
+			<div v-if="errors.name" class="invalid-feedback d-block">
+				{{ errors.name }}
+			</div>
 		</div>
+
+		<!-- Phone -->
 		<div class="form-group">
 			<input class="form-control" name="phone" :placeholder="$t('Phone')" type="text" v-model="form.phone"
-				:class="{ 'is-invalid': errors.phone }" />
+				:class="{ 'is-invalid': errors.phone }" @input="errors.phone = ''" />
+			<div v-if="errors.phone" class="invalid-feedback d-block">
+				{{ errors.phone }}
+			</div>
 		</div>
+
+		<!-- Email -->
 		<div class="form-group">
 			<input class="form-control" name="email" :placeholder="$t('Email')" type="email" v-model="form.email"
-				:class="{ 'is-invalid': errors.email }" />
+				:class="{ 'is-invalid': errors.email }" @input="errors.email = ''" />
+			<div v-if="errors.email" class="invalid-feedback d-block">
+				{{ errors.email }}
+			</div>
 		</div>
 
 		<!-- Message Textarea -->
@@ -96,15 +107,19 @@
 		<!-- Terms -->
 		<div class="form-group form-group-terms">
 			<label class="control control--checkbox">
-				<input type="checkbox" v-model="form.agreeTerms" />
-				 {{ $t('By submitting this form I agree to') }}<a href="#">{{ $t('Terms of Use') }}</a>
+				<input type="checkbox" v-model="form.agreeTerms" @change="errors.agreeTerms = ''" />
+				{{ $t('By submitting this form I agree to') }}
+				<a href="#">{{ $t('Terms of Use') }}</a>
 				<span class="control__indicator"></span>
 			</label>
+			<div v-if="errors.agreeTerms" class="text-danger small mt-1">
+				{{ errors.agreeTerms }}
+			</div>
 		</div>
 
 		<!-- Submit Button -->
 		<button class="btn btn-secondary btn-full-width" :disabled="loading" @click="submitForm">
-			{{ loading ? $t('Submitting')+"..." : $t('Submit a Tour Request') }}
+			{{ loading ? $t('Submitting') + "..." : $t('Submit a Tour Request') }}
 		</button>
 	</div>
 </template>
