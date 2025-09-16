@@ -5,7 +5,7 @@
       <img v-if="logo" :src="logo" alt="logo" />
 
       <!-- Optional fallback -->
-      <!-- <img v-else src="@/assets/img/app-side/logo-houzez-color.png" alt="default logo" /> -->
+      <img v-else src="@/assets/img/app-side/logo-houzez-color.png" alt="default logo" />
     </RouterLink>
   </div>
 </template>
