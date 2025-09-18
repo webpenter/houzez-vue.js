@@ -18,6 +18,7 @@ export const useSetting = defineStore("settings", {
         socialMedia: {}, // raw API response
         loading: false,
         errors: null,
+         initialized: false, // ✅ added
         baseUrl: "/settings"
     }),
 
@@ -40,6 +41,31 @@ export const useSetting = defineStore("settings", {
     },
 
     actions: {
+
+        async initSettings() {
+      this.loading = true;
+      this.errors = null;
+      try {
+        // ✅ Parallel API calls (logo + banner + social links ek sath)
+        const [logoRes, bannerRes, socialRes] = await Promise.all([
+          axiosInstance.get(`${this.baseUrl}/get-logo`),
+          axiosInstance.get(`${this.baseUrl}/get-banner`),
+          axiosInstance.get(`${this.baseUrl}/social-media`)
+        ]);
+
+        this.logo = logoRes.data.logo ?? "";
+        this.banner = bannerRes.data.banner ?? "";
+        this.socialMedia = socialRes.data.social_media ?? {};
+
+        this.initialized = true; // ✅ mark as ready
+      } catch (error) {
+        this.errors = error.response || error;
+        throw error;
+      } finally {
+        this.loading = false;
+      }
+    },
+  
         /**
          * Fetch Logo
          */

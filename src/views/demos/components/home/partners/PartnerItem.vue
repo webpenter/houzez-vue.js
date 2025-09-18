@@ -1,8 +1,8 @@
 <template>  
     <div class="partner-item">
-	<a href="#">
+	<!-- <a href=""> -->
 		<img :src="partner.image" alt="partner image" />
-	</a>
+	<!-- </a> -->
 </div><!-- partner-item -->
 </template>
 

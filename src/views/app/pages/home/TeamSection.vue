@@ -1,12 +1,12 @@
 <template>
-  <div class="team-container-main">
+  <div v-if="appTeams.length > 0"  class="team-container-main">
     <div class="team-header">
       <div>
         <h2>{{ $t('Meat Our Awesome Team') }}</h2>
         <p>{{ $t('team description') }}</p>
       </div>
       <div>
-        <a href="" class="view-all-team">{{ $t('View All Team') }}<i class="fa-solid fa-arrow-right"></i></a>
+        <!-- <a href="" class="view-all-team">{{ $t('View All Team') }}<i class="fa-solid fa-arrow-right"></i></a> -->
       </div>
     </div>
 

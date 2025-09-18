@@ -1,6 +1,6 @@
 <template>
     <div class="team-module hover-effect">
-        <a href="#" class="team-mobile-link"></a>
+        <!-- <a href="#" class="team-mobile-link"></a> -->
 <img class="img-fluid" :src="member.image" alt="team" />
 
         <div class="team-content-wrap team-content-wrap-before">

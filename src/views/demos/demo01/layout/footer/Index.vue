@@ -68,13 +68,14 @@
         <div class="d-flex justify-content-between align-items-center">
           <!-- Copyright -->
           <div class="footer-copyright">
-            &copy; Buy WebPenter - {{ $t("All rights reserved") }}
+            &copy;  {{ $t("All rights reserved") }}
+            <!-- &copy; Buy WebPenter - {{ $t("All rights reserved") }} -->
           </div>
 
           <!-- Logo -->
           <div class="logo">
             <RouterLink :to="{ name: 'app' }">
-              <img src="@/assets/img/app-side/logo-houzez-white.png" alt="logo" />
+              <!-- <img src="@/assets/img/app-side/logo-houzez-white.png" alt="logo" /> -->
             </RouterLink>
           </div>
 
