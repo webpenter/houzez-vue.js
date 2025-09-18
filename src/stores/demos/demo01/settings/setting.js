@@ -15,7 +15,11 @@ export const useSetting = defineStore("settings", {
     state: () => ({
         logo: "",
         banner: "",
-        socialMedia: {}, // raw API response
+        socialMedia: {},
+        stripe: {},
+        contact: {},
+        email: {}, 
+        seo: {},
         loading: false,
         errors: null,
         baseUrl: "/settings"
@@ -151,6 +155,190 @@ export const useSetting = defineStore("settings", {
                 this.errors = error.response || error;
                 throw error.response || error;
             }
-        }
+        },
+
+        /**
+         * Fetch Site Information
+         */
+        async getSiteInformation() {
+            this.loading = true;
+            this.errors = null;
+            try {
+                const res = await axiosInstance.get(`${this.baseUrl}/site-information`);
+                return res;
+            } catch (error) {
+                this.errors = error.response || error;
+                throw error.response || error;
+            } finally {
+                this.loading = false;
+            }
+        },
+
+
+        /**
+         * Update Site Information
+         * @param {Object} payload
+         */
+        async updateSiteInformation(payload) {
+            this.errors = null;
+            try {
+                const res = await axiosInstance.post(
+                    `${this.baseUrl}/update-site-information`,
+                    payload
+                );
+                return res;
+            } catch (error) {
+                this.errors = error.response || error;
+                throw error.response || error;
+            }
+        },
+
+        /**
+         * Stripe keys Information
+         */
+        async getStripeSettings() {
+            this.loading = true;
+            this.errors = null;
+            try {
+                const res = await axiosInstance.get(`${this.baseUrl}/stripe`);
+                this.stripe = res.data.stripe ?? {};
+                return res;
+            } catch (error) {
+                this.errors = error.response || error;
+                throw error.response || error;
+            } finally {
+                this.loading = false;
+            }
+        },
+
+
+        /**
+         * Stripe keys update
+         * @param {Object} payload
+         */
+        async updateStripeSettings(payload) {
+            this.errors = null;
+            try {
+                const res = await axiosInstance.post(
+                `${this.baseUrl}/update-stripe`,
+                payload
+                );
+                this.stripe = res.data.stripe ?? this.stripe;
+                return res;
+            } catch (error) {
+                this.errors = error.response || error;
+                throw error.response || error;
+            }
+        },
+
+        /**
+         * Get Contact Settings
+         */
+        async getContactSettings() {
+            this.loading = true;
+            this.errors = null;
+            try {
+                const res = await axiosInstance.get(`${this.baseUrl}/contact`);
+                this.contact = res.data.contact ?? {};
+                return res;
+            } catch (error) {
+                this.errors = error.response || error;
+                throw error.response || error;
+            } finally {
+                this.loading = false;
+            }
+        },
+
+        /**
+         * Update Contact Settings
+         * @param {Object} payload
+         */
+        async updateContactSettings(payload) {
+            this.errors = null;
+            try {
+                const res = await axiosInstance.post(
+                `${this.baseUrl}/update-contact`,
+                payload
+                );
+                this.contact = res.data.contact ?? this.contact;
+                return res;
+            } catch (error) {
+                this.errors = error.response || error;
+                throw error.response || error;
+            }
+        },
+
+        /**
+         * Get Email Settings
+         * @param {Object} payload
+         */
+        async getEmailSettings() {
+            this.loading = true;
+            this.errors = null;
+            try {
+                const res = await axiosInstance.get(`${this.baseUrl}/email`);
+                this.email = res.data.email_settings ?? {};
+                return res;
+            } catch (error) {
+                this.errors = error.response || error;
+                throw error.response || error;
+            } finally {
+                this.loading = false;
+            }
+        },
+
+        /**
+         * Update Email Settings
+         * @param {Object} payload
+         */
+        async updateEmailSettings(payload) {
+            this.errors = null;
+            try {
+                const res = await axiosInstance.post(
+                `${this.baseUrl}/update-email`,
+                payload
+                );
+                this.email = res.data.email_settings ?? this.email;
+                return res;
+            } catch (error) {
+                this.errors = error.response || error;
+                throw error.response || error;
+            }
+        },
+
+        /**
+         * Get SEO Settings
+         */
+        async getSeo() {
+            this.loading = true;
+            this.errors = null;
+            try {
+                const res = await axiosInstance.get(`${this.baseUrl}/seo`);
+                this.seo = res.data.seo ?? {};
+                return res;
+            } catch (error) {
+                this.errors = error.response || error;
+                throw error.response || error;
+            } finally {
+                this.loading = false;
+            }
+        },
+
+        /**
+         * Update SEO Settings
+         * @param {Object} payload
+         */
+        async updateSeo(payload) {
+            this.errors = null;
+            try {
+                const res = await axiosInstance.post(`${this.baseUrl}/update-seo`, payload);
+                this.seo = payload;
+                return res;
+            } catch (error) {
+                this.errors = error.response || error;
+                throw error.response || error;
+            }
+        },
+
     }
 });

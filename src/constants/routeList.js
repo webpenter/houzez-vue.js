@@ -112,6 +112,8 @@ export function getDashboardRoutes() {
 			icon:'icon-single-neutral-circle',
 			sub:[
 				{id:1, title:'All Users', name:'dashboard.admin.users'},
+				{id:1, title:'All Agents', name:'dashboard.admin.agents'},
+				{id:1, title:'All Agencies', name:'dashboard.admin.agencies'},
 				{id:2, title:'All Subscribers', name:'dashboard.admin.subscribers'},
 				{id:3, title:'All Blogs', name:'dashboard.admin.all-blogs'},
 				{id:4, title:'All Teams', name:'dashboard.admin.all-teams'},
