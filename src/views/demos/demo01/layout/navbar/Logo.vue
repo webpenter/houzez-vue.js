@@ -2,7 +2,7 @@
   <div class="logo">
     <RouterLink :to="{ name: 'demo01.home' }">
       <!-- Dynamic logo -->
-      <img v-if="logo" :src="logo" alt="logo" />
+      <img v-if="logo" :src="logo" alt="logo" style="max-width: 60px;" />
 
       <!-- Optional fallback -->
       <img v-else src="@/assets/img/app-side/logo-houzez-color.png" alt="default logo" />

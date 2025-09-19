@@ -476,6 +476,18 @@ const routes = [
                 meta:{ title:'All Users', admin: true }
             },
             {
+                path: '/dashboard/admin/agents',
+                name:'dashboard.admin.agents',
+                component:() => import('@/views/dashboard/pages/admin/agents/Index.vue'),
+                meta:{ title:'All Agents', admin: true }
+            },
+            {
+                path: '/dashboard/admin/agencies',
+                name:'dashboard.admin.agencies',
+                component:() => import('@/views/dashboard/pages/admin/agencies/Index.vue'),
+                meta:{ title:'All Agencies', admin: true }
+            },
+            {
                 path: '/dashboard/admin/subscribers',
                 name:'dashboard.admin.subscribers',
                 component:() => import('@/views/dashboard/pages/admin/subscribers/Index.vue'),
