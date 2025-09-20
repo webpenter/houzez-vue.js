@@ -6,7 +6,6 @@
         :src="setting.logo"
         alt="App Logo"
         class="h-12 w-auto"
-        style="max-width: 60px;"
       />
     </RouterLink>
   </div>

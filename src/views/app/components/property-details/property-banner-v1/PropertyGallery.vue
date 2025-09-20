@@ -1,62 +1,40 @@
 <template>
   <div class="top-gallery-section">
     <!-- Main Image Slider -->
-    <div class="listing-slider" style="position: relative;">
+    <div class="listing-slider position-relative">
       <div v-if="currentImage" key="main-image">
-        <a
-          rel="gallery-1"
-          :data-lazy="currentImage.image_path"
-          href="#"
-          class="swipebox"
-          data-toggle="modal"
-          data-target="#property-lightbox"
-        >
-          <img
-            class="img-fluid"
-            :src="currentImage.image_path"
-            :alt="'Image ' + (currentIndex + 1)"
-          />
+        <a rel="gallery-1" :data-lazy="currentImage.image_path" href="#" class="swipebox" data-toggle="modal"
+          data-target="#property-lightbox">
+          <img class="img-fluid" :src="currentImage.image_path" :alt="'Image ' + (currentIndex + 1)" />
         </a>
       </div>
 
       <!-- Static Left Button -->
-      <button
-        @click="prevImage"
-        style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%);
-        background-color: #00AEEF; border: none; border-radius: 0%;
-        width: 35px; height: 35px; color: white; font-size: 18px; cursor: pointer; z-index: 10;"
-      >
+      <button @click="prevImage" class="btn btn-info position-absolute top-50 translate-middle-y start-0 ms-2 
+         rounded-0 d-flex align-items-center justify-content-center px-0"
+        style="width: 35px; height: 35px; font-size: 18px; z-index: 10;">
         ‹
       </button>
 
+
       <!-- Static Right Button -->
-      <button
-        @click="nextImage"
-        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);
-        background-color: #00AEEF; border: none; border-radius: 0%;
-        width: 35px; height: 35px; color: white; font-size: 18px; cursor: pointer; z-index: 10;"
-      >
+      <button @click="nextImage" class="btn btn-info position-absolute top-50 translate-middle-y end-0 me-2 
+         rounded-0 d-flex align-items-center justify-content-center px-0"
+        style="width: 35px; height: 35px; font-size: 18px; z-index: 10;">
         ›
       </button>
+
     </div>
 
     <!-- Thumbnail Navigation -->
-    <div class="listing-slider-nav" style="display: flex;">
-      <div
-        v-for="(image, index) in property.images"
-        :key="'thumb-' + image.id"
-        @click="currentIndex = index"
-        style="margin-right: 5px; cursor: pointer;"
-      >
-        <img
-          class="img-fluid"
-          :src="image.image_path"
-          :data-lazy="image.image_path"
-          :alt="'Thumbnail ' + (index + 1)"
-          style="width: 100px; height: 73px; object-fit: cover;"
-        />
+    <div class="listing-slider-nav d-flex">
+      <div v-for="(image, index) in property.images" :key="'thumb-' + image.id" @click="currentIndex = index"
+        class="me-1 cursor-pointer">
+        <img class="img-fluid w-auto h-auto" :src="image.image_path" :data-lazy="image.image_path"
+          :alt="'Thumbnail ' + (index + 1)" />
       </div>
     </div>
+
   </div>
 </template>
 

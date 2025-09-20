@@ -30,7 +30,7 @@
 									<a href="#">Brittany.Watkins</a>
 								</span>
 							</li>
-							<li class="agent-social-media" style="display: flex;">
+							<li class="agent-social-media d-flex">
 								<span>
 									<a class="btn-facebook" target="_blank" href="#">
 										<i class="houzez-icon icon-social-media-facebook mr-2"></i>

@@ -8,6 +8,7 @@
   <LatestProperties/>
   <Services/>
   <NewsAndBlogs/>
+  <Agents/>
 </template>
 
 <script setup>
@@ -18,4 +19,5 @@ import TeamSection from "@/views/app/pages/home/TeamSection.vue";
 import Services from "@/views/app/pages/home/Services.vue";
 import NewsAndBlogs from "@/views/app/pages/home/NewsAndBlogs.vue";
 import SearchBar from "@/views/app/pages/home/SearchBar.vue";
+import Agents from "@/views/app/components/home/agents/Index.vue";
 </script>

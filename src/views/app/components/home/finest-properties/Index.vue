@@ -4,7 +4,7 @@
                 <div class="row">
                     <div class="col-12">
                         
-                        <h2 style="margin: 100px 0 30px 0; text-align: center;">Check Our Selection Of Finest Properties</h2>
+                        <h2 class="my-5 mb-3 text-center">Check Our Selection Of Finest Properties</h2>
                         <FineProperty />
 
                     </div><!-- col-12 -->

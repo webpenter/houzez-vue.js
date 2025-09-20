@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2 style="margin: 100px 0 30px 0; text-align: center;">Discover Our Featured Listings</h2>
+                    <h2 class="my-5 mb-3 text-center">Discover Our Featured Listings</h2>
                     <div class="property-cards-module property-cards-module-v1 property-cards-module-3-cols">
                         <div class="listing-view grid-view card-deck grid-view-3-cols">
                             <template v-if="loading">

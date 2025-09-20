@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-5">
     <!-- Display the logo -->
-    <img v-if="setting.logo" :src="setting.logo" alt="Company Logo" class="mb-3" style="max-width: 60px;"/>
+    <img v-if="setting.logo" :src="setting.logo" alt="Company Logo" class="mb-3"/>
     <img v-else src="@/assets/img/client-side/logo%20(1).png" alt="Default Logo" class="mb-3" />
     
     <p>{{ $t('Rapidiously myocardinate cross-platform intellectual capital model. Appropriately create interactive infrastructures.') }}</p>
@@ -63,14 +63,3 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped>
-.social-icons a {
-  margin-right: 10px;
-  font-size: 24px;
-  color: #333;
-  text-decoration: none;
-}
-.social-icons a:hover {
-  color: #007bff; /* Example hover color */
-}
-</style>
