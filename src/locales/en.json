@@ -374,6 +374,117 @@
   "With New Theme": "With New Theme",
   "With Search Parallax Banner": "With Search Parallax Banner",
   "With Search Banner Advanced": "With Search Banner Advanced",
-  "Page": "Page"
+  "Page": "Page",
+  "Acitvities": "Ativities",
+  "createDeal": "Create Deal",
+  "allDeals": "All Deals",
+  "group": "Group *",
+  "selectGroup": "Select Group",
+  "active": "Active",
+  "won": "Won",
+  "lost": "Lost",
+  "title": "Title *",
+  "enterTitle": "Enter title",
+  "contactName": "Contact Name *",
+  "enterContactName": "Enter contact name",
+  "agent": "Agent *",
+  "enterAgent": "Enter agent name",
+  "dealValue": "Deal Value *",
+  "enterDealValue": "Enter deal value",
+  "status": "Status (active/inactive)",
+  "submitDeal": "Submit Deal",
+  "submitting": "Submitting...",
+  "validation": {
+    "group": "Group is required.",
+    "title": "Title is required.",
+    "contact_name": "Contact name is required.",
+    "agent": "Agent is required.",
+    "deal_value": "Deal value is required."
+  },
+  "notifications": {
+    "success": "Deal has been created.",
+    "error": "Something went wrong.",
+    "validationError": "Please fix validation errors.",
+    "submissionFailed": "Submission failed. Please try again."
+  },
+  "enquiry": {
+    "allEnquiries": "All Enquiries",
+    "createEnquiry": "Create Enquiry",
+    "noData": "You don't have any active enquiry yet!",
+    "confirmDelete": "Are you sure you want to delete this enquiry?",
+    "successDelete": "Successfully deleted enquiry",
+    "failedDelete": "Failed to delete enquiry",
+    "errorDelete": "An error occurred",
+    "cancelRequest": "Request cancelled."
+  },
+  "enquiryForm": {
+    "create": "Create Enquiry",
+    "all": "All Enquiries",
+    "labels": {
+      "name": "Name *",
+      "email": "Email *",
+      "phone": "Phone *",
+      "source": "Source *",
+      "type": "Type *"
+    },
+    "placeholders": {
+      "name": "Enter name",
+      "email": "Enter email",
+      "phone": "Enter phone",
+      "source": "Enter source name",
+      "type": "Enter type"
+    },
+    "validation": {
+      "name": "Name is required.",
+      "email": "Email is required.",
+      "phone": "Phone is required.",
+      "source": "Source is required.",
+      "type": "Type is required."
+    },
+    "submit": "Submit Enquiry",
+    "submitting": "Submitting...",
+    "notifications": {
+      "success": "Enquiry has been created.",
+      "error": "Something went wrong.",
+      "validationError": "Please fix validation errors.",
+      "submissionFailed": "Submission failed. Please try again."
+    }
+  },
+  "createLead": "Create Lead",
+  "leads": "Leads",
+  "name": "Name",
+  "email": "Email",
+  "phone": "Phone",
+  "type": "Type",
+  "enterName": "Enter name",
+  "enterEmail": "Enter email",
+  "enterPhone": "Enter phone",
+  "enterType": "Enter type",
+  "submitLead": "Submit Lead",
+  "success": {
+    "leadCreated": "Lead has been created."
+  },
+  "errors": {
+    "name": "Name is required.",
+    "email": "Email is required.",
+    "phone": "Phone is required.",
+    "agent": "Agent is required.",
+    "type": "Type is required.",
+    "fix": "Please fix validation errors.",
+    "generic": "Something went wrong.",
+    "submitFailed": "Submission failed. Please try again."
+  },
+  "dashboard": {
+      "heading": "Insight",
+      "selectProperty": "Select a Property",
+      "noData": "You don't have any properties, so there are no insights available.",
+      "views": "Views",
+      "uniqueViews": "Unique Views",
+      "devices": "Devices",
+      "topCountries": "Top Countries",
+      "topPlatforms": "Top Platforms",
+      "topBrowsers": "Top Browsers"
+    }
+  
   
 }

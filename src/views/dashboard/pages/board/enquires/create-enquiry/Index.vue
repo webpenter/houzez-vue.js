@@ -1,7 +1,7 @@
 <template>
-  <DashboardHeader heading="Create Enquiry">
+  <DashboardHeader :heading="$t('enquiryForm.create')">
     <RouterLink :to="{ name: 'dashboard.all-enquiries' }" class="btn btn-primary-outlined">
-      All Enquires
+      {{ $t('enquiryForm.all') }}
     </RouterLink>
   </DashboardHeader>
 
@@ -9,87 +9,95 @@
     <div class="dashboard-content-inner-wrap">
       <form @submit.prevent="formSubmit">
         <div class="row">
+          <!-- Name -->
           <div class="col-md-6">
-            <label>Name *</label>
+            <label>{{ $t('enquiryForm.labels.name') }}</label>
             <input
-                type="text"
-                class="form-control"
-                v-model="formData.name"
-                @input="validateField('name')"
-                :class="{ 'is-invalid': localErrors.name }"
-                placeholder="Enter name"
+              type="text"
+              class="form-control"
+              v-model="formData.name"
+              @input="validateField('name')"
+              :class="{ 'is-invalid': localErrors.name }"
+              :placeholder="$t('enquiryForm.placeholders.name')"
             />
-            <div v-if="localErrors.name" class="text-danger mt-1">{{ localErrors.name }}</div>
+            <div v-if="localErrors.name" class="text-danger mt-1">{{ $t('enquiryForm.validation.name') }}</div>
           </div>
 
+          <!-- Email -->
           <div class="col-md-6">
-            <label>Email *</label>
+            <label>{{ $t('enquiryForm.labels.email') }}</label>
             <input
-                type="text"
-                class="form-control"
-                v-model="formData.email"
-                @input="validateField('email')"
-                :class="{ 'is-invalid': localErrors.email }"
-                placeholder="Enter email"
+              type="text"
+              class="form-control"
+              v-model="formData.email"
+              @input="validateField('email')"
+              :class="{ 'is-invalid': localErrors.email }"
+              :placeholder="$t('enquiryForm.placeholders.email')"
             />
-            <div v-if="localErrors.email" class="text-danger mt-1">{{ localErrors.email }}</div>
+            <div v-if="localErrors.email" class="text-danger mt-1">{{ $t('enquiryForm.validation.email') }}</div>
           </div>
 
+          <!-- Phone -->
           <div class="col-md-6 mt-3">
-            <label>Phone *</label>
+            <label>{{ $t('enquiryForm.labels.phone') }}</label>
             <input
-                type="text"
-                class="form-control"
-                v-model="formData.phone"
-                @input="validateField('phone')"
-                :class="{ 'is-invalid': localErrors.phone }"
-                placeholder="Enter phone"
+              type="text"
+              class="form-control"
+              v-model="formData.phone"
+              @input="validateField('phone')"
+              :class="{ 'is-invalid': localErrors.phone }"
+              :placeholder="$t('enquiryForm.placeholders.phone')"
             />
-            <div v-if="localErrors.phone" class="text-danger mt-1">{{ localErrors.phone }}</div>
+            <div v-if="localErrors.phone" class="text-danger mt-1">{{ $t('enquiryForm.validation.phone') }}</div>
           </div>
 
+          <!-- Source -->
           <div class="col-md-6 mt-3">
-            <label>Source *</label>
+            <label>{{ $t('enquiryForm.labels.source') }}</label>
             <input
-                type="text"
-                class="form-control"
-                v-model="formData.source"
-                @input="validateField('source')"
-                :class="{ 'is-invalid': localErrors.source }"
-                placeholder="Enter source name"
+              type="text"
+              class="form-control"
+              v-model="formData.source"
+              @input="validateField('source')"
+              :class="{ 'is-invalid': localErrors.source }"
+              :placeholder="$t('enquiryForm.placeholders.source')"
             />
-            <div v-if="localErrors.source" class="text-danger mt-1">{{ localErrors.source }}</div>
+            <div v-if="localErrors.source" class="text-danger mt-1">{{ $t('enquiryForm.validation.source') }}</div>
           </div>
 
+          <!-- Type -->
           <div class="col-md-6 mt-3">
-            <label>Type *</label>
+            <label>{{ $t('enquiryForm.labels.type') }}</label>
             <input
-                type="text"
-                class="form-control"
-                v-model="formData.type"
-                @input="validateField('type')"
-                :class="{ 'is-invalid': localErrors.type }"
-                placeholder="Enter type"
+              type="text"
+              class="form-control"
+              v-model="formData.type"
+              @input="validateField('type')"
+              :class="{ 'is-invalid': localErrors.type }"
+              :placeholder="$t('enquiryForm.placeholders.type')"
             />
-            <div v-if="localErrors.type" class="text-danger mt-1">{{ localErrors.type }}</div>
+            <div v-if="localErrors.type" class="text-danger mt-1">{{ $t('enquiryForm.validation.type') }}</div>
           </div>
         </div>
 
-        <!-- Submit Button -->
+        <!-- Submit -->
         <button class="btn btn-primary mt-4" type="submit" :disabled="btnLoading">
           <span v-if="btnLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-          {{ btnLoading ? 'Submitting...' : 'Submit Enquiry' }}
+          {{ btnLoading ? $t('enquiryForm.submitting') : $t('enquiryForm.submit') }}
         </button>
       </form>
     </div>
   </section>
 </template>
 
+
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useNotification, useEnquiry } from '@/stores'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const router = useRouter()
 const notify = useNotification()
 
@@ -114,61 +122,56 @@ const btnLoading = ref(false)
 const validateField = (field) => {
   switch (field) {
     case 'name':
-      localErrors.value.name = formData.value.name ? '' : 'Name is required.'
+      localErrors.value.name = formData.value.name ? '' : t('enquiryForm.validation.name')
       break
     case 'email':
-      localErrors.value.email = formData.value.email ? '' : 'Email is required.'
+      localErrors.value.email = formData.value.email ? '' : t('enquiryForm.validation.email')
       break
     case 'phone':
-      localErrors.value.phone = formData.value.phone ? '' : 'Phone is required.'
+      localErrors.value.phone = formData.value.phone ? '' : t('enquiryForm.validation.phone')
       break
     case 'source':
-      localErrors.value.source = formData.value.source ? '' : 'Source is required.'
+      localErrors.value.source = formData.value.source ? '' : t('enquiryForm.validation.source')
       break
     case 'type':
-      localErrors.value.type = formData.value.type ? '' : 'Type is required.'
+      localErrors.value.type = formData.value.type ? '' : t('enquiryForm.validation.type')
       break
   }
 }
 
 const hasErrors = computed(() =>
-    Object.values(localErrors.value).some((error) => error !== '')
+  Object.values(localErrors.value).some((error) => error !== '')
 )
 
 const formSubmit = async () => {
   Object.keys(localErrors.value).forEach(validateField)
 
   if (hasErrors.value) {
-    notify.Error('Please fix validation errors.')
+    notify.Error(t('enquiryForm.notifications.validationError'))
     return
   }
 
   btnLoading.value = true
 
-  const payload = {
-    name: formData.value.name,
-    email: formData.value.email,
-    phone: formData.value.phone,
-    source: formData.value.source,
-    type: formData.value.type,
-  }
+  const payload = { ...formData.value }
 
   try {
     const res = await useEnquiry().storeEnquiry(payload)
     btnLoading.value = false
 
     if (res.status === 200) {
-      notify.Success('Enquiry has been created.')
+      notify.Success(t('enquiryForm.notifications.success'))
       router.push({ name: 'dashboard.all-enquiries' })
     } else {
-      notify.Error('Something went wrong.')
+      notify.Error(t('enquiryForm.notifications.error'))
     }
   } catch (error) {
     btnLoading.value = false
-    notify.Error('Submission failed. Please try again.')
+    notify.Error(t('enquiryForm.notifications.submissionFailed'))
   }
 }
 </script>
+
 
 <style scoped>
 .is-invalid {
