@@ -25,16 +25,16 @@ const routes = [
      * @auth not-required
      **/
     {
-        path: '/app',
+        path: '/demo01',
         name:'app',
-        redirect:'/app',
+        redirect:'/',
         component:() => import('@/views/app/layout/Index.vue'),
         children:[
             /***
              * @route App/Home
              ***/
             {
-                path: '/app',
+                path: '/',
                 name:'app.home',
                 component:() => import('@/views/app/pages/home/Index.vue'),
                 meta:{ title:'Home' }
@@ -43,7 +43,7 @@ const routes = [
              * @route App/Properties
              ***/
             {
-                path: '/app/properties',
+                path: '/properties',
                 name:'app.properties',
                 component:() => import('@/views/app/pages/properties/Index.vue'),
                 meta:{ title:'Properties' }
@@ -52,7 +52,7 @@ const routes = [
              * @route App/Property-Details
              ***/
             {
-                path: '/app/property-details/:propertySlug',
+                path: '/property-details/:propertySlug',
                 name:'app.property-details',
                 component:() => import('@/views/app/pages/property-details/Index.vue'),
                 meta:{ title:'Property Details' }
@@ -61,7 +61,7 @@ const routes = [
              * @route App/Realtor
              ***/
             {
-                path: '/app/realtor',
+                path: '/realtor',
                 name:'app.realtor',
                 component:() => import('@/views/app/pages/realtor/Index.vue'),
                 meta:{ title:'Realtor' }
@@ -70,7 +70,7 @@ const routes = [
              * @route App/AboutUs
              ***/
             {
-                path: '/app/about-us',
+                path: '/about-us',
                 name:'app.about-us',
                 component:() => import('@/views/app/pages/about-us/Index.vue'),
                 meta:{ title:'About Us' }
@@ -79,7 +79,7 @@ const routes = [
              * @route App/Search-Results
              ***/
             {
-                path: '/app/search-results',
+                path: '/search-results',
                 name:'app.search-results',
                 component:() => import('@/views/app/pages/search-results/Index.vue'),
                 meta:{ title:'Search Results' }
