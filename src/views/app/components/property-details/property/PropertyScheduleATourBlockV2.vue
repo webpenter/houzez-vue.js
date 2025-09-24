@@ -37,7 +37,7 @@
                                     <i class="houzez-icon icon-arrow-left-1"></i>
                                 </div>
 
-                                <div class="property-schedule-tour-day-form-slide-wrap" style="overflow: hidden;">
+                                <div class="property-schedule-tour-day-form-slide-wrap overflow-hidden">
                                     <div class="property-schedule-tour-day-form-slide start" :style="slideStyle">
                                         <div class="form-group" v-for="(day, index) in days"
                                             :key="day.fullDate.toISOString()">

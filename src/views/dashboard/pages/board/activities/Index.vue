@@ -1,5 +1,5 @@
 <template>
-    <DashboardHeader heading="Activities"/>
+    <DashboardHeader :heading="$t('Acitvities')"/>
     
     <section class="dashboard-content-wrap">
             <div class="dashboard-content-inner-wrap">

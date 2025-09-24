@@ -21,9 +21,9 @@ export default [
    * @description Base layout wrapper for all Demo01 pages
    */
   {
-    path: '/',
+    path: '/demo01',
     name:'demo01',
-    redirect:'/',
+    redirect:'/demo01',
     component: () => import('@/views/demos/demo01/layout/Index.vue'),
     children: [
       /**
@@ -33,7 +33,7 @@ export default [
        * @description Homepage of Demo01
        */
       {
-        path: '/',
+        path: '/demo01',
         name: 'demo01.home',
         component: () => import('@/views/demos/demo01/pages/home/Index.vue'),
         meta: { title: 'Home' },
@@ -46,7 +46,7 @@ export default [
        * @description Homepage of Demo01/SearchParallaxBanner
        */
       {
-        path: '/search-parallax-banner',
+        path: '/demo01/search-parallax-banner',
         name: 'demo01.search-parallax-banner',
         component: () => import('@/views/demos/demo01/pages/home/SearchParallaxBanner.vue'),
         meta: { title: 'Home' },
@@ -58,7 +58,7 @@ export default [
        * @description Homepage of Demo01/SearchParallaxBanner
        */
       {
-        path: '/search-banner-advanced',
+        path: '/demo01/search-banner-advanced',
         name: 'demo01.search-banner-advanced',
         component: () => import('@/views/demos/demo01/pages/home/SearchBannerAdvanced.vue'),
         meta: { title: 'Home' },
@@ -71,7 +71,7 @@ export default [
        * @description Property details page of Demo01
        */
       {
-        path: '/property-details/:propertySlug',
+        path: '/demo01/property-details/:propertySlug',
         name: 'demo01.property-details',
         component: () => import('@/views/demos/demo01/pages/property-details/Index.vue'),
         meta: { title: 'Property Details' },
@@ -83,7 +83,7 @@ export default [
        * @description Search Results page of Demo01
        */
        {
-        path: '/search-results',
+        path: '/demo01/search-results',
         name: 'demo01.search-results',
         component: () => import('@/views/demos/demo01/pages/search-results/Index.vue'),
         meta: { title: 'Search Results' },
@@ -95,7 +95,7 @@ export default [
        * @description Properties page of Demo01
        */
        {
-        path: '/properties',
+        path: '/demo01/properties',
         name: 'demo01.properties',
         component: () => import('@/views/demos/demo01/pages/properties/Index.vue'),
         meta: { title: 'Properties' },
@@ -107,7 +107,7 @@ export default [
        * @description Property type page of Demo01
        */
        {
-        path: '/property-type/:propertyType',
+        path: '/demo01/property-type/:propertyType',
         name: 'demo01.property-type',
         component: () => import('@/views/demos/demo01/pages/property-type/Index.vue'),
         meta: { title: 'Property Type' },
@@ -119,7 +119,7 @@ export default [
        * @description Agents page of Demo01
        */
       {
-        path: '/agents',
+        path: '/demo01/agents',
         name: 'demo01.agents',
         component: () => import('@/views/demos/demo01/pages/agents/Index.vue'),
         meta: { title: 'Agents' },
@@ -131,7 +131,7 @@ export default [
        * @description Agent details page of Demo01
        */
       {
-        path: '/agent/:agentUsername',
+        path: '/demo01/agent/:agentUsername',
         name: 'demo01.agent-details',
         component: () => import('@/views/demos/demo01/pages/agent-details/Index.vue'),
         meta: { title: 'Agent Detail' },
@@ -142,7 +142,7 @@ export default [
        * @auth not-required
        */
        {
-        path: '/about-us',
+        path: '/demo01/about-us',
         name: 'demo01.about-us',
         component: () => import('@/views/demos/demo01/pages/about-us/Index.vue'),
         meta: { title: 'About Us' },
@@ -154,7 +154,7 @@ export default [
        * @description agencies page of Demo01
        */
       {
-        path: '/agencies',
+        path: '/demo01/agencies',
         name: 'demo01.agencies',
         component: () => import('@/views/demos/demo01/pages/agencies/Index.vue'),
         meta: { title: 'Agencies' },
@@ -166,7 +166,7 @@ export default [
        * @description Agent details page of Demo01
        */
       {
-        path: '/agency/:agencyUsername',
+        path: '/demo01/agency/:agencyUsername',
         name: 'demo01.agency-details',
         component: () => import('@/views/demos/demo01/pages/agency-details/Index.vue'),
         meta: { title: 'Agency Detail' },

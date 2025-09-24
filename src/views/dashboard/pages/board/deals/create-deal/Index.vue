@@ -1,7 +1,7 @@
 <template>
-  <DashboardHeader heading="Create Deal">
+  <DashboardHeader :heading="$t('createDeal')">
     <RouterLink :to="{ name: 'dashboard.active-deals' }" class="btn btn-primary-outlined">
-      All Deals
+      {{ $t('allDeals') }}
     </RouterLink>
   </DashboardHeader>
 
@@ -11,84 +11,84 @@
         <div class="row">
           <!-- Group -->
           <div class="col-md-6">
-            <label>Group *</label>
+            <label>{{ $t('group') }}</label>
             <select
-                v-model="formData.group"
-                @change="validateField('group')"
-                :class="['form-control', localErrors.group ? 'is-invalid' : '']"
+              v-model="formData.group"
+              @change="validateField('group')"
+              :class="['form-control', localErrors.group ? 'is-invalid' : '']"
             >
-              <option disabled value="">Select Group</option>
-              <option value="active">Active</option>
-              <option value="won">Won</option>
-              <option value="lost">Lost</option>
+              <option disabled value="">{{ $t('selectGroup') }}</option>
+              <option value="active">{{ $t('active') }}</option>
+              <option value="won">{{ $t('won') }}</option>
+              <option value="lost">{{ $t('lost') }}</option>
             </select>
-            <div v-if="localErrors.group" class="text-danger mt-1">{{ localErrors.group }}</div>
+            <div v-if="localErrors.group" class="text-danger mt-1">{{ $t('validation.group') }}</div>
           </div>
 
           <!-- Title -->
           <div class="col-md-6">
-            <label>Title *</label>
+            <label>{{ $t('title') }}</label>
             <input
-                type="text"
-                class="form-control"
-                v-model="formData.title"
-                @input="validateField('title')"
-                :class="{ 'is-invalid': localErrors.title }"
-                placeholder="Enter title"
+              type="text"
+              class="form-control"
+              v-model="formData.title"
+              @input="validateField('title')"
+              :class="{ 'is-invalid': localErrors.title }"
+              :placeholder="$t('enterTitle')"
             />
-            <div v-if="localErrors.title" class="text-danger mt-1">{{ localErrors.title }}</div>
+            <div v-if="localErrors.title" class="text-danger mt-1">{{ $t('validation.title') }}</div>
           </div>
 
           <!-- Contact Name -->
           <div class="col-md-6 mt-3">
-            <label>Contact Name *</label>
+            <label>{{ $t('contactName') }}</label>
             <input
-                type="text"
-                class="form-control"
-                v-model="formData.contact_name"
-                @input="validateField('contact_name')"
-                :class="{ 'is-invalid': localErrors.contact_name }"
-                placeholder="Enter contact name"
+              type="text"
+              class="form-control"
+              v-model="formData.contact_name"
+              @input="validateField('contact_name')"
+              :class="{ 'is-invalid': localErrors.contact_name }"
+              :placeholder="$t('enterContactName')"
             />
-            <div v-if="localErrors.contact_name" class="text-danger mt-1">{{ localErrors.contact_name }}</div>
+            <div v-if="localErrors.contact_name" class="text-danger mt-1">{{ $t('validation.contact_name') }}</div>
           </div>
 
           <!-- Agent -->
           <div class="col-md-6 mt-3">
-            <label>Agent *</label>
+            <label>{{ $t('agent') }}</label>
             <input
-                type="text"
-                class="form-control"
-                v-model="formData.agent"
-                @input="validateField('agent')"
-                :class="{ 'is-invalid': localErrors.agent }"
-                placeholder="Enter agent name"
+              type="text"
+              class="form-control"
+              v-model="formData.agent"
+              @input="validateField('agent')"
+              :class="{ 'is-invalid': localErrors.agent }"
+              :placeholder="$t('enterAgent')"
             />
-            <div v-if="localErrors.agent" class="text-danger mt-1">{{ localErrors.agent }}</div>
+            <div v-if="localErrors.agent" class="text-danger mt-1">{{ $t('validation.agent') }}</div>
           </div>
 
           <!-- Deal Value -->
           <div class="col-md-6 mt-3">
-            <label>Deal Value *</label>
+            <label>{{ $t('dealValue') }}</label>
             <input
-                type="number"
-                class="form-control"
-                v-model="formData.deal_value"
-                @input="validateField('deal_value')"
-                :class="{ 'is-invalid': localErrors.deal_value }"
-                placeholder="Enter deal value"
+              type="number"
+              class="form-control"
+              v-model="formData.deal_value"
+              @input="validateField('deal_value')"
+              :class="{ 'is-invalid': localErrors.deal_value }"
+              :placeholder="$t('enterDealValue')"
             />
-            <div v-if="localErrors.deal_value" class="text-danger mt-1">{{ localErrors.deal_value }}</div>
+            <div v-if="localErrors.deal_value" class="text-danger mt-1">{{ $t('validation.deal_value') }}</div>
           </div>
 
           <!-- Status -->
           <div class="col-md-6 mt-3">
-            <div><label for="status" class="form-check-label">Status (active/inactive)</label></div>
+            <div><label for="status" class="form-check-label">{{ $t('status') }}</label></div>
             <input
-                type="checkbox"
-                id="status"
-                v-model="formData.status"
-                class="form-check-input me-5"
+              type="checkbox"
+              id="status"
+              v-model="formData.status"
+              class="form-check-input me-5"
             />
           </div>
         </div>
@@ -96,12 +96,13 @@
         <!-- Submit Button -->
         <button class="btn btn-primary mt-4" type="submit" :disabled="btnLoading">
           <span v-if="btnLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-          {{ btnLoading ? 'Submitting...' : 'Submit Deal' }}
+          {{ btnLoading ? $t('submitting') : $t('submitDeal') }}
         </button>
       </form>
     </div>
   </section>
 </template>
+
 
 <script setup>
 import { ref, computed } from 'vue'

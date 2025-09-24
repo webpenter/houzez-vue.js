@@ -1,75 +1,93 @@
 <template>
-  <DashboardHeader heading="Insight"/>
+  <DashboardHeader :heading="$t('dashboard.heading')"/>
 
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">
       <NoDataMsg
-          msg="You don't have any properties, so there are no insights available."
-          v-if="properties.length < 1"
+        :msg="$t('dashboard.noData')"
+        v-if="properties.length < 1"
       />
       <template v-else>
         <div class="dashboard-content-block-wrap">
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <div v-if="!propertyLoading" class="form-group insight-search">
-                <label>Select a Property</label>
+                <label>{{ $t('dashboard.selectProperty') }}</label>
                 <select class="form-control" v-model="selectedId" @change="fetchData" title="Select">
-                  <template v-for="property in properties">
-                    <option :value="property.id">{{ $filters.capitalize(property.title) }}</option>
-                  </template>
+                  <option
+                    v-for="property in properties"
+                    :key="property.id"
+                    :value="property.id"
+                  >
+                    {{ $filters.capitalize(property.title) }}
+                  </option>
                 </select>
-              </div><!-- form-group -->
-            </div><!-- col-md-6 col-sm-12 -->
-          </div><!-- row -->
+              </div>
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <Views
-                  :viewsLoading="viewsLoading"
-                  :views="views"
+                :viewsLoading="viewsLoading"
+                :views="views"
+                :title="$t('dashboard.views')"
               />
-            </div><!-- col-md-6 col-sm-12 -->
+            </div>
+
             <div class="col-md-6 col-sm-12">
               <UniqueViews
-                  :uniqueViewsLoading="uniqueViewsLoading"
-                  :uniqueViews="uniqueViews"
+                :uniqueViewsLoading="uniqueViewsLoading"
+                :uniqueViews="uniqueViews"
+                :title="$t('dashboard.uniqueViews')"
               />
-            </div><!-- col-md-6 col-sm-12 -->
+            </div>
+
             <div class="col-md-12 col-sm-12">
               <VisitsChart
-                  :visitChartLoading="visitChartLoading"
-                  :data="chartStats"
+                :visitChartLoading="visitChartLoading"
+                :data="chartStats"
               />
-            </div><!-- col-md-6 col-sm-12 -->
+            </div>
+
             <div class="col-md-6 col-sm-12">
               <StatisticDevices
-                  :devicesStatsLoading="devicesStatsLoading"
-                  :devicesStats="devicesStats"
+                :devicesStatsLoading="devicesStatsLoading"
+                :devicesStats="devicesStats"
+                :title="$t('dashboard.devices')"
               />
-            </div><!-- col-md-6 col-sm-12 -->
+            </div>
+
             <div class="col-md-6 col-sm-12">
               <StatisticTopCountries
-                  :countriesStatsLoading="countriesStatsLoading"
-                  :countriesStats="countriesStats"
+                :countriesStatsLoading="countriesStatsLoading"
+                :countriesStats="countriesStats"
+                :title="$t('dashboard.topCountries')"
               />
-            </div><!-- col-md-6 col-sm-12 -->
+            </div>
+
             <div class="col-md-6 col-sm-12">
               <StatisticTopPlatforms
-                  :platformStatsLoading="platformStatsLoading"
-                  :platformStats="platformStats"
+                :platformStatsLoading="platformStatsLoading"
+                :platformStats="platformStats"
+                :title="$t('dashboard.topPlatforms')"
               />
-            </div><!-- col-md-6 col-sm-12 -->
+            </div>
+
             <div class="col-md-6 col-sm-12">
               <StatisticTopBrowsers
-                  :browserStatsLoading="browserStatsLoading"
-                  :browserStats="browserStats"
+                :browserStatsLoading="browserStatsLoading"
+                :browserStats="browserStats"
+                :title="$t('dashboard.topBrowsers')"
               />
-            </div><!-- col-md-6 col-sm-12 -->
-          </div><!-- row -->
-        </div><!-- dashboard-content-block-wrap -->
+            </div>
+          </div>
+        </div>
       </template>
-    </div><!-- dashboard-content-inner-wrap -->
-  </section><!-- dashboard-content-wrap -->
+    </div>
+  </section>
 </template>
+
 
 <script setup>
 import { useInsightData } from "@/views/dashboard/pages/insight/insight.js";

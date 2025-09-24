@@ -99,5 +99,37 @@ export const useUsers = defineStore('users', {
                 })
             }
         },
+
+        /**
+         * Fetches all agents.
+         * @return {Promise<Object>} Resolves with the response data if successful, rejects with the error response if failed.
+         */
+        async getAllAgents() {
+            const url = `/get-all-agents`;
+            try {
+                const res = await axiosInstance.get(url);
+                this.users = res.data;
+                return res;
+            } catch (error) {
+                this.errors = error.response || {};
+                throw error.response;
+            }
+        },
+
+        /**
+         * Fetches all agencies.
+         * @return {Promise<Object>} Resolves with the response data if successful, rejects with the error response if failed.
+         */
+        async getAgencyUsers() {
+            const url = `/get-agency-users`
+            try {
+                const res = await axiosInstance.get(url)
+                this.users = res.data
+                return res
+            } catch (error) {
+                this.errors = error.response
+                throw error.response
+            }
+        },
     }
 })

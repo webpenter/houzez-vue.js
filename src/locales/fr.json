@@ -374,6 +374,116 @@
   "With New Theme": "Nouveau thème",
   "With Search Parallax Banner": "Avec la bannière de recherche Parallax",
   "With Search Banner Advanced": "Avec bannière de recherche avancée",
-  "Page": "Page"
+  "Page": "Page",
+  "Acitvities": "Activités",
+  "createDeal": "Créer une affaire",
+  "allDeals": "Toutes les affaires",
+  "group": "Groupe *",
+  "selectGroup": "Sélectionner un groupe",
+  "active": "Actif",
+  "won": "Gagné",
+  "lost": "Perdu",
+  "title": "Titre *",
+  "enterTitle": "Saisir le titre",
+  "contactName": "Nom du contact *",
+  "enterContactName": "Saisir le nom du contact",
+  "agent": "Agent *",
+  "enterAgent": "Saisir le nom de l'agent",
+  "dealValue": "Valeur de l'affaire *",
+  "enterDealValue": "Saisir la valeur de l'affaire",
+  "status": "Statut (actif/inactif)",
+  "submitDeal": "Soumettre l'affaire",
+  "submitting": "Soumission...",
+  "validation": {
+    "group": "Le groupe est obligatoire.",
+    "title": "Le titre est obligatoire.",
+    "contact_name": "Le nom du contact est obligatoire.",
+    "agent": "L'agent est obligatoire.",
+    "deal_value": "La valeur de l'affaire est obligatoire."
+  },
+  "notifications": {
+    "success": "L'affaire a été créée.",
+    "error": "Une erreur est survenue.",
+    "validationError": "Veuillez corriger les erreurs de validation.",
+    "submissionFailed": "Échec de la soumission. Veuillez réessayer."
+  },
+  "enquiry": {
+    "allEnquiries": "Toutes les demandes",
+    "createEnquiry": "Créer une demande",
+    "noData": "Vous n'avez encore aucune demande active !",
+    "confirmDelete": "Êtes-vous sûr de vouloir supprimer cette demande ?",
+    "successDelete": "Demande supprimée avec succès",
+    "failedDelete": "Échec de la suppression de la demande",
+    "errorDelete": "Une erreur s'est produite",
+    "cancelRequest": "Demande annulée."
+  },
+  "enquiryForm": {
+    "create": "Créer une demande",
+    "all": "Toutes les demandes",
+    "labels": {
+      "name": "Nom *",
+      "email": "E-mail *",
+      "phone": "Téléphone *",
+      "source": "Source *",
+      "type": "Type *"
+    },
+    "placeholders": {
+      "name": "Saisir le nom",
+      "email": "Saisir l'e-mail",
+      "phone": "Saisir le téléphone",
+      "source": "Saisir la source",
+      "type": "Saisir le type"
+    },
+    "validation": {
+      "name": "Le nom est obligatoire.",
+      "email": "L'e-mail est obligatoire.",
+      "phone": "Le téléphone est obligatoire.",
+      "source": "La source est obligatoire.",
+      "type": "Le type est obligatoire."
+    },
+    "submit": "Soumettre la demande",
+    "submitting": "Soumission...",
+    "notifications": {
+      "success": "La demande a été créée.",
+      "error": "Une erreur est survenue.",
+      "validationError": "Veuillez corriger les erreurs de validation.",
+      "submissionFailed": "Échec de la soumission. Veuillez réessayer."
+    }
+  },
+   "createLead": "Créer un prospect",
+  "leads": "Prospects",
+  "name": "Nom",
+  "email": "E-mail",
+  "phone": "Téléphone",
+  "type": "Type",
+  "enterName": "Entrez le nom",
+  "enterEmail": "Entrez l'e-mail",
+  "enterPhone": "Entrez le téléphone",
+  "enterType": "Entrez le type",
+  "submitLead": "Soumettre le prospect",
+  "success": {
+    "leadCreated": "Le prospect a été créé."
+  },
+  "errors": {
+    "name": "Le nom est obligatoire.",
+    "email": "L'e-mail est obligatoire.",
+    "phone": "Le téléphone est obligatoire.",
+    "agent": "L'agent est obligatoire.",
+    "type": "Le type est obligatoire.",
+    "fix": "Veuillez corriger les erreurs de validation.",
+    "generic": "Une erreur s'est produite.",
+    "submitFailed": "Échec de l'envoi. Veuillez réessayer."
+  },
+  "dashboard": {
+      "heading": "Aperçu",
+      "selectProperty": "Sélectionnez une propriété",
+      "noData": "Vous n'avez aucune propriété, donc aucune statistique disponible.",
+      "views": "Vues",
+      "uniqueViews": "Vues uniques",
+      "devices": "Appareils",
+      "topCountries": "Principaux pays",
+      "topPlatforms": "Plateformes principales",
+      "topBrowsers": "Navigateurs principaux"
+    }
 
 }
