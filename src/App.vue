@@ -17,17 +17,17 @@ onMounted(async () => {
 
 <template>
   <!-- ✅ Show loader until settings are fetched -->
-  <!-- <div v-if="!initialized" class="app-loader">
+  <div v-if="!initialized" class="app-loader">
     <div class="spinner"></div>
-  </div> -->
+  </div>
 
   <!-- ✅ Show app only when initialized -->
-  <div>
+  <div v-else>
     <RouterView />
   </div>
 </template>
 
-<!-- <style scoped>
+<style scoped>
 .app-loader {
   position: fixed;
   top: 0;
@@ -70,4 +70,4 @@ onMounted(async () => {
 body:has(.app-loader) {
   overflow: hidden;
 }
-</style> -->
+</style>
