@@ -58,7 +58,8 @@
                     <ul class="item-price-wrap hide-on-list">
                         <li class="item-price">
                             <span v-if="property.price" class="price-prefix">From </span>{{ property.price_prefix }}{{ property.price }}
-                            <span v-if="after_price" class="price-postfix">/{{ property.after_price }}</span>
+                           <span v-if="property.after_price" class="price-postfix">/{{ property.after_price }}</span>
+
                         </li>
                         <li v-if="property.second_price" class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{
                             property.size_prefix }}</li>
