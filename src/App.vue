@@ -10,24 +10,24 @@ const settingStore = useSetting();
 const { initialized } = storeToRefs(settingStore);
 
 onMounted(async () => {
-  // ✅ Initial API calls (logo, banner, social links)
+  // ✅ Initial API calls (logo, banner, social links are )
   await settingStore.initSettings();
 });
 </script>
 
 <template>
   <!-- ✅ Show loader until settings are fetched -->
-  <div v-if="!initialized" class="app-loader">
+  <!-- <div v-if="!initialized" class="app-loader">
     <div class="spinner"></div>
-  </div>
+  </div> -->
 
   <!-- ✅ Show app only when initialized -->
-  <div v-else>
+  <div>
     <RouterView />
   </div>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 .app-loader {
   position: fixed;
   top: 0;
@@ -39,7 +39,6 @@ onMounted(async () => {
   justify-content: center;
   background: #fff;
   z-index: 9999;
-  /* Prevent any movement */
   overflow: hidden;
 }
 
@@ -50,7 +49,7 @@ onMounted(async () => {
   border-top: 6px solid #007bff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  /* Ensure spinner stays in place */
+
   position: relative;
   flex-shrink: 0;
 }
@@ -64,13 +63,11 @@ onMounted(async () => {
   }
 }
 
-/* Reset any potential conflicting styles */
 .app-loader * {
   box-sizing: border-box;
 }
 
-/* Ensure no body scrolling during loading */
 body:has(.app-loader) {
   overflow: hidden;
 }
-</style>
+</style> -->
