@@ -89,7 +89,6 @@
 
 <script setup>
 import { ref, computed, watch } from 'vue';
-import OverallRating from '../property-details/property/template/OverallRating.vue';
 import defaultAvatar from '@/assets/img/fb-avatar.png';
 
 const props = defineProps({
