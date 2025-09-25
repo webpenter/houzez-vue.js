@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h2 style="margin: 100px 0 30px 0; text-align: center;">
+          <h2 class="my-5 mb-4 text-center">
             {{ $t('Meet Our Agents') }}
           </h2>
 
