@@ -11,18 +11,20 @@
 
       <!-- Static Left Button -->
       <button @click="prevImage" class="btn btn-info position-absolute top-50 translate-middle-y start-0 ms-2 
-         rounded-0 d-flex align-items-center justify-content-center px-0"
-        style="width: 35px; height: 35px; font-size: 18px; z-index: 10;">
+         rounded-0 d-flex align-items-center justify-content-center px-0 
+         w-35 h-35 fs-5 z-3">
         ‹
       </button>
 
 
+
       <!-- Static Right Button -->
       <button @click="nextImage" class="btn btn-info position-absolute top-50 translate-middle-y end-0 me-2 
-         rounded-0 d-flex align-items-center justify-content-center px-0"
-        style="width: 35px; height: 35px; font-size: 18px; z-index: 10;">
+         rounded-0 d-flex align-items-center justify-content-center px-0 
+         fs-5 z-3">
         ›
       </button>
+
 
     </div>
 
