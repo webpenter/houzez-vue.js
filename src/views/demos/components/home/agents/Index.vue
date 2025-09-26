@@ -9,7 +9,7 @@
 
           <div class="row">
             <template v-if="loading">
-              <div class="col-4" v-for="n in 3" :key="'skeleton-' + n">
+              <div class="col-12 col-md-4" v-for="n in 3" :key="'skeleton-' + n">
                 <Agent :loading="true" />
               </div>
             </template>
@@ -18,7 +18,7 @@
               <div
                 v-for="agent in agents"
                 :key="agent.id"
-                class="col-4"
+                class="col-12 col-md-4 mb-4"
               >
                 <Agent :agent="agent" :loading="false" />
               </div>
