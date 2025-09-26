@@ -16,9 +16,7 @@
                             <div class="visible-on-mobile">
                                 <div class="mobile-top-wrap">
                                     <div class="mobile-property-tools clearfix">
-                                        <!-- <?php include 'inc/property/templates/banner-nav.php';?> -->
                                         <BannerNav :property="property" />
-                                        <!-- <?php include 'inc/property/property-tools.php';?>  -->
                                         <PropertyTools :property="property" />
                                     </div><!-- mobile-property-tools -->
                                     <div class="mobile-property-title clearfix">

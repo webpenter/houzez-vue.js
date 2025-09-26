@@ -3,19 +3,19 @@
         <li class="item-tool">
             <template v-if="token">
                 <span @click="toggleFavoriteProperty"
-                    :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }" class="item-tool-favorite">
+                    :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }" class="item-tool-favorite p-2 p-md-0">
                     <i class="houzez-icon icon-love-it"></i>
                 </span><!-- item-tool-favorite -->
             </template>
             <template v-else> 
                 <span @click="noAuthDialog = true" :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }"
-                    class="item-tool-favorite">
+                    class="item-tool-favorite p-2 p-md-0">
                     <i class="houzez-icon icon-love-it"></i>
                 </span><!-- item-tool-favorite -->
             </template>
         </li><!-- item-tool -->
         <li class="item-tool">
-            <span class="item-tool-share dropdown-toggle" data-toggle="dropdown">
+            <span class="item-tool-share dropdown-toggle p-2 p-md-0" data-toggle="dropdown">
                 <i class="houzez-icon icon-share"></i>
             </span><!-- item-tool-favorite -->
             <div class="dropdown-menu dropdown-menu-right item-tool-dropdown-menu">
