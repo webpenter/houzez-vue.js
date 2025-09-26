@@ -41,25 +41,6 @@
                 <h3>{{ $t('Leave a Review') }}</h3>
             </div>
             <div class="block-content-wrap">
-                <!-- Error Alert (Server-side) -->
-                <div v-if="errors?.data?.errors && Object.keys(errors.data.errors).length"
-                    class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <ul>
-                        <li v-for="(error, key) in errors.data.errors" :key="key">
-                            {{ error[0] }}
-                        </li>
-                    </ul>
-                    <button type="button" class="close" @click="errors = {}">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <!-- Success Alert -->
-                <div v-if="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ successMessage }}
-                    <button type="button" class="close" @click="successMessage = ''">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
                 <!-- Form -->
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
@@ -116,7 +97,7 @@ import { ref, watch, computed } from 'vue';
 import OverallRating from './template/OverallRating.vue';
 import ReviewsSortBy from './template/ListingSortBy.vue';
 import Review from './template/Review.vue';
-import { useReview } from '@/stores/index';
+import { useReview, useNotification } from '@/stores/index';
 import { storeToRefs } from 'pinia';
 import { useI18n } from 'vue-i18n';
 
@@ -129,12 +110,10 @@ const props = defineProps({
     }
 });
 
-// Store
+// Stores
 const reviewStore = useReview();
+const notificationStore = useNotification();
 const { reviews, errors, loading } = storeToRefs(reviewStore);
-
-// Success message
-const successMessage = ref('');
 
 // Client-side errors
 const clientErrors = ref({});
@@ -189,7 +168,6 @@ watch(
 
 // Submit review
 const submitReview = async () => {
-    successMessage.value = '';
     clientErrors.value = {};
     reviewStore.errors = {};
 
@@ -198,7 +176,7 @@ const submitReview = async () => {
 
     if (invalidFields.length > 0) {
         const fieldList = invalidFields.join(', ');
-        successMessage.value = ''; // Clear success message
+        notificationStore.Error(`Please correct the following fields: ${fieldList}`);
         return;
     }
 
@@ -210,7 +188,7 @@ const submitReview = async () => {
         const hasErrors = Object.keys(reviewStore.errors.value?.data?.errors || {}).length > 0;
 
         if (!hasErrors) {
-            successMessage.value = t('Your review has been submitted');
+            notificationStore.Success(t('Your review has been submitted'));
             form.value = {
                 property_id: props.property.id,
                 title: '',
@@ -218,9 +196,15 @@ const submitReview = async () => {
                 email: '',
                 comment: ''
             };
+            // Optionally refetch reviews after success
+            reviewStore.fetchReviews(props.property.id);
+        } else {
+            // Concatenate server errors for notification
+            const errorMessages = Object.values(reviewStore.errors.value?.data?.errors || {}).flat().join(' ');
+            notificationStore.Error(errorMessages || t('An error occurred while submitting your review.'));
         }
     } catch (error) {
-        // Server-side errors are stored in reviewStore.errors
+        notificationStore.Error(t('An unexpected error occurred. Please try again.'));
     } finally {
         reviewStore.loading = false;
     }

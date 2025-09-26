@@ -37,14 +37,6 @@
 					</div>
 				</div>
 
-				
-				<div v-if="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
-					{{ successMessage }}
-					<button type="button" class="close" @click="successMessage = ''">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-
 				<!-- Your Information -->
 				<div class="block-title-wrap">
 					<h3>{{ $t('Your Information') }}</h3>
@@ -115,7 +107,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
-import { useTourRequest } from "@/stores/index"; // Adjust path accordingly
+import { useTourRequest, useNotification } from "@/stores/index"; // Adjust path accordingly
 
 const props = defineProps({
   propertyId: {
@@ -125,6 +117,7 @@ const props = defineProps({
 });
 
 const tourRequestStore = useTourRequest();
+const notificationStore = useNotification();
 
 const days = ref([]);
 const selectedDate = ref(null);
@@ -170,6 +163,7 @@ function getNext8Days() {
 onMounted(() => {
 	days.value = getNext8Days();
 	selectedDate.value = days.value[0].fullDate;
+	selectedDateInput.value = selectedDate.value.toISOString().split('T')[0];
 });
 
 // Form data
@@ -184,10 +178,10 @@ const form = ref({
 	agreeTerms: false,
 });
 
+const selectedDateInput = ref('');
+
 const errors = ref({});
 const loading = ref(false);
-const successMessage = ref("");
-const errorMessage = ref("");
 
 function validate() {
 	errors.value = {};
@@ -208,7 +202,7 @@ function validate() {
 		errors.value.email = "Email is invalid.";
 		fieldsWithError.push("Email");
 	}
-	if (!form.value.date) {
+	if (!selectedDateInput.value) {
 		errors.value.date = "Date is required.";
 		fieldsWithError.push("Date");
 	}
@@ -225,13 +219,11 @@ function validate() {
 }
 
 async function submitForm() {
-	errorMessage.value = "";
-	successMessage.value = "";
 	const invalidFields = validate();
 
 	if (invalidFields.length > 0) {
 		const fieldList = invalidFields.join(", ");
-		errorMessage.value = `The field${invalidFields.length > 1 ? 's' : ''} ${fieldList} ${invalidFields.length > 1 ? 'are' : 'is'} empty.`;
+		notificationStore.Error(`Please correct the following fields: ${fieldList}`);
 		return;
 	}
 
@@ -239,7 +231,7 @@ async function submitForm() {
 
 	// Combine selected date and time into tour_date_time (ISO string)
 	const [hours, minutes] = form.value.time.split(":");
-	const dateTime = new Date(selectedDate.value);
+	const dateTime = new Date(selectedDateInput.value);
 	dateTime.setHours(parseInt(hours));
 	dateTime.setMinutes(parseInt(minutes));
 	dateTime.setSeconds(0);
@@ -257,8 +249,7 @@ async function submitForm() {
 
 	try {
 		await tourRequestStore.sendRequest(formData);
-		successMessage.value =
-			"Your request has been submitted. An agent will get in touch with you.";
+		notificationStore.Success("Your request has been submitted. An agent will get in touch with you.");
 		// Clear form after success if needed:
 		form.value.time = "";
 		form.value.name = "";
@@ -266,9 +257,9 @@ async function submitForm() {
 		form.value.email = "";
 		form.value.message = "";
 		form.value.agreeTerms = false;
+		selectedDateInput.value = "";
 	} catch (err) {
-		errorMessage.value =
-			err?.data?.message || "Failed to send tour request. Please try again.";
+		notificationStore.Error(err?.data?.message || "Failed to send tour request. Please try again.");
 	} finally {
 		loading.value = false;
 	}
