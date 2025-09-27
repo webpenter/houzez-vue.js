@@ -5,7 +5,8 @@
         <div class="d-flex align-items-center">
           <div class="auto-complete-image-wrap">
             <RouterLink :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }">
-              <img class="img-fluid rounded" :src="getThumbnail(property)"
+              <img 
+              class="img-fluid rounded" :src="getThumbnail(property)"
                 :style="hasThumbnail(property) ? 'width: 50px; height: 40px; object-fit: cover;' : ''" alt="image">
             </RouterLink> 
           </div>
@@ -38,7 +39,7 @@
 <script setup>
 import { defineProps } from 'vue';
 
-const props = defineProps({
+defineProps({
   results: { type: Array, default: () => [] }
 });
 

@@ -16,7 +16,8 @@
                     <!-- Search by Address -->
                     <div class="flex-search pb-3">
                         <div class="form-group">
-                            <select v-model="searchAddress" class="selectpicker form-control bs-select-hidden" title="City"
+                            <select 
+                            v-model="searchAddress" class="selectpicker form-control bs-select-hidden" title="City"
                                 data-live-search="false" data-selected-text-format="count">
                                 <option v-for="city in cities" :key="city.id" :value="city.name">
                                 {{ city.name }}
@@ -27,7 +28,9 @@
 
                     <!-- Search Button -->
                     <div class="flex-search pb-3">
-                        <button @click="handleSearch" class="btn btn-search btn-secondary btn-full-width">
+                        <button 
+                        class="btn btn-search btn-secondary btn-full-width"
+                        @click="handleSearch" >
                             <span v-if="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                             <span>{{ isLoading ? 'Searching...' : 'Search' }}</span>
                         </button>

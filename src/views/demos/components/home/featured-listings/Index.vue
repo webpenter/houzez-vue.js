@@ -27,7 +27,7 @@
               <router-link
                 class="btn btn-primary-outlined btn-load-more"
                 :to="{ name: 'demo01.properties' }"
-                @click.native="viewMode.setFeaturedView(true)"
+                @click="viewMode.setFeaturedView(true)"
               >
                 {{ $t('See More') }}
               </router-link>

@@ -8,8 +8,8 @@
                         class="img-fluid"
                         :src="property.thumbnail"
                         :alt="property.title || 'Property Image'"
-                        @load="imageLoaded"
                         loading="lazy"
+                        @load="imageLoaded"
                     />
                 </div>
             </a>

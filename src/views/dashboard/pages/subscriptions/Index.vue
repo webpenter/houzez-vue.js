@@ -3,7 +3,10 @@
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">
       <div class="dashboard-content-block-wrap">
-        <NoDataMsg msg="You are not subscribed any package!" v-if="userSubscriptions.length < 1"/>
+        <NoDataMsg
+         v-if="userSubscriptions.length < 1"
+         msg="You are not subscribed any package!" 
+        />
         <Table
             v-else
             :subscriptions="userSubscriptions"
@@ -17,11 +20,10 @@
 </template>
 
 <script setup>
-import {RouterLink} from "vue-router";
 import {useNotification, useSubscription} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 import {onMounted, ref} from "vue";
-import Table from "./Table.vue";
+import Table from "./SubsTable.vue";
 
 const subscriptionStore = useSubscription();
 const {userSubscriptions} = storeToRefs(subscriptionStore);
@@ -35,7 +37,7 @@ const getUserSubscriptions = async () => {
     await subscriptionStore.getUserSubscriptions();
     loading.value = false;
   } catch (error) {
-    useNotification().Error("Something went wrong!");
+    useNotification().Error("Something went wrong! ",error);
     loading.value = false;
   }
 }
@@ -52,7 +54,7 @@ const cancelSubscription = async (name) => {
 
     await getUserSubscriptions();
   } catch (error) {
-    useNotification().Error("Something went wrong!");
+    useNotification().Error("Something went wrong! ",error);
   }
 }
 
@@ -68,7 +70,7 @@ const resumeSubscription = async (name) => {
 
     await getUserSubscriptions();
   } catch (error) {
-    useNotification().Error("Something went wrong!");
+    useNotification().Error("Something went wrong! ",error);
   }
 }
 

@@ -1,5 +1,7 @@
 <template>
-    <div class="property-features-wrap property-section-wrap" id="property-features-wrap">
+    <div 
+    id="property-features-wrap"
+    class="property-features-wrap property-section-wrap">
         <div class="block-wrap">
             <div class="block-title-wrap d-flex justify-content-between align-items-center">
                 <h2>{{ $t('Features') }}</h2>
@@ -17,7 +19,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
     property: {
         type: Object,
         required: true

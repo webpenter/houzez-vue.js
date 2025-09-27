@@ -1,5 +1,7 @@
 <template>
-  <section class="content-wrap" v-if="appTeamsDemo01.length">
+  <section
+  
+   class="content-wrap" >
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -8,9 +10,10 @@
 
           <div class="row">
             <div
-              class="col-12 col-md-4 mb-4"
-              v-for="(member, index) in appTeamsDemo01"
+            v-for="(member, index) in appTeamsDemo01"
               :key="index"
+              class="col-12 col-md-4 mb-4"
+              
             >
               <Team :member="member" />
             </div>

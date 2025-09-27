@@ -1,5 +1,7 @@
 <template>
-<div class="property-address-wrap property-section-wrap" id="property-address-wrap">
+<div
+id="property-address-wrap"
+class="property-address-wrap property-section-wrap" >
 	<div class="block-wrap">
 		<div class="block-title-wrap d-flex justify-content-between align-items-center">
 			<h2>{{ $t('Address') }}
@@ -17,8 +19,6 @@
 			</ul>	
 		</div><!-- block-content-wrap -->
 		<div class="block-map-wrap">
-			<!-- <Map :latitude="34.0522" :longitude="-118.2437" :zoom="12" :mapType="mapType" :marker="marker" /> -->
-			 <!-- <Map></Map> -->
 			<iframe
 				:src="mapUrl"
 				width="100%"
@@ -35,7 +35,6 @@
 </template>
 
 <script setup>
-import Map from '../property-banner-v1/Map.vue'
 import { ref } from 'vue';
 
 const props = defineProps({

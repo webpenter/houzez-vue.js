@@ -9,7 +9,7 @@
 
           <div class="row">
             <template v-if="loading">
-              <div class="col-12 col-md-4" v-for="n in 3" :key="'skeleton-' + n">
+              <div v-for="n in 3" :key="'skeleton-' + n" class="col-12 col-md-4" >
                 <Agent :loading="true" />
               </div>
             </template>
@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import Agent from './Agent.vue';
+import Agent from './AgentCom.vue';
 import { onMounted, ref } from "vue";
 import { useAgent } from "@/stores/index.js";
 import { storeToRefs } from "pinia";

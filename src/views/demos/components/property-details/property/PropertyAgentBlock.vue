@@ -1,5 +1,7 @@
 <template>
-	<div class="property-contact-agent-wrap property-section-wrap" id="property-contact-agent-wrap">
+	<div 
+  id="property-contact-agent-wrap"
+  class="property-contact-agent-wrap property-section-wrap" >
 		<div class="block-wrap">
 			<div class="block-title-wrap d-flex justify-content-between align-items-center">
 				<h2>Contact Information</h2>
@@ -97,7 +99,8 @@
 					<div class="col-md-6 col-sm-12">
 						<div class="form-group">
 							<label>Email</label>
-							<input class="form-control" name="email" placeholder="Enter your email address"
+							<input 
+              class="form-control" name="email" placeholder="Enter your email address"
 								type="email">
 						</div>
 					</div><!-- col-md-6 col-sm-12 -->
@@ -143,7 +146,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
 	property: {
 		type: Object,
 		required: true

@@ -1,5 +1,7 @@
 <template>
-    <div class="property-availability-calendar-wrap property-section-wrap" id="property-availability-calendar-wrap">
+    <div
+    id="property-availability-calendar-wrap"
+    class="property-availability-calendar-wrap property-section-wrap" >
 	<div class="block-wrap">
 		<div class="block-title-wrap">
 			<h2>Availability Calendar</h2>

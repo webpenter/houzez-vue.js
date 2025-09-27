@@ -2,14 +2,18 @@
     <ul class="item-tools">
         <li class="item-tool">
             <template v-if="token">
-                <span @click="toggleFavoriteProperty"
-                    :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }" class="item-tool-favorite p-2 p-md-0">
+                <span
+                :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }" class="item-tool-favorite p-2 p-md-0"
+                 @click="toggleFavoriteProperty"
+                    >
                     <i class="houzez-icon icon-love-it"></i>
                 </span><!-- item-tool-favorite -->
             </template>
             <template v-else> 
-                <span @click="noAuthDialog = true" :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }"
-                    class="item-tool-favorite p-2 p-md-0">
+                <span
+                :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }"
+                    class="item-tool-favorite p-2 p-md-0"
+                @click="noAuthDialog = true" >
                     <i class="houzez-icon icon-love-it"></i>
                 </span><!-- item-tool-favorite -->
             </template>
@@ -41,7 +45,7 @@
             </div>
         </li><!-- item-tool -->
         <li class="item-tool houzez-print">
-            <span @click="handlePrint" class="item-tool-compare">
+            <span class="item-tool-compare" @click="handlePrint" >
                 <i class="houzez-icon icon-print-text"></i>
             </span><!-- item-tool-compare -->
         </li><!-- item-tool -->
@@ -64,7 +68,7 @@
 </template>
 
 <script setup>
-import { RouterLink, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import { computed, onMounted, ref } from "vue";
 import { useFavoriteProperty, useNotification, useToken } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
@@ -113,7 +117,7 @@ const toggleFavoriteProperty = async () => {
             useNotification().Error(t('An error occurred.'));
         }
     } catch (error) {
-        useNotification().Error(t('An error occurred while processing'));
+        useNotification().Error(t('An error occurred while processing', error));
     }
 }
 

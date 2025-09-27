@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   partner: {
     type: Object,
     required: true

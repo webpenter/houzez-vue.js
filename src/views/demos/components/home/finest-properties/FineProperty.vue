@@ -18,7 +18,7 @@
 		<router-link
 			class="btn btn-primary-outlined btn-load-more"
 			:to="{ name: 'demo01.properties' }"
-			@click.native="viewMode.setFeaturedView(false)"
+			@click="viewMode.setFeaturedView(false)"
 		>
 			{{ $t('See More') }}
 		</router-link>
@@ -31,7 +31,6 @@ import { useAppPropertyDemo01, useViewMode  } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
 import { onMounted, ref } from "vue";  
 import FinePropertyItem from './FinePropertyIem.vue';
-import PropertyCardSkeleton from '@/components/skeleton/PropertyCardSkeleton.vue';
 import FinePropertiesSkeleton from "@/components/skeleton/FinePropertiesSkeleton.vue";
 
 const viewMode = useViewMode();

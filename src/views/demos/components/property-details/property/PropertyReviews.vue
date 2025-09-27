@@ -1,5 +1,7 @@
 <template>
-    <div class="property-review-wrap property-section-wrap" id="property-review-wrap">
+    <div
+    id="property-review-wrap"
+    class="property-review-wrap property-section-wrap">
         <div class="block-title-wrap review-title-wrap d-flex align-items-center">
             <h2>{{ reviews.length }} {{ $t('Reviews') }}</h2>
             <OverallRating :value="parseFloat(averageRating)" />
@@ -11,7 +13,9 @@
             <Review v-for="(review, index) in paginatedReviews" :key="index" :review="review" />
         </ul>
 
-        <div class="pagination-wrap" v-if="totalPages > 1">
+        <div 
+        v-if="totalPages > 1"
+        class="pagination-wrap">
             <nav>
                 <ul class="pagination justify-content-center">
                     <li class="page-item" :class="{ disabled: currentPage === 1 }">
@@ -36,7 +40,9 @@
             </nav>
         </div>
 
-        <div class="block-wrap" id="property-review-form">
+        <div
+        id="property-review-form"
+        class="block-wrap">
             <div class="block-title-wrap">
                 <h3>{{ $t('Leave a Review') }}</h3>
             </div>
@@ -46,14 +52,16 @@
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                             <label>{{ $t('Title') }}*</label>
-                            <input class="form-control" :placeholder="$t('Enter a title')" type="text" v-model="form.title">
+                            <input class="form-control" :placeholder="$t('Enter a title')" type="text">
                             <div v-if="clientErrors.title" class="text-danger">{{ clientErrors.title }}</div>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                             <label>{{ $t('Rating') }}*</label>
-                            <select class="form-control" v-model="form.rating">
+                            <select 
+                             v-model="form.rating"
+                            class="form-control">
                                 <option disabled value="">{{ $t('Select a rating') }}</option>
                                 <option value="1">{{ $t('1 Star - Poor') }}</option>
                                 <option value="2">{{ $t('2 Star - Fair') }}</option>
@@ -67,16 +75,20 @@
                     <div class="col-md-12 col-sm-12">
                         <div class="form-group">
                             <label>{{ $t('Email') }}*</label>
-                            <input class="form-control" :placeholder="$t('Enter your email')" type="email"
-                                v-model="form.email">
+                            <input 
+                            v-model="form.email"
+                            class="form-control" :placeholder="$t('Enter your email')" type="email"
+                                >
                             <div v-if="clientErrors.email" class="text-danger">{{ clientErrors.email }}</div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-xs-12">
                         <div class="form-group form-group-textarea">
                             <label>{{ $t('Review') }}*</label>
-                            <textarea class="form-control" rows="5" :placeholder="$t('Write a review')"
-                                v-model="form.comment"></textarea>
+                            <textarea 
+                            v-model="form.comment"
+                            class="form-control" rows="5" :placeholder="$t('Write a review')"
+                                ></textarea>
                             <div v-if="clientErrors.comment" class="text-danger">{{ clientErrors.comment }}</div>
                         </div>
                     </div>
@@ -95,7 +107,6 @@
 <script setup>
 import { ref, watch, computed } from 'vue';
 import OverallRating from './template/OverallRating.vue';
-import ReviewsSortBy from './template/ListingSortBy.vue';
 import Review from './template/Review.vue';
 import { useReview, useNotification } from '@/stores/index';
 import { storeToRefs } from 'pinia';
@@ -113,7 +124,7 @@ const props = defineProps({
 // Stores
 const reviewStore = useReview();
 const notificationStore = useNotification();
-const { reviews, errors, loading } = storeToRefs(reviewStore);
+const { reviews, loading } = storeToRefs(reviewStore);
 
 // Client-side errors
 const clientErrors = ref({});
@@ -204,7 +215,7 @@ const submitReview = async () => {
             notificationStore.Error(errorMessages || t('An error occurred while submitting your review.'));
         }
     } catch (error) {
-        notificationStore.Error(t('An unexpected error occurred. Please try again.'));
+        notificationStore.Error(t('An unexpected error occurred. Please try again.', error));
     } finally {
         reviewStore.loading = false;
     }

@@ -3,12 +3,18 @@
 		<div class="container hidden-on-mobile">
 			<BannerNav />
 		</div><!-- container -->
-		<div class="tab-content" id="pills-tabContent">
-			<div class="tab-pane show active" id="pills-gallery" role="tabpanel" aria-labelledby="pills-gallery-tab">
+		<div 
+    id="pills-tabContent"
+    class="tab-content" >
+			<div 
+      id="pills-gallery"
+      class="tab-pane show active"  role="tabpanel" aria-labelledby="pills-gallery-tab">
 				<!-- <div class="property-image-count"><i class="houzez-icon icon-picture-sun"></i> 6</div> -->
 				<PropertyGallery :property="property" />
 			</div><!-- tab-pane -->
-			<div class="tab-pane" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+			<div
+     id="pills-map" 
+      class="tab-pane"  role="tabpanel" aria-labelledby="pills-map-tab">
 				<iframe
 				:src="mapUrl"
 				width="100%"
@@ -29,7 +35,6 @@
 import { ref } from 'vue';
 import BannerNav from './BannerNav.vue';
 import PropertyGallery from './PropertyGallery.vue';
-import Map from './Map.vue';
 
 const props = defineProps({
   property: Object

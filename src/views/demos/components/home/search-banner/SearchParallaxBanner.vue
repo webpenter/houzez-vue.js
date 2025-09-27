@@ -6,12 +6,13 @@
         <div class="flex-search mt-3 ml-3">
           <div class="form-group">
             <select
+            v-model="selectedCities"
               class="selectpicker form-control"
               title="Cities"
               data-live-search="false"
               multiple
               data-actions-box="true"
-              v-model="selectedCities"
+              
               @change="onCityChange"
             >
               <option
@@ -29,7 +30,9 @@
         <div class="flex-grow-1 flex-search mt-3">
           <div class="form-group">
             <div class="search-icon">
-              <input type="text" class="form-control" placeholder="Search" v-model="searchQuery"
+              <input 
+              v-model="searchQuery"
+              type="text" class="form-control" placeholder="Search" 
                 @input="onSearchInput" />
             </div>
           </div>
@@ -78,7 +81,7 @@ const onSearchInput = async () => {
 
 // 🔍 Final Search button behavior
 const submitSearch = async () => {
-  const hasFilters = selectedCities.value.length > 0 || searchQuery.value.trim().length > 0
+  selectedCities.value.length > 0 || searchQuery.value.trim().length > 0
 
   const queryParams = {
     search: searchQuery.value || '',

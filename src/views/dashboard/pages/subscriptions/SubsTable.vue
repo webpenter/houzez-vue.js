@@ -106,17 +106,26 @@
         </td>
         <td class="property-table-actions" data-label="Actions">
           <div class="dropdown property-action-menu">
-            <button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button 
+            id="dropdownMenuButton"
+            class="btn btn-primary-outlined dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Renew
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              <template v-if="subscription.ends_at != null">
-                <a @click.prevent="$emit('resumeSubscription',subscription.type)" class="dropdown-item" href="#">
+              <template 
+                v-if="subscription.ends_at != null"
+                >
+                <a
+                  class="dropdown-item" href="#"
+                  @click.prevent="$emit('resumeSubscription',subscription.type)" >
                   Cancel
                 </a>
               </template>
               <template v-else>
-                <a @click.prevent="$emit('cancelSubscription',subscription.type)" class="dropdown-item" href="#">
+                <a 
+                class="dropdown-item" href="#"
+                @click.prevent="$emit('cancelSubscription',subscription.type)" 
+                >
                   Resume
                 </a>
               </template>
@@ -132,7 +141,13 @@
 <script setup>
 import {ref} from "vue";
 
-defineProps(["loading", "subscriptions"]);
+defineProps({
+  loading: { type: Boolean, required: true },
+  subscriptions: { type: Array, required: true }
+});
+
+defineEmits(['resumeSubscription', 'cancelSubscription']);
+
 
 const centerDialogVisible = ref(false);
 </script>

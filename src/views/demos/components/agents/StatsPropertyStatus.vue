@@ -7,7 +7,7 @@
       </div>
       <div class="agent-profile-data">
         <ul class="list-unstyled">
-          <li v-for="(status,index) in statuses" :class="'stats-data-' + (index + 1)">
+          <li v-for="(status,index) in statuses" :key="index" :class="'stats-data-' + (index + 1)">
             <i class="houzez-icon icon-sign-badge-circle mr-1"></i>
             <strong>{{ status.percentage }}%</strong> <span>For {{ $filters.capitalize(status.status) }}</span>
           </li>

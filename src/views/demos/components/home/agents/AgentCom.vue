@@ -1,6 +1,8 @@
 <template>
   <div class="team-module hover-effect">
-    <router-link v-if="agent.username" class="team-mobile-link"
+    <router-link 
+    v-if="agent.username" 
+    class="team-mobile-link"
       :to="{ name: 'demo01.agent-details', params: { agentUsername: agent.username } }">
     </router-link>
 

@@ -16,31 +16,15 @@
                         <li v-if="property.second_price" class="item-sub-price">{{ property.price_prefix }}{{ property.second_price }}/{{ property.size_prefix }}</li>
                     </ul>
 
-                    <!-- <ul class="item-tools item-tools-v2">
-                        <li class="item-tool">
-                            <span class="item-tool-favorite" data-propid="425" data-toggle="modal" data-target="#listing-lightbox-v2">
-                                <span data-toggle="tooltip" data-placement="top" title="Preview">
-                                    <i class="houzez-icon icon-expand-3" style="margin-top: 8px;"></i>
-                                </span>
-                            </span>
-                        </li>
-                        <li class="item-tool">
-                            <span class="item-tool-favorite" data-toggle="tooltip" data-placement="top" title="Favorite" data-propid="425">
-                                <i class="houzez-icon icon-love-it" style="margin-top: 8px;"></i>
-                            </span>
-                        </li>
-                        <li class="item-tool">
-                            <span class="item-tool-compare show-compare-panel" data-toggle="tooltip" data-placement="top" title="Compare" data-propid="425">
-                                <i class="houzez-icon icon-add-circle" style="margin-top: 8px;"></i>
-                            </span>
-                        </li>
-                    </ul> -->
-
-                    <RouterLink :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }"
+                    <RouterLink 
+                    :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }"
                         class="hover-effect d-block position-relative">
                         <div class="image-wrapper" :class="{ 'loading': !isLoaded }">
-                            <img v-show="isLoaded" class="img-fluid main-image" :src="property.thumbnail"
-                                :alt="property.title || 'Property Image'" @load="imageLoaded" loading="lazy" />
+                            <img 
+                            v-show="isLoaded" class="img-fluid main-image" :src="property.thumbnail"
+                                :alt="property.title || 'Property Image'"
+                                loading="lazy" 
+                                @load="imageLoaded"  />
                         </div>
                     </RouterLink>
                 </div>
@@ -66,7 +50,8 @@
                     </ul>
 
                     <address class="item-address">
-                        <i v-if="property?.address && property?.city && property?.county_state && property?.country"
+                        <i 
+                        v-if="property?.address && property?.city && property?.county_state && property?.country"
                             class="houzez-icon icon-pin mr-1"></i>
                         {{ $filters.subStr(property.address, 0, 40) }}
                         {{ $filters.subStr(property.city, 0, 40) }},
@@ -101,14 +86,16 @@
                         </li>
                     </ul>
 
-                    <RouterLink :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }"
+                    <RouterLink 
+                    :to="{ name: 'demo01.property-details', params: { propertySlug: property.slug } }"
                         class="btn btn-primary btn-item">
                         {{ $t('Details') }}
                     </RouterLink>
 
                     <div class="item-author">
 
-                        <RouterLink v-if="property.assigned_agent" :to="{
+                        <RouterLink
+                         v-if="property.assigned_agent" :to="{
                             name: 'demo01.agent-details',
                             params: { agentUsername: property.assigned_agent.username }
                         }">
@@ -116,7 +103,8 @@
                             {{ property.assigned_agent.name }}
                         </RouterLink>
 
-                        <RouterLink v-else-if="property.user?.role === 'agency'" :to="{
+                        <RouterLink
+                         v-else-if="property.user?.role === 'agency'" :to="{
                             name: 'demo01.agency-details',
                             params: { agencyUsername: property.user.username }
                         }">
@@ -124,7 +112,8 @@
                             {{ property.user.name }}
                         </RouterLink>
 
-                        <RouterLink v-else :to="{
+                        <RouterLink 
+                        v-else :to="{
                             name: 'demo01.agent-details',
                             params: { agentUsername: property.user.username }
                         }">
@@ -142,7 +131,8 @@
                 <div class="item-footer clearfix">
                     <div class="item-author">
 
-                        <RouterLink v-if="property.assigned_agent" :to="{
+                        <RouterLink 
+                        v-if="property.assigned_agent" :to="{
                             name: 'demo01.agent-details',
                             params: { agentUsername: property.assigned_agent.username }
                         }">
@@ -150,7 +140,8 @@
                             {{ property.assigned_agent.name }}
                         </RouterLink>
 
-                        <RouterLink v-else-if="property.user?.role === 'agency'" :to="{
+                        <RouterLink
+                         v-else-if="property.user?.role === 'agency'" :to="{
                             name: 'demo01.agency-details',
                             params: { agencyUsername: property.user.username }
                         }">
@@ -158,7 +149,8 @@
                             {{ property.user.name }}
                         </RouterLink>
 
-                        <RouterLink v-else :to="{
+                        <RouterLink
+                         v-else :to="{
                             name: 'demo01.agent-details',
                             params: { agentUsername: property.user.username }
                         }">
@@ -180,7 +172,7 @@
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
 
-const props = defineProps({
+defineProps({
     property: Object,
 });
 

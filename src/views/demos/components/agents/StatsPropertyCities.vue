@@ -7,7 +7,7 @@
       </div>
       <div class="agent-profile-data">
         <ul class="list-unstyled">
-          <li v-for="(city,index) in  cities" :class="'stats-data-' + (index + 1)">
+          <li v-for="(city,index) in  cities" :key="index" :class="'stats-data-' + (index + 1)">
             <i class="houzez-icon icon-sign-badge-circle mr-1"></i>
             <strong>{{ city.percentage }}%</strong> <span>{{ city.city }}</span>
           </li>

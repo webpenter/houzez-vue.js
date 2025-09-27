@@ -1,5 +1,7 @@
 <template>
-    <div class="property-overview-wrap property-section-wrap" id="property-overview-wrap">
+    <div 
+    id="property-overview-wrap"
+    class="property-overview-wrap property-section-wrap">
         <div class="block-wrap">
             <div class="block-title-wrap d-flex justify-content-between align-items-center">
                 <h2>{{ $t('Overview') }}</h2>
@@ -60,7 +62,7 @@
 
 <script setup>
 
-const props = defineProps({
+defineProps({
   property: Object
 });
 

@@ -25,10 +25,8 @@
 
       <!-- Static Left Button -->
       <button
+      class="staticLeftButton"
         @click="prevImage"
-        style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%);
-        background-color: #00AEEF; border: none; border-radius: 0%;
-        width: 35px; height: 35px; color: white; font-size: 18px; cursor: pointer; z-index: 10;"
       >
         ‹
       </button>
@@ -36,9 +34,6 @@
       <!-- Static Right Button -->
       <button
         @click="nextImage"
-        style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);
-        background-color: #00AEEF; border: none; border-radius: 0%;
-        width: 35px; height: 35px; color: white; font-size: 18px; cursor: pointer; z-index: 10;"
       >
         ›
       </button>
@@ -49,8 +44,8 @@
       <div
         v-for="(image, index) in property.images"
         :key="'thumb-' + image.id"
+        class="thumbnailNavigation"
         @click="selectThumbnail(index)"
-        style="margin-right: 5px; cursor: pointer;"
       >
         <div class="thumb-img-wrapper" :class="{ loading: !thumbnailLoaded[index] }">
           <img
@@ -144,5 +139,15 @@ watch(() => props.property.images, (images) => {
 .main-img-wrapper.loading,
 .thumb-img-wrapper.loading {
   background-color: #f0f0f0;
+}
+
+.staticLeftButton{
+position: absolute; top: 50%; right: 10px; transform: translateY(-50%);
+        background-color: #00AEEF; border: none; border-radius: 0%;
+        width: 35px; height: 35px; color: white; font-size: 18px; cursor: pointer; z-index: 10;
+}
+
+.thumbnailNavigation{
+margin-right: 5px; cursor: pointer;
 }
 </style>

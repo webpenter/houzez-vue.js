@@ -1,4 +1,4 @@
-    <template>
+  <template>
     <div class="page-title-wrap">
         <div class="container">
             <div class="d-flex align-items-center">
@@ -38,7 +38,7 @@ import BreadCrumb from './BreadCrumb.vue';
 import PropertyTools from './PropertyTools.vue';
 
 
-const props = defineProps({
+defineProps({
   property: Object
 })
 

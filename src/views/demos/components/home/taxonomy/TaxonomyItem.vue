@@ -3,7 +3,8 @@
     class="taxonomy-item"
     :style="{ backgroundImage: `url(${backgroundUrl})` }"
   >
-    <router-link class="taxonomy-link hover-effect-flat" :to="{
+    <router-link 
+    class="taxonomy-link hover-effect-flat" :to="{
 			name:'demo01.property-type',
 			params:{
 				propertyType:link

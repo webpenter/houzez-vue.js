@@ -26,23 +26,6 @@
                     signature of success.
                 </div><!-- team-description -->
                 <div class="team-social-wrap">
-                    <ul class="team-social list-unstyled list-inline">
-                        <!-- <li class="list-inline-item">
-                        <a href="https://www.facebook.com/" class="btn-facebook"><i class="houzez-icon icon-social-media-facebook"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="btn-twitter"><i class="houzez-icon icon-x-logo-twitter-logo-2"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="btn-linkedin"><i class="houzez-icon icon-professional-network-linkedin"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="btn-pinterest"><i class="houzez-icon icon-social-pinterest"></i></a>
-                    </li> -->
-                        <!-- <li class="list-inline-item">
-                        <a href="#" class="btn-google-plus"><i class="houzez-icon icon-social-media-google-plus-1"></i></a>
-                    </li> -->
-                    </ul>
                     <ul class="team-social list-unstyled d-flex flex-column align-items-center">
                         <!-- Phone -->
                         <li class="contact-item d-flex align-items-center">

@@ -2,9 +2,11 @@
 	<div class="agent-list-wrap">
 		<div class="d-flex">
 			<div class="agent-list-image">
-				<RouterLink v-if="type === 'agent'"
+				<RouterLink 
+          v-if="type === 'agent'"
 					:to="{ name: 'demo01.agent-details', params: { agentUsername: data.username } }">
-					<img class="img-fluid" :src="imgSrc" alt="Agent" @error="onImageError" />
+					<img class="img-fluid" :src="imgSrc" alt="Agent" @error="onImageError" 
+        />
 				</RouterLink>
 
 				<RouterLink v-else :to="{ name: 'demo01.agency-details', params: { agencyUsername: data.username } }">
@@ -15,7 +17,8 @@
 			<div class="agent-list-content flex-grow-1">
 				<div class="d-flex xxs-column">
 					<h2 class="d-flex">
-						<span v-if="type === 'agent' && data.is_verified"
+						<span 
+              v-if="type === 'agent' && data.is_verified"
 							class="badge badge-success agent-verified-badge mr-2 pt-2 d-flex">
 							<i class="houzez-icon icon-check-circle-1 mr-1"></i> {{ $t('Verified') }}
 						</span>
@@ -23,7 +26,8 @@
 							<i class="houzez-icon icon-check-circle-1 mr-1"></i> {{ $t('Verified') }}
 						</span>
 
-						<RouterLink :to="type === 'agent'
+						<RouterLink 
+              :to="type === 'agent'
 							? { name: 'demo01.agent-details', params: { agentUsername: data.username } }
 							: { name: 'demo01.agency-details', params: { agencyUsername: data.username } }">
 							{{ data.name }}
@@ -33,11 +37,14 @@
 					<!-- <OverallRating :value="data.average_rating" /> -->
 				</div>
 
-				<p v-if="type === 'agent' && data.position" class="agent-list-position">
+				<p 
+          v-if="type === 'agent' && data.position" class="agent-list-position"
+        >
 					{{ data.position }}
 					<span v-if="data.agencies?.[0]?.agency_name">
 						{{ $t('at') }} 
-						<RouterLink style="color: #00aeff;"
+						<RouterLink  
+              class="link"
 							:to="{
 								name: 'demo01.agency-details',
 								params: { agencyUsername: data.agencies[0].username }
@@ -70,13 +77,15 @@
 						</template>
 					</div>
 
-					<RouterLink v-if="type === 'agent'"
+					<RouterLink 
+            v-if="type === 'agent'"
 						:to="{ name: 'demo01.agent-details', params: { agentUsername: data.username } }"
 						class="agent-list-link mt-3">
 						<strong>{{ $t('View My Listings') }}</strong>
 					</RouterLink>
 
-					<RouterLink v-else
+					<RouterLink 
+            v-else
 						:to="{ name: 'demo01.agency-details', params: { agencyUsername: data.username } }"
 						class="agent-list-link mt-3">
 						<strong>{{ $t('View Agency Listings') }}</strong>
@@ -139,3 +148,9 @@ const iconClass = (platform) => {
 };
 
 </script>
+
+<style scoped>
+.link{
+  color: #00aeff;
+}
+</style>

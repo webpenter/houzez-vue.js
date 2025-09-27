@@ -224,7 +224,7 @@ import Contact from '@/views/demos/components/agents/Contact.vue'
 import Pagination from '@/views/demos/components/inc/Pagination.vue'
 import PropertyCard from '../../../components/home/featured-listings/ListItem.vue'
 import AgencyReviews from '../../../components/agents/Reviews.vue'
-import AgentCard from '../../../components/agents/Card.vue'
+import AgentCard from '../../../components/agents/AgentCard.vue'
 import AgentSkeleton from '@/components/skeleton/AgentSkeleton.vue'
 
 // ✅ State & Stores

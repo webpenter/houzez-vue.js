@@ -6,7 +6,7 @@
       >
         <!-- Check if images exist and loop -->
         <a
-          v-for="(image, index) in property.images?.slice(0, 8) || []"
+          v-for="(image) in property.images?.slice(0, 8) || []"
           :key="image.id"
           class="gallery-grid-item"
           data-toggle="modal"
@@ -32,7 +32,7 @@
   </template>
   
   <script setup>
-  const props = defineProps({
+  defineProps({
     property: Object
   })
   </script>

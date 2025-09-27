@@ -1,6 +1,8 @@
 <template>
-   <p class="text-center mt-3" v-if="paginatedReviews.length == 0">No reviews found.</p>
-  <div class="property-review-wrap property-section-wrap" id="property-review-wrap">
+   <p 
+   v-if="paginatedReviews.length == 0" 
+   class="text-center mt-3" >No reviews found.</p>
+  <div id="property-review-wrap" class="property-review-wrap property-section-wrap" >
     <div class="block-title-wrap review-title-wrap d-flex align-items-center">
       <h2>{{ reviewsList.length }} {{ $t('Reviews') }}</h2>
       <OverallRating :value="averageRating" />
@@ -11,7 +13,9 @@
       <Review v-for="(review, index) in paginatedReviews" :key="index" :review="review" />
     </ul>
 
-    <div class="pagination-wrap" v-if="totalPages > 1">
+    <div 
+    v-if="totalPages > 1" 
+    class="pagination-wrap">
       <nav>
         <ul class="pagination justify-content-center">
           <li class="page-item" :class="{ disabled: currentPage === 1 }">
@@ -36,7 +40,7 @@
       </nav>
     </div>
 
-    <div class="block-wrap" id="property-review-form">
+    <div id="property-review-form" class="block-wrap">
       <div class="block-title-wrap">
         <h3>{{ $t('Leave a Review') }}</h3>
       </div>
@@ -69,13 +73,13 @@
           <div class="col-md-6 col-sm-12">
             <div class="form-group">
               <label>{{ $t('Title') }}</label>
-              <input class="form-control" :placeholder="$t('Enter a title')" type="text" v-model="form.title" />
+              <input v-model="form.title" class="form-control" :placeholder="$t('Enter a title')" type="text"  />
             </div>
           </div>
           <div class="col-md-6 col-sm-12">
             <div class="form-group">
               <label>{{ $t('Rating') }}</label>
-              <select class="form-control" v-model="form.rating">
+              <select v-model="form.rating" class="form-control">
                 <option disabled value="">{{ $t('Select a rating') }}</option>
                 <option value="1">{{ $t('1 Star - Poor') }}</option>
                 <option value="2">{{ $t('2 Star - Fair') }}</option>
@@ -90,10 +94,11 @@
             <div class="form-group form-group-textarea">
               <label>{{ $t('Review') }}</label>
               <textarea
+              v-model="form.comment"
                 class="form-control"
                 rows="5"
                 :placeholder="$t('Write a review')"
-                v-model="form.comment"
+                
               ></textarea>
             </div>
           </div>

@@ -45,7 +45,7 @@ import SearchBannerAdvanced from "./SearchBannerAdvanced.vue";
 import beachImg from "@/assets/img/app-side/miami-beach-1.jpg";
 
 // Props
-const props = defineProps({
+defineProps({
   searchType: { type: String, default: "banner" },
 });
 
