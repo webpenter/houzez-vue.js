@@ -1,4 +1,4 @@
-  <template>
+<template>
     <div class="page-title-wrap">
         <div class="container">
             <div class="d-flex align-items-center">

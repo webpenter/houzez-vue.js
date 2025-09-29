@@ -127,7 +127,7 @@
                                 <div class="listing-tools-wrap mb-3">
                                     <div class="d-flex align-items-center">
                                         <div class="listing-tabs flex-grow-1">
-                                            <ul class="nav nav-tabs" style="justify-content: none;">
+<ul class="nav nav-tabs justify-content-start">
                                                 <li class="nav-item">
                                                     <a class="nav-link" :class="{ active: selectedStatus === 'All' }"
                                                         href="#" @click.prevent="selectedStatus = 'All'">{{ $t('All') }}</a>

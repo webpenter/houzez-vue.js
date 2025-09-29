@@ -7,7 +7,7 @@
 </div>
   
       <!-- Banner content -->
-      <div class="banner-caption text-white text-center position-relative" style="z-index: 2; padding-top: 0px;">
+        <div class="banner-caption text-white text-center position-relative" style="z-index: 2; padding-top: 0px;">
         <h2 class="banner-title display-4 font-weight-bold mb-3">{{ $t('About Us') }}</h2>
         <p class="banner-subtitle lead" style="padding-inline: 150px;">{{ $t('houzez about page text') }}
         </p>
