@@ -1,19 +1,22 @@
 <template>
-  <section
-  
-   class="content-wrap" >
+  <!-- Show section only if we have teams -->
+  <section 
+    class="content-wrap"
+    v-if="appTeamsDemo01?.length"
+  >
     <div class="container">
       <div class="row">
         <div class="col-12">
 
-          <h2 style="margin: 100px 0 30px 0; text-align: center;">{{ $t('Meet Our Team') }}</h2>
+          <h2 style="margin: 100px 0 30px 0; text-align: center;">
+            {{ $t('Meet Our Team') }}
+          </h2>
 
           <div class="row">
             <div
-            v-for="(member, index) in appTeamsDemo01"
+              v-for="(member, index) in appTeamsDemo01"
               :key="index"
               class="col-12 col-md-4 mb-4"
-              
             >
               <Team :member="member" />
             </div>

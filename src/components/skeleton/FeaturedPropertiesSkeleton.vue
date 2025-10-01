@@ -3,7 +3,7 @@
     <div class="item-wrap item-wrap-v1 item-wrap-no-frame h-100">
       <div class="d-flex align-items-center h-100">
         <div class="item-header">
-          <div class="skeleton skeleton-label mb-2" style="width: 330px; height: 20px;"></div>
+          <div class="skeleton skeleton-label mb-2" style="width: 330px;"></div>
           <ul class="item-price-wrap hide-on-list mb-3">
             <li class="skeleton" style="width: 120px; height: 20px;"></li>
             <li class="skeleton" style="width: 100px; height: 18px;"></li>

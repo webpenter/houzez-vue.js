@@ -1,5 +1,9 @@
 <template>
-  <section class="content-wrap">
+  <!-- Show section only if there are properties OR still loading -->
+  <section 
+    class="content-wrap" 
+    v-if="loading || (featuredProperties && featuredProperties.length > 0)"
+  >
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -17,13 +21,17 @@
 
               <!-- Show actual properties after loading -->
               <template v-else>
-                <PropertyCard v-for="property in featuredProperties" :key="property.id" :property="property" />
+                <PropertyCard
+                  v-for="property in featuredProperties"
+                  :key="property.id"
+                  :property="property"
+                />
               </template>
 
             </div><!-- listing-view -->
 
             <!-- Load more button -->
-            <div class="load-more-wrap">
+            <div class="load-more-wrap" v-if="!loading && featuredProperties.length > 0">
               <router-link
                 class="btn btn-primary-outlined btn-load-more"
                 :to="{ name: 'demo01.properties' }"
@@ -46,6 +54,7 @@ import { storeToRefs } from "pinia";
 import { onMounted, ref } from "vue";
 import FeaturedPropertiesSkeleton from '@/components/skeleton/FeaturedPropertiesSkeleton.vue';
 import PropertyCard from './ListItem.vue';
+
 const viewMode = useViewMode();
 const propertyToRefs = useAppPropertyDemo01();
 const { featuredProperties } = storeToRefs(propertyToRefs);

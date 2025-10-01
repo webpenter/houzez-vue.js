@@ -1,5 +1,9 @@
 <template>
-  <section class="content-wrap">
+  <!-- Show section only if still loading OR we have agents -->
+  <section
+    class="content-wrap"
+    v-if="loading || agents?.length"
+  >
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -8,12 +12,18 @@
           </h2>
 
           <div class="row">
+            <!-- Skeletons while loading -->
             <template v-if="loading">
-              <div v-for="n in 3" :key="'skeleton-' + n" class="col-12 col-md-4" >
+              <div
+                v-for="n in 3"
+                :key="'skeleton-' + n"
+                class="col-12 col-md-4"
+              >
                 <Agent :loading="true" />
               </div>
             </template>
 
+            <!-- Agents after loading -->
             <template v-else>
               <div
                 v-for="agent in agents"
@@ -24,7 +34,6 @@
               </div>
             </template>
           </div>
-
         </div>
       </div>
     </div>
@@ -38,13 +47,18 @@ import { useAgent } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
 
 const agentStore = useAgent();
-const { agents } = storeToRefs(agentStore); // ✅ Correct property
+const { agents } = storeToRefs(agentStore);
 const loading = ref(true);
 
 const getAgents = async () => {
   loading.value = true;
-  await agentStore.getAllAgents();
-  loading.value = false;
+  try {
+    await agentStore.getAllAgents();
+  } catch (err) {
+    console.error("Failed to fetch agents:", err);
+  } finally {
+    loading.value = false;
+  }
 };
 
 onMounted(() => getAgents());

@@ -17,12 +17,12 @@ onMounted(async () => {
 
 <template>
   <!-- ✅ Show loader until settings are fetched -->
-  <div v-if="!initialized" class="app-loader">
+  <!-- <div v-if="!initialized" class="app-loader">
     <div class="spinner"></div>
-  </div>
+  </div> -->
 
   <!-- ✅ Show app only when initialized -->
-  <div v-else>
+  <div >
     <RouterView />
   </div>
 </template>
