@@ -61,11 +61,11 @@ const { featuredProperties } = storeToRefs(propertyToRefs);
 const loading = ref(true);
 
 const fetchFeaturedProperties = async () => {
-  loading.value = true;
-  const res = await propertyToRefs.getFeaturedPropertiesDemo01();
-  if (res.status === 200) {
-    loading.value = false;
-  }
+loading.value = true;
+const res = await propertyToRefs.getFeaturedPropertiesDemo01();
+if (res.status === 200) {
+  loading.value = false;
+}
 };
 
 onMounted(() => fetchFeaturedProperties());

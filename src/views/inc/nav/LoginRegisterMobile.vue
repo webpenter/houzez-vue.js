@@ -16,7 +16,7 @@
                 <!-- </span> -->
                  Register
             </a>
-            </li>
+            </li>   
             <li>
                 <a href="#"><i class="houzez-icon icon-love-it mr-1"></i>
                 <!-- </span>  -->
