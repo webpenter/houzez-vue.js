@@ -37,5 +37,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           source: "dist/*"
-          target: "/home/u787826149/domains/webpenter.com/public_html/temp-folder"
+          target: "/home/u787826149/domains/webpenter.com/public_html/realestate"
           port: 65002
