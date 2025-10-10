@@ -66,7 +66,10 @@
                     <label>Reply Message</label>
                     <textarea v-model="messageInput" class="form-control" name="message" rows="5" placeholder="Type your message here..."></textarea>
                   </div>
-                  <button @click="sendReply" class="btn btn-primary">Send Message</button>
+                  <button 
+                  class="btn btn-primary"
+                  @click="sendReply"
+                   >Send Message</button>
                 </div><!-- message-reply-message -->
               </div>
             </div><!-- message-reply-wrap -->
@@ -122,7 +125,7 @@ const messageInput = ref("");
 const loading = ref(false);
 
 const tourRequestStore = useTourRequest();
-const {userMessageDetails,replies} = storeToRefs(tourRequestStore);
+const {userMessageDetails} = storeToRefs(tourRequestStore);
 
 const showMsgDetails = async () => {
   loading.value = true;

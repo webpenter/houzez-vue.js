@@ -2,7 +2,9 @@
   <div class="d-flex">
     <div class="flex-search">
       <label class="control control--checkbox">
-        <input type="checkbox" name="air-conditioning" v-model="enabled">
+        <input
+        v-model="enabled"
+        type="checkbox" name="air-conditioning" >
         Radius: <strong>{{ radius }} mi</strong>
         <span class="control__indicator"></span>
       </label>

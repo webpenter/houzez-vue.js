@@ -26,12 +26,16 @@
               </template>
             </el-skeleton>
           </template>
-          <button @click="triggerFileInput" type="button" class="btn btn-primary btn-full-width mt-3">
+          <button  
+          type="button" class="btn btn-primary btn-full-width mt-3"
+          @click="triggerFileInput"
+          >
             Update Profile Picture
           </button>
           <input
+          ref="fileInput"
               type="file"
-              ref="fileInput"
+              
               style="display: none;"
               @change="handleFileChange"
           />
@@ -43,20 +47,25 @@
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Email</label>
-                  <input class="form-control" v-model="formData.email" placeholder="Enter your email" type="text" readonly />
+                  <input 
+                  v-model="formData.email"
+                  class="form-control"  placeholder="Enter your email" type="text" readonly />
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Username</label>
                   <input
+                   v-model="formData.username"
+                   type="text"
+                    placeholder="Enter your username"
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.username }"
                       @input="validateField('username')"
-                      v-model="formData.username"
-                      placeholder="Enter your username"
-                      type="text">
-                  <span class="text-danger mt-1 d-block" v-if="localErrors.username">
+                      >
+                  <span 
+                  v-if="localErrors.username"
+                  class="text-danger mt-1 d-block">
                                         {{ localErrors.username }}
                                       </span>
                 </div>
@@ -64,85 +73,113 @@
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>First Name</label>
-                  <input class="form-control" v-model="formData.first_name" placeholder="Enter your first name" type="text">
+                  <input 
+                  v-model="formData.first_name"
+                  class="form-control"  placeholder="Enter your first name" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Last Name</label>
-                  <input class="form-control" v-model="formData.last_name" placeholder="Enter your last name" type="text">
+                  <input
+                  v-model="formData.last_name"
+                  class="form-control"  placeholder="Enter your last name" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Public Name</label>
-                  <input class="form-control" v-model="formData.public_name" placeholder="Enter your last name" type="text">
+                  <input 
+                  v-model="formData.public_name" 
+                  class="form-control" placeholder="Enter your last name" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Title</label>
-                  <input class="form-control" v-model="formData.title" placeholder="Enter your title" type="text">
+                  <input 
+                   v-model="formData.title"
+                  class="form-control" placeholder="Enter your title" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Position</label>
-                  <input class="form-control" v-model="formData.position" placeholder="Enter your title" type="text">
+                  <input 
+                  v-model="formData.position"
+                  class="form-control"  placeholder="Enter your title" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>License</label>
-                  <input class="form-control" v-model="formData.license" placeholder="Enter your license" type="text">
+                  <input
+                  v-model="formData.license"
+                  class="form-control"  placeholder="Enter your license" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Tax Number</label>
-                  <input class="form-control" v-model="formData.tax_number" placeholder="Enter your tax number" type="text">
+                  <input 
+                  v-model="formData.tax_number"
+                  class="form-control"  placeholder="Enter your tax number" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Mobile</label>
-                  <input class="form-control" v-model="formData.mobile" placeholder="Enter your phone number" type="text">
+                  <input 
+                  v-model="formData.mobile"
+                  class="form-control"  placeholder="Enter your phone number" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Phone</label>
-                  <input class="form-control" v-model="formData.phone" placeholder="Enter your phone number" type="text">
+                  <input 
+                  v-model="formData.phone"
+                  class="form-control"  placeholder="Enter your phone number" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Whatsapp</label>
-                  <input class="form-control" v-model="formData.whatsapp" placeholder="Enter your phone number" type="text">
+                  <input 
+                   v-model="formData.whatsapp"
+                  class="form-control" placeholder="Enter your phone number" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Company Name</label>
-                  <input class="form-control" v-model="formData.company_name" placeholder="Enter your company name" type="text">
+                  <input 
+                  v-model="formData.company_name"
+                  class="form-control"  placeholder="Enter your company name" type="text">
                 </div><!-- form-group -->
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Service area</label>
-                  <input class="form-control" v-model="formData.service_areas" placeholder="Enter your company name" type="text">
+                  <input 
+                  v-model="formData.service_areas"
+                  class="form-control" placeholder="Enter your company name" type="text">
                 </div><!-- form-group -->
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-12 col-sm-12">
                 <div class="form-group">
                   <label>Address</label>
-                  <textarea class="form-control" v-model="formData.address" rows="3" placeholder="Enter your address"></textarea>
+                  <textarea 
+                   v-model="formData.address"
+                  class="form-control" rows="3" placeholder="Enter your address"></textarea>
                 </div><!-- form-group -->
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-12 col-sm-12">
                 <div class="form-group">
                   <label>About me</label>
-                  <textarea class="form-control" v-model="formData.about_me" rows="6" placeholder="Enter a description about you"></textarea>
+                  <textarea 
+                  v-model="formData.about_me"
+                  class="form-control"  rows="6" placeholder="Enter a description about you"></textarea>
                 </div><!-- form-group -->
               </div><!-- col-md-6 col-sm-12 -->
             </div><!-- row -->

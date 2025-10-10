@@ -15,18 +15,34 @@
         <div class="col-md-9 col-sm-12">
           <form @submit.prevent="submitSocialMediaForm">
             <div class="row">
-              <div v-for="(item, key) in socialMedia" :key="key" class="col-md-6 col-sm-12">
+              <div
+                v-for="(item, key) in socialMedia"
+                :key="key"
+                class="col-md-6 col-sm-12"
+              >
                 <div class="form-group">
                   <label>{{ formatLabel(key) }}</label>
                   <div class="form-check mr-2 float-end">
-                    <input type="checkbox" class="form-check-input" v-model="item.is_visible" :id="`${key}_visible`">
-                    <label class="form-check-label" :for="`${key}_visible`">
+                    <input
+                    :id="`${key}_visible`"
+                      v-model="item.is_visible"
+                      type="checkbox"
+                      
+                      class="form-check-input"
+                    />
+                    <label
+                      class="form-check-label"
+                      :for="`${key}_visible`"
+                    >
                       Visible
                     </label>
                   </div>
-                  <input class="form-control" v-model="item.value" :placeholder="`Enter your ${formatLabel(key)} URL`"
-                    type="text">
-                  
+                  <input
+                    v-model="item.value"
+                    type="text"
+                    class="form-control"
+                    :placeholder="`Enter your ${formatLabel(key)} URL`"
+                  />
                 </div>
               </div>
             </div>
@@ -55,35 +71,48 @@ const socialMedia = ref({
   pinterest: { value: "", is_visible: false },
   vimeo: { value: "", is_visible: false },
   skype: { value: "", is_visible: false },
-  website: { value: "", is_visible: false }
+  website: { value: "", is_visible: false },
 });
 
 const loading = ref(true);
 
-// Format labels from keys (facebook -> Facebook)
-const formatLabel = (key) => key.replace("_", " ").replace(/\b\w/g, l => l.toUpperCase());
+/**
+ * Format social media key names (e.g., facebook → Facebook)
+ * @param {string} key
+ * @return {string}
+ */
+const formatLabel = (key) =>
+  key.replace("_", " ").replace(/\b\w/g, (l) => l.toUpperCase());
 
+/**
+ * Submit social media form updates
+ * @return {Promise<void>}
+ */
 const submitSocialMediaForm = async () => {
   try {
     const payload = {};
     for (const key in socialMedia.value) {
       payload[key] = {
         value: socialMedia.value[key].value,
-        is_visible: socialMedia.value[key].is_visible ? 1 : 0
+        is_visible: socialMedia.value[key].is_visible ? 1 : 0,
       };
     }
     await settingStore.updateSocialMedia(payload);
     notify.Success("Social media updated successfully!");
-  } catch (err) {
+  } catch {
     notify.Error("Failed to update social media");
   }
 };
 
+/**
+ * Fetch existing social media data on mount
+ * @return {Promise<void>}
+ */
 onMounted(async () => {
   try {
     const res = await settingStore.getSocialMedia();
     socialMedia.value = { ...socialMedia.value, ...res.data.social_media };
-  } catch (err) {
+  } catch {
     notify.Error("Failed to fetch social media");
   } finally {
     loading.value = false;

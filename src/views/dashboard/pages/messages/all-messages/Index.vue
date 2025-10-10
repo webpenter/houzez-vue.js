@@ -3,7 +3,10 @@
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">
       <div class="dashboard-content-block-wrap">
-        <NoDataMsg msg="You don't have any message." v-if="userMessages.length < 1"/>
+        <NoDataMsg
+        v-if="userMessages.length < 1"
+        msg="You don't have any message." 
+        />
         <Table
             v-else
             :messages="userMessages"
@@ -16,7 +19,7 @@
 </template>
 
 <script setup>
-import {useConfirm, useMessage, useNotification, useRole, useTourRequest} from "@/stores/index.js";
+import {useConfirm, useMessage, useNotification, useTourRequest} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 import {onMounted, ref} from "vue";
 import Table from "./Table.vue";
@@ -45,7 +48,7 @@ const deleteMessage = async (id) => {
             useNotification().Error(`Failed to delete`);
           }
         } catch (error) {
-          useNotification().Error(`An error occurred`);
+          useNotification().Error(`An error occurred`, error);
         }
       })
       .catch(() => {

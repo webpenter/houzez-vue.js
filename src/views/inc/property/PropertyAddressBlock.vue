@@ -1,5 +1,7 @@
 <template>
-    <div class="property-address-wrap property-section-wrap" id="property-address-wrap">
+    <div 
+    id="property-address-wrap"
+    class="property-address-wrap property-section-wrap">
 	<div class="block-wrap">
 		<div class="block-title-wrap d-flex justify-content-between align-items-center">
 			<h2>Address</h2>

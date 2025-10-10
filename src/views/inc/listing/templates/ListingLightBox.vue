@@ -1,6 +1,8 @@
 <template>
   <div class="property-lightbox">
-	<div class="modal fade" id="listing-lightbox" tabindex="-1" role="dialog">
+	<div 
+  id="listing-lightbox"
+  class="modal fade" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -13,30 +15,6 @@
 								<li class="list-inline-item btn-favorite">
 									<a href="#"><i class="houzez-icon icon-love-it mr-2"></i> <span>Favorite</span></a>
 								</li>
-								<!-- <li class="list-inline-item btn-share">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="houzez-icon icon-share mr-2"></i> <span>Share</span></a>
-									<div class="dropdown-menu dropdown-menu-right item-tool-dropdown-menu">
-										<div class="dropdown-item" href="#">Share on:</div>
-										<a class="dropdown-item" href="#">
-											<i class="houzez-icon icon-social-media-facebook mr-1"></i> Facebook
-										</a>
-										<a class="dropdown-item" href="#">
-											<i class="houzez-icon icon-x-logo-twitter-logo-2 mr-1"></i> Twitter
-										</a>
-										<a class="dropdown-item" href="#">
-											<i class="houzez-icon icon-social-pinterest mr-1"></i> Pinterest
-										</a>
-										<a class="dropdown-item" href="#">
-											<i class="houzez-icon icon-professional-network-linkedin mr-1"></i> Linkedin
-										</a>
-										<a class="dropdown-item" href="#">
-											<i class="houzez-icon icon-social-media-google-plus-1 mr-1"></i> Google Plus
-										</a>
-										<a class="dropdown-item" href="#">
-											<i class="houzez-icon icon-envelope mr-1"></i> Email
-										</a>
-									</div>
-								</li> -->
 								<li class="list-inline-item btn-email">
 									<a href="#"><i class="houzez-icon icon-envelope mr-1"></i></a>
 								</li>

@@ -11,14 +11,17 @@
               <div class="form-group">
                 <label>Old Password</label>
                 <input
+                v-model="passwordForm.current_password"
                     class="form-control"
                     :class="{ 'is-invalid': localErrors.current_password }"
-                    v-model="passwordForm.current_password"
+                    
                     placeholder="Enter your current password"
                     type="text"
                     @input="validateField('current_password')"
                 />
-                <span class="text-danger" v-if="localErrors.current_password">
+                <span 
+                v-if="localErrors.current_password"
+                class="text-danger">
                   {{ localErrors.current_password }}
                 </span>
               </div>
@@ -27,14 +30,17 @@
               <div class="form-group">
                 <label>New Password</label>
                 <input
+                v-model="passwordForm.new_password"
                     class="form-control"
                     :class="{ 'is-invalid': localErrors.new_password }"
-                    v-model="passwordForm.new_password"
+                    
                     placeholder="Enter your new password"
                     type="text"
                     @input="validateField('new_password')"
                 />
-                <span class="text-danger" v-if="localErrors.new_password">
+                <span 
+                v-if="localErrors.new_password"
+                class="text-danger" >
                   {{ localErrors.new_password }}
                 </span>
               </div>
@@ -43,14 +49,17 @@
               <div class="form-group">
                 <label>Confirm New Password</label>
                 <input
+                 v-model="passwordForm.password_confirmation"
                     class="form-control"
                     :class="{ 'is-invalid': localErrors.password_confirmation }"
-                    v-model="passwordForm.password_confirmation"
+                   
                     placeholder="Enter your new password again"
                     type="text"
                     @input="validateField('password_confirmation')"
                 />
-                <span class="text-danger" v-if="localErrors.password_confirmation">
+                <span
+                v-if="localErrors.password_confirmation"
+                class="text-danger" >
                   {{ localErrors.password_confirmation }}
                 </span>
               </div>

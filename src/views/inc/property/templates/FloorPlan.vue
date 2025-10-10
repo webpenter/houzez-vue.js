@@ -1,7 +1,7 @@
 <template>
     <div class="accordion-tab floor-plan-wrap">
 	<div class="accordion-header" data-toggle="collapse" data-target="#floor1" aria-expanded="false">
-		<div class="d-flex align-items-center" id="floor-plans1">
+		<div id="floor-plans1" class="d-flex align-items-center" >
 			<div class="accordion-title flex-grow-1">
 				Floor Title
 			</div><!-- accordion-title -->

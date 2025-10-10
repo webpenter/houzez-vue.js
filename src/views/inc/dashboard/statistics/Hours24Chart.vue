@@ -61,13 +61,13 @@
 		},
 		tooltips: {
 		  callbacks: {
-			labelColor: function (tooltipItem, chart) {
+			labelColor: function () {
 			  return {
 				borderColor: 'rgb(255, 99, 132, 1)',
 				backgroundColor: 'rgb(255, 99, 132, 1)',
 			  };
 			},
-			labelTextColor: function (tooltipItem, chart) {
+			labelTextColor: function () {
 			  return '#fff';
 			},
 		  },

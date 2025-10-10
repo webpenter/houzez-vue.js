@@ -172,33 +172,37 @@
 </template>
 
 <script setup>
-import {RouterLink, useRouter} from 'vue-router';
-import {computed, ref} from "vue";
-import {useNotification, usePackage} from "@/stores/index.js";
+defineOptions({
+  name: "CreatePackagePage"
+});
+
+import { RouterLink, useRouter } from 'vue-router';
+import { computed, ref } from "vue";
+import { useNotification, usePackage } from "@/stores/index.js";
 
 const router = useRouter();
 const notify = useNotification();
 
 const formData = ref({
-  name:"",
-  amount:"",
-  currency:"",
-  interval_count:"",
-  billing_period:"",
-  number_of_listings:"",
-  number_of_images:"",
-  active:false,
+  name: "",
+  amount: "",
+  currency: "",
+  interval_count: "",
+  billing_period: "",
+  number_of_listings: "",
+  number_of_images: "",
+  active: false,
 });
 
 const btnLoading = ref(false);
 const localErrors = ref({
-  name:"",
-  amount:"",
-  currency:"",
-  interval_count:"",
-  billing_period:"",
-  number_of_listings:"",
-  number_of_images:"",
+  name: "",
+  amount: "",
+  currency: "",
+  interval_count: "",
+  billing_period: "",
+  number_of_listings: "",
+  number_of_images: "",
 });
 
 const validateField = (field) => {
@@ -245,9 +249,8 @@ const validateField = (field) => {
   }
 };
 
-
 const hasErrors = computed(() =>
-    Object.values(localErrors.value).some((error) => error !== "")
+  Object.values(localErrors.value).some((error) => error !== "")
 );
 
 const formSubmit = async () => {
@@ -262,16 +265,15 @@ const formSubmit = async () => {
 
   try {
     const res = await usePackage().storePlan(formData.value);
-
     btnLoading.value = false;
 
     if (res.status === 200) {
       notify.Success(`Your package has been recorded`);
-      router.push({name:"dashboard.settings.all-packages"});
-    }  else {
+      router.push({ name: "dashboard.settings.all-packages" });
+    } else {
       notify.Error("An error occurred while processing the request.");
     }
-  } catch (error) {
+  } catch {
     btnLoading.value = false;
     notify.Error("An error occurred");
   }

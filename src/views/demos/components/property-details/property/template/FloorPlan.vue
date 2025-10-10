@@ -6,7 +6,7 @@
       :data-target="'#floor' + index"
       :aria-expanded="false"
     >
-      <div class="d-flex align-items-center" :id="'floor-plans' + index">
+      <div :id="'floor-plans' + index" class="d-flex align-items-center" >
         <div class="accordion-title flex-grow-1">
           {{ floor.plan_title || 'Untitled Floor' }}
         </div><!-- accordion-title -->
@@ -56,7 +56,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   floor: {
     type: Object,
     required: true,

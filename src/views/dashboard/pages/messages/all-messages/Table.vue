@@ -40,12 +40,16 @@
         </td>
         <td data-label="Actions">
           <div class="dropdown property-action-menu">
-            <button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button 
+            id="dropdownMenuButton" class="btn btn-primary-outlined dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Actions
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
               <RouterLink :to="{name:'dashboard.messages.details',params:{messageId:msg.id}}" class="dropdown-item" >Reply</RouterLink>
-              <a @click.prevent="$emit('deleteMessage',msg.id)" class="dropdown-item" href="javascript:void(0)">Delete</a>
+              <a
+              href="javascript:void(0)"
+              class="dropdown-item"
+              @click.prevent="$emit('deleteMessage',msg.id)" >Delete</a>
             </div>
           </div>
         </td>

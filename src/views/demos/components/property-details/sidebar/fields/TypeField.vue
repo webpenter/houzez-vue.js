@@ -1,12 +1,12 @@
 <template>
   <div class="form-group">
     <select
+      v-model="localValue"
+      ref="selectRef"
       class="selectpicker form-control"
       title="Type"
       multiple
       data-actions-box="true"
-      v-model="localValue"
-      ref="selectRef"
     >
       <option
         v-for="type in typeOptions"
@@ -21,7 +21,7 @@
 
 <script setup>
 import { ref, computed, onMounted, watch, nextTick } from 'vue';
-import { useType } from '@/stores/index.js'; // or '@/stores/type.js' if direct import
+import { useType } from '@/stores/index.js'; // adjust import if needed
 
 // Props & Emits for v-model
 const props = defineProps({
@@ -42,16 +42,23 @@ const localValue = computed({
 const typeStore = useType();
 const typeOptions = typeStore.types;
 
-// Refresh selectpicker when options are ready
+// Select reference
 const selectRef = ref(null);
 
+// Refresh selectpicker safely
+const refreshSelectPicker = () => {
+  nextTick(() => {
+    if (selectRef.value && window.$) {
+      window.$(selectRef.value).selectpicker('refresh');
+    }
+  });
+};
+
 onMounted(() => {
-  $(selectRef.value).selectpicker('refresh');
+  refreshSelectPicker();
 });
 
 watch(typeOptions, () => {
-  nextTick(() => {
-    $(selectRef.value).selectpicker('refresh');
-  });
+  refreshSelectPicker();
 });
 </script>

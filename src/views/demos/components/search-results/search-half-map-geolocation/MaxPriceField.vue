@@ -1,13 +1,14 @@
 <template>
   <div class="form-group">
     <select
+    ref="selectRef"
       v-model="selectedMaxPrice"
       class="selectpicker form-control"
       :title="$t('Max. Price')
 "
       data-live-search="false"
       @change="emitMaxPrice"
-      ref="selectRef"
+      
     >
       <option
         v-for="price in prices"

@@ -1,8 +1,9 @@
 <template>
   <!-- Show section only if we have teams -->
   <section 
+  v-if="appTeamsDemo01?.length"
     class="content-wrap"
-    v-if="appTeamsDemo01?.length"
+    
   >
     <div class="container">
       <div class="row">

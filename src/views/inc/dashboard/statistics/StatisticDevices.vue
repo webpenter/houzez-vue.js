@@ -34,7 +34,7 @@
   onMounted(()=>{
 
 	const ctx = devicesdoughnutchart.value.getContext('2d');
-				var myDoughnutChart = new Chart(ctx, {
+				new Chart(ctx, {
 					type: 'doughnut',
 					data: {
 						datasets: [{

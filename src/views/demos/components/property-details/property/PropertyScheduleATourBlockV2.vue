@@ -1,11 +1,14 @@
 <template>
-    <div class="property-schedule-tour-wrap property-schedule-tour-wrap-v2 property-section-wrap"
-        id="property-schedule-tour-wrap-v2">
+    <div 
+    id="property-schedule-tour-wrap-v2"
+    class="property-schedule-tour-wrap property-schedule-tour-wrap-v2 property-section-wrap"
+        >
         <div class="block-wrap">
             <div class="block-content-wrap">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
-                        <div class="property-schedule-tour-image"
+                        <div 
+                        class="property-schedule-tour-image"
                             :style="{ backgroundImage: `url(${property.thumbnail || 'img/apt.jpg'})` }">
                         </div>
                     </div>
@@ -16,14 +19,17 @@
                             <h2>{{ $t('Schedule a Tour') }}</h2>
 
                             <!-- Alerts -->
-                            <div v-if="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <div 
+                            v-if="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
                                 {{ errorMessage }}
-                                <button type="button" class="close" @click="errorMessage = ''" aria-label="Close">
+                                <button 
+                                type="button" class="close" @click="errorMessage = ''" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
 
-                            <div v-if="successMessage" class="alert alert-success alert-dismissible fade show"
+                            <div 
+                            v-if="successMessage" class="alert alert-success alert-dismissible fade show"
                                 role="alert">
                                 {{ successMessage }}
                                 <button type="button" class="close" @click="successMessage = ''" aria-label="Close">
@@ -33,15 +39,20 @@
 
                             <!-- Days selector -->
                             <div class="property-schedule-tour-day-form">
-                                <div class="tour-day-form-slide-arrow prev" @click="prevDays"
-                                    :class="{ disabled: startIndex === 0 }">
+                                <div 
+                                class="tour-day-form-slide-arrow prev" 
+                                    :class="{ disabled: startIndex === 0 }"
+                                    @click="prevDays"
+                                    >
                                     <i class="houzez-icon icon-arrow-left-1"></i>
                                 </div>
 
                                 <div class="property-schedule-tour-day-form-slide-wrap" style="overflow: hidden;">
                                     <div class="property-schedule-tour-day-form-slide start" :style="slideStyle">
-                                        <div class="form-group" v-for="(day, index) in days"
-                                            :key="day.fullDate.toISOString()">
+                                        <div
+                                        v-for="(day) in days"
+                                            :key="day.fullDate.toISOString()"
+                                        class="form-group" >
                                             <label class="control control--radio">
                                                 <input type="radio" :checked="selectedDate.toDateString() ===
                                                     day.fullDate.toDateString()
@@ -58,8 +69,11 @@
                                     </div>
                                 </div>
 
-                                <div class="tour-day-form-slide-arrow next" @click="nextDays"
-                                    :class="{ disabled: startIndex >= maxIndex }">
+                                <div 
+                                class="tour-day-form-slide-arrow next" 
+                                    :class="{ disabled: startIndex >= maxIndex }"
+                                    @click="nextDays"
+                                    >
                                     <i class="houzez-icon icon-arrow-right-1"></i>
                                 </div>
                             </div>
@@ -70,13 +84,17 @@
                             <div class="property-schedule-tour-type-form d-flex justify-content-between">
                                 <div class="form-group">
                                     <label class="control control--radio">
-                                        <input type="radio" value="In Person" v-model="form.tour_type" checked />
+                                        <input 
+                                        v-model="form.tour_type"
+                                        type="radio" value="In Person"  checked />
                                         <span class="control__indicator">{{ $t('In Person') }}</span>
                                     </label>
                                 </div>
                                 <div class="form-group">
                                     <label class="control control--radio">
-                                        <input type="radio" value="Video Call" v-model="form.tour_type" />
+                                        <input 
+                                        v-model="form.tour_type"
+                                        type="radio" value="Video Call"  />
                                         <span class="control__indicator">{{ $t('Video Call') }}</span>
                                     </label>
                                 </div>
@@ -84,39 +102,51 @@
 
                             <!-- Time input -->
                             <div class="form-group">
-                                <input type="time" class="form-control" v-model="form.time"
+                                <input
+                                 v-model="form.time"
+                                type="time" class="form-control"
                                     :placeholder="$t('Choose a time')" />
                                 <!-- <small v-if="errors.time" class="text-danger">{{ errors.time }}</small> -->
                             </div>
 
                             <!-- Name -->
                             <div class="form-group">
-                                <input class="form-control" v-model="form.name" :placeholder="$t('Name')" type="text" />
+                                <input
+                                v-model="form.name"
+                                class="form-control"  :placeholder="$t('Name')" type="text" />
                                 <!-- <small v-if="errors.name" class="text-danger">{{ errors.name }}</small> -->
                             </div>
 
                             <!-- Phone -->
                             <div class="form-group">
-                                <input class="form-control" v-model="form.phone" :placeholder="$t('Phone')" type="text" />
+                                <input
+                                v-model="form.phone" 
+                                class="form-control" :placeholder="$t('Phone')" type="text" />
                                 <!-- <small v-if="errors.phone" class="text-danger">{{ errors.phone }}</small> -->
                             </div>
 
                             <!-- Email -->
                             <div class="form-group">
-                                <input class="form-control" v-model="form.email" :placeholder="$t('Email')" type="email" />
+                                <input 
+                                v-model="form.email"
+                                class="form-control"  :placeholder="$t('Email')" type="email" />
                                 <!-- <small v-if="errors.email" class="text-danger">{{ errors.email }}</small> -->
                             </div>
 
                             <!-- Message -->
                             <div class="form-group form-group-textarea">
-                                <textarea class="form-control" v-model="form.message" rows="5"
+                                <textarea 
+                                v-model="form.message"
+                                class="form-control"  rows="5"
                                     :placeholder="$t('Message')"></textarea>
                             </div>
 
                             <!-- Terms -->
                             <div class="form-group form-group-terms">
                                 <label class="control control--checkbox">
-                                    <input type="checkbox" v-model="form.agreeTerms" />
+                                    <input 
+                                     v-model="form.agreeTerms"
+                                    type="checkbox" />
                                     {{ $t('By submitting this form I agree to') }}
                                     <a href="#">{{ $t('Terms of Use') }}</a>
                                     <span class="control__indicator"></span>
@@ -126,8 +156,11 @@
                                 }}</small>
                             </div>
 
-                            <button class="btn btn-secondary btn-full-width" @click.prevent="submitForm"
-                                :disabled="loading">
+                            <button
+                             class="btn btn-secondary btn-full-width" 
+                                :disabled="loading"
+                                @click.prevent="submitForm"
+                                >
                                 {{ loading ? $t('Submitting')+"..." : $t('Submit a Tour Request') }}
                             </button>
                         </div>

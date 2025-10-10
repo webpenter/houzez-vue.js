@@ -44,7 +44,7 @@ onMounted(() => {
                 },
                 tooltip: {
                     callbacks: {
-                        labelColor: function (tooltipItem) {
+                        labelColor: function () {
                             return {
                                 borderColor: 'rgb(255, 99, 132)',
                                 backgroundColor: 'rgb(255, 99, 132)',

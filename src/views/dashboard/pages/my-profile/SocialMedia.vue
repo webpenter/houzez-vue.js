@@ -17,7 +17,9 @@
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
                      <label>Facebook</label>
-                     <input class="form-control" v-model="socialMedia.facebook" placeholder="Enter the Facebook URL" type="text">
+                     <input 
+                     v-model="socialMedia.facebook"
+                     class="form-control"  placeholder="Enter the Facebook URL" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
@@ -29,49 +31,65 @@
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
                      <label>Linkedin</label>
-                     <input class="form-control" v-model="socialMedia.linkedin" placeholder="Enter the Linkedin URL" type="text">
+                     <input 
+                      v-model="socialMedia.linkedin"
+                     class="form-control" placeholder="Enter the Linkedin URL" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
                      <label>Instagram</label>
-                     <input class="form-control" v-model="socialMedia.instagram" placeholder="Enter the Instagram URL" type="text">
+                     <input 
+                     v-model="socialMedia.instagram" 
+                     class="form-control" placeholder="Enter the Instagram URL" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
                      <label>Google Plus</label>
-                     <input class="form-control" v-model="socialMedia.google_plus"  placeholder="Enter the Google Plus URL" type="text">
+                     <input 
+                     v-model="socialMedia.google_plus"  
+                     class="form-control" placeholder="Enter the Google Plus URL" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
                      <label>Youtube</label>
-                     <input class="form-control" v-model="socialMedia.youtube" placeholder="Enter the Youtube URL" type="text">
+                     <input 
+                     v-model="socialMedia.youtube"
+                     class="form-control" placeholder="Enter the Youtube URL" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
                      <label>Pinterest</label>
-                     <input class="form-control" v-model="socialMedia.pinterest"  placeholder="Enter the Pinterest URL" type="text">
+                     <input 
+                     v-model="socialMedia.pinterest"
+                     class="form-control"   placeholder="Enter the Pinterest URL" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
                      <label>Vimeo</label>
-                     <input class="form-control" v-model="socialMedia.vimeo" placeholder="Enter the Vimeo URL" type="text">
+                     <input
+                     v-model="socialMedia.vimeo"
+                     class="form-control"  placeholder="Enter the Vimeo URL" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
                      <label>Skype</label>
-                     <input class="form-control" v-model="socialMedia.skype" placeholder="Enter your Skupe ID" type="text">
+                     <input 
+                     v-model="socialMedia.skype"
+                     class="form-control"  placeholder="Enter your Skupe ID" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
                      <label>Website</label>
-                     <input class="form-control" v-model="socialMedia.website" placeholder="Enter your website URL" type="text">
+                     <input 
+                      v-model="socialMedia.website"
+                     class="form-control" placeholder="Enter your website URL" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                </div><!-- row -->

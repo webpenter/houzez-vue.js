@@ -1,6 +1,8 @@
 <template>
     <div class="property-lightbox-v3">
-	<div class="modal fade" id="listing-lightbox-v3" tabindex="-1" role="dialog">
+	<div 
+  id="listing-lightbox-v3"
+  class="modal fade" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="property-lightbox-v3-modal-header modal-header">
@@ -203,7 +205,9 @@
 			                            <!-- <?php include 'inc/property/property-morgage-calculator-block-v2.php';?> -->
 									</div>
 									<div class="property-lightbox-v3-section clearfix">
-			                            <div class="property-sub-listings-wrap property-section-wrap" id="property-sub-listings-wrap">
+			                            <div 
+                                  id="property-sub-listings-wrap"
+                                  class="property-sub-listings-wrap property-section-wrap" >
 											<div class="block-wrap">
 												<div class="block-title-wrap">
 													<h2>Sub Listings</h2>
@@ -211,48 +215,33 @@
 												<div class="block-content-wrap">
 													<div class="container">
 														<div class="listing-view grid-view card-deck ">
-															<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
-															<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
-															<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
-															<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
 														</div><!-- listing-view -->	
 													</div>
 												</div><!-- block-content-wrap -->
 											</div><!-- block-wrap -->
 										</div><!-- property-address-wrap -->
 									</div>
-									<div class="property-lightbox-v3-section clearfix">   
-			                            <!-- <?php include 'inc/property/property-energy-class-block.php';?> -->
+									<div class="property-lightbox-v3-section clearfix">  
 									</div>
 									<div class="property-lightbox-v3-section clearfix">
-			                            <!-- <?php include 'inc/property/property-features-block-with-custom-icons.php';?> -->
 									</div>
 									<div class="property-lightbox-v3-section clearfix">
-			                            <!-- <?php include 'inc/property/property-floor-plans-block.php';?> -->
 									</div>
 									<div class="property-lightbox-v3-section clearfix">
-			                            <!-- <?php include 'inc/property/property-walkscore-block.php';?> -->
 									</div>
 									<div class="property-lightbox-v3-section clearfix">
-			                            <!-- <?php include 'inc/property/property-walkscore-block-v2.php';?> -->
 									</div>
 									<div class="property-lightbox-v3-section clearfix">
-			                            <!-- <?php include 'inc/property/property-nearby-block.php';?> -->
 									</div>
 									<div class="property-lightbox-v3-section clearfix">
-			                            <!-- <?php include 'inc/property/property-video-block.php';?> -->
 									</div>
 									<div class="property-lightbox-v3-section clearfix">
-			                            <!-- <?php include 'inc/property/property-virtual-tour-block.php';?> -->
 									</div>
 									<div class="property-lightbox-v3-section clearfix">
-			                            <!-- <?php include 'inc/property/property-availability-calendar-block.php';?> -->
 									</div>
 									<div class="property-lightbox-v3-section clearfix">
-			                            <!-- <?php include 'inc/property/property-agent-block.php';?> -->
 									</div>
 									<div class="property-lightbox-v3-section clearfix">
-			                            <!-- <?php include 'inc/property/property-reviews.php';?> -->
 									</div>
 									<div class="property-lightbox-v3-section clearfix">
 			                            <div class="similar-property-wrap">
@@ -262,10 +251,6 @@
 											<div class="block-content-wrap">
 												<div class="container">
 													<div class="listing-view grid-view card-deck ">
-														<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
-														<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
-														<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
-														<!-- <?php include 'inc/listing/item-v6-modal-window-v2.php';?> -->
 													</div><!-- listing-view -->	
 												</div>
 											</div><!-- block-content-wrap -->

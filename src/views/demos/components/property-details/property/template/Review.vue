@@ -31,7 +31,7 @@
 <script setup>
 import Rating from './Rating.vue';
 
-const props = defineProps({
+defineProps({
     review: {
         type: Object,
         required: true

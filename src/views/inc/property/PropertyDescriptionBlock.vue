@@ -1,5 +1,7 @@
 <template>
-    <div class="property-description-wrap property-section-wrap" id="property-description-wrap">
+    <div 
+    id="property-description-wrap"
+    class="property-description-wrap property-section-wrap">
 	<div class="block-wrap">
 		<div class="block-title-wrap">
 			<h2>Description</h2>	

@@ -4,11 +4,13 @@
       <div class="form-group flex-grow-1">
         <div class="search-icon">
           <input
+          v-model="searchQuery"
+           class="form-control"
               type="text"
-              v-model="searchQuery"
+               placeholder="Search"
               @input="updateSearch"
-              class="form-control"
-              placeholder="Search">
+             
+             >
         </div>
       </div>
     </div>

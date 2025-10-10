@@ -1,7 +1,8 @@
 <template>
 	<div
+  id="property-sub-listings-wrap"
 		class="property-sub-listings-table-wrap property-section-wrap"
-		id="property-sub-listings-wrap" >
+    >
 		<div class="block-wrap">
 			<div class="block-title-wrap">
 				<h2>Sub Listings</h2>
@@ -42,7 +43,7 @@
 </template>
 
 <script setup>
-const props = defineProps({ 
+defineProps({ 
   property: {
     type: Object,
     required: true

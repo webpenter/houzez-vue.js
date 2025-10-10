@@ -8,7 +8,10 @@
                 <Map v-for="property in allProperties" :key="property.id" :property="property" :view="viewType" />
             </div><!-- half-map-left-wrap -->
             <div class="half-map-right-wrap">
-                <SearchHalfMapGeolocation :modelValue="formData" @search="handleSearch" @reset="resetFilters"
+                <SearchHalfMapGeolocation 
+                :modelValue="formData" 
+                @search="handleSearch" 
+                @reset="resetFilters"
                     @save-search="saveSearchResult" />
                 <div class="page-title-wrap">
                     <div class="d-flex align-items-center">
@@ -17,31 +20,21 @@
                         </div><!-- page-title -->
                         <div class="sort-by">
                             <div class="d-flex align-items-center">
-                                <!-- <div class="sort-by-title">
-                                    Sort by:
-                                </div>
-                                <select class="selectpicker form-control bs-select-hidden" title="Default Order"
-                                    data-live-search="false" data-dropdown-align-right="auto">
-                                    <option>Default Order</option>
-                                    <option>Price - High to Low</option>
-                                    <option>Price - Low to Hight</option>
-                                    <option>Featured First</option>
-                                    <option>Date - New to Old</option>
-                                    <option>Date - Old to New</option>
-                                </select> -->
-                                <!-- selectpicker -->
+                               
                             </div><!-- d-flex -->
                         </div><!-- sort-by -->
                         <div class="listing-switch-view">
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <a class="switch-btn btn-list" :class="{ active: viewType === 'list' }" href="#"
+                                    <a 
+                                    class="switch-btn btn-list" :class="{ active: viewType === 'list' }" href="#"
                                         @click.prevent="viewType = 'list'">
                                         <i class="houzez-icon icon-layout-bullets"></i>
                                     </a>
                                 </li>
                                 <li class="list-inline-item">
-                                    <a class="switch-btn btn-grid" :class="{ active: viewType === 'grid' }" href="#"
+                                    <a 
+                                    class="switch-btn btn-grid" :class="{ active: viewType === 'grid' }" href="#"
                                         @click.prevent="viewType = 'grid'">
                                         <i class="houzez-icon icon-layout-module-1"></i>
                                     </a>
@@ -52,12 +45,14 @@
                     </div><!-- d-flex -->
                 </div><!-- page-title-wrap -->
                 <div v-if="allProperties.length > 0" class="listing-view" :class="viewType + '-view'">
-                    <ListItem v-for="property in paginatedProperties" :key="property.id" :property="property"
+                    <ListItem 
+                    v-for="property in paginatedProperties" :key="property.id" :property="property"
                         class="item-listing-wrap card" :view="viewType" />
 
                 </div><!-- listing-view -->
                 <div v-else id="houzez_ajax_container">
-                    <div class="listing-view grid-view row row-cols-1 row-cols-md-2 gy-4 gx-4 mx-0" role="list"
+                    <div
+                     class="listing-view grid-view row row-cols-1 row-cols-md-2 gy-4 gx-4 mx-0" role="list"
                         data-view="grid" data-layout="v1"
                         data-css="listing-view grid-view row row-cols-1 row-cols-md-2 gy-4 gx-4 mx-0">
                         <div class="search-no-results-found flex-grow-1 text-center">
@@ -65,8 +60,10 @@
                         </div>
                     </div>
                 </div>
-                <Pagination :total-items="allProperties.length" :page-size="pageSize" :current-page="currentPage"
-                    @update:currentPage="(page) => currentPage.value = page" />
+                <Pagination 
+                :total-items="allProperties.length" :page-size="pageSize" :current-page="currentPage"
+                    @update:currentPage="(page) => currentPage.value = page" 
+                    />
             </div><!-- half-map-right-wrap -->
         </section><!-- half-map-wrap -->
     </template>
@@ -83,9 +80,8 @@ import {
     useType
 } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
-import { RouterLink, useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import ListItem from "@/views/demos/components/home/featured-listings/ListItem.vue";
-import NoDataFound from "@/views/app/components/NoDataFound.vue";
 import SearchHalfMapGeolocation from '@/views/demos/components/search-results/search-half-map-geolocation/Index.vue';
 import Map from '@/views/demos/components/search-results/map/Index.vue';
 import SearchSkeleton from '@/components/skeleton/SearchSkeleton.vue';
@@ -104,19 +100,7 @@ const propertyToRefs = useAppPropertyDemo01();
 const { allProperties } = storeToRefs(propertyToRefs);
 
 const saveSearchStore = useSavedSearch();
-const { checkSearchSaved } = storeToRefs(saveSearchStore);
 
-const { types } = storeToRefs(useType());
-const { cities } = storeToRefs(useCity());
-const { prices } = storeToRefs(usePrice());
-const { bedrooms } = storeToRefs(useBedroom());
-
-const noAuthDialog = ref(false)
-
-const showLoginPage = () => {
-    router.push({ name: 'auth' });
-    noAuthDialog.value = false;
-}
 
 const formData = ref({
     search: route.query.search || "",
@@ -207,7 +191,7 @@ const saveSearchResult = async () => {
             useNotification().Error("An error occurred.");
         }
     } catch (error) {
-        useNotification().Error("Failed to save search!");
+        useNotification().Error("Failed to save search!", error);
     }
 };
 

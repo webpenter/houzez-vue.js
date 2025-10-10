@@ -14,30 +14,54 @@
           <form @submit.prevent="submitSeoForm">
             <div class="form-group">
               <label>Meta Title</label>
-              <input type="text" class="form-control" v-model="seo.meta_title" placeholder="Enter Meta Title" />
+              <input
+                v-model="seo.meta_title"
+                type="text"
+                class="form-control"
+                placeholder="Enter Meta Title"
+              />
             </div>
 
             <div class="form-group">
               <label>Meta Description</label>
-              <textarea class="form-control" v-model="seo.meta_description" placeholder="Enter Meta Description"></textarea>
+              <textarea
+                v-model="seo.meta_description"
+                class="form-control"
+                placeholder="Enter Meta Description"
+              ></textarea>
             </div>
 
             <div class="form-group">
               <label>Meta Keywords</label>
-              <input type="text" class="form-control" v-model="seo.meta_keywords" placeholder="Enter Meta Keywords" />
+              <input
+                v-model="seo.meta_keywords"
+                type="text"
+                class="form-control"
+                placeholder="Enter Meta Keywords"
+              />
             </div>
 
             <div class="form-group">
               <label>Google Analytics Code</label>
-              <textarea class="form-control" v-model="seo.google_analytics_code" placeholder="Paste Google Analytics Code"></textarea>
+              <textarea
+                v-model="seo.google_analytics_code"
+                class="form-control"
+                placeholder="Paste Google Analytics Code"
+              ></textarea>
             </div>
 
             <div class="form-group">
               <label>Facebook Pixel Code</label>
-              <textarea class="form-control" v-model="seo.facebook_pixel_code" placeholder="Paste Facebook Pixel Code"></textarea>
+              <textarea
+                v-model="seo.facebook_pixel_code"
+                class="form-control"
+                placeholder="Paste Facebook Pixel Code"
+              ></textarea>
             </div>
 
-            <button class="btn btn-success mt-3">Update SEO Settings</button>
+            <button type="submit" class="btn btn-success mt-3">
+              Update SEO Settings
+            </button>
           </form>
         </div>
       </div>
@@ -51,32 +75,46 @@ import { useSetting, useNotification } from "@/stores/index.js";
 
 const settingStore = useSetting();
 const notify = useNotification();
+
 const seo = ref({
   meta_title: "",
   meta_description: "",
   meta_keywords: "",
   google_analytics_code: "",
-  facebook_pixel_code: ""
+  facebook_pixel_code: "",
 });
+
 const loading = ref(true);
 
+/**
+ * ✅ Submit SEO Settings
+ */
 const submitSeoForm = async () => {
   try {
     await settingStore.updateSeo(seo.value);
     notify.Success("SEO settings updated successfully!");
-  } catch (err) {
+  } catch {
     notify.Error("Failed to update SEO settings");
   }
 };
 
+/**
+ * ✅ Fetch SEO Settings on Mount
+ */
 onMounted(async () => {
   try {
     const res = await settingStore.getSeo();
     seo.value = { ...seo.value, ...res.data.seo };
-  } catch (err) {
+  } catch {
     notify.Error("Failed to fetch SEO settings");
   } finally {
     loading.value = false;
   }
 });
+</script>
+
+<script>
+export default {
+  name: "GeneralSeoSettings",
+};
 </script>

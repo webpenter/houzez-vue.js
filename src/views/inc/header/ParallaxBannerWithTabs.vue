@@ -1,6 +1,7 @@
 <template>
     <section class="top-banner-wrap horizontal-search-wrap" style="height: 600px;">
-        <div class="banner-inner parallax d-flex" data-parallax-bg-image="/img/miami-beach-1.jpg"
+        <div
+         class="banner-inner parallax d-flex" data-parallax-bg-image="/img/miami-beach-1.jpg"
                 style="width: 100%; height: 600px; background-size: cover; background-position: center;"
                 :style="{ backgroundImage: `url('/img/miami-beach-1.jpg')` }"
         >

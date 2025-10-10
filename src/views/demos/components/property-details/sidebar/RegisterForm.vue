@@ -1,38 +1,64 @@
 <template>
   <form @submit.prevent="submitRegister">
     <div v-if="error" class="alert alert-danger" role="alert">
-        {{ error }}<i class="houzez-icon icon-remove-circle cursor-pointer" @click="error = null" title="Close"></i>
+        {{ error }}
+        <i
+          class="houzez-icon icon-remove-circle cursor-pointer"
+          title="Close"
+          @click="error = null"
+        ></i>
     </div>
 
     <div class="register-form-wrap">
       <div class="form-group">
         <div class="form-group-field username-field">
-          <input type="text" class="form-control" :placeholder="$t('Username')" v-model="form.username">
+          <input
+            v-model="form.username"
+            type="text"
+            class="form-control"
+            :placeholder="$t('Username')"
+          />
         </div>
       </div>
 
       <div class="form-group">
         <div class="form-group-field email-field">
-          <input type="email" class="form-control" :placeholder="$t('Email')" v-model="form.email">
+          <input
+            v-model="form.email"
+            type="email"
+            class="form-control"
+            :placeholder="$t('Email')"
+          />
         </div>
       </div>
 
       <div class="form-group">
         <div class="form-group-field password-field">
-          <input type="password" class="form-control" :placeholder="$t('Password')" v-model="form.password">
+          <input
+            v-model="form.password"
+            type="password"
+            class="form-control"
+            :placeholder="$t('Password')"
+          />
         </div>
       </div>
 
       <div class="form-group">
         <div class="form-group-field password-field">
-          <input type="password" class="form-control" :placeholder="$t('Confirm password')" v-model="form.password_confirmation">
+          <input
+            v-model="form.password_confirmation"
+            type="password"
+            class="form-control"
+            :placeholder="$t('Confirm password')"
+          />
         </div>
       </div>
     </div>
 
     <div class="form-tools">
       <label class="control control--checkbox">
-        <input type="checkbox" v-model="form.agree"> I agree with the <a href="#">{{ $t('Terms and Conditions') }}</a>
+        <input v-model="form.agree" type="checkbox" />
+        I agree with the <a href="#">{{ $t('Terms and Conditions') }}</a>
         <span class="control__indicator"></span>
       </label>
     </div>
@@ -43,6 +69,7 @@
     </button>
   </form>
 </template>
+
 
 
 <script setup>

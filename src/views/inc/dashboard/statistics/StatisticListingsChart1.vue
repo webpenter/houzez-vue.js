@@ -5,7 +5,7 @@
 		Most Viewed
 	  </h3>
 	  <div class="chart-nav"> 
-		<ul class="nav nav-pills" id="myTab" role="tablist">
+		<ul id="myTab" class="nav nav-pills"  role="tablist">
 		  <li class="nav-item">
 			<a class="nav-link active" data-toggle="tab" href="#barchart-1-24h" role="tab">Last 24 Hours</a>
 		  </li>
@@ -20,7 +20,7 @@
 	  <!-- chart-nav -->
   
 	  <div class="tab-content">
-		<div class="tab-pane fade show active" id="barchart-1-24h" role="tabpanel">
+		<div id="barchart-1-24h"  class="tab-pane fade show active" role="tabpanel">
 		  <div class="d-flex align-items-center sm-column">
 			<div class="statistic-doughnut-chart">
 			  <canvas ref="mostViewedBarChart"></canvas>
@@ -29,8 +29,8 @@
 		  </div>
 		  <!-- d-flex -->
 		</div>
-		<div class="tab-pane fade" id="barchart-1-7days" role="tabpanel">...</div>
-		<div class="tab-pane fade" id="barchart-1-30days" role="tabpanel">...</div>
+		<div id="barchart-1-7days" class="tab-pane fade"  role="tabpanel">...</div>
+		<div  id="barchart-1-30days" class="tab-pane fade" role="tabpanel">...</div>
 	  </div>
 	  <!-- tab-content -->
 	</div>

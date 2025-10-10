@@ -22,13 +22,15 @@
                         <div class="listing-switch-view">
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <a class="switch-btn btn-list" :class="{ active: viewType === 'list' }" href="#"
+                                    <a
+                                     class="switch-btn btn-list" :class="{ active: viewType === 'list' }" href="#"
                                         @click.prevent="viewType = 'list'">
                                         <i class="houzez-icon icon-layout-bullets"></i>
                                     </a>
                                 </li>
                                 <li class="list-inline-item">
-                                    <a class="switch-btn btn-grid" :class="{ active: viewType === 'grid' }" href="#"
+                                    <a 
+                                    class="switch-btn btn-grid" :class="{ active: viewType === 'grid' }" href="#"
                                         @click.prevent="viewType = 'grid'">
                                         <i class="houzez-icon icon-layout-module-1"></i>
                                     </a>
@@ -53,24 +55,21 @@
     </template>
 </template>
 <script setup>
-import { computed, onMounted, ref, watch } from "vue";
+import { onMounted, ref } from "vue";
 import {
     useAppPropertyDemo01,
     useNotification,
 } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
-import {  useRoute, useRouter } from "vue-router";
+import {  useRoute } from "vue-router";
 import ListItem from "@/views/demos/components/home/featured-listings/ListItem.vue";
 import Map from '@/views/demos/components/search-results/map/Index.vue';
 import PropertyTypeSkeleton from '@/components/skeleton/PropertyTypeSkeleton.vue';
-import Pagination from "@/views/demos/components/inc/Pagination.vue";
 
-const router = useRouter();
 const route = useRoute();
 
 const propertyType = route.params.propertyType
 
-const isFeatured = computed(() => route.query.featured === 'true');
 
 const viewType = ref('list')
 const loading = ref(false);

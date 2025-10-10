@@ -1,5 +1,7 @@
 <template>
-    <nav class="navi-login-register slideout-menu slideout-menu-right" id="navi-user">
+    <nav
+    id="navi-user"
+    class="navi-login-register slideout-menu slideout-menu-right">
         <a class="btn btn-create-listing" href="/add-new-property-frontend-single-page-step-1.php">
             Create a Listing
         </a>

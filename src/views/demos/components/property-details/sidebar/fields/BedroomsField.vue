@@ -1,10 +1,10 @@
 <template>
   <div class="form-group">
     <select
-      class="selectpicker form-control"
-      :title="$t('Bedrooms')"
       v-model="selectedBedrooms"
       ref="selectRef"
+      class="selectpicker form-control"
+      :title="$t('Bedrooms')"
       @change="emitBedrooms"
     >
       <option
@@ -21,28 +21,52 @@
 <script setup>
 import { ref, onMounted, watch, nextTick } from 'vue';
 import { useBedroom } from '@/stores/index.js';
+import { useI18n } from 'vue-i18n';
 
-const props = defineProps(['modelValue']);
+const { t } = useI18n();
+
+// Define props with type
+const props = defineProps({
+  modelValue: {
+    type: [String, Number],
+    default: ''
+  }
+});
+
 const emit = defineEmits(['update:modelValue']);
 
-const selectedBedrooms = ref(props.modelValue); // bind from parent
+const selectedBedrooms = ref(props.modelValue);
 const selectRef = ref(null);
 
 const bedroomStore = useBedroom();
 const bedroomOptions = bedroomStore.bedrooms;
 
 const emitBedrooms = () => {
-  emit('update:modelValue', selectedBedrooms.value); // emit back to parent
+  emit('update:modelValue', selectedBedrooms.value);
 };
 
+// Refresh selectpicker on mount and whenever options change
 onMounted(() => {
-  $(selectRef.value).selectpicker('refresh');
+  nextTick(() => {
+    if (selectRef.value && window.$) {
+      window.$(selectRef.value).selectpicker('refresh');
+    }
+  });
 });
 
 watch(bedroomOptions, () => {
   nextTick(() => {
-    $(selectRef.value).selectpicker('refresh');
+    if (selectRef.value && window.$) {
+      window.$(selectRef.value).selectpicker('refresh');
+    }
   });
 });
-</script>
 
+// Keep selectedBedrooms in sync with parent prop
+watch(
+  () => props.modelValue,
+  (newVal) => {
+    selectedBedrooms.value = newVal;
+  }
+);
+</script>

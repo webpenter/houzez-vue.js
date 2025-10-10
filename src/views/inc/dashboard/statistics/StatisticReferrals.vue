@@ -8,7 +8,9 @@
 					123.456.789.9 (2 views)
 				</a>
 			</div>
-			<div class="collapse" id="collapseExample1">
+			<div 
+      id="collapseExample1"
+      class="collapse" >
 				https://houzez01.favethemes.com/
 			</div>
 		</li>
@@ -18,7 +20,9 @@
 					123.456.789.9 (2 views)
 				</a>
 			</div>
-			<div class="collapse" id="collapseExample2">
+			<div
+       id="collapseExample2"
+      class="collapse">
 				https://houzez01.favethemes.com/
 			</div>
 		</li>

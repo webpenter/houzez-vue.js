@@ -1,7 +1,4 @@
 <template>
-    	<!-- -------------------------------------------------------------------------------------------
-	note: to add have the nav bar on the right add this class "justify-content-end" to "navbar-nav"
-	-------------------------------------------------------------------------------------------- -->	
 	<ul class="navbar-nav">
 		<template v-for="route in routes" :key="route.id">
 			<li class="nav-item">

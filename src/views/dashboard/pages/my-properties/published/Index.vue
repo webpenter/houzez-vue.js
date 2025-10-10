@@ -25,7 +25,10 @@
             @statusChanged="handleStatusChange"
         />
 
-        <NoProperty :propertyStatus="propertyStatus" v-if="dashboardProperties.length < 1"/>
+        <NoProperty 
+        v-if="dashboardProperties.length < 1"
+        :propertyStatus="propertyStatus"
+         />
       </div><!-- dashboard-content-block-wrap -->
     </div><!-- dashboard-content-inner-wrap -->
   </section><!-- dashboard-content-wrap -->
@@ -45,8 +48,6 @@ import {
   duplicateProperty,
   updateSearchQuery,
   updateSortOption,
-  searchQuery,
-  selectedSort,
   loading, handleStatusChange
 } from "@/traits/property/dashboardProperties.js";
 import { useProperty } from "@/stores/index.js";

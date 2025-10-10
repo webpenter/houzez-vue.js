@@ -19,15 +19,15 @@
 	<td class="property-table-featured" data-label="Featured">Yes</td>
 	<!-- <td class="property-table-data-posted" data-label="Posted">
 		March 9, 2019<br>
-		 6:46 pm
 	</td>
 	<td class="property-table-date-expire" data-label="Expire">
 		June 9, 2019<br> 
-		 6:46 pm
 	</td> -->
 	<td class="property-table-actions" data-label="Actions">
 		<div class="dropdown property-action-menu">
-			<button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<button 
+      id="dropdownMenuButton"
+      class="btn btn-primary-outlined dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Actions
 			</button>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">

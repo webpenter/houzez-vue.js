@@ -1,5 +1,7 @@
 <template>
-  <HeroSection searchType="parallax" />
+  <HeroSection 
+  searchType="parallax"
+   />
   <FeaturedListings />
   <Taxonomy />
   <LatestProperties />

@@ -1,6 +1,6 @@
 <template>
     
-<div class="property-schedule-tour-wrap property-schedule-tour-wrap-v2 property-section-wrap" id="property-schedule-tour-wrap-v2">
+<div id="property-schedule-tour-wrap-v2" class="property-schedule-tour-wrap property-schedule-tour-wrap-v2 property-section-wrap" >
 	<div class="block-wrap">
 		<div class="block-content-wrap">
 			
@@ -13,19 +13,6 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="property-schedule-tour-form-wrap">
 						<h2>Schedule a Tour</h2>
-
-						<!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
-							The field <strong>Name</strong> is empty.
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="alert alert-success alert-dismissible fade show" role="alert">
-							Your request has been submitted. An agent will get in touch with you.
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-							</button>
-						</div> -->
 						
 						<div class="property-schedule-tour-day-form">
 							<div class="tour-day-form-slide-arrow next">
@@ -188,4 +175,5 @@
 
 
 </template>
+
 <script setup></script>

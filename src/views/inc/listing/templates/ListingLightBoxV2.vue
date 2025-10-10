@@ -1,6 +1,8 @@
 <template>
     <div class="property-lightbox-v2">
-	<div class="modal fade" id="listing-lightbox-v2" tabindex="-1" role="dialog">
+	<div 
+  id="listing-lightbox-v2"
+  class="modal fade"  tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -240,7 +242,9 @@
 	                            <!-- <?php //include 'inc/property/property-sub-listings-table-block.php';?> -->
 							<!-- </div> -->
 							<div class="property-lightbox-v2-section clearfix">
-	                            <div class="property-sub-listings-wrap property-section-wrap" id="property-sub-listings-wrap">
+	                            <div 
+                              id="property-sub-listings-wrap"
+                              class="property-sub-listings-wrap property-section-wrap" >
 									<div class="block-wrap">
 										<div class="block-title-wrap">
 											<h2>Sub Listings</h2>
@@ -343,8 +347,6 @@ import PropertyFeaturesBlockWithCustomIcons from '../../property/PropertyFeature
 import PropertyFloorPlansBlock from '../../property/PropertyFloorPlansBlock.vue';
 import PropertyMortgageCalculatorBlockV2 from '../../property/PropertyMortgageCalculatorBlockV2.vue';
 import PropertyNearbyBlock from '../../property/PropertyNearbyBlock.vue';
-// import PropertyMortgageCalculatorBlock from '../../property/PropertyMortgageCalculatorBlock.vue';
-// import PropertyGalleryBlock from '../../property/PropertyGalleryBlock.vue';
 import PropertyOverviewBlockModalWindow from '../../property/PropertyOverviewBlockModalWindow.vue';
 import PropertyReviews from '../../property/PropertyReviews.vue';
 import PropertyScheduleATourBlockV2 from '../../property/PropertyScheduleATourBlockV2.vue';

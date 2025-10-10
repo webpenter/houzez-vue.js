@@ -1,6 +1,8 @@
 <template>
   
-<div class="modal fade reset-password-form" id="reset-password-form" tabindex="-1" role="dialog">
+<div
+id="reset-password-form"
+class="modal fade reset-password-form" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

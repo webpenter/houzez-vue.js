@@ -2,7 +2,8 @@
     <tr>
         <th class="table-nowrap" data-label="Title">
             <strong>{{$t('Apartment in Miami')}}</strong>
-            <a href="crm-lead-enquiries.php" class="board-message-icon-wrap ml-2 active" data-toggle="tooltip"
+            <a
+             href="crm-lead-enquiries.php" class="board-message-icon-wrap ml-2 active" data-toggle="tooltip"
                 data-placement="top" title="View conversation">
                 <i class="houzez-icon icon-messages-bubble"></i>
             </a>
@@ -50,12 +51,15 @@
         </td>
         <td class="table-nowrap">
             <div class="dropdown property-action-menu">
-                <button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton"
+                <button 
+                id="dropdownMenuButton"
+                class="btn btn-primary-outlined dropdown-toggle" type="button" 
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{$t('Actions')}}
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item open-close-slide-panel" href="#"
+                    <a 
+                    class="dropdown-item open-close-slide-panel" href="#"
                     @click.prevent="toggleModalAddNewDeal">{{$t('Edit')}}</a>
 
                     <!-- Modal -->
@@ -115,12 +119,15 @@
         </td>
         <td class="table-nowrap">
             <div class="dropdown property-action-menu">
-                <button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton"
+                <button
+                id="dropdownMenuButton"
+                 class="btn btn-primary-outlined dropdown-toggle" type="button" 
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{$t('Actions')}}
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item open-close-slide-panel" href="#"
+                    <a 
+                    class="dropdown-item open-close-slide-panel" href="#"
                         @click.prevent="toggleModalAddNewDeal">{{$t('Edit')}}</a>
 
                     <!-- Modal -->
@@ -138,7 +145,6 @@
 <script>
 // import { computed } from 'vue';
 import { useModelStore } from '@/stores';
-import AddNewDealPanel from './AddNewDealPanel.vue';
 export default {
     mounted() {
         $('.selectpicker').selectpicker();

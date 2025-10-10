@@ -1,10 +1,10 @@
 <template>
   <div class="form-group">
     <select
-      class="selectpicker form-control"
-      :title="$t('Max. Price')"
       v-model="selectedPrice"
       ref="selectRef"
+      class="selectpicker form-control"
+      :title="$t('Max. Price')"
       @change="emitPrice"
     >
       <option
@@ -21,8 +21,18 @@
 <script setup>
 import { ref, onMounted, watch, nextTick } from 'vue';
 import { usePrice } from '@/stores/index.js';
+import { useI18n } from 'vue-i18n';
 
-const props = defineProps(['modelValue']);
+const { t } = useI18n();
+
+// Define props with type
+const props = defineProps({
+  modelValue: {
+    type: [String, Number],
+    default: ''
+  }
+});
+
 const emit = defineEmits(['update:modelValue']);
 
 const selectedPrice = ref(props.modelValue);
@@ -36,18 +46,32 @@ const emitPrice = () => {
 };
 
 const formatPrice = (value) => {
-  if (value === "Any") return "Any";
-  return "$" + Number(value).toLocaleString();
+  if (value === 'Any') return t('Any');
+  return '$' + Number(value).toLocaleString();
+};
+
+// Refresh selectpicker safely
+const refreshSelectPicker = () => {
+  nextTick(() => {
+    if (selectRef.value && window.$) {
+      window.$(selectRef.value).selectpicker('refresh');
+    }
+  });
 };
 
 onMounted(() => {
-  $(selectRef.value).selectpicker('refresh');
+  refreshSelectPicker();
 });
 
 watch(priceOptions, () => {
-  nextTick(() => {
-    $(selectRef.value).selectpicker('refresh');
-  });
+  refreshSelectPicker();
 });
-</script>
 
+// Keep selectedPrice in sync with parent prop
+watch(
+  () => props.modelValue,
+  (newVal) => {
+    selectedPrice.value = newVal;
+  }
+);
+</script>

@@ -22,7 +22,9 @@
               <AgentCard v-for="agent in paginatedAgents" :key="agent.id" :data="agent" type="agent" />
             </template>
           </div><!-- listing-view -->
-          <Pagination :total-items="agents.length" :page-size="pageSize" v-model:current-page="currentPage" />
+          <Pagination
+          v-model:current-page="currentPage"
+          :total-items="agents.length" :page-size="pageSize"  />
         </div><!-- bt-content-wrap -->
         <div class="col-lg-4 col-md-12 bt-sidebar-wrap left-bt-sidebar-wrap">
           <AgentSearch type="agent"/>

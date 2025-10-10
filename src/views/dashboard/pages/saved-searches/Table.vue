@@ -30,9 +30,10 @@
         <td class="property-table-actions" data-label="Actions">
           <div class="dropdown property-action-menu">
             <button
+            id="dropdownMenuButton"
                 class="btn btn-primary-outlined dropdown-toggle"
                 type="button"
-                id="dropdownMenuButton"
+                
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
@@ -46,7 +47,11 @@
               >
                 View
               </router-link>
-              <a class="dropdown-item" @click.prevent="$emit('deleteSearch', search.id)" href="#">
+              <a  
+               href="#" 
+               class="dropdown-item"
+              @click.prevent="$emit('deleteSearch', search.id)"
+              >
                 Delete
               </a>
             </div>

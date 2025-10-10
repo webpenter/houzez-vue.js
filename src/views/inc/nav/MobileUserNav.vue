@@ -1,5 +1,7 @@
 <template>
-    <nav class="navi-user-mobile main-nav navbar slideout-menu slideout-menu-right" id="navi-user">
+    <nav 
+    id="navi-user"
+    class="navi-user-mobile main-nav navbar slideout-menu slideout-menu-right" >
 	<ul class="navbar-nav">
 		<li class="nav-item dropdown">
 			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">

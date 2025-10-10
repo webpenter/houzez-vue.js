@@ -33,7 +33,7 @@ import Chart from 'chart.js/auto';
 const topplatformsdoughnutchart = ref(null);
 onMounted(()=>{
 	const ctx = topplatformsdoughnutchart.value.getContext('2d');
-				var myDoughnutChart = new Chart(ctx, {
+				new Chart(ctx, {
 					type: 'doughnut',
 					data: {
 						datasets: [{

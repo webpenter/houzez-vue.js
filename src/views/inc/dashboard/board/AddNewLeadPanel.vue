@@ -85,7 +85,8 @@
 				<div class="col-md-12 col-sm-12">
 					<div class="form-group insight-search">
 						<label>Select</label>
-						<select v-model="Source" class="selectpicker form-control bs-select-hidden" title="Search"
+						<select 
+            v-model="Source" class="selectpicker form-control bs-select-hidden" title="Search"
 							data-live-search="true" data-selected-text-format="count" multiple data-actions-box="false">
 							<option>Apartment With Ocean View</option>
 							<option>Luxury Apartment On The Bay</option>

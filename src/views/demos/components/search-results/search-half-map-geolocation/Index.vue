@@ -4,8 +4,9 @@
       <div class="d-flex">
         <div class="flex-search flex-grow-1">
           <GeolocationField
-            :modelValue="formData.search"
+            
             @update:search="formData.search = $event"
+            :modelValue="formData.search"
           />
 
         </div>
@@ -15,7 +16,9 @@
 
       <div class="d-flex">
         <div class="flex-search">
-          <CitiesField :modelValue="formData.cities" @update:cities="formData.cities = $event" />
+          <CitiesField 
+          :modelValue="formData.cities" 
+          @update:cities="formData.cities = $event" />
         </div>
         <div class="flex-search">
           <TypeField :modelValue="formData.types" @update:types="formData.types = $event" />
@@ -44,7 +47,6 @@
 <script setup>
 import { reactive, onMounted, watch } from 'vue';
 import CitiesField from './CitiesField.vue';
-import DistanceRange from './DistanceRange.vue';
 import GeolocationField from './GeolocationField.vue';
 import TypeField from './TypeField.vue';
 import BedroomsField from './BedroomsField.vue';

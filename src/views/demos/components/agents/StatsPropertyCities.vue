@@ -21,7 +21,13 @@
 import { ref, onMounted } from 'vue';
 import { Chart, DoughnutController, ArcElement, Tooltip, Legend } from 'chart.js';
 
-const props = defineProps(['cities'])
+const props = defineProps({
+  cities: {
+    type: Array,
+    required: true,
+    default: () => []
+  }
+});
 
 Chart.register(DoughnutController, ArcElement, Tooltip, Legend);
 
@@ -35,13 +41,12 @@ const backgroundColors = [
   'rgba(75, 192, 192, 0.5)',
   'rgba(153, 102, 255, 0.5)',
   'rgba(255, 159, 64, 0.5)'
-]
+];
 
-const borderColors = backgroundColors.map(c => c.replace('0.5', '1'))
+const borderColors = backgroundColors.map(c => c.replace('0.5', '1'));
 
 onMounted(() => {
   const ctx = citiesChartCanvas.value.getContext('2d');
-
   const percentages = props.cities.map(c => c.percentage);
 
   new Chart(ctx, {
@@ -67,4 +72,5 @@ onMounted(() => {
   });
 });
 </script>
+
 

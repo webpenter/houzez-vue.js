@@ -32,8 +32,4 @@
     size_prefix: [String],
     type: String
     });
-
-    function formatArea(area) {
-    return new Intl.NumberFormat().format(area);
-    }
     </script>

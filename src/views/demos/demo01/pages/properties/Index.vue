@@ -8,7 +8,8 @@
                 <Map v-for="property in allProperties" :key="property.id" :property="property" :view="viewType" />
             </div><!-- half-map-left-wrap -->
             <div class="half-map-right-wrap">
-                <SearchHalfMapGeolocation @search="handleSearch" @reset="resetFilters"
+                <SearchHalfMapGeolocation 
+                @search="handleSearch" @reset="resetFilters"
                     @save-search="saveSearchResult" />
                 <div class="page-title-wrap">
                     <div class="d-flex align-items-center">
@@ -20,7 +21,8 @@
                                 <div class="sort-by-title">
                                     {{ $t('Sort by') }}:
                                 </div><!-- sort-by-title -->
-                                <select class="selectpicker form-control bs-select-hidden" title="Default Order"
+                                <select
+                                 class="selectpicker form-control bs-select-hidden" title="Default Order"
                                     data-live-search="false" data-dropdown-align-right="auto">
                                     <option>{{ $t('Default Order') }}</option>
                                     <option>{{ $t('Price - High to Low') }}</option>
@@ -34,13 +36,15 @@
                         <div class="listing-switch-view">
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <a class="switch-btn btn-list" :class="{ active: viewType === 'list' }" href="#"
+                                    <a 
+                                    class="switch-btn btn-list" :class="{ active: viewType === 'list' }" href="#"
                                         @click.prevent="viewType = 'list'">
                                         <i class="houzez-icon icon-layout-bullets"></i>
                                     </a>
                                 </li>
                                 <li class="list-inline-item">
-                                    <a class="switch-btn btn-grid" :class="{ active: viewType === 'grid' }" href="#"
+                                    <a 
+                                    class="switch-btn btn-grid" :class="{ active: viewType === 'grid' }" href="#"
                                         @click.prevent="viewType = 'grid'">
                                         <i class="houzez-icon icon-layout-module-1"></i>
                                     </a>
@@ -51,12 +55,15 @@
                     </div><!-- d-flex -->
                 </div><!-- page-title-wrap -->
                 <div class="listing-view" :class="viewType + '-view'">
-                    <ListItem v-for="property in paginatedProperties" :key="property.id" :property="property"
+                    <ListItem
+                     v-for="property in paginatedProperties" :key="property.id" :property="property"
                         class="item-listing-wrap card" :view="viewType" />
                 </div><!-- listing-view -->
                 <!-- <?php include 'inc/listing/pagination.php';?> -->
-                <Pagination :total-items="filteredProperties.length" :page-size="pageSize" :current-page="currentPage"
-                    @update:currentPage="updatePage" />
+                <Pagination 
+                :total-items="filteredProperties.length" :page-size="pageSize" :current-page="currentPage"
+                    @update:currentPage="updatePage"
+                     />
             </div><!-- half-map-right-wrap -->
         </section><!-- half-map-wrap -->
     </template>
@@ -65,18 +72,13 @@
 import { computed, onMounted, ref, watch } from "vue";
 import {
     useAppPropertyDemo01,
-    useBedroom,
-    useCity,
     useNotification,
-    usePrice,
     useSavedSearch, useToken,
-    useType,
     useViewMode
 } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
-import { RouterLink, useRoute, useRouter } from "vue-router";
+import {  useRoute, useRouter } from "vue-router";
 import ListItem from "@/views/demos/components/home/featured-listings/ListItem.vue";
-import NoDataFound from "@/views/app/components/NoDataFound.vue";
 import SearchHalfMapGeolocation from '@/views/demos/components/search-results/search-half-map-geolocation/Index.vue';
 import Map from '@/views/demos/components/search-results/map/Index.vue';
 import SearchSkeleton from '@/components/skeleton/SearchSkeleton.vue';
@@ -87,7 +89,6 @@ const token = useToken().getToken;
 const router = useRouter();
 const route = useRoute();
 
-const isFeatured = computed(() => route.query.featured === 'true');
 
 const viewType = ref('list')
 const loading = ref(false);
@@ -129,19 +130,7 @@ const updatePage = (page) => {
 };
 
 const saveSearchStore = useSavedSearch();
-const { checkSearchSaved } = storeToRefs(saveSearchStore);
 
-const { types } = storeToRefs(useType());
-const { cities } = storeToRefs(useCity());
-const { prices } = storeToRefs(usePrice());
-const { bedrooms } = storeToRefs(useBedroom());
-
-const noAuthDialog = ref(false)
-
-const showLoginPage = () => {
-    router.push({ name: 'auth' });
-    noAuthDialog.value = false;
-}
 
 const formData = ref({
     search: route.query.search || "",
@@ -223,7 +212,7 @@ const saveSearchResult = async () => {
             useNotification().Error("An error occurred.");
         }
     } catch (error) {
-        useNotification().Error("Failed to save search!");
+        useNotification().Error("Failed to save search!", error);
     }
 };
 

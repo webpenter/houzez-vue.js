@@ -7,7 +7,7 @@
 	</div><!-- widget-header -->
 	<div class="widget-body">
         <RecentlyViewed
-			v-for="(property, index) in recentlyViewed"
+			v-for="(property) in recentlyViewed"
 			:key="property.id"
 			:property="property"
 		/>

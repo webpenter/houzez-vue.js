@@ -14,20 +14,32 @@
           <form @submit.prevent="submitStripeForm">
             <div class="form-group">
               <label>Stripe Public Key</label>
-              <input type="text" v-model="stripe.stripe_public_key.value" class="form-control"
-                placeholder="Enter Stripe Public Key" />
+              <input
+                v-model="stripe.stripe_public_key.value"
+                type="text"
+                class="form-control"
+                placeholder="Enter Stripe Public Key"
+              />
             </div>
 
             <div class="form-group mt-3">
               <label>Stripe Private Key</label>
-              <input type="text" v-model="stripe.stripe_private_key.value" class="form-control"
-                placeholder="Enter Stripe Private Key" />
+              <input
+                v-model="stripe.stripe_private_key.value"
+                type="text"
+                class="form-control"
+                placeholder="Enter Stripe Private Key"
+              />
             </div>
 
             <div class="form-group mt-3">
               <label>Currency</label>
-              <input type="text" v-model="stripe.currency.value" class="form-control"
-                placeholder="e.g. USD, PKR, EUR" />
+              <input
+                v-model="stripe.currency.value"
+                type="text"
+                class="form-control"
+                placeholder="e.g. USD, PKR, EUR"
+              />
             </div>
 
             <button class="btn btn-success mt-3">Update Stripe Settings</button>
@@ -53,20 +65,28 @@ const stripe = ref({
 
 const loading = ref(true);
 
+/**
+ * Submit updated Stripe configuration
+ * @return {Promise<void>}
+ */
 const submitStripeForm = async () => {
   try {
     await settingStore.updateStripeSettings(stripe.value);
     notify.Success("Stripe settings updated successfully!");
-  } catch (err) {
+  } catch {
     notify.Error("Failed to update Stripe settings");
   }
 };
 
+/**
+ * Fetch existing Stripe settings on mount
+ * @return {Promise<void>}
+ */
 onMounted(async () => {
   try {
     const res = await settingStore.getStripeSettings();
     stripe.value = { ...stripe.value, ...res.data.stripe };
-  } catch (err) {
+  } catch {
     notify.Error("Failed to fetch Stripe settings");
   } finally {
     loading.value = false;

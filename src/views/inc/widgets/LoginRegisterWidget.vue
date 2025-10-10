@@ -17,11 +17,15 @@
 			</ul>    
 		</div><!-- login-register-tabs -->
 		<div class="tab-content">
-			<div class="tab-pane fade show active" id="widget-login-form-tab" role="tabpanel">
+			<div 
+      id="widget-login-form-tab"
+      class="tab-pane fade show active"  role="tabpanel">
 				<LoginForm />
 				
 			</div><!-- login-form-tab -->
-			<div class="tab-pane fade" id="widget-register-form-tab" role="tabpanel">
+			<div 
+      id="widget-register-form-tab"
+      class="tab-pane fade"  role="tabpanel">
 				<RegisterForm />
 				
 			</div><!-- register-form-tab -->

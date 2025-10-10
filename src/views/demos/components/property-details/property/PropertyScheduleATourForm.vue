@@ -2,8 +2,10 @@
 	<div class="property-schedule-tour-form-wrap">
 		<!-- Agent Info -->
 		<div class="agent-details">
-			<div class="d-flex align-items-center mb-3" v-for="(agent, index) in property.agents"
-				:key="agent.id || index">
+			<div 
+      v-for="(agent, index) in property.agents"
+				:key="agent.id || index"
+      class="d-flex align-items-center mb-3" >
 				<AgentImage :agent="agent" />
 				<AgentInformation :agent="agent" />
 			</div>
@@ -34,12 +36,16 @@
 			</div>
 			<div class="property-schedule-tour-day-form-slide-wrap">
 				<div class="property-schedule-tour-day-form-slide start" :style="slideStyle">
-					<div class="form-group" v-for="(day, index) in days" :key="index"
+					<div
+          v-for="(day, index) in days" :key="index"
+           class="form-group" 
 						@click="selectedDate = day.fullDate">
 						<label class="control control--radio">
-							<input type="radio"
+							<input 
+              type="radio"
 								:checked="selectedDate.toDateString() === day.fullDate.toDateString()" />
-							<span class="control__indicator"
+							<span 
+              class="control__indicator"
 								:class="{ active: selectedDate.toDateString() === day.fullDate.toDateString() }">
 								{{ day.dayName }}<br />
 								<span class="control__indicator_day">{{ day.dayNumber }}</span><br />
@@ -56,13 +62,13 @@
 		<div class="property-schedule-tour-type-form d-flex justify-content-between">
 			<div class="form-group">
 				<label class="control control--radio">
-					<input type="radio" value="In Person" v-model="form.tour_type" />
+					<input v-model="form.tour_type" type="radio" value="In Person"  />
 					<span class="control__indicator">In Person</span>
 				</label>
 			</div>
 			<div class="form-group">
 				<label class="control control--radio">
-					<input type="radio" value="Video Call" v-model="form.tour_type" />
+					<input v-model="form.tour_type" type="radio" value="Video Call"  />
 					<span class="control__indicator">Video Call</span>
 				</label>
 			</div>
@@ -70,33 +76,40 @@
 
 		<!-- Time Input -->
 		<div class="form-group">
-			<input type="time" class="form-control" v-model="form.time" :class="{ 'is-invalid': errors.time }" />
+			<input v-model="form.time" type="time" class="form-control"  :class="{ 'is-invalid': errors.time }" />
 		</div>
 
 		<!-- Form Inputs -->
 		<div class="form-group">
-			<input class="form-control" name="name" placeholder="Name" type="text" v-model="form.name"
+			<input 
+      class="form-control" name="name" placeholder="Name" type="text" v-model="form.name"
 				:class="{ 'is-invalid': errors.name }" />
 		</div>
 		<div class="form-group">
-			<input class="form-control" name="phone" placeholder="Phone" type="text" v-model="form.phone"
+			<input 
+      class="form-control" name="phone" placeholder="Phone" type="text" v-model="form.phone"
 				:class="{ 'is-invalid': errors.phone }" />
 		</div>
 		<div class="form-group">
-			<input class="form-control" name="email" placeholder="Email" type="email" v-model="form.email"
+			<input
+       class="form-control" name="email" placeholder="Email" type="email" v-model="form.email"
 				:class="{ 'is-invalid': errors.email }" />
 		</div>
 
 		<!-- Message Textarea -->
 		<div class="form-group form-group-textarea">
-			<textarea class="form-control" name="message" rows="5" placeholder="Message"
-				v-model="form.message"></textarea>
+			<textarea 
+      v-model="form.message"
+      class="form-control" name="message" rows="5" placeholder="Message"
+				></textarea>
 		</div>
 
 		<!-- Terms -->
 		<div class="form-group form-group-terms">
 			<label class="control control--checkbox">
-				<input type="checkbox" v-model="form.agreeTerms" />
+				<input
+         v-model="form.agreeTerms" 
+        type="checkbox"/>
 				By submitting this form I agree to <a href="#">Terms of Use</a>
 				<span class="control__indicator"></span>
 			</label>

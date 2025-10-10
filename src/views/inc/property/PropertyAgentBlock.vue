@@ -1,5 +1,7 @@
 <template>
-    <div class="property-contact-agent-wrap property-section-wrap" id="property-contact-agent-wrap">
+    <div 
+    id="property-contact-agent-wrap"
+    class="property-contact-agent-wrap property-section-wrap" >
 	<div class="block-wrap">
 		<div class="block-title-wrap d-flex justify-content-between align-items-center">
 			<h2>Contact Information</h2>

@@ -1,8 +1,8 @@
 <template>
   <!-- Show this section only if still loading OR we have latest properties -->
   <section
-    class="content-wrap"
     v-if="loading || latestProperties?.length"
+    class="content-wrap"
   >
     <div class="container">
       <div class="row">
@@ -27,6 +27,11 @@ import { ref, onMounted } from "vue";
 
 import FineProperty from "./FineProperty.vue";
 
+// Give component a multi-word name to satisfy ESLint
+defineOptions({
+  name: 'FinestPropertiesIndex'
+});
+
 const propertyStore = useAppPropertyDemo01();
 const { latestProperties } = storeToRefs(propertyStore);
 
@@ -37,10 +42,11 @@ const fetchLatestProperties = async () => {
   try {
     const res = await propertyStore.getLatestPropertiesDemo01();
     if (res.status !== 200) {
+      // Use console.warn instead of console.error or replace with notification if you want
       console.warn("Unexpected response status:", res.status);
     }
   } catch (err) {
-    console.error("Failed to fetch latest properties:", err);
+    console.warn("Failed to fetch latest properties:", err);
   } finally {
     loading.value = false;
   }

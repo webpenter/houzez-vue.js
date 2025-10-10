@@ -13,18 +13,6 @@
         <BlogPostsWidget />
         <LoggedInWidget />
         <LoginRegisterWidget />
-	
-	<!-- <?php //include 'inc/widgets/twitter-slider-widget.php';?>
-	<?php //include 'inc/widgets/twitter-widget.php';?>
-	<?php //include 'inc/widgets/facebook-widget.php';?>
-	<?php //include 'inc/widgets/instagram-slider-widget.php';?>
-	<?php //include 'inc/widgets/instagram-widget.php';?>
-	<?php //include 'inc/widgets/flickr-widget.php';?>
-	<?php //include 'inc/widgets/image-ad-widget.php';?>
-	<?php //include 'inc/widgets/contact-us-widget.php';?>
-	<?php //include 'inc/widgets/agent-search-widget.php';?> 
-	<?php //include 'inc/widgets/agency-search-widget.php';?> 
-	<?php //include 'inc/widgets/about-site-widget.php';?>  -->
 </aside><!-- sidebar-wrap -->
 </template>
 <script setup>

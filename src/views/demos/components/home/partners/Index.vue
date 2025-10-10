@@ -1,5 +1,8 @@
 <template>
-  <section class="content-wrap" v-if="partners.length > 0">
+  <section
+    v-if="partners.length > 0"
+    class="content-wrap"
+  >
     <div class="container">
       <div class="row">
         <div class="col-12"> 
@@ -16,6 +19,11 @@
 import Partner from './Partner.vue';
 import { usePartners } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
+
+// Multi-word component name to satisfy ESLint
+defineOptions({
+  name: 'HomePartnersIndex'
+});
 
 const partnerStore = usePartners();
 const { partners } = storeToRefs(partnerStore);

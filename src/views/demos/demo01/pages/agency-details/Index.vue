@@ -13,7 +13,8 @@
                             <div class="agent-image">
                                 <div class="agent-company-logo">
                                 </div>
-                                <img class="img-fluid" :src="agency.profile || defaultAvatar" alt="Agency"
+                                <img 
+                                class="img-fluid" :src="agency.profile || defaultAvatar" alt="Agency"
                                     style="height: 300px;" @error="event => event.target.src = defaultAvatar" />
                             </div><!-- agent-image -->
                         </div><!-- col-lg-4 col-md-4 col-sm-12 -->
@@ -52,11 +53,14 @@
                                 </ul>
                             </div><!-- agent-profile-content -->
                             <div class="agent-profile-buttons">
-                                <button class="btn btn-secondary" data-toggle="modal"
+                                <button
+                                 class="btn btn-secondary" data-toggle="modal"
                                     data-target="#mobile-property-form">
                                     {{ $t('Send Email') }}
                                 </button>
-                                <button v-if="agency.phone" type="button" class="btn btn-call"
+                                <button 
+                                v-if="agency.phone" 
+                                type="button" class="btn btn-call"
                                     @click="triggerCall(agency.phone)">
                                     <span class="hide-on-click">{{ $t('Call') }}</span>
                                     <span class="show-on-click">{{ agency.phone || null }}</span>
@@ -86,7 +90,10 @@
                         <div class="agent-bio-wrap">
                             <h2 v-if="agency.about_me">{{ $t('About') }} {{ agency.name }}</h2>
                             <p>{{ agency.about_me || null }}</p>
-                            <p class="mt-3" v-if="agency.languages"><i
+                            <p 
+                            v-if="agency.languages"
+                            class="mt-3"
+                             ><i
                                     class="houzez-icon icon-messages-bubble mr-1"></i>
                                 <strong>{{ $t('Languages') }} :</strong>
                                 {{ agency.languages }}
@@ -113,24 +120,27 @@
                             </ul>
                         </div><!-- agent-nav-wrap -->
 
-                        <div class="tab-content" id="tab-content">
-                            <div class="tab-pane fade show active" id="tab-properties">
+                        <div id="tab-content" class="tab-content">
+                            <div id="tab-properties" class="tab-pane fade show active" >
                                 <div class="listing-tools-wrap mb-3">
                                     <div class="d-flex align-items-center">
                                         <div class="listing-tabs flex-grow-1">
                                             <ul class="nav nav-tabs" style="justify-content: none;">
                                                 <li class="nav-item">
-                                                    <a class="nav-link" :class="{ active: activeFilter === 'All' }"
+                                                    <a 
+                                                    class="nav-link" :class="{ active: activeFilter === 'All' }"
                                                         href="#" @click.prevent="filterProperties('All')">{{ $t('All')
                                                         }}</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" :class="{ active: activeFilter === 'For Sale' }"
+                                                    <a 
+                                                    class="nav-link" :class="{ active: activeFilter === 'For Sale' }"
                                                         href="#" @click.prevent="filterProperties('For Sale')">{{
                                                         $t('For Sale') }}</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" :class="{ active: activeFilter === 'For Rent' }"
+                                                    <a 
+                                                    class="nav-link" :class="{ active: activeFilter === 'For Rent' }"
                                                         href="#" @click.prevent="filterProperties('For Rent')">{{
                                                         $t('For Rent') }}</a>
                                                 </li>
@@ -139,33 +149,21 @@
                                         </div><!-- listing-tabs -->
                                         <div class="sort-by mr-3">
                                             <div class="d-flex align-items-center">
-                                                <!-- <div class="sort-by-title">
-                                                    Sort by:
-                                                </div>
-                                                <select class="selectpicker form-control bs-select-hidden"
-                                                    title="Default Order" data-live-search="false"
-                                                    data-dropdown-align-right="auto">
-                                                    <option>Default Order</option>
-                                                    <option>Price - Hight to Low</option>
-                                                    <option>Price - Low to Hight</option>
-                                                    <option>Featured First</option>
-                                                    <option>Date - New to Old</option>
-                                                    <option>Date - Old to New</option>
-                                                </select> -->
-                                                <!-- selectpicker -->
                                             </div><!-- d-flex -->
                                         </div><!-- sort-by -->
                                         <div class="listing-switch-view">
                                             <ul class="list-inline">
                                                 <li class="list-inline-item">
-                                                    <a class="switch-btn btn-grid"
+                                                    <a 
+                                                    class="switch-btn btn-grid"
                                                         :class="{ active: viewType === 'grid' }" href=""
                                                         @click.prevent="viewType = 'grid'">
                                                         <i class="houzez-icon icon-layout-module-1"></i>
                                                     </a>
                                                 </li>
                                                 <li class="list-inline-item">
-                                                    <a class="switch-btn btn-list"
+                                                    <a 
+                                                    class="switch-btn btn-list"
                                                         :class="{ active: viewType === 'list' }" href=""
                                                         @click.prevent="viewType = 'list'">
                                                         <i class="houzez-icon icon-layout-bullets"></i>
@@ -178,23 +176,33 @@
                                     </div><!-- d-flex -->
                                 </div><!-- listing-tools-wrap -->
                                 <div v-if="paginatedProperties.length" class="listing-view" :class="viewType + '-view'">
-                                    <PropertyCard v-for="property in paginatedProperties" :key="property.id"
+                                    <PropertyCard 
+                                    v-for="property in paginatedProperties" :key="property.id"
                                         :property="property" />
                                 </div>
                                 <div v-else class="text-center mt-3">{{ $t('No properties found.') }}</div>
                                 <!-- listing-view -->
-                                <Pagination :total-items="filteredProperties.length" :page-size="pageSize"
-                                    v-model:currentPage="currentPage" />
+                                <Pagination 
+                                v-model:currentPage="currentPage" 
+                                :total-items="filteredProperties.length" :page-size="pageSize"
+                                    
+                                    />
                             </div><!-- tab-pane -->
-                            <div class="tab-pane fade" id="tab-agents">
+                            <div
+                            id="tab-agents"
+                            class="tab-pane fade" >
                                 <div v-if="agency.agents.length">
-                                    <AgentCard v-for="agent in agency.agents" :key="agent.id" :data="agent"
+                                    <AgentCard 
+                                    v-for="agent in agency.agents" :key="agent.id" :data="agent"
                                         type="agent" />
                                 </div>
                                 <div v-else class="text-center mt-3">{{ $t('No agents found.') }}</div>
                             </div><!-- tab-pane -->
-                            <div class="tab-pane fade" id="tab-reviews">
-                                <AgencyReviews :reviews="agencyStore.reviews?.data || []" :agency="agency"
+                            <div 
+                             id="tab-reviews"
+                            class="tab-pane fade">
+                                <AgencyReviews 
+                                :reviews="agencyStore.reviews?.data || []" :agency="agency"
                                     @updateAverageRating="handleAverageRating" />
                             </div><!-- tab-pane -->
                         </div><!-- tab-content -->

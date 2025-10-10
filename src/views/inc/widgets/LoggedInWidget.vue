@@ -6,7 +6,9 @@
 			</h3><!-- widget-title -->
 		</div><!-- widget-header -->
 		<div class="widget-body">
-			<ul class="collapse" id="collapseExample" aria-expanded="false">
+			<ul
+      id="collapseExample"
+      class="collapse" aria-expanded="false">
 				<li><a href="#">Taxonomy <span>(32)</span></a></li>
 				<li><a href="#">Taxonomy <span>(32)</span></a></li>
 				<li><a href="#">Taxonomy <span>(32)</span></a></li>
@@ -34,6 +36,10 @@
     </div><!-- widget-taxonomy -->
 </template>
 
+<script setup>
+
+</script>
+
 <style scoped>
 	#widget-list-more-01 .collapse:not(.show) {
 		display: block;
@@ -58,7 +64,3 @@
 		content: '- Show Less';
 	}
 </style>
-
-<script setup>
-
-</script>

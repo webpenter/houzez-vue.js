@@ -1,5 +1,6 @@
 <template>
-  <HeroSection searchType="advanced" />
+  <HeroSection 
+  searchType="advanced" />
   <FeaturedListings />
   <Taxonomy />
   <LatestProperties />

@@ -4,28 +4,36 @@
 		<template v-for="route in routes" :key="route.id">
 			<li class="side-menu-item" :class="{ 'side-menu-parent-selected': route.sub.length > 0 }">
 				<template v-if="route.name == 'dashboard.crm'">
-					<RouterLink :to="{ name: route.name }" active-class="active"
+					<RouterLink 
+          :to="{ name: route.name }"
+           active-class="active"
 						@click.prevent="isOpenBoard = !isOpenBoard">
 						<i class="houzez-icon mr-2" :class="route.icon"></i>
 						{{ route.title }}
 					</RouterLink>
 				</template>
 				<template v-else-if="route.name == 'dashboard.my-properties'">
-					<RouterLink :to="{ name: route.name }" active-class="active"
+					<RouterLink 
+          :to="{ name: route.name }"
+           active-class="active"
 						@click.prevent="isOpenProperties = !isOpenProperties">
 						<i class="houzez-icon mr-2" :class="route.icon"></i>
 						{{ route.title }}
 					</RouterLink>
 				</template>
 				<template v-else-if="route.name == 'dashboard.settings.general'">
-					<RouterLink v-show="admin" :to="{ name: route.name }" active-class="active"
+					<RouterLink 
+          v-show="admin" 
+          :to="{ name: route.name }" active-class="active"
 						@click.prevent="isOpenSettings = !isOpenSettings">
 						<i class="houzez-icon mr-2" :class="route.icon"></i>
 						{{ route.title }}
 					</RouterLink>
 				</template>
 				<template v-else-if="route.name == 'dashboard.admin.users'">
-					<RouterLink v-show="admin" :to="{ name: route.name }" active-class="active"
+					<RouterLink
+           v-show="admin"
+            :to="{ name: route.name }" active-class="active"
 						@click.prevent="isOpenAdmin = !isOpenAdmin">
 						<i class="houzez-icon mr-2" :class="route.icon"></i>
 						{{ route.title }}
@@ -38,7 +46,10 @@
 					</RouterLink>
 				</template>
 				<template v-if="route.name == 'dashboard.crm'">
-					<ul class="side-menu-dropdown list-unstyled" v-show="isOpenBoard">
+					<ul 
+           v-show="isOpenBoard"
+          class="side-menu-dropdown list-unstyled" 
+         >
 						<template v-for="sub_route in route.sub" :key="sub_route.id">
 							<li class="side-menu-item">
 								<RouterLink :to="{ name: sub_route.name }" active-class="active">
@@ -50,7 +61,9 @@
 					</ul>
 				</template>
 				<template v-if="route.name == 'dashboard.my-properties'">
-					<ul class="side-menu-dropdown list-unstyled" v-show="isOpenProperties">
+					<ul
+           v-show="isOpenProperties"
+          class="side-menu-dropdown list-unstyled">
 						<template v-for="sub_route in route.sub" :key="sub_route.id">
 							<li class="side-menu-item">
 								<RouterLink :to="{ name: sub_route.name }" active-class="active">
@@ -62,7 +75,9 @@
 					</ul>
 				</template>
 				<template v-if="route.name == 'dashboard.settings.general'">
-					<ul class="side-menu-dropdown list-unstyled" v-show="isOpenSettings">
+					<ul 
+          v-show="isOpenSettings"
+          class="side-menu-dropdown list-unstyled">
 						<template v-for="sub_route in route.sub" :key="sub_route.id">
 							<li class="side-menu-item">
 								<RouterLink :to="{ name: sub_route.name }" active-class="active">
@@ -74,7 +89,9 @@
 					</ul>
 				</template>
 				<template v-if="route.name == 'dashboard.admin.users'">
-					<ul class="side-menu-dropdown list-unstyled" v-show="isOpenAdmin">
+					<ul 
+          v-show="isOpenAdmin"
+          class="side-menu-dropdown list-unstyled" >
 						<template v-for="sub_route in route.sub" :key="sub_route.id">
 							<li class="side-menu-item">
 								<RouterLink :to="{ name: sub_route.name }" active-class="active">

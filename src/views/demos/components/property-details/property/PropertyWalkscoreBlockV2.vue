@@ -1,6 +1,8 @@
 <template>
-    <div class="property-walkscore-wrap property-walkscore-wrap-v2 property-section-wrap"
-        id="property-walkscore-wrap-v2">
+    <div 
+    id="property-walkscore-wrap-v2"
+    class="property-walkscore-wrap property-walkscore-wrap-v2 property-section-wrap"
+        >
         <div class="block-title-wrap d-flex justify-content-between align-items-center">
             <h2>Walking and Transportation</h2>
             <div class="walkscore-logo-title">

@@ -20,7 +20,8 @@
                                         <PropertyTools :property="property" />
                                     </div><!-- mobile-property-tools -->
                                     <div class="mobile-property-title clearfix">
-                                        <span v-if="property?.is_featured"
+                                        <span 
+                                        v-if="property?.is_featured"
                                             class="label-featured label">Featured</span><!-- label-featured -->
                                         <div class="page-title">
                                             <h1>{{ property?.title || 'Untitled Property' }}</h1>
@@ -58,15 +59,20 @@
                             <!-- <PropertySubListingsBlock :property="property" /> not similiar to provided demo01 -->
                             <PropertyEnergyClassBlock :property="property" />
                             <PropertyFeaturesBlockWithCustomIcons v-if="property.property_feature && property.property_feature.length" :property="property" />
-                            <PropertyFloorPlansBlock v-if="property.floorplans && property.floorplans.length"
+                            <PropertyFloorPlansBlock
+                             v-if="property.floorplans && property.floorplans.length"
                                 :floorplans="property.floorplans" :price-prefix="property.price_prefix"
                                 :size-prefix="property.size_prefix" />
                             <!-- <PropertyWalkscoreBlock />   -->
                             <!-- <PropertyWalkscoreBlockV2 /> -->
                             <!-- <PropertyNearbyBlock /> -->
-                            <PropertyVideoBlock v-if="property.video_url" :iframeCode="property.video_url" />
+                            <PropertyVideoBlock 
+                            v-if="property.video_url"
+                             :iframeCode="property.video_url" 
+                             />
                             <PropertyScheduleATourBlock :property-id="property.id" />
-                            <PropertyVirtualTourBlock v-if="property.virtual_tour"
+                            <PropertyVirtualTourBlock 
+                            v-if="property.virtual_tour"
                                 :iframeCode="property.virtual_tour" />
                             <!-- <PropertyAvailabilityCalendarBlock /> -->
                             <!-- <PropertyAgentBlock :property="property" /> -->
@@ -94,30 +100,20 @@ import PropertyBannerV1 from '@/views/demos/components/property-details/property
 import BannerNav from '@/views/demos/components/property-details/property-banner-v1/BannerNav.vue';
 import PropertyTools from '@/views/demos/components/property-details/property-title-block/PropertyTools.vue';
 import Sidebar from '@/views/demos/components/property-details/sidebar/Index.vue';
-import PropertyOverviewBlockV1 from '@/views/demos/components/property-details/property/PropertyOverviewBlockV1.vue';
 import PropertyOverviewBlock from '@/views/demos/components/property-details/property/PropertyOverviewBlock.vue';
 import PropertyDescriptionBlock from '@/views/demos/components/property-details/property/PropertyDescriptionBlock.vue';
 import PropertyScheduleATourBlockV2 from '@/views/demos/components/property-details/property/PropertyScheduleATourBlockV2.vue';
 import PropertyGalleryBlock from '@/views/demos/components/property-details/property/PropertyGalleryBlock.vue';
 import PropertyAddressBlock from '@/views/demos/components/property-details/property/PropertyAddressBlock.vue';
 import PropertyDetailBlock from '@/views/demos/components/property-details/property/PropertyDetailBlock.vue';
-import PropertyMortgageCalculatorBlock from '@/views/demos/components/property-details/property/PropertyMortgageCalculatorBlock.vue';
 import PropertySubListingsTableBlock from '@/views/demos/components/property-details/property/PropertySubListingsTableBlock.vue';
-import PropertySubListingsBlock from '@/views/demos/components/property-details/property/PropertySubListingsBlock.vue';
 import PropertyEnergyClassBlock from '@/views/demos/components/property-details/property/PropertyEnergyClassBlock.vue';
 import PropertyFeaturesBlockWithCustomIcons from '@/views/demos/components/property-details/property/PropertyFeaturesBlockWithCustomIcons.vue';
 import PropertyFloorPlansBlock from '@/views/demos/components/property-details/property/PropertyFloorPlansBlock.vue';
-import PropertyWalkscoreBlock from '@/views/demos/components/property-details/property/PropertyWalkscoreBlock.vue';
-import PropertyWalkscoreBlockV2 from '@/views/demos/components/property-details/property/PropertyWalkscoreBlockV2.vue';
-import PropertyNearbyBlock from '@/views/demos/components/property-details/property/PropertyNearbyBlock.vue';
 import PropertyVideoBlock from '@/views/demos/components/property-details/property/PropertyVideoBlock.vue';
 import PropertyScheduleATourBlock from '@/views/demos/components/property-details/property/PropertyScheduleATourBlock.vue';
 import PropertyVirtualTourBlock from '@/views/demos/components/property-details/property/PropertyVirtualTourBlock.vue';
-import PropertyAvailabilityCalendarBlock from '@/views/demos/components/property-details/property/PropertyAvailabilityCalendarBlock.vue';
-import PropertyAgentBlock from '@/views/demos/components/property-details/property/PropertyAgentBlock.vue';
 import PropertyReviews from '@/views/demos/components/property-details/property/PropertyReviews.vue';
-import PropertySimilarProperties from '@/views/demos/components/property-details/property/SimilarProperties.vue';
-import PropertyNav from '@/views/demos/components/property-details/property/PropertyNav.vue';
 
 import PropertyDetailsSkeleton from '@/components/skeleton/PropertyDetailsSkeleton.vue';
 

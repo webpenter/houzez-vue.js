@@ -43,19 +43,24 @@
 <script setup>
 import Agent from './AgentCom.vue';
 import { onMounted, ref } from "vue";
-import { useAgent } from "@/stores/index.js";
+import { useAgent, useNotification } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
+
+defineOptions({
+  name: 'AgentsIndex'
+});
 
 const agentStore = useAgent();
 const { agents } = storeToRefs(agentStore);
 const loading = ref(true);
+const notify = useNotification();
 
 const getAgents = async () => {
   loading.value = true;
   try {
     await agentStore.getAllAgents();
   } catch (err) {
-    console.error("Failed to fetch agents:", err);
+    notify.Error("Failed to fetch agents");
   } finally {
     loading.value = false;
   }
@@ -63,3 +68,4 @@ const getAgents = async () => {
 
 onMounted(() => getAgents());
 </script>
+

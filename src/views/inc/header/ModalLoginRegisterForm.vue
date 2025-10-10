@@ -1,6 +1,8 @@
 <template>
 
-<div class="modal fade login-register-form" id="login-register-form" tabindex="-1" role="dialog">
+<div 
+id="login-register-form"
+class="modal fade login-register-form" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -20,10 +22,14 @@
             </div><!-- modal-header -->
             <div class="modal-body">
                 <div class="tab-content">
-                    <div class="tab-pane fade login-form-tab" id="login-form-tab" role="tabpanel">
+                    <div 
+                    id="login-form-tab"
+                    class="tab-pane fade login-form-tab" role="tabpanel">
                        <LoginForm/>
                     </div><!-- login-form-tab -->
-                    <div class="tab-pane fade register-form-tab" id="register-form-tab" role="tabpanel">
+                    <div 
+                    id="register-form-tab"
+                    class="tab-pane fade register-form-tab"  role="tabpanel">
                         <RegisterForm/>
                     </div><!-- register-form-tab -->
                 </div><!-- tab-content -->

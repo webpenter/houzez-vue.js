@@ -55,18 +55,29 @@ import { onMounted, ref } from "vue";
 import FeaturedPropertiesSkeleton from '@/components/skeleton/FeaturedPropertiesSkeleton.vue';
 import PropertyCard from './ListItem.vue';
 
+defineOptions({
+  name: 'FeaturedListingsIndex'
+});
+
 const viewMode = useViewMode();
 const propertyToRefs = useAppPropertyDemo01();
 const { featuredProperties } = storeToRefs(propertyToRefs);
 const loading = ref(true);
 
 const fetchFeaturedProperties = async () => {
-loading.value = true;
-const res = await propertyToRefs.getFeaturedPropertiesDemo01();
-if (res.status === 200) {
-  loading.value = false;
-}
+  loading.value = true;
+  try {
+    const res = await propertyToRefs.getFeaturedPropertiesDemo01();
+    if (res.status !== 200) {
+      console.error("Failed to fetch featured properties");
+    }
+  } catch (err) {
+    console.error("Failed to fetch featured properties:", err);
+  } finally {
+    loading.value = false;
+  }
 };
 
 onMounted(() => fetchFeaturedProperties());
 </script>
+

@@ -5,9 +5,10 @@
         Sort by:
       </div>
       <select
-          v-model="selectedSort"
+       v-model="selectedSort"
+       class="form-control"
           @change="updateSort"
-          class="form-control">
+         >
         <option value="default">Default Order</option>
         <option value="price_high_low">Price - High to Low</option>
         <option value="price_low_high">Price - Low to High</option>
