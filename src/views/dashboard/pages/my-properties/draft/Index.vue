@@ -25,7 +25,7 @@
         <!-- /dashboard-property-search -->
 
         <!-- Property Table -->
-        <PropertyTable
+        <Table
           :dashboard-properties="dashboardProperties"
           :loading="loading"
           @delete-property="(id) => deleteProperty(id)"
@@ -54,7 +54,7 @@ import PropertySearch from "../components/PropertySearch.vue"
 import ListingSortBy from "../components/ListingSortBy.vue"
 import CreateListingBtn from "../components/CreateListingBtn.vue"
 import NoProperty from "../components/NoProperty.vue"
-import PropertyTable from "../components/PropertyTable.vue" // renamed from Table.vue
+import Table from "../components/Table.vue" // renamed from Table.vue
 
 import {
   getProperties,
