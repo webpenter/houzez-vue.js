@@ -463,6 +463,23 @@ const routes = [
                 component:() => import('@/views/dashboard/pages/settings/package/create-package/Index.vue'),
                 meta:{ title:'Create Package', admin: true }
             },
+
+            /***
+             * @route Dashboard/Email-Management
+             * 
+             ***/
+            {
+                path: '/dashboard/email-managements',
+                name:'dashboard.email-management.manage',
+                component:() => import('@/views/dashboard/pages/email-management/management/Index.vue'),
+                meta:{ title:'General Settings', admin: true }
+            },
+            {
+                path: '/dashboard/email-managements/all-template',
+                name:'dashboard.email-management.all-templates',
+                component:() => import('@/views/dashboard/pages/email-management/management/Index.vue'),
+                meta:{ title:'General Settings', admin: true }
+            },
             /***
              * @route Dashboard/Admin/Users
              * @route Dashboard/Admin/Subscribers

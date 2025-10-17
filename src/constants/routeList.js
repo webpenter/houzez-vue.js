@@ -107,6 +107,16 @@ export function getDashboardRoutes() {
 		},
 		{
 			id:12,
+			title:'Email Management',
+			name:'dashboard.email-management.manage',
+			icon:'icon-layout-dashboard',
+			sub:[
+				{id:1, title:'General', name:'dashboard.email-management.manage'},
+				{id:2, title:'All Templates', name:'dashboard.email-management.all-templates'},
+			]
+		},
+		{
+			id:13,
 			title:'Administration',
 			name:'dashboard.admin.users',
 			icon:'icon-single-neutral-circle',
