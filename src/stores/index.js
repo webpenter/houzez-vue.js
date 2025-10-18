@@ -57,3 +57,6 @@ export * from './others/testimonials.js';
 export * from './others/featuredView.js';
 export * from './others/partners.js';
 export * from './others/navigation.js';
+
+// ------------- Email Management Dir
+export * from './email-management/email-management.js'

@@ -472,13 +472,13 @@ const routes = [
                 path: '/dashboard/email-managements',
                 name:'dashboard.email-management.manage',
                 component:() => import('@/views/dashboard/pages/email-management/management/Index.vue'),
-                meta:{ title:'General Settings', admin: true }
+                meta:{ title:'Email Management', admin: true }
             },
             {
                 path: '/dashboard/email-managements/all-template',
                 name:'dashboard.email-management.all-templates',
-                component:() => import('@/views/dashboard/pages/email-management/management/Index.vue'),
-                meta:{ title:'General Settings', admin: true }
+                component:() => import('@/views/dashboard/pages/email-management/all-templates/index.vue'),
+                meta:{ title:'All Templates', admin: true }
             },
             /***
              * @route Dashboard/Admin/Users
