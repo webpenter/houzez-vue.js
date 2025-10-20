@@ -86,22 +86,16 @@ export const useProfile = defineStore("userProfile", {
          * @feature Fetch the authenticated user's profile picture from the server.
          * @returns {Promise<Object>} A promise that resolves with the server response containing the profile picture data.Rejects with the error response in case of failure.
          */
-        async getProfilePicture(){
+        async getProfilePicture() {
+        this.loading = true;
             try {
                 const res = await axiosInstance.get(`${this.baseUrl}/get-picture`);
-
-                this.setProfilePicture(res.data);
-
-                return new Promise(resolve => {
-                    return resolve(res);
-                })
-
+                this.profilePicture = res.data.profile_picture_url; // ✅ Correct
+                this.loading = false;
+                return res;
             } catch (error) {
-                this.errors = error.response;
-
-                return new Promise(reject => {
-                    return reject(error.response);
-                })
+                this.loading = false;
+                throw error;
             }
         },
 
