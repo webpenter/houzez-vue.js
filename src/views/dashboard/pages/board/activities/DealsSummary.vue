@@ -10,9 +10,9 @@
     <template v-else>
       <div class="row">
         <div
-            class="col-md-4 col-sm-4 col-4"
             v-for="(item, index) in dealsSummary"
             :key="index"
+            class="col-md-4 col-sm-4 col-4"
         >
           <div class="views-data-wrap">
             <div class="views-data">

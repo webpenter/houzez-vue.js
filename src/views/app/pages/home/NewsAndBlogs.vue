@@ -8,9 +8,9 @@
       <RouterLink :to="{name:'app'}" class="blogs-txt">{{ $t('View All Blogs') }} <i class="fa-solid fa-arrow-right"></i></RouterLink>
     </div>
 
-    <div class="news-slider" id="newsSlider">
+    <div id="newsSlider" class="news-slider">
       <!-- Skeleton Loader -->
-      <div class="news-card" v-if="loading" v-for="n in 5" :key="'skeleton-' + n">
+      <div v-for="n in 5" v-if="loading" :key="'skeleton-' + n" class="news-card">
         <div class="skeleton-img shimmer"></div>
         <div class="news-card-body">
           <div class="news-date">
@@ -22,7 +22,7 @@
       </div>
 
       <!-- Actual Blogs -->
-      <div class="news-card" v-else v-for="(blog, index) in appBlogs" :key="index">
+      <div v-for="(blog, index) in appBlogs" v-else :key="index" class="news-card">
         <img :src="blog.image" alt="News">
         <div class="news-card-body">
           <div class="news-date">

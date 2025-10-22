@@ -11,8 +11,8 @@
 				<!-- Copy & Pasted from YouTube -->
 				<!-- <iframe width="853" height="480" src="https://my.matterport.com/show/?m=zEWsxhZpGba&play=1&qs=1" frameborder="0" allowfullscreen="allowfullscreen"></iframe> -->
 				 <div
-         v-html="iframeCode"
          class="block-video-wrap"
+         v-html="iframeCode"
          ></div>
 			</div>
 		</div><!-- block-content-wrap -->

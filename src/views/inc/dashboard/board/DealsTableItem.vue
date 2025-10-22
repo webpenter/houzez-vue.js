@@ -146,9 +146,6 @@
 // import { computed } from 'vue';
 import { useModelStore } from '@/stores';
 export default {
-    mounted() {
-        $('.selectpicker').selectpicker();
-    },
     setup() {
         const modalStore = useModelStore();
 
@@ -162,6 +159,9 @@ export default {
             status: '',
             nextAction: '',
         };
+    },
+    mounted() {
+        $('.selectpicker').selectpicker();
     },
 };
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="property-mortgage-calculator-wrap property-section-wrap" id="property-mortgage-calculator-wrap">
+  <div id="property-mortgage-calculator-wrap" class="property-mortgage-calculator-wrap property-section-wrap">
     <div class="block-wrap">
       <div class="block-title-wrap">
         <h2>Mortgage Calculator</h2>
@@ -36,7 +36,7 @@
         </div>
 
         <div class="row mt-3">
-          <div class="col-md-6" v-for="field in inputFields" :key="field.label">
+          <div v-for="field in inputFields" :key="field.label" class="col-md-6">
             <div class="form-group">
               <label>{{ field.label }}</label>
               <div class="input-group">

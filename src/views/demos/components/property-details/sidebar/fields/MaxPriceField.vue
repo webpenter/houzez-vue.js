@@ -1,8 +1,8 @@
 <template>
   <div class="form-group">
     <select
-      v-model="selectedPrice"
       ref="selectRef"
+      v-model="selectedPrice"
       class="selectpicker form-control"
       :title="$t('Max. Price')"
       @change="emitPrice"

@@ -22,7 +22,7 @@
     </div><!-- listing-view -->
 
     <!-- Load more button -->
-    <div class="load-more-wrap" v-if="!loading && latestProperties?.length">
+    <div v-if="!loading && latestProperties?.length" class="load-more-wrap">
       <router-link
         class="btn btn-primary-outlined btn-load-more"
         :to="{ name: 'demo01.properties' }"

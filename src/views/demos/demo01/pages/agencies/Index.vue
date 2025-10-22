@@ -24,9 +24,9 @@
             </template>
           </div><!-- listing-view -->
           <Pagination
+            v-model:current-page="currentPage"
             :total-items="agencies.length"
             :page-size="pageSize"
-            v-model:current-page="currentPage"
           />
         </div><!-- bt-content-wrap -->
         <div class="col-lg-4 col-md-12 bt-sidebar-wrap left-bt-sidebar-wrap">

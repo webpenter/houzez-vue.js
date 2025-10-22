@@ -7,7 +7,7 @@
 
   <section class="dashboard-content-wrap">
     <div class="deals-table-wrap">
-      <NoDataMsg :msg="$t('enquiry.noData')" v-if="enquiries.length < 1"/>
+      <NoDataMsg v-if="enquiries.length < 1" :msg="$t('enquiry.noData')"/>
       <template v-else>
         <div class="deal-content-wrap p-0">
           <Table

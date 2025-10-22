@@ -8,7 +8,7 @@
         to <span class="max-area-range">{{ areaRange[1].toLocaleString() }} Sq Ft</span>
       </div>
       <div class="area-range-wrap">
-        <div class="area-range" ref="areaSlider"></div>
+        <div ref="areaSlider" class="area-range"></div>
       </div>
     </div>
   </template>

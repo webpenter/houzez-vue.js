@@ -7,7 +7,7 @@
               Access Denied!
               You are already logged in and do not have permission to access the login or registration pages.
               Please
-              <button @click.prevent="$filters.logout()" class="rounded">Log out</button>
+              <button class="rounded" @click.prevent="$filters.logout()">Log out</button>
               if you wish to switch accounts or access these routes.
             </p>
             <router-link :to="{name:'dashboard'}" class="btn-home mr-3">

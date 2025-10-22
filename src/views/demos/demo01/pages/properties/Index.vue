@@ -62,7 +62,7 @@
                 <!-- <?php include 'inc/listing/pagination.php';?> -->
                 <Pagination 
                 :total-items="filteredProperties.length" :page-size="pageSize" :current-page="currentPage"
-                    @update:currentPage="updatePage"
+                    @update:current-page="updatePage"
                      />
             </div><!-- half-map-right-wrap -->
         </section><!-- half-map-wrap -->

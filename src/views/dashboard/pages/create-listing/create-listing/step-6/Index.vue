@@ -18,18 +18,18 @@
                           <div>
                             <span>(Maximum size 2MB)</span>
                           </div>
-                          <button @click="triggerFileInput" class="btn btn-primary btn-left-icon"><i class="houzez-icon icon-upload-button mr-1"></i>
+                          <button class="btn btn-primary btn-left-icon" @click="triggerFileInput"><i class="houzez-icon icon-upload-button mr-1"></i>
                             Select and Upload
                           </button>
                           <input
-                              type="file"
                               ref="fileInput"
+                              type="file"
                               multiple
                               style="display: none;"
                               @change="handleFileChange"
                           />
                         </div>
-                        <span class="text-danger" v-if="localErrors.images_error">
+                        <span v-if="localErrors.images_error" class="text-danger">
                             {{ localErrors.images_error }}
                         </span>
                         <div v-if="uploadProgress > 0" class="progress mt-3">
@@ -78,14 +78,14 @@
                       <div class="form-group">
                         <label>Enter video iframe/embeded code</label>
                         <input
+                            v-model="formData.video_url"
                             class="form-control"
                             :class="{ 'is-invalid': localErrors.video_url }"
-                            @input="validateField('video_url')"
-                            v-model="formData.video_url"
                             placeholder="YouTube, Vimeo, SWF File and MOV File are supported"
                             type="text"
+                            @input="validateField('video_url')"
                         >
-                        <span class="text-danger" v-if="localErrors.video_url">
+                        <span v-if="localErrors.video_url" class="text-danger">
                             {{ localErrors.video_url }}
                         </span>
                         <small class="form-text text-muted">Input contains an "iframe" or "embed" tag</small>
@@ -94,8 +94,8 @@
                   </div><!-- dashboard-content-block-wrap -->
                 <form @submit.prevent="formSubmit">
                   <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
-                    <BackBtn route="dashboard.create-listing.step-5" :pId="propertyId"/>
-                    <NextBtn :btnLoading="btnLoading" :hasErrors="hasErrors"/>
+                    <BackBtn route="dashboard.create-listing.step-5" :p-id="propertyId"/>
+                    <NextBtn :btn-loading="btnLoading" :has-errors="hasErrors"/>
                   </div><!-- add-new-listing-bottom-nav-wrap -->
                 </form>
             </div><!-- dashboard-content-inner-wrap -->

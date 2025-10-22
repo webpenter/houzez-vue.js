@@ -13,12 +13,12 @@
           <div class="col-md-6">
             <label>{{ $t('enquiryForm.labels.name') }}</label>
             <input
+              v-model="formData.name"
               type="text"
               class="form-control"
-              v-model="formData.name"
-              @input="validateField('name')"
               :class="{ 'is-invalid': localErrors.name }"
               :placeholder="$t('enquiryForm.placeholders.name')"
+              @input="validateField('name')"
             />
             <div v-if="localErrors.name" class="text-danger mt-1">{{ $t('enquiryForm.validation.name') }}</div>
           </div>
@@ -27,12 +27,12 @@
           <div class="col-md-6">
             <label>{{ $t('enquiryForm.labels.email') }}</label>
             <input
+              v-model="formData.email"
               type="text"
               class="form-control"
-              v-model="formData.email"
-              @input="validateField('email')"
               :class="{ 'is-invalid': localErrors.email }"
               :placeholder="$t('enquiryForm.placeholders.email')"
+              @input="validateField('email')"
             />
             <div v-if="localErrors.email" class="text-danger mt-1">{{ $t('enquiryForm.validation.email') }}</div>
           </div>
@@ -41,12 +41,12 @@
           <div class="col-md-6 mt-3">
             <label>{{ $t('enquiryForm.labels.phone') }}</label>
             <input
+              v-model="formData.phone"
               type="text"
               class="form-control"
-              v-model="formData.phone"
-              @input="validateField('phone')"
               :class="{ 'is-invalid': localErrors.phone }"
               :placeholder="$t('enquiryForm.placeholders.phone')"
+              @input="validateField('phone')"
             />
             <div v-if="localErrors.phone" class="text-danger mt-1">{{ $t('enquiryForm.validation.phone') }}</div>
           </div>
@@ -55,12 +55,12 @@
           <div class="col-md-6 mt-3">
             <label>{{ $t('enquiryForm.labels.source') }}</label>
             <input
+              v-model="formData.source"
               type="text"
               class="form-control"
-              v-model="formData.source"
-              @input="validateField('source')"
               :class="{ 'is-invalid': localErrors.source }"
               :placeholder="$t('enquiryForm.placeholders.source')"
+              @input="validateField('source')"
             />
             <div v-if="localErrors.source" class="text-danger mt-1">{{ $t('enquiryForm.validation.source') }}</div>
           </div>
@@ -69,12 +69,12 @@
           <div class="col-md-6 mt-3">
             <label>{{ $t('enquiryForm.labels.type') }}</label>
             <input
+              v-model="formData.type"
               type="text"
               class="form-control"
-              v-model="formData.type"
-              @input="validateField('type')"
               :class="{ 'is-invalid': localErrors.type }"
               :placeholder="$t('enquiryForm.placeholders.type')"
+              @input="validateField('type')"
             />
             <div v-if="localErrors.type" class="text-danger mt-1">{{ $t('enquiryForm.validation.type') }}</div>
           </div>

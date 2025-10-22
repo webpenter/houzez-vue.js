@@ -13,6 +13,11 @@
   
   <script>
   export default {
+    filters: {
+      currency(value) {
+        return `$ ${value.toLocaleString()}`;
+      },
+    },
     data() {
       return {
         priceRange: [600, 5000],
@@ -28,11 +33,6 @@
           this.priceRange = ui.values;
         },
       });
-    },
-    filters: {
-      currency(value) {
-        return `$ ${value.toLocaleString()}`;
-      },
     },
   };
   </script>

@@ -1,8 +1,8 @@
 <template>
   <!-- Show section only if there are properties OR still loading -->
   <section 
-    class="content-wrap" 
-    v-if="loading || (featuredProperties && featuredProperties.length > 0)"
+    v-if="loading || (featuredProperties && featuredProperties.length > 0)" 
+    class="content-wrap"
   >
     <div class="container">
       <div class="row">
@@ -31,7 +31,7 @@
             </div><!-- listing-view -->
 
             <!-- Load more button -->
-            <div class="load-more-wrap" v-if="!loading && featuredProperties.length > 0">
+            <div v-if="!loading && featuredProperties.length > 0" class="load-more-wrap">
               <router-link
                 class="btn btn-primary-outlined btn-load-more"
                 :to="{ name: 'demo01.properties' }"

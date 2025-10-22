@@ -81,7 +81,8 @@
           <div class="col-md-6 col-sm-12">
             <div class="form-group">
               <div class="my-2 fw-bold">Name</div>
-              <input class="form-control" name="name"
+              <input
+class="form-control" name="name"
                      placeholder="Enter your name" type="text">
             </div>
           </div><!-- col-md-6 col-sm-12 -->
@@ -89,7 +90,8 @@
           <div class="col-md-6 col-sm-12">
             <div class="form-group">
               <div class="my-2 fw-bold">Phone</div>
-              <input class="form-control" name="mobile"
+              <input
+class="form-control" name="mobile"
                      placeholder="Enter your Phone" type="text">
             </div>
           </div><!-- col-md-6 col-sm-12 -->
@@ -97,7 +99,8 @@
           <div class="col-md-6 col-sm-12">
             <div class="form-group">
               <div class="my-2 fw-bold">Email</div>
-              <input class="form-control" name="email"
+              <input
+class="form-control" name="email"
                      placeholder="Enter your email" type="email">
             </div>
           </div><!-- col-md-6 col-sm-12 -->
@@ -105,7 +108,8 @@
             <div class="form-group">
               <div class="my-2 fw-bold">I'm a</div>
               <div class="dropdown bootstrap-select">
-                <select name="user_type" class="selectpicker form-control"
+                <select
+name="user_type" class="selectpicker form-control"
                         title="Select">
                   <option class="bs-title-option" value="">Select</option>
                   <option value="buyer">I'm a buyer</option>
@@ -115,9 +119,11 @@
                 </select>
 
                 <div class="dropdown-menu ">
-                  <div class="inner show" role="listbox" id="bs-select-2"
+                  <div
+id="bs-select-2" class="inner show" role="listbox"
                        tabindex="-1">
-                    <ul class="dropdown-menu inner show"
+                    <ul
+class="dropdown-menu inner show"
                         role="presentation"></ul>
                   </div>
                 </div>
@@ -129,7 +135,8 @@
           <div class="col-sm-12 col-xs-12">
             <div class="form-group form-group-textarea">
               <div>Message</div>
-              <textarea class="form-control hz-form-message" name="message"
+              <textarea
+class="form-control hz-form-message" name="message"
                         rows="5"
                         placeholder="Enter your Message">Hello, I am interested in [Renovated apartment at last floor]</textarea>
             </div>

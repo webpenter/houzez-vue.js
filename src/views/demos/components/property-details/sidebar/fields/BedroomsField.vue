@@ -1,8 +1,8 @@
 <template>
   <div class="form-group">
     <select
-      v-model="selectedBedrooms"
       ref="selectRef"
+      v-model="selectedBedrooms"
       class="selectpicker form-control"
       :title="$t('Bedrooms')"
       @change="emitBedrooms"

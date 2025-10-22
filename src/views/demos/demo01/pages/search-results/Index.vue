@@ -9,7 +9,7 @@
             </div><!-- half-map-left-wrap -->
             <div class="half-map-right-wrap">
                 <SearchHalfMapGeolocation 
-                :modelValue="formData" 
+                :model-value="formData" 
                 @search="handleSearch" 
                 @reset="resetFilters"
                     @save-search="saveSearchResult" />
@@ -62,7 +62,7 @@
                 </div>
                 <Pagination 
                 :total-items="allProperties.length" :page-size="pageSize" :current-page="currentPage"
-                    @update:currentPage="(page) => currentPage.value = page" 
+                    @update:current-page="(page) => currentPage.value = page" 
                     />
             </div><!-- half-map-right-wrap -->
         </section><!-- half-map-wrap -->

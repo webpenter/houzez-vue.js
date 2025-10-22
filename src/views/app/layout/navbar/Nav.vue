@@ -1,7 +1,8 @@
 <template>
   <template v-for="route in routes">
     <div class="btn-group position-relative">
-      <p class=" btn-sm py-1 px-2 bg-none m-0" type="button" data-bs-toggle="dropdown"
+      <p
+class=" btn-sm py-1 px-2 bg-none m-0" type="button" data-bs-toggle="dropdown"
          aria-expanded="false">
         {{ route.title }}
       </p>
@@ -22,7 +23,8 @@
     </div>
   </template>
   <div class="btn-group position-relative">
-    <p class=" btn-sm py-1 px-2 bg-none m-0" type="button" data-bs-toggle="dropdown"
+    <p
+class=" btn-sm py-1 px-2 bg-none m-0" type="button" data-bs-toggle="dropdown"
        aria-expanded="false">
       {{locale === 'en' ? 'English' : 'Français'}}
     </p>

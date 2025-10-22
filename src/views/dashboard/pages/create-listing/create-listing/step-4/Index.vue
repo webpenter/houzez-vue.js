@@ -14,25 +14,25 @@
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
                             <label>Energy Class</label>
-                            <input class="form-control" v-model="formData.energy_class" placeholder="Energy class" type="text">
+                            <input v-model="formData.energy_class" class="form-control" placeholder="Energy class" type="text">
                           </div>
                         </div><!-- col-md-6 col-sm-12 -->
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
                             <label>Global Energy Performance Index</label>
-                            <input class="form-control" v-model="formData.global_energy_performance_index" placeholder="For example: 92.42 kWh / m²a" type="text">
+                            <input v-model="formData.global_energy_performance_index" class="form-control" placeholder="For example: 92.42 kWh / m²a" type="text">
                           </div>
                         </div><!-- col-md-6 col-sm-12 -->
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
                             <label>Renewable energy performance index</label>
-                            <input class="form-control" v-model="formData.renewable_energy_performance_index" placeholder="For example: 0.00 kWh / m²a" type="text">
+                            <input v-model="formData.renewable_energy_performance_index" class="form-control" placeholder="For example: 0.00 kWh / m²a" type="text">
                           </div>
                         </div><!-- col-md-6 col-sm-12 -->
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
                             <label>Energy performance of the building</label>
-                            <input class="form-control" v-model="formData.energy_performance_of_the_building" placeholder="Energy performance of the building" type="text">
+                            <input v-model="formData.energy_performance_of_the_building" class="form-control" placeholder="Energy performance of the building" type="text">
                           </div>
                         </div><!-- col-md-6 col-sm-12 -->
                       </div><!-- row -->
@@ -40,8 +40,8 @@
                   </div><!-- dashboard-content-block-wrap -->
 
                   <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
-                    <BackBtn route="dashboard.create-listing.step-3" :pId="propertyId"/>
-                    <NextBtn :btnLoading="btnLoading" :hasErrors="false"/>
+                    <BackBtn route="dashboard.create-listing.step-3" :p-id="propertyId"/>
+                    <NextBtn :btn-loading="btnLoading" :has-errors="false"/>
                   </div><!-- add-new-listing-bottom-nav-wrap -->
                 </form>
             </div><!-- dashboard-content-inner-wrap -->

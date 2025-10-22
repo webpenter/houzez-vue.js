@@ -30,7 +30,7 @@
           <div class="skeleton-title"></div>
           <div class="skeleton-line short"></div>
           <div class="skeleton-icons">
-            <div class="skeleton-icon" v-for="i in 5" :key="i"></div>
+            <div v-for="i in 5" :key="i" class="skeleton-icon"></div>
           </div>
           <div class="skeleton-footer">
             <div class="skeleton-price"></div>

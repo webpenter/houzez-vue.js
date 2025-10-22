@@ -14,15 +14,15 @@
                 <div class="form-group">
                   <label>Address *</label>
                   <input
+                      v-model="formData.address"
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.address }"
-                      @input="validateField('address')"
-                      v-model="formData.address"
                       placeholder="Enter your property address"
                       type="text"
                       autocomplete="off"
+                      @input="validateField('address')"
                   >
-                  <span class="text-danger" v-if="localErrors.address">
+                  <span v-if="localErrors.address" class="text-danger">
                       {{ localErrors.address }}
                   </span>
                 </div>
@@ -30,27 +30,27 @@
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Country</label>
-                  <input class="form-control" v-model="formData.country" placeholder="Enter your property country" type="text">
+                  <input v-model="formData.country" class="form-control" placeholder="Enter your property country" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>County / State</label>
-                  <input class="form-control" v-model="formData.county_state" placeholder="Enter your property county/state" type="text">
+                  <input v-model="formData.county_state" class="form-control" placeholder="Enter your property county/state" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>City *</label>
                   <input
+                      v-model="formData.city"
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.city }"
-                      @input="validateField('city')"
-                      v-model="formData.city"
                       placeholder="Enter your property city"
                       type="text"
+                      @input="validateField('city')"
                   >
-                  <span class="text-danger" v-if="localErrors.city">
+                  <span v-if="localErrors.city" class="text-danger">
                       {{ localErrors.city }}
                   </span>
                 </div>
@@ -58,13 +58,13 @@
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Neighborhood</label>
-                  <input class="form-control" v-model="formData.neighborhood" placeholder="Enter your property neighborhood" type="text">
+                  <input v-model="formData.neighborhood" class="form-control" placeholder="Enter your property neighborhood" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
               <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                   <label>Postal Code / Zip</label>
-                  <input class="form-control" v-model="formData.zip_postal_code" placeholder="Enter your property zip code" type="text">
+                  <input v-model="formData.zip_postal_code" class="form-control" placeholder="Enter your property zip code" type="text">
                 </div>
               </div><!-- col-md-6 col-sm-12 -->
             </div><!-- row -->
@@ -78,28 +78,28 @@
                 <div class="form-group">
                   <label>Maps Latitude</label>
                   <input
+                      v-model.number="formData.latitude"
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.latitude }"
-                      @input="validateField('latitude')"
-                      v-model.number="formData.latitude"
                       placeholder="Enter maps latitude"
                       type="text"
+                      @input="validateField('latitude')"
                   >
-                  <span class="text-danger" v-if="localErrors.latitude">
+                  <span v-if="localErrors.latitude" class="text-danger">
                   {{ localErrors.latitude }}
                 </span>
                 </div>
                 <div class="form-group">
                   <label>Maps Longitude</label>
                   <input
+                      v-model.number="formData.longitude"
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.longitude }"
-                      @input="validateField('longitude')"
-                      v-model.number="formData.longitude"
                       placeholder="Enter maps longitude"
                       type="text"
+                      @input="validateField('longitude')"
                   >
-                  <span class="text-danger" v-if="localErrors.longitude">
+                  <span v-if="localErrors.longitude" class="text-danger">
                   {{ localErrors.longitude }}
                  </span>
                 </div>
@@ -109,8 +109,8 @@
           </div><!-- dashboard-content-block -->
         </div><!-- dashboard-content-block-wrap -->
         <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
-          <BackBtn route="dashboard.create-listing.step-4" :pId="propertyId"/>
-          <NextBtn :btnLoading="btnLoading" :hasErrors="hasErrors"/>
+          <BackBtn route="dashboard.create-listing.step-4" :p-id="propertyId"/>
+          <NextBtn :btn-loading="btnLoading" :has-errors="hasErrors"/>
         </div><!-- add-new-listing-bottom-nav-wrap -->
       </form>
     </div><!-- dashboard-content-inner-wrap -->

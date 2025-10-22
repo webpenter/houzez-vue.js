@@ -1,6 +1,7 @@
 <template>
   <div class="">
-    <p class=" btn-sm bg-none m-0" type="button" data-bs-toggle="dropdown"
+    <p
+class=" btn-sm bg-none m-0" type="button" data-bs-toggle="dropdown"
        aria-expanded="false">
       <i class="fa-regular fa-user"></i>
     </p>

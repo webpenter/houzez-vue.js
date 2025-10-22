@@ -183,7 +183,7 @@
                                 <div v-else class="text-center mt-3">{{ $t('No properties found.') }}</div>
                                 <!-- listing-view -->
                                 <Pagination 
-                                v-model:currentPage="currentPage" 
+                                v-model:current-page="currentPage" 
                                 :total-items="filteredProperties.length" :page-size="pageSize"
                                     
                                     />
@@ -203,7 +203,7 @@
                             class="tab-pane fade">
                                 <AgencyReviews 
                                 :reviews="agencyStore.reviews?.data || []" :agency="agency"
-                                    @updateAverageRating="handleAverageRating" />
+                                    @update-average-rating="handleAverageRating" />
                             </div><!-- tab-pane -->
                         </div><!-- tab-content -->
                     </div><!-- bt-content-wrap -->

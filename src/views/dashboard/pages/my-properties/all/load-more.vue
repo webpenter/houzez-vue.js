@@ -19,7 +19,7 @@
         <NoProperty v-if="dashboardProperties.length < 1"/>
         <Table
             v-else
-            :dashboardProperties="visibleProperties"
+            :dashboard-properties="visibleProperties"
             :loading="loading"
             @delete-property="(id) => deleteProperty(id)"
             @duplicate-property="(id) => duplicateProperty(id)"

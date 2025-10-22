@@ -4,8 +4,8 @@
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">
       <NoDataMsg
-        :msg="$t('dashboard.noData')"
         v-if="properties.length < 1"
+        :msg="$t('dashboard.noData')"
       />
       <template v-else>
         <div class="dashboard-content-block-wrap">
@@ -13,7 +13,7 @@
             <div class="col-md-6 col-sm-12">
               <div v-if="!propertyLoading" class="form-group insight-search">
                 <label>{{ $t('dashboard.selectProperty') }}</label>
-                <select class="form-control" v-model="selectedId" @change="fetchData" title="Select">
+                <select v-model="selectedId" class="form-control" title="Select" @change="fetchData">
                   <option
                     v-for="property in properties"
                     :key="property.id"
@@ -29,7 +29,7 @@
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <Views
-                :viewsLoading="viewsLoading"
+                :views-loading="viewsLoading"
                 :views="views"
                 :title="$t('dashboard.views')"
               />
@@ -37,47 +37,47 @@
 
             <div class="col-md-6 col-sm-12">
               <UniqueViews
-                :uniqueViewsLoading="uniqueViewsLoading"
-                :uniqueViews="uniqueViews"
+                :unique-views-loading="uniqueViewsLoading"
+                :unique-views="uniqueViews"
                 :title="$t('dashboard.uniqueViews')"
               />
             </div>
 
             <div class="col-md-12 col-sm-12">
               <VisitsChart
-                :visitChartLoading="visitChartLoading"
+                :visit-chart-loading="visitChartLoading"
                 :data="chartStats"
               />
             </div>
 
             <div class="col-md-6 col-sm-12">
               <StatisticDevices
-                :devicesStatsLoading="devicesStatsLoading"
-                :devicesStats="devicesStats"
+                :devices-stats-loading="devicesStatsLoading"
+                :devices-stats="devicesStats"
                 :title="$t('dashboard.devices')"
               />
             </div>
 
             <div class="col-md-6 col-sm-12">
               <StatisticTopCountries
-                :countriesStatsLoading="countriesStatsLoading"
-                :countriesStats="countriesStats"
+                :countries-stats-loading="countriesStatsLoading"
+                :countries-stats="countriesStats"
                 :title="$t('dashboard.topCountries')"
               />
             </div>
 
             <div class="col-md-6 col-sm-12">
               <StatisticTopPlatforms
-                :platformStatsLoading="platformStatsLoading"
-                :platformStats="platformStats"
+                :platform-stats-loading="platformStatsLoading"
+                :platform-stats="platformStats"
                 :title="$t('dashboard.topPlatforms')"
               />
             </div>
 
             <div class="col-md-6 col-sm-12">
               <StatisticTopBrowsers
-                :browserStatsLoading="browserStatsLoading"
-                :browserStats="browserStats"
+                :browser-stats-loading="browserStatsLoading"
+                :browser-stats="browserStats"
                 :title="$t('dashboard.topBrowsers')"
               />
             </div>

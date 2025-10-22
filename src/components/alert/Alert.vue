@@ -1,5 +1,6 @@
 <template>
- <div class="alert alert-success" :class="{
+ <div
+class="alert alert-success" :class="{
     'alert-success':type=='success',
     'alert-danger':type=='danger',
     'alert-info':type=='info',

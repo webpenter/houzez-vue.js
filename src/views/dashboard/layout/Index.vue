@@ -1,6 +1,6 @@
 <template>
     <div class="nav-mobile">
-        <div class="main-nav navbar slideout-menu slideout-menu-left" id="nav-mobile">
+        <div id="nav-mobile" class="main-nav navbar slideout-menu slideout-menu-left">
             <Nav/>
         </div><!-- main-nav -->
         <MobileUserNav/>

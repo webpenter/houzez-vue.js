@@ -34,7 +34,8 @@
 
     <div class="social-login-wrap">
         <button type="button" class="btn btn-facebook-login btn-full-width"> Continue with Facebook</button>
-        <button type="button" class="btn btn-google-plus-lined btn-full-width"><img class="google-icon"
+        <button type="button" class="btn btn-google-plus-lined btn-full-width"><img
+class="google-icon"
                 src="../../../../../assets/img/app-side/Google__G__Logo.svg" /> Sign in with google</button>
     </div><!-- social-login-wrap -->
 </template>

@@ -12,20 +12,20 @@
                     <div class="form-group">
                       <label>Title *</label>
                       <input
+                          v-model="formData.title"
                           class="form-control"
                           :class="{ 'is-invalid': localErrors.title }"
-                          @input="validateField('title')"
-                          v-model="formData.title"
                           placeholder="Enter the property title"
                           type="text"
+                          @input="validateField('title')"
                       >
-                      <span class="text-danger" v-if="localErrors.title">
+                      <span v-if="localErrors.title" class="text-danger">
                         {{ localErrors.title }}
                       </span>
                     </div>
                     <div class="form-group">
                       <label>Description</label>
-                      <textarea class="form-control" v-model="formData.description" rows="10" placeholder="Enter the property description"></textarea>
+                      <textarea v-model="formData.description" class="form-control" rows="10" placeholder="Enter the property description"></textarea>
                     </div>
                     <div class="row">
                       <div class="col-md-4 col-sm-12">
@@ -106,14 +106,14 @@
                         <div class="form-group">
                           <label>Sale or Rent Price *</label>
                           <input
+                              v-model="formData.price"
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.price }"
-                              @input="validateField('price')"
-                              v-model="formData.price"
                               placeholder="Enter the price"
                               type="text"
+                              @input="validateField('price')"
                           >
-                          <span class="text-danger" v-if="localErrors.price">
+                          <span v-if="localErrors.price" class="text-danger">
                           {{ localErrors.price }}
                         </span>
                         </div>
@@ -122,14 +122,14 @@
                         <div class="form-group">
                           <label>Per Sqft Price (Optional)</label>
                           <input
+                              v-model="formData.second_price"
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.second_price }"
-                              @input="validateField('second_price')"
-                              v-model="formData.second_price"
                               placeholder="Enter the second price"
                               type="text"
+                              @input="validateField('second_price')"
                           >
-                          <span class="text-danger" v-if="localErrors.second_price">
+                          <span v-if="localErrors.second_price" class="text-danger">
                           {{ localErrors.second_price }}
                          </span>
                         </div><!-- form-group -->
@@ -137,14 +137,14 @@
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                           <label>After The Price Label</label>
-                          <input class="form-control" v-model="formData.after_price" placeholder="Enter the label after price" type="text">
+                          <input v-model="formData.after_price" class="form-control" placeholder="Enter the label after price" type="text">
                           <small class="form-text text-muted">For example: Monthly</small>
                         </div>
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                           <label>Price Prefix</label>
-                          <input class="form-control" v-model="formData.price_prefix" placeholder="Enter the price prefix" type="text">
+                          <input v-model="formData.price_prefix" class="form-control" placeholder="Enter the price prefix" type="text">
                           <small class="form-text text-muted">For example: $</small>
                         </div><!-- form-group -->
                       </div><!-- col-md-6 col-sm-12 -->
@@ -156,7 +156,7 @@
                       <RouterLink class="btn btn-primary-outlined" :to="{name:'dashboard.my-properties'}">
                           Cancel
                       </RouterLink>
-                    <NextBtn :btnLoading="btnLoading" :hasErrors="hasErrors"/>
+                    <NextBtn :btn-loading="btnLoading" :has-errors="hasErrors"/>
                   </div><!-- add-new-listing-bottom-nav-wrap -->
               </form>
 

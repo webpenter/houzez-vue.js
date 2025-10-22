@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-2" id="footer-useful-links">
+  <div id="footer-useful-links" class="col-md-2">
     <h5>{{ $t('Useful Link')}}</h5>
     <ul>
       <li><RouterLink :to="{name:'app.properties'}">{{ $t('All Properties')}}</RouterLink></li>

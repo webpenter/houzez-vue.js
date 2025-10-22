@@ -1,8 +1,8 @@
 <template>
   <!-- Show section only if still loading OR we have agents -->
   <section
-    class="content-wrap"
     v-if="loading || agents?.length"
+    class="content-wrap"
   >
     <div class="container">
       <div class="row">

@@ -49,16 +49,16 @@
 
 
 export default {
-    emits: ['close'], // Add emits here
-    mounted() {
-        $('.selectpicker').selectpicker();
-    },
+    emits: ['close'],
     data() {
         return {
             Agent: '',
             Contact: '',
             Group: '',
         };
+    }, // Add emits here
+    mounted() {
+        $('.selectpicker').selectpicker();
     },
     methods: {
         closePanel() {

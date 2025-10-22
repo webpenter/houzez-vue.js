@@ -6,7 +6,7 @@
 		</h3><!-- widget-title -->
 	</div><!-- widget-header -->
 	<div class="widget-body">
-		<ul class="collapse" id="collapseExample" aria-expanded="false">
+		<ul id="collapseExample" class="collapse" aria-expanded="false">
 			<li v-for="type in types" :key="type.id">
 				<router-link :to="{name:'demo01.property-type',params:{propertyType:type.name}}">
 					{{ type.name }} 

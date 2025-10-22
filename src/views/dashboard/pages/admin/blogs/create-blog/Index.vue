@@ -16,14 +16,14 @@
                 <div class="form-group">
                   <label>Blog Title *</label>
                   <input
+                      v-model="formData.title"
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.title }"
-                      @input="validateField('title')"
-                      v-model="formData.title"
                       placeholder="Enter the title"
                       type="text"
+                      @input="validateField('title')"
                   />
-                  <div class="text-danger mt-1" v-if="localErrors.title">
+                  <div v-if="localErrors.title" class="text-danger mt-1">
                     {{ localErrors.title }}
                   </div>
                 </div>
@@ -36,10 +36,10 @@
                   <input
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.image }"
-                      @change="handleImageUpload"
                       type="file"
+                      @change="handleImageUpload"
                   />
-                  <div class="text-danger mt-1" v-if="localErrors.image">
+                  <div v-if="localErrors.image" class="text-danger mt-1">
                     {{ localErrors.image }}
                   </div>
                 </div>
@@ -49,14 +49,14 @@
               <div class="col-md-12 col-sm-12">
                 <label>Blog Description *</label>
                 <textarea
+                    v-model="formData.description"
                     class="form-control"
                     :class="{ 'is-invalid': localErrors.description }"
-                    @input="validateField('description')"
-                    v-model="formData.description"
                     placeholder="Enter the blog description"
                     rows="8"
+                    @input="validateField('description')"
                 />
-                <div class="text-danger mt-1" v-if="localErrors.description">
+                <div v-if="localErrors.description" class="text-danger mt-1">
                   {{ localErrors.description }}
                 </div>
               </div>

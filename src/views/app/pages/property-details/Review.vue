@@ -17,19 +17,19 @@
 
         <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center justify-content-end">
           <template v-if="token">
-            <button @click="leaveReviewForm = true" class="btn hz-btn-lreview btn-primary">
+            <button class="btn hz-btn-lreview btn-primary" @click="leaveReviewForm = true">
               <p class="fs-6 text-white">{{ $t('Leave a Review') }}</p>
             </button>
           </template>
           <template v-else>
-            <button @click="noAuthDialog = true" class="btn hz-btn-lreview btn-primary">
+            <button class="btn hz-btn-lreview btn-primary" @click="noAuthDialog = true">
               <p class="fs-6 text-white">{{ $t('Leave a Review') }}</p>
             </button>
           </template>
         </div>
 
         <!-- All Reviews -->
-        <div class="col-12 mt-4" v-if="reviews.length">
+        <div v-if="reviews.length" class="col-12 mt-4">
           <div v-for="review in reviews" :key="review.id" class="d-flex mt-3">
             <div class="review-image">
               <img class="rounded-circle" width="64" height="64" :alt="review.user?.name || 'User'" src="https://demo01.houzez.co/wp-content/themes/houzez/img/profile-avatar.png">
@@ -62,7 +62,7 @@
           <div class="col-md-12 col-sm-12">
             <div class="form-group">
               <label class="my-2 fw-bold">{{ $t('Email') }}</label>
-              <input v-model="form.email" @input="validateField('email')" class="form-control" placeholder="you@example.com" type="text">
+              <input v-model="form.email" class="form-control" placeholder="you@example.com" type="text" @input="validateField('email')">
               <small v-if="errors.email" class="text-danger">{{ errors.email }}</small>
             </div>
           </div>
@@ -71,7 +71,7 @@
           <div class="col-md-6 col-sm-12">
             <div class="form-group">
               <label class="my-2 fw-bold">{{ $t('Title') }}</label>
-              <input v-model="form.title" @input="validateField('title')" class="form-control" :placeholder="$t('Enter your title')" type="text">
+              <input v-model="form.title" class="form-control" :placeholder="$t('Enter your title')" type="text" @input="validateField('title')">
               <small v-if="errors.title" class="text-danger">{{ errors.title }}</small>
             </div>
           </div>
@@ -80,7 +80,7 @@
           <div class="col-md-6 col-sm-12">
             <div class="form-group">
               <label class="my-2 fw-bold">{{ $t('Rating') }}</label>
-              <input v-model.number="form.rating" @input="validateField('rating')" class="form-control" placeholder="Enter Rating (1-5)" type="number" min="1" max="5">
+              <input v-model.number="form.rating" class="form-control" placeholder="Enter Rating (1-5)" type="number" min="1" max="5" @input="validateField('rating')">
               <small v-if="errors.rating" class="text-danger">{{ errors.rating }}</small>
             </div>
           </div>
@@ -89,7 +89,7 @@
           <div class="col-sm-12">
             <div class="form-group form-group-textarea">
               <label class="fw-bold py-2 capitalize">{{ $filters.capitalize($t('review')) }}</label>
-              <textarea v-model="form.comment" @input="validateField('comment')" class="form-control hz-form-message" rows="5" :placeholder="$t('Enter your message')"></textarea>
+              <textarea v-model="form.comment" class="form-control hz-form-message" rows="5" :placeholder="$t('Enter your message')" @input="validateField('comment')"></textarea>
               <small v-if="errors.comment" class="text-danger">{{ errors.comment }}</small>
             </div>
           </div>

@@ -1,6 +1,7 @@
 <template>
   <div class="btn-group">
-    <p class=" btn-sm bg-none m-0 py-1 px-2" type="button" data-bs-toggle="dropdown"
+    <p
+class=" btn-sm bg-none m-0 py-1 px-2" type="button" data-bs-toggle="dropdown"
        aria-expanded="false">
       Login / Signup
     </p>

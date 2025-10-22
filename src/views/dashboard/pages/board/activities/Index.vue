@@ -6,26 +6,26 @@
                 <div class="dashboard-content-block-wrap">
                     <div class="row">
                         <div class="col-md-7 col-sm-12">
-                            <NoDataMsg msg="You don't have any message." v-if="reviews.length < 1"/>
+                            <NoDataMsg v-if="reviews.length < 1" msg="You don't have any message."/>
                             <div v-else class="dashboard-content-block activities-list-wrap">
                               <Reviews
                                   :reviews="reviews"
-                                  :reviewLoading="reviewLoading"
+                                  :review-loading="reviewLoading"
                               />
                             </div>
                         </div><!-- col-md-6 col-sm-12 -->
                         <div class="col-md-5 col-sm-12">
                           <DealsSummary
                               :deals="deals"
-                              :dealsLoading="dealsLoading"
+                              :deals-loading="dealsLoading"
                           />
                           <LeadsSummary
                               :leads="leads"
-                              :leadsLoading="leadsLoading"
+                              :leads-loading="leadsLoading"
                           />
                           <EnquiriesSummary
                               :enquiries="enquiries"
-                              :enquiriesLoading="enquiriesLoading"
+                              :enquiries-loading="enquiriesLoading"
                           />
                         </div><!-- col-md-6 col-sm-12 -->
                     </div><!-- row -->

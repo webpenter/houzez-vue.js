@@ -14,14 +14,14 @@
 		<!-- Alert Messages -->
 		<div v-if="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
 			{{ errorMessage }}
-			<button type="button" class="close" @click="errorMessage = ''" aria-label="Close">
+			<button type="button" class="close" aria-label="Close" @click="errorMessage = ''">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
 
 		<div v-if="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
 			{{ successMessage }}
-			<button type="button" class="close" @click="successMessage = ''" aria-label="Close">
+			<button type="button" class="close" aria-label="Close" @click="successMessage = ''">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
@@ -82,17 +82,17 @@
 		<!-- Form Inputs -->
 		<div class="form-group">
 			<input 
-      class="form-control" name="name" placeholder="Name" type="text" v-model="form.name"
+      v-model="form.name" class="form-control" name="name" placeholder="Name" type="text"
 				:class="{ 'is-invalid': errors.name }" />
 		</div>
 		<div class="form-group">
 			<input 
-      class="form-control" name="phone" placeholder="Phone" type="text" v-model="form.phone"
+      v-model="form.phone" class="form-control" name="phone" placeholder="Phone" type="text"
 				:class="{ 'is-invalid': errors.phone }" />
 		</div>
 		<div class="form-group">
 			<input
-       class="form-control" name="email" placeholder="Email" type="email" v-model="form.email"
+       v-model="form.email" class="form-control" name="email" placeholder="Email" type="email"
 				:class="{ 'is-invalid': errors.email }" />
 		</div>
 

@@ -12,12 +12,12 @@
           <div class="col-md-6">
             <label>{{ $t('name') }} *</label>
             <input
+              v-model="formData.name"
               type="text"
               class="form-control"
-              v-model="formData.name"
-              @input="validateField('name')"
               :class="{ 'is-invalid': localErrors.name }"
               :placeholder="$t('enterName')"
+              @input="validateField('name')"
             />
             <div v-if="localErrors.name" class="text-danger mt-1">{{ localErrors.name }}</div>
           </div>
@@ -25,12 +25,12 @@
           <div class="col-md-6">
             <label>{{ $t('email') }} *</label>
             <input
+              v-model="formData.email"
               type="text"
               class="form-control"
-              v-model="formData.email"
-              @input="validateField('email')"
               :class="{ 'is-invalid': localErrors.email }"
               :placeholder="$t('enterEmail')"
+              @input="validateField('email')"
             />
             <div v-if="localErrors.email" class="text-danger mt-1">{{ localErrors.email }}</div>
           </div>
@@ -38,12 +38,12 @@
           <div class="col-md-6 mt-3">
             <label>{{ $t('phone') }} *</label>
             <input
+              v-model="formData.phone"
               type="text"
               class="form-control"
-              v-model="formData.phone"
-              @input="validateField('phone')"
               :class="{ 'is-invalid': localErrors.phone }"
               :placeholder="$t('enterPhone')"
+              @input="validateField('phone')"
             />
             <div v-if="localErrors.phone" class="text-danger mt-1">{{ localErrors.phone }}</div>
           </div>
@@ -51,12 +51,12 @@
           <div class="col-md-6 mt-3">
             <label>{{ $t('agent') }} *</label>
             <input
+              v-model="formData.agent"
               type="text"
               class="form-control"
-              v-model="formData.agent"
-              @input="validateField('agent')"
               :class="{ 'is-invalid': localErrors.agent }"
               :placeholder="$t('enterAgent')"
+              @input="validateField('agent')"
             />
             <div v-if="localErrors.agent" class="text-danger mt-1">{{ localErrors.agent }}</div>
           </div>
@@ -64,12 +64,12 @@
           <div class="col-md-6 mt-3">
             <label>{{ $t('type') }} *</label>
             <input
+              v-model="formData.type"
               type="text"
               class="form-control"
-              v-model="formData.type"
-              @input="validateField('type')"
               :class="{ 'is-invalid': localErrors.type }"
               :placeholder="$t('enterType')"
+              @input="validateField('type')"
             />
             <div v-if="localErrors.type" class="text-danger mt-1">{{ localErrors.type }}</div>
           </div>

@@ -1,15 +1,18 @@
 <template>
-    <ul class="nav nav-pills justify-content-center mt-5" id="pills-tab" role="tablist">
+    <ul id="pills-tab" class="nav nav-pills justify-content-center mt-5" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+            <a
+id="pills-home-tab" class="nav-link active" data-toggle="pill" href="#pills-home" role="tab"
                 aria-controls="pills-home" aria-selected="true">All Status</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+            <a
+id="pills-home-tab" class="nav-link" data-toggle="pill" href="#pills-home" role="tab"
                 aria-controls="pills-home" aria-selected="true">For Rent</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+            <a
+id="pills-profile-tab" class="nav-link" data-toggle="pill" href="#pills-profile" role="tab"
                 aria-controls="pills-profile" aria-selected="false">For Sale</a>
         </li>
     </ul><!-- nav -->
@@ -32,7 +35,8 @@
             <div class="flex-search flex-sm-max-column">
                 <!-- <?php include 'inc/search/fields/cities-field.php';?> -->
                 <div class="form-group">
-                    <select class="selectpicker form-control" title="Cities" data-live-search="false"
+                    <select
+class="selectpicker form-control" title="Cities" data-live-search="false"
                         data-selected-text-format="count" multiple data-actions-box="true">
                         <option data-subtext="Illinois">Chicago</option>
                         <option data-subtext="Florida">Miami</option>
@@ -44,7 +48,8 @@
             <div class="flex-search">
                 <!-- <?php include 'inc/search/fields/type-field.php';?> -->
                 <div class="form-group">
-                    <select class="selectpicker form-control" title="Type" data-live-search="false"
+                    <select
+class="selectpicker form-control" title="Type" data-live-search="false"
                         data-selected-text-format="count" multiple data-actions-box="true">
                         <option>Apartment</option>
                         <option>Condo</option>

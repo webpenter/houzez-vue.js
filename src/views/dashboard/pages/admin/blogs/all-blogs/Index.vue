@@ -7,7 +7,7 @@
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">
       <div class="dashboard-content-block-wrap">
-        <NoDataMsg msg="You don't have any blog yet!" v-if="allBlogs.length < 1"/>
+        <NoDataMsg v-if="allBlogs.length < 1" msg="You don't have any blog yet!"/>
         <Table
             v-else
             :all-blogs="allBlogs"

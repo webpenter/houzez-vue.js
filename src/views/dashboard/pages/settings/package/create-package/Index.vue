@@ -12,14 +12,14 @@
             <div class="form-group">
               <label>Package Name *</label>
               <input
+                  v-model="formData.name"
                   class="form-control"
                   :class="{ 'is-invalid': localErrors.name }"
-                  @input="validateField('name')"
-                  v-model="formData.name"
                   placeholder="Enter the package name"
                   type="text"
+                  @input="validateField('name')"
               >
-              <div class="text-danger mt-1" v-if="localErrors.name">
+              <div v-if="localErrors.name" class="text-danger mt-1">
                         {{ localErrors.name }}
                       </div>
             </div>
@@ -28,14 +28,14 @@
                 <div class="form-group">
                   <label>Price *</label>
                   <input
+                      v-model="formData.amount"
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.amount }"
-                      @input="validateField('amount')"
-                      v-model="formData.amount"
                       placeholder="Enter the price"
                       type="text"
+                      @input="validateField('amount')"
                   >
-                  <div class="text-danger mt-1" v-if="localErrors.amount">
+                  <div v-if="localErrors.amount" class="text-danger mt-1">
                           {{ localErrors.amount }}
                         </div>
                 </div>
@@ -44,14 +44,14 @@
                 <div class="form-group">
                   <label>Currency *</label>
                   <input
+                      v-model="formData.currency"
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.currency }"
-                      @input="validateField('currency')"
-                      v-model="formData.currency"
                       placeholder="Enter the currency"
                       type="text"
+                      @input="validateField('currency')"
                   >
-                  <div class="text-danger mt-1" v-if="localErrors.currency">
+                  <div v-if="localErrors.currency" class="text-danger mt-1">
                           {{ localErrors.currency }}
                          </div>
                 </div><!-- form-group -->
@@ -60,14 +60,14 @@
                 <div class="form-group">
                   <label>Number of Listings *</label>
                   <input
+                      v-model="formData.number_of_listings"
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.number_of_listings }"
-                      @input="validateField('number_of_listings')"
-                      v-model="formData.number_of_listings"
                       placeholder="Enter the total number of listings"
                       type="text"
+                      @input="validateField('number_of_listings')"
                   >
-                  <div class="text-danger mt-1" v-if="localErrors.number_of_listings">
+                  <div v-if="localErrors.number_of_listings" class="text-danger mt-1">
                           {{ localErrors.number_of_listings }}
                          </div>
                 </div>
@@ -76,14 +76,14 @@
                 <div class="form-group">
                   <label>Number of Images *</label>
                   <input
+                      v-model="formData.number_of_images"
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.number_of_images }"
-                      @input="validateField('number_of_images')"
-                      v-model="formData.number_of_images"
                       placeholder="Enter the total number of images"
                       type="text"
+                      @input="validateField('number_of_images')"
                   >
-                  <div class="text-danger mt-1" v-if="localErrors.number_of_images">
+                  <div v-if="localErrors.number_of_images" class="text-danger mt-1">
                           {{ localErrors.number_of_images }}
                          </div>
                 </div><!-- form-group -->
@@ -96,12 +96,12 @@
                   <div>
                     <el-select
                         v-model="formData.billing_period"
-                        @change="validateField('billing_period')"
                         filterable
                         default-first-option
                         :reserve-keyword="false"
                         placeholder="Choose billing method for your package"
                         style="width: 100%"
+                        @change="validateField('billing_period')"
                     >
                       <el-option
                           v-for="billing in ['day','week','month','year']"
@@ -110,7 +110,7 @@
                           :value="billing"
                       />
                     </el-select>
-                    <div class="text-danger mt-1" v-if="localErrors.billing_period">
+                    <div v-if="localErrors.billing_period" class="text-danger mt-1">
                           {{ localErrors.billing_period }}
                          </div>
                   </div>
@@ -122,12 +122,12 @@
                   <div>
                     <el-select
                         v-model="formData.interval_count"
-                        @change="validateField('interval_count')"
                         filterable
                         default-first-option
                         :reserve-keyword="false"
                         placeholder="Choose interval count for your package"
                         style="width: 100%"
+                        @change="validateField('interval_count')"
                     >
                       <el-option
                           v-for="count in 10"
@@ -136,7 +136,7 @@
                           :value="count"
                       />
                     </el-select>
-                    <div class="text-danger mt-1" v-if="localErrors.interval_count">
+                    <div v-if="localErrors.interval_count" class="text-danger mt-1">
                           {{ localErrors.interval_count }}
                          </div>
                   </div>
@@ -146,7 +146,7 @@
             <hr/>
             <div class="form-group">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" v-model="formData.active" id="flexCheckDefault">
+                <input id="flexCheckDefault" v-model="formData.active" class="form-check-input" type="checkbox">
                 <label class="form-check-label" for="flexCheckDefault">
                   Active
                 </label>

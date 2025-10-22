@@ -9,7 +9,7 @@
                 <SectionSubProperties/>
 
                 <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
-                  <BackBtn route="dashboard.create-listing.step-8" :pId="propertyId"/>
+                  <BackBtn route="dashboard.create-listing.step-8" :p-id="propertyId"/>
                   <RouterLink class="btn btn-primary" :to="{name:'dashboard.create-listing.step-10',params:{propertyId:propertyId}}">
                     Next
                     <i class="houzez-icon icon-arrow-right-1 ml-2"></i>

@@ -29,7 +29,8 @@
         </div><!-- form-group -->
     </div><!-- login-form-wrap -->
     <div class="form-group mt-10">
-        <select class="selectpicker form-control bs-select-hidden" title="Select your account type"
+        <select
+class="selectpicker form-control bs-select-hidden" title="Select your account type"
             data-live-search="false">
             <option>Agent</option>
             <option>Agency</option>

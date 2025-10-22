@@ -25,7 +25,7 @@
                  <div class="col-md-6 col-sm-12">
                    <div class="form-group">
                      <label>Twitter</label>
-                     <input class="form-control" v-model="socialMedia.twitter" name="name" placeholder="Enter the Twitter URL" type="text">
+                     <input v-model="socialMedia.twitter" class="form-control" name="name" placeholder="Enter the Twitter URL" type="text">
                    </div>
                  </div><!-- col-md-6 col-sm-12 -->
                  <div class="col-md-6 col-sm-12">

@@ -13,14 +13,14 @@
                       <div class="form-group">
                         <label>Enter virtual tour iframe/embeded code</label>
                         <textarea
-                            class="form-control" v-model="formData.virtual_tour" rows="7" placeholder="Enter the code here"></textarea>
+                            v-model="formData.virtual_tour" class="form-control" rows="7" placeholder="Enter the code here"></textarea>
                       </div>
                     </div><!-- dashboard-content-block -->
                   </div><!-- dashboard-content-block-wrap -->
 
                   <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
-                    <BackBtn route="dashboard.create-listing.step-6" :pId="propertyId"/>
-                    <NextBtn :btnLoading="btnLoading" :hasErrors="false"/>
+                    <BackBtn route="dashboard.create-listing.step-6" :p-id="propertyId"/>
+                    <NextBtn :btn-loading="btnLoading" :has-errors="false"/>
                   </div><!-- add-new-listing-bottom-nav-wrap -->
                 </form>
             </div><!-- dashboard-content-inner-wrap -->

@@ -4,8 +4,9 @@
         <div class="d-flex align-items-center">
             <span>{{ error }}</span>
         </div>
-        <i class="houzez-icon icon-remove-circle ms-3 cursor-pointer" style="cursor: pointer;" @click="error = null"
-            title="Dismiss"></i>
+        <i
+class="houzez-icon icon-remove-circle ms-3 cursor-pointer" style="cursor: pointer;" title="Dismiss"
+            @click="error = null"></i>
     </div><!-- alert-danger -->
 
     <div class="login-form-wrap">

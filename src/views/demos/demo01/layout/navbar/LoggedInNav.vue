@@ -1,5 +1,5 @@
 <template>
-  <nav class="logged-in-nav-wrap navi-login-register slideout-menu slideout-menu-right" id="navi-user">
+  <nav id="navi-user" class="logged-in-nav-wrap navi-login-register slideout-menu slideout-menu-right">
     <div class="d-flex align-items-center justify-content-end gap-3">
       
       <!-- Phone Number (only if logged in) -->

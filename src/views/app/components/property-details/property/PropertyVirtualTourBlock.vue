@@ -1,5 +1,5 @@
 <template>
-    <div class="property-virtual-tour-wrap property-section-wrap" id="property-virtual-tour-wrap">
+    <div id="property-virtual-tour-wrap" class="property-virtual-tour-wrap property-section-wrap">
 	<div class="block-wrap">
 		<div class="block-title-wrap d-flex justify-content-between align-items-center">
 			<h2>360° Virtual Tour</h2>

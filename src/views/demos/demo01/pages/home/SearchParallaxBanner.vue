@@ -1,6 +1,6 @@
 <template>
   <HeroSection 
-  searchType="parallax"
+  search-type="parallax"
    />
   <FeaturedListings />
   <Taxonomy />

@@ -1,8 +1,8 @@
 <template>
   <div class="form-group">
     <select
-      v-model="localValue"
       ref="selectRef"
+      v-model="localValue"
       class="selectpicker form-control"
       title="Type"
       multiple

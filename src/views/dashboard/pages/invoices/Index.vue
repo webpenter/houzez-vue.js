@@ -4,8 +4,8 @@
     <div class="dashboard-content-inner-wrap">
       <div class="dashboard-content-block-wrap">
         <NoDataMsg
-            msg="You don't have any invoice or transaction history"
             v-if="invoiceCount < 1 && !loading"
+            msg="You don't have any invoice or transaction history"
         />
         <Table
             v-else

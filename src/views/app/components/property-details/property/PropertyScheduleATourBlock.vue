@@ -1,5 +1,5 @@
 <template>
-  <div class="property-schedule-tour-wrap property-section-wrap" id="property-schedule-tour-wrap">
+  <div id="property-schedule-tour-wrap" class="property-schedule-tour-wrap property-section-wrap">
     <div class="block-wrap">
       <div class="block-title-wrap d-flex justify-content-between align-items-center">
         <h2>Schedule a Tour</h2>
@@ -22,7 +22,7 @@
           <div class="col-md-4 col-sm-12">
             <div class="form-group">
               <label>Date</label>
-              <input type="date" v-model="selectedDateInput" class="form-control" />
+              <input v-model="selectedDateInput" type="date" class="form-control" />
             </div>
           </div>
 
@@ -66,7 +66,7 @@
           <div class="col-md-6 col-sm-12">
             <div class="form-group">
               <label>Name</label>
-              <input class="form-control" v-model="form.name" placeholder="Enter your name" type="text" />
+              <input v-model="form.name" class="form-control" placeholder="Enter your name" type="text" />
             </div>
           </div>
 
@@ -74,7 +74,7 @@
           <div class="col-md-6 col-sm-12">
             <div class="form-group">
               <label>Phone</label>
-              <input class="form-control" v-model="form.phone" placeholder="Enter your phone number" type="text" />
+              <input v-model="form.phone" class="form-control" placeholder="Enter your phone number" type="text" />
             </div>
           </div>
 
@@ -82,7 +82,7 @@
           <div class="col-md-6 col-sm-12">
             <div class="form-group">
               <label>Email</label>
-              <input class="form-control" v-model="form.email" placeholder="Enter your email address" type="email" />
+              <input v-model="form.email" class="form-control" placeholder="Enter your email address" type="email" />
             </div>
           </div>
 
@@ -90,14 +90,14 @@
           <div class="col-sm-12 col-xs-12">
             <div class="form-group form-group-textarea">
               <label>Message</label>
-              <textarea class="form-control" v-model="form.message" rows="5" placeholder="Message"></textarea>
+              <textarea v-model="form.message" class="form-control" rows="5" placeholder="Message"></textarea>
             </div>
           </div>
 
           <!-- Terms Checkbox (optional) -->
           <div class="col-sm-12 col-xs-12">
             <div class="form-check mb-3">
-              <input class="form-check-input " type="checkbox" v-model="form.agreeTerms" id="agreeTerms" />
+              <input id="agreeTerms" v-model="form.agreeTerms" class="form-check-input " type="checkbox" />
               <label class="form-check-label ml-4" for="agreeTerms">
                 I agree to the Terms of Use
               </label>
@@ -106,7 +106,7 @@
 
           <!-- Submit Button -->
           <div class="col-sm-12 col-xs-12">
-            <button class="btn btn-secondary btn-sm-full-width" @click="submitForm" :disabled="loading">
+            <button class="btn btn-secondary btn-sm-full-width" :disabled="loading" @click="submitForm">
               {{ loading ? "Submitting..." : "Submit a Tour Request" }}
             </button>
           </div>

@@ -11,9 +11,9 @@
     </div>
 
     <div class="our-team-container">
-      <div class="team-box-left" @click="prevSlide" ref="prevBtn"><i class="fa-solid fa-chevron-left"></i></div>
+      <div ref="prevBtn" class="team-box-left" @click="prevSlide"><i class="fa-solid fa-chevron-left"></i></div>
 
-      <div class="" id="our-team-box" ref="teamBox">
+      <div id="our-team-box" ref="teamBox" class="">
         <!-- Skeleton Loader -->
         <template v-if="loading">
           <div v-for="n in 3" :key="n" class="team-member skeleton">
@@ -33,10 +33,10 @@
         <!-- Team Members -->
         <template v-else>
           <div
-              class="team-member"
               v-for="member in appTeams"
               :key="member.id"
               ref="teamMembers"
+              class="team-member"
           >
             <img :src="member.image" :alt="member.name" />
             <div class="team-member-info">
@@ -52,7 +52,7 @@
         </template>
       </div>
 
-      <div class="team-box-right" @click="nextSlide" ref="nextBtn"><i class="fa-solid fa-chevron-right"></i></div>
+      <div ref="nextBtn" class="team-box-right" @click="nextSlide"><i class="fa-solid fa-chevron-right"></i></div>
     </div>
   </div>
 </template>

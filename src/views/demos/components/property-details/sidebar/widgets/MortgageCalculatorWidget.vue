@@ -24,8 +24,8 @@
 						<div class="input-group-text">$</div>
 					</div>
 					<input 
-						type="number"
 						v-model.number="loanAmount"
+						type="number"
 						class="form-control"
 						:placeholder="$t('Total Amount')"
 						@input="errors.loanAmount = ''"
@@ -43,8 +43,8 @@
 						<div class="input-group-text">$</div>
 					</div>
 					<input 
-						type="number"
 						v-model.number="downPayment"
+						type="number"
 						class="form-control"
 						:placeholder="$t('Down Payment')"
 						@input="errors.downPayment = ''"
@@ -62,8 +62,8 @@
 						<div class="input-group-text">%</div>
 					</div>
 					<input 
-						type="number"
 						v-model.number="interestRate"
+						type="number"
 						class="form-control"
 						:placeholder="$t('Interest Rate')"
 						@input="errors.interestRate = ''"
@@ -83,8 +83,8 @@
 						</div>
 					</div>
 					<input 
-						type="number"
 						v-model.number="loanTerm"
+						type="number"
 						class="form-control"
 						:placeholder="$t('Loan Terms (Years)')"
 						@input="errors.loanTerm = ''"
@@ -98,8 +98,8 @@
 			<!-- Payment Frequency -->
 			<div class="form-group">
 				<select 
-					class="selectpicker form-control"
 					v-model="paymentFrequency"
+					class="selectpicker form-control"
 				>
 					<option value="monthly">{{ $t('Monthly') }}</option>
 					<option value="biweekly">{{ $t('Bi-Weekly') }}</option>

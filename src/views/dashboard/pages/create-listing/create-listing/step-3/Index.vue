@@ -12,7 +12,7 @@
                     <div class="row">
                       <div v-for="feature in features" :key="feature.id" class="col-md-3 col-sm-6 col-6">
                         <label class="control control--checkbox">
-                          <input type="checkbox" v-model="formData.property_feature" :value="feature.name">
+                          <input v-model="formData.property_feature" type="checkbox" :value="feature.name">
                           {{ feature.name }}
                           <span class="control__indicator"></span>
                         </label>
@@ -22,8 +22,8 @@
                 </div><!-- dashboard-content-block-wrap -->
 
                 <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
-                  <BackBtn route="dashboard.create-listing.step-2" :pId="propertyId"/>
-                  <NextBtn :btnLoading="btnLoading" :hasErrors="false"/>
+                  <BackBtn route="dashboard.create-listing.step-2" :p-id="propertyId"/>
+                  <NextBtn :btn-loading="btnLoading" :has-errors="false"/>
                 </div><!-- add-new-listing-bottom-nav-wrap -->
               </form>
 

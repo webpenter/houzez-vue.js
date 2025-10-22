@@ -1,5 +1,5 @@
 <template>
-    <div class="property-review-wrap property-section-wrap" id="property-review-wrap">
+    <div id="property-review-wrap" class="property-review-wrap property-section-wrap">
         <div class="block-title-wrap review-title-wrap d-flex align-items-center">
             <h2>{{ reviews.length }} Reviews</h2>
             <Rating />
@@ -28,13 +28,14 @@
             </nav>
         </div>
 
-        <div class="block-wrap" id="property-review-form">
+        <div id="property-review-form" class="block-wrap">
             <div class="block-title-wrap">
                 <h3>Leave a Review</h3>
             </div><!-- block-title-wrap -->
             <div class="block-content-wrap">
                 <!-- Error Alert -->
-                <div v-if="errors?.data?.errors && Object.keys(errors.data.errors).length"
+                <div
+v-if="errors?.data?.errors && Object.keys(errors.data.errors).length"
                     class="alert alert-danger alert-dismissible fade show" role="alert">
                     <ul>
                         <li v-for="(error, key) in errors.data.errors" :key="key">
@@ -57,13 +58,13 @@
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                             <label>Title</label>
-                            <input class="form-control" placeholder="Enter a title" type="text" v-model="form.title">
+                            <input v-model="form.title" class="form-control" placeholder="Enter a title" type="text">
                         </div>
                     </div><!-- col-md-6 col-sm-12 -->
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                             <label>Rating</label>
-                            <select class="form-control" v-model="form.rating">
+                            <select v-model="form.rating" class="form-control">
                                 <option disabled value="">Select a rating</option>
                                 <option value="1">1 Star - Poor</option>
                                 <option value="2">2 Star - Fair</option>
@@ -76,20 +77,22 @@
                     <div class="col-md-12 col-sm-12">
                         <div class="form-group">
                             <label>Email</label>
-                            <input class="form-control" placeholder="Enter your email" type="email"
-                                v-model="form.email">
+                            <input
+v-model="form.email" class="form-control" placeholder="Enter your email"
+                                type="email">
                         </div>
                     </div><!-- col-md-6 col-sm-12 -->
                     <div class="col-sm-12 col-xs-12">
                         <div class="form-group form-group-textarea">
                             <label>Review</label>
-                            <textarea class="form-control" rows="5" placeholder="Write a review"
-                                v-model="form.comment"></textarea>
+                            <textarea
+v-model="form.comment" class="form-control" rows="5"
+                                placeholder="Write a review"></textarea>
                         </div>
                     </div><!-- col-sm-12 col-xs-12 -->
                     <div class="col-sm-12 col-xs-12">
                         <button class="btn btn-secondary btn-sm-full-width" @click.prevent="submitReview">
-                            <span class="btn-loader" v-if="loading">Submitting...</span>
+                            <span v-if="loading" class="btn-loader">Submitting...</span>
                             <span v-else>Submit</span>
                         </button>
                     </div><!-- col-sm-12 col-xs-12 -->

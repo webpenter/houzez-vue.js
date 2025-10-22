@@ -1,5 +1,5 @@
 <template>
-    <div class="property-mortgage-calculator-wrap property-section-wrap" id="property-mortgage-calculator-wrap">
+    <div id="property-mortgage-calculator-wrap" class="property-mortgage-calculator-wrap property-section-wrap">
 	<div class="block-wrap">
 		<div class="block-title-wrap">
 			<h2>Morgage Calculator</h2>

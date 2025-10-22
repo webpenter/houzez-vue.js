@@ -90,7 +90,7 @@
                   </div>
 
                   <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
-                    <BackBtn route="dashboard.create-listing.step-7" :pId="propertyId"/>
+                    <BackBtn route="dashboard.create-listing.step-7" :p-id="propertyId"/>
                     <RouterLink class="btn btn-primary" :to="{name:'dashboard.create-listing.step-9',params:{propertyId:propertyId}}">
                       Next
                       <i class="houzez-icon icon-arrow-right-1 ml-2"></i>

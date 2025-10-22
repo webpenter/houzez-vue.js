@@ -40,9 +40,9 @@
         <div class="form-group">
           <div class="search-icon">
             <input
+              v-model="formData.search"
               type="text"
               class="form-control"
-              v-model="formData.search"
               :placeholder="$t('Search')"
             />
           </div>

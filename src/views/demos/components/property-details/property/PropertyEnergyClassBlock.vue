@@ -1,5 +1,5 @@
 <template>
-  <div class="property-energy-class-wrap property-section-wrap" id="property-energy-class-wrap">
+  <div id="property-energy-class-wrap" class="property-energy-class-wrap property-section-wrap">
     <div class="block-wrap">
       <div class="block-title-wrap">
         <h2>{{ $t('Energy Efficiency') }}</h2>

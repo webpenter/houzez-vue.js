@@ -13,7 +13,7 @@
 	<div class="map-arrows-actions">
 		<button id="listing-mapzoomin" class="map-btn"><i class="houzez-icon icon-add"></i></button>
 		<button id="listing-mapzoomout" class="map-btn"><i class="houzez-icon icon-subtract"></i></button>
-		<input type="text" id="google-map-search" placeholder="Google Map Search" class="map-search">
+		<input id="google-map-search" type="text" placeholder="Google Map Search" class="map-search">
 	</div><!-- map-arrows-actions -->
 
 	<div class="map-next-prev-actions">

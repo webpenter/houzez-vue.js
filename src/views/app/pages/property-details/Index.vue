@@ -18,20 +18,20 @@
                   <Gallery :images="property.images"/>
                   <EnergyClass :property="property"/>
                   <template v-if="property.property_feature?.length > 0">
-                    <Features :propertyFeature="property.property_feature"/>
+                    <Features :property-feature="property.property_feature"/>
                   </template>
 <!--                  <MortgageCalculator :property="property"/>-->
 <!--                  <FloorPlans :property="property"/>-->
                   <template v-if="property.video_url">
-                    <Video :videoUrl="property.video_url"/>
+                    <Video :video-url="property.video_url"/>
                   </template>
                   <template v-if="property.virtual_tour">
-                    <VirtualTour :virtualTour="property.virtual_tour"/>
+                    <VirtualTour :virtual-tour="property.virtual_tour"/>
                   </template>
-                  <Review :propertyId="property.id"/>
+                  <Review :property-id="property.id"/>
                 </div>
               </div>
-              <SideForm :propertyId="property.id"/>
+              <SideForm :property-id="property.id"/>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 <template>
   <HeroSection 
-  searchType="banner" />
+  search-type="banner" />
   <FeaturedListings />
   <Taxonomy />
   <LatestProperties />

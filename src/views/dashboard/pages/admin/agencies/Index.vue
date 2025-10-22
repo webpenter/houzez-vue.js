@@ -3,7 +3,7 @@
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">
       <div class="dashboard-content-block-wrap">
-        <NoDataMsg msg="You don't have any agency user!" v-if="users.length < 1"/>
+        <NoDataMsg v-if="users.length < 1" msg="You don't have any agency user!"/>
         <Table
           v-else
           :users="users"

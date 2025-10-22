@@ -11,13 +11,13 @@
                    <div class="dashboard-content-block">
                      <div class="form-group">
                        <label>Write private note for this property, it will not display for public.</label>
-                       <textarea class="form-control" v-model="formData.private_note" rows="7" placeholder="Enter the note here"></textarea>
+                       <textarea v-model="formData.private_note" class="form-control" rows="7" placeholder="Enter the note here"></textarea>
                      </div>
                    </div><!-- dashboard-content-block -->
                  </div><!-- dashboard-content-block-wrap -->
 
                  <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
-                   <BackBtn route="dashboard.create-listing.step-11" :pId="propertyId"/>
+                   <BackBtn route="dashboard.create-listing.step-11" :p-id="propertyId"/>
                    <button class="btn btn-primary" type="submit" :disabled="btnLoading">
                      Submit
                      <span v-if="btnLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

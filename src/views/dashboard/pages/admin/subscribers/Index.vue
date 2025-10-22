@@ -3,7 +3,7 @@
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">
       <div class="dashboard-content-block-wrap">
-        <NoDataMsg msg="You don't have any subscriber!" v-if="newsletterSubscribers.length < 1"/>
+        <NoDataMsg v-if="newsletterSubscribers.length < 1" msg="You don't have any subscriber!"/>
         <Table
             v-else
             :subscribers="newsletterSubscribers"

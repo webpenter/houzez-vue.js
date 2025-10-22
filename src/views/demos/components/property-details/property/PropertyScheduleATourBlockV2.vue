@@ -23,7 +23,7 @@
                             v-if="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
                                 {{ errorMessage }}
                                 <button 
-                                type="button" class="close" @click="errorMessage = ''" aria-label="Close">
+                                type="button" class="close" aria-label="Close" @click="errorMessage = ''">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -32,7 +32,7 @@
                             v-if="successMessage" class="alert alert-success alert-dismissible fade show"
                                 role="alert">
                                 {{ successMessage }}
-                                <button type="button" class="close" @click="successMessage = ''" aria-label="Close">
+                                <button type="button" class="close" aria-label="Close" @click="successMessage = ''">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -54,7 +54,8 @@
                                             :key="day.fullDate.toISOString()"
                                         class="form-group" >
                                             <label class="control control--radio">
-                                                <input type="radio" :checked="selectedDate.toDateString() ===
+                                                <input
+type="radio" :checked="selectedDate.toDateString() ===
                                                     day.fullDate.toDateString()
                                                     " @change="selectedDate = day.fullDate" />
                                                 <span class="control__indicator">

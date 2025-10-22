@@ -4,7 +4,7 @@
             <SnakeNav2 active="package"/>
             <div class="dashboard-content-inner-wrap">
                 <div class="dashboard-content-block-wrap">
-                    <NoDataMsg msg="No package found" v-if="selectPlans.length < 1" />
+                    <NoDataMsg v-if="selectPlans.length < 1" msg="No package found" />
                     <div v-else class="row row-no-padding">
                       <Package :select-plans="selectPlans" :loading="loading"/>
                     </div>

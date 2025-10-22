@@ -1,5 +1,5 @@
 <template>
-    <div class="property-gallery-grid property-section-wrap" id="property-gallery-grid">
+    <div id="property-gallery-grid" class="property-gallery-grid property-section-wrap">
       <div
         id="pills-gallery"
         class="property-gallery-grid-wrap houzez-desktop-layout-3cols houzez-tablet-layout-3cols houzez-mobile-layout-3cols"

@@ -5,16 +5,16 @@
       route-name="auth.register"
       route-title="Sign up"
   >
-            <form @submit.prevent="submit" id="stripe-login">
+            <form id="stripe-login" @submit.prevent="submit">
               <div class="field padding-bottom--24">
                 <label for="email">Email </label>
                 <input
-                    @input="validateField('email')"
-                    type="email"
                     v-model="formData.email"
+                    type="email"
                     name="email"
+                    @input="validateField('email')"
                 >
-                <div class="text-danger mt-2" v-if="localErrors.email">
+                <div v-if="localErrors.email" class="text-danger mt-2">
                         {{ localErrors.email }}
                 </div>
               </div>
@@ -26,12 +26,12 @@
 <!--                  </div>-->
                 </div>
                 <input
-                    @input="validateField('password')"
-                    type="password"
                     v-model="formData.password"
+                    type="password"
                     name="password"
+                    @input="validateField('password')"
                 >
-                <div class="text-danger mt-2" v-if="localErrors.password">
+                <div v-if="localErrors.password" class="text-danger mt-2">
                   {{ localErrors.password }}
                 </div>
               </div>
@@ -41,7 +41,8 @@
 <!--                </label>-->
               </div>
               <div class="field padding-bottom--24">
-                <button type="submit" class="submit-btn"
+                <button
+type="submit" class="submit-btn"
                         :style="{pointerEvents: btnLoading || hasErrors ? 'none' : 'auto'}"
                         :disabled="hasErrors || btnLoading">
                   <span v-if="!btnLoading">Login</span>

@@ -1,5 +1,5 @@
 <template>
-    <div class="property-overview-wrap property-overview-wrap-v2 property-section-wrap" id="property-overview-wrap-v2">
+    <div id="property-overview-wrap-v2" class="property-overview-wrap property-overview-wrap-v2 property-section-wrap">
 	<div class="block-wrap">
 		<div class="block-title-wrap d-flex justify-content-between align-items-center">
 			<h2>Overview</h2>

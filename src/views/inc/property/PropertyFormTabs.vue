@@ -14,10 +14,10 @@
             </li>
         </ul>
         <div class="tab-content">
-            <div class="property-form-tabs-tab-pane tab-pane fade show active" id="tab_01" role="tabpanel">
+            <div id="tab_01" class="property-form-tabs-tab-pane tab-pane fade show active" role="tabpanel">
                 <PropertyScheduleATourForm/>
             </div>
-            <div class="property-tabs-module-tab-pane tab-pane fade" id="tab_02" role="tabpanel">
+            <div id="tab_02" class="property-tabs-module-tab-pane tab-pane fade" role="tabpanel">
                 <PropertyForm/>
             </div>
         </div>

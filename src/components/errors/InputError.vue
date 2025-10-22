@@ -1,6 +1,6 @@
 <template>
   <div v-if="data">
-    <span class="text-danger" v-for="(error,i) in data">{{error}}</span>
+    <span v-for="(error,i) in data" :key="i" class="text-danger">{{error}}</span>
   </div>
 </template>
 

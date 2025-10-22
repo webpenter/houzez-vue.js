@@ -199,7 +199,7 @@
                             class="tab-pane fade">
                                 <AgentReviews 
                                 :reviews="reviews.data" :agent="agent"
-                                    @updateAverageRating="handleAverageRating"
+                                    @update-average-rating="handleAverageRating"
                                      />
                             </div><!-- tab-pane -->
                         </div><!-- tab-content -->

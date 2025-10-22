@@ -5,8 +5,8 @@
         <div class="flex-search flex-grow-1">
           <GeolocationField
             
+            :model-value="formData.search"
             @update:search="formData.search = $event"
-            :modelValue="formData.search"
           />
 
         </div>
@@ -17,20 +17,20 @@
       <div class="d-flex">
         <div class="flex-search">
           <CitiesField 
-          :modelValue="formData.cities" 
+          :model-value="formData.cities" 
           @update:cities="formData.cities = $event" />
         </div>
         <div class="flex-search">
-          <TypeField :modelValue="formData.types" @update:types="formData.types = $event" />
+          <TypeField :model-value="formData.types" @update:types="formData.types = $event" />
         </div>
         <div class="flex-search">
          <BedroomsField
-          :modelValue="formData.bedrooms"
+          :model-value="formData.bedrooms"
           @update:bedrooms="formData.bedrooms = $event"
         />
         </div>
         <div class="flex-search">
-          <MaxPriceField :modelValue="formData.maxPrice" @update:maxPrice="formData.maxPrice = $event" />
+          <MaxPriceField :model-value="formData.maxPrice" @update:max-price="formData.maxPrice = $event" />
         </div>
       </div>
 

@@ -8,9 +8,11 @@
         <template v-for="service in services" :key="service.id">
           <div class="col-12 col-sm-10 col-md-6 col-lg-4 mb-4">
             <div class="bg-white p-4 rounded-4 shadow-sm h-100 transition hover-shadow">
-              <div class="d-flex align-items-center justify-content-center rounded-circle mx-auto mb-4"
+              <div
+class="d-flex align-items-center justify-content-center rounded-circle mx-auto mb-4"
                    style="width: 70px; height: 70px; background-color: #6f4e37;">
-                <i style="font-size: 30px" class="fa-solid text-white" :class="{
+                <i
+style="font-size: 30px" class="fa-solid text-white" :class="{
                   'fa-store':service.id === 1,
                   'fa-square-poll-vertical':service.id === 2,
                   'fa-comments-dollar':service.id === 3,

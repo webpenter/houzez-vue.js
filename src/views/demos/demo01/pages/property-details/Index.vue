@@ -68,12 +68,12 @@
                             <!-- <PropertyNearbyBlock /> -->
                             <PropertyVideoBlock 
                             v-if="property.video_url"
-                             :iframeCode="property.video_url" 
+                             :iframe-code="property.video_url" 
                              />
                             <PropertyScheduleATourBlock :property-id="property.id" />
                             <PropertyVirtualTourBlock 
                             v-if="property.virtual_tour"
-                                :iframeCode="property.virtual_tour" />
+                                :iframe-code="property.virtual_tour" />
                             <!-- <PropertyAvailabilityCalendarBlock /> -->
                             <!-- <PropertyAgentBlock :property="property" /> -->
                             <PropertyReviews :property="property" />

@@ -1,5 +1,5 @@
 <template>
-  <div class="property-description-wrap property-section-wrap" id="property-description-wrap">
+  <div id="property-description-wrap" class="property-description-wrap property-section-wrap">
     <div class="block-wrap">
       <div class="block-title-wrap">
         <h2>Description</h2>
@@ -13,7 +13,7 @@
             <h3>Property Documents</h3>
           </div><!-- block-title-wrap -->
 
-          <div class="property-documents" v-for="(attachment, index) in property.attachments" :key="attachment.id">
+          <div v-for="(attachment, index) in property.attachments" :key="attachment.id" class="property-documents">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <div class="property-document-title">
                 <i class="houzez-icon icon-task-list-plain-1 mr-1"></i>

@@ -4,8 +4,8 @@
       <div class="property-search-bar" style="background-color: #ffffff">
         <i class="fa-solid fa-magnifying-glass"></i>
         <input
-            :placeholder="$t('Property Search')"
             v-model="formData.search"
+            :placeholder="$t('Property Search')"
             type="search"
             class="search-property input"
             @input="searchProperty"
@@ -22,8 +22,8 @@
               default-first-option
               :reserve-keyword="false"
               :placeholder="$t('Choose/Search Types')"
-              @change="searchProperty"
               style="width: 100%"
+              @change="searchProperty"
           >
             <el-option
                 v-for="type in types"
@@ -42,8 +42,8 @@
               default-first-option
               :reserve-keyword="false"
               :placeholder="$t('Choose/Search City')"
-              @change="searchProperty"
               style="width: 100%"
+              @change="searchProperty"
           >
             <el-option
                 v-for="city in cities"
@@ -62,8 +62,8 @@
               default-first-option
               :reserve-keyword="false"
               :placeholder="$t('Choose/Search Max Bedrooms')"
-              @change="searchProperty"
               style="width:100%"
+              @change="searchProperty"
           >
             <el-option
                 v-for="bedroom in bedrooms"
@@ -82,8 +82,8 @@
               default-first-option
               :reserve-keyword="false"
               :placeholder="$t('Choose/Search Max Price')"
-              @change="searchProperty"
               style="width: 100%"
+              @change="searchProperty"
           >
             <el-option
                 v-for="price in prices"
@@ -94,7 +94,7 @@
           </el-select>
         </div>
       </div>
-      <button @click.prevent="resetFilters" class="sidebar-search-btn">{{ $t('Reset filters') }}</button>
+      <button class="sidebar-search-btn" @click.prevent="resetFilters">{{ $t('Reset filters') }}</button>
     </div>
     <div id="properties">
       <div class="properties-header">
@@ -110,7 +110,7 @@
         <template v-if="allProperties.length > 0">
           <div class="total-properties">
             <p>{{ $filters.formatTextWithNumber(allProperties.length,$t('Property')) }} </p>
-            <div @click.prevent="refreshProperties" style="cursor: pointer">
+            <div style="cursor: pointer" @click.prevent="refreshProperties">
               <i :class="{'fa-solid fa-rotate': true, 'rotate-animation': isRefreshing}"></i>
               {{ $t('Refresh') }}
             </div>

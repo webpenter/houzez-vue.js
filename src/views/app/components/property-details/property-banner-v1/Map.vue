@@ -13,7 +13,7 @@
         <div class="map-arrows-actions">
             <button id="listing-mapzoomin" class="map-btn"><i class="houzez-icon icon-add"></i></button>
             <button id="listing-mapzoomout" class="map-btn"><i class="houzez-icon icon-subtract"></i></button>
-            <input type="text" id="google-map-search" placeholder="Google Map Search" class="map-search">
+            <input id="google-map-search" type="text" placeholder="Google Map Search" class="map-search">
         </div>
 
         <div class="map-next-prev-actions">
@@ -23,7 +23,8 @@
                 <li class="dropdown-item"><a href="" class="homeyMapType" data-maptype="hybrid"><span>Hybrid</span></a></li>
                 <li class="dropdown-item"><a href="" class="homeyMapType" data-maptype="terrain"><span>Terrain</span></a></li>
             </ul>
-            <button id="houzez-gmap-view" class="map-btn dropdown-toggle" type="button" data-toggle="dropdown"
+            <button
+id="houzez-gmap-view" class="map-btn dropdown-toggle" type="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="true"><i class="houzez-icon icon-earth-1 mr-1"></i>
                 <span>View</span></button>
             <button id="houzez-gmap-prev" class="map-btn"><i class="houzez-icon icon-arrow-left-1 mr-1"></i>

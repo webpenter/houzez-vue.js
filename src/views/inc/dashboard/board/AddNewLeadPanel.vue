@@ -106,14 +106,14 @@
 </template>
 <script>
 export default {
-    emits: ['close'], // Add emits here
-    mounted() {
-        $('.selectpicker').selectpicker();
-    },
+    emits: ['close'],
     data() {
         return {
             Source: '',
         };
+    }, // Add emits here
+    mounted() {
+        $('.selectpicker').selectpicker();
     },
     methods: {
         closePanel() {

@@ -77,7 +77,8 @@
         <div class="fs-normal py-2 fw-bold">Total Amount</div>
         <div class="input-group">
           <span class="input-group-text">$</span>
-          <input id="homePrice" type="text" class="form-control"
+          <input
+id="homePrice" type="text" class="form-control"
                  placeholder="Total Amount" value="252000">
         </div>
       </div>
@@ -85,7 +86,8 @@
         <div class="fs-normal py-2 fw-bold">Down Payment</div>
         <div class="input-group">
           <span class="input-group-text">%</span>
-          <input id="downPaymentPercentage" type="text" class="form-control"
+          <input
+id="downPaymentPercentage" type="text" class="form-control"
                  placeholder="Down Payment" value="15">
         </div>
       </div>
@@ -93,7 +95,8 @@
         <div class="fs-normal py-2 fw-bold">Interest Rate</div>
         <div class="input-group">
           <span class="input-group-text">%</span>
-          <input id="annualInterestRate" type="text" class="form-control"
+          <input
+id="annualInterestRate" type="text" class="form-control"
                  placeholder="Interest Rate" value="3.5">
         </div>
       </div>
@@ -103,7 +106,8 @@
                                                 <span class="input-group-text">
                                                     <i class="bi bi-calendar"></i>
                                                 </span>
-          <input id="loanTermInYears" type="text" class="form-control"
+          <input
+id="loanTermInYears" type="text" class="form-control"
                  placeholder="Loan Terms (Years)" value="20">
         </div>
       </div>
@@ -111,7 +115,8 @@
         <div class="fs-normal py-2 fw-bold">Property Tax</div>
         <div class="input-group">
           <span class="input-group-text">%</span>
-          <input id="annualPropertyTaxRate" type="text" class="form-control"
+          <input
+id="annualPropertyTaxRate" type="text" class="form-control"
                  placeholder="Property Tax" value="1.2">
         </div>
       </div>
@@ -119,7 +124,8 @@
         <div class="fs-normal py-2 fw-bold">Home Insurance</div>
         <div class="input-group">
           <span class="input-group-text">$</span>
-          <input id="annualHomeInsurance" type="text" class="form-control"
+          <input
+id="annualHomeInsurance" type="text" class="form-control"
                  placeholder="Home Insurance" value="2000">
         </div>
       </div>
@@ -127,7 +133,8 @@
         <div class="fs-normal py-2 fw-bold">Monthly HOA Fees</div>
         <div class="input-group">
           <span class="input-group-text">$</span>
-          <input id="monthlyHOAFees" type="text" class="form-control"
+          <input
+id="monthlyHOAFees" type="text" class="form-control"
                  placeholder="Monthly HOA Fees" value="250">
         </div>
       </div>

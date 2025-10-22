@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid" id="property-details">
+  <div id="property-details" class="container-fluid">
     <div class="row">
       <div class="col-12">
         <div class="container-fluid py-4">
@@ -21,14 +21,14 @@
               </nav>
               <div class="icons">
                 <template v-if="token">
-                  <span @click="toggleFavoriteProperty"  :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }"><i class="fa-solid fa-heart"></i></span>
+                  <span :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }"  @click="toggleFavoriteProperty"><i class="fa-solid fa-heart"></i></span>
                 </template>
                 <template v-else>
-                  <span @click="noAuthDialog = true"  :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }"><i class="fa-solid fa-heart"></i></span>
+                  <span :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }"  @click="noAuthDialog = true"><i class="fa-solid fa-heart"></i></span>
                 </template>
 
-                <span @click="openShareDialog = true" style="cursor: pointer;color: green"><i class="fa-solid fa-share"></i></span>
-                <span @click="handlePrint" style="cursor: pointer;color: blue"><i class="fa-solid fa-print"></i></span>
+                <span style="cursor: pointer;color: green" @click="openShareDialog = true"><i class="fa-solid fa-share"></i></span>
+                <span style="cursor: pointer;color: blue" @click="handlePrint"><i class="fa-solid fa-print"></i></span>
               </div>
               <el-dialog v-model="noAuthDialog" title="Alert" width="500" align-center>
                 <span>

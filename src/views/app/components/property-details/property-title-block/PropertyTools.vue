@@ -2,14 +2,16 @@
     <ul class="item-tools">
         <li class="item-tool">
             <template v-if="token">
-                <span @click="toggleFavoriteProperty"
-                    :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }" class="item-tool-favorite">
+                <span
+:style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }"
+                    class="item-tool-favorite" @click="toggleFavoriteProperty">
                     <i class="houzez-icon icon-love-it"></i>
                 </span><!-- item-tool-favorite -->
             </template>
             <template v-else>
-                <span @click="noAuthDialog = true" :style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }"
-                    class="item-tool-favorite">
+                <span
+:style="{ color: isFavorite ? 'red' : 'black', cursor: 'pointer' }" class="item-tool-favorite"
+                    @click="noAuthDialog = true">
                     <i class="houzez-icon icon-love-it"></i>
                 </span><!-- item-tool-favorite -->
             </template>
@@ -41,7 +43,7 @@
             </div>
         </li><!-- item-tool -->
         <li class="item-tool houzez-print">
-            <span @click="handlePrint" class="item-tool-compare">
+            <span class="item-tool-compare" @click="handlePrint">
                 <i class="houzez-icon icon-print-text"></i>
             </span><!-- item-tool-compare -->
         </li><!-- item-tool -->

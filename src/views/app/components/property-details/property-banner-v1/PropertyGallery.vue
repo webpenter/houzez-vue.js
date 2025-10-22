@@ -3,25 +3,28 @@
     <!-- Main Image Slider -->
     <div class="listing-slider position-relative">
       <div v-if="currentImage" key="main-image">
-        <a rel="gallery-1" :data-lazy="currentImage.image_path" href="#" class="swipebox" data-toggle="modal"
+        <a
+rel="gallery-1" :data-lazy="currentImage.image_path" href="#" class="swipebox" data-toggle="modal"
           data-target="#property-lightbox">
           <img class="img-fluid" :src="currentImage.image_path" :alt="'Image ' + (currentIndex + 1)" />
         </a>
       </div>
 
       <!-- Static Left Button -->
-      <button @click="prevImage" class="btn btn-info position-absolute top-50 translate-middle-y start-0 ms-2 
+      <button
+class="btn btn-info position-absolute top-50 translate-middle-y start-0 ms-2 
          rounded-0 d-flex align-items-center justify-content-center px-0 
-         w-35 h-35 fs-5 z-3">
+         w-35 h-35 fs-5 z-3" @click="prevImage">
         ‹
       </button>
 
 
 
       <!-- Static Right Button -->
-      <button @click="nextImage" class="btn btn-info position-absolute top-50 translate-middle-y end-0 me-2 
+      <button
+class="btn btn-info position-absolute top-50 translate-middle-y end-0 me-2 
          rounded-0 d-flex align-items-center justify-content-center px-0 
-         fs-5 z-3">
+         fs-5 z-3" @click="nextImage">
         ›
       </button>
 
@@ -30,9 +33,11 @@
 
     <!-- Thumbnail Navigation -->
     <div class="listing-slider-nav d-flex">
-      <div v-for="(image, index) in property.images" :key="'thumb-' + image.id" @click="currentIndex = index"
-        class="me-1 cursor-pointer">
-        <img class="img-fluid w-auto h-auto" :src="image.image_path" :data-lazy="image.image_path"
+      <div
+v-for="(image, index) in property.images" :key="'thumb-' + image.id" class="me-1 cursor-pointer"
+        @click="currentIndex = index">
+        <img
+class="img-fluid w-auto h-auto" :src="image.image_path" :data-lazy="image.image_path"
           :alt="'Thumbnail ' + (index + 1)" />
       </div>
     </div>

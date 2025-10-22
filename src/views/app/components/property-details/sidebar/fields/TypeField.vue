@@ -1,6 +1,7 @@
 <template>
 	<div class="form-group">
-		<select class="selectpicker form-control bs-select-hidden" title="Type" data-live-search="false"
+		<select
+class="selectpicker form-control bs-select-hidden" title="Type" data-live-search="false"
 			data-selected-text-format="count" multiple data-actions-box="true">
 			<option>Apartment</option>
 			<option>Condo</option>

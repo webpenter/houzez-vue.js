@@ -18,16 +18,16 @@
         </div><!-- dashboard-property-search -->
 
         <Table
-            :dashboardProperties="dashboardProperties"
+            :dashboard-properties="dashboardProperties"
             :loading="loading"
             @delete-property="(id) => deleteProperty(id)"
             @duplicate-property="(id) => duplicateProperty(id)"
-            @statusChanged="handleStatusChange"
+            @status-changed="handleStatusChange"
         />
 
         <NoProperty 
         v-if="dashboardProperties.length < 1"
-        :propertyStatus="propertyStatus"
+        :property-status="propertyStatus"
          />
       </div><!-- dashboard-content-block-wrap -->
     </div><!-- dashboard-content-inner-wrap -->

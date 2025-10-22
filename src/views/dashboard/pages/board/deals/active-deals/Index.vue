@@ -6,7 +6,7 @@
     <section class="dashboard-content-wrap">
         <div class="deals-table-wrap">
           <NavPills tab="active"/>
-          <NoDataMsg msg="You don't have any active deal yet!" v-if="activeDeals.length < 1"/>
+          <NoDataMsg v-if="activeDeals.length < 1" msg="You don't have any active deal yet!"/>
           <template v-else>
             <div class="deal-content-wrap p-0">
               <Table

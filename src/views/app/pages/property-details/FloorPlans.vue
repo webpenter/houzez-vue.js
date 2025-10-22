@@ -103,8 +103,9 @@
                       class="property-schedule-tour-form-wrap d-flex justify-content-center">
                     <div class="carousel-container-time">
                       <div class="slideshow-wrapper">
-                        <div class="slideshow-dates"
-                             id="dateCarousel">
+                        <div
+id="dateCarousel"
+                             class="slideshow-dates">
                           <div class="Slides-date active">
                             <div class="week">Sun</div>
                             <div class="day">12</div>
@@ -142,9 +143,11 @@
                           </div>
                         </div>
                       </div>
-                      <button class="prev-date"
+                      <button
+class="prev-date"
                               onclick="plusSlides(-1)">&#10094;</button>
-                      <button class="next-date"
+                      <button
+class="next-date"
                               onclick="plusSlides(1)">&#10095;</button>
                     </div>
                   </div>
@@ -158,37 +161,45 @@
                       <div class="col-6 mb-1">
                         <div
                             class="in-person border rounded-1 border-primary text-center p-2 d-flex justify-content-center">
-                          <a href="#"
+                          <a
+href="#"
                              class="text-primary text-decoration-none">In
                             Person</a>
                         </div>
                       </div>
                       <div class="col-6 mb-1">
-                        <div class="in-person rounded-1 text-center p-2 d-flex justify-content-center border shadow-sm"
+                        <div
+class="in-person rounded-1 text-center p-2 d-flex justify-content-center border shadow-sm"
                              style="border: 1px solid #dce0e0;">
-                          <a href="#"
+                          <a
+href="#"
                              class=" text-decoration-none">
                             Video Chat</a>
                         </div>
                       </div>
                       <div class="col-12 my-1">
-                        <input type="text" class="form-control"
+                        <input
+type="text" class="form-control"
                                placeholder="Time">
                       </div>
                       <div class="col-12 my-1">
-                        <input type="text" class="form-control"
+                        <input
+type="text" class="form-control"
                                placeholder="Name">
                       </div>
                       <div class="col-12 my-1">
-                        <input type="text" class="form-control"
+                        <input
+type="text" class="form-control"
                                placeholder="Phone">
                       </div>
                       <div class="col-12 my-1">
-                        <input type="text" class="form-control"
+                        <input
+type="text" class="form-control"
                                placeholder="Email">
                       </div>
                       <div class="col-12 my-1">
-                                                                            <textarea class="form-control"
+                                                                            <textarea
+class="form-control"
                                                                                       name="message" rows="3"
                                                                                       placeholder="Enter your Message"></textarea>
                       </div>

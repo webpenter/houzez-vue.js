@@ -4,8 +4,8 @@
     <div class="newsletter d-flex">
       <h2>{{ $t('Newsletter To Get Updated')}}<br> {{ $t('The Latest News')}}</h2>
       <div class="d-flex flex-grow-1 subscribe-input-btn">
-        <input type="email" v-model="email" class="form-control" :placeholder="$t('Enter your Email')">
-        <button @click="subscribeNewsletter" class="btn subscribe-btn">
+        <input v-model="email" type="email" class="form-control" :placeholder="$t('Enter your Email')">
+        <button class="btn subscribe-btn" @click="subscribeNewsletter">
           {{ $t('Subscribe Now')}} <i class="fas fa-paper-plane"></i>
         </button>
       </div>

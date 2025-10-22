@@ -1,5 +1,5 @@
     <template>
-        <div class="property-sub-listings-wrap property-section-wrap" id="property-sub-listings-wrap">
+        <div id="property-sub-listings-wrap" class="property-sub-listings-wrap property-section-wrap">
             <div class="block-wrap">
                 <div class="block-title-wrap">
                     <h2>Sub Listings</h2>

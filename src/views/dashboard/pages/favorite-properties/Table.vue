@@ -46,7 +46,7 @@
         </td>
         <td class="property-table-actions" data-label="Actions">
           <div class="dropdown property-action-menu">
-            <button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button id="dropdownMenuButton" class="btn btn-primary-outlined dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Actions
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -58,8 +58,8 @@
               </RouterLink>
               <a
                   class="dropdown-item"
-                  @click.prevent="$emit('deleteProperty',property.id)"
                   href="#"
+                  @click.prevent="$emit('deleteProperty',property.id)"
               >
                 Delete
               </a>

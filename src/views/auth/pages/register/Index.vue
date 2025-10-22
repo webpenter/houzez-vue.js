@@ -5,27 +5,27 @@
       route-name="auth.login"
       route-title="Login"
   >
-            <form @submit.prevent="submit" id="stripe-login">
+            <form id="stripe-login" @submit.prevent="submit">
               <div class="field padding-bottom--24">
                 <label for="username">Username</label>
                 <input
-                    type="text"
-                    @input="validateField('username')"
                     v-model="formData.username"
-                    name="username">
-                <div class="text-danger mt-2" v-if="localErrors.username">
+                    type="text"
+                    name="username"
+                    @input="validateField('username')">
+                <div v-if="localErrors.username" class="text-danger mt-2">
                   {{ localErrors.username }}
                 </div>
               </div>
               <div class="field padding-bottom--24">
                 <label for="email">Email</label>
                 <input
-                    type="email"
-                    @input="validateField('email')"
                     v-model="formData.email"
+                    type="email"
                     name="email"
+                    @input="validateField('email')"
                 >
-                <div class="text-danger mt-2" v-if="localErrors.email">
+                <div v-if="localErrors.email" class="text-danger mt-2">
                   {{ localErrors.email }}
                 </div>
               </div>
@@ -34,12 +34,12 @@
                   <label for="password">Password</label>
                 </div>
                 <input
-                    type="password"
-                    @input="validateField('password')"
                     v-model="formData.password"
+                    type="password"
                     name="password"
+                    @input="validateField('password')"
                 >
-                <div class="text-danger mt-2" v-if="localErrors.password">
+                <div v-if="localErrors.password" class="text-danger mt-2">
                   {{ localErrors.password }}
                 </div>
               </div>
@@ -48,19 +48,20 @@
                   <label for="password">Confirm Password</label>
                 </div>
                 <input
-                    type="password"
-                    @input="validateField('password_confirmation')"
                     v-model="formData.password_confirmation"
+                    type="password"
                     name="password_confirmation"
+                    @input="validateField('password_confirmation')"
                 >
-                <div class="text-danger mt-2" v-if="localErrors.password_confirmation">
+                <div v-if="localErrors.password_confirmation" class="text-danger mt-2">
                   {{ localErrors.password_confirmation }}
                 </div>
               </div>
               <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
               </div>
               <div class="field padding-bottom--24">
-                <button type="submit" class="submit-btn"
+                <button
+type="submit" class="submit-btn"
                         :style="{pointerEvents: btnLoading || hasErrors ? 'none' : 'auto'}"
                         :disabled="hasErrors || btnLoading">
                   <span v-if="!btnLoading">Sign up</span>

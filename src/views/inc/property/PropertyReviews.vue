@@ -1,5 +1,5 @@
 <template>
-    <div class="property-review-wrap property-section-wrap" id="property-review-wrap">
+    <div id="property-review-wrap" class="property-review-wrap property-section-wrap">
 	<div class="block-title-wrap review-title-wrap d-flex align-items-center">
 		<h2>3 Reviews</h2>
         <Rating />
@@ -29,7 +29,7 @@
 			</ul><!-- pagination -->
 		</nav>
 	</div><!-- pagination-wrap -->
-	<div class="block-wrap" id="property-review-form">
+	<div id="property-review-form" class="block-wrap">
 		<div class="block-title-wrap">
 			<h3>Leave a Review</h3>
 		</div><!-- block-title-wrap -->

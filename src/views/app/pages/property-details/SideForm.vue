@@ -46,7 +46,7 @@
                         class="w-100"
                         @change="validateForm"
                     />
-                    <p class="text-danger small" v-if="errors.tour_date_time">{{ errors.tour_date_time }}</p>
+                    <p v-if="errors.tour_date_time" class="text-danger small">{{ errors.tour_date_time }}</p>
                   </div>
 
                   <!-- Name -->
@@ -58,7 +58,7 @@
                         :placeholder="$t('Name')"
                         @input="validateForm"
                     />
-                    <p class="text-danger small" v-if="errors.name">{{ errors.name }}</p>
+                    <p v-if="errors.name" class="text-danger small">{{ errors.name }}</p>
                   </div>
 
                   <!-- Phone -->
@@ -70,7 +70,7 @@
                         :placeholder="$t('Phone')"
                         @input="validateForm"
                     />
-                    <p class="text-danger small" v-if="errors.phone">{{ errors.phone }}</p>
+                    <p v-if="errors.phone" class="text-danger small">{{ errors.phone }}</p>
                   </div>
 
                   <!-- Email -->
@@ -82,7 +82,7 @@
                         :placeholder="$t('Email')"
                         @input="validateForm"
                     />
-                    <p class="text-danger small" v-if="errors.email">{{ errors.email }}</p>
+                    <p v-if="errors.email" class="text-danger small">{{ errors.email }}</p>
                   </div>
 
                   <!-- Message -->
@@ -94,7 +94,7 @@
                         :placeholder="$t('Enter your message')"
                         @input="validateForm"
                     ></textarea>
-                    <p class="text-danger small" v-if="errors.message">{{ errors.message }}</p>
+                    <p v-if="errors.message" class="text-danger small">{{ errors.message }}</p>
                   </div>
 
                   <!-- Submit Button -->

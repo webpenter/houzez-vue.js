@@ -2,11 +2,11 @@
   <div class="form-group">
     <div class="location-search">
       <input
+        v-model="search"
         type="text"
         class="form-control"
         :placeholder="$t('Search')
 "
-        v-model="search"
         @input="emitSearch"
       />
       <!-- <a class="btn location-trigger" href="#">

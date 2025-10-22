@@ -14,14 +14,14 @@
                         <div class="form-group">
                           <label>Bedrooms *</label>
                           <input
+                              v-model="formData.bedrooms"
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.bedrooms }"
-                              @input="validateField('bedrooms')"
-                              v-model="formData.bedrooms"
                               placeholder="Enter number of bedrooms"
                               type="text"
+                              @input="validateField('bedrooms')"
                           >
-                          <span class="text-danger" v-if="localErrors.bedrooms">
+                          <span v-if="localErrors.bedrooms" class="text-danger">
                             {{ localErrors.bedrooms }}
                           </span>
                         </div>
@@ -30,14 +30,14 @@
                         <div class="form-group">
                           <label>Bathrooms *</label>
                           <input
+                              v-model="formData.bathrooms"
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.bathrooms }"
-                              @input="validateField('bathrooms')"
-                              v-model="formData.bathrooms"
                               placeholder="Enter number of bathrooms"
                               type="text"
+                              @input="validateField('bathrooms')"
                           >
-                          <span class="text-danger" v-if="localErrors.bathrooms">
+                          <span v-if="localErrors.bathrooms" class="text-danger">
                             {{ localErrors.bathrooms }}
                           </span>
                         </div>
@@ -46,14 +46,14 @@
                         <div class="form-group">
                           <label>Garages</label>
                           <input
+                              v-model="formData.garages"
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.garages }"
-                              @input="validateField('garages')"
-                              v-model="formData.garages"
                               placeholder="Enter number of garages"
                               type="text"
+                              @input="validateField('garages')"
                           >
-                          <span class="text-danger" v-if="localErrors.garages">
+                          <span v-if="localErrors.garages" class="text-danger">
                             {{ localErrors.garages }}
                           </span>
                         </div>
@@ -61,7 +61,7 @@
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                           <label>Garages Size</label>
-                          <input class="form-control" v-model="formData.garages_size" placeholder="Enter the garages size" type="text">
+                          <input v-model="formData.garages_size" class="form-control" placeholder="Enter the garages size" type="text">
                           <!-- <small class="form-text text-muted">For example: 200 Sq Ft</small> -->
                         </div>
                       </div><!-- col-md-6 col-sm-12 -->
@@ -69,14 +69,14 @@
                         <div class="form-group">
                           <label>Area Size *</label>
                           <input
+                              v-model="formData.area_size"
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.area_size }"
-                              @input="validateField('area_size')"
-                              v-model="formData.area_size"
                               placeholder="Enter property area size"
                               type="text"
+                              @input="validateField('area_size')"
                           >
-                          <span class="text-danger" v-if="localErrors.area_size">
+                          <span v-if="localErrors.area_size" class="text-danger">
                             {{ localErrors.area_size }}
                           </span>
                         </div>
@@ -84,7 +84,7 @@
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                           <label>Size Prefix</label>
-                          <input class="form-control" v-model="formData.size_prefix" placeholder="Enter the size prefix" type="text">
+                          <input v-model="formData.size_prefix" class="form-control" placeholder="Enter the size prefix" type="text">
                           <small class="form-text text-muted">For example: Sq Ft</small>
                         </div>
                       </div><!-- col-md-6 col-sm-12 -->
@@ -92,14 +92,14 @@
                         <div class="form-group">
                           <label>Land Area</label>
                           <input
+                              v-model="formData.land_area"
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.land_area }"
-                              @input="validateField('land_area')"
-                              v-model="formData.land_area"
                               placeholder="Enter property land area size"
                               type="text"
+                              @input="validateField('land_area')"
                           >
-                          <span class="text-danger" v-if="localErrors.land_area">
+                          <span v-if="localErrors.land_area" class="text-danger">
                             {{ localErrors.land_area }}
                           </span>
                         </div>
@@ -107,14 +107,14 @@
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                           <label>Land Area Size Postfix</label>
-                          <input class="form-control" v-model="formData.land_area_size_postfix" placeholder="Enter property land area postfix" type="text">
+                          <input v-model="formData.land_area_size_postfix" class="form-control" placeholder="Enter property land area postfix" type="text">
                           <small class="form-text text-muted">For example: Sq Ft</small>
                         </div>
                       </div><!-- col-md-6 col-sm-12 -->
                       <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                           <label>Property ID</label>
-                          <input class="form-control" v-model="formData.property_id" placeholder="Enter property ID" type="text">
+                          <input v-model="formData.property_id" class="form-control" placeholder="Enter property ID" type="text">
                           <small class="form-text text-muted">For example: HZ-01</small>
                         </div>
                       </div><!-- col-md-6 col-sm-12 -->
@@ -122,14 +122,14 @@
                         <div class="form-group">
                           <label>Year Built</label>
                           <input
+                              v-model="formData.year_built"
                               class="form-control"
                               :class="{ 'is-invalid': localErrors.year_built }"
-                              @input="validateField('year_built')"
-                              v-model="formData.year_built"
                               placeholder="Enter year built"
                               type="text"
+                              @input="validateField('year_built')"
                           >
-                          <span class="text-danger" v-if="localErrors.year_built">
+                          <span v-if="localErrors.year_built" class="text-danger">
                             {{ localErrors.year_built }}
                           </span>
                         </div><!-- form-group -->
@@ -139,8 +139,8 @@
                 </div><!-- dashboard-content-block-wrap -->
 
                 <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
-                  <BackBtn route="dashboard.create-listing.step-1" :pId="propertyId"/>
-                  <NextBtn :btnLoading="btnLoading" :hasErrors="hasErrors"/>
+                  <BackBtn route="dashboard.create-listing.step-1" :p-id="propertyId"/>
+                  <NextBtn :btn-loading="btnLoading" :has-errors="hasErrors"/>
                 </div><!-- add-new-listing-bottom-nav-wrap -->
               </form>
 

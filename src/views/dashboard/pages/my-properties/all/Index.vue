@@ -20,20 +20,20 @@
         <!-- Show skeleton loader when loading -->
         <Table
           v-if="loading"
-          :dashboardProperties="[]"
+          :dashboard-properties="[]"
           :loading="loading"
           @delete-property="(id) => deleteProperty(id)"
           @duplicate-property="(id) => duplicateProperty(id)"
-          @statusChanged="handleStatusChange"
+          @status-changed="handleStatusChange"
         />
         <!-- Show table when not loading and properties exist -->
         <Table
           v-else-if="dashboardProperties.length > 0"
-          :dashboardProperties="dashboardProperties"
+          :dashboard-properties="dashboardProperties"
           :loading="loading"
           @delete-property="(id) => deleteProperty(id)"
           @duplicate-property="(id) => duplicateProperty(id)"
-          @statusChanged="handleStatusChange"
+          @status-changed="handleStatusChange"
         />
         <!-- Show NoProperty when not loading and no properties -->
         <NoProperty v-else />

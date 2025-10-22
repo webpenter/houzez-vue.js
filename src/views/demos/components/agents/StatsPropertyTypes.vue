@@ -3,7 +3,7 @@
     <h2><span>Property</span> Types</h2>
     <div class="d-flex align-items-center">
       <div class="agent-profile-chart">
-        <canvas id="stats-property-types" width="100" height="100" ref="chartCanvas"></canvas>
+        <canvas id="stats-property-types" ref="chartCanvas" width="100" height="100"></canvas>
       </div>
 
       <div class="agent-profile-data">
