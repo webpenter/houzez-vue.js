@@ -7,5 +7,5 @@
 </template>
 
 <script setup>
-const props = defineProps(['btnLoading','hasErrors'])
+defineProps(['btnLoading','hasErrors'])
 </script>

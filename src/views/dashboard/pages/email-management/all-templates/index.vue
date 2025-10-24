@@ -70,7 +70,7 @@ const deleteTemplate = async (id) => {
           useNotification().Error("Failed to delete template");
         }
       } catch (err) {
-        useNotification().Error("An error occurred while deleting");
+        useNotification().Error("An error occurred while deleting", err);
       }
     })
     .catch(() => useMessage().Info("Request cancelled."));
@@ -90,7 +90,7 @@ const toggleStatus = async (id, status) => {
       useNotification().Error("Failed to update status");
     }
   } catch (err) {
-    useNotification().Error("An error occurred while updating status");
+    useNotification().Error("An error occurred while updating status", err);
   }
 };
 

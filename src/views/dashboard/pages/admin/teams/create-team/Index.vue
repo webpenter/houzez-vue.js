@@ -15,14 +15,16 @@
                 <div class="form-group">
                   <label>Name *</label>
                   <input
+                  v-model="formData.name"
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.name }"
-                      @input="validateField('name')"
-                      v-model="formData.name"
                       placeholder="Enter the name"
                       type="text"
+                      @input="validateField('name')"
                   />
-                  <div class="text-danger mt-1" v-if="localErrors.name">
+                  <div 
+                  v-if="localErrors.name"
+                  class="text-danger mt-1">
                     {{ localErrors.name }}
                   </div>
                 </div>
@@ -34,10 +36,12 @@
                   <input
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.image }"
-                      @change="handleImageUpload"
                       type="file"
+                      @change="handleImageUpload"
                   />
-                  <div class="text-danger mt-1" v-if="localErrors.image">
+                  <div 
+                  v-if="localErrors.image"
+                  class="text-danger mt-1">
                     {{ localErrors.image }}
                   </div>
                 </div>
@@ -46,14 +50,16 @@
               <div class="col-md-12 col-sm-12">
                 <label>Designation *</label>
                 <input
+                v-model="formData.designation"
                     class="form-control"
                     :class="{ 'is-invalid': localErrors.designation }"
-                    @input="validateField('designation')"
-                    v-model="formData.designation"
                     placeholder="Enter the designation"
                     type="text"
+                     @input="validateField('designation')"
                 />
-                <div class="text-danger mt-1" v-if="localErrors.designation">
+                <div 
+                v-if="localErrors.designation"
+                class="text-danger mt-1">
                   {{ localErrors.designation }}
                 </div>
               </div>
@@ -61,14 +67,16 @@
               <div class="col-md-12 col-sm-12 mt-3">
                 <label>Address *</label>
                 <input
+                 v-model="formData.address"
                     class="form-control"
                     :class="{ 'is-invalid': localErrors.address }"
-                    @input="validateField('address')"
-                    v-model="formData.address"
                     placeholder="Enter the address"
                     type="text"
+                    @input="validateField('address')"
                 />
-                <div class="text-danger mt-1" v-if="localErrors.address">
+                <div 
+                v-if="localErrors.address"
+                class="text-danger mt-1">
                   {{ localErrors.address }}
                 </div>
               </div>
@@ -77,14 +85,16 @@
                 <div class="form-group">
                   <label>Phone *</label>
                   <input
+                   v-model="formData.phone"
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.phone }"
-                      @input="validateField('phone')"
-                      v-model="formData.phone"
                       placeholder="Enter the phone"
                       type="text"
+                      @input="validateField('phone')"
                   />
-                  <div class="text-danger mt-1" v-if="localErrors.phone">
+                  <div 
+                  v-if="localErrors.phone"
+                  class="text-danger mt-1">
                     {{ localErrors.phone }}
                   </div>
                 </div>
@@ -94,14 +104,16 @@
                 <div class="form-group">
                   <label>Email *</label>
                   <input
+                  v-model="formData.email"
                       class="form-control"
                       :class="{ 'is-invalid': localErrors.email }"
-                      @input="validateField('email')"
-                      v-model="formData.email"
                       placeholder="Enter the email"
                       type="text"
+                       @input="validateField('email')"
                   />
-                  <div class="text-danger mt-1" v-if="localErrors.email">
+                  <div 
+                  v-if="localErrors.email"
+                  class="text-danger mt-1">
                     {{ localErrors.email }}
                   </div>
                 </div>
@@ -222,7 +234,7 @@ const formSubmit = async () => {
     }
   } catch (error) {
     btnLoading.value = false
-    notify.Error('An error occurred')
+    notify.Error('An error occurred', error)
   }
 }
 </script>

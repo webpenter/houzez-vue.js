@@ -8,7 +8,11 @@
 
       <div class="agent-profile-data">
         <ul class="list-unstyled">
-          <li v-for="(type, index) in types" :class="'stats-data-' + (index + 1)">
+          <li 
+          v-for="(type, index) in types" 
+          :key="index"
+          :class="'stats-data-' + (index + 1)"
+          >
             <i class="houzez-icon icon-sign-badge-circle mr-1"></i>
             <strong class="mr-1">{{ type.percentage }}%</strong>
             <span>{{ $filters.capitalize(type.type) }}</span>

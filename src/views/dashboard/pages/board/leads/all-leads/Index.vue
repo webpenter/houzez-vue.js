@@ -5,7 +5,9 @@
 
     <section class="dashboard-content-wrap">
         <div class="deals-table-wrap">
-          <NoDataMsg msg="You don't have any active lead yet!" v-if="leads.length < 1"/>
+          <NoDataMsg 
+          v-if="leads.length < 1"
+          msg="You don't have any active lead yet!"/>
           <template v-else>
             <div class="deal-content-wrap p-0">
               <Table

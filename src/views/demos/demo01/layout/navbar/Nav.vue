@@ -124,7 +124,7 @@ import {useI18n} from "vue-i18n";
 import {useLanguage} from "@/stores/index.js";
 import { storeToRefs } from 'pinia';
 
-const { t, locale, availableLocales } = useI18n();
+const { locale, availableLocales } = useI18n();
 const languageStore = useLanguage();
 const { locale: selectedLocale } = storeToRefs(languageStore);
 

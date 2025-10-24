@@ -31,7 +31,9 @@
             </div><!-- listing-view -->
 
             <!-- Load more button -->
-            <div class="load-more-wrap" v-if="!loading && featuredProperties.length > 0">
+            <div 
+            v-if="!loading && featuredProperties.length > 0"
+            class="load-more-wrap">
               <router-link
                 class="btn btn-primary-outlined btn-load-more"
                 :to="{ name: 'demo01.properties' }"
@@ -69,10 +71,10 @@ const fetchFeaturedProperties = async () => {
   try {
     const res = await propertyToRefs.getFeaturedPropertiesDemo01();
     if (res.status !== 200) {
-      console.error("Failed to fetch featured properties");
+      // console.error("Failed to fetch featured properties");
     }
   } catch (err) {
-    console.error("Failed to fetch featured properties:", err);
+    // console.error("Failed to fetch featured properties:", err);
   } finally {
     loading.value = false;
   }

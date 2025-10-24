@@ -20,11 +20,11 @@
 </template>
 
 <script setup>
-import Information from './Information.vue';
-import SiteInformation from './SiteInformation.vue';
-import SocialMedia from './SocialMedia.vue';
-import StripeSettings from './StripeSettings.vue';
-import ContactSettings from './ContactSettings.vue';
-import EmailSettings from './EmailSettings.vue';
-import SeoSettings from './SeoSettings.vue';
+// import Information from './Information.vue';
+// import SiteInformation from './SiteInformation.vue';
+// import SocialMedia from './SocialMedia.vue';
+// import StripeSettings from './StripeSettings.vue';
+// import ContactSettings from './ContactSettings.vue';
+// import EmailSettings from './EmailSettings.vue';
+// import SeoSettings from './SeoSettings.vue';
 </script>

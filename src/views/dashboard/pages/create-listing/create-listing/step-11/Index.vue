@@ -7,10 +7,12 @@
                 <h2>Attachments</h2>
                 <div class="dashboard-content-block">
                   <p>You can attach PDF files, Map images OR other documents to provide further details related to property.</p>
-                  <p><button @click="triggerFileInput" class="btn btn-primary mt-2">Select Attachment</button></p>
+                  <p><button 
+                    class="btn btn-primary mt-2"
+                    @click="triggerFileInput">Select Attachment</button></p>
                   <input
+                   ref="fileInput"
                       type="file"
-                      ref="fileInput"
                       multiple
                       style="display: none;"
                       @change="handleFileChange"
@@ -32,10 +34,14 @@
                             <span>{{ attachment.file_title }}</span>
                           </td>
                           <td>
-                            <button @click.prevent="downloadAttachment(attachment.file_path,attachment.file_title)" class="btn btn-light-grey-outlined"><i class="houzez-icon icon-download-bottom"></i></button>
+                            <button 
+                            class="btn btn-light-grey-outlined"
+                            @click.prevent="downloadAttachment(attachment.file_path,attachment.file_title)"><i class="houzez-icon icon-download-bottom"></i></button>
                           </td>
                           <td>
-                            <button @click="deleteAttachment(attachment.id)" class="btn btn-light-grey-outlined"><i class="houzez-icon icon-close"></i></button>
+                            <button 
+                            class="btn btn-light-grey-outlined"
+                            @click="deleteAttachment(attachment.id)" ><i class="houzez-icon icon-close"></i></button>
                           </td>
                         </tr>
                       </template>
@@ -64,7 +70,6 @@
 
 <script setup>
 import SnakeNav from '../../components/SnakeNav.vue';
-import SaveAsDraftBtn from '../components/SaveAsDraftBtn.vue';
 import NextBtn from '../components/NextBtn.vue';
 import BackBtn from '../components/BackBtn.vue';
 import { useRoute, useRouter} from "vue-router";
@@ -109,7 +114,7 @@ const handleFileChange = async (event) => {
       notify.Error("Failed to upload property attachments.");
     }
   } catch (error) {
-    notify.Error("An error occurred while uploading files.");
+    notify.Error("An error occurred while uploading files.", error);
   }
 };
 
@@ -130,7 +135,7 @@ const deleteAttachment = async (fileId) => {
       notify.Error("Failed to delete file.");
     }
   } catch (error) {
-    notify.Error("An error occurred while processing the request.");
+    notify.Error("An error occurred while processing the request." ,error);
   }
 }
 

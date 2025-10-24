@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-const props = defineProps(['browserStats', 'browserStatsLoading']);
+defineProps(['browserStats', 'browserStatsLoading']);
 
 const formatViews = (num) => {
   if (num >= 1000) {

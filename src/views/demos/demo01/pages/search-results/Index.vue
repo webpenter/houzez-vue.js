@@ -72,12 +72,8 @@
 import { computed, onMounted, ref, watch } from "vue";
 import {
     useAppPropertyDemo01,
-    useBedroom,
-    useCity,
     useNotification,
-    usePrice,
     useSavedSearch, useToken,
-    useType
 } from "@/stores/index.js";
 import { storeToRefs } from "pinia";
 import { useRoute, useRouter } from "vue-router";

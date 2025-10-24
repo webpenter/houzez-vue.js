@@ -142,6 +142,7 @@ const fetchProperty = async () => {
     }
   } catch (error) {
     router.push({ name: 'property-not-found-404' });
+    // console.log(error)
   } finally {
     loading.value = false;
   }

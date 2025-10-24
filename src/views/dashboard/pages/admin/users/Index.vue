@@ -3,7 +3,9 @@
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">
       <div class="dashboard-content-block-wrap">
-        <NoDataMsg msg="You don't have any user!" v-if="users.length < 1"/>
+        <NoDataMsg
+         v-if="users.length < 1"
+        msg="You don't have any user!"/>
         <Table
             v-else
             :users="users"
@@ -49,7 +51,7 @@ const deleteUser = async (id) => {
             useNotification().Error(`Failed to delete`);
           }
         } catch (error) {
-          useNotification().Error(`An error occurred`);
+          useNotification().Error(`An error occurred`, error);
         }
       })
       .catch(() => {
@@ -68,7 +70,7 @@ const changeUserRole = async (userId, newRole) => {
       useNotification().Error("Failed to update role.");
     }
   } catch (error) {
-    useNotification().Error("An error occurred while updating the role.");
+    useNotification().Error("An error occurred while updating the role.", error);
   }
 }
 

@@ -7,7 +7,9 @@
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">
       <div class="dashboard-content-block-wrap">
-        <NoDataMsg msg="You don't have any team yet!" v-if="allTeams.length < 1"/>
+        <NoDataMsg
+        v-if="allTeams.length < 1"
+        msg="You don't have any team yet!"/>
         <Table
             v-else
             :all-teams="allTeams"

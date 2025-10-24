@@ -13,19 +13,19 @@
             <p class="mb-3">What information do you want to display in agent data container?</p>
             <div class="form-group">
               <label class="control control--checkbox">
-                <input type="radio" value="author_data" v-model="formData.contact_information"> Author Data
+                <input  v-model="formData.contact_information" type="radio" value="author_data"> Author Data
                 <span class="control__indicator"></span>
               </label>
               <label class="control control--checkbox">
-                <input type="radio" value="agent_data" v-model="formData.contact_information"> Agent Data
+                <input v-model="formData.contact_information" type="radio" value="agent_data" > Agent Data
                 <span class="control__indicator"></span>
               </label>
               <label class="control control--checkbox">
-                <input type="radio" value="agency_data" v-model="formData.contact_information"> Agency Data
+                <input v-model="formData.contact_information" type="radio" value="agency_data" > Agency Data
                 <span class="control__indicator"></span>
               </label>
               <label class="control control--checkbox">
-                <input type="radio" value="not_display" v-model="formData.contact_information"> Do not display
+                <input v-model="formData.contact_information" type="radio" value="not_display" > Do not display
                 <span class="control__indicator"></span>
               </label>
             </div>
@@ -33,8 +33,14 @@
         </div><!-- dashboard-content-block-wrap -->
 
         <div class="d-flex justify-content-between add-new-listing-bottom-nav-wrap">
-          <BackBtn route="dashboard.create-listing.step-7" :pId="propertyId"/>
-          <NextBtn :btnLoading="btnLoading" :hasErrors="false"/>
+          <BackBtn
+           route="dashboard.create-listing.step-7"
+            :pId="propertyId"
+            />
+          <NextBtn
+           :btnLoading="btnLoading" 
+           :hasErrors="false"
+           />
         </div><!-- add-new-listing-bottom-nav-wrap -->
       </form>
     </div><!-- dashboard-content-inner-wrap -->

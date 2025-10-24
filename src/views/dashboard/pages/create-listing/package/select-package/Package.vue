@@ -2,7 +2,11 @@
   <template v-if="loading">
     <PackageCardSkeleton :loop="4"/>
   </template>
-  <template v-else v-for="plan in selectPlans">
+  <template 
+  v-else 
+  v-for="plan in selectPlans" 
+  :key="plan.plan_id"
+  >
     <div class="col-md-3 col-sm-6">
       <div class="price-table-module">
         <div class="price-table-title">

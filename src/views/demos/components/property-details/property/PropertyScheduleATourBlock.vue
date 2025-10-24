@@ -1,5 +1,7 @@
 <template>
-	<div class="property-schedule-tour-wrap property-section-wrap" id="property-schedule-tour-wrap">
+	<div
+  id="property-schedule-tour-wrap"
+  class="property-schedule-tour-wrap property-section-wrap" >
 		<div class="block-wrap">
 			<div class="block-title-wrap d-flex justify-content-between align-items-center">
 				<h2>{{ $t('Schedule a Tour') }}</h2>
@@ -22,7 +24,9 @@
 					<div class="col-md-4 col-sm-12">
 						<div class="form-group">
 							<label>{{ $t('Date') }}</label>
-							<input type="date" v-model="selectedDateInput" class="form-control" />
+							<input 
+              v-model="selectedDateInput"
+              type="date" class="form-control" />
 							<div v-if="errors.date" class="text-danger">{{ errors.date }}</div>
 						</div>
 					</div>
@@ -47,7 +51,9 @@
 					<div class="col-md-6 col-sm-12">
 						<div class="form-group">
 							<label>{{ $t('Name') }}*</label>
-							<input class="form-control" v-model="form.name" :placeholder="$t('Enter your name')" type="text" />
+							<input 
+              v-model="form.name"
+              class="form-control" :placeholder="$t('Enter your name')" type="text" />
 							<div v-if="errors.name" class="text-danger">{{ errors.name }}</div>
 						</div>
 					</div>
@@ -56,7 +62,9 @@
 					<div class="col-md-6 col-sm-12">
 						<div class="form-group">
 							<label>{{ $t('Phone') }}*</label>
-							<input class="form-control" v-model="form.phone" :placeholder="$t('Enter your phone number')"
+							<input 
+              v-model="form.phone"
+              class="form-control" :placeholder="$t('Enter your phone number')"
 								type="text" />
 							<div v-if="errors.phone" class="text-danger">{{ errors.phone }}</div>
 						</div>
@@ -66,7 +74,9 @@
 					<div class="col-md-6 col-sm-12">
 						<div class="form-group">
 							<label>{{ $t('Email') }}*</label>
-							<input class="form-control" v-model="form.email" :placeholder="$t('Enter your email address')"
+							<input 
+              v-model="form.email"
+              class="form-control" :placeholder="$t('Enter your email address')"
 								type="email" />
 							<div v-if="errors.email" class="text-danger">{{ errors.email }}</div>
 						</div>
@@ -76,7 +86,9 @@
 					<div class="col-sm-12 col-xs-12">
 						<div class="form-group form-group-textarea">
 							<label>{{ $t('Message') }}</label>
-							<textarea class="form-control" v-model="form.message" rows="5"
+							<textarea
+              v-model="form.message"
+              class="form-control" rows="5"
 								:placeholder="$t('Message')"></textarea>
 						</div>
 					</div>
@@ -84,8 +96,11 @@
 					<!-- Terms Checkbox -->
 					<div class="col-sm-12 col-xs-12">
 						<div class="form-check mb-3">
-							<input class="form-check-input" type="checkbox" v-model="form.agreeTerms"
-								id="agreeTerms" />
+							<input
+              id="agreeTerms"
+              v-model="form.agreeTerms"
+              class="form-check-input" type="checkbox" 
+								 />
 							<label class="form-check-label ml-4" for="agreeTerms">
 								{{ $t('I agree to the Terms of Use') }}
 							</label>
@@ -106,7 +121,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { useTourRequest, useNotification } from "@/stores/index"; // Adjust path accordingly
 
 const props = defineProps({
@@ -121,29 +136,29 @@ const notificationStore = useNotification();
 
 const days = ref([]);
 const selectedDate = ref(null);
-const startIndex = ref(0);
-const visibleCount = 4;
-const itemWidth = 90;
+// const startIndex = ref(0);
+// const visibleCount = 4;
+// const itemWidth = 90;
 
-const slideStyle = computed(() => ({
-	transform: `translateX(${-startIndex.value * itemWidth}px)`,
-	transition: "transform 0.3s ease",
-	display: "flex",
-}));
+// const slideStyle = computed(() => ({
+// 	transform: `translateX(${-startIndex.value * itemWidth}px)`,
+// 	transition: "transform 0.3s ease",
+// 	display: "flex",
+// }));
 
-const maxIndex = computed(() => Math.max(0, days.value.length - visibleCount));
+// const maxIndex = computed(() => Math.max(0, days.value.length - visibleCount));
 
-function prevDays() {
-	if (startIndex.value > 0) {
-		startIndex.value -= 1;
-	}
-}
+// function prevDays() {
+// 	if (startIndex.value > 0) {
+// 		startIndex.value -= 1;
+// 	}
+// }
 
-function nextDays() {
-	if (startIndex.value < maxIndex.value) {
-		startIndex.value += 1;
-	}
-}
+// function nextDays() {
+// 	if (startIndex.value < maxIndex.value) {
+// 		startIndex.value += 1;
+// 	}
+// }
 
 function getNext8Days() {
 	const generated = [];

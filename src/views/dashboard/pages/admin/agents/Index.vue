@@ -3,7 +3,9 @@
   <section class="dashboard-content-wrap">
     <div class="dashboard-content-inner-wrap">
       <div class="dashboard-content-block-wrap">
-        <NoDataMsg msg="No agents found!" v-if="users.length < 1"/>
+        <NoDataMsg 
+         v-if="users.length < 1"
+        msg="No agents found!"/>
         <Table v-else :users="users" :loading="loading"/>
       </div>
     </div>

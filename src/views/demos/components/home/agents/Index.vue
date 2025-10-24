@@ -60,7 +60,7 @@ const getAgents = async () => {
   try {
     await agentStore.getAllAgents();
   } catch (err) {
-    notify.Error("Failed to fetch agents");
+    notify.Error("Failed to fetch agents", err);
   } finally {
     loading.value = false;
   }

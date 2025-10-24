@@ -280,7 +280,7 @@ onMounted(async () => {
 
         filteredProperties.value = properties.value
     } catch (err) {
-        console.error("Agency fetch failed:", err)
+        // console.error("Agency fetch failed:", err)
         router.push({ name: 'agent-not-found-404' })
     } finally {
         loading.value = false

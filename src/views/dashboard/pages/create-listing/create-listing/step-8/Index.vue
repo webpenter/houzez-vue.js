@@ -103,10 +103,8 @@
 <script setup>
 import SnakeNav from '../../components/SnakeNav.vue';
 import SaveAsDraftBtn from '../components/SaveAsDraftBtn.vue';
-import NextBtn from '../components/NextBtn.vue';
 import BackBtn from '../components/BackBtn.vue';
-import SectionFloorPlans from '@/views/inc/dashboard/property/SectionFloorPlans.vue';
-import {RouterLink, useRoute, useRouter} from "vue-router";
+import {RouterLink, useRoute} from "vue-router";
 import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 import { reactive } from 'vue';
 import {useProperty} from "@/stores/index.js";
@@ -114,7 +112,6 @@ import {storeToRefs} from "pinia";
 
 
 const route = useRoute();
-const router = useRouter();
 const propertyId = route.params.propertyId;
 const propertyToRefs = useProperty();
 const {property} = storeToRefs(propertyToRefs);
@@ -133,7 +130,7 @@ const deleteFloorPlan = (id) => {
   }
 };
 
-const formSubmit = () => {
-  alert("Form Submitted!");
-}
+// const formSubmit = () => {
+//   alert("Form Submitted!");
+// }
 </script>

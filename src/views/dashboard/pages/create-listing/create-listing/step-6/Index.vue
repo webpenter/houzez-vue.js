@@ -18,18 +18,22 @@
                           <div>
                             <span>(Maximum size 2MB)</span>
                           </div>
-                          <button @click="triggerFileInput" class="btn btn-primary btn-left-icon"><i class="houzez-icon icon-upload-button mr-1"></i>
+                          <button
+                          class="btn btn-primary btn-left-icon"
+                          @click="triggerFileInput"><i class="houzez-icon icon-upload-button mr-1"></i>
                             Select and Upload
                           </button>
                           <input
+                          ref="fileInput"
                               type="file"
-                              ref="fileInput"
                               multiple
                               style="display: none;"
                               @change="handleFileChange"
                           />
                         </div>
-                        <span class="text-danger" v-if="localErrors.images_error">
+                        <span 
+                         v-if="localErrors.images_error"
+                        class="text-danger">
                             {{ localErrors.images_error }}
                         </span>
                         <div v-if="uploadProgress > 0" class="progress mt-3">
@@ -48,7 +52,7 @@
                           <p>Click on the star icon to select the cover image.</p>
                           <div class="upload-media-gallery">
                             <div class="row">
-                              <template v-for="image in propertyImages">
+                              <template v-for="image in propertyImages" :key="image.id">
                                 <div class="col-md-2 col-sm-4 col-6">
                                   <img class="img-fluid" :src="image.image_path" alt="thumb">
                                   <div class="upload-gallery-thumb-buttons">
@@ -78,14 +82,16 @@
                       <div class="form-group">
                         <label>Enter video iframe/embeded code</label>
                         <input
+                         v-model="formData.video_url"
                             class="form-control"
                             :class="{ 'is-invalid': localErrors.video_url }"
-                            @input="validateField('video_url')"
-                            v-model="formData.video_url"
                             placeholder="YouTube, Vimeo, SWF File and MOV File are supported"
                             type="text"
+                             @input="validateField('video_url')"
                         >
-                        <span class="text-danger" v-if="localErrors.video_url">
+                        <span 
+                        v-if="localErrors.video_url"
+                        class="text-danger">
                             {{ localErrors.video_url }}
                         </span>
                         <small class="form-text text-muted">Input contains an "iframe" or "embed" tag</small>
@@ -222,7 +228,7 @@ const handleFileChange = async (event) => {
       notify.Error("Failed to upload property images.");
     }
   } catch (error) {
-    notify.Error("An error occurred while uploading images.");
+    notify.Error("An error occurred while uploading images.", error);
   } finally {
     uploadProgress.value = 0;
   }
@@ -260,7 +266,7 @@ const formSubmit = async () => {
     }
   } catch (error) {
     btnLoading.value = false;
-    notify.Error("An error occurred");
+    notify.Error("An error occurred", error);
   }
 };
 
@@ -275,7 +281,7 @@ const updateThumbnail = async (imgId) => {
       notify.Error("Failed to update thumbnail.");
     }
   } catch (error) {
-    notify.Error("An error occurred while processing the request.");
+    notify.Error("An error occurred while processing the request.", error);
   }
 }
 
@@ -290,7 +296,7 @@ const deleteImage = async (imgId) => {
       notify.Error("Failed to delete image.");
     }
   } catch (error) {
-    notify.Error("An error occurred while processing the request.");
+    notify.Error("An error occurred while processing the request.", error);
   }
 }
 

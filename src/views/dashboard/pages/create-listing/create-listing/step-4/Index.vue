@@ -14,25 +14,33 @@
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
                             <label>Energy Class</label>
-                            <input class="form-control" v-model="formData.energy_class" placeholder="Energy class" type="text">
+                            <input 
+                            v-model="formData.energy_class" 
+                            class="form-control" placeholder="Energy class" type="text">
                           </div>
                         </div><!-- col-md-6 col-sm-12 -->
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
                             <label>Global Energy Performance Index</label>
-                            <input class="form-control" v-model="formData.global_energy_performance_index" placeholder="For example: 92.42 kWh / m²a" type="text">
+                            <input 
+                             v-model="formData.global_energy_performance_index"
+                            class="form-control" placeholder="For example: 92.42 kWh / m²a" type="text">
                           </div>
                         </div><!-- col-md-6 col-sm-12 -->
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
                             <label>Renewable energy performance index</label>
-                            <input class="form-control" v-model="formData.renewable_energy_performance_index" placeholder="For example: 0.00 kWh / m²a" type="text">
+                            <input
+                            v-model="formData.renewable_energy_performance_index"
+                            class="form-control"  placeholder="For example: 0.00 kWh / m²a" type="text">
                           </div>
                         </div><!-- col-md-6 col-sm-12 -->
                         <div class="col-md-6 col-sm-12">
                           <div class="form-group">
                             <label>Energy performance of the building</label>
-                            <input class="form-control" v-model="formData.energy_performance_of_the_building" placeholder="Energy performance of the building" type="text">
+                            <input 
+                            v-model="formData.energy_performance_of_the_building"
+                            class="form-control"  placeholder="Energy performance of the building" type="text">
                           </div>
                         </div><!-- col-md-6 col-sm-12 -->
                       </div><!-- row -->
@@ -53,9 +61,9 @@ import SnakeNav from '../../components/SnakeNav.vue';
 import SaveAsDraftBtn from '../components/SaveAsDraftBtn.vue';
 import NextBtn from '../components/NextBtn.vue';
 import BackBtn from '../components/BackBtn.vue';
-import {useRoute, useRouter} from "vue-router";
+import {useRoute} from "vue-router";
 import {onMounted, ref, watch} from "vue";
-import {useNotification, useProperty} from "@/stores/index.js";
+import {useProperty} from "@/stores/index.js";
 import {storeToRefs} from "pinia";
 import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
 import {useEditProperty, usePropertyForm} from "@/traits/property/manageProperty.js";

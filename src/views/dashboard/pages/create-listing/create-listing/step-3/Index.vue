@@ -12,7 +12,9 @@
                     <div class="row">
                       <div v-for="feature in features" :key="feature.id" class="col-md-3 col-sm-6 col-6">
                         <label class="control control--checkbox">
-                          <input type="checkbox" v-model="formData.property_feature" :value="feature.name">
+                          <input 
+                          v-model="formData.property_feature" 
+                          type="checkbox" :value="feature.name">
                           {{ feature.name }}
                           <span class="control__indicator"></span>
                         </label>
@@ -40,7 +42,7 @@ import {onMounted, ref, watch} from 'vue';
 import {storeToRefs} from "pinia";
 import {useFeatures, useProperty} from "@/stores/index.js";
 import {TITLE_CREATE_UPDATE_LISTING} from "@/constants/index.js";
-import {useRoute, useRouter} from "vue-router";
+import {useRoute} from "vue-router";
 import {useEditProperty,usePropertyForm} from "@/traits/property/manageProperty.js";
 
 const {features} = storeToRefs(useFeatures());

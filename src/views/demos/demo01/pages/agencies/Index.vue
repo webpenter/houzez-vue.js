@@ -60,7 +60,7 @@ onMounted(async () => {
   try {
     await agencyStore.getAllAgencies()
   } catch (err) {
-    console.error('Failed to fetch agents:', err)
+    // console.error('Failed to fetch agents:', err)
   } finally {
     loading.value = false
   }

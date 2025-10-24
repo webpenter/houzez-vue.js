@@ -14,8 +14,8 @@
             <label>{{ $t('group') }}</label>
             <select
               v-model="formData.group"
-              @change="validateField('group')"
               :class="['form-control', localErrors.group ? 'is-invalid' : '']"
+              @change="validateField('group')"
             >
               <option disabled value="">{{ $t('selectGroup') }}</option>
               <option value="active">{{ $t('active') }}</option>
@@ -29,12 +29,13 @@
           <div class="col-md-6">
             <label>{{ $t('title') }}</label>
             <input
+            v-model="formData.title"
               type="text"
               class="form-control"
-              v-model="formData.title"
-              @input="validateField('title')"
               :class="{ 'is-invalid': localErrors.title }"
               :placeholder="$t('enterTitle')"
+              @input="validateField('title')"
+              
             />
             <div v-if="localErrors.title" class="text-danger mt-1">{{ $t('validation.title') }}</div>
           </div>
@@ -43,12 +44,13 @@
           <div class="col-md-6 mt-3">
             <label>{{ $t('contactName') }}</label>
             <input
+              v-model="formData.contact_name"
               type="text"
               class="form-control"
-              v-model="formData.contact_name"
-              @input="validateField('contact_name')"
               :class="{ 'is-invalid': localErrors.contact_name }"
               :placeholder="$t('enterContactName')"
+              @input="validateField('contact_name')"
+              
             />
             <div v-if="localErrors.contact_name" class="text-danger mt-1">{{ $t('validation.contact_name') }}</div>
           </div>
@@ -57,12 +59,13 @@
           <div class="col-md-6 mt-3">
             <label>{{ $t('agent') }}</label>
             <input
+             v-model="formData.agent"
               type="text"
               class="form-control"
-              v-model="formData.agent"
-              @input="validateField('agent')"
               :class="{ 'is-invalid': localErrors.agent }"
               :placeholder="$t('enterAgent')"
+              @input="validateField('agent')"
+              
             />
             <div v-if="localErrors.agent" class="text-danger mt-1">{{ $t('validation.agent') }}</div>
           </div>
@@ -71,12 +74,13 @@
           <div class="col-md-6 mt-3">
             <label>{{ $t('dealValue') }}</label>
             <input
+            v-model="formData.deal_value"
               type="number"
               class="form-control"
-              v-model="formData.deal_value"
-              @input="validateField('deal_value')"
-              :class="{ 'is-invalid': localErrors.deal_value }"
+               :class="{ 'is-invalid': localErrors.deal_value }"
               :placeholder="$t('enterDealValue')"
+              @input="validateField('deal_value')"
+             
             />
             <div v-if="localErrors.deal_value" class="text-danger mt-1">{{ $t('validation.deal_value') }}</div>
           </div>
@@ -85,9 +89,9 @@
           <div class="col-md-6 mt-3">
             <div><label for="status" class="form-check-label">{{ $t('status') }}</label></div>
             <input
-              type="checkbox"
-              id="status"
+            id="status"
               v-model="formData.status"
+              type="checkbox"
               class="form-check-input me-5"
             />
           </div>
@@ -186,7 +190,7 @@ const formSubmit = async () => {
     }
   } catch (error) {
     btnLoading.value = false
-    notify.Error('Submission failed. Please try again.')
+    notify.Error('Submission failed. Please try again.', error)
   }
 }
 </script>

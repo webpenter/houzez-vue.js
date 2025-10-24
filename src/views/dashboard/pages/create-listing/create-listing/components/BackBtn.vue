@@ -8,5 +8,5 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 
-const props = defineProps(['route','pId'])
+defineProps(['route','pId'])
 </script>

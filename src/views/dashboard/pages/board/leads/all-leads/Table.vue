@@ -41,12 +41,15 @@
         </td>
         <td class="table-nowrap">
           <div class="dropdown property-action-menu">
-            <button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton"
+            <button 
+            id="dropdownMenuButton"
+            type="button" 
+            class="btn btn-primary-outlined dropdown-toggle" 
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {{$t('Actions')}}
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              <a @click.prevent="$emit('deleteLead',lead.id)" class="dropdown-item" href="#">{{$t('Delete')}}</a>
+              <a class="dropdown-item" href="#" @click.prevent="$emit('deleteLead',lead.id)">{{$t('Delete')}}</a>
             </div>
           </div>
         </td>

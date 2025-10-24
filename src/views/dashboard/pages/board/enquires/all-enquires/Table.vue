@@ -41,12 +41,19 @@
         </td>
         <td class="table-nowrap">
           <div class="dropdown property-action-menu">
-            <button class="btn btn-primary-outlined dropdown-toggle" type="button" id="dropdownMenuButton"
+            <button 
+            id="dropdownMenuButton"
+            class="btn btn-primary-outlined dropdown-toggle" type="button" 
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {{$t('Actions')}}
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              <a @click.prevent="$emit('deleteEnquiry',enquiry.id)" class="dropdown-item" href="#">{{$t('Delete')}}</a>
+              <a
+              href="#"
+              class="dropdown-item"
+              @click.prevent="$emit('deleteEnquiry',enquiry.id)" >
+              {{$t('Delete')}}
+            </a>
             </div>
           </div>
         </td>
@@ -56,6 +63,6 @@
   </table>
 </template>
 
-<script setup lang="ts">
+<script setup>
 defineProps(["loading", "enquires"]);
 </script>

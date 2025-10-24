@@ -11,7 +11,9 @@
                    <div class="dashboard-content-block">
                      <div class="form-group">
                        <label>Write private note for this property, it will not display for public.</label>
-                       <textarea class="form-control" v-model="formData.private_note" rows="7" placeholder="Enter the note here"></textarea>
+                       <textarea 
+                       v-model="formData.private_note" 
+                       class="form-control" rows="7" placeholder="Enter the note here"></textarea>
                      </div>
                    </div><!-- dashboard-content-block -->
                  </div><!-- dashboard-content-block-wrap -->

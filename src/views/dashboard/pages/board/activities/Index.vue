@@ -6,7 +6,9 @@
                 <div class="dashboard-content-block-wrap">
                     <div class="row">
                         <div class="col-md-7 col-sm-12">
-                            <NoDataMsg msg="You don't have any message." v-if="reviews.length < 1"/>
+                            <NoDataMsg 
+                             v-if="reviews.length < 1"
+                            msg="You don't have any message."/>
                             <div v-else class="dashboard-content-block activities-list-wrap">
                               <Reviews
                                   :reviews="reviews"
