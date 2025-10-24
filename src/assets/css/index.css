@@ -23,6 +23,8 @@
 
 /* Home page */
 @import url("@/assets/css/client-side/styles.css");
+/* Home page */
+@import url("@/assets/css/client-side/custom.css");
 /* Properties page */
 @import url("@/assets/css/client-side/properties.css");
 /* Responsive pages */

@@ -67,12 +67,19 @@
           :options="cities"
           label="name"
           track-by="name"
-          placeholder="Select Cities"
+          placeholder=""
           :multiple="true"
           :close-on-select="false"
           :clear-on-select="false"
           :preserve-search="true"
-        />
+        >
+          <template #selection="{ values }">
+            <span v-if="values.length === 0" class="multiselect__placeholder">Select Cities</span>
+            <span v-else>
+              {{ values.length === 1 ? '1 city selected' : values.length + ' cities selected' }}
+            </span>
+          </template>
+        </Multiselect>
       </div>
 
       <!-- Types -->
@@ -82,11 +89,18 @@
           :options="types"
           label="name"
           track-by="name"
-          placeholder="Select Types"
+          placeholder=""
           :multiple="true"
           :close-on-select="false"
           :clear-on-select="false"
-        />
+        >
+          <template #selection="{ values }">
+            <span v-if="values.length === 0" class="multiselect__placeholder">Select Types</span>
+            <span v-else>
+              {{ values.length === 1 ? '1 type selected' : values.length + ' types selected' }}
+            </span>
+          </template>
+        </Multiselect>
       </div>
 
       <!-- Bedrooms -->
@@ -150,7 +164,6 @@ const searchProperty = async () => {
   btnLoading.value = true;
 
   try {
-    // Prepare values as comma-separated names
     const payload = {
       search: formData.value.search,
       types: formData.value.types.map(t => t.name),
@@ -181,30 +194,3 @@ const searchProperty = async () => {
 };
 </script>
 
-<style scoped>
-.row-responsive {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin-top: 15px;
-}
-
-.flex-item {
-  flex: 1;
-  min-width: 300px;
-}
-
-.button-item {
-  display: flex;
-  align-items: center;
-}
-
-@media (max-width: 768px) {
-  .row-responsive {
-    flex-direction: column;
-  }
-  .flex-item {
-    width: 100%;
-  }
-}
-</style>
