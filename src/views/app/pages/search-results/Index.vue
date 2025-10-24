@@ -22,6 +22,7 @@
               default-first-option
               :reserve-keyword="false"
               :placeholder="$t('Choose/Search Types')"
+              :teleported="false"
               @change="searchProperty"
               style="width: 100%"
           >
@@ -42,6 +43,8 @@
               default-first-option
               :reserve-keyword="false"
               :placeholder="$t('Choose/Search City')"
+              :teleported="false"
+              :max-height="300"
               @change="searchProperty"
               style="width: 100%"
           >
@@ -62,6 +65,7 @@
               default-first-option
               :reserve-keyword="false"
               :placeholder="$t('Choose/Search Max Bedrooms')"
+              :teleported="false"
               @change="searchProperty"
               style="width:100%"
           >
@@ -82,6 +86,7 @@
               default-first-option
               :reserve-keyword="false"
               :placeholder="$t('Choose/Search Max Price')"
+              :teleported="false"
               @change="searchProperty"
               style="width: 100%"
           >
@@ -205,26 +210,36 @@ const formData = ref({
   maxPrice: route.query.maxPrice || "",
 });
 
+let searchTimeout = null;
+
 const searchProperty = async () => {
-  loading.value = true;
-  try {
-    await router.push({
-      name:"app.search-results",
-      query: {
-        search: formData.value.search,
-        types: formData.value.types.join(','),
-        city: formData.value.city,
-        bedrooms: formData.value.bedrooms,
-        maxPrice: formData.value.maxPrice,
-      },
-    });
-
-    await propertyToRefs.getAllProperties(formData.value);
-    loading.value = false;
-
-  } catch (error) {
-    useNotification().Error("Error fetching properties:", error);
+  if (searchTimeout) {
+    clearTimeout(searchTimeout);
   }
+
+  searchTimeout = setTimeout(async () => {
+    if (loading.value) return;
+
+    loading.value = true;
+    try {
+      await router.push({
+        name:"app.search-results",
+        query: {
+          search: formData.value.search,
+          types: formData.value.types.join(','),
+          city: formData.value.city,
+          bedrooms: formData.value.bedrooms,
+          maxPrice: formData.value.maxPrice,
+        },
+      });
+
+      await propertyToRefs.getAllProperties(formData.value);
+    } catch (error) {
+      useNotification().Error("Error fetching properties:", error);
+    } finally {
+      loading.value = false;
+    }
+  }, 300);
 };
 
 const resetFilters = () => {
@@ -293,5 +308,20 @@ watch(parameters, async () => {
 
 .bell-rotate {
   animation: bellRotate 0.7s ease-in-out infinite;
+}
+
+/* Ensure only one dropdown overlay is visible */
+:deep(.el-select-dropdown) {
+  position: absolute !important;
+  z-index: 1000 !important;
+}
+
+:deep(.el-popper) {
+  max-width: 280px !important;
+}
+
+/* Prevent multiple overlays */
+#property-sidebar :deep(.el-select) {
+  position: relative;
 }
 </style>
