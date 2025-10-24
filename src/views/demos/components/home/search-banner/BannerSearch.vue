@@ -191,7 +191,7 @@ const searchProperty = async () => {
 
 .flex-item {
   flex: 1;
-  min-width: 200px;
+  min-width: 300px;
 }
 
 .button-item {
