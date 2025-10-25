@@ -282,9 +282,7 @@ const handleFileChange = async (event) => {
     }
 
     const reader = new FileReader();
-    reader.onload = (e) => {
-      formProfilePicture.value = e.target.result;
-    };
+    reader.onload = () => {}; 
     reader.readAsDataURL(file);
 
     const formProfileData = new FormData();

@@ -10,6 +10,7 @@ import plugins from './plugins';
 import ElementPlus from "element-plus";
 import { createPinia } from "pinia";
 import i18n from "@/i18n";
+import 'vue-multiselect/dist/vue-multiselect.css';
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import {
     subStr,

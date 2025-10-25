@@ -1,4 +1,5 @@
 <template>
+  <!-- Status Tabs -->
   <ul
     id="pills-tab"
     class="nav nav-pills justify-content-center"
@@ -34,22 +35,19 @@
     </li>
   </ul>
 
+  <!-- Search & Filters -->
   <div class="advanced-search-banner-wrap">
-    <div class="d-flex flex-sm-max-column">
-      <div class="flex-grow-1 flex-search">
-        <div class="form-group">
-          <div class="search-icon">
-            <input
-              type="text"
-              class="form-control"
-              v-model="formData.search"
-              :placeholder="$t('Search')"
-            />
-          </div>
-        </div>
+    <!-- Search and button row -->
+    <div class="row-responsive">
+      <div class="flex-item">
+        <input
+          type="text"
+          class="form-control"
+          v-model="formData.search"
+          :placeholder="$t('Search')"
+        />
       </div>
-
-      <div class="flex-search">
+      <div class="flex-item button-item">
         <button
           class="btn btn-search btn-secondary btn-full-width"
           :disabled="btnLoading"
@@ -60,162 +58,139 @@
       </div>
     </div>
 
-    <div class="d-flex flex-sm-max-column">
-      <div class="flex-search flex-sm-max-column">
-        <div class="form-group">
-          <select
-            id="city-select"
-            v-model="formData.cities"
-            class="selectpicker form-control"
-            :title="$t('Cities')"
-            multiple
-          >
-            <option
-              v-for="city in cities"
-              :key="city.id"
-              :value="city.name"
-            >
-              {{ city.name }}
-            </option>
-          </select>
-        </div>
+    <!-- Filters row -->
+    <div class="row-responsive">
+      <!-- Cities -->
+      <div class="flex-item">
+        <Multiselect
+          v-model="formData.cities"
+          :options="cities"
+          label="name"
+          track-by="name"
+          placeholder=""
+          :multiple="true"
+          :close-on-select="false"
+          :clear-on-select="false"
+          :preserve-search="true"
+        >
+          <template #selection="{ values }">
+            <span v-if="values.length === 0" class="multiselect__placeholder">Select Cities</span>
+            <span v-else>
+              {{ values.length === 1 ? '1 city selected' : values.length + ' cities selected' }}
+            </span>
+          </template>
+        </Multiselect>
       </div>
 
-      <div class="flex-search">
-        <div class="form-group">
-          <select
-            id="types-select"
-            v-model="formData.types"
-            class="selectpicker form-control"
-            :title="$t('Type')"
-            multiple
-            data-actions-box="true"
-          >
-            <option
-              v-for="type in types"
-              :key="type.id"
-              :value="type.name"
-            >
-              {{ type.name }}
-            </option>
-          </select>
-        </div>
+      <!-- Types -->
+      <div class="flex-item">
+        <Multiselect
+          v-model="formData.types"
+          :options="types"
+          label="name"
+          track-by="name"
+          placeholder=""
+          :multiple="true"
+          :close-on-select="false"
+          :clear-on-select="false"
+        >
+          <template #selection="{ values }">
+            <span v-if="values.length === 0" class="multiselect__placeholder">Select Types</span>
+            <span v-else>
+              {{ values.length === 1 ? '1 type selected' : values.length + ' types selected' }}
+            </span>
+          </template>
+        </Multiselect>
       </div>
 
-      <div class="flex-search">
-        <div class="form-group">
-          <select
-            v-model="formData.bedrooms"
-            class="selectpicker form-control"
-            :title="$t('Max. Bedrooms')"
-          >
-            <option
-              v-for="bedroom in bedrooms"
-              :key="bedroom.id"
-              :value="bedroom.name"
-            >
-              {{ bedroom.name }}
-            </option>
-          </select>
-        </div>
+      <!-- Bedrooms -->
+      <div class="flex-item">
+        <Multiselect
+          v-model="formData.bedrooms"
+          :options="bedrooms"
+          label="name"
+          track-by="name"
+          placeholder="Select Max Bedrooms"
+          :multiple="false"
+        />
       </div>
 
-      <div class="flex-search">
-        <div class="form-group">
-          <select
-            v-model="formData.maxPrice"
-            class="selectpicker form-control"
-            :title="$t('Max. Price')"
-          >
-            <option
-              v-for="price in prices"
-              :key="price.id"
-              :value="price.name"
-            >
-              {{ price.name === 'Any' ? $t('Any') : formatPrice(price.name) }}
-            </option>
-          </select>
-        </div>
+      <!-- Max Price -->
+      <div class="flex-item">
+        <Multiselect
+          v-model="formData.maxPrice"
+          :options="prices"
+          label="name"
+          track-by="name"
+          placeholder="Select Max Price"
+          :multiple="false"
+          :custom-label="priceLabel"
+        />
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import 'bootstrap-select/dist/css/bootstrap-select.min.css';
-import 'bootstrap-select/dist/js/bootstrap-select.min.js';
-import { ref, onMounted } from 'vue';
+<script setup>
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useAppPropertyDemo01, useNotification, useType, useCity, useBedroom, usePrice } from '@/stores/index.js';
-import $ from 'jquery';
+import Multiselect from "vue-multiselect";
+import "vue-multiselect/dist/vue-multiselect.css";
+import { useAppPropertyDemo01, useType, useCity, useBedroom, usePrice, useNotification } from '@/stores/index.js';
 
-export default {
-  name: 'BannerSearch',
-  setup() {
-    const btnLoading = ref(false);
-    const router = useRouter();
-    const propertyToRefs = useAppPropertyDemo01();
+const btnLoading = ref(false);
+const router = useRouter();
+const propertyToRefs = useAppPropertyDemo01();
 
-    const formData = ref({
-      search: "",
-      types: [],
-      cities: [],
-      bedrooms: "",
-      maxPrice: "",
-      status: "",
+const formData = ref({
+  search: "",
+  types: [],
+  cities: [],
+  bedrooms: null,
+  maxPrice: null,
+  status: "",
+});
+
+const { types } = useType();
+const { cities } = useCity();
+const { bedrooms } = useBedroom();
+const { prices } = usePrice();
+
+const priceLabel = (price) => {
+  return price.name === "Any" ? "Any" : "$" + parseInt(price.name).toLocaleString();
+};
+
+const searchProperty = async () => {
+  btnLoading.value = true;
+
+  try {
+    const payload = {
+      search: formData.value.search,
+      types: formData.value.types.map(t => t.name),
+      cities: formData.value.cities.map(c => c.name),
+      bedrooms: formData.value.bedrooms?.name || "",
+      maxPrice: formData.value.maxPrice?.name || "",
+      status: formData.value.status,
+    };
+
+    await propertyToRefs.getSearchedAndFilteredPropertiesDemo01(payload);
+
+    router.push({
+      name: "demo01.search-results",
+      query: {
+        ...(payload.search && { search: payload.search }),
+        ...(payload.types.length && { types: payload.types.join(',') }),
+        ...(payload.cities.length && { cities: payload.cities.join(',') }),
+        ...(payload.bedrooms && { bedrooms: payload.bedrooms }),
+        ...(payload.maxPrice && { maxPrice: payload.maxPrice }),
+        ...(payload.status && { status: payload.status }),
+      },
     });
-
-    const { types } = useType();
-    const { cities } = useCity();
-    const { bedrooms } = useBedroom();
-    const { prices } = usePrice();
-
-    const updateSelectValues = () => {
-      formData.value.cities = $('#city-select').val() || [];
-      formData.value.types = $('#types-select').val() || [];
-    };
-
-    const formatPrice = (value) => `$${parseInt(value).toLocaleString()}`;
-
-    const searchProperty = async () => {
-      btnLoading.value = true;
-      updateSelectValues();
-
-      try {
-        await propertyToRefs.getSearchedAndFilteredPropertiesDemo01(formData.value);
-        router.push({
-          name: "demo01.search-results",
-          query: {
-            ...(formData.value.search && { search: formData.value.search }),
-            ...(formData.value.types.length && { types: formData.value.types.join(',') }),
-            ...(formData.value.cities.length && { cities: formData.value.cities.join(',') }),
-            ...(formData.value.bedrooms && { bedrooms: formData.value.bedrooms }),
-            ...(formData.value.maxPrice && { maxPrice: formData.value.maxPrice }),
-            ...(formData.value.status && { status: formData.value.status }),
-          }
-        });
-      } catch (error) {
-        useNotification().Error("Error fetching properties:", error);
-      } finally {
-        btnLoading.value = false;
-      }
-    };
-
-    onMounted(() => {
-      $.fn.selectpicker.Constructor.BootstrapVersion = '4';
-      $('.selectpicker').selectpicker().on('changed.bs.select', updateSelectValues);
-    });
-
-    return {
-      formData,
-      searchProperty,
-      btnLoading,
-      types,
-      cities,
-      bedrooms,
-      prices,
-      formatPrice,
-    };
-  },
+  } catch (error) {
+    useNotification().Error("Error fetching properties:", error);
+  } finally {
+    btnLoading.value = false;
+  }
 };
 </script>
+
